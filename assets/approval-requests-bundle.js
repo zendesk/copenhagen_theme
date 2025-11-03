@@ -1,1093 +1,179 @@
-import { r as reactExports, s as styled, c as Field, u as useTranslation, i as debounce, j as jsxRuntimeExports, d as Label, a as MediaInput, ai as SvgSearchStroke, f as Combobox, O as Option, y as Tag, ao as Ellipsis, B as getColorV8, af as MD, A as Anchor, ap as Table, aq as Head, ar as HeaderRow, as as HeaderCell, at as SortableCell, au as Body, av as Row, aw as Cell, ax as Spinner, ay as XXL, a3 as initI18next, a4 as loadTranslations, a5 as reactDomExports, a6 as ThemeProviders, a7 as createTheme, ak as ErrorBoundary, aa as Grid, ac as Row$1, ab as Col, F as Field$1, L as Label$1, a0 as Avatar, T as Textarea, M as Message, X as Button, n as notify, az as Breadcrumb } from 'shared';
-
-function useSearchApprovalRequests() {
-    const [approvalRequests, setApprovalRequests] = reactExports.useState([]);
-    const [error, setError] = reactExports.useState(null);
-    const [isLoading, setIsLoading] = reactExports.useState(false);
-    const [approvalRequestStatus, setApprovalRequestStatus] = reactExports.useState("any");
-    reactExports.useEffect(() => {
-        const fetchApprovalRequests = async () => {
-            setIsLoading(true);
-            try {
-                const currentUserRequest = await fetch("/api/v2/users/me.json");
-                if (!currentUserRequest.ok) {
-                    throw new Error("Error fetching current user data");
-                }
-                const currentUser = await currentUserRequest.json();
-                // TODO: can be any ULID, the API was implemented this way for future proofing, we will likely need to update the route in the UI to match
-                const approvalWorkflowInstanceId = "01JJQFNX5ADZ6PRQCFWRDNKZRD";
-                const response = await fetch(`/api/v2/approval_workflow_instances/${approvalWorkflowInstanceId}/approval_requests/search${approvalRequestStatus === "any"
-                    ? ""
-                    : `?status=${approvalRequestStatus}`}`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-CSRF-Token": currentUser.user.authenticity_token,
-                    },
-                });
-                if (response.ok) {
-                    const data = await response.json();
-                    setApprovalRequests(data.approval_requests);
-                }
-                else {
-                    throw new Error("Error fetching approval requests");
-                }
-            }
-            catch (error) {
-                setError(error);
-            }
-            finally {
-                setIsLoading(false);
-            }
-        };
-        fetchApprovalRequests();
-    }, [approvalRequestStatus]);
-    return {
-        approvalRequests,
-        errorFetchingApprovalRequests: error,
-        approvalRequestStatus,
-        setApprovalRequestStatus,
-        isLoading: isLoading,
-    };
-}
-
-const APPROVAL_REQUEST_STATES = {
-    ACTIVE: "active",
-    APPROVED: "approved",
-    REJECTED: "rejected",
-    WITHDRAWN: "withdrawn",
-};
-
-const FiltersContainer = styled.div `
+import{r as n,s as e,c as s,u as t,i as r,j as a,d as o,a as l,ai as u,f as i,O as c,y as p,ao as d,B as h,af as j,A as m,ap as b,aq as f,ar as v,as as q,at as x,au as g,av as k,aw as w,ax as y,ay as $,a3 as R,a4 as A,a5 as C,a6 as _,a7 as E,ak as S,aa as T,ac as D,ab as z,F as P,L as I,a0 as W,T as L,M as N,X as V,n as F,az as B}from"shared";const H={ACTIVE:"active",APPROVED:"approved",REJECTED:"rejected",WITHDRAWN:"withdrawn"},J=e.div`
   display: flex;
-  gap: ${(props) => props.theme.space.base * 17}px; /* 68px */
+  gap: ${n=>17*n.theme.space.base}px; /* 68px */
   align-items: flex-end;
 
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+  @media (max-width: ${n=>n.theme.breakpoints.md}) {
     flex-direction: column;
     align-items: normal;
-    gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
+    gap: ${n=>4*n.theme.space.base}px; /* 16px */
   }
-`;
-const SearchField = styled(Field) `
+`,M=e(s)`
   flex: 3;
-`;
-const DropdownFilterField = styled(Field) `
+`,O=e(s)`
   flex: 1;
-`;
-function ApprovalRequestListFilters({ approvalRequestStatus, setApprovalRequestStatus, setSearchTerm, }) {
-    const { t } = useTranslation();
-    const getStatusLabel = reactExports.useCallback((status) => {
-        switch (status) {
-            case "any":
-                return t("approval-requests.list.status-dropdown.any", "Any");
-            case "active":
-                return t("approval-requests.status.decision-pending", "Decision pending");
-            case "approved":
-                return t("approval-requests.status.approved", "Approved");
-            case "rejected":
-                return t("approval-requests.status.denied", "Denied");
-            case "withdrawn":
-                return t("approval-requests.status.withdrawn", "Withdrawn");
-        }
-    }, [t]);
-    const handleChange = reactExports.useCallback((changes) => {
-        if (!changes.selectionValue) {
-            return;
-        }
-        setApprovalRequestStatus(changes.selectionValue);
-        setSearchTerm(""); // Reset search term when changing status
-    }, [setApprovalRequestStatus, setSearchTerm]);
-    const debouncedSetSearchTerm = reactExports.useMemo(() => debounce((value) => setSearchTerm(value), 300), [setSearchTerm]);
-    const handleSearch = reactExports.useCallback((event) => {
-        debouncedSetSearchTerm(event.target.value);
-    }, [debouncedSetSearchTerm]);
-    return (jsxRuntimeExports.jsxs(FiltersContainer, { children: [jsxRuntimeExports.jsxs(SearchField, { children: [jsxRuntimeExports.jsx(Label, { hidden: true, children: t("approval-requests.list.search-placeholder", "Search approval requests") }), jsxRuntimeExports.jsx(MediaInput, { start: jsxRuntimeExports.jsx(SvgSearchStroke, {}), placeholder: t("approval-requests.list.search-placeholder", "Search approval requests"), onChange: handleSearch })] }), jsxRuntimeExports.jsxs(DropdownFilterField, { children: [jsxRuntimeExports.jsx(Label, { children: t("approval-requests.list.status-dropdown.label_v2", "Status") }), jsxRuntimeExports.jsxs(Combobox, { isEditable: false, onChange: handleChange, selectionValue: approvalRequestStatus, inputValue: getStatusLabel(approvalRequestStatus), children: [jsxRuntimeExports.jsx(Option, { value: "any", label: t("approval-requests.list.status-dropdown.any", "Any") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.ACTIVE, label: t("approval-requests.status.decision-pending", "Decision pending") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.APPROVED, label: t("approval-requests.status.approved", "Approved") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.REJECTED, label: t("approval-requests.status.denied", "Denied") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.WITHDRAWN, label: t("approval-requests.status.withdrawn", "Withdrawn") })] })] })] }));
-}
-var ApprovalRequestListFilters$1 = reactExports.memo(ApprovalRequestListFilters);
-
-const DEFAULT_STATUS_CONFIG = { hue: "grey", label: "Unknown status" };
-function ApprovalStatusTag({ status }) {
-    const { t } = useTranslation();
-    const statusTagMap = {
-        [APPROVAL_REQUEST_STATES.ACTIVE]: {
-            hue: "blue",
-            label: t("approval-requests.status.decision-pending", "Decision pending"),
-        },
-        [APPROVAL_REQUEST_STATES.APPROVED]: {
-            hue: "green",
-            label: t("approval-requests.status.approved", "Approved"),
-        },
-        [APPROVAL_REQUEST_STATES.REJECTED]: {
-            hue: "red",
-            label: t("approval-requests.status.denied", "Denied"),
-        },
-        [APPROVAL_REQUEST_STATES.WITHDRAWN]: {
-            hue: "grey",
-            label: t("approval-requests.status.withdrawn", "Withdrawn"),
-        },
-    };
-    const config = statusTagMap[status] || DEFAULT_STATUS_CONFIG;
-    return (jsxRuntimeExports.jsx(Tag, { hue: config.hue, children: jsxRuntimeExports.jsx(Ellipsis, { children: config.label }) }));
-}
-var ApprovalStatusTag$1 = reactExports.memo(ApprovalStatusTag);
-
-const formatApprovalRequestDate = (timestamp, locale, monthFormat = "short") => {
-    const date = new Date(timestamp);
-    return `${date.toLocaleDateString(locale, {
-        month: monthFormat,
-        day: "numeric",
-        year: "numeric",
-    })} ${date.toLocaleTimeString(locale, {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-    })}`;
-};
-
-const StyledMD = styled(MD) `
-  color: ${(props) => getColorV8("grey", 600, props.theme)};
-`;
-function NoApprovalRequestsText() {
-    const { t } = useTranslation();
-    return (jsxRuntimeExports.jsx(StyledMD, { children: t("approval-requests.list.no-requests", "No approval requests found.") }));
-}
-var NoApprovalRequestsText$1 = reactExports.memo(NoApprovalRequestsText);
-
-const ApprovalRequestAnchor = styled(Anchor) `
+`;var U=n.memo((function({approvalRequestStatus:e,setApprovalRequestStatus:s,setSearchTerm:p}){const{t:d}=t(),h=n.useCallback((n=>{switch(n){case"any":return d("approval-requests.list.status-dropdown.any","Any");case"active":return d("approval-requests.status.decision-pending","Decision pending");case"approved":return d("approval-requests.status.approved","Approved");case"rejected":return d("approval-requests.status.denied","Denied");case"withdrawn":return d("approval-requests.status.withdrawn","Withdrawn")}}),[d]),j=n.useCallback((n=>{n.selectionValue&&(s(n.selectionValue),p(""))}),[s,p]),m=n.useMemo((()=>r((n=>p(n)),300)),[p]),b=n.useCallback((n=>{m(n.target.value)}),[m]);return a.jsxs(J,{children:[a.jsxs(M,{children:[a.jsx(o,{hidden:!0,children:d("approval-requests.list.search-placeholder","Search approval requests")}),a.jsx(l,{start:a.jsx(u,{}),placeholder:d("approval-requests.list.search-placeholder","Search approval requests"),onChange:b})]}),a.jsxs(O,{children:[a.jsx(o,{children:d("approval-requests.list.status-dropdown.label_v2","Status")}),a.jsxs(i,{isEditable:!1,onChange:j,selectionValue:e,inputValue:h(e),children:[a.jsx(c,{value:"any",label:d("approval-requests.list.status-dropdown.any","Any")}),a.jsx(c,{value:H.ACTIVE,label:d("approval-requests.status.decision-pending","Decision pending")}),a.jsx(c,{value:H.APPROVED,label:d("approval-requests.status.approved","Approved")}),a.jsx(c,{value:H.REJECTED,label:d("approval-requests.status.denied","Denied")}),a.jsx(c,{value:H.WITHDRAWN,label:d("approval-requests.status.withdrawn","Withdrawn")})]})]})]})}));const X={hue:"grey",label:"Unknown status"};var K=n.memo((function({status:n}){const{t:e}=t(),s={[H.ACTIVE]:{hue:"blue",label:e("approval-requests.status.decision-pending","Decision pending")},[H.APPROVED]:{hue:"green",label:e("approval-requests.status.approved","Approved")},[H.REJECTED]:{hue:"red",label:e("approval-requests.status.denied","Denied")},[H.WITHDRAWN]:{hue:"grey",label:e("approval-requests.status.withdrawn","Withdrawn")}}[n]||X;return a.jsx(p,{hue:s.hue,children:a.jsx(d,{children:s.label})})}));const G=(n,e,s="short")=>{const t=new Date(n);return`${t.toLocaleDateString(e,{month:s,day:"numeric",year:"numeric"})} ${t.toLocaleTimeString(e,{hour:"2-digit",minute:"2-digit",hour12:!1})}`},Q=e(j)`
+  color: ${n=>h("grey",600,n.theme)};
+`;var Z=n.memo((function(){const{t:n}=t();return a.jsx(Q,{children:n("approval-requests.list.no-requests","No approval requests found.")})}));const Y=e(m)`
   &:visited {
-    color: ${(props) => getColorV8("blue", 600, props.theme)};
+    color: ${n=>h("blue",600,n.theme)};
   }
-`;
-const sortableCellProps = {
-    style: {
-        paddingTop: "22px",
-        paddingBottom: "22px",
-    },
-    isTruncated: true,
-};
-function ApprovalRequestListTable({ approvalRequests, helpCenterPath, baseLocale, sortDirection, onSortChange, }) {
-    const { t } = useTranslation();
-    const handleSortClick = () => {
-        if (sortDirection === "asc") {
-            onSortChange("desc");
-        }
-        else if (sortDirection === "desc") {
-            onSortChange(undefined);
-        }
-        else {
-            onSortChange("asc");
-        }
-    };
-    return (jsxRuntimeExports.jsxs(Table, { size: "large", children: [jsxRuntimeExports.jsx(Head, { children: jsxRuntimeExports.jsxs(HeaderRow, { children: [jsxRuntimeExports.jsx(HeaderCell, { width: "40%", isTruncated: true, children: t("approval-requests.list.table.subject", "Subject") }), jsxRuntimeExports.jsx(HeaderCell, { isTruncated: true, children: t("approval-requests.list.table.requester", "Requester") }), jsxRuntimeExports.jsx(HeaderCell, { isTruncated: true, children: t("approval-requests.list.table.sent-by", "Sent by") }), jsxRuntimeExports.jsx(SortableCell, { onClick: handleSortClick, sort: sortDirection, cellProps: sortableCellProps, children: t("approval-requests.list.table.sent-on", "Sent on") }), jsxRuntimeExports.jsx(HeaderCell, { isTruncated: true, children: t("approval-requests.list.table.approval-status", "Approval status") })] }) }), jsxRuntimeExports.jsx(Body, { children: approvalRequests.length === 0 ? (jsxRuntimeExports.jsx(Row, { children: jsxRuntimeExports.jsx(Cell, { colSpan: 5, children: jsxRuntimeExports.jsx(NoApprovalRequestsText$1, {}) }) })) : (approvalRequests.map((approvalRequest) => (jsxRuntimeExports.jsxs(Row, { children: [jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: jsxRuntimeExports.jsx(ApprovalRequestAnchor, { href: `${helpCenterPath}/approval_requests/${approvalRequest.id}`, children: approvalRequest.subject }) }), jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: approvalRequest.requester_name }), jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: approvalRequest.created_by_name }), jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: formatApprovalRequestDate(approvalRequest.created_at, baseLocale) }), jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: jsxRuntimeExports.jsx(ApprovalStatusTag$1, { status: approvalRequest.status }) })] }, approvalRequest.id)))) })] }));
-}
-var ApprovalRequestListTable$1 = reactExports.memo(ApprovalRequestListTable);
-
-const Container$3 = styled.div `
+`,nn={style:{paddingTop:"22px",paddingBottom:"22px"},isTruncated:!0};var en=n.memo((function({approvalRequests:n,helpCenterPath:e,baseLocale:s,sortDirection:r,onSortChange:o}){const{t:l}=t();return a.jsxs(b,{size:"large",children:[a.jsx(f,{children:a.jsxs(v,{children:[a.jsx(q,{width:"40%",isTruncated:!0,children:l("approval-requests.list.table.subject","Subject")}),a.jsx(q,{isTruncated:!0,children:l("approval-requests.list.table.requester","Requester")}),a.jsx(q,{isTruncated:!0,children:l("approval-requests.list.table.sent-by","Sent by")}),a.jsx(x,{onClick:()=>{o("asc"===r?"desc":"desc"===r?void 0:"asc")},sort:r,cellProps:nn,children:l("approval-requests.list.table.sent-on","Sent on")}),a.jsx(q,{isTruncated:!0,children:l("approval-requests.list.table.approval-status","Approval status")})]})}),a.jsx(g,{children:0===n.length?a.jsx(k,{children:a.jsx(w,{colSpan:5,children:a.jsx(Z,{})})}):n.map((n=>a.jsxs(k,{children:[a.jsx(w,{isTruncated:!0,children:a.jsx(Y,{href:`${e}/approval_requests/${n.id}`,children:n.subject})}),a.jsx(w,{isTruncated:!0,children:n.requester_name}),a.jsx(w,{isTruncated:!0,children:n.created_by_name}),a.jsx(w,{isTruncated:!0,children:G(n.created_at,s)}),a.jsx(w,{isTruncated:!0,children:a.jsx(K,{status:n.status})})]},n.id)))})]})}));const sn=e.div`
   display: flex;
   flex-direction: column;
-  gap: ${(props) => props.theme.space.lg};
-  margin-top: ${(props) => props.theme.space.xl}; /* 40px */
-`;
-const LoadingContainer$1 = styled.div `
+  gap: ${n=>n.theme.space.lg};
+  margin-top: ${n=>n.theme.space.xl}; /* 40px */
+`,tn=e.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-function ApprovalRequestListPage({ baseLocale, helpCenterPath, }) {
-    const { t } = useTranslation();
-    const [searchTerm, setSearchTerm] = reactExports.useState("");
-    const [sortDirection, setSortDirection] = reactExports.useState(undefined);
-    const { approvalRequests, errorFetchingApprovalRequests: error, approvalRequestStatus, setApprovalRequestStatus, isLoading, } = useSearchApprovalRequests();
-    const sortedAndFilteredApprovalRequests = reactExports.useMemo(() => {
-        let results = [...approvalRequests];
-        // Apply search filter
-        if (searchTerm) {
-            const term = searchTerm.toLowerCase();
-            results = results.filter((request) => request.subject.toLowerCase().includes(term));
-        }
-        // Apply sorting
-        if (sortDirection) {
-            results.sort((a, b) => {
-                const dateA = new Date(a.created_at).getTime();
-                const dateB = new Date(b.created_at).getTime();
-                return sortDirection === "asc" ? dateA - dateB : dateB - dateA;
-            });
-        }
-        return results;
-    }, [approvalRequests, searchTerm, sortDirection]);
-    if (error) {
-        throw error;
-    }
-    if (isLoading) {
-        return (jsxRuntimeExports.jsx(LoadingContainer$1, { children: jsxRuntimeExports.jsx(Spinner, { size: "64" }) }));
-    }
-    return (jsxRuntimeExports.jsxs(Container$3, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: t("approval-requests.list.header", "Approval requests") }), jsxRuntimeExports.jsx(ApprovalRequestListFilters$1, { approvalRequestStatus: approvalRequestStatus, setApprovalRequestStatus: setApprovalRequestStatus, setSearchTerm: setSearchTerm }), approvalRequests.length === 0 ? (jsxRuntimeExports.jsx(NoApprovalRequestsText$1, {})) : (jsxRuntimeExports.jsx(ApprovalRequestListTable$1, { approvalRequests: sortedAndFilteredApprovalRequests, baseLocale: baseLocale, helpCenterPath: helpCenterPath, sortDirection: sortDirection, onSortChange: setSortDirection }))] }));
-}
-var ApprovalRequestListPage$1 = reactExports.memo(ApprovalRequestListPage);
-
-function __variableDynamicImportRuntime1__$1(path) {
-  switch (path) {
-    case '../shared/translations/locales/af.json': return import('shared').then(function (n) { return n.aA; });
-    case '../shared/translations/locales/ar-x-pseudo.json': return import('shared').then(function (n) { return n.aB; });
-    case '../shared/translations/locales/ar.json': return import('shared').then(function (n) { return n.aC; });
-    case '../shared/translations/locales/az.json': return import('shared').then(function (n) { return n.aD; });
-    case '../shared/translations/locales/be.json': return import('shared').then(function (n) { return n.aE; });
-    case '../shared/translations/locales/bg.json': return import('shared').then(function (n) { return n.aF; });
-    case '../shared/translations/locales/bn.json': return import('shared').then(function (n) { return n.aG; });
-    case '../shared/translations/locales/bs.json': return import('shared').then(function (n) { return n.aH; });
-    case '../shared/translations/locales/ca.json': return import('shared').then(function (n) { return n.aI; });
-    case '../shared/translations/locales/cs.json': return import('shared').then(function (n) { return n.aJ; });
-    case '../shared/translations/locales/cy.json': return import('shared').then(function (n) { return n.aK; });
-    case '../shared/translations/locales/da.json': return import('shared').then(function (n) { return n.aL; });
-    case '../shared/translations/locales/de-de.json': return import('shared').then(function (n) { return n.aM; });
-    case '../shared/translations/locales/de-x-informal.json': return import('shared').then(function (n) { return n.aN; });
-    case '../shared/translations/locales/de.json': return import('shared').then(function (n) { return n.aO; });
-    case '../shared/translations/locales/el.json': return import('shared').then(function (n) { return n.aP; });
-    case '../shared/translations/locales/en-001.json': return import('shared').then(function (n) { return n.aQ; });
-    case '../shared/translations/locales/en-150.json': return import('shared').then(function (n) { return n.aR; });
-    case '../shared/translations/locales/en-au.json': return import('shared').then(function (n) { return n.aS; });
-    case '../shared/translations/locales/en-ca.json': return import('shared').then(function (n) { return n.aT; });
-    case '../shared/translations/locales/en-gb.json': return import('shared').then(function (n) { return n.aU; });
-    case '../shared/translations/locales/en-my.json': return import('shared').then(function (n) { return n.aV; });
-    case '../shared/translations/locales/en-ph.json': return import('shared').then(function (n) { return n.aW; });
-    case '../shared/translations/locales/en-se.json': return import('shared').then(function (n) { return n.aX; });
-    case '../shared/translations/locales/en-us.json': return import('shared').then(function (n) { return n.aY; });
-    case '../shared/translations/locales/en-x-dev.json': return import('shared').then(function (n) { return n.aZ; });
-    case '../shared/translations/locales/en-x-keys.json': return import('shared').then(function (n) { return n.a_; });
-    case '../shared/translations/locales/en-x-obsolete.json': return import('shared').then(function (n) { return n.a$; });
-    case '../shared/translations/locales/en-x-pseudo.json': return import('shared').then(function (n) { return n.b0; });
-    case '../shared/translations/locales/en-x-test.json': return import('shared').then(function (n) { return n.b1; });
-    case '../shared/translations/locales/es-419.json': return import('shared').then(function (n) { return n.b2; });
-    case '../shared/translations/locales/es-ar.json': return import('shared').then(function (n) { return n.b3; });
-    case '../shared/translations/locales/es-cl.json': return import('shared').then(function (n) { return n.b4; });
-    case '../shared/translations/locales/es-es.json': return import('shared').then(function (n) { return n.b5; });
-    case '../shared/translations/locales/es-mx.json': return import('shared').then(function (n) { return n.b6; });
-    case '../shared/translations/locales/es-pe.json': return import('shared').then(function (n) { return n.b7; });
-    case '../shared/translations/locales/es.json': return import('shared').then(function (n) { return n.b8; });
-    case '../shared/translations/locales/et.json': return import('shared').then(function (n) { return n.b9; });
-    case '../shared/translations/locales/eu.json': return import('shared').then(function (n) { return n.ba; });
-    case '../shared/translations/locales/fa-af.json': return import('shared').then(function (n) { return n.bb; });
-    case '../shared/translations/locales/fa.json': return import('shared').then(function (n) { return n.bc; });
-    case '../shared/translations/locales/fi.json': return import('shared').then(function (n) { return n.bd; });
-    case '../shared/translations/locales/fil.json': return import('shared').then(function (n) { return n.be; });
-    case '../shared/translations/locales/fo.json': return import('shared').then(function (n) { return n.bf; });
-    case '../shared/translations/locales/fr-ca.json': return import('shared').then(function (n) { return n.bg; });
-    case '../shared/translations/locales/fr-dz.json': return import('shared').then(function (n) { return n.bh; });
-    case '../shared/translations/locales/fr-mu.json': return import('shared').then(function (n) { return n.bi; });
-    case '../shared/translations/locales/fr.json': return import('shared').then(function (n) { return n.bj; });
-    case '../shared/translations/locales/ga.json': return import('shared').then(function (n) { return n.bk; });
-    case '../shared/translations/locales/he.json': return import('shared').then(function (n) { return n.bl; });
-    case '../shared/translations/locales/hi.json': return import('shared').then(function (n) { return n.bm; });
-    case '../shared/translations/locales/hr.json': return import('shared').then(function (n) { return n.bn; });
-    case '../shared/translations/locales/hu.json': return import('shared').then(function (n) { return n.bo; });
-    case '../shared/translations/locales/hy.json': return import('shared').then(function (n) { return n.bp; });
-    case '../shared/translations/locales/id.json': return import('shared').then(function (n) { return n.bq; });
-    case '../shared/translations/locales/is.json': return import('shared').then(function (n) { return n.br; });
-    case '../shared/translations/locales/it-ch.json': return import('shared').then(function (n) { return n.bs; });
-    case '../shared/translations/locales/it.json': return import('shared').then(function (n) { return n.bt; });
-    case '../shared/translations/locales/ja.json': return import('shared').then(function (n) { return n.bu; });
-    case '../shared/translations/locales/ka.json': return import('shared').then(function (n) { return n.bv; });
-    case '../shared/translations/locales/kk.json': return import('shared').then(function (n) { return n.bw; });
-    case '../shared/translations/locales/kl-dk.json': return import('shared').then(function (n) { return n.bx; });
-    case '../shared/translations/locales/km.json': return import('shared').then(function (n) { return n.by; });
-    case '../shared/translations/locales/ko.json': return import('shared').then(function (n) { return n.bz; });
-    case '../shared/translations/locales/ku.json': return import('shared').then(function (n) { return n.bA; });
-    case '../shared/translations/locales/ky.json': return import('shared').then(function (n) { return n.bB; });
-    case '../shared/translations/locales/lt.json': return import('shared').then(function (n) { return n.bC; });
-    case '../shared/translations/locales/lv.json': return import('shared').then(function (n) { return n.bD; });
-    case '../shared/translations/locales/mk.json': return import('shared').then(function (n) { return n.bE; });
-    case '../shared/translations/locales/mn.json': return import('shared').then(function (n) { return n.bF; });
-    case '../shared/translations/locales/ms.json': return import('shared').then(function (n) { return n.bG; });
-    case '../shared/translations/locales/mt.json': return import('shared').then(function (n) { return n.bH; });
-    case '../shared/translations/locales/my.json': return import('shared').then(function (n) { return n.bI; });
-    case '../shared/translations/locales/ne.json': return import('shared').then(function (n) { return n.bJ; });
-    case '../shared/translations/locales/nl-be.json': return import('shared').then(function (n) { return n.bK; });
-    case '../shared/translations/locales/nl.json': return import('shared').then(function (n) { return n.bL; });
-    case '../shared/translations/locales/no.json': return import('shared').then(function (n) { return n.bM; });
-    case '../shared/translations/locales/pl.json': return import('shared').then(function (n) { return n.bN; });
-    case '../shared/translations/locales/pt-br.json': return import('shared').then(function (n) { return n.bO; });
-    case '../shared/translations/locales/pt.json': return import('shared').then(function (n) { return n.bP; });
-    case '../shared/translations/locales/ro-md.json': return import('shared').then(function (n) { return n.bQ; });
-    case '../shared/translations/locales/ro.json': return import('shared').then(function (n) { return n.bR; });
-    case '../shared/translations/locales/ru.json': return import('shared').then(function (n) { return n.bS; });
-    case '../shared/translations/locales/si.json': return import('shared').then(function (n) { return n.bT; });
-    case '../shared/translations/locales/sk.json': return import('shared').then(function (n) { return n.bU; });
-    case '../shared/translations/locales/sl.json': return import('shared').then(function (n) { return n.bV; });
-    case '../shared/translations/locales/sq.json': return import('shared').then(function (n) { return n.bW; });
-    case '../shared/translations/locales/sr-me.json': return import('shared').then(function (n) { return n.bX; });
-    case '../shared/translations/locales/sr.json': return import('shared').then(function (n) { return n.bY; });
-    case '../shared/translations/locales/sv.json': return import('shared').then(function (n) { return n.bZ; });
-    case '../shared/translations/locales/sw-ke.json': return import('shared').then(function (n) { return n.b_; });
-    case '../shared/translations/locales/ta.json': return import('shared').then(function (n) { return n.b$; });
-    case '../shared/translations/locales/th.json': return import('shared').then(function (n) { return n.c0; });
-    case '../shared/translations/locales/tr.json': return import('shared').then(function (n) { return n.c1; });
-    case '../shared/translations/locales/uk.json': return import('shared').then(function (n) { return n.c2; });
-    case '../shared/translations/locales/ur-pk.json': return import('shared').then(function (n) { return n.c3; });
-    case '../shared/translations/locales/ur.json': return import('shared').then(function (n) { return n.c4; });
-    case '../shared/translations/locales/uz.json': return import('shared').then(function (n) { return n.c5; });
-    case '../shared/translations/locales/vi.json': return import('shared').then(function (n) { return n.c6; });
-    case '../shared/translations/locales/zh-cn.json': return import('shared').then(function (n) { return n.c7; });
-    case '../shared/translations/locales/zh-tw.json': return import('shared').then(function (n) { return n.c8; });
-    default: return new Promise(function(resolve, reject) {
-      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
-        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
-      );
-    })
-   }
- }
-
-function __variableDynamicImportRuntime0__$1(path) {
-  switch (path) {
-    case './translations/locales/af.json': return import('approval-requests-translations').then(function (n) { return n.a; });
-    case './translations/locales/ar-x-pseudo.json': return import('approval-requests-translations').then(function (n) { return n.b; });
-    case './translations/locales/ar.json': return import('approval-requests-translations').then(function (n) { return n.c; });
-    case './translations/locales/az.json': return import('approval-requests-translations').then(function (n) { return n.d; });
-    case './translations/locales/be.json': return import('approval-requests-translations').then(function (n) { return n.e; });
-    case './translations/locales/bg.json': return import('approval-requests-translations').then(function (n) { return n.f; });
-    case './translations/locales/bn.json': return import('approval-requests-translations').then(function (n) { return n.g; });
-    case './translations/locales/bs.json': return import('approval-requests-translations').then(function (n) { return n.h; });
-    case './translations/locales/ca.json': return import('approval-requests-translations').then(function (n) { return n.i; });
-    case './translations/locales/cs.json': return import('approval-requests-translations').then(function (n) { return n.j; });
-    case './translations/locales/cy.json': return import('approval-requests-translations').then(function (n) { return n.k; });
-    case './translations/locales/da.json': return import('approval-requests-translations').then(function (n) { return n.l; });
-    case './translations/locales/de-de.json': return import('approval-requests-translations').then(function (n) { return n.m; });
-    case './translations/locales/de-x-informal.json': return import('approval-requests-translations').then(function (n) { return n.n; });
-    case './translations/locales/de.json': return import('approval-requests-translations').then(function (n) { return n.o; });
-    case './translations/locales/el.json': return import('approval-requests-translations').then(function (n) { return n.p; });
-    case './translations/locales/en-001.json': return import('approval-requests-translations').then(function (n) { return n.q; });
-    case './translations/locales/en-150.json': return import('approval-requests-translations').then(function (n) { return n.r; });
-    case './translations/locales/en-au.json': return import('approval-requests-translations').then(function (n) { return n.s; });
-    case './translations/locales/en-ca.json': return import('approval-requests-translations').then(function (n) { return n.t; });
-    case './translations/locales/en-gb.json': return import('approval-requests-translations').then(function (n) { return n.u; });
-    case './translations/locales/en-my.json': return import('approval-requests-translations').then(function (n) { return n.v; });
-    case './translations/locales/en-ph.json': return import('approval-requests-translations').then(function (n) { return n.w; });
-    case './translations/locales/en-se.json': return import('approval-requests-translations').then(function (n) { return n.x; });
-    case './translations/locales/en-us.json': return import('approval-requests-translations').then(function (n) { return n.y; });
-    case './translations/locales/en-x-dev.json': return import('approval-requests-translations').then(function (n) { return n.z; });
-    case './translations/locales/en-x-keys.json': return import('approval-requests-translations').then(function (n) { return n.A; });
-    case './translations/locales/en-x-obsolete.json': return import('approval-requests-translations').then(function (n) { return n.B; });
-    case './translations/locales/en-x-pseudo.json': return import('approval-requests-translations').then(function (n) { return n.C; });
-    case './translations/locales/en-x-test.json': return import('approval-requests-translations').then(function (n) { return n.D; });
-    case './translations/locales/es-419.json': return import('approval-requests-translations').then(function (n) { return n.E; });
-    case './translations/locales/es-ar.json': return import('approval-requests-translations').then(function (n) { return n.F; });
-    case './translations/locales/es-cl.json': return import('approval-requests-translations').then(function (n) { return n.G; });
-    case './translations/locales/es-es.json': return import('approval-requests-translations').then(function (n) { return n.H; });
-    case './translations/locales/es-mx.json': return import('approval-requests-translations').then(function (n) { return n.I; });
-    case './translations/locales/es-pe.json': return import('approval-requests-translations').then(function (n) { return n.J; });
-    case './translations/locales/es.json': return import('approval-requests-translations').then(function (n) { return n.K; });
-    case './translations/locales/et.json': return import('approval-requests-translations').then(function (n) { return n.L; });
-    case './translations/locales/eu.json': return import('approval-requests-translations').then(function (n) { return n.M; });
-    case './translations/locales/fa-af.json': return import('approval-requests-translations').then(function (n) { return n.N; });
-    case './translations/locales/fa.json': return import('approval-requests-translations').then(function (n) { return n.O; });
-    case './translations/locales/fi.json': return import('approval-requests-translations').then(function (n) { return n.P; });
-    case './translations/locales/fil.json': return import('approval-requests-translations').then(function (n) { return n.Q; });
-    case './translations/locales/fo.json': return import('approval-requests-translations').then(function (n) { return n.R; });
-    case './translations/locales/fr-ca.json': return import('approval-requests-translations').then(function (n) { return n.S; });
-    case './translations/locales/fr-dz.json': return import('approval-requests-translations').then(function (n) { return n.T; });
-    case './translations/locales/fr-mu.json': return import('approval-requests-translations').then(function (n) { return n.U; });
-    case './translations/locales/fr.json': return import('approval-requests-translations').then(function (n) { return n.V; });
-    case './translations/locales/ga.json': return import('approval-requests-translations').then(function (n) { return n.W; });
-    case './translations/locales/he.json': return import('approval-requests-translations').then(function (n) { return n.X; });
-    case './translations/locales/hi.json': return import('approval-requests-translations').then(function (n) { return n.Y; });
-    case './translations/locales/hr.json': return import('approval-requests-translations').then(function (n) { return n.Z; });
-    case './translations/locales/hu.json': return import('approval-requests-translations').then(function (n) { return n._; });
-    case './translations/locales/hy.json': return import('approval-requests-translations').then(function (n) { return n.$; });
-    case './translations/locales/id.json': return import('approval-requests-translations').then(function (n) { return n.a0; });
-    case './translations/locales/is.json': return import('approval-requests-translations').then(function (n) { return n.a1; });
-    case './translations/locales/it-ch.json': return import('approval-requests-translations').then(function (n) { return n.a2; });
-    case './translations/locales/it.json': return import('approval-requests-translations').then(function (n) { return n.a3; });
-    case './translations/locales/ja.json': return import('approval-requests-translations').then(function (n) { return n.a4; });
-    case './translations/locales/ka.json': return import('approval-requests-translations').then(function (n) { return n.a5; });
-    case './translations/locales/kk.json': return import('approval-requests-translations').then(function (n) { return n.a6; });
-    case './translations/locales/kl-dk.json': return import('approval-requests-translations').then(function (n) { return n.a7; });
-    case './translations/locales/km.json': return import('approval-requests-translations').then(function (n) { return n.a8; });
-    case './translations/locales/ko.json': return import('approval-requests-translations').then(function (n) { return n.a9; });
-    case './translations/locales/ku.json': return import('approval-requests-translations').then(function (n) { return n.aa; });
-    case './translations/locales/ky.json': return import('approval-requests-translations').then(function (n) { return n.ab; });
-    case './translations/locales/lt.json': return import('approval-requests-translations').then(function (n) { return n.ac; });
-    case './translations/locales/lv.json': return import('approval-requests-translations').then(function (n) { return n.ad; });
-    case './translations/locales/mk.json': return import('approval-requests-translations').then(function (n) { return n.ae; });
-    case './translations/locales/mn.json': return import('approval-requests-translations').then(function (n) { return n.af; });
-    case './translations/locales/ms.json': return import('approval-requests-translations').then(function (n) { return n.ag; });
-    case './translations/locales/mt.json': return import('approval-requests-translations').then(function (n) { return n.ah; });
-    case './translations/locales/my.json': return import('approval-requests-translations').then(function (n) { return n.ai; });
-    case './translations/locales/ne.json': return import('approval-requests-translations').then(function (n) { return n.aj; });
-    case './translations/locales/nl-be.json': return import('approval-requests-translations').then(function (n) { return n.ak; });
-    case './translations/locales/nl.json': return import('approval-requests-translations').then(function (n) { return n.al; });
-    case './translations/locales/no.json': return import('approval-requests-translations').then(function (n) { return n.am; });
-    case './translations/locales/pl.json': return import('approval-requests-translations').then(function (n) { return n.an; });
-    case './translations/locales/pt-br.json': return import('approval-requests-translations').then(function (n) { return n.ao; });
-    case './translations/locales/pt.json': return import('approval-requests-translations').then(function (n) { return n.ap; });
-    case './translations/locales/ro-md.json': return import('approval-requests-translations').then(function (n) { return n.aq; });
-    case './translations/locales/ro.json': return import('approval-requests-translations').then(function (n) { return n.ar; });
-    case './translations/locales/ru.json': return import('approval-requests-translations').then(function (n) { return n.as; });
-    case './translations/locales/si.json': return import('approval-requests-translations').then(function (n) { return n.at; });
-    case './translations/locales/sk.json': return import('approval-requests-translations').then(function (n) { return n.au; });
-    case './translations/locales/sl.json': return import('approval-requests-translations').then(function (n) { return n.av; });
-    case './translations/locales/sq.json': return import('approval-requests-translations').then(function (n) { return n.aw; });
-    case './translations/locales/sr-me.json': return import('approval-requests-translations').then(function (n) { return n.ax; });
-    case './translations/locales/sr.json': return import('approval-requests-translations').then(function (n) { return n.ay; });
-    case './translations/locales/sv.json': return import('approval-requests-translations').then(function (n) { return n.az; });
-    case './translations/locales/sw-ke.json': return import('approval-requests-translations').then(function (n) { return n.aA; });
-    case './translations/locales/ta.json': return import('approval-requests-translations').then(function (n) { return n.aB; });
-    case './translations/locales/th.json': return import('approval-requests-translations').then(function (n) { return n.aC; });
-    case './translations/locales/tr.json': return import('approval-requests-translations').then(function (n) { return n.aD; });
-    case './translations/locales/uk.json': return import('approval-requests-translations').then(function (n) { return n.aE; });
-    case './translations/locales/ur-pk.json': return import('approval-requests-translations').then(function (n) { return n.aF; });
-    case './translations/locales/ur.json': return import('approval-requests-translations').then(function (n) { return n.aG; });
-    case './translations/locales/uz.json': return import('approval-requests-translations').then(function (n) { return n.aH; });
-    case './translations/locales/vi.json': return import('approval-requests-translations').then(function (n) { return n.aI; });
-    case './translations/locales/zh-cn.json': return import('approval-requests-translations').then(function (n) { return n.aJ; });
-    case './translations/locales/zh-tw.json': return import('approval-requests-translations').then(function (n) { return n.aK; });
-    default: return new Promise(function(resolve, reject) {
-      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
-        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
-      );
-    })
-   }
- }
-async function renderApprovalRequestList(container, settings, props, helpCenterPath) {
-    const { baseLocale } = props;
-    initI18next(baseLocale);
-    await loadTranslations(baseLocale, [
-        () => __variableDynamicImportRuntime0__$1(`./translations/locales/${baseLocale}.json`),
-        () => __variableDynamicImportRuntime1__$1(`../shared/translations/locales/${baseLocale}.json`),
-    ]);
-    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(ApprovalRequestListPage$1, { ...props, helpCenterPath: helpCenterPath }) }) }), container);
-}
-
-const Container$2 = styled.div `
-  border-top: ${(props) => `1px solid ${getColorV8("grey", 300, props.theme)}`};
+`;var rn=n.memo((function({baseLocale:e,helpCenterPath:s}){const{t:r}=t(),[o,l]=n.useState(""),[u,i]=n.useState(void 0),{approvalRequests:c,errorFetchingApprovalRequests:p,approvalRequestStatus:d,setApprovalRequestStatus:h,isLoading:j}=function(){const[e,s]=n.useState([]),[t,r]=n.useState(null),[a,o]=n.useState(!1),[l,u]=n.useState("any");return n.useEffect((()=>{(async()=>{o(!0);try{const n=await fetch("/api/v2/users/me.json");if(!n.ok)throw new Error("Error fetching current user data");const e=await n.json(),t="01JJQFNX5ADZ6PRQCFWRDNKZRD",r=await fetch(`/api/v2/approval_workflow_instances/${t}/approval_requests/search${"any"===l?"":`?status=${l}`}`,{method:"POST",headers:{"Content-Type":"application/json","X-CSRF-Token":e.user.authenticity_token}});if(!r.ok)throw new Error("Error fetching approval requests");{const n=await r.json();s(n.approval_requests)}}catch(n){r(n)}finally{o(!1)}})()}),[l]),{approvalRequests:e,errorFetchingApprovalRequests:t,approvalRequestStatus:l,setApprovalRequestStatus:u,isLoading:a}}(),m=n.useMemo((()=>{let n=[...c];if(o){const e=o.toLowerCase();n=n.filter((n=>n.subject.toLowerCase().includes(e)))}return u&&n.sort(((n,e)=>{const s=new Date(n.created_at).getTime(),t=new Date(e.created_at).getTime();return"asc"===u?s-t:t-s})),n}),[c,o,u]);if(p)throw p;return j?a.jsx(tn,{children:a.jsx(y,{size:"64"})}):a.jsxs(sn,{children:[a.jsx($,{isBold:!0,children:r("approval-requests.list.header","Approval requests")}),a.jsx(U,{approvalRequestStatus:d,setApprovalRequestStatus:h,setSearchTerm:l}),0===c.length?a.jsx(Z,{}):a.jsx(en,{approvalRequests:m,baseLocale:e,helpCenterPath:s,sortDirection:u,onSortChange:i})]})}));async function an(n,e,s,t){const{baseLocale:r}=s;R(r),await A(r,[()=>function(n){switch(n){case"./translations/locales/af.json":return import("approval-requests-translations").then((function(n){return n.a}));case"./translations/locales/ar-x-pseudo.json":return import("approval-requests-translations").then((function(n){return n.b}));case"./translations/locales/ar.json":return import("approval-requests-translations").then((function(n){return n.c}));case"./translations/locales/az.json":return import("approval-requests-translations").then((function(n){return n.d}));case"./translations/locales/be.json":return import("approval-requests-translations").then((function(n){return n.e}));case"./translations/locales/bg.json":return import("approval-requests-translations").then((function(n){return n.f}));case"./translations/locales/bn.json":return import("approval-requests-translations").then((function(n){return n.g}));case"./translations/locales/bs.json":return import("approval-requests-translations").then((function(n){return n.h}));case"./translations/locales/ca.json":return import("approval-requests-translations").then((function(n){return n.i}));case"./translations/locales/cs.json":return import("approval-requests-translations").then((function(n){return n.j}));case"./translations/locales/cy.json":return import("approval-requests-translations").then((function(n){return n.k}));case"./translations/locales/da.json":return import("approval-requests-translations").then((function(n){return n.l}));case"./translations/locales/de-de.json":return import("approval-requests-translations").then((function(n){return n.m}));case"./translations/locales/de-x-informal.json":return import("approval-requests-translations").then((function(n){return n.n}));case"./translations/locales/de.json":return import("approval-requests-translations").then((function(n){return n.o}));case"./translations/locales/el.json":return import("approval-requests-translations").then((function(n){return n.p}));case"./translations/locales/en-001.json":return import("approval-requests-translations").then((function(n){return n.q}));case"./translations/locales/en-150.json":return import("approval-requests-translations").then((function(n){return n.r}));case"./translations/locales/en-au.json":return import("approval-requests-translations").then((function(n){return n.s}));case"./translations/locales/en-ca.json":return import("approval-requests-translations").then((function(n){return n.t}));case"./translations/locales/en-gb.json":return import("approval-requests-translations").then((function(n){return n.u}));case"./translations/locales/en-my.json":return import("approval-requests-translations").then((function(n){return n.v}));case"./translations/locales/en-ph.json":return import("approval-requests-translations").then((function(n){return n.w}));case"./translations/locales/en-se.json":return import("approval-requests-translations").then((function(n){return n.x}));case"./translations/locales/en-us.json":return import("approval-requests-translations").then((function(n){return n.y}));case"./translations/locales/en-x-dev.json":return import("approval-requests-translations").then((function(n){return n.z}));case"./translations/locales/en-x-keys.json":return import("approval-requests-translations").then((function(n){return n.A}));case"./translations/locales/en-x-obsolete.json":return import("approval-requests-translations").then((function(n){return n.B}));case"./translations/locales/en-x-pseudo.json":return import("approval-requests-translations").then((function(n){return n.C}));case"./translations/locales/en-x-test.json":return import("approval-requests-translations").then((function(n){return n.D}));case"./translations/locales/es-419.json":return import("approval-requests-translations").then((function(n){return n.E}));case"./translations/locales/es-ar.json":return import("approval-requests-translations").then((function(n){return n.F}));case"./translations/locales/es-cl.json":return import("approval-requests-translations").then((function(n){return n.G}));case"./translations/locales/es-es.json":return import("approval-requests-translations").then((function(n){return n.H}));case"./translations/locales/es-mx.json":return import("approval-requests-translations").then((function(n){return n.I}));case"./translations/locales/es-pe.json":return import("approval-requests-translations").then((function(n){return n.J}));case"./translations/locales/es.json":return import("approval-requests-translations").then((function(n){return n.K}));case"./translations/locales/et.json":return import("approval-requests-translations").then((function(n){return n.L}));case"./translations/locales/eu.json":return import("approval-requests-translations").then((function(n){return n.M}));case"./translations/locales/fa-af.json":return import("approval-requests-translations").then((function(n){return n.N}));case"./translations/locales/fa.json":return import("approval-requests-translations").then((function(n){return n.O}));case"./translations/locales/fi.json":return import("approval-requests-translations").then((function(n){return n.P}));case"./translations/locales/fil.json":return import("approval-requests-translations").then((function(n){return n.Q}));case"./translations/locales/fo.json":return import("approval-requests-translations").then((function(n){return n.R}));case"./translations/locales/fr-ca.json":return import("approval-requests-translations").then((function(n){return n.S}));case"./translations/locales/fr-dz.json":return import("approval-requests-translations").then((function(n){return n.T}));case"./translations/locales/fr-mu.json":return import("approval-requests-translations").then((function(n){return n.U}));case"./translations/locales/fr.json":return import("approval-requests-translations").then((function(n){return n.V}));case"./translations/locales/ga.json":return import("approval-requests-translations").then((function(n){return n.W}));case"./translations/locales/he.json":return import("approval-requests-translations").then((function(n){return n.X}));case"./translations/locales/hi.json":return import("approval-requests-translations").then((function(n){return n.Y}));case"./translations/locales/hr.json":return import("approval-requests-translations").then((function(n){return n.Z}));case"./translations/locales/hu.json":return import("approval-requests-translations").then((function(n){return n._}));case"./translations/locales/hy.json":return import("approval-requests-translations").then((function(n){return n.$}));case"./translations/locales/id.json":return import("approval-requests-translations").then((function(n){return n.a0}));case"./translations/locales/is.json":return import("approval-requests-translations").then((function(n){return n.a1}));case"./translations/locales/it-ch.json":return import("approval-requests-translations").then((function(n){return n.a2}));case"./translations/locales/it.json":return import("approval-requests-translations").then((function(n){return n.a3}));case"./translations/locales/ja.json":return import("approval-requests-translations").then((function(n){return n.a4}));case"./translations/locales/ka.json":return import("approval-requests-translations").then((function(n){return n.a5}));case"./translations/locales/kk.json":return import("approval-requests-translations").then((function(n){return n.a6}));case"./translations/locales/kl-dk.json":return import("approval-requests-translations").then((function(n){return n.a7}));case"./translations/locales/km.json":return import("approval-requests-translations").then((function(n){return n.a8}));case"./translations/locales/ko.json":return import("approval-requests-translations").then((function(n){return n.a9}));case"./translations/locales/ku.json":return import("approval-requests-translations").then((function(n){return n.aa}));case"./translations/locales/ky.json":return import("approval-requests-translations").then((function(n){return n.ab}));case"./translations/locales/lt.json":return import("approval-requests-translations").then((function(n){return n.ac}));case"./translations/locales/lv.json":return import("approval-requests-translations").then((function(n){return n.ad}));case"./translations/locales/mk.json":return import("approval-requests-translations").then((function(n){return n.ae}));case"./translations/locales/mn.json":return import("approval-requests-translations").then((function(n){return n.af}));case"./translations/locales/ms.json":return import("approval-requests-translations").then((function(n){return n.ag}));case"./translations/locales/mt.json":return import("approval-requests-translations").then((function(n){return n.ah}));case"./translations/locales/my.json":return import("approval-requests-translations").then((function(n){return n.ai}));case"./translations/locales/ne.json":return import("approval-requests-translations").then((function(n){return n.aj}));case"./translations/locales/nl-be.json":return import("approval-requests-translations").then((function(n){return n.ak}));case"./translations/locales/nl.json":return import("approval-requests-translations").then((function(n){return n.al}));case"./translations/locales/no.json":return import("approval-requests-translations").then((function(n){return n.am}));case"./translations/locales/pl.json":return import("approval-requests-translations").then((function(n){return n.an}));case"./translations/locales/pt-br.json":return import("approval-requests-translations").then((function(n){return n.ao}));case"./translations/locales/pt.json":return import("approval-requests-translations").then((function(n){return n.ap}));case"./translations/locales/ro-md.json":return import("approval-requests-translations").then((function(n){return n.aq}));case"./translations/locales/ro.json":return import("approval-requests-translations").then((function(n){return n.ar}));case"./translations/locales/ru.json":return import("approval-requests-translations").then((function(n){return n.as}));case"./translations/locales/si.json":return import("approval-requests-translations").then((function(n){return n.at}));case"./translations/locales/sk.json":return import("approval-requests-translations").then((function(n){return n.au}));case"./translations/locales/sl.json":return import("approval-requests-translations").then((function(n){return n.av}));case"./translations/locales/sq.json":return import("approval-requests-translations").then((function(n){return n.aw}));case"./translations/locales/sr-me.json":return import("approval-requests-translations").then((function(n){return n.ax}));case"./translations/locales/sr.json":return import("approval-requests-translations").then((function(n){return n.ay}));case"./translations/locales/sv.json":return import("approval-requests-translations").then((function(n){return n.az}));case"./translations/locales/sw-ke.json":return import("approval-requests-translations").then((function(n){return n.aA}));case"./translations/locales/ta.json":return import("approval-requests-translations").then((function(n){return n.aB}));case"./translations/locales/th.json":return import("approval-requests-translations").then((function(n){return n.aC}));case"./translations/locales/tr.json":return import("approval-requests-translations").then((function(n){return n.aD}));case"./translations/locales/uk.json":return import("approval-requests-translations").then((function(n){return n.aE}));case"./translations/locales/ur-pk.json":return import("approval-requests-translations").then((function(n){return n.aF}));case"./translations/locales/ur.json":return import("approval-requests-translations").then((function(n){return n.aG}));case"./translations/locales/uz.json":return import("approval-requests-translations").then((function(n){return n.aH}));case"./translations/locales/vi.json":return import("approval-requests-translations").then((function(n){return n.aI}));case"./translations/locales/zh-cn.json":return import("approval-requests-translations").then((function(n){return n.aJ}));case"./translations/locales/zh-tw.json":return import("approval-requests-translations").then((function(n){return n.aK}));default:return new Promise((function(e,s){("function"==typeof queueMicrotask?queueMicrotask:setTimeout)(s.bind(null,new Error("Unknown variable dynamic import: "+n)))}))}}(`./translations/locales/${r}.json`),()=>function(n){switch(n){case"../shared/translations/locales/af.json":return import("shared").then((function(n){return n.aA}));case"../shared/translations/locales/ar-x-pseudo.json":return import("shared").then((function(n){return n.aB}));case"../shared/translations/locales/ar.json":return import("shared").then((function(n){return n.aC}));case"../shared/translations/locales/az.json":return import("shared").then((function(n){return n.aD}));case"../shared/translations/locales/be.json":return import("shared").then((function(n){return n.aE}));case"../shared/translations/locales/bg.json":return import("shared").then((function(n){return n.aF}));case"../shared/translations/locales/bn.json":return import("shared").then((function(n){return n.aG}));case"../shared/translations/locales/bs.json":return import("shared").then((function(n){return n.aH}));case"../shared/translations/locales/ca.json":return import("shared").then((function(n){return n.aI}));case"../shared/translations/locales/cs.json":return import("shared").then((function(n){return n.aJ}));case"../shared/translations/locales/cy.json":return import("shared").then((function(n){return n.aK}));case"../shared/translations/locales/da.json":return import("shared").then((function(n){return n.aL}));case"../shared/translations/locales/de-de.json":return import("shared").then((function(n){return n.aM}));case"../shared/translations/locales/de-x-informal.json":return import("shared").then((function(n){return n.aN}));case"../shared/translations/locales/de.json":return import("shared").then((function(n){return n.aO}));case"../shared/translations/locales/el.json":return import("shared").then((function(n){return n.aP}));case"../shared/translations/locales/en-001.json":return import("shared").then((function(n){return n.aQ}));case"../shared/translations/locales/en-150.json":return import("shared").then((function(n){return n.aR}));case"../shared/translations/locales/en-au.json":return import("shared").then((function(n){return n.aS}));case"../shared/translations/locales/en-ca.json":return import("shared").then((function(n){return n.aT}));case"../shared/translations/locales/en-gb.json":return import("shared").then((function(n){return n.aU}));case"../shared/translations/locales/en-my.json":return import("shared").then((function(n){return n.aV}));case"../shared/translations/locales/en-ph.json":return import("shared").then((function(n){return n.aW}));case"../shared/translations/locales/en-se.json":return import("shared").then((function(n){return n.aX}));case"../shared/translations/locales/en-us.json":return import("shared").then((function(n){return n.aY}));case"../shared/translations/locales/en-x-dev.json":return import("shared").then((function(n){return n.aZ}));case"../shared/translations/locales/en-x-keys.json":return import("shared").then((function(n){return n.a_}));case"../shared/translations/locales/en-x-obsolete.json":return import("shared").then((function(n){return n.a$}));case"../shared/translations/locales/en-x-pseudo.json":return import("shared").then((function(n){return n.b0}));case"../shared/translations/locales/en-x-test.json":return import("shared").then((function(n){return n.b1}));case"../shared/translations/locales/es-419.json":return import("shared").then((function(n){return n.b2}));case"../shared/translations/locales/es-ar.json":return import("shared").then((function(n){return n.b3}));case"../shared/translations/locales/es-cl.json":return import("shared").then((function(n){return n.b4}));case"../shared/translations/locales/es-es.json":return import("shared").then((function(n){return n.b5}));case"../shared/translations/locales/es-mx.json":return import("shared").then((function(n){return n.b6}));case"../shared/translations/locales/es-pe.json":return import("shared").then((function(n){return n.b7}));case"../shared/translations/locales/es.json":return import("shared").then((function(n){return n.b8}));case"../shared/translations/locales/et.json":return import("shared").then((function(n){return n.b9}));case"../shared/translations/locales/eu.json":return import("shared").then((function(n){return n.ba}));case"../shared/translations/locales/fa-af.json":return import("shared").then((function(n){return n.bb}));case"../shared/translations/locales/fa.json":return import("shared").then((function(n){return n.bc}));case"../shared/translations/locales/fi.json":return import("shared").then((function(n){return n.bd}));case"../shared/translations/locales/fil.json":return import("shared").then((function(n){return n.be}));case"../shared/translations/locales/fo.json":return import("shared").then((function(n){return n.bf}));case"../shared/translations/locales/fr-ca.json":return import("shared").then((function(n){return n.bg}));case"../shared/translations/locales/fr-dz.json":return import("shared").then((function(n){return n.bh}));case"../shared/translations/locales/fr-mu.json":return import("shared").then((function(n){return n.bi}));case"../shared/translations/locales/fr.json":return import("shared").then((function(n){return n.bj}));case"../shared/translations/locales/ga.json":return import("shared").then((function(n){return n.bk}));case"../shared/translations/locales/he.json":return import("shared").then((function(n){return n.bl}));case"../shared/translations/locales/hi.json":return import("shared").then((function(n){return n.bm}));case"../shared/translations/locales/hr.json":return import("shared").then((function(n){return n.bn}));case"../shared/translations/locales/hu.json":return import("shared").then((function(n){return n.bo}));case"../shared/translations/locales/hy.json":return import("shared").then((function(n){return n.bp}));case"../shared/translations/locales/id.json":return import("shared").then((function(n){return n.bq}));case"../shared/translations/locales/is.json":return import("shared").then((function(n){return n.br}));case"../shared/translations/locales/it-ch.json":return import("shared").then((function(n){return n.bs}));case"../shared/translations/locales/it.json":return import("shared").then((function(n){return n.bt}));case"../shared/translations/locales/ja.json":return import("shared").then((function(n){return n.bu}));case"../shared/translations/locales/ka.json":return import("shared").then((function(n){return n.bv}));case"../shared/translations/locales/kk.json":return import("shared").then((function(n){return n.bw}));case"../shared/translations/locales/kl-dk.json":return import("shared").then((function(n){return n.bx}));case"../shared/translations/locales/km.json":return import("shared").then((function(n){return n.by}));case"../shared/translations/locales/ko.json":return import("shared").then((function(n){return n.bz}));case"../shared/translations/locales/ku.json":return import("shared").then((function(n){return n.bA}));case"../shared/translations/locales/ky.json":return import("shared").then((function(n){return n.bB}));case"../shared/translations/locales/lt.json":return import("shared").then((function(n){return n.bC}));case"../shared/translations/locales/lv.json":return import("shared").then((function(n){return n.bD}));case"../shared/translations/locales/mk.json":return import("shared").then((function(n){return n.bE}));case"../shared/translations/locales/mn.json":return import("shared").then((function(n){return n.bF}));case"../shared/translations/locales/ms.json":return import("shared").then((function(n){return n.bG}));case"../shared/translations/locales/mt.json":return import("shared").then((function(n){return n.bH}));case"../shared/translations/locales/my.json":return import("shared").then((function(n){return n.bI}));case"../shared/translations/locales/ne.json":return import("shared").then((function(n){return n.bJ}));case"../shared/translations/locales/nl-be.json":return import("shared").then((function(n){return n.bK}));case"../shared/translations/locales/nl.json":return import("shared").then((function(n){return n.bL}));case"../shared/translations/locales/no.json":return import("shared").then((function(n){return n.bM}));case"../shared/translations/locales/pl.json":return import("shared").then((function(n){return n.bN}));case"../shared/translations/locales/pt-br.json":return import("shared").then((function(n){return n.bO}));case"../shared/translations/locales/pt.json":return import("shared").then((function(n){return n.bP}));case"../shared/translations/locales/ro-md.json":return import("shared").then((function(n){return n.bQ}));case"../shared/translations/locales/ro.json":return import("shared").then((function(n){return n.bR}));case"../shared/translations/locales/ru.json":return import("shared").then((function(n){return n.bS}));case"../shared/translations/locales/si.json":return import("shared").then((function(n){return n.bT}));case"../shared/translations/locales/sk.json":return import("shared").then((function(n){return n.bU}));case"../shared/translations/locales/sl.json":return import("shared").then((function(n){return n.bV}));case"../shared/translations/locales/sq.json":return import("shared").then((function(n){return n.bW}));case"../shared/translations/locales/sr-me.json":return import("shared").then((function(n){return n.bX}));case"../shared/translations/locales/sr.json":return import("shared").then((function(n){return n.bY}));case"../shared/translations/locales/sv.json":return import("shared").then((function(n){return n.bZ}));case"../shared/translations/locales/sw-ke.json":return import("shared").then((function(n){return n.b_}));case"../shared/translations/locales/ta.json":return import("shared").then((function(n){return n.b$}));case"../shared/translations/locales/th.json":return import("shared").then((function(n){return n.c0}));case"../shared/translations/locales/tr.json":return import("shared").then((function(n){return n.c1}));case"../shared/translations/locales/uk.json":return import("shared").then((function(n){return n.c2}));case"../shared/translations/locales/ur-pk.json":return import("shared").then((function(n){return n.c3}));case"../shared/translations/locales/ur.json":return import("shared").then((function(n){return n.c4}));case"../shared/translations/locales/uz.json":return import("shared").then((function(n){return n.c5}));case"../shared/translations/locales/vi.json":return import("shared").then((function(n){return n.c6}));case"../shared/translations/locales/zh-cn.json":return import("shared").then((function(n){return n.c7}));case"../shared/translations/locales/zh-tw.json":return import("shared").then((function(n){return n.c8}));default:return new Promise((function(e,s){("function"==typeof queueMicrotask?queueMicrotask:setTimeout)(s.bind(null,new Error("Unknown variable dynamic import: "+n)))}))}}(`../shared/translations/locales/${r}.json`)]),C.render(a.jsx(_,{theme:E(e),children:a.jsx(S,{helpCenterPath:t,children:a.jsx(rn,{...s,helpCenterPath:t})})}),n)}const on=e.div`
+  border-top: ${n=>`1px solid ${h("grey",300,n.theme)}`};
   display: flex;
   flex-direction: column;
-  padding-top: ${(props) => props.theme.space.base * 4}px; /* 16px */
-`;
-const PreviousDecisionTitle = styled(MD) `
-  margin-bottom: ${(props) => props.theme.space.xxs}; /* 4px */
-`;
-const FieldLabel$2 = styled(MD) `
-  color: ${(props) => getColorV8("grey", 600, props.theme)};
-`;
-function getPreviousDecisionFallbackLabel(status) {
-    switch (status) {
-        case APPROVAL_REQUEST_STATES.APPROVED:
-            return "Approved";
-        case APPROVAL_REQUEST_STATES.REJECTED:
-            return "Rejected";
-        default:
-            return status;
-    }
-}
-function ApprovalRequestPreviousDecision({ decision, baseLocale, }) {
-    const { t } = useTranslation();
-    return (jsxRuntimeExports.jsxs(Container$2, { children: [jsxRuntimeExports.jsx(PreviousDecisionTitle, { children: t("approval-requests.request.approval-request-details.previous-decision", "Previous decision") }), jsxRuntimeExports.jsxs(FieldLabel$2, { children: [t(`approval-requests.request.approval-request-details.${decision.status.toLowerCase()}`, getPreviousDecisionFallbackLabel(decision.status)), " ", formatApprovalRequestDate(decision.decided_at ?? "", baseLocale)] }), decision.decision_notes && (
-            // eslint-disable-next-line @shopify/jsx-no-hardcoded-content
-            jsxRuntimeExports.jsx(FieldLabel$2, { children: `"${decision.decision_notes}"` }))] }));
-}
-var ApprovalRequestPreviousDecision$1 = reactExports.memo(ApprovalRequestPreviousDecision);
-
-const Container$1 = styled(Grid) `
-  padding: ${(props) => props.theme.space.base * 6}px; /* 24px */
+  padding-top: ${n=>4*n.theme.space.base}px; /* 16px */
+`,ln=e(j)`
+  margin-bottom: ${n=>n.theme.space.xxs}; /* 4px */
+`,un=e(j)`
+  color: ${n=>h("grey",600,n.theme)};
+`;function cn(n){switch(n){case H.APPROVED:return"Approved";case H.REJECTED:return"Rejected";default:return n}}var pn=n.memo((function({decision:n,baseLocale:e}){const{t:s}=t();return a.jsxs(on,{children:[a.jsx(ln,{children:s("approval-requests.request.approval-request-details.previous-decision","Previous decision")}),a.jsxs(un,{children:[s(`approval-requests.request.approval-request-details.${n.status.toLowerCase()}`,cn(n.status))," ",G(n.decided_at??"",e)]}),n.decision_notes&&a.jsx(un,{children:`"${n.decision_notes}"`})]})}));const dn=e(T)`
+  padding: ${n=>6*n.theme.space.base}px; /* 24px */
   margin-left: 0;
-  background: ${(props) => getColorV8("background", 650, props.theme)};
-  border-radius: ${(props) => props.theme.borderRadii.md}; /* 4px */
+  background: ${n=>h("background",650,n.theme)};
+  border-radius: ${n=>n.theme.borderRadii.md}; /* 4px */
   max-width: 296px;
 
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+  @media (max-width: ${n=>n.theme.breakpoints.md}) {
     max-width: 100%;
   }
-`;
-const ApprovalRequestHeader = styled(MD) `
-  margin-bottom: ${(props) => props.theme.space.base * 4}px; /* 16px */
-`;
-const WrappedText = styled(MD) `
+`,hn=e(j)`
+  margin-bottom: ${n=>4*n.theme.space.base}px; /* 16px */
+`,jn=e(j)`
   white-space: normal;
   overflow-wrap: break-word;
-`;
-const FieldLabel$1 = styled(MD) `
-  color: ${(props) => getColorV8("grey", 600, props.theme)};
-`;
-const DetailRow = styled(Row$1) `
-  margin-bottom: ${(props) => props.theme.space.sm}; /* 12px */
+`,mn=e(j)`
+  color: ${n=>h("grey",600,n.theme)};
+`,bn=e(D)`
+  margin-bottom: ${n=>n.theme.space.sm}; /* 12px */
 
   &:last-child {
     margin-bottom: 0;
   }
 
-  @media (max-width: ${(props) => props.theme.breakpoints.sm}) {
+  @media (max-width: ${n=>n.theme.breakpoints.sm}) {
     flex-direction: column; /* stack columns vertically */
 
     > div {
       width: 100% !important; /* full width for each Col */
       max-width: 100% !important;
       flex: none !important;
-      margin-bottom: ${(props) => props.theme.space.xxs}; /* 4px */
+      margin-bottom: ${n=>n.theme.space.xxs}; /* 4px */
     }
 
     > div:last-child {
       margin-bottom: 0;
     }
   }
-`;
-function ApprovalRequestDetails({ approvalRequest, baseLocale, }) {
-    const { t } = useTranslation();
-    const shouldShowApprovalRequestComment = approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
-        ? Boolean(approvalRequest.withdrawn_reason)
-        : approvalRequest.decisions.length > 0;
-    const shouldShowPreviousDecision = approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN &&
-        approvalRequest.decisions.length > 0;
-    return (jsxRuntimeExports.jsxs(Container$1, { children: [jsxRuntimeExports.jsx(ApprovalRequestHeader, { isBold: true, children: t("approval-requests.request.approval-request-details.header", "Approval request details") }), jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.sent-by", "Sent by") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(WrappedText, { children: approvalRequest.created_by_user.name }) })] }), jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.sent-on", "Sent on") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: formatApprovalRequestDate(approvalRequest.created_at, baseLocale) }) })] }), jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.approver", "Approver") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(WrappedText, { children: approvalRequest.assignee_user.name }) })] }), jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.status", "Status") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: jsxRuntimeExports.jsx(ApprovalStatusTag$1, { status: approvalRequest.status }) }) })] }), shouldShowApprovalRequestComment && (jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.comment", "Comment") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(WrappedText, { children: approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
-                                ? approvalRequest.withdrawn_reason
-                                : approvalRequest.decisions[0]?.decision_notes ?? "-" }) })] })), approvalRequest.decided_at && (jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t(approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
-                                ? "approval-requests.request.approval-request-details.withdrawn-on"
-                                : "approval-requests.request.approval-request-details.decided", approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
-                                ? "Withdrawn on"
-                                : "Decided") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: formatApprovalRequestDate(approvalRequest.decided_at, baseLocale) }) })] })), shouldShowPreviousDecision && approvalRequest.decisions[0] && (jsxRuntimeExports.jsx(ApprovalRequestPreviousDecision$1, { decision: approvalRequest.decisions[0], baseLocale: baseLocale }))] }));
-}
-var ApprovalRequestDetails$1 = reactExports.memo(ApprovalRequestDetails);
-
-const TicketContainer = styled(Grid) `
-  padding: ${(props) => props.theme.space.md}; /* 20px */
-  border: ${(props) => props.theme.borders.sm}
-    ${(props) => getColorV8("grey", 300, props.theme)};
-  border-radius: ${(props) => props.theme.borderRadii.md}; /* 4px */
-`;
-const TicketDetailsHeader = styled(MD) `
-  margin-bottom: ${(props) => props.theme.space.md}; /* 20px */
-`;
-const FieldLabel = styled(MD) `
-  color: ${(props) => getColorV8("grey", 600, props.theme)};
-`;
-const MultiselectTag = styled(Tag) `
-  margin-inline-end: ${(props) => props.theme.space.xxs}; /* 4px */
-`;
-const CustomFieldsGrid = styled.div `
+`;var fn=n.memo((function({approvalRequest:n,baseLocale:e}){const{t:s}=t(),r=n.status===H.WITHDRAWN?Boolean(n.withdrawn_reason):n.decisions.length>0,o=n.status===H.WITHDRAWN&&n.decisions.length>0;return a.jsxs(dn,{children:[a.jsx(hn,{isBold:!0,children:s("approval-requests.request.approval-request-details.header","Approval request details")}),a.jsxs(bn,{children:[a.jsx(z,{size:4,children:a.jsx(mn,{children:s("approval-requests.request.approval-request-details.sent-by","Sent by")})}),a.jsx(z,{size:8,children:a.jsx(jn,{children:n.created_by_user.name})})]}),a.jsxs(bn,{children:[a.jsx(z,{size:4,children:a.jsx(mn,{children:s("approval-requests.request.approval-request-details.sent-on","Sent on")})}),a.jsx(z,{size:8,children:a.jsx(j,{children:G(n.created_at,e)})})]}),a.jsxs(bn,{children:[a.jsx(z,{size:4,children:a.jsx(mn,{children:s("approval-requests.request.approval-request-details.approver","Approver")})}),a.jsx(z,{size:8,children:a.jsx(jn,{children:n.assignee_user.name})})]}),a.jsxs(bn,{children:[a.jsx(z,{size:4,children:a.jsx(mn,{children:s("approval-requests.request.approval-request-details.status","Status")})}),a.jsx(z,{size:8,children:a.jsx(j,{children:a.jsx(K,{status:n.status})})})]}),r&&a.jsxs(bn,{children:[a.jsx(z,{size:4,children:a.jsx(mn,{children:s("approval-requests.request.approval-request-details.comment","Comment")})}),a.jsx(z,{size:8,children:a.jsx(jn,{children:n.status===H.WITHDRAWN?n.withdrawn_reason:n.decisions[0]?.decision_notes??"-"})})]}),n.decided_at&&a.jsxs(bn,{children:[a.jsx(z,{size:4,children:a.jsx(mn,{children:s(n.status===H.WITHDRAWN?"approval-requests.request.approval-request-details.withdrawn-on":"approval-requests.request.approval-request-details.decided",n.status===H.WITHDRAWN?"Withdrawn on":"Decided")})}),a.jsx(z,{size:8,children:a.jsx(j,{children:G(n.decided_at,e)})})]}),o&&n.decisions[0]&&a.jsx(pn,{decision:n.decisions[0],baseLocale:e})]})}));const vn=e(T)`
+  padding: ${n=>n.theme.space.md}; /* 20px */
+  border: ${n=>n.theme.borders.sm}
+    ${n=>h("grey",300,n.theme)};
+  border-radius: ${n=>n.theme.borderRadii.md}; /* 4px */
+`,qn=e(j)`
+  margin-bottom: ${n=>n.theme.space.md}; /* 20px */
+`,xn=e(j)`
+  color: ${n=>h("grey",600,n.theme)};
+`,gn=e(p)`
+  margin-inline-end: ${n=>n.theme.space.xxs}; /* 4px */
+`,kn=e.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: ${(props) => props.theme.space.md}; /* 20px */
-  margin-top: ${(props) => props.theme.space.md}; /* 20px */
+  gap: ${n=>n.theme.space.md}; /* 20px */
+  margin-top: ${n=>n.theme.space.md}; /* 20px */
 
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+  @media (max-width: ${n=>n.theme.breakpoints.md}) {
     grid-template-columns: repeat(2, 1fr);
   }
-`;
-const NULL_VALUE_PLACEHOLDER = "-";
-function CustomFieldValue({ value, }) {
-    const { t } = useTranslation();
-    if (Array.isArray(value) && value.length > 0) {
-        return (jsxRuntimeExports.jsx(MD, { children: value.map((val) => (jsxRuntimeExports.jsx(MultiselectTag, { hue: "grey", children: val }, val))) }));
-    }
-    if (typeof value === "boolean") {
-        return (jsxRuntimeExports.jsx(MD, { children: value
-                ? t("approval-requests.request.ticket-details.checkbox-value.yes", "Yes")
-                : t("approval-requests.request.ticket-details.checkbox-value.no", "No") }));
-    }
-    if (!value || (Array.isArray(value) && value.length === 0)) {
-        return jsxRuntimeExports.jsx(MD, { children: NULL_VALUE_PLACEHOLDER });
-    }
-    return jsxRuntimeExports.jsx(MD, { children: value });
-}
-const TicketPriorityKeys = {
-    Low: "approval-requests.request.ticket-details.priority_low",
-    Normal: "approval-requests.request.ticket-details.priority_normal",
-    High: "approval-requests.request.ticket-details.priority_high",
-    Urgent: "approval-requests.request.ticket-details.priority_urgent",
-};
-function ApprovalTicketDetails({ ticket }) {
-    const { t } = useTranslation();
-    const displayPriority = TicketPriorityKeys[ticket.priority]
-        ? t(TicketPriorityKeys[ticket.priority], ticket.priority)
-        : ticket.priority;
-    return (jsxRuntimeExports.jsxs(TicketContainer, { children: [jsxRuntimeExports.jsx(TicketDetailsHeader, { isBold: true, children: t("approval-requests.request.ticket-details.header", "Ticket details") }), jsxRuntimeExports.jsxs(CustomFieldsGrid, { children: [jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(FieldLabel, { children: t("approval-requests.request.ticket-details.requester", "Requester") }), jsxRuntimeExports.jsx(MD, { children: ticket.requester.name })] }), jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(FieldLabel, { children: t("approval-requests.request.ticket-details.id", "ID") }), jsxRuntimeExports.jsx(MD, { children: ticket.id })] }), jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(FieldLabel, { children: t("approval-requests.request.ticket-details.priority", "Priority") }), jsxRuntimeExports.jsx(MD, { children: displayPriority })] }), ticket.custom_fields.map((field) => (jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(FieldLabel, { children: field.title_in_portal }), jsxRuntimeExports.jsx(CustomFieldValue, { value: field.value })] }, String(field.id))))] })] }));
-}
-var ApprovalTicketDetails$1 = reactExports.memo(ApprovalTicketDetails);
-
-async function submitApprovalDecision(approvalWorkflowInstanceId, approvalRequestId, decision, decisionNote) {
-    try {
-        const currentUserRequest = await fetch("/api/v2/users/me.json");
-        if (!currentUserRequest.ok) {
-            throw new Error("Error fetching current user data");
-        }
-        const currentUser = await currentUserRequest.json();
-        const response = await fetch(`/api/v2/approval_workflow_instances/${approvalWorkflowInstanceId}/approval_requests/${approvalRequestId}/decision`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-Token": currentUser.user.authenticity_token,
-            },
-            body: JSON.stringify({
-                status: decision,
-                notes: decisionNote,
-            }),
-        });
-        return response;
-    }
-    catch (error) {
-        console.error("Error submitting approval decision:", error);
-        throw error;
-    }
-}
-
-const PENDING_APPROVAL_STATUS = {
-    APPROVED: "APPROVED",
-    REJECTED: "REJECTED",
-};
-const ButtonContainer = styled.div `
+`,wn="-";function yn({value:n}){const{t:e}=t();return Array.isArray(n)&&n.length>0?a.jsx(j,{children:n.map((n=>a.jsx(gn,{hue:"grey",children:n},n)))}):"boolean"==typeof n?a.jsx(j,{children:n?e("approval-requests.request.ticket-details.checkbox-value.yes","Yes"):e("approval-requests.request.ticket-details.checkbox-value.no","No")}):!n||Array.isArray(n)&&0===n.length?a.jsx(j,{children:wn}):a.jsx(j,{children:n})}const $n={Low:"approval-requests.request.ticket-details.priority_low",Normal:"approval-requests.request.ticket-details.priority_normal",High:"approval-requests.request.ticket-details.priority_high",Urgent:"approval-requests.request.ticket-details.priority_urgent"};var Rn=n.memo((function({ticket:n}){const{t:e}=t(),s=$n[n.priority]?e($n[n.priority],n.priority):n.priority;return a.jsxs(vn,{children:[a.jsx(qn,{isBold:!0,children:e("approval-requests.request.ticket-details.header","Ticket details")}),a.jsxs(kn,{children:[a.jsxs("div",{children:[a.jsx(xn,{children:e("approval-requests.request.ticket-details.requester","Requester")}),a.jsx(j,{children:n.requester.name})]}),a.jsxs("div",{children:[a.jsx(xn,{children:e("approval-requests.request.ticket-details.id","ID")}),a.jsx(j,{children:n.id})]}),a.jsxs("div",{children:[a.jsx(xn,{children:e("approval-requests.request.ticket-details.priority","Priority")}),a.jsx(j,{children:s})]}),n.custom_fields.map((n=>a.jsxs("div",{children:[a.jsx(xn,{children:n.title_in_portal}),a.jsx(yn,{value:n.value})]},String(n.id))))]})]})}));const An="APPROVED",Cn="REJECTED",_n=e.div`
   display: flex;
   flex-direction: row;
-  gap: ${(props) => props.theme.space.md}; /* 20px */
-  margin-inline-start: ${(props) => props.hasAvatar ? "55px" : "0"}; // avatar width + margin + border
+  gap: ${n=>n.theme.space.md}; /* 20px */
+  margin-inline-start: ${n=>n.hasAvatar?"55px":"0"}; // avatar width + margin + border
 
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    flex-direction: ${(props) => props.isSubmitButton ? "row-reverse" : "column"};
-    gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
+  @media (max-width: ${n=>n.theme.breakpoints.md}) {
+    flex-direction: ${n=>n.isSubmitButton?"row-reverse":"column"};
+    gap: ${n=>4*n.theme.space.base}px; /* 16px */
   }
-`;
-const CommentSection = styled.div `
+`,En=e.div`
   display: flex;
   flex-direction: column;
-  gap: ${(props) => props.theme.space.lg}; /* 32px */
+  gap: ${n=>n.theme.space.lg}; /* 32px */
 
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
+  @media (max-width: ${n=>n.theme.breakpoints.md}) {
+    gap: ${n=>4*n.theme.space.base}px; /* 16px */
   }
-`;
-const TextAreaContainer = styled.div `
+`,Sn=e.div`
   display: flex;
-  gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
-  margin-top: ${(props) => props.theme.space.base * 6}px; /* 24px */
+  gap: ${n=>4*n.theme.space.base}px; /* 16px */
+  margin-top: ${n=>6*n.theme.space.base}px; /* 24px */
   align-items: flex-start;
-`;
-const TextAreaAndMessage = styled.div `
+`,Tn=e.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-`;
-function ApproverActions({ approvalRequestId, approvalWorkflowInstanceId, setApprovalRequest, assigneeUser, }) {
-    const { t } = useTranslation();
-    const [comment, setComment] = reactExports.useState("");
-    const [pendingStatus, setPendingStatus] = reactExports.useState(null);
-    const [isSubmitting, setIsSubmitting] = reactExports.useState(false);
-    const [showValidation, setShowValidation] = reactExports.useState(false);
-    const isCommentValid = pendingStatus !== PENDING_APPROVAL_STATUS.REJECTED || comment.trim() !== "";
-    const shouldShowValidationError = showValidation && !isCommentValid;
-    const handleApproveRequestClick = reactExports.useCallback(() => {
-        setPendingStatus(PENDING_APPROVAL_STATUS.APPROVED);
-        setShowValidation(false);
-    }, []);
-    const handleDenyRequestClick = reactExports.useCallback(() => {
-        setPendingStatus(PENDING_APPROVAL_STATUS.REJECTED);
-        setShowValidation(false);
-    }, []);
-    const handleInputValueChange = reactExports.useCallback((e) => {
-        setComment(e.target.value);
-    }, []);
-    const handleCancelClick = reactExports.useCallback(() => {
-        setPendingStatus(null);
-        setComment("");
-        setShowValidation(false);
-    }, []);
-    const handleSubmitDecisionClick = async () => {
-        setShowValidation(true);
-        if (!pendingStatus || !isCommentValid)
-            return;
-        setIsSubmitting(true);
-        try {
-            const decision = pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
-                ? APPROVAL_REQUEST_STATES.APPROVED
-                : APPROVAL_REQUEST_STATES.REJECTED;
-            const response = await submitApprovalDecision(approvalWorkflowInstanceId, approvalRequestId, decision, comment);
-            if (response.ok) {
-                const data = await response.json();
-                setApprovalRequest(data.approval_request);
-                const notificationTitle = decision === APPROVAL_REQUEST_STATES.APPROVED
-                    ? t("approval-requests.request.notification.approval-submitted", "Approval submitted")
-                    : t("approval-requests.request.notification.denial-submitted", "Denial submitted");
-                notify({
-                    type: "success",
-                    title: notificationTitle,
-                    message: "",
-                });
-            }
-            else {
-                throw new Error(`Failed to submit ${decision} decision`);
-            }
-        }
-        catch (error) {
-            notify({
-                type: "error",
-                title: "Error submitting decision",
-                message: "Please try again later",
-            });
-        }
-        finally {
-            setIsSubmitting(false);
-        }
-    };
-    if (pendingStatus) {
-        const fieldLabel = pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
-            ? t("approval-requests.request.approver-actions.additional-note-label", "Additional note")
-            : t("approval-requests.request.approver-actions.denial-reason-label", "Reason for denial* (Required)");
-        const shouldShowAvatar = Boolean(assigneeUser?.photo?.content_url);
-        return (jsxRuntimeExports.jsxs(CommentSection, { children: [jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label$1, { children: fieldLabel }), jsxRuntimeExports.jsxs(TextAreaContainer, { children: [shouldShowAvatar && (jsxRuntimeExports.jsx(Avatar, { children: jsxRuntimeExports.jsx("img", { alt: "Assignee avatar", src: assigneeUser.photo.content_url ?? undefined }) })), jsxRuntimeExports.jsxs(TextAreaAndMessage, { children: [jsxRuntimeExports.jsx(Textarea, { minRows: 5, value: comment, onChange: handleInputValueChange, disabled: isSubmitting, validation: shouldShowValidationError ? "error" : undefined }), shouldShowValidationError && (jsxRuntimeExports.jsx(Message, { validation: "error", children: t("approval-requests.request.approver-actions.denial-reason-validation", "Enter a reason for denial") }))] })] })] }), jsxRuntimeExports.jsxs(ButtonContainer, { hasAvatar: shouldShowAvatar, isSubmitButton: true, children: [jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: handleSubmitDecisionClick, disabled: isSubmitting, children: pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
-                                ? t("approval-requests.request.approver-actions.submit-approval", "Submit approval")
-                                : t("approval-requests.request.approver-actions.submit-denial", "Submit denial") }), jsxRuntimeExports.jsx(Button, { onClick: handleCancelClick, disabled: isSubmitting, children: t("approval-requests.request.approver-actions.cancel", "Cancel") })] })] }));
-    }
-    return (jsxRuntimeExports.jsxs(ButtonContainer, { children: [jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: handleApproveRequestClick, children: t("approval-requests.request.approver-actions.approve-request", "Approve request") }), jsxRuntimeExports.jsx(Button, { onClick: handleDenyRequestClick, children: t("approval-requests.request.approver-actions.deny-request", "Deny request") })] }));
-}
-var ApproverActions$1 = reactExports.memo(ApproverActions);
-
-function useApprovalRequest(approvalWorkflowInstanceId, approvalRequestId) {
-    const [approvalRequest, setApprovalRequest] = reactExports.useState();
-    const [error, setError] = reactExports.useState(null);
-    const [isLoading, setIsLoading] = reactExports.useState(false);
-    reactExports.useEffect(() => {
-        const fetchApprovalRequest = async () => {
-            setIsLoading(true);
-            try {
-                const response = await fetch(`/api/v2/approval_workflow_instances/${approvalWorkflowInstanceId}/approval_requests/${approvalRequestId}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    setApprovalRequest(data.approval_request);
-                }
-                else {
-                    throw new Error("Error fetching approval request");
-                }
-            }
-            catch (error) {
-                setError(error);
-            }
-            finally {
-                setIsLoading(false);
-            }
-        };
-        fetchApprovalRequest();
-    }, [approvalRequestId, approvalWorkflowInstanceId]);
-    return {
-        approvalRequest,
-        errorFetchingApprovalRequest: error,
-        isLoading,
-        setApprovalRequest,
-    };
-}
-
-const StyledBreadcrumb = styled(Breadcrumb) `
-  margin-top: ${(props) => props.theme.space.lg}; /* 32px */
-`;
-const BreadcrumbAnchor = styled(Anchor) `
+`;var Dn=n.memo((function({approvalRequestId:e,approvalWorkflowInstanceId:s,setApprovalRequest:r,assigneeUser:o}){const{t:l}=t(),[u,i]=n.useState(""),[c,p]=n.useState(null),[d,h]=n.useState(!1),[j,m]=n.useState(!1),b=c!==Cn||""!==u.trim(),f=j&&!b,v=n.useCallback((()=>{p(An),m(!1)}),[]),q=n.useCallback((()=>{p(Cn),m(!1)}),[]),x=n.useCallback((n=>{i(n.target.value)}),[]),g=n.useCallback((()=>{p(null),i(""),m(!1)}),[]),k=async()=>{if(m(!0),c&&b){h(!0);try{const n=c===An?H.APPROVED:H.REJECTED,t=await async function(n,e,s,t){try{const r=await fetch("/api/v2/users/me.json");if(!r.ok)throw new Error("Error fetching current user data");const a=await r.json();return await fetch(`/api/v2/approval_workflow_instances/${n}/approval_requests/${e}/decision`,{method:"PATCH",headers:{"Content-Type":"application/json","X-CSRF-Token":a.user.authenticity_token},body:JSON.stringify({status:s,notes:t})})}catch(n){throw console.error("Error submitting approval decision:",n),n}}(s,e,n,u);if(!t.ok)throw new Error(`Failed to submit ${n} decision`);{const e=await t.json();r(e.approval_request);const s=n===H.APPROVED?l("approval-requests.request.notification.approval-submitted","Approval submitted"):l("approval-requests.request.notification.denial-submitted","Denial submitted");F({type:"success",title:s,message:""})}}catch(n){F({type:"error",title:"Error submitting decision",message:"Please try again later"})}finally{h(!1)}}};if(c){const n=c===An?l("approval-requests.request.approver-actions.additional-note-label","Additional note"):l("approval-requests.request.approver-actions.denial-reason-label","Reason for denial* (Required)"),e=Boolean(o?.photo?.content_url);return a.jsxs(En,{children:[a.jsxs(P,{children:[a.jsx(I,{children:n}),a.jsxs(Sn,{children:[e&&a.jsx(W,{children:a.jsx("img",{alt:"Assignee avatar",src:o.photo.content_url??void 0})}),a.jsxs(Tn,{children:[a.jsx(L,{minRows:5,value:u,onChange:x,disabled:d,validation:f?"error":void 0}),f&&a.jsx(N,{validation:"error",children:l("approval-requests.request.approver-actions.denial-reason-validation","Enter a reason for denial")})]})]})]}),a.jsxs(_n,{hasAvatar:e,isSubmitButton:!0,children:[a.jsx(V,{isPrimary:!0,onClick:k,disabled:d,children:c===An?l("approval-requests.request.approver-actions.submit-approval","Submit approval"):l("approval-requests.request.approver-actions.submit-denial","Submit denial")}),a.jsx(V,{onClick:g,disabled:d,children:l("approval-requests.request.approver-actions.cancel","Cancel")})]})]})}return a.jsxs(_n,{children:[a.jsx(V,{isPrimary:!0,onClick:v,children:l("approval-requests.request.approver-actions.approve-request","Approve request")}),a.jsx(V,{onClick:q,children:l("approval-requests.request.approver-actions.deny-request","Deny request")})]})}));const zn=e(B)`
+  margin-top: ${n=>n.theme.space.lg}; /* 32px */
+`,Pn=e(m)`
   &:visited {
-    color: ${(props) => getColorV8("blue", 600, props.theme)};
+    color: ${n=>h("blue",600,n.theme)};
   }
-`;
-function ApprovalRequestBreadcrumbs({ organizations, helpCenterPath, }) {
-    const { t } = useTranslation();
-    const defaultOrganizationName = organizations.length > 0 ? organizations[0]?.name : null;
-    if (defaultOrganizationName) {
-        return (jsxRuntimeExports.jsxs(StyledBreadcrumb, { children: [jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: helpCenterPath, children: defaultOrganizationName }), jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: `${helpCenterPath}/approval_requests`, children: t("approval-requests.list.header", "Approval requests") })] }));
-    }
-    return (jsxRuntimeExports.jsx(StyledBreadcrumb, { children: jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: `${helpCenterPath}/approval_requests`, children: t("approval-requests.list.header", "Approval requests") }) }));
-}
-var ApprovalRequestBreadcrumbs$1 = reactExports.memo(ApprovalRequestBreadcrumbs);
-
-const Container = styled.div `
+`;var In=n.memo((function({organizations:n,helpCenterPath:e}){const{t:s}=t(),r=n.length>0?n[0]?.name:null;return r?a.jsxs(zn,{children:[a.jsx(Pn,{href:e,children:r}),a.jsx(Pn,{href:`${e}/approval_requests`,children:s("approval-requests.list.header","Approval requests")})]}):a.jsx(zn,{children:a.jsx(Pn,{href:`${e}/approval_requests`,children:s("approval-requests.list.header","Approval requests")})})}));const Wn=e.div`
   display: flex;
   flex-direction: row;
-  margin-top: ${(props) => props.theme.space.xl}; /* 40px */
-  margin-bottom: ${(props) => props.theme.space.lg}; /* 32px */
+  margin-top: ${n=>n.theme.space.xl}; /* 40px */
+  margin-bottom: ${n=>n.theme.space.lg}; /* 32px */
 
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+  @media (max-width: ${n=>n.theme.breakpoints.md}) {
     flex-direction: column;
-    margin-bottom: ${(props) => props.theme.space.xl}; /* 40px */
+    margin-bottom: ${n=>n.theme.space.xl}; /* 40px */
   }
-`;
-const LoadingContainer = styled.div `
+`,Ln=e.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-const LeftColumn = styled.div `
+`,Nn=e.div`
   flex: 2;
 
   & > *:first-child {
-    margin-bottom: ${(props) => props.theme.space.base * 4}px; /* 16px */
+    margin-bottom: ${n=>4*n.theme.space.base}px; /* 16px */
   }
 
   & > *:not(:first-child) {
-    margin-bottom: ${(props) => props.theme.space.lg}; /* 32px */
+    margin-bottom: ${n=>n.theme.space.lg}; /* 32px */
   }
 
   & > *:last-child {
     margin-bottom: 0;
   }
-`;
-const RightColumn = styled.div `
+`,Vn=e.div`
   flex: 1;
-  margin-inline-start: ${(props) => props.theme.space.base * 6}px; /* 24px */
+  margin-inline-start: ${n=>6*n.theme.space.base}px; /* 24px */
 
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+  @media (max-width: ${n=>n.theme.breakpoints.md}) {
     margin-inline-start: 0;
   }
-`;
-const ApproverActionsInLeft = styled.div `
+`,Fn=e.div`
   display: block;
-  margin-top: ${(props) => props.theme.space.lg};
+  margin-top: ${n=>n.theme.space.lg};
 
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+  @media (max-width: ${n=>n.theme.breakpoints.md}) {
     display: none;
   }
-`;
-const ApproverActionsBelowContainer = styled.div `
+`,Bn=e.div`
   display: none;
-  margin-top: ${(props) => props.theme.space.lg};
+  margin-top: ${n=>n.theme.space.lg};
 
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+  @media (max-width: ${n=>n.theme.breakpoints.md}) {
     display: block;
   }
-`;
-function ApprovalRequestPage({ approvalWorkflowInstanceId, approvalRequestId, baseLocale, helpCenterPath, organizations, userId, }) {
-    const { approvalRequest, setApprovalRequest, errorFetchingApprovalRequest: error, isLoading, } = useApprovalRequest(approvalWorkflowInstanceId, approvalRequestId);
-    if (error) {
-        throw error;
-    }
-    if (isLoading) {
-        return (jsxRuntimeExports.jsx(LoadingContainer, { children: jsxRuntimeExports.jsx(Spinner, { size: "64" }) }));
-    }
-    const showApproverActions = userId === approvalRequest?.assignee_user?.id &&
-        approvalRequest?.status === "active";
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(ApprovalRequestBreadcrumbs$1, { helpCenterPath: helpCenterPath, organizations: organizations }), jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: approvalRequest?.subject }), jsxRuntimeExports.jsx(MD, { children: approvalRequest?.message }), approvalRequest?.ticket_details && (jsxRuntimeExports.jsx(ApprovalTicketDetails$1, { ticket: approvalRequest.ticket_details })), showApproverActions && (jsxRuntimeExports.jsx(ApproverActionsInLeft, { children: jsxRuntimeExports.jsx(ApproverActions$1, { approvalWorkflowInstanceId: approvalWorkflowInstanceId, approvalRequestId: approvalRequestId, setApprovalRequest: setApprovalRequest, assigneeUser: approvalRequest?.assignee_user }) }))] }), jsxRuntimeExports.jsx(RightColumn, { children: approvalRequest && (jsxRuntimeExports.jsx(ApprovalRequestDetails$1, { approvalRequest: approvalRequest, baseLocale: baseLocale })) })] }), showApproverActions && (jsxRuntimeExports.jsx(ApproverActionsBelowContainer, { children: jsxRuntimeExports.jsx(ApproverActions$1, { approvalWorkflowInstanceId: approvalWorkflowInstanceId, approvalRequestId: approvalRequestId, setApprovalRequest: setApprovalRequest, assigneeUser: approvalRequest?.assignee_user }) }))] }));
-}
-var ApprovalRequestPage$1 = reactExports.memo(ApprovalRequestPage);
-
-function __variableDynamicImportRuntime1__(path) {
-  switch (path) {
-    case '../shared/translations/locales/af.json': return import('shared').then(function (n) { return n.aA; });
-    case '../shared/translations/locales/ar-x-pseudo.json': return import('shared').then(function (n) { return n.aB; });
-    case '../shared/translations/locales/ar.json': return import('shared').then(function (n) { return n.aC; });
-    case '../shared/translations/locales/az.json': return import('shared').then(function (n) { return n.aD; });
-    case '../shared/translations/locales/be.json': return import('shared').then(function (n) { return n.aE; });
-    case '../shared/translations/locales/bg.json': return import('shared').then(function (n) { return n.aF; });
-    case '../shared/translations/locales/bn.json': return import('shared').then(function (n) { return n.aG; });
-    case '../shared/translations/locales/bs.json': return import('shared').then(function (n) { return n.aH; });
-    case '../shared/translations/locales/ca.json': return import('shared').then(function (n) { return n.aI; });
-    case '../shared/translations/locales/cs.json': return import('shared').then(function (n) { return n.aJ; });
-    case '../shared/translations/locales/cy.json': return import('shared').then(function (n) { return n.aK; });
-    case '../shared/translations/locales/da.json': return import('shared').then(function (n) { return n.aL; });
-    case '../shared/translations/locales/de-de.json': return import('shared').then(function (n) { return n.aM; });
-    case '../shared/translations/locales/de-x-informal.json': return import('shared').then(function (n) { return n.aN; });
-    case '../shared/translations/locales/de.json': return import('shared').then(function (n) { return n.aO; });
-    case '../shared/translations/locales/el.json': return import('shared').then(function (n) { return n.aP; });
-    case '../shared/translations/locales/en-001.json': return import('shared').then(function (n) { return n.aQ; });
-    case '../shared/translations/locales/en-150.json': return import('shared').then(function (n) { return n.aR; });
-    case '../shared/translations/locales/en-au.json': return import('shared').then(function (n) { return n.aS; });
-    case '../shared/translations/locales/en-ca.json': return import('shared').then(function (n) { return n.aT; });
-    case '../shared/translations/locales/en-gb.json': return import('shared').then(function (n) { return n.aU; });
-    case '../shared/translations/locales/en-my.json': return import('shared').then(function (n) { return n.aV; });
-    case '../shared/translations/locales/en-ph.json': return import('shared').then(function (n) { return n.aW; });
-    case '../shared/translations/locales/en-se.json': return import('shared').then(function (n) { return n.aX; });
-    case '../shared/translations/locales/en-us.json': return import('shared').then(function (n) { return n.aY; });
-    case '../shared/translations/locales/en-x-dev.json': return import('shared').then(function (n) { return n.aZ; });
-    case '../shared/translations/locales/en-x-keys.json': return import('shared').then(function (n) { return n.a_; });
-    case '../shared/translations/locales/en-x-obsolete.json': return import('shared').then(function (n) { return n.a$; });
-    case '../shared/translations/locales/en-x-pseudo.json': return import('shared').then(function (n) { return n.b0; });
-    case '../shared/translations/locales/en-x-test.json': return import('shared').then(function (n) { return n.b1; });
-    case '../shared/translations/locales/es-419.json': return import('shared').then(function (n) { return n.b2; });
-    case '../shared/translations/locales/es-ar.json': return import('shared').then(function (n) { return n.b3; });
-    case '../shared/translations/locales/es-cl.json': return import('shared').then(function (n) { return n.b4; });
-    case '../shared/translations/locales/es-es.json': return import('shared').then(function (n) { return n.b5; });
-    case '../shared/translations/locales/es-mx.json': return import('shared').then(function (n) { return n.b6; });
-    case '../shared/translations/locales/es-pe.json': return import('shared').then(function (n) { return n.b7; });
-    case '../shared/translations/locales/es.json': return import('shared').then(function (n) { return n.b8; });
-    case '../shared/translations/locales/et.json': return import('shared').then(function (n) { return n.b9; });
-    case '../shared/translations/locales/eu.json': return import('shared').then(function (n) { return n.ba; });
-    case '../shared/translations/locales/fa-af.json': return import('shared').then(function (n) { return n.bb; });
-    case '../shared/translations/locales/fa.json': return import('shared').then(function (n) { return n.bc; });
-    case '../shared/translations/locales/fi.json': return import('shared').then(function (n) { return n.bd; });
-    case '../shared/translations/locales/fil.json': return import('shared').then(function (n) { return n.be; });
-    case '../shared/translations/locales/fo.json': return import('shared').then(function (n) { return n.bf; });
-    case '../shared/translations/locales/fr-ca.json': return import('shared').then(function (n) { return n.bg; });
-    case '../shared/translations/locales/fr-dz.json': return import('shared').then(function (n) { return n.bh; });
-    case '../shared/translations/locales/fr-mu.json': return import('shared').then(function (n) { return n.bi; });
-    case '../shared/translations/locales/fr.json': return import('shared').then(function (n) { return n.bj; });
-    case '../shared/translations/locales/ga.json': return import('shared').then(function (n) { return n.bk; });
-    case '../shared/translations/locales/he.json': return import('shared').then(function (n) { return n.bl; });
-    case '../shared/translations/locales/hi.json': return import('shared').then(function (n) { return n.bm; });
-    case '../shared/translations/locales/hr.json': return import('shared').then(function (n) { return n.bn; });
-    case '../shared/translations/locales/hu.json': return import('shared').then(function (n) { return n.bo; });
-    case '../shared/translations/locales/hy.json': return import('shared').then(function (n) { return n.bp; });
-    case '../shared/translations/locales/id.json': return import('shared').then(function (n) { return n.bq; });
-    case '../shared/translations/locales/is.json': return import('shared').then(function (n) { return n.br; });
-    case '../shared/translations/locales/it-ch.json': return import('shared').then(function (n) { return n.bs; });
-    case '../shared/translations/locales/it.json': return import('shared').then(function (n) { return n.bt; });
-    case '../shared/translations/locales/ja.json': return import('shared').then(function (n) { return n.bu; });
-    case '../shared/translations/locales/ka.json': return import('shared').then(function (n) { return n.bv; });
-    case '../shared/translations/locales/kk.json': return import('shared').then(function (n) { return n.bw; });
-    case '../shared/translations/locales/kl-dk.json': return import('shared').then(function (n) { return n.bx; });
-    case '../shared/translations/locales/km.json': return import('shared').then(function (n) { return n.by; });
-    case '../shared/translations/locales/ko.json': return import('shared').then(function (n) { return n.bz; });
-    case '../shared/translations/locales/ku.json': return import('shared').then(function (n) { return n.bA; });
-    case '../shared/translations/locales/ky.json': return import('shared').then(function (n) { return n.bB; });
-    case '../shared/translations/locales/lt.json': return import('shared').then(function (n) { return n.bC; });
-    case '../shared/translations/locales/lv.json': return import('shared').then(function (n) { return n.bD; });
-    case '../shared/translations/locales/mk.json': return import('shared').then(function (n) { return n.bE; });
-    case '../shared/translations/locales/mn.json': return import('shared').then(function (n) { return n.bF; });
-    case '../shared/translations/locales/ms.json': return import('shared').then(function (n) { return n.bG; });
-    case '../shared/translations/locales/mt.json': return import('shared').then(function (n) { return n.bH; });
-    case '../shared/translations/locales/my.json': return import('shared').then(function (n) { return n.bI; });
-    case '../shared/translations/locales/ne.json': return import('shared').then(function (n) { return n.bJ; });
-    case '../shared/translations/locales/nl-be.json': return import('shared').then(function (n) { return n.bK; });
-    case '../shared/translations/locales/nl.json': return import('shared').then(function (n) { return n.bL; });
-    case '../shared/translations/locales/no.json': return import('shared').then(function (n) { return n.bM; });
-    case '../shared/translations/locales/pl.json': return import('shared').then(function (n) { return n.bN; });
-    case '../shared/translations/locales/pt-br.json': return import('shared').then(function (n) { return n.bO; });
-    case '../shared/translations/locales/pt.json': return import('shared').then(function (n) { return n.bP; });
-    case '../shared/translations/locales/ro-md.json': return import('shared').then(function (n) { return n.bQ; });
-    case '../shared/translations/locales/ro.json': return import('shared').then(function (n) { return n.bR; });
-    case '../shared/translations/locales/ru.json': return import('shared').then(function (n) { return n.bS; });
-    case '../shared/translations/locales/si.json': return import('shared').then(function (n) { return n.bT; });
-    case '../shared/translations/locales/sk.json': return import('shared').then(function (n) { return n.bU; });
-    case '../shared/translations/locales/sl.json': return import('shared').then(function (n) { return n.bV; });
-    case '../shared/translations/locales/sq.json': return import('shared').then(function (n) { return n.bW; });
-    case '../shared/translations/locales/sr-me.json': return import('shared').then(function (n) { return n.bX; });
-    case '../shared/translations/locales/sr.json': return import('shared').then(function (n) { return n.bY; });
-    case '../shared/translations/locales/sv.json': return import('shared').then(function (n) { return n.bZ; });
-    case '../shared/translations/locales/sw-ke.json': return import('shared').then(function (n) { return n.b_; });
-    case '../shared/translations/locales/ta.json': return import('shared').then(function (n) { return n.b$; });
-    case '../shared/translations/locales/th.json': return import('shared').then(function (n) { return n.c0; });
-    case '../shared/translations/locales/tr.json': return import('shared').then(function (n) { return n.c1; });
-    case '../shared/translations/locales/uk.json': return import('shared').then(function (n) { return n.c2; });
-    case '../shared/translations/locales/ur-pk.json': return import('shared').then(function (n) { return n.c3; });
-    case '../shared/translations/locales/ur.json': return import('shared').then(function (n) { return n.c4; });
-    case '../shared/translations/locales/uz.json': return import('shared').then(function (n) { return n.c5; });
-    case '../shared/translations/locales/vi.json': return import('shared').then(function (n) { return n.c6; });
-    case '../shared/translations/locales/zh-cn.json': return import('shared').then(function (n) { return n.c7; });
-    case '../shared/translations/locales/zh-tw.json': return import('shared').then(function (n) { return n.c8; });
-    default: return new Promise(function(resolve, reject) {
-      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
-        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
-      );
-    })
-   }
- }
-
-function __variableDynamicImportRuntime0__(path) {
-  switch (path) {
-    case './translations/locales/af.json': return import('approval-requests-translations').then(function (n) { return n.a; });
-    case './translations/locales/ar-x-pseudo.json': return import('approval-requests-translations').then(function (n) { return n.b; });
-    case './translations/locales/ar.json': return import('approval-requests-translations').then(function (n) { return n.c; });
-    case './translations/locales/az.json': return import('approval-requests-translations').then(function (n) { return n.d; });
-    case './translations/locales/be.json': return import('approval-requests-translations').then(function (n) { return n.e; });
-    case './translations/locales/bg.json': return import('approval-requests-translations').then(function (n) { return n.f; });
-    case './translations/locales/bn.json': return import('approval-requests-translations').then(function (n) { return n.g; });
-    case './translations/locales/bs.json': return import('approval-requests-translations').then(function (n) { return n.h; });
-    case './translations/locales/ca.json': return import('approval-requests-translations').then(function (n) { return n.i; });
-    case './translations/locales/cs.json': return import('approval-requests-translations').then(function (n) { return n.j; });
-    case './translations/locales/cy.json': return import('approval-requests-translations').then(function (n) { return n.k; });
-    case './translations/locales/da.json': return import('approval-requests-translations').then(function (n) { return n.l; });
-    case './translations/locales/de-de.json': return import('approval-requests-translations').then(function (n) { return n.m; });
-    case './translations/locales/de-x-informal.json': return import('approval-requests-translations').then(function (n) { return n.n; });
-    case './translations/locales/de.json': return import('approval-requests-translations').then(function (n) { return n.o; });
-    case './translations/locales/el.json': return import('approval-requests-translations').then(function (n) { return n.p; });
-    case './translations/locales/en-001.json': return import('approval-requests-translations').then(function (n) { return n.q; });
-    case './translations/locales/en-150.json': return import('approval-requests-translations').then(function (n) { return n.r; });
-    case './translations/locales/en-au.json': return import('approval-requests-translations').then(function (n) { return n.s; });
-    case './translations/locales/en-ca.json': return import('approval-requests-translations').then(function (n) { return n.t; });
-    case './translations/locales/en-gb.json': return import('approval-requests-translations').then(function (n) { return n.u; });
-    case './translations/locales/en-my.json': return import('approval-requests-translations').then(function (n) { return n.v; });
-    case './translations/locales/en-ph.json': return import('approval-requests-translations').then(function (n) { return n.w; });
-    case './translations/locales/en-se.json': return import('approval-requests-translations').then(function (n) { return n.x; });
-    case './translations/locales/en-us.json': return import('approval-requests-translations').then(function (n) { return n.y; });
-    case './translations/locales/en-x-dev.json': return import('approval-requests-translations').then(function (n) { return n.z; });
-    case './translations/locales/en-x-keys.json': return import('approval-requests-translations').then(function (n) { return n.A; });
-    case './translations/locales/en-x-obsolete.json': return import('approval-requests-translations').then(function (n) { return n.B; });
-    case './translations/locales/en-x-pseudo.json': return import('approval-requests-translations').then(function (n) { return n.C; });
-    case './translations/locales/en-x-test.json': return import('approval-requests-translations').then(function (n) { return n.D; });
-    case './translations/locales/es-419.json': return import('approval-requests-translations').then(function (n) { return n.E; });
-    case './translations/locales/es-ar.json': return import('approval-requests-translations').then(function (n) { return n.F; });
-    case './translations/locales/es-cl.json': return import('approval-requests-translations').then(function (n) { return n.G; });
-    case './translations/locales/es-es.json': return import('approval-requests-translations').then(function (n) { return n.H; });
-    case './translations/locales/es-mx.json': return import('approval-requests-translations').then(function (n) { return n.I; });
-    case './translations/locales/es-pe.json': return import('approval-requests-translations').then(function (n) { return n.J; });
-    case './translations/locales/es.json': return import('approval-requests-translations').then(function (n) { return n.K; });
-    case './translations/locales/et.json': return import('approval-requests-translations').then(function (n) { return n.L; });
-    case './translations/locales/eu.json': return import('approval-requests-translations').then(function (n) { return n.M; });
-    case './translations/locales/fa-af.json': return import('approval-requests-translations').then(function (n) { return n.N; });
-    case './translations/locales/fa.json': return import('approval-requests-translations').then(function (n) { return n.O; });
-    case './translations/locales/fi.json': return import('approval-requests-translations').then(function (n) { return n.P; });
-    case './translations/locales/fil.json': return import('approval-requests-translations').then(function (n) { return n.Q; });
-    case './translations/locales/fo.json': return import('approval-requests-translations').then(function (n) { return n.R; });
-    case './translations/locales/fr-ca.json': return import('approval-requests-translations').then(function (n) { return n.S; });
-    case './translations/locales/fr-dz.json': return import('approval-requests-translations').then(function (n) { return n.T; });
-    case './translations/locales/fr-mu.json': return import('approval-requests-translations').then(function (n) { return n.U; });
-    case './translations/locales/fr.json': return import('approval-requests-translations').then(function (n) { return n.V; });
-    case './translations/locales/ga.json': return import('approval-requests-translations').then(function (n) { return n.W; });
-    case './translations/locales/he.json': return import('approval-requests-translations').then(function (n) { return n.X; });
-    case './translations/locales/hi.json': return import('approval-requests-translations').then(function (n) { return n.Y; });
-    case './translations/locales/hr.json': return import('approval-requests-translations').then(function (n) { return n.Z; });
-    case './translations/locales/hu.json': return import('approval-requests-translations').then(function (n) { return n._; });
-    case './translations/locales/hy.json': return import('approval-requests-translations').then(function (n) { return n.$; });
-    case './translations/locales/id.json': return import('approval-requests-translations').then(function (n) { return n.a0; });
-    case './translations/locales/is.json': return import('approval-requests-translations').then(function (n) { return n.a1; });
-    case './translations/locales/it-ch.json': return import('approval-requests-translations').then(function (n) { return n.a2; });
-    case './translations/locales/it.json': return import('approval-requests-translations').then(function (n) { return n.a3; });
-    case './translations/locales/ja.json': return import('approval-requests-translations').then(function (n) { return n.a4; });
-    case './translations/locales/ka.json': return import('approval-requests-translations').then(function (n) { return n.a5; });
-    case './translations/locales/kk.json': return import('approval-requests-translations').then(function (n) { return n.a6; });
-    case './translations/locales/kl-dk.json': return import('approval-requests-translations').then(function (n) { return n.a7; });
-    case './translations/locales/km.json': return import('approval-requests-translations').then(function (n) { return n.a8; });
-    case './translations/locales/ko.json': return import('approval-requests-translations').then(function (n) { return n.a9; });
-    case './translations/locales/ku.json': return import('approval-requests-translations').then(function (n) { return n.aa; });
-    case './translations/locales/ky.json': return import('approval-requests-translations').then(function (n) { return n.ab; });
-    case './translations/locales/lt.json': return import('approval-requests-translations').then(function (n) { return n.ac; });
-    case './translations/locales/lv.json': return import('approval-requests-translations').then(function (n) { return n.ad; });
-    case './translations/locales/mk.json': return import('approval-requests-translations').then(function (n) { return n.ae; });
-    case './translations/locales/mn.json': return import('approval-requests-translations').then(function (n) { return n.af; });
-    case './translations/locales/ms.json': return import('approval-requests-translations').then(function (n) { return n.ag; });
-    case './translations/locales/mt.json': return import('approval-requests-translations').then(function (n) { return n.ah; });
-    case './translations/locales/my.json': return import('approval-requests-translations').then(function (n) { return n.ai; });
-    case './translations/locales/ne.json': return import('approval-requests-translations').then(function (n) { return n.aj; });
-    case './translations/locales/nl-be.json': return import('approval-requests-translations').then(function (n) { return n.ak; });
-    case './translations/locales/nl.json': return import('approval-requests-translations').then(function (n) { return n.al; });
-    case './translations/locales/no.json': return import('approval-requests-translations').then(function (n) { return n.am; });
-    case './translations/locales/pl.json': return import('approval-requests-translations').then(function (n) { return n.an; });
-    case './translations/locales/pt-br.json': return import('approval-requests-translations').then(function (n) { return n.ao; });
-    case './translations/locales/pt.json': return import('approval-requests-translations').then(function (n) { return n.ap; });
-    case './translations/locales/ro-md.json': return import('approval-requests-translations').then(function (n) { return n.aq; });
-    case './translations/locales/ro.json': return import('approval-requests-translations').then(function (n) { return n.ar; });
-    case './translations/locales/ru.json': return import('approval-requests-translations').then(function (n) { return n.as; });
-    case './translations/locales/si.json': return import('approval-requests-translations').then(function (n) { return n.at; });
-    case './translations/locales/sk.json': return import('approval-requests-translations').then(function (n) { return n.au; });
-    case './translations/locales/sl.json': return import('approval-requests-translations').then(function (n) { return n.av; });
-    case './translations/locales/sq.json': return import('approval-requests-translations').then(function (n) { return n.aw; });
-    case './translations/locales/sr-me.json': return import('approval-requests-translations').then(function (n) { return n.ax; });
-    case './translations/locales/sr.json': return import('approval-requests-translations').then(function (n) { return n.ay; });
-    case './translations/locales/sv.json': return import('approval-requests-translations').then(function (n) { return n.az; });
-    case './translations/locales/sw-ke.json': return import('approval-requests-translations').then(function (n) { return n.aA; });
-    case './translations/locales/ta.json': return import('approval-requests-translations').then(function (n) { return n.aB; });
-    case './translations/locales/th.json': return import('approval-requests-translations').then(function (n) { return n.aC; });
-    case './translations/locales/tr.json': return import('approval-requests-translations').then(function (n) { return n.aD; });
-    case './translations/locales/uk.json': return import('approval-requests-translations').then(function (n) { return n.aE; });
-    case './translations/locales/ur-pk.json': return import('approval-requests-translations').then(function (n) { return n.aF; });
-    case './translations/locales/ur.json': return import('approval-requests-translations').then(function (n) { return n.aG; });
-    case './translations/locales/uz.json': return import('approval-requests-translations').then(function (n) { return n.aH; });
-    case './translations/locales/vi.json': return import('approval-requests-translations').then(function (n) { return n.aI; });
-    case './translations/locales/zh-cn.json': return import('approval-requests-translations').then(function (n) { return n.aJ; });
-    case './translations/locales/zh-tw.json': return import('approval-requests-translations').then(function (n) { return n.aK; });
-    default: return new Promise(function(resolve, reject) {
-      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
-        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
-      );
-    })
-   }
- }
-async function renderApprovalRequest(container, settings, props, helpCenterPath) {
-    const { baseLocale } = props;
-    initI18next(baseLocale);
-    await loadTranslations(baseLocale, [
-        () => __variableDynamicImportRuntime0__(`./translations/locales/${baseLocale}.json`),
-        () => __variableDynamicImportRuntime1__(`../shared/translations/locales/${baseLocale}.json`),
-    ]);
-    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(ApprovalRequestPage$1, { ...props, helpCenterPath: helpCenterPath }) }) }), container);
-}
-
-export { renderApprovalRequest, renderApprovalRequestList };
+`;var Hn=n.memo((function({approvalWorkflowInstanceId:e,approvalRequestId:s,baseLocale:t,helpCenterPath:r,organizations:o,userId:l}){const{approvalRequest:u,setApprovalRequest:i,errorFetchingApprovalRequest:c,isLoading:p}=function(e,s){const[t,r]=n.useState(),[a,o]=n.useState(null),[l,u]=n.useState(!1);return n.useEffect((()=>{(async()=>{u(!0);try{const n=await fetch(`/api/v2/approval_workflow_instances/${e}/approval_requests/${s}`);if(!n.ok)throw new Error("Error fetching approval request");{const e=await n.json();r(e.approval_request)}}catch(n){o(n)}finally{u(!1)}})()}),[s,e]),{approvalRequest:t,errorFetchingApprovalRequest:a,isLoading:l,setApprovalRequest:r}}(e,s);if(c)throw c;if(p)return a.jsx(Ln,{children:a.jsx(y,{size:"64"})});const d=l===u?.assignee_user?.id&&"active"===u?.status;return a.jsxs(a.Fragment,{children:[a.jsx(In,{helpCenterPath:r,organizations:o}),a.jsxs(Wn,{children:[a.jsxs(Nn,{children:[a.jsx($,{isBold:!0,children:u?.subject}),a.jsx(j,{children:u?.message}),u?.ticket_details&&a.jsx(Rn,{ticket:u.ticket_details}),d&&a.jsx(Fn,{children:a.jsx(Dn,{approvalWorkflowInstanceId:e,approvalRequestId:s,setApprovalRequest:i,assigneeUser:u?.assignee_user})})]}),a.jsx(Vn,{children:u&&a.jsx(fn,{approvalRequest:u,baseLocale:t})})]}),d&&a.jsx(Bn,{children:a.jsx(Dn,{approvalWorkflowInstanceId:e,approvalRequestId:s,setApprovalRequest:i,assigneeUser:u?.assignee_user})})]})}));async function Jn(n,e,s,t){const{baseLocale:r}=s;R(r),await A(r,[()=>function(n){switch(n){case"./translations/locales/af.json":return import("approval-requests-translations").then((function(n){return n.a}));case"./translations/locales/ar-x-pseudo.json":return import("approval-requests-translations").then((function(n){return n.b}));case"./translations/locales/ar.json":return import("approval-requests-translations").then((function(n){return n.c}));case"./translations/locales/az.json":return import("approval-requests-translations").then((function(n){return n.d}));case"./translations/locales/be.json":return import("approval-requests-translations").then((function(n){return n.e}));case"./translations/locales/bg.json":return import("approval-requests-translations").then((function(n){return n.f}));case"./translations/locales/bn.json":return import("approval-requests-translations").then((function(n){return n.g}));case"./translations/locales/bs.json":return import("approval-requests-translations").then((function(n){return n.h}));case"./translations/locales/ca.json":return import("approval-requests-translations").then((function(n){return n.i}));case"./translations/locales/cs.json":return import("approval-requests-translations").then((function(n){return n.j}));case"./translations/locales/cy.json":return import("approval-requests-translations").then((function(n){return n.k}));case"./translations/locales/da.json":return import("approval-requests-translations").then((function(n){return n.l}));case"./translations/locales/de-de.json":return import("approval-requests-translations").then((function(n){return n.m}));case"./translations/locales/de-x-informal.json":return import("approval-requests-translations").then((function(n){return n.n}));case"./translations/locales/de.json":return import("approval-requests-translations").then((function(n){return n.o}));case"./translations/locales/el.json":return import("approval-requests-translations").then((function(n){return n.p}));case"./translations/locales/en-001.json":return import("approval-requests-translations").then((function(n){return n.q}));case"./translations/locales/en-150.json":return import("approval-requests-translations").then((function(n){return n.r}));case"./translations/locales/en-au.json":return import("approval-requests-translations").then((function(n){return n.s}));case"./translations/locales/en-ca.json":return import("approval-requests-translations").then((function(n){return n.t}));case"./translations/locales/en-gb.json":return import("approval-requests-translations").then((function(n){return n.u}));case"./translations/locales/en-my.json":return import("approval-requests-translations").then((function(n){return n.v}));case"./translations/locales/en-ph.json":return import("approval-requests-translations").then((function(n){return n.w}));case"./translations/locales/en-se.json":return import("approval-requests-translations").then((function(n){return n.x}));case"./translations/locales/en-us.json":return import("approval-requests-translations").then((function(n){return n.y}));case"./translations/locales/en-x-dev.json":return import("approval-requests-translations").then((function(n){return n.z}));case"./translations/locales/en-x-keys.json":return import("approval-requests-translations").then((function(n){return n.A}));case"./translations/locales/en-x-obsolete.json":return import("approval-requests-translations").then((function(n){return n.B}));case"./translations/locales/en-x-pseudo.json":return import("approval-requests-translations").then((function(n){return n.C}));case"./translations/locales/en-x-test.json":return import("approval-requests-translations").then((function(n){return n.D}));case"./translations/locales/es-419.json":return import("approval-requests-translations").then((function(n){return n.E}));case"./translations/locales/es-ar.json":return import("approval-requests-translations").then((function(n){return n.F}));case"./translations/locales/es-cl.json":return import("approval-requests-translations").then((function(n){return n.G}));case"./translations/locales/es-es.json":return import("approval-requests-translations").then((function(n){return n.H}));case"./translations/locales/es-mx.json":return import("approval-requests-translations").then((function(n){return n.I}));case"./translations/locales/es-pe.json":return import("approval-requests-translations").then((function(n){return n.J}));case"./translations/locales/es.json":return import("approval-requests-translations").then((function(n){return n.K}));case"./translations/locales/et.json":return import("approval-requests-translations").then((function(n){return n.L}));case"./translations/locales/eu.json":return import("approval-requests-translations").then((function(n){return n.M}));case"./translations/locales/fa-af.json":return import("approval-requests-translations").then((function(n){return n.N}));case"./translations/locales/fa.json":return import("approval-requests-translations").then((function(n){return n.O}));case"./translations/locales/fi.json":return import("approval-requests-translations").then((function(n){return n.P}));case"./translations/locales/fil.json":return import("approval-requests-translations").then((function(n){return n.Q}));case"./translations/locales/fo.json":return import("approval-requests-translations").then((function(n){return n.R}));case"./translations/locales/fr-ca.json":return import("approval-requests-translations").then((function(n){return n.S}));case"./translations/locales/fr-dz.json":return import("approval-requests-translations").then((function(n){return n.T}));case"./translations/locales/fr-mu.json":return import("approval-requests-translations").then((function(n){return n.U}));case"./translations/locales/fr.json":return import("approval-requests-translations").then((function(n){return n.V}));case"./translations/locales/ga.json":return import("approval-requests-translations").then((function(n){return n.W}));case"./translations/locales/he.json":return import("approval-requests-translations").then((function(n){return n.X}));case"./translations/locales/hi.json":return import("approval-requests-translations").then((function(n){return n.Y}));case"./translations/locales/hr.json":return import("approval-requests-translations").then((function(n){return n.Z}));case"./translations/locales/hu.json":return import("approval-requests-translations").then((function(n){return n._}));case"./translations/locales/hy.json":return import("approval-requests-translations").then((function(n){return n.$}));case"./translations/locales/id.json":return import("approval-requests-translations").then((function(n){return n.a0}));case"./translations/locales/is.json":return import("approval-requests-translations").then((function(n){return n.a1}));case"./translations/locales/it-ch.json":return import("approval-requests-translations").then((function(n){return n.a2}));case"./translations/locales/it.json":return import("approval-requests-translations").then((function(n){return n.a3}));case"./translations/locales/ja.json":return import("approval-requests-translations").then((function(n){return n.a4}));case"./translations/locales/ka.json":return import("approval-requests-translations").then((function(n){return n.a5}));case"./translations/locales/kk.json":return import("approval-requests-translations").then((function(n){return n.a6}));case"./translations/locales/kl-dk.json":return import("approval-requests-translations").then((function(n){return n.a7}));case"./translations/locales/km.json":return import("approval-requests-translations").then((function(n){return n.a8}));case"./translations/locales/ko.json":return import("approval-requests-translations").then((function(n){return n.a9}));case"./translations/locales/ku.json":return import("approval-requests-translations").then((function(n){return n.aa}));case"./translations/locales/ky.json":return import("approval-requests-translations").then((function(n){return n.ab}));case"./translations/locales/lt.json":return import("approval-requests-translations").then((function(n){return n.ac}));case"./translations/locales/lv.json":return import("approval-requests-translations").then((function(n){return n.ad}));case"./translations/locales/mk.json":return import("approval-requests-translations").then((function(n){return n.ae}));case"./translations/locales/mn.json":return import("approval-requests-translations").then((function(n){return n.af}));case"./translations/locales/ms.json":return import("approval-requests-translations").then((function(n){return n.ag}));case"./translations/locales/mt.json":return import("approval-requests-translations").then((function(n){return n.ah}));case"./translations/locales/my.json":return import("approval-requests-translations").then((function(n){return n.ai}));case"./translations/locales/ne.json":return import("approval-requests-translations").then((function(n){return n.aj}));case"./translations/locales/nl-be.json":return import("approval-requests-translations").then((function(n){return n.ak}));case"./translations/locales/nl.json":return import("approval-requests-translations").then((function(n){return n.al}));case"./translations/locales/no.json":return import("approval-requests-translations").then((function(n){return n.am}));case"./translations/locales/pl.json":return import("approval-requests-translations").then((function(n){return n.an}));case"./translations/locales/pt-br.json":return import("approval-requests-translations").then((function(n){return n.ao}));case"./translations/locales/pt.json":return import("approval-requests-translations").then((function(n){return n.ap}));case"./translations/locales/ro-md.json":return import("approval-requests-translations").then((function(n){return n.aq}));case"./translations/locales/ro.json":return import("approval-requests-translations").then((function(n){return n.ar}));case"./translations/locales/ru.json":return import("approval-requests-translations").then((function(n){return n.as}));case"./translations/locales/si.json":return import("approval-requests-translations").then((function(n){return n.at}));case"./translations/locales/sk.json":return import("approval-requests-translations").then((function(n){return n.au}));case"./translations/locales/sl.json":return import("approval-requests-translations").then((function(n){return n.av}));case"./translations/locales/sq.json":return import("approval-requests-translations").then((function(n){return n.aw}));case"./translations/locales/sr-me.json":return import("approval-requests-translations").then((function(n){return n.ax}));case"./translations/locales/sr.json":return import("approval-requests-translations").then((function(n){return n.ay}));case"./translations/locales/sv.json":return import("approval-requests-translations").then((function(n){return n.az}));case"./translations/locales/sw-ke.json":return import("approval-requests-translations").then((function(n){return n.aA}));case"./translations/locales/ta.json":return import("approval-requests-translations").then((function(n){return n.aB}));case"./translations/locales/th.json":return import("approval-requests-translations").then((function(n){return n.aC}));case"./translations/locales/tr.json":return import("approval-requests-translations").then((function(n){return n.aD}));case"./translations/locales/uk.json":return import("approval-requests-translations").then((function(n){return n.aE}));case"./translations/locales/ur-pk.json":return import("approval-requests-translations").then((function(n){return n.aF}));case"./translations/locales/ur.json":return import("approval-requests-translations").then((function(n){return n.aG}));case"./translations/locales/uz.json":return import("approval-requests-translations").then((function(n){return n.aH}));case"./translations/locales/vi.json":return import("approval-requests-translations").then((function(n){return n.aI}));case"./translations/locales/zh-cn.json":return import("approval-requests-translations").then((function(n){return n.aJ}));case"./translations/locales/zh-tw.json":return import("approval-requests-translations").then((function(n){return n.aK}));default:return new Promise((function(e,s){("function"==typeof queueMicrotask?queueMicrotask:setTimeout)(s.bind(null,new Error("Unknown variable dynamic import: "+n)))}))}}(`./translations/locales/${r}.json`),()=>function(n){switch(n){case"../shared/translations/locales/af.json":return import("shared").then((function(n){return n.aA}));case"../shared/translations/locales/ar-x-pseudo.json":return import("shared").then((function(n){return n.aB}));case"../shared/translations/locales/ar.json":return import("shared").then((function(n){return n.aC}));case"../shared/translations/locales/az.json":return import("shared").then((function(n){return n.aD}));case"../shared/translations/locales/be.json":return import("shared").then((function(n){return n.aE}));case"../shared/translations/locales/bg.json":return import("shared").then((function(n){return n.aF}));case"../shared/translations/locales/bn.json":return import("shared").then((function(n){return n.aG}));case"../shared/translations/locales/bs.json":return import("shared").then((function(n){return n.aH}));case"../shared/translations/locales/ca.json":return import("shared").then((function(n){return n.aI}));case"../shared/translations/locales/cs.json":return import("shared").then((function(n){return n.aJ}));case"../shared/translations/locales/cy.json":return import("shared").then((function(n){return n.aK}));case"../shared/translations/locales/da.json":return import("shared").then((function(n){return n.aL}));case"../shared/translations/locales/de-de.json":return import("shared").then((function(n){return n.aM}));case"../shared/translations/locales/de-x-informal.json":return import("shared").then((function(n){return n.aN}));case"../shared/translations/locales/de.json":return import("shared").then((function(n){return n.aO}));case"../shared/translations/locales/el.json":return import("shared").then((function(n){return n.aP}));case"../shared/translations/locales/en-001.json":return import("shared").then((function(n){return n.aQ}));case"../shared/translations/locales/en-150.json":return import("shared").then((function(n){return n.aR}));case"../shared/translations/locales/en-au.json":return import("shared").then((function(n){return n.aS}));case"../shared/translations/locales/en-ca.json":return import("shared").then((function(n){return n.aT}));case"../shared/translations/locales/en-gb.json":return import("shared").then((function(n){return n.aU}));case"../shared/translations/locales/en-my.json":return import("shared").then((function(n){return n.aV}));case"../shared/translations/locales/en-ph.json":return import("shared").then((function(n){return n.aW}));case"../shared/translations/locales/en-se.json":return import("shared").then((function(n){return n.aX}));case"../shared/translations/locales/en-us.json":return import("shared").then((function(n){return n.aY}));case"../shared/translations/locales/en-x-dev.json":return import("shared").then((function(n){return n.aZ}));case"../shared/translations/locales/en-x-keys.json":return import("shared").then((function(n){return n.a_}));case"../shared/translations/locales/en-x-obsolete.json":return import("shared").then((function(n){return n.a$}));case"../shared/translations/locales/en-x-pseudo.json":return import("shared").then((function(n){return n.b0}));case"../shared/translations/locales/en-x-test.json":return import("shared").then((function(n){return n.b1}));case"../shared/translations/locales/es-419.json":return import("shared").then((function(n){return n.b2}));case"../shared/translations/locales/es-ar.json":return import("shared").then((function(n){return n.b3}));case"../shared/translations/locales/es-cl.json":return import("shared").then((function(n){return n.b4}));case"../shared/translations/locales/es-es.json":return import("shared").then((function(n){return n.b5}));case"../shared/translations/locales/es-mx.json":return import("shared").then((function(n){return n.b6}));case"../shared/translations/locales/es-pe.json":return import("shared").then((function(n){return n.b7}));case"../shared/translations/locales/es.json":return import("shared").then((function(n){return n.b8}));case"../shared/translations/locales/et.json":return import("shared").then((function(n){return n.b9}));case"../shared/translations/locales/eu.json":return import("shared").then((function(n){return n.ba}));case"../shared/translations/locales/fa-af.json":return import("shared").then((function(n){return n.bb}));case"../shared/translations/locales/fa.json":return import("shared").then((function(n){return n.bc}));case"../shared/translations/locales/fi.json":return import("shared").then((function(n){return n.bd}));case"../shared/translations/locales/fil.json":return import("shared").then((function(n){return n.be}));case"../shared/translations/locales/fo.json":return import("shared").then((function(n){return n.bf}));case"../shared/translations/locales/fr-ca.json":return import("shared").then((function(n){return n.bg}));case"../shared/translations/locales/fr-dz.json":return import("shared").then((function(n){return n.bh}));case"../shared/translations/locales/fr-mu.json":return import("shared").then((function(n){return n.bi}));case"../shared/translations/locales/fr.json":return import("shared").then((function(n){return n.bj}));case"../shared/translations/locales/ga.json":return import("shared").then((function(n){return n.bk}));case"../shared/translations/locales/he.json":return import("shared").then((function(n){return n.bl}));case"../shared/translations/locales/hi.json":return import("shared").then((function(n){return n.bm}));case"../shared/translations/locales/hr.json":return import("shared").then((function(n){return n.bn}));case"../shared/translations/locales/hu.json":return import("shared").then((function(n){return n.bo}));case"../shared/translations/locales/hy.json":return import("shared").then((function(n){return n.bp}));case"../shared/translations/locales/id.json":return import("shared").then((function(n){return n.bq}));case"../shared/translations/locales/is.json":return import("shared").then((function(n){return n.br}));case"../shared/translations/locales/it-ch.json":return import("shared").then((function(n){return n.bs}));case"../shared/translations/locales/it.json":return import("shared").then((function(n){return n.bt}));case"../shared/translations/locales/ja.json":return import("shared").then((function(n){return n.bu}));case"../shared/translations/locales/ka.json":return import("shared").then((function(n){return n.bv}));case"../shared/translations/locales/kk.json":return import("shared").then((function(n){return n.bw}));case"../shared/translations/locales/kl-dk.json":return import("shared").then((function(n){return n.bx}));case"../shared/translations/locales/km.json":return import("shared").then((function(n){return n.by}));case"../shared/translations/locales/ko.json":return import("shared").then((function(n){return n.bz}));case"../shared/translations/locales/ku.json":return import("shared").then((function(n){return n.bA}));case"../shared/translations/locales/ky.json":return import("shared").then((function(n){return n.bB}));case"../shared/translations/locales/lt.json":return import("shared").then((function(n){return n.bC}));case"../shared/translations/locales/lv.json":return import("shared").then((function(n){return n.bD}));case"../shared/translations/locales/mk.json":return import("shared").then((function(n){return n.bE}));case"../shared/translations/locales/mn.json":return import("shared").then((function(n){return n.bF}));case"../shared/translations/locales/ms.json":return import("shared").then((function(n){return n.bG}));case"../shared/translations/locales/mt.json":return import("shared").then((function(n){return n.bH}));case"../shared/translations/locales/my.json":return import("shared").then((function(n){return n.bI}));case"../shared/translations/locales/ne.json":return import("shared").then((function(n){return n.bJ}));case"../shared/translations/locales/nl-be.json":return import("shared").then((function(n){return n.bK}));case"../shared/translations/locales/nl.json":return import("shared").then((function(n){return n.bL}));case"../shared/translations/locales/no.json":return import("shared").then((function(n){return n.bM}));case"../shared/translations/locales/pl.json":return import("shared").then((function(n){return n.bN}));case"../shared/translations/locales/pt-br.json":return import("shared").then((function(n){return n.bO}));case"../shared/translations/locales/pt.json":return import("shared").then((function(n){return n.bP}));case"../shared/translations/locales/ro-md.json":return import("shared").then((function(n){return n.bQ}));case"../shared/translations/locales/ro.json":return import("shared").then((function(n){return n.bR}));case"../shared/translations/locales/ru.json":return import("shared").then((function(n){return n.bS}));case"../shared/translations/locales/si.json":return import("shared").then((function(n){return n.bT}));case"../shared/translations/locales/sk.json":return import("shared").then((function(n){return n.bU}));case"../shared/translations/locales/sl.json":return import("shared").then((function(n){return n.bV}));case"../shared/translations/locales/sq.json":return import("shared").then((function(n){return n.bW}));case"../shared/translations/locales/sr-me.json":return import("shared").then((function(n){return n.bX}));case"../shared/translations/locales/sr.json":return import("shared").then((function(n){return n.bY}));case"../shared/translations/locales/sv.json":return import("shared").then((function(n){return n.bZ}));case"../shared/translations/locales/sw-ke.json":return import("shared").then((function(n){return n.b_}));case"../shared/translations/locales/ta.json":return import("shared").then((function(n){return n.b$}));case"../shared/translations/locales/th.json":return import("shared").then((function(n){return n.c0}));case"../shared/translations/locales/tr.json":return import("shared").then((function(n){return n.c1}));case"../shared/translations/locales/uk.json":return import("shared").then((function(n){return n.c2}));case"../shared/translations/locales/ur-pk.json":return import("shared").then((function(n){return n.c3}));case"../shared/translations/locales/ur.json":return import("shared").then((function(n){return n.c4}));case"../shared/translations/locales/uz.json":return import("shared").then((function(n){return n.c5}));case"../shared/translations/locales/vi.json":return import("shared").then((function(n){return n.c6}));case"../shared/translations/locales/zh-cn.json":return import("shared").then((function(n){return n.c7}));case"../shared/translations/locales/zh-tw.json":return import("shared").then((function(n){return n.c8}));default:return new Promise((function(e,s){("function"==typeof queueMicrotask?queueMicrotask:setTimeout)(s.bind(null,new Error("Unknown variable dynamic import: "+n)))}))}}(`../shared/translations/locales/${r}.json`)]),C.render(a.jsx(_,{theme:E(e),children:a.jsx(S,{helpCenterPath:t,children:a.jsx(Hn,{...s,helpCenterPath:t})})}),n)}export{Jn as renderApprovalRequest,an as renderApprovalRequestList};

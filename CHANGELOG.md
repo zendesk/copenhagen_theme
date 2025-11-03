@@ -1,3 +1,10 @@
+# [4.13.0](https://github.com/zendesk/copenhagen_theme/compare/v4.12.0...v4.13.0) (2025-11-03)
+
+
+### Features
+
+* implement new webform experience for generative AI ([c858873](https://github.com/zendesk/copenhagen_theme/commit/c85887316b7f11cd0f14c8effca3c13bc299cac9))
+
 # [4.12.0](https://github.com/zendesk/copenhagen_theme/compare/v4.11.1...v4.12.0) (2025-10-29)
 
 
