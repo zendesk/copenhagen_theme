@@ -9,6 +9,8 @@ import { Span } from "@zendeskgarden/react-typography";
 import { useWysiwyg } from "./useWysiwyg";
 import styled from "styled-components";
 import type { TicketFieldObject } from "../../data-types/TicketFieldObject";
+import { useTranslation } from "react-i18next";
+import { useId } from "@zendeskgarden/container-utilities";
 
 interface TextAreaProps {
   field: TicketFieldObject;
@@ -49,6 +51,16 @@ export function TextArea({
     userRole,
     brandId,
   });
+  const { t } = useTranslation();
+  const ariaLabel = t(
+    "new-request-form.description.aria-label",
+    "Description editing area"
+  );
+  const ariaDescribedby = t(
+    "new-request-form.description.aria_describedby",
+    "Press ⌥0 for keyboard shortcuts dialog"
+  );
+  const descriptionId = useId();
 
   return (
     <StyledField>
@@ -68,8 +80,15 @@ export function TextArea({
         onChange={(e) => onChange(e.target.value)}
         rows={6}
         isResizable
+        aria-label={ariaLabel}
+        aria-describedby={descriptionId}
       />
       {error && <StyledMessage validation="error">{error}</StyledMessage>}
+      {ariaDescribedby && (
+        <Span id={descriptionId} hidden>
+          {ariaDescribedby}
+        </Span>
+      )}
     </StyledField>
   );
 }

@@ -292,3 +292,13 @@ parts:
       title: "[A11Y] Aria label value for the close modal button"
       value: "Close modal"
       screenshot: "https://drive.google.com/file/d/11qwmad1gcWHjtJ6LhyRxk1d9BlREjxwr/view?usp=sharing"
+  - translation:
+      key: "new-request-form.description.aria_label"
+      title: "[A11Y] Aria label value for the description field"
+      value: "Description editing area"
+      screenshot: "https://drive.google.com/file/d/1wDm8jmFjlUTkJlPq_OfHeJRCTanf5BOi/view?usp=drive_link"
+  - translation:
+      key: "new-request-form.description.aria_describedby"
+      title: "[A11Y] Aria-describedby value for the description field"
+      value: "Press ⌥0 for keyboard shortcuts dialog"
+      screenshot: "https://drive.google.com/file/d/1wDm8jmFjlUTkJlPq_OfHeJRCTanf5BOi/view?usp=drive_link"

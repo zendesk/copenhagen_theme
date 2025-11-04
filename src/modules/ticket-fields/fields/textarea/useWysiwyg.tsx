@@ -60,6 +60,6 @@ export function useWysiwyg({
         );
       }
     },
-    [hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId]
+    [hasWysiwyg, hasAtMentions, userRole, brandId, baseLocale]
   );
 }
