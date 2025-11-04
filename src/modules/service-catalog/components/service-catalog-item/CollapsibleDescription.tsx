@@ -4,13 +4,13 @@ import { Button } from "@zendeskgarden/react-buttons";
 import ChevronUp from "@zendeskgarden/svg-icons/src/16/chevron-up-fill.svg";
 import ChevronDown from "@zendeskgarden/svg-icons/src/16/chevron-down-fill.svg";
 import { useTranslation } from "react-i18next";
-import { getColorV8 } from "@zendeskgarden/react-theming";
+import { getColor } from "@zendeskgarden/react-theming";
 import { XXXL } from "@zendeskgarden/react-typography";
 import { ItemThumbnail } from "../item-thumbnail/ItemThumbnail";
 
 const DescriptionWrapper = styled.div`
   border-bottom: ${(props) => props.theme.borders.sm}
-    ${(props) => getColorV8("grey", 300, props.theme)};
+    ${({ theme }) => getColor({ theme, hue: "grey", shade: 300 })};
   padding-bottom: ${(props) => props.theme.space.lg};
   margin-inline-end: ${(props) => props.theme.space.xl};
 

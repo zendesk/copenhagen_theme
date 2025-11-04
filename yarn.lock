@@ -1619,10 +1619,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.23.9, @babel/runtime@npm:^7.25.0, @babel/runtime@npm:^7.26.10, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.23.9, @babel/runtime@npm:^7.25.0, @babel/runtime@npm:^7.26.10, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.27.1
   resolution: "@babel/runtime@npm:7.27.1"
   checksum: 10c0/530a7332f86ac5a7442250456823a930906911d895c0b743bf1852efc88a20a016ed4cd26d442d0ca40ae6d5448111e02a08dd638a4f1064b47d080e2875dc05
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.24.5":
+  version: 7.28.4
+  resolution: "@babel/runtime@npm:7.28.4"
+  checksum: 10c0/792ce7af9750fb9b93879cc9d1db175701c4689da890e6ced242ea0207c9da411ccf16dc04e689cc01158b28d7898c40d75598f4559109f761c12ce01e959bf7
   languageName: node
   linkType: hard
 
@@ -2452,41 +2459,41 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/core@npm:^1.6.0":
-  version: 1.6.8
-  resolution: "@floating-ui/core@npm:1.6.8"
+"@floating-ui/core@npm:^1.7.3":
+  version: 1.7.3
+  resolution: "@floating-ui/core@npm:1.7.3"
   dependencies:
-    "@floating-ui/utils": "npm:^0.2.8"
-  checksum: 10c0/d6985462aeccae7b55a2d3f40571551c8c42bf820ae0a477fc40ef462e33edc4f3f5b7f11b100de77c9b58ecb581670c5c3f46d0af82b5e30aa185c735257eb9
+    "@floating-ui/utils": "npm:^0.2.10"
+  checksum: 10c0/edfc23800122d81df0df0fb780b7328ae6c5f00efbb55bd48ea340f4af8c5b3b121ceb4bb81220966ab0f87b443204d37105abdd93d94846468be3243984144c
   languageName: node
   linkType: hard
 
-"@floating-ui/dom@npm:^1.0.0":
-  version: 1.6.12
-  resolution: "@floating-ui/dom@npm:1.6.12"
+"@floating-ui/dom@npm:^1.7.4":
+  version: 1.7.4
+  resolution: "@floating-ui/dom@npm:1.7.4"
   dependencies:
-    "@floating-ui/core": "npm:^1.6.0"
-    "@floating-ui/utils": "npm:^0.2.8"
-  checksum: 10c0/c67b39862175b175c6ac299ea970f17a22c7482cfdf3b1bc79313407bf0880188b022b878953fa69d3ce166ff2bd9ae57c86043e5dd800c262b470d877591b7d
+    "@floating-ui/core": "npm:^1.7.3"
+    "@floating-ui/utils": "npm:^0.2.10"
+  checksum: 10c0/da6166c25f9b0729caa9f498685a73a0e28251613b35d27db8de8014bc9d045158a23c092b405321a3d67c2064909b6e2a7e6c1c9cc0f62967dca5779f5aef30
   languageName: node
   linkType: hard
 
-"@floating-ui/react-dom@npm:^2.1.0":
-  version: 2.1.2
-  resolution: "@floating-ui/react-dom@npm:2.1.2"
+"@floating-ui/react-dom@npm:^2.0.0":
+  version: 2.1.6
+  resolution: "@floating-ui/react-dom@npm:2.1.6"
   dependencies:
-    "@floating-ui/dom": "npm:^1.0.0"
+    "@floating-ui/dom": "npm:^1.7.4"
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 10c0/e855131c74e68cab505f7f44f92cd4e2efab1c125796db3116c54c0859323adae4bf697bf292ee83ac77b9335a41ad67852193d7aeace90aa2e1c4a640cafa60
+  checksum: 10c0/6654834a8e73ecbdbc6cad2ad8f7abc698ac7c1800ded4d61113525c591c03d2e3b59d3cf9205859221465ea38c87af4f9e6e204703c5b7a7e85332d1eef2e18
   languageName: node
   linkType: hard
 
-"@floating-ui/utils@npm:^0.2.8":
-  version: 0.2.8
-  resolution: "@floating-ui/utils@npm:0.2.8"
-  checksum: 10c0/a8cee5f17406c900e1c3ef63e3ca89b35e7a2ed645418459a73627b93b7377477fc888081011c6cd177cac45ec2b92a6cab018c14ea140519465498dddd2d3f9
+"@floating-ui/utils@npm:^0.2.10":
+  version: 0.2.10
+  resolution: "@floating-ui/utils@npm:0.2.10"
+  checksum: 10c0/e9bc2a1730ede1ee25843937e911ab6e846a733a4488623cd353f94721b05ec2c9ec6437613a2ac9379a94c2fd40c797a2ba6fa1df2716f5ce4aa6ddb1cf9ea4
   languageName: node
   linkType: hard
 
@@ -2595,19 +2602,6 @@ __metadata:
   version: 1.2.1
   resolution: "@humanwhocodes/object-schema@npm:1.2.1"
   checksum: 10c0/c3c35fdb70c04a569278351c75553e293ae339684ed75895edc79facc7276e351115786946658d78133130c0cca80e57e2203bc07f8fa7fe7980300e8deef7db
-  languageName: node
-  linkType: hard
-
-"@hypnosphi/create-react-context@npm:^0.3.1":
-  version: 0.3.1
-  resolution: "@hypnosphi/create-react-context@npm:0.3.1"
-  dependencies:
-    gud: "npm:^1.0.0"
-    warning: "npm:^4.0.3"
-  peerDependencies:
-    prop-types: ^15.0.0
-    react: ">=0.14.0"
-  checksum: 10c0/e8072221f9f9c2c47c3ebc5bc6079f9a71938e181d2b4aa3e1d3922707bc097336d5260dad088cf47c1d6e1ff34839fa21f2505a95bddda0d7548c5a955b5691
   languageName: node
   linkType: hard
 
@@ -3589,13 +3583,6 @@ __metadata:
     "@pnpm/network.ca-file": "npm:^1.0.1"
     config-chain: "npm:^1.1.11"
   checksum: 10c0/71393dcfce85603fddd8484b486767163000afab03918303253ae97992615b91d25942f83751366cb40ad2ee32b0ae0a033561de9d878199a024286ff98b0296
-  languageName: node
-  linkType: hard
-
-"@popperjs/core@npm:^2.4.4":
-  version: 2.11.8
-  resolution: "@popperjs/core@npm:2.11.8"
-  checksum: 10c0/4681e682abc006d25eb380d0cf3efc7557043f53b6aea7a5057d0d1e7df849a00e281cd8ea79c902a35a414d7919621fc2ba293ecec05f413598e0b23d5a1e63
   languageName: node
   linkType: hard
 
@@ -5220,23 +5207,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/container-combobox@npm:^1.1.4":
-  version: 1.1.4
-  resolution: "@zendeskgarden/container-combobox@npm:1.1.4"
+"@zendeskgarden/container-combobox@npm:^2.0.5":
+  version: 2.0.6
+  resolution: "@zendeskgarden/container-combobox@npm:2.0.6"
   dependencies:
     "@babel/runtime": "npm:^7.8.4"
-    "@zendeskgarden/container-field": "npm:^3.0.15"
-    "@zendeskgarden/container-utilities": "npm:^2.0.0"
-    downshift: "npm:^8.0.0"
+    "@zendeskgarden/container-field": "npm:^3.0.20"
+    "@zendeskgarden/container-utilities": "npm:^2.0.3"
+    downshift: "npm:^9.0.0"
   peerDependencies:
     prop-types: ^15.6.1
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-  checksum: 10c0/2554ddf99d322ec782068c3aa302abe6ce55144338ff4f92f70a823876abd6bea67e8f06aa05b8f23d50e6a21390628b935a7776cbaf289095432a0dd26bed6b
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/9807981b15f2084d6b8ce7d5f452da10e7159ec9ebb0cdd6f769580ee046f679872e19e4af72a7fc93e832124ffa7a6261470d5e865e170ff887ca02e592a63e
   languageName: node
   linkType: hard
 
-"@zendeskgarden/container-field@npm:^3.0.0, @zendeskgarden/container-field@npm:^3.0.15":
+"@zendeskgarden/container-field@npm:^3.0.0":
   version: 3.0.15
   resolution: "@zendeskgarden/container-field@npm:3.0.15"
   dependencies:
@@ -5247,6 +5234,20 @@ __metadata:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
   checksum: 10c0/2b145fe826e2ecbe7f21d9a61b964d4c373fee18748bf59d437716463092ed379326019404c1a410cbbb883ed418a85f0e2db922762bbec02eba014c25f5647a
+  languageName: node
+  linkType: hard
+
+"@zendeskgarden/container-field@npm:^3.0.20":
+  version: 3.0.20
+  resolution: "@zendeskgarden/container-field@npm:3.0.20"
+  dependencies:
+    "@babel/runtime": "npm:^7.8.4"
+    "@zendeskgarden/container-utilities": "npm:^2.0.3"
+  peerDependencies:
+    prop-types: ^15.6.1
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/a10202afcdef75a70ff511b4238b54a12759c41dae2e042f3a12752e3ec86b0ecd1547b553901818f83646d547406864836b51dfc3692f727e66b3f79df11f67
   languageName: node
   linkType: hard
 
@@ -5266,19 +5267,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/container-focusvisible@npm:^2.0.3":
-  version: 2.0.6
-  resolution: "@zendeskgarden/container-focusvisible@npm:2.0.6"
-  dependencies:
-    "@babel/runtime": "npm:^7.8.4"
-  peerDependencies:
-    prop-types: ^15.6.1
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/a50e72d3d272544cb951c005e1757d0063f440850260d74f314e84a2dc1ebf4a85273750cfd0486caf1baba71fc919d2ffde5892c295f33abbd4565405ed049e
-  languageName: node
-  linkType: hard
-
 "@zendeskgarden/container-grid@npm:^3.0.14":
   version: 3.0.14
   resolution: "@zendeskgarden/container-grid@npm:3.0.14"
@@ -5293,18 +5281,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/container-menu@npm:^0.3.3":
-  version: 0.3.4
-  resolution: "@zendeskgarden/container-menu@npm:0.3.4"
+"@zendeskgarden/container-menu@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@zendeskgarden/container-menu@npm:1.0.3"
   dependencies:
     "@babel/runtime": "npm:^7.8.4"
-    "@zendeskgarden/container-selection": "npm:^3.0.10"
-    "@zendeskgarden/container-utilities": "npm:^2.0.0"
+    "@zendeskgarden/container-selection": "npm:^3.1.3"
+    "@zendeskgarden/container-utilities": "npm:^2.0.3"
   peerDependencies:
     prop-types: ^15.6.1
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-  checksum: 10c0/408afefa55a0bd8f934b434a0f18b02f8f56786eeee72f07b502a5d34dc469bbe672c4223d8ff4113433cf6cc5c6a0a27b1365c3a17947a6c73001c9e4426938
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/ad65275c0a9abc22bcf98b80863630f3450d28a8a764bfd8f266a82ced761d4347701ebd53ea3d412b20ddf5b12dd7b1295659b701ea1724ca716608e2d4bad7
   languageName: node
   linkType: hard
 
@@ -5320,20 +5308,6 @@ __metadata:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
   checksum: 10c0/e1792eebd7c77fb771feb6719a21f514f7c530802576c6ae9dfa16d3da98ee97b01e8b1efafee55c6952eeb33c85eff2a3295e5b39cedebe213d34684e020b24
-  languageName: node
-  linkType: hard
-
-"@zendeskgarden/container-pagination@npm:^1.0.0":
-  version: 1.0.6
-  resolution: "@zendeskgarden/container-pagination@npm:1.0.6"
-  dependencies:
-    "@babel/runtime": "npm:^7.8.4"
-    "@zendeskgarden/container-selection": "npm:^2.0.6"
-  peerDependencies:
-    prop-types: ^15.6.1
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-  checksum: 10c0/b454f32cad3250796be6b085cb070da8deda785d14602df81795bc0b9cb9ab42cf26ce8dad7d7561bf8eedcfd879e811854df9948dd853f38771f74099d22676
   languageName: node
   linkType: hard
 
@@ -5364,60 +5338,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/container-selection@npm:^2.0.6":
-  version: 2.0.6
-  resolution: "@zendeskgarden/container-selection@npm:2.0.6"
+"@zendeskgarden/container-selection@npm:^3.1.3":
+  version: 3.1.3
+  resolution: "@zendeskgarden/container-selection@npm:3.1.3"
   dependencies:
     "@babel/runtime": "npm:^7.8.4"
-    "@zendeskgarden/container-utilities": "npm:^1.0.6"
-  peerDependencies:
-    prop-types: ^15.6.1
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-  checksum: 10c0/988e68f0169748c082727c38344749e42f8b332ba35de5297bceac4ee0f87abcbd34e6d1cccd50b4656191a8f2b2e18198c580b2d91460e0222f75e925fa0156
-  languageName: node
-  linkType: hard
-
-"@zendeskgarden/container-selection@npm:^3.0.10":
-  version: 3.1.2
-  resolution: "@zendeskgarden/container-selection@npm:3.1.2"
-  dependencies:
-    "@babel/runtime": "npm:^7.8.4"
-    "@zendeskgarden/container-utilities": "npm:^2.0.2"
+    "@zendeskgarden/container-utilities": "npm:^2.0.3"
   peerDependencies:
     prop-types: ^15.6.1
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/9426401845fac0805d351974e22323e954ad43133a21758eb5046f105d939992d015604a4bc58d64f2f0ddbd929f965802f1f3726e18ecf5aaec8f9c170a1392
-  languageName: node
-  linkType: hard
-
-"@zendeskgarden/container-selection@npm:^3.0.9":
-  version: 3.0.9
-  resolution: "@zendeskgarden/container-selection@npm:3.0.9"
-  dependencies:
-    "@babel/runtime": "npm:^7.8.4"
-    "@zendeskgarden/container-utilities": "npm:^2.0.0"
-  peerDependencies:
-    prop-types: ^15.6.1
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-  checksum: 10c0/74d637c749fc77dc007379c2c0466e0873d0cc7295a766d13fdd7b5f9a97f08834adf492a7cbcce3098fc0cb012d49d0102d54cbd2d5e40e65efdc0c5c559c6c
-  languageName: node
-  linkType: hard
-
-"@zendeskgarden/container-slider@npm:^0.1.11":
-  version: 0.1.14
-  resolution: "@zendeskgarden/container-slider@npm:0.1.14"
-  dependencies:
-    "@babel/runtime": "npm:^7.8.4"
-    "@zendeskgarden/container-utilities": "npm:^2.0.2"
-    lodash.debounce: "npm:^4.0.8"
-  peerDependencies:
-    prop-types: ^15.6.1
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/b816b047718bc785660813a43cefe4f3576fe2fe01bd9d3977ac2d7fa8a21017aa5653aaf91be92fe5e678cf368733b29546802ec61173873519b3f02b48c982
+  checksum: 10c0/e0f279e8665640e9013c09163280f7bcba30857e91feb2517165b982483314720e8ab99a4b4427bc89b8a3b45c51dd7c5014b1d591029f6a8cc0218491bee705
   languageName: node
   linkType: hard
 
@@ -5435,18 +5366,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/container-tooltip@npm:^1.0.16":
-  version: 1.0.20
-  resolution: "@zendeskgarden/container-tooltip@npm:1.0.20"
+"@zendeskgarden/container-tooltip@npm:^2.1.0":
+  version: 2.1.1
+  resolution: "@zendeskgarden/container-tooltip@npm:2.1.1"
   dependencies:
     "@babel/runtime": "npm:^7.8.4"
-    "@zendeskgarden/container-utilities": "npm:^2.0.2"
-    react-uid: "npm:^2.2.0"
+    "@zendeskgarden/container-utilities": "npm:^2.0.3"
   peerDependencies:
     prop-types: ^15.6.1
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/9e79d704a33b29305abc11c74e66e29ea79ddd4b445f10e8a02315eb7b5dee5be21ebc66e1c31fbda6f083109487e6c0807649c867a0e11526c2f999fcd3ce4f
+  checksum: 10c0/4808defd7d52dd461f90f1608e18689faf0631bd3eab91e94814b4a492c0358c2357fc7bf8a1014f06f0d254f04d6665a26e6b6c60031cfdf5aad4c861b0b363
   languageName: node
   linkType: hard
 
@@ -5460,19 +5390,6 @@ __metadata:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
   checksum: 10c0/a26837e187ad2b56666b65026f84e86ee429ae22d0f3041529ebac21605823041b95650f0ce428b571ce4c80fe4d0a874fd825b2d6bff1bb125c9dfc9cabecef
-  languageName: node
-  linkType: hard
-
-"@zendeskgarden/container-utilities@npm:^1.0.6":
-  version: 1.0.14
-  resolution: "@zendeskgarden/container-utilities@npm:1.0.14"
-  dependencies:
-    "@babel/runtime": "npm:^7.8.4"
-    "@reach/auto-id": "npm:^0.18.0"
-  peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-  checksum: 10c0/9d30b274496ea77d06d4823cd35772f370ade8f7fcf1dc76e5d7ac0968b3dbb73b5667b2efba6145e46d2bc34f66add7892e5a39403fa0ef8f67facb2bce00f0
   languageName: node
   linkType: hard
 
@@ -5502,6 +5419,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@zendeskgarden/container-utilities@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@zendeskgarden/container-utilities@npm:2.0.3"
+  dependencies:
+    "@babel/runtime": "npm:^7.8.4"
+    "@reach/auto-id": "npm:^0.18.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/fbfe8b2b05a6fab07bec8c84b98f9a7896419a622a03c8b6be21792cce5b6c197315a16460fdd520bd0d1fe10b9978b8e67c2376d44ab1786f19e8202f95caf7
+  languageName: node
+  linkType: hard
+
 "@zendeskgarden/css-variables@npm:6.4.6":
   version: 6.4.6
   resolution: "@zendeskgarden/css-variables@npm:6.4.6"
@@ -5509,310 +5439,310 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-accordions@npm:8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-accordions@npm:8.76.9"
+"@zendeskgarden/react-accordions@npm:9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-accordions@npm:9.12.0"
   dependencies:
     "@zendeskgarden/container-accordion": "npm:^3.0.0"
     "@zendeskgarden/container-utilities": "npm:^2.0.0"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/4986f5b45f91864a5b116d4ba1d207369e145d2df7ffe2a2d72fcd71b7369ea7f2c6f15c42d8a1d7d0c315131a74c77cb02a2d7e696582b4b0af0d9ca28a3db2
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/5045c51c0aae2f0203bf946e09a5253e10a5569b2cf7c99038dee95d5b2bf2963e9aa31f1f79bf81055af233214e4206ee3f6781707581f1afe533161875f756
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-avatars@npm:8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-avatars@npm:8.76.9"
+"@zendeskgarden/react-avatars@npm:9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-avatars@npm:9.12.0"
   dependencies:
+    "@zendeskgarden/react-typography": "npm:^9.12.0"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/93dd4a03214046972e78f9189db5415029088eb896075012572f11368870f46c18eb77f5c17d1c4f91ffd32ed0c2153dad48499b199daaf2ad153846e1f7fed5
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/89ab3bc84bf8b317c868a8d767a4a36e70cf84c8bc572bebf5444a41ccd232384f9774fb2180d4921b93e0b8552b8d6fa7efc36b53ca253fe0550e9fd0bf6c7e
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-breadcrumbs@npm:8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-breadcrumbs@npm:8.76.9"
+"@zendeskgarden/react-breadcrumbs@npm:9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-breadcrumbs@npm:9.12.0"
   dependencies:
     "@zendeskgarden/container-breadcrumb": "npm:^1.0.8"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/04c04ca9afc378db05fef8b0ca35f66ba4a97c49134f939c5af84e23dc596e82610ad4e6a9a8fe6fc9ccb76b710fa68b6b3abbe7e792da2fd8fc0b8390a04aa0
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/7d994a65da747f271dbc58ef7a4b38ffd7c0dc69c5d9b9414bc133ba965e8468b6e77d04ab1aceb39369bf9453d0261d2ce8743a272be4b00dfe163e3f294642
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-buttons@npm:8.76.9, @zendeskgarden/react-buttons@npm:^8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-buttons@npm:8.76.9"
+"@zendeskgarden/react-buttons@npm:9.12.0, @zendeskgarden/react-buttons@npm:^9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-buttons@npm:9.12.0"
   dependencies:
-    "@zendeskgarden/container-selection": "npm:^3.0.9"
     "@zendeskgarden/container-utilities": "npm:^2.0.0"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
-    react-merge-refs: "npm:^1.1.0"
+    react-merge-refs: "npm:^2.0.0"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/ddf83c0e4cdd95a2da3c3e046c8a3457c1a303e757d962c267fb50001d7d422f9770c3e0e819dcdf6cb6fd3cd78656520c7e74e84afd63127e0f75321749298d
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/4215f63389a3c6797ce7149139f0dc08b95f41d6066995dc95eabc7a06977f737714b86e77663f794a177f715b2ed5d8dd894055555ce60e34d63501bb54b5d8
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-datepickers@npm:8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-datepickers@npm:8.76.9"
+"@zendeskgarden/react-datepickers@npm:9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-datepickers@npm:9.12.0"
   dependencies:
+    "@floating-ui/react-dom": "npm:^2.0.0"
     "@zendeskgarden/container-utilities": "npm:^2.0.0"
-    date-fns: "npm:^3.6.0"
+    date-fns: "npm:^4.0.0"
     prop-types: "npm:^15.5.7"
-    react-popper: "npm:^1.3.4"
+    react-merge-refs: "npm:^2.0.0"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/cacb02b584ffcfb775b4648cd57cab35d2c7efb71b4c518213365f5d4224d7825be871f8ad368ca732294e0c63db1e7080d96d11da98b9f18f98bbebdf5c5c6d
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/ee97183cd1580998bc11b0140bd8a69c052264482f2495aae3c110e23ac089ea4a06d33f07da409cda7f8b8471669fb2a6e2394c11f9ea61fca8557e0ba870f7
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-dropdowns.next@npm:8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-dropdowns.next@npm:8.76.9"
+"@zendeskgarden/react-dropdowns@npm:9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-dropdowns@npm:9.12.0"
   dependencies:
-    "@floating-ui/react-dom": "npm:^2.1.0"
-    "@zendeskgarden/container-combobox": "npm:^1.1.4"
-    "@zendeskgarden/container-menu": "npm:^0.3.3"
+    "@floating-ui/react-dom": "npm:^2.0.0"
+    "@zendeskgarden/container-combobox": "npm:^2.0.5"
+    "@zendeskgarden/container-menu": "npm:^1.0.3"
     "@zendeskgarden/container-utilities": "npm:^2.0.0"
-    "@zendeskgarden/react-buttons": "npm:^8.76.9"
-    "@zendeskgarden/react-forms": "npm:^8.76.9"
-    "@zendeskgarden/react-tags": "npm:^8.76.9"
-    "@zendeskgarden/react-tooltips": "npm:^8.76.9"
+    "@zendeskgarden/react-buttons": "npm:^9.12.0"
+    "@zendeskgarden/react-forms": "npm:^9.12.0"
+    "@zendeskgarden/react-tags": "npm:^9.12.0"
+    "@zendeskgarden/react-tooltips": "npm:^9.12.0"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.7.2"
-    react-merge-refs: "npm:^1.1.0"
+    react-merge-refs: "npm:^2.0.0"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^5.1.0
-  checksum: 10c0/ea1899bd434de3b1cc5cf592904b71bb123f4c35a3d597fe4ceb92a5154025a8cb74a48d43bfbdb5673943f7218454367b3bb8000c0044d9f87a2420d954ab0d
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/e48f81f2a243c35fd288d2599e0f6812e80311b8ab61ca468daaa4533dcaca3c0c075e85e025869778d30770f84df085cb4a017643c6130ea5f31d2b2a1d20f0
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-forms@npm:8.76.9, @zendeskgarden/react-forms@npm:^8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-forms@npm:8.76.9"
+"@zendeskgarden/react-forms@npm:9.12.0, @zendeskgarden/react-forms@npm:^9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-forms@npm:9.12.0"
   dependencies:
     "@zendeskgarden/container-field": "npm:^3.0.0"
-    "@zendeskgarden/container-slider": "npm:^0.1.11"
     "@zendeskgarden/container-utilities": "npm:^2.0.0"
     lodash.debounce: "npm:^4.0.8"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
-    react-merge-refs: "npm:^1.1.0"
+    react-merge-refs: "npm:^2.0.0"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/191c92921b6f3292ff28607c48c930402e832b04e3fdf9190b880808bdb587a27a4469ddd71de86b3f257f8bcbd678126c2d4c415b9f0460acae0c51787296a9
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/d68336718cd3a85e7c8d8d927c795454f8435acdb466d22ca5683e673db91deec1b873f526f7ca5e701c8737e1d9f8476b042e8ecefbc88f79b4999b875ef060
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-grid@npm:8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-grid@npm:8.76.9"
+"@zendeskgarden/react-grid@npm:9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-grid@npm:9.12.0"
   dependencies:
     "@zendeskgarden/container-splitter": "npm:^2.0.17"
     "@zendeskgarden/container-utilities": "npm:^2.0.0"
-    "@zendeskgarden/react-buttons": "npm:^8.76.9"
-    "@zendeskgarden/react-tooltips": "npm:^8.76.9"
+    "@zendeskgarden/react-buttons": "npm:^9.12.0"
+    "@zendeskgarden/react-tooltips": "npm:^9.12.0"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
-    react-merge-refs: "npm:^1.1.0"
+    react-merge-refs: "npm:^2.0.0"
     use-resize-observer: "npm:^9.1.0"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/a3913276ac068d2df419a6cfe264f2098ee993328f72d783ab21741b41298d1d8336bb83f658abfeb4980ec11aec3afedc2d2a8c6b141288466a578491f7a53d
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/47b1586c30df3bfff595ca5df56b75aa82f175ab7920503d87815a0d7f13adfd3a6a4cce5ce033f0956eafbe30c00ede5390d3438996a511db3fc5fb582beaf5
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-loaders@npm:8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-loaders@npm:8.76.9"
+"@zendeskgarden/react-loaders@npm:9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-loaders@npm:9.12.0"
   dependencies:
     "@zendeskgarden/container-schedule": "npm:^2.0.9"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/6dc5baf6d59354c43c3376815d183e9a034a379838bdf620df4b66d30b8db6913002b4b1beae42151a8e4ead458eedcc98a024347de5bafadcda13b16f942f62
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/2569b1675601a0b8e60bbfe10f7a1d8a17f03ad3724273a6f97ecfef00bbe91d1e20fa5994938c198c7d6446cb4f8187de58bb3ea4b3a46704e9d8abcb79aa42
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-modals@npm:8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-modals@npm:8.76.9"
+"@zendeskgarden/react-modals@npm:9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-modals@npm:9.12.0"
   dependencies:
-    "@popperjs/core": "npm:^2.4.4"
-    "@zendeskgarden/container-focusvisible": "npm:^2.0.3"
+    "@floating-ui/react-dom": "npm:^2.0.0"
     "@zendeskgarden/container-modal": "npm:^1.0.15"
     "@zendeskgarden/container-utilities": "npm:^2.0.0"
+    "@zendeskgarden/react-buttons": "npm:^9.12.0"
     dom-helpers: "npm:^5.1.0"
     prop-types: "npm:^15.5.7"
-    react-merge-refs: "npm:^1.1.0"
-    react-popper: "npm:^2.2.3"
+    react-merge-refs: "npm:^2.0.0"
     react-transition-group: "npm:^4.4.2"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/62014f0eb4bc03636c390bfce24c1617e8edb2a315c1c0c3f60f9c65048374a32150bc0624cc06d2e389bc5e8394441f0cbc94a7f441f2cb6badeb3f673f56ed
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/c6a24dc81b9f38022cf1add038565a3811022da04b6f09906fa59f350bdffb7f05706b2d0461d5d5c5a9765d617fffa68136bc25b9466da36daebb24c5518f35
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-notifications@npm:8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-notifications@npm:8.76.9"
+"@zendeskgarden/react-notifications@npm:9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-notifications@npm:9.12.0"
   dependencies:
-    "@zendeskgarden/react-buttons": "npm:^8.76.9"
+    "@zendeskgarden/react-buttons": "npm:^9.12.0"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
     react-transition-group: "npm:^4.4.2"
     react-uid: "npm:^2.3.1"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/e6b4d2e94c674f27226e94c8d0fc4dd8b9f7d5181382202b5ab078453e274625ec58f932b2fca0ac0aa4da7b5e79fefa60d5e930d530ce27276c76d69a93bd2d
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/6204a3791fc3bb85490555c26f891a26cc7ae543e76e38f17d2692db8091553f7de1d37989e6d94fd5e0b5dac25aed666e7569b6cb0a039e7cdd0a5e139aeb9b
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-pagination@npm:8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-pagination@npm:8.76.9"
+"@zendeskgarden/react-pagination@npm:9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-pagination@npm:9.12.0"
   dependencies:
-    "@zendeskgarden/container-pagination": "npm:^1.0.0"
     "@zendeskgarden/container-utilities": "npm:^2.0.0"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/afd71c80708c8aba2edbc47f90eb0b99b677619c36192f36dcc559878013cfe19d46e0b910efeef3ce1f15f97dbba7d1b6738a2fd500c13d1c25cac35a89c48b
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/6ffae2bc70985d8f58b8347ae709d6044a8148df522355912b296d18846901e808cd47ae29f0881d8ad5cc88518c11d6903e2d8ba8e3e1c71b44fc87f3ef1dc0
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-tables@npm:8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-tables@npm:8.76.9"
+"@zendeskgarden/react-tables@npm:9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-tables@npm:9.12.0"
   dependencies:
     "@zendeskgarden/container-utilities": "npm:^2.0.0"
+    "@zendeskgarden/react-buttons": "npm:^9.12.0"
     dom-helpers: "npm:^5.1.0"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/a6cc63674c9722f0ac4c1879d486d0434d3913d93756bb5e612ad65421d3da69e41054763a1ecefab322a85e36efb5613b4dfc7bd11fd01a1ebff99317cfc506
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/6946f4403fa10d8007a86ddc253074ed6cc71f9c4189f2cd76040a3545c520966b2375082cdab888eac889c651f94473f6a31a9194431bbcf9179b258db5953e
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-tags@npm:8.76.9, @zendeskgarden/react-tags@npm:^8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-tags@npm:8.76.9"
+"@zendeskgarden/react-tags@npm:9.12.0, @zendeskgarden/react-tags@npm:^9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-tags@npm:9.12.0"
   dependencies:
     "@zendeskgarden/container-utilities": "npm:^2.0.0"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/e654a17c148d430635705d06fc6338b9fcb3524cf14112fa12513798c5937ae0d1c73a0b12d87ce49eb8f3edebfb309479e13832291e17eeeb097c10d88c7675
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/4a9f9e18c649fe968ad8ac368505c423a4f756b43fe5f81712560ceffaa87833406c79807e0f435fc8023d36431a1a421f7c90f7a44f6b4377154c99969e7da9
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-theming@npm:8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-theming@npm:8.76.9"
+"@zendeskgarden/react-theming@npm:9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-theming@npm:9.12.0"
   dependencies:
-    "@zendeskgarden/container-focusvisible": "npm:^2.0.3"
-    "@zendeskgarden/container-utilities": "npm:^2.0.0"
+    "@floating-ui/react-dom": "npm:^2.0.0"
+    color2k: "npm:^2.0.3"
+    lodash.get: "npm:^4.4.2"
     lodash.memoize: "npm:^4.1.2"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/8e022ba095b6b16db1bc4cd77e9c79a11e6946ddaf1ca863647857bb34dd2c0699780d726912b442cc261fc953570d6ffc161378b3a0272c9ffa3ee9ecdb64d2
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^4.2.0 || ^5.3.1 || ^6.0.0
+  checksum: 10c0/3d90e685b722f108f8dbde8d25f2c1cfca3a80a6472cb0884217dd49bf6615f2dc3c42f93bc809f9725f84864f2486b151b67e675a51d2b7ea699393402d51f1
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-tooltips@npm:8.76.9, @zendeskgarden/react-tooltips@npm:^8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-tooltips@npm:8.76.9"
+"@zendeskgarden/react-tooltips@npm:9.12.0, @zendeskgarden/react-tooltips@npm:^9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-tooltips@npm:9.12.0"
   dependencies:
-    "@zendeskgarden/container-tooltip": "npm:^1.0.16"
+    "@floating-ui/react-dom": "npm:^2.0.0"
+    "@zendeskgarden/container-tooltip": "npm:^2.1.0"
     "@zendeskgarden/container-utilities": "npm:^2.0.0"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
-    react-merge-refs: "npm:^1.1.0"
-    react-popper: "npm:^1.3.4"
+    react-merge-refs: "npm:^2.0.0"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/a8b2827a980f2a88059d30ebb65605d11943e8cbd04bb99f79069ffc06d6ec94697f9402cf80266142d83088b12845d0e6c905ca3c697814ff86b7022f4e95db
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/23bdd99c533b886c4dbf468d5084358130c6c96082cee26877973455d968c7659722d942887e12249b480c858c6159228558cbe2e740222dc19aa37c32457158
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-typography@npm:8.76.9":
-  version: 8.76.9
-  resolution: "@zendeskgarden/react-typography@npm:8.76.9"
+"@zendeskgarden/react-typography@npm:9.12.0, @zendeskgarden/react-typography@npm:^9.12.0":
+  version: 9.12.0
+  resolution: "@zendeskgarden/react-typography@npm:9.12.0"
   dependencies:
     "@zendeskgarden/container-scrollregion": "npm:^1.0.9"
     polished: "npm:^4.3.1"
-    prism-react-renderer: "npm:^1.1.1"
+    prism-react-renderer: "npm:^1.3.5"
     prop-types: "npm:^15.5.7"
   peerDependencies:
-    "@zendeskgarden/react-theming": ^8.75.0 || ^9.0.0
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    styled-components: ^4.2.0 || ^5.0.0
-  checksum: 10c0/76aad0ecef1957b2fc1e34575c56defbfcb0a2db3da71380c40b52dbec6a241a2ca0895c2d0c61486c404482a1400279cf07a9ab83a4b8d1928e52f524911a21
+    "@zendeskgarden/react-theming": ">=9.0.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/d7bca35904eaa797a61bfb150fc8af2e0959976b2c7b11d136e4feabcc7b68c586f6bf9dffcb4fe586c2d7aaaeb262caa815bb3cecba814760413fb24a676853
   languageName: node
   linkType: hard
 
@@ -7613,6 +7543,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"color2k@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "color2k@npm:2.0.3"
+  checksum: 10c0/e7c13d212c9d1abb1690e378bbc0a6fb1751e4b02e9a73ba3b2ade9d54da673834597d342791d577d1ce400ec486c7f92c5098f9fa85cd113bcfde57420a2bb9
+  languageName: node
+  linkType: hard
+
 "colors@npm:^1.4.0":
   version: 1.4.0
   resolution: "colors@npm:1.4.0"
@@ -7703,10 +7640,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"compute-scroll-into-view@npm:^2.0.4":
-  version: 2.0.4
-  resolution: "compute-scroll-into-view@npm:2.0.4"
-  checksum: 10c0/397ef7c1f2d48692bc31ddae77c621ec74caeae9c7d4fa2b955f68d036d27c52382f393a2d5cf9ced4d31847cdb0dd810addbe7d6ab51d5d854bbd294abb82a0
+"compute-scroll-into-view@npm:^3.1.0":
+  version: 3.1.1
+  resolution: "compute-scroll-into-view@npm:3.1.1"
+  checksum: 10c0/59761ed62304a9599b52ad75d0d6fbf0669ee2ab7dd472fdb0ad9da36628414c014dea7b5810046560180ad30ffec52a953d19297f66a1d4f3aa0999b9d2521d
   languageName: node
   linkType: hard
 
@@ -7953,23 +7890,23 @@ __metadata:
     "@zendesk/zcli": "npm:1.0.0-beta.52"
     "@zendeskgarden/container-grid": "npm:^3.0.14"
     "@zendeskgarden/container-utilities": "npm:^2.0.2"
-    "@zendeskgarden/react-accordions": "npm:8.76.9"
-    "@zendeskgarden/react-avatars": "npm:8.76.9"
-    "@zendeskgarden/react-breadcrumbs": "npm:8.76.9"
-    "@zendeskgarden/react-buttons": "npm:8.76.9"
-    "@zendeskgarden/react-datepickers": "npm:8.76.9"
-    "@zendeskgarden/react-dropdowns.next": "npm:8.76.9"
-    "@zendeskgarden/react-forms": "npm:8.76.9"
-    "@zendeskgarden/react-grid": "npm:8.76.9"
-    "@zendeskgarden/react-loaders": "npm:8.76.9"
-    "@zendeskgarden/react-modals": "npm:8.76.9"
-    "@zendeskgarden/react-notifications": "npm:8.76.9"
-    "@zendeskgarden/react-pagination": "npm:8.76.9"
-    "@zendeskgarden/react-tables": "npm:8.76.9"
-    "@zendeskgarden/react-tags": "npm:8.76.9"
-    "@zendeskgarden/react-theming": "npm:8.76.9"
-    "@zendeskgarden/react-tooltips": "npm:8.76.9"
-    "@zendeskgarden/react-typography": "npm:8.76.9"
+    "@zendeskgarden/react-accordions": "npm:9.12.0"
+    "@zendeskgarden/react-avatars": "npm:9.12.0"
+    "@zendeskgarden/react-breadcrumbs": "npm:9.12.0"
+    "@zendeskgarden/react-buttons": "npm:9.12.0"
+    "@zendeskgarden/react-datepickers": "npm:9.12.0"
+    "@zendeskgarden/react-dropdowns": "npm:9.12.0"
+    "@zendeskgarden/react-forms": "npm:9.12.0"
+    "@zendeskgarden/react-grid": "npm:9.12.0"
+    "@zendeskgarden/react-loaders": "npm:9.12.0"
+    "@zendeskgarden/react-modals": "npm:9.12.0"
+    "@zendeskgarden/react-notifications": "npm:9.12.0"
+    "@zendeskgarden/react-pagination": "npm:9.12.0"
+    "@zendeskgarden/react-tables": "npm:9.12.0"
+    "@zendeskgarden/react-tags": "npm:9.12.0"
+    "@zendeskgarden/react-theming": "npm:9.12.0"
+    "@zendeskgarden/react-tooltips": "npm:9.12.0"
+    "@zendeskgarden/react-typography": "npm:9.12.0"
     "@zendeskgarden/svg-icons": "npm:8.0.0"
     concurrently: "npm:8.0.1"
     dompurify: "npm:3.2.5"
@@ -8350,10 +8287,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^3.6.0":
-  version: 3.6.0
-  resolution: "date-fns@npm:3.6.0"
-  checksum: 10c0/0b5fb981590ef2f8e5a3ba6cd6d77faece0ea7f7158948f2eaae7bbb7c80a8f63ae30b01236c2923cf89bb3719c33aeb150c715ea4fe4e86e37dcf06bed42fb6
+"date-fns@npm:^4.0.0":
+  version: 4.1.0
+  resolution: "date-fns@npm:4.1.0"
+  checksum: 10c0/b79ff32830e6b7faa009590af6ae0fb8c3fd9ffad46d930548fbb5acf473773b4712ae887e156ba91a7b3dc30591ce0f517d69fd83bd9c38650fdc03b4e0bac8
   languageName: node
   linkType: hard
 
@@ -8462,20 +8399,6 @@ __metadata:
     babel-plugin-macros:
       optional: true
   checksum: 10c0/f8612cd5b00aab58b18bb95572dca08dc2d49720bfa7201a444c3dae430291e8a06d4928614a6ec8764d713927f44bce9c990d3b8238fca2f430990ddc17c070
-  languageName: node
-  linkType: hard
-
-"deep-equal@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "deep-equal@npm:1.1.1"
-  dependencies:
-    is-arguments: "npm:^1.0.4"
-    is-date-object: "npm:^1.0.1"
-    is-regex: "npm:^1.0.4"
-    object-is: "npm:^1.0.1"
-    object-keys: "npm:^1.1.1"
-    regexp.prototype.flags: "npm:^1.2.0"
-  checksum: 10c0/473d5dd1d707afd5ad3068864765590591b049d0e0d9a01931599dbbd820e35f09d0a42faa6e4644deb7cf6b7dc90f7bfdf5559f42279d67f714209b62036212
   languageName: node
   linkType: hard
 
@@ -8842,18 +8765,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"downshift@npm:^8.0.0":
-  version: 8.1.0
-  resolution: "downshift@npm:8.1.0"
+"downshift@npm:^9.0.0":
+  version: 9.0.10
+  resolution: "downshift@npm:9.0.10"
   dependencies:
-    "@babel/runtime": "npm:^7.14.8"
-    compute-scroll-into-view: "npm:^2.0.4"
-    prop-types: "npm:^15.7.2"
-    react-is: "npm:^17.0.2"
-    tslib: "npm:^2.3.0"
+    "@babel/runtime": "npm:^7.24.5"
+    compute-scroll-into-view: "npm:^3.1.0"
+    prop-types: "npm:^15.8.1"
+    react-is: "npm:18.2.0"
+    tslib: "npm:^2.6.2"
   peerDependencies:
     react: ">=16.12.0"
-  checksum: 10c0/bcc7ea9cf317442e4035cff05f0f223c6c05868d008589bd82287c7b022286aee17ce9173a9e33cbf747759abe7cabb8431976ea2e32cf9064aa3778b87e77c3
+  checksum: 10c0/e7bd18616fdd61e2e05d68adc66147cef7ee6e17584a7cc4034efab049e7a5af7fb45c7fc9112ec3928b3b990ca00dc8129d361c8a3aedbc44819420a541b4ec
   languageName: node
   linkType: hard
 
@@ -11048,13 +10971,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gud@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "gud@npm:1.0.0"
-  checksum: 10c0/a4db6edc18e2c4e3a22dc9e639e40a4e5650d53dae9cf384a96d5380dfa17ddda376cf6b7797a5c30d140d2532e5a69d167bdb70c2c151dd673253bac6b027f3
-  languageName: node
-  linkType: hard
-
 "gulp-sort@npm:^2.0.0":
   version: 2.0.0
   resolution: "gulp-sort@npm:2.0.0"
@@ -11753,7 +11669,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-arguments@npm:^1.0.4, is-arguments@npm:^1.1.1":
+"is-arguments@npm:^1.1.1":
   version: 1.1.1
   resolution: "is-arguments@npm:1.1.1"
   dependencies:
@@ -12069,7 +11985,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-regex@npm:^1.0.4, is-regex@npm:^1.1.4":
+"is-regex@npm:^1.1.4":
   version: 1.1.4
   resolution: "is-regex@npm:1.1.4"
   dependencies:
@@ -13579,6 +13495,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.get@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "lodash.get@npm:4.4.2"
+  checksum: 10c0/48f40d471a1654397ed41685495acb31498d5ed696185ac8973daef424a749ca0c7871bf7b665d5c14f5cc479394479e0307e781f61d5573831769593411be6e
+  languageName: node
+  linkType: hard
+
 "lodash.isfunction@npm:^3.0.9":
   version: 3.0.9
   resolution: "lodash.isfunction@npm:3.0.9"
@@ -13717,7 +13640,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -14924,7 +14847,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"object-is@npm:^1.0.1, object-is@npm:^1.1.5":
+"object-is@npm:^1.1.5":
   version: 1.1.5
   resolution: "object-is@npm:1.1.5"
   dependencies:
@@ -15659,13 +15582,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"popper.js@npm:^1.14.4":
-  version: 1.16.1
-  resolution: "popper.js@npm:1.16.1"
-  checksum: 10c0/1c1a826f757edb5b8c2049dfd7a9febf6ae1e9d0e51342fc715b49a0c1020fced250d26484619883651e097c5764bbcacd2f31496e3646027f079dd83e072681
-  languageName: node
-  linkType: hard
-
 "possible-typed-array-names@npm:^1.0.0":
   version: 1.0.0
   resolution: "possible-typed-array-names@npm:1.0.0"
@@ -15759,7 +15675,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prism-react-renderer@npm:^1.1.1":
+"prism-react-renderer@npm:^1.3.5":
   version: 1.3.5
   resolution: "prism-react-renderer@npm:1.3.5"
   peerDependencies:
@@ -15853,7 +15769,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.5.7, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.5.7, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -16108,13 +16024,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-fast-compare@npm:^3.0.1":
-  version: 3.2.2
-  resolution: "react-fast-compare@npm:3.2.2"
-  checksum: 10c0/0bbd2f3eb41ab2ff7380daaa55105db698d965c396df73e6874831dbafec8c4b5b08ba36ff09df01526caa3c61595247e3269558c284e37646241cba2b90a367
-  languageName: node
-  linkType: hard
-
 "react-i18next@npm:^14.1.0":
   version: 14.1.0
   resolution: "react-i18next@npm:14.1.0"
@@ -16133,6 +16042,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-is@npm:18.2.0, react-is@npm:^18.0.0":
+  version: 18.2.0
+  resolution: "react-is@npm:18.2.0"
+  checksum: 10c0/6eb5e4b28028c23e2bfcf73371e72cd4162e4ac7ab445ddae2afe24e347a37d6dc22fae6e1748632cd43c6d4f9b8f86dcf26bf9275e1874f436d129952528ae0
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -16147,48 +16063,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^18.0.0":
-  version: 18.2.0
-  resolution: "react-is@npm:18.2.0"
-  checksum: 10c0/6eb5e4b28028c23e2bfcf73371e72cd4162e4ac7ab445ddae2afe24e347a37d6dc22fae6e1748632cd43c6d4f9b8f86dcf26bf9275e1874f436d129952528ae0
-  languageName: node
-  linkType: hard
-
-"react-merge-refs@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "react-merge-refs@npm:1.1.0"
-  checksum: 10c0/afb937156d834a058e5021535a63fd8a35984365c38b613478c31186da920b3b469e38b0b161a2075fbf5db7118fb8e96bb8a52a563f271d8f8f166fe8ffe2a4
-  languageName: node
-  linkType: hard
-
-"react-popper@npm:^1.3.4":
-  version: 1.3.11
-  resolution: "react-popper@npm:1.3.11"
-  dependencies:
-    "@babel/runtime": "npm:^7.1.2"
-    "@hypnosphi/create-react-context": "npm:^0.3.1"
-    deep-equal: "npm:^1.1.1"
-    popper.js: "npm:^1.14.4"
-    prop-types: "npm:^15.6.1"
-    typed-styles: "npm:^0.0.7"
-    warning: "npm:^4.0.2"
-  peerDependencies:
-    react: 0.14.x || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 10c0/d5dd1d0d4b5a3407134681b42a079fce525c94bce892ad177515d54a8cf64203eecbc30231476367e916aaff91221f5b6abd5afc207a86c698f35b7254178488
-  languageName: node
-  linkType: hard
-
-"react-popper@npm:^2.2.3":
-  version: 2.3.0
-  resolution: "react-popper@npm:2.3.0"
-  dependencies:
-    react-fast-compare: "npm:^3.0.1"
-    warning: "npm:^4.0.2"
-  peerDependencies:
-    "@popperjs/core": ^2.0.0
-    react: ^16.8.0 || ^17 || ^18
-    react-dom: ^16.8.0 || ^17 || ^18
-  checksum: 10c0/23f93540537ca4c035425bb8d5e51b11131fbc921d7ac1d041d0ae557feac8c877f3a012d36b94df8787803f52ed81e6df9257ac9e58719875f7805518d6db3f
+"react-merge-refs@npm:^2.0.0":
+  version: 2.1.1
+  resolution: "react-merge-refs@npm:2.1.1"
+  checksum: 10c0/b68cbc4ea51fd96f77247733388738630769d928f32958e63262ce43dff10c6b20f18a0483c6a640a1ffba48f32be26059d4ee9711881cacc63297b01311c8f6
   languageName: node
   linkType: hard
 
@@ -16207,7 +16085,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-uid@npm:^2.2.0, react-uid@npm:^2.3.1":
+"react-uid@npm:^2.3.1":
   version: 2.3.3
   resolution: "react-uid@npm:2.3.3"
   dependencies:
@@ -16422,7 +16300,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"regexp.prototype.flags@npm:^1.2.0, regexp.prototype.flags@npm:^1.5.0":
+"regexp.prototype.flags@npm:^1.5.0":
   version: 1.5.0
   resolution: "regexp.prototype.flags@npm:1.5.0"
   dependencies:
@@ -18364,7 +18242,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2, tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.4.0, tslib@npm:^2.4.1, tslib@npm:^2.6.2":
+"tslib@npm:^2, tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.4.1, tslib@npm:^2.6.2":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 10c0/e03a8a4271152c8b26604ed45535954c0a45296e32445b4b87f8a5abdb2421f40b59b4ca437c4346af0f28179780d604094eb64546bee2019d903d01c6c19bdb
@@ -18583,13 +18461,6 @@ __metadata:
   version: 2.12.0
   resolution: "typed-query-selector@npm:2.12.0"
   checksum: 10c0/069509887ecfff824a470f5f93d300cc9223cb059a36c47ac685f2812c4c9470340e07615893765e4264cef1678507532fa78f642fd52f276b589f7f5d791f79
-  languageName: node
-  linkType: hard
-
-"typed-styles@npm:^0.0.7":
-  version: 0.0.7
-  resolution: "typed-styles@npm:0.0.7"
-  checksum: 10c0/ec159f0e538364750cf9b8f19136375df64ad364fda355e6f7a7216ebffc67f18b436722c5c6853c89f70e6507eb69e5061ceb9334fa1f54902c0f6be1b985fe
   languageName: node
   linkType: hard
 
@@ -19096,15 +18967,6 @@ __metadata:
   dependencies:
     makeerror: "npm:1.0.12"
   checksum: 10c0/a17e037bccd3ca8a25a80cb850903facdfed0de4864bd8728f1782370715d679fa72e0a0f5da7c1c1379365159901e5935f35be531229da53bbfc0efdabdb48e
-  languageName: node
-  linkType: hard
-
-"warning@npm:^4.0.2, warning@npm:^4.0.3":
-  version: 4.0.3
-  resolution: "warning@npm:4.0.3"
-  dependencies:
-    loose-envify: "npm:^1.0.0"
-  checksum: 10c0/aebab445129f3e104c271f1637fa38e55eb25f968593e3825bd2f7a12bd58dc3738bb70dc8ec85826621d80b4acfed5a29ebc9da17397c6125864d72301b937e
   languageName: node
   linkType: hard
 

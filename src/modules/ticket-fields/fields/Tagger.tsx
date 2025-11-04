@@ -1,16 +1,13 @@
 import type {
   IComboboxProps,
   ISelectedOption,
-} from "@zendeskgarden/react-dropdowns.next";
+} from "@zendeskgarden/react-dropdowns";
 import {
-  Field as GardenField,
-  Label,
-  Hint,
+  Field,
   Combobox,
-  Message,
   Option,
   OptGroup,
-} from "@zendeskgarden/react-dropdowns.next";
+} from "@zendeskgarden/react-dropdowns";
 import { Span } from "@zendeskgarden/react-typography";
 import { useState, useRef, useEffect } from "react";
 import { useNestedOptions } from "./useNestedOptions";
@@ -60,13 +57,13 @@ export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
   };
 
   return (
-    <GardenField>
-      <Label>
+    <Field>
+      <Field.Label>
         {label}
         {required && <Span aria-hidden="true">*</Span>}
-      </Label>
+      </Field.Label>
       {description && (
-        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+        <Field.Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <Combobox
         ref={wrapperRef}
@@ -104,7 +101,7 @@ export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
           )
         )}
       </Combobox>
-      {error && <Message validation="error">{error}</Message>}
-    </GardenField>
+      {error && <Field.Message validation="error">{error}</Field.Message>}
+    </Field>
   );
 }

@@ -1,10 +1,4 @@
-import {
-  Field as GardenField,
-  Hint,
-  Textarea,
-  Label,
-  Message,
-} from "@zendeskgarden/react-forms";
+import { Field as GardenField, Textarea } from "@zendeskgarden/react-forms";
 import { Span } from "@zendeskgarden/react-typography";
 import { useWysiwyg } from "./useWysiwyg";
 import styled from "styled-components";
@@ -26,7 +20,7 @@ const StyledField = styled(GardenField)`
   }
 `;
 
-const StyledMessage = styled(Message)`
+const StyledMessage = styled(GardenField.Message)`
   .ck.ck-editor + & {
     margin-top: ${(props) => props.theme.space.xs};
   }
@@ -52,12 +46,12 @@ export function TextArea({
 
   return (
     <StyledField>
-      <Label>
+      <StyledField.Label>
         {label}
         {required && <Span aria-hidden="true">*</Span>}
-      </Label>
+      </StyledField.Label>
       {description && (
-        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+        <StyledField.Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <Textarea
         ref={ref}

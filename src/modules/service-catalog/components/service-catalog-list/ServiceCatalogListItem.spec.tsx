@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
-import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
+import { DEFAULT_THEME, getColor } from "@zendeskgarden/react-theming";
 import ServiceCatalogListItem from "./ServiceCatalogListItem";
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import { userEvent } from "@testing-library/user-event";
@@ -84,7 +84,9 @@ describe("ServiceCatalogListItem", () => {
       const itemContainer = screen.getByTestId(
         "service-catalog-list-item-container"
       );
-      expect(itemContainer).toHaveStyle(`color: ${theme.colors.foreground}`);
+      expect(itemContainer).toHaveStyle(
+        `color: ${getColor({ theme, variable: "foreground" })}}`
+      );
     });
 
     it("should use primaryHue as card border color on hover", async () => {
