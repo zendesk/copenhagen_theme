@@ -1,4 +1,4 @@
-import { Col, Grid, Row } from "@zendeskgarden/react-grid";
+import { Grid } from "@zendeskgarden/react-grid";
 import { Skeleton } from "@zendeskgarden/react-loaders";
 import styled from "styled-components";
 
@@ -6,7 +6,7 @@ const StyledGrid = styled(Grid)`
   padding: 0;
 `;
 
-const StyledCol = styled(Col)`
+const StyledCol = styled(Grid.Col)`
   @media (min-width: 0px) {
     margin-bottom: ${(props) => props.theme.space.md};
   }
@@ -21,12 +21,12 @@ const SkeletonCol = () => (
 export const LoadingState = () => {
   return (
     <StyledGrid>
-      <Row wrap="wrap">
+      <Grid.Row wrap="wrap">
         <SkeletonCol />
         <SkeletonCol />
         <SkeletonCol />
         <SkeletonCol />
-      </Row>
+      </Grid.Row>
     </StyledGrid>
   );
 };

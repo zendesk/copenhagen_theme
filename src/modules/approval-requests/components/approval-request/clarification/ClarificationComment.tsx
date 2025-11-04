@@ -37,7 +37,7 @@ const NameAndTimestampCol = styled(Col)`
 const StyledCircle = styled(Circle)`
   width: ${({ theme }) => theme.space.xs};
   height: ${({ theme }) => theme.space.xs};
-  color: ${({ theme }) => getColor("grey", 600, theme)};
+  color: ${({ theme }) => getColor({ theme, hue: "grey", shade: 600 })};
 `;
 
 export interface ClarificationCommentProps {

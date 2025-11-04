@@ -31,7 +31,9 @@ const Container = styled.div<{ showCommentHeader: boolean }>`
   display: flex;
   flex-direction: column;
   border-top: ${({ showCommentHeader, theme }) =>
-    showCommentHeader ? `1px solid ${getColor("grey", 200, theme)}` : "none"};
+    showCommentHeader
+      ? `1px solid ${getColor({ theme, hue: "grey", shade: 200 })}`
+      : "none"};
   padding-top: 16px;
 `;
 

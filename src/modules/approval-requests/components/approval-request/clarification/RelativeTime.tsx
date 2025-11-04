@@ -13,7 +13,7 @@ import { getColor } from "@zendeskgarden/react-theming";
 import { SM } from "@zendeskgarden/react-typography";
 
 const StyledTimestamp = styled(SM)`
-  color: ${({ theme }) => getColor("grey", 600, theme)};
+  color: ${({ theme }) => getColor({ theme, hue: "grey", shade: 600 })};
   align-self: center;
   justify-content: center;
   padding-top: 1px;

@@ -20,14 +20,15 @@ const HeadsetBadgeWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }) => getColor("grey", 100, theme)};
+  background-color: ${({ theme }) =>
+    getColor({ theme, hue: "grey", shade: 100 })};
   border: ${({ theme }) => theme.borders.sm};
 `;
 
 const HeadsetIcon = styled(HeadsetBadge)`
   width: 9px;
   height: 9px;
-  color: ${({ theme }) => getColor("grey", 900, theme)};
+  color: ${({ theme }) => getColor({ theme, hue: "grey", shade: 900 })};
 `;
 
 interface AvatarWithBadgeProps {

@@ -1,10 +1,4 @@
-import {
-  Field as GardenField,
-  Hint,
-  Label,
-  MediaInput,
-  Message,
-} from "@zendeskgarden/react-forms";
+import { Field as GardenField, MediaInput } from "@zendeskgarden/react-forms";
 import type { TicketFieldObject } from "../data-types/TicketFieldObject";
 import { Span } from "@zendeskgarden/react-typography";
 import { useTranslation } from "react-i18next";
@@ -39,7 +33,7 @@ export function CreditCard({ field, onChange }: CreditCardProps): JSX.Element {
 
   return (
     <GardenField>
-      <Label>
+      <GardenField.Label>
         {label}
         {required && <Span aria-hidden="true">*</Span>}
         <DigitsHintSpan>
@@ -48,9 +42,9 @@ export function CreditCard({ field, onChange }: CreditCardProps): JSX.Element {
             "(Last 4 digits)"
           )}
         </DigitsHintSpan>
-      </Label>
+      </GardenField.Label>
       {description && (
-        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+        <GardenField.Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <MediaInput
         start={<CreditCardIcon />}
@@ -63,7 +57,9 @@ export function CreditCard({ field, onChange }: CreditCardProps): JSX.Element {
         maxLength={4}
         placeholder="XXXX"
       />
-      {error && <Message validation="error">{error}</Message>}
+      {error && (
+        <GardenField.Message validation="error">{error}</GardenField.Message>
+      )}
     </GardenField>
   );
 }

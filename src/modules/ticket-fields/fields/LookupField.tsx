@@ -1,12 +1,5 @@
-import type { IComboboxProps } from "@zendeskgarden/react-dropdowns.next";
-import {
-  Field as GardenField,
-  Label,
-  Hint,
-  Combobox,
-  Option,
-  Message,
-} from "@zendeskgarden/react-dropdowns.next";
+import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
+import { Field, Combobox, Option } from "@zendeskgarden/react-dropdowns";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type {
   TicketFieldObject,
@@ -262,13 +255,13 @@ export function LookupField({
   };
 
   return (
-    <GardenField>
-      <Label>
+    <Field>
+      <Field.Label>
         {label}
         {required && <Span aria-hidden="true">*</Span>}
-      </Label>
+      </Field.Label>
       {description && (
-        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+        <Field.Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <Combobox
         inputProps={{ required }}
@@ -322,8 +315,8 @@ export function LookupField({
             </Option>
           ))}
       </Combobox>
-      {error && <Message validation="error">{error}</Message>}
+      {error && <Field.Message validation="error">{error}</Field.Message>}
       <input type="hidden" name={name} value={selectedOption?.value} />
-    </GardenField>
+    </Field>
   );
 }

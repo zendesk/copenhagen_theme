@@ -2,8 +2,6 @@ import {
   FileUpload,
   Field as GardenField,
   Input,
-  Label,
-  Message,
   FileList,
 } from "@zendeskgarden/react-forms";
 import { useCallback } from "react";
@@ -212,8 +210,10 @@ export function Attachments({
 
   return (
     <GardenField>
-      <Label>{label}</Label>
-      {error && <Message validation="error">{error}</Message>}
+      <GardenField.Label>{label}</GardenField.Label>
+      {error && (
+        <GardenField.Message validation="error">{error}</GardenField.Message>
+      )}
       <FileUpload {...getRootProps()} isDragging={isDragActive}>
         {isDragActive ? (
           <span>
