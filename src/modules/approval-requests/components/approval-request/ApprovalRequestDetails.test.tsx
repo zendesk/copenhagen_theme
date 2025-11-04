@@ -1,12 +1,7 @@
-import { screen, render } from "@testing-library/react";
-import type { ReactElement } from "react";
-import { ThemeProvider } from "@zendeskgarden/react-theming";
-import ApprovalRequestDetails from "./ApprovalRequestDetails";
+import { render } from "../../../test/render";
+import { screen } from "@testing-library/react";
 import type { ApprovalRequest } from "../../types";
-
-const renderWithTheme = (ui: ReactElement) => {
-  return render(<ThemeProvider>{ui}</ThemeProvider>);
-};
+import ApprovalRequestDetails from "./ApprovalRequestDetails";
 
 const mockApprovalRequest: ApprovalRequest = {
   id: "123",
@@ -47,7 +42,7 @@ const mockApprovalRequest: ApprovalRequest = {
 
 describe("ApprovalRequestDetails", () => {
   it("renders the basic approval request details without the decision notes and decided date", () => {
-    renderWithTheme(
+    render(
       <ApprovalRequestDetails
         approvalRequest={mockApprovalRequest}
         baseLocale="en-US"
@@ -83,7 +78,7 @@ describe("ApprovalRequestDetails", () => {
       ],
     };
 
-    renderWithTheme(
+    render(
       <ApprovalRequestDetails
         approvalRequest={approvalRequestWithNotesAndDecision}
         baseLocale="en-US"
@@ -104,7 +99,7 @@ describe("ApprovalRequestDetails", () => {
       decided_at: "2024-02-21T15:45:00Z",
     };
 
-    renderWithTheme(
+    render(
       <ApprovalRequestDetails
         approvalRequest={withdrawnRequest}
         baseLocale="en-US"
@@ -137,7 +132,7 @@ describe("ApprovalRequestDetails", () => {
       ],
     };
 
-    renderWithTheme(
+    render(
       <ApprovalRequestDetails
         approvalRequest={withdrawnWithPriorApproval}
         baseLocale="en-US"
@@ -170,7 +165,7 @@ describe("ApprovalRequestDetails", () => {
       ],
     };
 
-    renderWithTheme(
+    render(
       <ApprovalRequestDetails
         approvalRequest={approvedRequest}
         baseLocale="en-US"

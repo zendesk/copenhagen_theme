@@ -1,17 +1,10 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { ThemeProvider, DEFAULT_THEME } from "@zendeskgarden/react-theming";
+import { render } from "../../test/render";
+import { screen, waitFor } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
 import { GenerativeAnswerBotModal } from "./GenerativeAnswerBotModal";
 import * as shared from "../../shared";
 import * as csrfToken from "../fetchCsrfToken";
 import { FeedbackType } from "../data-types";
-
-// Mock i18next
-jest.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string, defaultValue: string) => defaultValue || key,
-  }),
-}));
 
 jest.mock("@zendeskgarden/svg-icons/src/12/sparkle-fill.svg", () => {
   const SvgrMock = () => <span />;
@@ -82,12 +75,10 @@ const renderWithMock = (mock = mockGenerativeResponse) => {
   }) as jest.Mock;
 
   render(
-    <ThemeProvider theme={DEFAULT_THEME}>
-      <GenerativeAnswerBotModal
-        requestId={mockRequestId}
-        redirectTo={mockRedirectTo}
-      />
-    </ThemeProvider>
+    <GenerativeAnswerBotModal
+      requestId={mockRequestId}
+      redirectTo={mockRedirectTo}
+    />
   );
 };
 

@@ -5,7 +5,8 @@ const config = {
   transform: {
     "^.+.tsx?$": ["ts-jest", {}],
   },
-  setupFilesAfterEnv: ["@testing-library/jest-dom"],
+  transformIgnorePatterns: ["node_modules/(?!(react-merge-refs)/)"],
+  setupFilesAfterEnv: ["@testing-library/jest-dom", "<rootDir>/jest.setup.js"],
 };
 
 export default config;

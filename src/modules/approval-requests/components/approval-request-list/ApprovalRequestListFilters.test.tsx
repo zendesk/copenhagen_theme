@@ -1,17 +1,12 @@
-import { screen, render, waitFor } from "@testing-library/react";
+import { render } from "../../../test/render";
+import { screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import type { ReactElement } from "react";
-import { ThemeProvider } from "@zendeskgarden/react-theming";
 import ApprovalRequestListFilters from "./ApprovalRequestListFilters";
 
 jest.mock(
   "@zendeskgarden/svg-icons/src/16/search-stroke.svg",
   () => "svg-mock"
 );
-
-const renderWithTheme = (ui: ReactElement) => {
-  return render(<ThemeProvider>{ui}</ThemeProvider>);
-};
 
 const mockSetApprovalRequestStatus = jest.fn();
 const mockSetSearchTerm = jest.fn();
@@ -24,7 +19,7 @@ describe("ApprovalRequestListFilters", () => {
   it("renders the status filter with all options", async () => {
     const user = userEvent.setup();
 
-    renderWithTheme(
+    render(
       <ApprovalRequestListFilters
         approvalRequestStatus="any"
         setApprovalRequestStatus={mockSetApprovalRequestStatus}
@@ -55,7 +50,7 @@ describe("ApprovalRequestListFilters", () => {
   it("calls setApprovalRequestStatus when the status filter changes", async () => {
     const user = userEvent.setup();
 
-    renderWithTheme(
+    render(
       <ApprovalRequestListFilters
         approvalRequestStatus="any"
         setApprovalRequestStatus={mockSetApprovalRequestStatus}
@@ -80,7 +75,7 @@ describe("ApprovalRequestListFilters", () => {
   it("calls setSearchTerm when the search input changes", async () => {
     const user = userEvent.setup();
 
-    renderWithTheme(
+    render(
       <ApprovalRequestListFilters
         approvalRequestStatus="any"
         setApprovalRequestStatus={mockSetApprovalRequestStatus}

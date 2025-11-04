@@ -1,15 +1,10 @@
-import { screen, render } from "@testing-library/react";
-import type { ReactElement } from "react";
-import { ThemeProvider } from "@zendeskgarden/react-theming";
+import { render } from "../../../test/render";
+import { screen } from "@testing-library/react";
 import ApprovalRequestBreadcrumbs from "./ApprovalRequestBreadcrumbs";
-
-const renderWithTheme = (ui: ReactElement) => {
-  return render(<ThemeProvider>{ui}</ThemeProvider>);
-};
 
 describe("ApprovalRequestBreadcrumbs", () => {
   it("renders breadcrumbs with organization name when organization exists", () => {
-    renderWithTheme(
+    render(
       <ApprovalRequestBreadcrumbs
         helpCenterPath="/hc/en-us"
         organizations={[{ id: 1, name: "Test Organization" }]}
@@ -30,7 +25,7 @@ describe("ApprovalRequestBreadcrumbs", () => {
   });
 
   it("renders breadcrumbs without organization name when no organizations exist", () => {
-    renderWithTheme(
+    render(
       <ApprovalRequestBreadcrumbs
         helpCenterPath="/hc/en-us"
         organizations={[]}
