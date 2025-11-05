@@ -32,6 +32,10 @@ export function createTheme(settings: Settings): IGardenTheme {
             ...DEFAULT_THEME.colors.variables.light.foreground,
             default: settings.text_color,
           },
+          border: {
+            ...DEFAULT_THEME.colors.variables.light.border,
+            default: "neutralHue.600",
+          },
         },
       },
     },
