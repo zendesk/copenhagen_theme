@@ -1,3 +1,10 @@
+## [4.13.1](https://github.com/zendesk/copenhagen_theme/compare/v4.13.0...v4.13.1) (2025-11-05)
+
+
+### Bug Fixes
+
+* add text truncation for long labels ([4ea83be](https://github.com/zendesk/copenhagen_theme/commit/4ea83be51666553460169fe6dbb140ff7785776e))
+
 # [4.13.0](https://github.com/zendesk/copenhagen_theme/compare/v4.12.0...v4.13.0) (2025-11-03)
 
 

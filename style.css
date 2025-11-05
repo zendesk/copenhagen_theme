@@ -3491,6 +3491,9 @@ ul {
 .request-details dd {
   padding: 0 10px;
   width: 60%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .request-details dd::after {
   content: "\a";
