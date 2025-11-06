@@ -37,8 +37,7 @@ a {
 abbr[title] {
   border-bottom: none;
   text-decoration: underline;
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 b,
@@ -470,6 +469,7 @@ ul {
 .visibility-hidden {
   border: 0;
   clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
   clip-path: inset(50%);
   height: 1px;
   margin: -1px;
@@ -720,9 +720,7 @@ ul {
   margin: 0;
   border: 0;
   font-weight: 700;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   white-space: nowrap;
   width: 100%;
   -webkit-touch-callout: none;
@@ -773,9 +771,7 @@ ul {
   margin: 0;
   border: 0;
   font-weight: 700;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   white-space: nowrap;
   width: 100%;
   -webkit-touch-callout: none;
@@ -1867,8 +1863,7 @@ ul {
   display: grid;
   grid-template-columns: [left] 1fr [right];
   grid-template-rows: [top] auto [center] auto [bottom];
-  -moz-column-gap: 8px;
-       column-gap: 8px;
+  column-gap: 8px;
 }
 @media (min-width: 768px) {
   .search {
@@ -1929,18 +1924,13 @@ ul {
   border-style: solid;
   border-width: 1px;
   padding: 16px;
-  -moz-appearance: none;
-       appearance: none;
+  appearance: none;
   -webkit-appearance: none;
   box-sizing: border-box;
   color: #0f172a;
   width: 100%;
   font-size: 0.875rem;
   margin-bottom: 0px;
-}
-.search input[type=search]::-moz-placeholder {
-  opacity: 1;
-  color: #0f172a;
 }
 .search input[type=search]::placeholder {
   opacity: 1;
@@ -1959,13 +1949,11 @@ ul {
 .search-full {
   grid-template-rows: [top] 1fr [bottom];
   grid-template-columns: [left] 1fr [right];
-  -moz-column-gap: 0;
-       column-gap: 0;
+  column-gap: 0;
   row-gap: 0;
 }
 .search-full input[type=search] {
-  -moz-column-gap: 0;
-       column-gap: 0;
+  column-gap: 0;
   row-gap: 0;
 }
 .search-transparent input[type=search] {
@@ -2066,6 +2054,7 @@ section.hero-article::before, section.hero-search-results::before, section.hero-
   height: 200vw;
   width: 200vw;
   display: block;
+  background: url($tiled_bg);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2082,17 +2071,17 @@ section.hero-article .h1, section.hero-search-results .h1, section.hero-category
   margin: 32px 0;
 }
 section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before, section.hero-search::before, section.hero-activities::before, section.hero-error::before {
-  background: url(\$tiled_bg);
+  background: url($tiled_bg);
 }
 section.hero-user-profile::before {
-  background: url(\$assets-qoria-bg-png);
+  background: url($assets-qoria-bg-png);
 }
 section.hero-article, section.hero-request, section.hero-user-profile, section.hero-activities {
   padding-bottom: 14rem;
   margin-bottom: -13rem;
 }
 section.hero-home {
-  background-image: url(\$knowledge_base_banner);
+  background-image: url($knowledge_base_banner);
   padding-top: 140px;
   background-size: cover;
   background-position: center;
@@ -2494,6 +2483,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .recent-activity-accessibility-label {
   border: 0;
   clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
   clip-path: inset(50%);
   height: 1px;
   margin: -1px;
@@ -3038,7 +3028,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article-cta {
   padding: 16px;
   margin: 32px 0;
-  background-image: url(\$article_cta_bg);
+  background-image: url($article_cta_bg);
   background-size: cover;
   background-color: #373737;
   background-blend-mode: overlay;
@@ -3194,9 +3184,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   text-decoration: none;
   color: #68768b;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
   outline: none;
   cursor: pointer;
   margin-bottom: -1px;
@@ -5458,6 +5446,7 @@ code.hljs {
 .pagination-first-text, .pagination-last-text {
   border: 0;
   clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
   clip-path: inset(50%);
   height: 1px;
   margin: -1px;

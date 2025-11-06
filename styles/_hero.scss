@@ -16,12 +16,13 @@ section.hero {
       height: 200vw;
       width: 200vw;
       display: block;
+      background: unquote("url($tiled_bg)");
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translateX(-50%) translateY(-50%) rotate(-40deg) !important;
     }
-    
+ 
     > .container {
       position: relative;
       color: #ffffff;
@@ -37,13 +38,13 @@ section.hero {
 
   &-article, &-search-results, &-category, &-request, &-section, &-search, &-activities, &-error {
     &::before {
-      background: url(\$tiled_bg);
+      background: unquote("url($tiled_bg)");
     }
   }
 
   &-user-profile {
     &::before {
-      background: url(\$assets-qoria-bg-png);
+      background: unquote("url($assets-qoria-bg-png)");
     }
   }
 
@@ -53,7 +54,7 @@ section.hero {
   }
 
   &-home {
-    background-image: url(\$knowledge_base_banner);
+    background-image: unquote("url($knowledge_base_banner)");
     padding-top: 140px;
     background-size: cover;
     background-position: center;

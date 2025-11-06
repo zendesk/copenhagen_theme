@@ -293,7 +293,7 @@
   &-cta {
     padding: $gutter;
     margin: $padding 0;
-    background-image: url(\$article_cta_bg);
+    background-image: unquote("url($article_cta_bg)");
     background-size: cover;
     background-color: #373737;
     background-blend-mode: overlay;
