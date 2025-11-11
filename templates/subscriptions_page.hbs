@@ -21,7 +21,7 @@
 
 <div class="container">
   <header class="my-activities-header">
-    <h1>{{t 'following'}}</h1>
+    <h1 id="subscriptions-h1">{{t 'following'}}</h1>
   </header>
 
   <div class="my-activities-following-header">
@@ -44,13 +44,13 @@
 
   <div id="main-content" class="requests">
     {{#if subscriptions}}
-      <table class="table my-activities-table subscriptions-table">
+      <table class="table my-activities-table subscriptions-table" aria-labelledby="subscriptions-h1">
         <thead>
           <tr>
             <th>{{t 'title'}}</th>
             <th>{{t 'type'}}</th>
             <th>{{t 'subscription'}}</th>
-            <th></th>
+            <th scope="col"><span class="visibility-hidden">{{t 'actions'}}</span></th>
           </tr>
         </thead>
         <tbody>
