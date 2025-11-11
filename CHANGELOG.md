@@ -1,3 +1,11 @@
+## [4.13.2](https://github.com/zendesk/copenhagen_theme/compare/v4.13.1...v4.13.2) (2025-11-11)
+
+
+### Bug Fixes
+
+* **a11y:** add accessible name to subscriptions table ([10c5f61](https://github.com/zendesk/copenhagen_theme/commit/10c5f6106448963333a35716a1cc1f0644c1b65d))
+* **subscriptions_page:** improve subscription table for screen readers ([356116b](https://github.com/zendesk/copenhagen_theme/commit/356116bbb7c469556e159608945df7ec8ca2993c))
+
 ## [4.13.1](https://github.com/zendesk/copenhagen_theme/compare/v4.13.0...v4.13.1) (2025-11-05)
 
 
