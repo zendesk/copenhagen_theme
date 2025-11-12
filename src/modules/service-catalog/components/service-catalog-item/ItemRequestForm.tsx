@@ -232,14 +232,10 @@ export function ItemRequestForm({
 
     if (isAssetField(field)) {
       let list = options;
-
-      if (assetTypeState.ids?.length) {
-        list = list.filter((o) =>
-          assetTypeState.ids.includes(o.item_asset_type_id ?? "")
-        );
-      }
       if (assetState.ids?.length) {
-        list = list.filter((o) => assetState.ids.includes(o.value));
+        list = list.filter((o) =>
+          assetState.ids.includes(o.item_asset_type_id ?? "")
+        );
       }
       return list;
     }
