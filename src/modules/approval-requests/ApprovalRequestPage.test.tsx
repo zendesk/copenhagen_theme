@@ -6,8 +6,15 @@ import { useApprovalRequest } from "./hooks/useApprovalRequest";
 import { ToastProvider } from "@zendeskgarden/react-notifications";
 import type { ApprovalRequest } from "./types";
 
+jest.mock("@zendeskgarden/svg-icons/src/16/headset-fill.svg", () => "svg-mock");
+jest.mock(
+  "@zendeskgarden/svg-icons/src/12/circle-sm-fill.svg",
+  () => "svg-mock"
+);
 jest.mock("./hooks/useApprovalRequest");
 const mockUseApprovalRequest = useApprovalRequest as jest.Mock;
+const mockUserAvatarUrl = "https://example.com/avatar.jpg";
+const mockUserName = "Test User";
 
 const renderWithTheme = (ui: ReactElement) => {
   return render(
@@ -69,6 +76,8 @@ describe("ApprovalRequestPage", () => {
         helpCenterPath="/hc/en-us"
         organizations={[]}
         userId={1}
+        userAvatarUrl={mockUserAvatarUrl}
+        userName={mockUserName}
       />
     );
 
@@ -91,6 +100,8 @@ describe("ApprovalRequestPage", () => {
         helpCenterPath="/hc/en-us"
         organizations={[{ id: 1, name: "Test Org" }]}
         userId={1}
+        userAvatarUrl={mockUserAvatarUrl}
+        userName={mockUserName}
       />
     );
 
@@ -114,6 +125,8 @@ describe("ApprovalRequestPage", () => {
         helpCenterPath="/hc/en-us"
         organizations={[]}
         userId={2}
+        userAvatarUrl={mockUserAvatarUrl}
+        userName={mockUserName}
       />
     );
 
@@ -137,6 +150,8 @@ describe("ApprovalRequestPage", () => {
         helpCenterPath="/hc/en-us"
         organizations={[]}
         userId={3} // Different from assignee_user.id
+        userAvatarUrl={mockUserAvatarUrl}
+        userName={mockUserName}
       />
     );
 
@@ -166,6 +181,8 @@ describe("ApprovalRequestPage", () => {
           helpCenterPath="/hc/en-us"
           organizations={[]}
           userId={1}
+          userAvatarUrl={mockUserAvatarUrl}
+          userName={mockUserName}
         />
       )
     ).toThrow("Failed to fetch");

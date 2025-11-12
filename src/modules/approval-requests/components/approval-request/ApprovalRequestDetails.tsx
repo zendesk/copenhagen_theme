@@ -145,8 +145,8 @@ function ApprovalRequestDetails({
           <Col size={4}>
             <FieldLabel>
               {t(
-                "approval-requests.request.approval-request-details.comment",
-                "Comment"
+                "approval-requests.request.approval-request-details.comment_v2",
+                "Reason"
               )}
             </FieldLabel>
           </Col>
