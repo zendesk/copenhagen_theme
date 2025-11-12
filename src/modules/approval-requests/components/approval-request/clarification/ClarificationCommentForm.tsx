@@ -6,6 +6,7 @@ import { useCommentForm } from "./hooks/useCommentForm";
 import { useSubmitComment } from "./hooks/useSubmitComment";
 import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
+import { DEFAULT_AVATAR_URL } from "./constants";
 
 interface ClarificationCommentFormProps {
   baseLocale: string;
@@ -66,12 +67,19 @@ function ClarificationCommentForm({
     markAllCommentsAsRead,
   });
 
+  console.log({ currentUserAvatarUrl });
+
   return (
     <FormContainer gutters={false}>
       <Row>
         <AvatarCol>
           <Avatar size="small">
-            <img alt={currentUserName} src={currentUserAvatarUrl} />
+            <img
+              alt={currentUserName}
+              src={
+                currentUserAvatarUrl ? currentUserAvatarUrl : DEFAULT_AVATAR_URL
+              }
+            />
           </Avatar>
         </AvatarCol>
 

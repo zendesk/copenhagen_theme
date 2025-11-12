@@ -8,29 +8,29 @@ import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
 import { RelativeTime } from "./RelativeTime";
 import AvatarWithHeadsetBadge from "./AvatarWithBadge";
 import { DEFAULT_AVATAR_URL } from "./constants";
+import Circle from "@zendeskgarden/svg-icons/src/12/circle-sm-fill.svg";
+import { getColor } from "@zendeskgarden/react-theming";
 
-export const MessageContainer = styled.div`
+const MessageContainer = styled.div`
   margin-top: ${({ theme }) => theme.space.sm};
 `;
 
-export const Body = styled.div`
+const Body = styled.div`
   margin-top: ${({ theme }) => theme.space.xs};
-`;
-
-export const Timestamp = styled.div`
-  font-size: ${({ theme }) => theme.fontSizes.sm};
 `;
 
 const AvatarCol = styled(Col)`
   max-width: 55px;
 `;
 
-const DetailsCol = styled(Col)`
-  width: 272px;
+const CircleWrapper = styled.span`
+  padding: 0px 6px;
 `;
 
-const TimestampCol = styled(Col)`
-  font-size: ${({ theme }) => theme.fontSizes.sm};
+const StyledCircle = styled(Circle)`
+  width: ${({ theme }) => theme.space.xs};
+  height: ${({ theme }) => theme.space.xs};
+  color: ${({ theme }) => getColor("grey", 600, theme)};
 `;
 
 export interface ClarificationCommentProps {
@@ -74,19 +74,20 @@ function ClarificationCommentComponent({
               </Avatar>
             )}
           </AvatarCol>
-          <DetailsCol>
-            <Row>
-              <Col alignSelf="stretch">
+          <Col>
+            <Row alignItems="start" justifyContent="start">
+              <Col>
                 <strong>{name}</strong>
-              </Col>
-              <TimestampCol alignSelf="end" textAlign="end">
+                <CircleWrapper>
+                  <StyledCircle />
+                </CircleWrapper>
                 {created_at && (
                   <RelativeTime eventTime={created_at} locale={baseLocale} />
                 )}
-              </TimestampCol>
+              </Col>
             </Row>
             <Body>{children}</Body>
-          </DetailsCol>
+          </Col>
         </Row>
       </Grid>
     </MessageContainer>

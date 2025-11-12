@@ -8,6 +8,13 @@ import {
   differenceInMinutes,
   differenceInSeconds,
 } from "date-fns";
+import styled from "styled-components";
+import { getColor } from "@zendeskgarden/react-theming";
+
+const StyledTimestamp = styled.span`
+  font-size: ${({ theme }) => theme.fontSizes.sm};
+  color: ${({ theme }) => getColor("grey", 600, theme)};
+`;
 
 const isSameDay = (date1: Date, date2: Date) => dfIsSameDay(date1, date2);
 
@@ -59,12 +66,12 @@ export const RelativeTime: React.FC<RelativeTimeProps> = ({
 
   if (elapsedSeconds < 0 || elapsedSeconds < 60) {
     return (
-      <span>
+      <StyledTimestamp>
         {
           (t("approval_request.clarification.timestamp_lessThanAMinuteAgo"),
           `< 1 minute ago`)
         }
-      </span>
+      </StyledTimestamp>
     );
   }
 
@@ -72,7 +79,7 @@ export const RelativeTime: React.FC<RelativeTimeProps> = ({
     const pluralRules = new Intl.PluralRules(locale);
     const plural = pluralRules.select(elapsedMinutes);
     return (
-      <span>
+      <StyledTimestamp>
         {
           (t("approval_request.clarification.timestamp_minutesAgo", {
             count: elapsedMinutes,
@@ -80,7 +87,7 @@ export const RelativeTime: React.FC<RelativeTimeProps> = ({
           }),
           `${elapsedMinutes} minute${plural === "one" ? "" : "s"} ago`)
         }
-      </span>
+      </StyledTimestamp>
     );
   }
 
@@ -88,34 +95,34 @@ export const RelativeTime: React.FC<RelativeTimeProps> = ({
 
   if (isSameDay(eventDate, now)) {
     return (
-      <span>
+      <StyledTimestamp>
         {
           (t("approval_request.clarification.timestamp_todayAt", {
             time: timeStr,
           }),
           `Today at ${timeStr}`)
         }
-      </span>
+      </StyledTimestamp>
     );
   }
 
   if (isYesterday(eventDate, now)) {
     return (
-      <span>
+      <StyledTimestamp>
         {
           (t("approval_request.clarification.timestamp_yesterdayAt", {
             time: timeStr,
           }),
           `Yesterday at ${timeStr}`)
         }
-      </span>
+      </StyledTimestamp>
     );
   }
 
   if (isSameYear(eventDate, now)) {
     const dateStr = formatDate(eventDate, locale);
     return (
-      <span>
+      <StyledTimestamp>
         {
           (t("approval_request.clarification.timestamp_dateAt", {
             date: dateStr,
@@ -123,13 +130,13 @@ export const RelativeTime: React.FC<RelativeTimeProps> = ({
           }),
           `${dateStr} at ${timeStr}`)
         }
-      </span>
+      </StyledTimestamp>
     );
   }
 
   const dateStr = formatDateWithYear(eventDate, locale);
   return (
-    <span>
+    <StyledTimestamp>
       {
         (t("approval_request.clarification.timestamp_dateAt", {
           date: dateStr,
@@ -137,7 +144,7 @@ export const RelativeTime: React.FC<RelativeTimeProps> = ({
         }),
         `${dateStr} at ${timeStr}`)
       }
-    </span>
+    </StyledTimestamp>
   );
 };
 
