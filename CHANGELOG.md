@@ -1,3 +1,10 @@
+## [4.13.3](https://github.com/zendesk/copenhagen_theme/compare/v4.13.2...v4.13.3) (2025-11-12)
+
+
+### Bug Fixes
+
+* correct asset filtering logic by asset types ([6b8058a](https://github.com/zendesk/copenhagen_theme/commit/6b8058aaed063b48ce4e0c31a476fd166a99d1d7))
+
 ## [4.13.2](https://github.com/zendesk/copenhagen_theme/compare/v4.13.1...v4.13.2) (2025-11-11)
 
 
