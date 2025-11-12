@@ -7,6 +7,10 @@ import { ToastProvider } from "@zendeskgarden/react-notifications";
 import type { ApprovalRequest } from "./types";
 
 jest.mock("@zendeskgarden/svg-icons/src/16/headset-fill.svg", () => "svg-mock");
+jest.mock(
+  "@zendeskgarden/svg-icons/src/12/circle-sm-fill.svg",
+  () => "svg-mock"
+);
 jest.mock("./hooks/useApprovalRequest");
 const mockUseApprovalRequest = useApprovalRequest as jest.Mock;
 const mockUserAvatarUrl = "https://example.com/avatar.jpg";

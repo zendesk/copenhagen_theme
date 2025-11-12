@@ -10,6 +10,10 @@ import { APPROVAL_REQUEST_STATES } from "../../../../constants";
 import { renderHook } from "@testing-library/react-hooks";
 import type { ApprovalClarificationFlowMessage } from "../../../../types";
 
+jest.mock(
+  "@zendeskgarden/svg-icons/src/12/circle-sm-fill.svg",
+  () => "svg-mock"
+);
 jest.mock("../hooks/useGetUnreadComments");
 jest.mock("../NewCommentIndicator");
 

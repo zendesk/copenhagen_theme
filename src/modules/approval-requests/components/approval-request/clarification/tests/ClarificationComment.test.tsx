@@ -4,6 +4,10 @@ import { type ApprovalClarificationFlowMessage } from "../../../../types";
 import { renderWithTheme } from "../../../../testHelpers";
 
 jest.mock("@zendeskgarden/svg-icons/src/16/headset-fill.svg", () => "svg-mock");
+jest.mock(
+  "@zendeskgarden/svg-icons/src/12/circle-sm-fill.svg",
+  () => "svg-mock"
+);
 
 describe("ClarificationComment", () => {
   const mockComment: ApprovalClarificationFlowMessage = {

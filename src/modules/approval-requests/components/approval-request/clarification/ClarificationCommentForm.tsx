@@ -67,8 +67,6 @@ function ClarificationCommentForm({
     markAllCommentsAsRead,
   });
 
-  console.log({ currentUserAvatarUrl });
-
   return (
     <FormContainer gutters={false}>
       <Row>

@@ -1,4 +1,4 @@
-import { screen, waitFor, act } from "@testing-library/react";
+import { screen, waitFor, act, fireEvent } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import ClarificationCommentForm from "../ClarificationCommentForm";
 import { useSubmitComment } from "../hooks/useSubmitComment";
@@ -8,11 +8,6 @@ import { renderHook } from "@testing-library/react-hooks";
 import { renderWithTheme } from "../../../../testHelpers";
 
 jest.mock("../hooks/useSubmitComment");
-
-jest.mock(
-  "@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg",
-  () => "svg-mock"
-);
 
 describe("ClarificationCommentForm", () => {
   const mockMarkAllCommentsAsRead = jest.fn();
@@ -89,8 +84,14 @@ describe("ClarificationCommentForm", () => {
 
     renderWithTheme(<ClarificationCommentForm {...props} />);
 
-    userEvent.type(screen.getByRole("textbox"), "Test comment");
-    await userEvent.click(screen.getByText(result.current.submit_button));
+    await userEvent.type(screen.getByRole("textbox"), "Test comment");
+    const submitBtn = await screen.findByRole("button", {
+      name: result.current.submit_button,
+    });
+
+    await act(async () => {
+      await userEvent.click(submitBtn);
+    });
 
     expect(handleSubmitCommentMock).toHaveBeenCalledWith("Test comment");
   });
@@ -128,13 +129,14 @@ describe("ClarificationCommentForm", () => {
     ).toBeInTheDocument();
   });
 
-  it("shows warning message when near max character limit", () => {
+  it("shows warning message when near max character limit", async () => {
     renderWithTheme(<ClarificationCommentForm {...props} />);
 
     const textarea = screen.getByRole("textbox");
     const nearMaxLengthText = "a".repeat(MAX_CHAR_COUNT - WARNING_THRESHOLD);
 
-    userEvent.type(textarea, nearMaxLengthText);
+    // using fireEvent here because userEvent.type has issues with large text inputs
+    fireEvent.change(textarea, { target: { value: nearMaxLengthText } });
 
     const warningMessage = screen.getByRole("alert");
     expect(warningMessage).toBeInTheDocument();
@@ -169,8 +171,8 @@ describe("ClarificationCommentForm", () => {
     const textarea = screen.getByRole("textbox");
 
     const longText = "a".repeat(MAX_CHAR_COUNT + 10);
-    userEvent.type(textarea, longText);
-
+    // using fireEvent here because userEvent.type has issues with large text inputs
+    fireEvent.change(textarea, { target: { value: longText } });
     expect(textarea).toHaveValue(longText.slice(0, MAX_CHAR_COUNT));
   });
 });
