@@ -168,7 +168,7 @@ describe("ApprovalRequestPage", () => {
     mockUseApprovalRequest.mockReturnValue({
       approvalRequest: null,
       setApprovalRequest: jest.fn(),
-      isLoading: true,
+      isLoading: false,
       errorFetchingApprovalRequest: error,
     });
 
