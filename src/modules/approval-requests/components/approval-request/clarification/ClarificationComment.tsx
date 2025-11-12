@@ -10,6 +10,7 @@ import AvatarWithHeadsetBadge from "./AvatarWithBadge";
 import { DEFAULT_AVATAR_URL } from "./constants";
 import Circle from "@zendeskgarden/svg-icons/src/12/circle-sm-fill.svg";
 import { getColor } from "@zendeskgarden/react-theming";
+import { MD } from "@zendeskgarden/react-typography";
 
 const MessageContainer = styled.div`
   margin-top: ${({ theme }) => theme.space.sm};
@@ -25,6 +26,12 @@ const AvatarCol = styled(Col)`
 
 const CircleWrapper = styled.span`
   padding: 0px 6px;
+`;
+
+const NameAndTimestampCol = styled(Col)`
+  display: flex;
+  flex-direction: row;
+  align-items: start;
 `;
 
 const StyledCircle = styled(Circle)`
@@ -76,15 +83,15 @@ function ClarificationCommentComponent({
           </AvatarCol>
           <Col>
             <Row alignItems="start" justifyContent="start">
-              <Col>
-                <strong>{name}</strong>
+              <NameAndTimestampCol>
+                <MD isBold>{name}</MD>
                 <CircleWrapper>
                   <StyledCircle />
                 </CircleWrapper>
                 {created_at && (
                   <RelativeTime eventTime={created_at} locale={baseLocale} />
                 )}
-              </Col>
+              </NameAndTimestampCol>
             </Row>
             <Body>{children}</Body>
           </Col>

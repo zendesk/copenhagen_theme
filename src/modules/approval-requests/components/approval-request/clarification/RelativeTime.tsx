@@ -10,10 +10,13 @@ import {
 } from "date-fns";
 import styled from "styled-components";
 import { getColor } from "@zendeskgarden/react-theming";
+import { SM } from "@zendeskgarden/react-typography";
 
-const StyledTimestamp = styled.span`
-  font-size: ${({ theme }) => theme.fontSizes.sm};
+const StyledTimestamp = styled(SM)`
   color: ${({ theme }) => getColor("grey", 600, theme)};
+  align-self: center;
+  justify-content: center;
+  padding-top: 1px;
 `;
 
 const isSameDay = (date1: Date, date2: Date) => dfIsSameDay(date1, date2);
