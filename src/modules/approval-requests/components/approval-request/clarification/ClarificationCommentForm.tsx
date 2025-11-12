@@ -6,12 +6,11 @@ import { useCommentForm } from "./hooks/useCommentForm";
 import { useSubmitComment } from "./hooks/useSubmitComment";
 import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
-import type { CurrentUser } from "../../../hooks/useCurrentUser";
-import UserIcon from "@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg";
 
 interface ClarificationCommentFormProps {
   baseLocale: string;
-  currentUser: CurrentUser;
+  currentUserAvatarUrl: string;
+  currentUserName: string;
   markAllCommentsAsRead: () => void;
 }
 
@@ -23,6 +22,7 @@ const FormContainer = styled(Grid)`
 const AvatarCol = styled(Col)`
   max-width: 55px;
 `;
+
 const ButtonsRow = styled(Row)`
   margin-top: 10px;
   margin-left: 55px;
@@ -34,7 +34,8 @@ const CancelButton = styled(Button)`
 
 function ClarificationCommentForm({
   baseLocale,
-  currentUser,
+  currentUserAvatarUrl,
+  currentUserName,
   markAllCommentsAsRead,
 }: ClarificationCommentFormProps) {
   const {
@@ -70,15 +71,7 @@ function ClarificationCommentForm({
       <Row>
         <AvatarCol>
           <Avatar size="small">
-            {currentUser?.photo?.content_url ? (
-              <img
-                alt={currentUser?.name}
-                src={currentUser?.photo?.content_url as string | undefined}
-              />
-            ) : (
-              // eslint-disable-next-line @shopify/jsx-no-hardcoded-content
-              <UserIcon role="img" aria-label="icon avatar" />
-            )}
+            <img alt={currentUserName} src={currentUserAvatarUrl} />
           </Avatar>
         </AvatarCol>
 

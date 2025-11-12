@@ -1,6 +1,5 @@
 import { screen, fireEvent, within } from "@testing-library/react";
 import ClarificationContainer from "../ClarificationContainer";
-import { useCurrentUser } from "../../../../hooks/useCurrentUser";
 import { useGetClarificationCopy } from "../hooks/useGetClarificationCopy";
 import { useGetUnreadComments } from "../hooks/useGetUnreadComments";
 import { MAX_COMMENTS } from "../constants";
@@ -11,14 +10,10 @@ import { APPROVAL_REQUEST_STATES } from "../../../../constants";
 import { renderHook } from "@testing-library/react-hooks";
 import type { ApprovalClarificationFlowMessage } from "../../../../types";
 
-jest.mock("../../../../hooks/useCurrentUser");
 jest.mock("../hooks/useGetUnreadComments");
 jest.mock("../NewCommentIndicator");
 
-jest.mock(
-  "@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg",
-  () => "svg-mock"
-);
+jest.mock("@zendeskgarden/svg-icons/src/16/headset-fill.svg", () => "svg-mock");
 
 const createClarificationFlowMessage = (
   index: number
@@ -26,20 +21,15 @@ const createClarificationFlowMessage = (
   id: `id-${index}`,
   author: {
     email: `user${index}@example.com`,
-    id: `user-${index}`,
+    id: 456,
     avatar: `https://i.pravatar.cc/150?img=${index}`,
     name: `User ${index}`,
   },
   message: `Comment message ${index}`,
-  createdAt: "2024-01-01T12:00:00Z",
+  created_at: "2024-01-01T12:00:00Z",
 });
 
 describe("ClarificationContainer", () => {
-  const mockCurrentUser = {
-    id: "user-1",
-    name: "Current User",
-  };
-
   const mockMessages = Array.from({ length: 2 }, (_, i) =>
     createClarificationFlowMessage(i + 1)
   );
@@ -50,15 +40,16 @@ describe("ClarificationContainer", () => {
   const defaultProps = {
     baseLocale,
     approvalRequestId,
+    currentUserId: 456,
+    createdByUserId: 123,
+    currentUserName: "Jane Doe",
+    currentUserAvatarUrl: "https://example.com/avatar.png",
     status: APPROVAL_REQUEST_STATES.ACTIVE,
-    clarificationFlowMessages: [],
+    clarificationFlowMessages: mockMessages,
+    hasUserViewedBefore: true,
   };
 
   beforeEach(() => {
-    (useCurrentUser as jest.Mock).mockReturnValue({
-      currentUser: mockCurrentUser,
-    });
-
     (useGetUnreadComments as jest.Mock).mockReturnValue({
       unreadComments: [],
       firstUnreadCommentKey: null,
@@ -177,25 +168,6 @@ describe("ClarificationContainer", () => {
     expect(
       screen.queryByTestId("new-comment-indicator")
     ).not.toBeInTheDocument();
-  });
-
-  it.only("displays alert when maximum number of comments reached and status is not terminal", () => {
-    const messages = Array.from({ length: MAX_COMMENTS }, (_, i) =>
-      createClarificationFlowMessage(i + 1)
-    );
-
-    renderWithTheme(
-      <ClarificationContainer
-        {...defaultProps}
-        clarificationFlowMessages={messages}
-      />
-    );
-
-    expect(screen.getByText(/Comment limit reached/)).toBeInTheDocument();
-    expect(screen.getByText(/You can't add more comments/)).toBeInTheDocument();
-
-    // Comment form should NOT render because canComment would be false
-    expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
   });
 
   it("renders ClarificationCommentForm if canComment is true", () => {

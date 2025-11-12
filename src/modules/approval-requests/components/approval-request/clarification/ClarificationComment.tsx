@@ -5,8 +5,9 @@ import { Avatar } from "@zendeskgarden/react-avatars";
 import styled from "styled-components";
 import { type ApprovalClarificationFlowMessage } from "../../../types";
 import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
-import { formatApprovalRequestDate } from "../../../utils";
-import UserIcon from "@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg";
+import { RelativeTime } from "./RelativeTime";
+import AvatarWithHeadsetBadge from "./AvatarWithBadge";
+import { DEFAULT_AVATAR_URL } from "./constants";
 
 export const MessageContainer = styled.div`
   margin-top: ${({ theme }) => theme.space.sm};
@@ -34,9 +35,10 @@ const TimestampCol = styled(Col)`
 
 export interface ClarificationCommentProps {
   baseLocale: string;
+  children?: React.ReactNode;
   comment: ApprovalClarificationFlowMessage;
   commentKey: string;
-  children?: React.ReactNode;
+  createdByUserId: number;
   markCommentAsVisible: (commentKey: string) => void;
 }
 
@@ -45,43 +47,44 @@ function ClarificationCommentComponent({
   children,
   comment,
   commentKey,
+  createdByUserId,
   markCommentAsVisible,
 }: ClarificationCommentProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const { author, createdAt } = comment;
-  const { avatar, name } = author;
+  const { author, created_at } = comment;
+  const { avatar, name, id: authorId } = author;
 
   useIntersectionObserver(containerRef, () => markCommentAsVisible(commentKey));
+  const isRequester = createdByUserId === authorId;
 
   return (
     <MessageContainer ref={containerRef}>
       <Grid gutters={false}>
         <Row>
           <AvatarCol>
-            <Avatar size="small">
-              {avatar ? (
-                <img alt={name} src={avatar} />
-              ) : (
-                // eslint-disable-next-line @shopify/jsx-no-hardcoded-content
-                <UserIcon role="img" aria-label="icon avatar" />
-              )}
-            </Avatar>
+            {isRequester ? (
+              <AvatarWithHeadsetBadge
+                photoUrl={avatar}
+                size="small"
+                name={name}
+              />
+            ) : (
+              <Avatar size="small">
+                <img alt={name} src={avatar ? avatar : DEFAULT_AVATAR_URL} />
+              </Avatar>
+            )}
           </AvatarCol>
-
           <DetailsCol>
             <Row>
               <Col alignSelf="stretch">
                 <strong>{name}</strong>
               </Col>
               <TimestampCol alignSelf="end" textAlign="end">
-                {createdAt && (
-                  <Timestamp>
-                    {formatApprovalRequestDate(createdAt, baseLocale)}
-                  </Timestamp>
+                {created_at && (
+                  <RelativeTime eventTime={created_at} locale={baseLocale} />
                 )}
               </TimestampCol>
             </Row>
-
             <Body>{children}</Body>
           </DetailsCol>
         </Row>

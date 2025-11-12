@@ -8,7 +8,7 @@ const StyledNewCommentIndicator = styled.div`
   display: flex;
   font-size: ${({ theme }) => theme.fontSizes.md};
   text-align: center;
-  padding-top: 24px;
+  padding-top: ${({ theme }) => theme.space.sm};
   padding-bottom: ${({ theme }) => theme.space.xxs};
 
   &:before,
@@ -36,8 +36,14 @@ function NewCommentIndicator({ unreadCount }: NewCommentIndicatorProps) {
   return (
     <StyledNewCommentIndicator>
       {unreadCount === 1
-        ? t("txt.approval_requests.clarification.new_comment_indicator")
-        : t("txt.approval_requests.clarification.new_comments_indicator")}
+        ? t(
+            "txt.approval_requests.clarification.new_comment_indicator",
+            "New comment"
+          )
+        : t(
+            "txt.approval_requests.clarification.new_comments_indicator",
+            "New comments"
+          )}
     </StyledNewCommentIndicator>
   );
 }

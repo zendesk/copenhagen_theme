@@ -143,11 +143,11 @@ export const useCommentForm = ({
 
         setCommentValidation("warning");
         setCharLimitMessage(
-          `${charsLeft} character${charsLeft === 1 ? "" : "s"} remaining`
-        );
-        setCharLimitMessage(
           t(`txt.approval_requests.validation.characters_remaining.${plural}`, {
             numCharacters: charsLeft,
+            defaultValue: `${charsLeft} character${
+              plural === "one" ? "" : "s"
+            } remaining`,
           })
         );
       } else if (commentValidation === "warning") {

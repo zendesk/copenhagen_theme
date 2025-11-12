@@ -1,19 +1,21 @@
 import { screen } from "@testing-library/react";
 import ClarificationComment from "../ClarificationComment";
 import { type ApprovalClarificationFlowMessage } from "../../../../types";
-import { formatApprovalRequestDate } from "../../../../utils";
 import { renderWithTheme } from "../../../../testHelpers";
+
+jest.mock("@zendeskgarden/svg-icons/src/16/headset-fill.svg", () => "svg-mock");
 
 describe("ClarificationComment", () => {
   const mockComment: ApprovalClarificationFlowMessage = {
     id: "comment-id-1",
     author: {
+      id: 123,
       email: `user@example.com`,
       avatar: "https://example.com/avatar.png",
       name: "John Doe",
     },
     message: "This is a test comment.",
-    createdAt: "2024-01-01T12:00:00Z",
+    created_at: "2024-01-01T12:00:00Z",
   } as ApprovalClarificationFlowMessage;
 
   const mockCommentKey = "some-unique-comment-key";
@@ -57,6 +59,7 @@ describe("ClarificationComment", () => {
     commentKey: mockCommentKey,
     markCommentAsVisible: mockMarkCommentAsVisible,
     children: mockComment.message,
+    createdByUserId: 999,
   };
 
   beforeAll(() => {
@@ -88,19 +91,8 @@ describe("ClarificationComment", () => {
 
   it("renders the author avatar", () => {
     renderWithTheme(<ClarificationComment {...props} />);
-    const avatar = screen.getByRole("img", { name: /avatar/i });
+    const avatar = screen.getByRole("img", { name: /John doe/i });
     expect(avatar).toBeInTheDocument();
-  });
-
-  it("renders the timestamp using the formatApprovalRequestDate output", () => {
-    const expectedTimestamp = formatApprovalRequestDate(
-      mockComment.createdAt,
-      props.baseLocale
-    );
-
-    renderWithTheme(<ClarificationComment {...props} />);
-
-    expect(screen.getByText(expectedTimestamp)).toBeInTheDocument();
   });
 
   it("handles empty children gracefully", () => {
@@ -110,6 +102,7 @@ describe("ClarificationComment", () => {
         comment={mockComment}
         commentKey={mockCommentKey}
         markCommentAsVisible={mockMarkCommentAsVisible}
+        createdByUserId={999}
       />
     );
 

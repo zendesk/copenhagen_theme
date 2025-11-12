@@ -5,8 +5,8 @@ import type { ApprovalClarificationFlowMessage } from "../../../../../types";
 import { buildCommentEntityKey } from "../../utils";
 
 describe("useGetUnreadComments with real buildCommentEntityKey", () => {
-  const approvalRequestId = "approval123";
-  const currentUserId = "current-user-id";
+  const approvalRequestId = "123";
+  const currentUserId = 456;
 
   const comment1: ApprovalClarificationFlowMessage = {
     id: "comment1-id",
@@ -17,29 +17,29 @@ describe("useGetUnreadComments with real buildCommentEntityKey", () => {
       name: "Current User",
     },
     message: "My own comment",
-    createdAt: "2024-06-01T10:00:00Z",
+    created_at: "2024-06-01T10:00:00Z",
   };
   const comment2: ApprovalClarificationFlowMessage = {
     id: "comment2-id",
     author: {
-      id: "author2-id",
+      id: 567,
       email: "jane@example.com",
       avatar: "",
       name: "Jane Doe",
     },
     message: "First comment",
-    createdAt: "2024-06-02T11:00:00Z",
+    created_at: "2024-06-02T11:00:00Z",
   };
   const comment3: ApprovalClarificationFlowMessage = {
     id: "comment3-id",
     author: {
-      id: "author3-id",
+      id: 678,
       email: "john@example.com",
       avatar: "",
       name: "John Doe",
     },
     message: "Second comment",
-    createdAt: "2024-06-03T12:00:00Z",
+    created_at: "2024-06-03T12:00:00Z",
   };
 
   const generateCommentKey = (comment: ApprovalClarificationFlowMessage) =>

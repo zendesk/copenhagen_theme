@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { useGetClarificationCopy } from "./hooks/useGetClarificationCopy";
-import { getColorV8 } from "@zendeskgarden/react-theming";
+import { getColor, getColorV8 } from "@zendeskgarden/react-theming";
 import { MD } from "@zendeskgarden/react-typography";
-import { Alert, Title } from "@zendeskgarden/react-notifications";
 import styled from "styled-components";
-import { useTranslation } from "react-i18next";
 import ClarificationCommentForm from "./ClarificationCommentForm";
 import { MAX_COMMENTS } from "./constants";
 import type {
@@ -15,18 +13,26 @@ import { buildCommentEntityKey } from "./utils";
 import { useGetUnreadComments } from "./hooks/useGetUnreadComments";
 import NewCommentIndicator from "./NewCommentIndicator";
 import ClarificationComment from "./ClarificationComment";
-import { useCurrentUser } from "../../../hooks/useCurrentUser";
+import CommentLimitAlert from "./CommentLimitAlert";
 
 interface ClarificationContainerProps {
-  status: ApprovalRequest["status"];
+  approvalRequestId: string;
   baseLocale: string;
   clarificationFlowMessages: ApprovalClarificationFlowMessage[];
-  approvalRequestId: string;
+  createdByUserId: number;
+  currentUserAvatarUrl: string;
+  currentUserId: number;
+  currentUserName: string;
+  hasUserViewedBefore: boolean;
+  status: ApprovalRequest["status"];
 }
 
-const Container = styled.div`
+const Container = styled.div<{ showCommentHeader: boolean }>`
   display: flex;
   flex-direction: column;
+  border-top: ${({ showCommentHeader, theme }) =>
+    showCommentHeader ? `1px solid ${getColor("grey", 200, theme)}` : "none"};
+  padding-top: 16px;
 `;
 
 const CommentListArea = styled.div`
@@ -34,20 +40,9 @@ const CommentListArea = styled.div`
 `;
 
 const ClarificationContent = styled(MD)`
-  padding-bottom: ${({ theme }) => theme.space.xs};
+  padding: ${({ theme }) => theme.space.xxs} 0;
   overflow-wrap: break-word;
   white-space: normal;
-`;
-
-const StyledAlert = styled(Alert)`
-  margin-top: ${({ theme }) => theme.space.md};
-  padding: ${({ theme }) => theme.space.md} ${({ theme }) => theme.space.xl};
-`;
-
-// Extra space below the alert as margin-bottom somehow collapses
-const Spacer = styled.div`
-  height: 16px;
-  flex-shrink: 0;
 `;
 
 const TitleAndDescriptionContainer = styled.div`
@@ -60,24 +55,26 @@ const StyledDescription = styled(MD)`
 `;
 
 export default function ClarificationContainer({
-  status,
+  approvalRequestId,
   baseLocale,
   clarificationFlowMessages,
-  approvalRequestId,
+  createdByUserId,
+  currentUserAvatarUrl,
+  currentUserId,
+  currentUserName,
+  hasUserViewedBefore,
+  status,
 }: ClarificationContainerProps) {
-  const { t } = useTranslation();
-  const { currentUser } = useCurrentUser();
   const copy = useGetClarificationCopy();
   const hasComments =
     clarificationFlowMessages && clarificationFlowMessages.length > 0;
   const isTerminalStatus =
-    status === "withdrawn" || status === "approved" || status === "rejected";
+    !!status &&
+    (status === "withdrawn" || status === "approved" || status === "rejected");
   const canComment =
     !isTerminalStatus && clarificationFlowMessages!.length < MAX_COMMENTS;
-  const shouldDisplayAlert =
-    status &&
-    !isTerminalStatus &&
-    clarificationFlowMessages!.length >= MAX_COMMENTS;
+
+  const showCommentHeader = !isTerminalStatus || hasComments;
 
   const {
     unreadComments,
@@ -86,7 +83,7 @@ export default function ClarificationContainer({
     markAllCommentsAsRead,
   } = useGetUnreadComments({
     comments: clarificationFlowMessages,
-    currentUserId: String(currentUser?.id),
+    currentUserId,
     approvalRequestId,
   });
 
@@ -102,17 +99,16 @@ export default function ClarificationContainer({
     };
   }, [markAllCommentsAsRead]);
 
-  console.log({ clarificationFlowMessages });
   return (
-    <Container>
-      <TitleAndDescriptionContainer>
-        <MD tag="span" isBold>
-          {copy.title}
-        </MD>
-        {canComment && (
-          <StyledDescription>{copy.description}</StyledDescription>
-        )}
-      </TitleAndDescriptionContainer>
+    <Container showCommentHeader={showCommentHeader}>
+      {showCommentHeader && (
+        <TitleAndDescriptionContainer>
+          <MD isBold>{copy.title}</MD>
+          {canComment && (
+            <StyledDescription>{copy.description}</StyledDescription>
+          )}
+        </TitleAndDescriptionContainer>
+      )}
       <CommentListArea data-testid="comment-list-area">
         {hasComments &&
           clarificationFlowMessages.map((comment) => {
@@ -124,14 +120,18 @@ export default function ClarificationContainer({
             const unreadCount = unreadComments.length;
             return (
               <React.Fragment key={`${comment.id}`}>
-                {!isTerminalStatus && unreadCount > 0 && isFirstUnread && (
-                  <NewCommentIndicator unreadCount={unreadCount} />
-                )}
+                {!isTerminalStatus &&
+                  unreadCount > 0 &&
+                  isFirstUnread &&
+                  hasUserViewedBefore && (
+                    <NewCommentIndicator unreadCount={unreadCount} />
+                  )}
                 <ClarificationContent key={comment.id}>
                   <ClarificationComment
                     baseLocale={baseLocale}
                     comment={comment}
                     commentKey={commentKey}
+                    createdByUserId={createdByUserId}
                     markCommentAsVisible={markCommentAsVisible}
                   >
                     {comment.message}
@@ -141,22 +141,17 @@ export default function ClarificationContainer({
             );
           })}
       </CommentListArea>
-      {shouldDisplayAlert && (
-        <>
-          <StyledAlert type="info">
-            <Title>
-              {t("txt.approval_requests.clarification.max_comment_alert_title")}
-            </Title>
-            {t("txt.approval_requests.clarification.max_comment_alert_message")}
-          </StyledAlert>
-          <Spacer />
-        </>
-      )}
-
+      <CommentLimitAlert
+        approvalRequestId={approvalRequestId}
+        commentCount={clarificationFlowMessages!.length}
+        currentUserId={currentUserId}
+        isTerminalStatus={isTerminalStatus}
+      />
       {canComment && (
         <ClarificationCommentForm
-          currentUser={currentUser!}
           baseLocale={baseLocale}
+          currentUserAvatarUrl={currentUserAvatarUrl}
+          currentUserName={currentUserName}
           markAllCommentsAsRead={markAllCommentsAsRead}
         />
       )}

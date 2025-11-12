@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import styled from "styled-components";
 import { MD, XXL } from "@zendeskgarden/react-typography";
 import { Spinner } from "@zendeskgarden/react-loaders";
@@ -9,8 +9,7 @@ import { useApprovalRequest } from "./hooks/useApprovalRequest";
 import type { Organization } from "../ticket-fields/data-types/Organization";
 import ApprovalRequestBreadcrumbs from "./components/approval-request/ApprovalRequestBreadcrumbs";
 import ClarificationContainer from "./components/approval-request/clarification/ClarificationContainer";
-import type { ApprovalClarificationFlowMessage } from "./types";
-import { getColor } from "@zendeskgarden/react-theming";
+import { useUserViewedApprovalStatus } from "./hooks/useUserViewedApprovalStatus";
 
 const Container = styled.div`
   display: grid;
@@ -62,9 +61,7 @@ const RightColumn = styled.div`
 `;
 
 const ClarificationArea = styled.div`
-  border-top: 1px solid ${(props) => getColor("grey", 200, props.theme)}; //#E9EBED
   grid-area: clarification;
-  padding-top: ${(props) => props.theme.space.lg};
 `;
 
 const ApproverActionsWrapper = styled.div`
@@ -79,6 +76,8 @@ export interface ApprovalRequestPageProps {
   helpCenterPath: string;
   organizations: Array<Organization>;
   userId: number;
+  userAvatarUrl: string;
+  userName: string;
 }
 
 function ApprovalRequestPage({
@@ -88,6 +87,8 @@ function ApprovalRequestPage({
   helpCenterPath,
   organizations,
   userId,
+  userAvatarUrl,
+  userName,
 }: ApprovalRequestPageProps) {
   const {
     approvalRequest,
@@ -96,11 +97,28 @@ function ApprovalRequestPage({
     isLoading,
   } = useApprovalRequest(approvalWorkflowInstanceId, approvalRequestId);
 
+  const { hasUserViewedBefore, markUserViewed } = useUserViewedApprovalStatus({
+    approvalRequestId: approvalRequest?.id,
+    currentUserId: userId,
+  });
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      markUserViewed();
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [markUserViewed]);
+
   if (error) {
     throw error;
   }
 
-  if (isLoading) {
+  if (isLoading || !approvalRequest) {
     return (
       <LoadingContainer>
         <Spinner size="64" />
@@ -109,59 +127,12 @@ function ApprovalRequestPage({
   }
 
   const showApproverActions =
-    userId === approvalRequest?.assignee_user?.id &&
-    approvalRequest?.status === "active";
+    userId === approvalRequest.assignee_user.id &&
+    approvalRequest.status === "active";
 
-  // TODO: replace with arturo check
-  const hasApprovalClaricationFeature = false;
-
-  const mockApprovalClarificationFlowMessages: ApprovalClarificationFlowMessage[] =
-    [
-      {
-        id: "msg1",
-        author: {
-          id: "user1",
-          email: "alice@example.com",
-          avatar: "",
-          name: "Alice Johnson",
-        },
-        message: "Can you clarify the budget allocation for this approval?",
-        createdAt: "2025-10-01T10:15:00Z",
-      },
-      {
-        id: "msg2",
-        author: {
-          id: "user2",
-          email: null,
-          avatar: "https://i.pravatar.cc/150?img=2",
-          name: "Bob Smith",
-        },
-        message: "Approved, pending confirmation from finance.",
-        createdAt: "2025-10-01T10:18:30Z",
-      },
-      {
-        id: "msg3",
-        author: {
-          id: "user3",
-          email: "carol@example.com",
-          avatar: "https://i.pravatar.cc/150?img=3",
-          name: "Carol Lee",
-        },
-        message: "Finance has confirmed the allocations; please proceed.",
-        createdAt: "2025-10-01T11:00:00Z",
-      },
-      {
-        id: "msg4",
-        author: {
-          id: "user1",
-          email: "alice@example.com",
-          avatar: "https://i.pravatar.cc/150?img=1",
-          name: "Alice Johnson",
-        },
-        message: "Thanks for the clarification! Moving forward with approval.",
-        createdAt: "2025-10-01T11:05:00Z",
-      },
-    ];
+  // The `clarification_flow_messages` field is only present when arturo `approvals_clarification_flow_end_users` is enabled
+  const hasClarificationEnabled =
+    approvalRequest?.clarification_flow_messages !== undefined;
 
   return (
     <>
@@ -169,12 +140,11 @@ function ApprovalRequestPage({
         helpCenterPath={helpCenterPath}
         organizations={organizations}
       />
-
       <Container>
         <LeftColumn>
-          <XXL isBold>{approvalRequest?.subject}</XXL>
-          <MD>{approvalRequest?.message}</MD>
-          {approvalRequest?.ticket_details && (
+          <XXL isBold>{approvalRequest.subject}</XXL>
+          <MD>{approvalRequest.message}</MD>
+          {approvalRequest.ticket_details && (
             <ApprovalTicketDetails ticket={approvalRequest.ticket_details} />
           )}
         </LeftColumn>
@@ -194,18 +164,24 @@ function ApprovalRequestPage({
               approvalWorkflowInstanceId={approvalWorkflowInstanceId}
               approvalRequestId={approvalRequestId}
               setApprovalRequest={setApprovalRequest}
-              assigneeUser={approvalRequest?.assignee_user}
+              assigneeUser={approvalRequest.assignee_user}
             />
           </ApproverActionsWrapper>
         )}
-
-        {hasApprovalClaricationFeature && approvalRequest && (
+        {hasClarificationEnabled && (
           <ClarificationArea>
             <ClarificationContainer
               approvalRequestId={approvalRequest.id}
-              status={approvalRequest.status}
               baseLocale={baseLocale}
-              clarificationFlowMessages={mockApprovalClarificationFlowMessages}
+              clarificationFlowMessages={
+                approvalRequest.clarification_flow_messages!
+              }
+              createdByUserId={approvalRequest.created_by_user.id}
+              currentUserAvatarUrl={userAvatarUrl}
+              currentUserId={userId}
+              currentUserName={userName}
+              hasUserViewedBefore={hasUserViewedBefore}
+              status={approvalRequest.status}
             />
           </ClarificationArea>
         )}

@@ -5,14 +5,13 @@ import type { ApprovalClarificationFlowMessage } from "../../../../types";
 interface UseGetUnreadCommentsParams {
   approvalRequestId: string;
   comments: ApprovalClarificationFlowMessage[];
-  currentUserId: string;
+  currentUserId: number;
   storageKeyPrefix?: string;
-  useSessionStorage?: boolean;
 }
 
 interface CommentReadState {
   read: boolean;
-  visible: boolean;
+  visible?: boolean;
 }
 
 interface UseGetUnreadCommentsResult {
@@ -26,11 +25,10 @@ export function useGetUnreadComments({
   comments,
   currentUserId,
   approvalRequestId,
-  storageKeyPrefix = "readComments",
 }: UseGetUnreadCommentsParams): UseGetUnreadCommentsResult {
   const storage = window.localStorage;
 
-  const localStorageKey = `${storageKeyPrefix}:${currentUserId}:${approvalRequestId}`;
+  const localStorageKey = `readComments:${currentUserId}:${approvalRequestId}`;
 
   const getLocalReadStates = useCallback((): Record<
     string,
@@ -78,26 +76,27 @@ export function useGetUnreadComments({
   };
 
   const markAllCommentsAsRead = useCallback(() => {
-    const newStates: Record<string, CommentReadState> = { ...localReadStates };
+    setLocalReadStatesState((prev) => {
+      const newStates = { ...prev };
+      Object.keys(newStates).forEach((key) => {
+        if (newStates[key]?.visible) {
+          newStates[key] = {
+            ...newStates[key],
+            read: true,
+          };
+        }
+      });
 
-    Object.keys(newStates).forEach((key) => {
-      if (newStates[key]?.visible) {
-        newStates[key] = {
-          ...newStates[key],
-          read: true,
-          visible: newStates[key]!.visible,
-        };
-      }
+      setLocalReadStates(newStates);
+
+      return newStates;
     });
-
-    setLocalReadStates(newStates);
-    setLocalReadStatesState(newStates);
-  }, [localReadStates, setLocalReadStates]);
+  }, [setLocalReadStates]);
 
   // Compute unread comments filtering out current user's comments
   const { unreadComments, firstUnreadCommentKey } = useMemo(() => {
     const filtered = comments.filter(
-      (comment) => comment.author.id !== currentUserId
+      (comment) => String(comment.author.id) !== String(currentUserId)
     );
 
     const unread = filtered.filter((comment) => {
