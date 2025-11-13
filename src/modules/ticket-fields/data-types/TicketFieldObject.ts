@@ -18,4 +18,5 @@ export interface TicketFieldObject extends BaseTicketField {
 export interface TicketFieldOptionObject {
   name: string;
   value: string;
+  serialNumber?: string;
 }
