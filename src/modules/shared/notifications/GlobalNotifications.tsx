@@ -1,10 +1,5 @@
 import { useEffect } from "react";
-import {
-  useToast,
-  Notification,
-  Title,
-  Close,
-} from "@zendeskgarden/react-notifications";
+import { useToast, Notification } from "@zendeskgarden/react-notifications";
 import type { ToastNotification } from "./ToastNotification";
 import { subscribeNotify, unsubscribeNotify } from "./notifyBus";
 
@@ -15,9 +10,9 @@ export const GlobalNotifications = () => {
     const listener = (n: ToastNotification) => {
       addToast(({ close }) => (
         <Notification type={n.type}>
-          {n.title && <Title>{n.title}</Title>}
+          {n.title && <Notification.Title>{n.title}</Notification.Title>}
           {n.message}
-          <Close onClick={close} />
+          <Notification.Close onClick={close} />
         </Notification>
       ));
     };

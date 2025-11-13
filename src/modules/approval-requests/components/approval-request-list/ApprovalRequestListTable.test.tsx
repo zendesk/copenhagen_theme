@@ -1,13 +1,8 @@
-import { screen, render } from "@testing-library/react";
+import { render } from "../../../test/render";
+import { screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import type { ReactElement } from "react";
-import { ThemeProvider } from "@zendeskgarden/react-theming";
 import ApprovalRequestListTable from "./ApprovalRequestListTable";
 import type { SearchApprovalRequest } from "../../types";
-
-const renderWithTheme = (ui: ReactElement) => {
-  return render(<ThemeProvider>{ui}</ThemeProvider>);
-};
 
 const mockApprovalRequests: SearchApprovalRequest[] = [
   {
@@ -31,7 +26,7 @@ const mockOnSortChange = jest.fn();
 
 describe("ApprovalRequestListTable", () => {
   it("renders the table headers correctly", () => {
-    renderWithTheme(
+    render(
       <ApprovalRequestListTable
         approvalRequests={[]}
         helpCenterPath="/hc/en-us"
@@ -50,7 +45,7 @@ describe("ApprovalRequestListTable", () => {
   });
 
   it("renders approval requests with the correct data", () => {
-    renderWithTheme(
+    render(
       <ApprovalRequestListTable
         approvalRequests={mockApprovalRequests}
         helpCenterPath="/hc/en-us"
@@ -82,7 +77,7 @@ describe("ApprovalRequestListTable", () => {
   });
 
   it("renders the no approval requests text when the filtered approval requests are empty", () => {
-    renderWithTheme(
+    render(
       <ApprovalRequestListTable
         approvalRequests={[]}
         helpCenterPath="/hc/en-us"
@@ -98,7 +93,7 @@ describe("ApprovalRequestListTable", () => {
   it("calls the onSortChange function if the Sent On sortable header cell is clicked", async () => {
     const user = userEvent.setup();
 
-    renderWithTheme(
+    render(
       <ApprovalRequestListTable
         approvalRequests={[]}
         helpCenterPath="/hc/en-us"

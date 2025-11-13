@@ -1,21 +1,11 @@
-import { screen, render } from "@testing-library/react";
-import type { ReactElement } from "react";
-import { ThemeProvider } from "@zendeskgarden/react-theming";
+import { screen } from "@testing-library/react";
+import { render } from "../test/render";
 import ApprovalRequestPage from "./ApprovalRequestPage";
 import { useApprovalRequest } from "./hooks/useApprovalRequest";
-import { ToastProvider } from "@zendeskgarden/react-notifications";
 import type { ApprovalRequest } from "./types";
 
 jest.mock("./hooks/useApprovalRequest");
 const mockUseApprovalRequest = useApprovalRequest as jest.Mock;
-
-const renderWithTheme = (ui: ReactElement) => {
-  return render(
-    <ToastProvider>
-      <ThemeProvider>{ui}</ThemeProvider>
-    </ToastProvider>
-  );
-};
 
 const mockApprovalRequest: ApprovalRequest = {
   id: "123",
@@ -61,7 +51,7 @@ describe("ApprovalRequestPage", () => {
       errorFetchingApprovalRequest: null,
     });
 
-    renderWithTheme(
+    render(
       <ApprovalRequestPage
         approvalWorkflowInstanceId="456"
         approvalRequestId="123"
@@ -83,7 +73,7 @@ describe("ApprovalRequestPage", () => {
       errorFetchingApprovalRequest: null,
     });
 
-    renderWithTheme(
+    render(
       <ApprovalRequestPage
         approvalWorkflowInstanceId="456"
         approvalRequestId="123"
@@ -106,7 +96,7 @@ describe("ApprovalRequestPage", () => {
       errorFetchingApprovalRequest: null,
     });
 
-    renderWithTheme(
+    render(
       <ApprovalRequestPage
         approvalWorkflowInstanceId="456"
         approvalRequestId="123"
@@ -129,7 +119,7 @@ describe("ApprovalRequestPage", () => {
       errorFetchingApprovalRequest: null,
     });
 
-    renderWithTheme(
+    render(
       <ApprovalRequestPage
         approvalWorkflowInstanceId="456"
         approvalRequestId="123"
@@ -158,7 +148,7 @@ describe("ApprovalRequestPage", () => {
     });
 
     expect(() =>
-      renderWithTheme(
+      render(
         <ApprovalRequestPage
           approvalWorkflowInstanceId="456"
           approvalRequestId="123"

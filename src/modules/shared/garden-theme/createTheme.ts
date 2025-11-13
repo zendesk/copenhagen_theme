@@ -19,9 +19,25 @@ export function createTheme(settings: Settings): IGardenTheme {
     rtl: document.dir === "rtl",
     colors: {
       ...DEFAULT_THEME.colors,
-      background: settings.background_color,
-      foreground: settings.text_color,
       primaryHue: settings.brand_color,
+      variables: {
+        ...DEFAULT_THEME.colors.variables,
+        light: {
+          ...DEFAULT_THEME.colors.variables.light,
+          background: {
+            ...DEFAULT_THEME.colors.variables.light.background,
+            default: settings.background_color,
+          },
+          foreground: {
+            ...DEFAULT_THEME.colors.variables.light.foreground,
+            default: settings.text_color,
+          },
+          border: {
+            ...DEFAULT_THEME.colors.variables.light.border,
+            default: "neutralHue.600",
+          },
+        },
+      },
     },
     components: {
       "buttons.anchor": css`
