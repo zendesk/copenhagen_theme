@@ -6,7 +6,10 @@ import { getColorV8 } from "@zendeskgarden/react-theming";
 import { useTranslation } from "react-i18next";
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import { CollapsibleDescription } from "./CollapsibleDescription";
-import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
+import type {
+  TicketFieldObject,
+  ITAMAssetOptionObject,
+} from "../../../ticket-fields/data-types/TicketFieldObject";
 import type { CustomObjectRecord } from "../../../ticket-fields/data-types/CustomObjectRecord";
 import { useAssetDataFetchers } from "../../../service-catalog/hooks/useAssetDataFetchers";
 
@@ -222,11 +225,17 @@ export function ItemRequestForm({
   const buildLookupFieldOptions = async (
     records: CustomObjectRecord[],
     field: TicketFieldObject
-  ) => {
+  ): Promise<ITAMAssetOptionObject[]> => {
     if (!Array.isArray(records) || records.length === 0) return [];
 
-    const options = records.map((rec) => {
-      const base = { name: rec.name, value: rec.id };
+    const options: ITAMAssetOptionObject[] = records.map((rec) => {
+      const base = {
+        name: rec.name,
+        value: rec.id,
+        serialNumber: rec.custom_object_fields["standard::serial_number"] as
+          | string
+          | undefined,
+      };
 
       if (rec.custom_object_key === "standard::itam_asset") {
         const fields = (rec.custom_object_fields ?? {}) as {
@@ -255,7 +264,11 @@ export function ItemRequestForm({
       }
       return list;
     }
-    return options.map(({ name, value }) => ({ name, value }));
+    return options.map(({ name, value, serialNumber }) => ({
+      name,
+      value,
+      serialNumber,
+    }));
   };
 
   return (
