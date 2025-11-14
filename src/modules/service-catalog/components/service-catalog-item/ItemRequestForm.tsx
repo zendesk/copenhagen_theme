@@ -210,7 +210,11 @@ export function ItemRequestForm({
     if (!Array.isArray(records) || records.length === 0) return [];
 
     const options = records.map((rec) => {
-      const base = { name: rec.name, value: rec.id };
+      const base = {
+        name: rec.name,
+        value: rec.id,
+        serialNumber: rec.custom_object_fields["standard::serial_number"],
+      };
 
       if (rec.custom_object_key === "standard::itam_asset") {
         const fields = (rec.custom_object_fields ?? {}) as {

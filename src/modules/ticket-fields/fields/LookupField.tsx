@@ -64,7 +64,7 @@ export interface LookupFieldProps {
   buildLookupFieldOptions?: (
     records: CustomObjectRecord[],
     field: TicketFieldObject
-  ) => Promise<{ name: string; value: string }[]>;
+  ) => Promise<TicketFieldOptionObject[]>;
 }
 
 export function LookupField({
@@ -315,7 +315,16 @@ export function LookupField({
               value={option.value}
               label={option.name}
               data-test-id={`option-${option.name}`}
-            />
+            >
+              {option.serialNumber && (
+                <>
+                  {option.name}
+                  <Option.Meta>
+                    <Span hue="grey">SN: {option.serialNumber}</Span>
+                  </Option.Meta>
+                </>
+              )}
+            </Option>
           ))}
       </Combobox>
       {error && <Message validation="error">{error}</Message>}
