@@ -54,7 +54,7 @@ export function getCustomObjectKey(targetType: string) {
 function isITAMAssetOption(
   option: TicketFieldOptionObject | ITAMAssetOptionObject
 ): option is ITAMAssetOptionObject {
-  return "serialNumber" in option || "item_asset_type_id" in option;
+  return "serialNumber" in option;
 }
 
 const EMPTY_OPTION = {
@@ -333,9 +333,8 @@ export function LookupField({
                     <Span hue="grey">
                       {t(
                         "cph-theme-ticket-fields.lookup-field.serial-number-label",
-                        "SN:"
-                      )}{" "}
-                      {option.serialNumber}
+                        "SN: {{serialNumber}}", { serialNumber: option.serialNumber }
+                      )}
                     </Span>
                   </Option.Meta>
                 </>

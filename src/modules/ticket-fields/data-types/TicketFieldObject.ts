@@ -26,5 +26,4 @@ export interface TicketFieldOptionObject {
  */
 export interface ITAMAssetOptionObject extends TicketFieldOptionObject {
   serialNumber?: string;
-  item_asset_type_id?: string;
 }
