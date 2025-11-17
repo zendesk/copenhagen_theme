@@ -55,6 +55,16 @@ const mockApprovalRequest: ApprovalRequest = {
   },
 };
 
+const baseProps = {
+  approvalWorkflowInstanceId: "456",
+  approvalRequestId: "123",
+  baseLocale: "en-US",
+  helpCenterPath: "/hc/en-us",
+  organizations: [],
+  userAvatarUrl: mockUserAvatarUrl,
+  userName: mockUserName,
+};
+
 describe("ApprovalRequestPage", () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -68,18 +78,7 @@ describe("ApprovalRequestPage", () => {
       errorFetchingApprovalRequest: null,
     });
 
-    renderWithTheme(
-      <ApprovalRequestPage
-        approvalWorkflowInstanceId="456"
-        approvalRequestId="123"
-        baseLocale="en-US"
-        helpCenterPath="/hc/en-us"
-        organizations={[]}
-        userId={1}
-        userAvatarUrl={mockUserAvatarUrl}
-        userName={mockUserName}
-      />
-    );
+    renderWithTheme(<ApprovalRequestPage {...baseProps} userId={1} />);
 
     expect(screen.getByRole("progressbar")).toBeInTheDocument();
   });
@@ -94,14 +93,9 @@ describe("ApprovalRequestPage", () => {
 
     renderWithTheme(
       <ApprovalRequestPage
-        approvalWorkflowInstanceId="456"
-        approvalRequestId="123"
-        baseLocale="en-US"
-        helpCenterPath="/hc/en-us"
+        {...baseProps}
         organizations={[{ id: 1, name: "Test Org" }]}
         userId={1}
-        userAvatarUrl={mockUserAvatarUrl}
-        userName={mockUserName}
       />
     );
 
@@ -117,18 +111,7 @@ describe("ApprovalRequestPage", () => {
       errorFetchingApprovalRequest: null,
     });
 
-    renderWithTheme(
-      <ApprovalRequestPage
-        approvalWorkflowInstanceId="456"
-        approvalRequestId="123"
-        baseLocale="en-US"
-        helpCenterPath="/hc/en-us"
-        organizations={[]}
-        userId={2}
-        userAvatarUrl={mockUserAvatarUrl}
-        userName={mockUserName}
-      />
-    );
+    renderWithTheme(<ApprovalRequestPage {...baseProps} userId={2} />);
 
     expect(screen.getAllByText("Approve request").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Deny request").length).toBeGreaterThan(0);
@@ -144,14 +127,8 @@ describe("ApprovalRequestPage", () => {
 
     renderWithTheme(
       <ApprovalRequestPage
-        approvalWorkflowInstanceId="456"
-        approvalRequestId="123"
-        baseLocale="en-US"
-        helpCenterPath="/hc/en-us"
-        organizations={[]}
+        {...baseProps}
         userId={3} // Different from assignee_user.id
-        userAvatarUrl={mockUserAvatarUrl}
-        userName={mockUserName}
       />
     );
 
@@ -173,20 +150,40 @@ describe("ApprovalRequestPage", () => {
     });
 
     expect(() =>
-      renderWithTheme(
-        <ApprovalRequestPage
-          approvalWorkflowInstanceId="456"
-          approvalRequestId="123"
-          baseLocale="en-US"
-          helpCenterPath="/hc/en-us"
-          organizations={[]}
-          userId={1}
-          userAvatarUrl={mockUserAvatarUrl}
-          userName={mockUserName}
-        />
-      )
+      renderWithTheme(<ApprovalRequestPage {...baseProps} userId={1} />)
     ).toThrow("Failed to fetch");
 
     consoleSpy.mockRestore();
+  });
+
+  it("renders Clarification comment section when clarification_flow_messages is present (effectively arturo `approvals_clarification_flow_end_users` enabled)", () => {
+    const approvalRequestWithClarification = {
+      ...mockApprovalRequest,
+      clarification_flow_messages: [],
+    };
+
+    mockUseApprovalRequest.mockReturnValue({
+      approvalRequest: approvalRequestWithClarification,
+      setApprovalRequest: jest.fn(),
+      isLoading: false,
+      errorFetchingApprovalRequest: null,
+    });
+
+    renderWithTheme(<ApprovalRequestPage {...baseProps} userId={1} />);
+
+    expect(screen.getByText(/Comments/i)).toBeInTheDocument();
+  });
+
+  it("renders without Clarification comment section when clarification_flow_messages is absent", () => {
+    mockUseApprovalRequest.mockReturnValue({
+      approvalRequest: mockApprovalRequest,
+      setApprovalRequest: jest.fn(),
+      isLoading: false,
+      errorFetchingApprovalRequest: null,
+    });
+
+    renderWithTheme(<ApprovalRequestPage {...baseProps} userId={1} />);
+
+    expect(screen.queryByText(/clarification/i)).not.toBeInTheDocument();
   });
 });
