@@ -6,7 +6,9 @@ describe("useAssetDataFetchers (direct option IDs)", () => {
     custom_object_record: {
       custom_object_fields: {
         ...(ids !== undefined && { "standard::asset_filter_ids": ids }),
-        ...(description !== undefined && { "standard::description": description }),
+        ...(description !== undefined && {
+          "standard::description": description,
+        }),
       },
     },
   });
@@ -20,7 +22,9 @@ describe("useAssetDataFetchers (direct option IDs)", () => {
       custom_object_fields: {
         ...(ids !== undefined && { "standard::asset_type_ids": ids }),
         ...(isHidden !== undefined && { "standard::is_hidden": isHidden }),
-        ...(description !== undefined && { "standard::description": description }),
+        ...(description !== undefined && {
+          "standard::description": description,
+        }),
       },
     },
   });
@@ -31,7 +35,10 @@ describe("useAssetDataFetchers (direct option IDs)", () => {
   });
 
   it("fetchAssets: returns ids and description when assetOptionId exists", async () => {
-    const mockAssetResponse = assetOptionRecordPayload("a1,a2,a3", "Test description");
+    const mockAssetResponse = assetOptionRecordPayload(
+      "a1,a2,a3",
+      "Test description"
+    );
 
     (global.fetch as jest.Mock).mockResolvedValueOnce({
       json: () => Promise.resolve(mockAssetResponse),
@@ -41,7 +48,9 @@ describe("useAssetDataFetchers (direct option IDs)", () => {
       useAssetDataFetchers("AO-123", "AT-999")
     );
 
-    let response: { assetIds: any; assetDescription: any } | undefined;
+    let response:
+      | { assetIds: string | undefined; assetDescription: string | undefined }
+      | undefined;
     await act(async () => {
       response = await result.current.fetchAssets();
     });
@@ -50,7 +59,10 @@ describe("useAssetDataFetchers (direct option IDs)", () => {
     expect(global.fetch).toHaveBeenCalledWith(
       `/api/v2/custom_objects/standard::service_catalog_asset_option/records/AO-123`
     );
-    expect(response).toEqual({ assetIds: "a1,a2,a3", assetDescription: "Test description" });
+    expect(response).toEqual({
+      assetIds: "a1,a2,a3",
+      assetDescription: "Test description",
+    });
   });
 
   it("fetchAssets: returns undefined when assetOptionId is missing", async () => {
@@ -59,7 +71,9 @@ describe("useAssetDataFetchers (direct option IDs)", () => {
       useAssetDataFetchers(undefined, "AT-999")
     );
 
-    let response: { assetIds: any; assetDescription: any } | undefined;
+    let response:
+      | { assetIds: string | undefined; assetDescription: string | undefined }
+      | undefined;
     await act(async () => {
       response = await result.current.fetchAssets();
     });
@@ -75,7 +89,9 @@ describe("useAssetDataFetchers (direct option IDs)", () => {
       useAssetDataFetchers("AO-123", "AT-999")
     );
 
-    let response: { assetIds: any; assetDescription: any } | undefined;
+    let response:
+      | { assetIds: string | undefined; assetDescription: string | undefined }
+      | undefined;
     await act(async () => {
       response = await result.current.fetchAssets();
     });
@@ -85,7 +101,10 @@ describe("useAssetDataFetchers (direct option IDs)", () => {
 
   it("fetchAssetTypes: returns object with ids, hidden flag, and description", async () => {
     (global.fetch as jest.Mock).mockResolvedValueOnce({
-      json: () => Promise.resolve(assetTypeOptionRecordPayload("t1,t2", true, "Type description")),
+      json: () =>
+        Promise.resolve(
+          assetTypeOptionRecordPayload("t1,t2", true, "Type description")
+        ),
     });
 
     const { result } = renderHook(() => useAssetDataFetchers("AO-1", "AT-123"));
@@ -165,7 +184,9 @@ describe("useAssetDataFetchers (direct option IDs)", () => {
       useAssetDataFetchers(undefined, undefined)
     );
 
-    let assets: { assetIds: any; assetDescription: any } | undefined;
+    let assets:
+      | { assetIds: string | undefined; assetDescription: string | undefined }
+      | undefined;
     let assetTypes:
       | {
           assetTypeIds?: string;
