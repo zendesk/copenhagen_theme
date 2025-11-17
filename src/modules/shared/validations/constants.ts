@@ -1,0 +1,16 @@
+export const ALLOWED_HTML_TAGS = [
+  "pre",
+  "strong",
+  "b",
+  "p",
+  "blockquote",
+  "ul",
+  "ol",
+  "li",
+  "h2",
+  "h3",
+  "h4",
+  "i",
+  "em",
+  "br",
+];
