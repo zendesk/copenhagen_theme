@@ -267,6 +267,28 @@ describe("useCommentForm", () => {
         expect(successOnSubmit).not.toHaveBeenCalled();
       });
 
+      it("submits on Enter", async () => {
+        const { result } = renderHook(() =>
+          useCommentForm({
+            onSubmit: successOnSubmit,
+            baseLocale,
+            markAllCommentsAsRead,
+          })
+        );
+
+        act(() => {
+          result.current.handleChange(mockEvent("t"));
+        });
+
+        const enterEvent = mockKeyboardEvent("Enter");
+
+        await act(async () => {
+          result.current.handleKeyDown(enterEvent);
+        });
+
+        expect(successOnSubmit).toHaveBeenCalled();
+      });
+
       it("cancels on Escape key", () => {
         const { result } = renderHook(() =>
           useCommentForm({
@@ -283,6 +305,14 @@ describe("useCommentForm", () => {
         });
 
         expect(escapeEvent.preventDefault).toHaveBeenCalled();
+
+        const { comment, commentValidation, charLimitMessage, isInputFocused } =
+          result.current;
+
+        expect(comment).toBe("");
+        expect(commentValidation).toBeUndefined();
+        expect(charLimitMessage).toBe("");
+        expect(isInputFocused).toBe(false);
       });
 
       it("prevents input when max length reached and non-allowed key pressed", () => {
@@ -332,6 +362,8 @@ describe("useCommentForm", () => {
           "ArrowUp",
           "ArrowDown",
           "Tab",
+          "Home",
+          "End",
         ];
         const shortcuts = [
           { key: "c", ctrlKey: true },
