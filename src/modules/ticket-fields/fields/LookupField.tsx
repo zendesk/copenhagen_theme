@@ -333,7 +333,8 @@ export function LookupField({
                     <Span hue="grey">
                       {t(
                         "cph-theme-ticket-fields.lookup-field.serial-number-label",
-                        "SN: {{serialNumber}}", { serialNumber: option.serialNumber }
+                        "SN: {{serialNumber}}",
+                        { serialNumber: option.serialNumber }
                       )}
                     </Span>
                   </Option.Meta>
