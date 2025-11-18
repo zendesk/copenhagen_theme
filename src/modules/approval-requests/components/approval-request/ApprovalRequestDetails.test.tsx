@@ -58,7 +58,7 @@ describe("ApprovalRequestDetails", () => {
     expect(screen.getByText("John Sender")).toBeInTheDocument();
     expect(screen.getByText("Jane Approver")).toBeInTheDocument();
     expect(screen.getByText("Decision pending")).toBeInTheDocument();
-    expect(screen.queryByText("Comment")).not.toBeInTheDocument();
+    expect(screen.queryByText("Reason")).not.toBeInTheDocument();
     expect(screen.queryByText("Decided")).not.toBeInTheDocument();
   });
 
@@ -90,7 +90,7 @@ describe("ApprovalRequestDetails", () => {
       />
     );
 
-    expect(screen.getByText("Comment")).toBeInTheDocument();
+    expect(screen.getByText("Reason")).toBeInTheDocument();
     expect(screen.getByText(/this looks good to me/i)).toBeInTheDocument();
     expect(screen.getByText("Decided")).toBeInTheDocument();
     expect(screen.getByText(/this looks good to me/i)).toBeInTheDocument();
