@@ -164,7 +164,7 @@ export function ItemRequestForm({
 
         const hidden = !!res?.isHiddenAssetsType;
         const raw = res?.assetTypeIds;
-        const description = res?.assetTypeDescription as string | undefined;
+        const description = res?.assetTypeDescription;
 
         let ids: string[] = [];
 
