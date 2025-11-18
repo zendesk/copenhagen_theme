@@ -1,3 +1,23 @@
+# [4.14.0](https://github.com/zendesk/copenhagen_theme/compare/v4.13.3...v4.14.0) (2025-11-18)
+
+
+### Bug Fixes
+
+* added aria-expanded="false" to all dropdown-toggle buttons in template files ([3a45137](https://github.com/zendesk/copenhagen_theme/commit/3a45137a4e5242f2a55156304b82caf4f669d608))
+* ensure Dropdown constructs target buttons w/ aria-expanded="false", updates value when toggled ([c43b3c5](https://github.com/zendesk/copenhagen_theme/commit/c43b3c55169dea8ceea408c8f689421b193e00d1))
+
+
+### Features
+
+* changed Dropdown class to add necessary attributes (aria-expanded, aria-haspopup) if missing ([4254bcb](https://github.com/zendesk/copenhagen_theme/commit/4254bcba32c63e6c11c4ad33cbab4879383e1306))
+
+## [4.13.3](https://github.com/zendesk/copenhagen_theme/compare/v4.13.2...v4.13.3) (2025-11-12)
+
+
+### Bug Fixes
+
+* correct asset filtering logic by asset types ([6b8058a](https://github.com/zendesk/copenhagen_theme/commit/6b8058aaed063b48ce4e0c31a476fd166a99d1d7))
+
 ## [4.13.2](https://github.com/zendesk/copenhagen_theme/compare/v4.13.1...v4.13.2) (2025-11-11)
 
 
