@@ -104,6 +104,19 @@
     this.toggle.setAttribute("aria-controls", menuId);
     this.menu.setAttribute("aria-labelledby", toggleId);
 
+    if (!this.toggle.hasAttribute("aria-haspopup")) {
+      this.toggle.setAttribute("aria-haspopup", "true");
+    }
+
+    if (!this.toggle.hasAttribute("aria-expanded")) {
+      this.toggle.setAttribute("aria-expanded", "false");
+    }
+
+    this.toggleIcon = this.toggle.querySelector(".dropdown-chevron-icon");
+    if (this.toggleIcon) {
+      this.toggleIcon.setAttribute("aria-hidden", "true");
+    }
+
     this.menu.setAttribute("tabindex", -1);
     this.menuItems.forEach((menuItem) => {
       menuItem.tabIndex = -1;
@@ -126,7 +139,7 @@
     dismiss: function () {
       if (!this.isExpanded) return;
 
-      this.toggle.removeAttribute("aria-expanded");
+      this.toggle.setAttribute("aria-expanded", "false");
       this.menu.classList.remove("dropdown-menu-end", "dropdown-menu-top");
       this.focusedIndex = -1;
     },
@@ -134,7 +147,7 @@
     open: function () {
       if (this.isExpanded) return;
 
-      this.toggle.setAttribute("aria-expanded", true);
+      this.toggle.setAttribute("aria-expanded", "true");
       this.handleOverflow();
     },
 
