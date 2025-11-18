@@ -1,3 +1,14 @@
+## [4.14.1](https://github.com/zendesk/copenhagen_theme/compare/v4.14.0...v4.14.1) (2025-11-18)
+
+
+### Bug Fixes
+
+* another test ([8e43727](https://github.com/zendesk/copenhagen_theme/commit/8e4372729d55925bc742e5d3a602240523b4a235))
+* misc style fixes ([dc314b8](https://github.com/zendesk/copenhagen_theme/commit/dc314b8e8631049c42eee701df2bd8fbb0bb8963))
+* tests ([a38da09](https://github.com/zendesk/copenhagen_theme/commit/a38da09a81d698470904bc34d3e2ea230b9dffb9))
+* update test mock ([e9724db](https://github.com/zendesk/copenhagen_theme/commit/e9724db33fe85b5717993c0adfa587344d7d7228))
+* various style fixes ([28936e6](https://github.com/zendesk/copenhagen_theme/commit/28936e645b5009c02f3653ee299a38ab6f887ba4))
+
 # [4.14.0](https://github.com/zendesk/copenhagen_theme/compare/v4.13.3...v4.14.0) (2025-11-18)
 
 
