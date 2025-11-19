@@ -1,3 +1,27 @@
+## [4.14.1](https://github.com/zendesk/copenhagen_theme/compare/v4.14.0...v4.14.1) (2025-11-18)
+
+
+### Bug Fixes
+
+* another test ([8e43727](https://github.com/zendesk/copenhagen_theme/commit/8e4372729d55925bc742e5d3a602240523b4a235))
+* misc style fixes ([dc314b8](https://github.com/zendesk/copenhagen_theme/commit/dc314b8e8631049c42eee701df2bd8fbb0bb8963))
+* tests ([a38da09](https://github.com/zendesk/copenhagen_theme/commit/a38da09a81d698470904bc34d3e2ea230b9dffb9))
+* update test mock ([e9724db](https://github.com/zendesk/copenhagen_theme/commit/e9724db33fe85b5717993c0adfa587344d7d7228))
+* various style fixes ([28936e6](https://github.com/zendesk/copenhagen_theme/commit/28936e645b5009c02f3653ee299a38ab6f887ba4))
+
+# [4.14.0](https://github.com/zendesk/copenhagen_theme/compare/v4.13.3...v4.14.0) (2025-11-18)
+
+
+### Bug Fixes
+
+* added aria-expanded="false" to all dropdown-toggle buttons in template files ([3a45137](https://github.com/zendesk/copenhagen_theme/commit/3a45137a4e5242f2a55156304b82caf4f669d608))
+* ensure Dropdown constructs target buttons w/ aria-expanded="false", updates value when toggled ([c43b3c5](https://github.com/zendesk/copenhagen_theme/commit/c43b3c55169dea8ceea408c8f689421b193e00d1))
+
+
+### Features
+
+* changed Dropdown class to add necessary attributes (aria-expanded, aria-haspopup) if missing ([4254bcb](https://github.com/zendesk/copenhagen_theme/commit/4254bcba32c63e6c11c4ad33cbab4879383e1306))
+
 ## [4.13.3](https://github.com/zendesk/copenhagen_theme/compare/v4.13.2...v4.13.3) (2025-11-12)
 
 
