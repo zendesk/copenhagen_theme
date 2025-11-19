@@ -41,8 +41,3 @@ parts:
       title: "Label for the back option in a multi-level dropdown, used to return to the previous menu."
       screenshot: "https://drive.google.com/file/d/1u_eLJAGP8bGvQE7cteCQyCNJT13_9dOu/view?usp=drive_link"
       value: "Back"
-  - translation:
-      key: "cph-theme-ticket-fields.lookup-field.serial-number-label"
-      title: "Label prefix for serial number shown in lookup field options"
-      screenshot: "https://drive.google.com/file/d/1H4Tsm7YHGdtFnSElJH6ZUIIU7VyySq2S/view?usp=sharing"
-      value: "SN: {{serialNumber}}"
