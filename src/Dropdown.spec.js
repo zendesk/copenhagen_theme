@@ -1,6 +1,6 @@
 import { expect, jest, describe, it, beforeEach } from "@jest/globals";
 import crypto from "crypto";
-import { fireEvent, screen } from "@testing-library/dom";
+import { fireEvent, screen, within } from "@testing-library/dom";
 import { userEvent } from "@testing-library/user-event";
 
 import Dropdown from "./Dropdown";
@@ -13,19 +13,34 @@ expect.extend({
       ? {
           pass: true,
           message: () =>
-            `Expected ${targetElement} to have aria-expanded=true attribute`,
+            `${targetElement} has aria-expanded attribute set to true`,
         }
       : {
           pass: false,
           message: () =>
-            `Expected ${targetElement} not to have aria-expanded=true attribute`,
+            `${targetElement} does not have aria-expanded attribute set to true`,
+        };
+  },
+  toHaveMenuClosed(targetElement) {
+    const isClosed = targetElement.getAttribute("aria-expanded") === "false";
+
+    return isClosed
+      ? {
+          pass: true,
+          message: () =>
+            `${targetElement} has aria-expanded attribute set to false`,
+        }
+      : {
+          pass: false,
+          message: () =>
+            `${targetElement} does not have aria-expanded attribute set to false`,
         };
   },
 });
 
 const menuHtml = `
   <div class="dropdown">
-    <button class="dropdown-toggle" aria-haspopup="true">Sort by</button>
+    <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Sort by</button>
     <span class="dropdown-menu" role="menu">
       <a role="menuitem" href="http://example.tld/first">First</a>
       <a role="menuitem" href="http://example.tld/second">Second</a>
@@ -60,7 +75,7 @@ describe("Dropdown", () => {
     it("preserves existing ids", () => {
       const { targetElement, menuElement } = createMenu(`
     <div class="dropdown">
-      <button id="targetId" class="dropdown-toggle" aria-haspopup="true">Sort by</button>
+      <button id="targetId" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Sort by</button>
       <span id="menuId" class="dropdown-menu" role="menu">
         <a role="menuitem" href="http://example.tld/first">First</a>
         <a role="menuitem" href="http://example.tld/second">Second</a>
@@ -73,6 +88,7 @@ describe("Dropdown", () => {
       expect(menuElement).toHaveAttribute("id", "menuId");
 
       expect(targetElement).toHaveAttribute("aria-controls", "menuId");
+      expect(targetElement).toHaveAttribute("aria-expanded", "false");
       expect(menuElement).toHaveAttribute("aria-labelledby", "targetId");
     });
 
@@ -99,13 +115,35 @@ describe("Dropdown", () => {
     it("sets aria-expanded", () => {
       const { targetElement } = createMenu();
 
-      expect(targetElement).not.toHaveMenuOpen();
+      expect(targetElement).toHaveMenuClosed();
 
       fireEvent.keyDown(targetElement, { key: "Enter" });
       expect(targetElement).toHaveMenuOpen();
 
       fireEvent.keyDown(targetElement, { key: "Escape" });
-      expect(targetElement).not.toHaveMenuOpen();
+      expect(targetElement).toHaveMenuClosed();
+    });
+
+    it("hides default target icon from assistive technology, if it's present and isn't hidden already", () => {
+      const { targetElement } = createMenu(`
+    <div class="dropdown">
+      <button id="targetId" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+        Sort by
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" data-testid="icon">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+        </svg>
+      </button>
+      <span id="menuId" class="dropdown-menu" role="menu">
+        <a role="menuitem" href="http://example.tld/first">First</a>
+        <a role="menuitem" href="http://example.tld/second">Second</a>
+        <a role="menuitem" href="http://example.tld/third">Third</a>
+      </span>
+    </div>
+  `);
+
+      const iconElement = within(targetElement).getByTestId("icon");
+      expect(iconElement).toHaveClass("dropdown-chevron-icon");
+      expect(iconElement).toHaveAttribute("aria-hidden", "true");
     });
   });
 
@@ -115,7 +153,7 @@ describe("Dropdown", () => {
         it(`pressing "${key}" opens the menu and moves focus to first menuitem`, () => {
           const { targetElement } = createMenu();
 
-          expect(targetElement).not.toHaveMenuOpen();
+          expect(targetElement).toHaveMenuClosed();
 
           fireEvent.keyDown(targetElement, { key });
           fireEvent.keyUp(targetElement, { key });
@@ -129,7 +167,7 @@ describe("Dropdown", () => {
         it(`pressing "${key}" opens the menu and moves focus to last menuitem`, () => {
           const { targetElement } = createMenu();
 
-          expect(targetElement).not.toHaveMenuOpen();
+          expect(targetElement).toHaveMenuClosed();
 
           fireEvent.keyDown(targetElement, { key });
           fireEvent.keyUp(targetElement, { key });
@@ -143,7 +181,7 @@ describe("Dropdown", () => {
         it(`pressing "${key}" closes the menu and moves focus to target`, () => {
           const { targetElement } = createMenu();
 
-          expect(targetElement).not.toHaveMenuOpen();
+          expect(targetElement).toHaveMenuClosed();
 
           fireEvent.keyDown(targetElement, { key: "Enter" });
           fireEvent.keyUp(targetElement, { key: "Enter" });
@@ -151,7 +189,7 @@ describe("Dropdown", () => {
 
           fireEvent.keyDown(targetElement, { key });
           fireEvent.keyUp(targetElement, { key });
-          expect(targetElement).not.toHaveMenuOpen();
+          expect(targetElement).toHaveMenuClosed();
           expect(document.activeElement).toEqual(targetElement);
         });
       });
@@ -159,13 +197,13 @@ describe("Dropdown", () => {
       it(`clicking it opens and closes the menu`, () => {
         const { targetElement } = createMenu();
 
-        expect(targetElement).not.toHaveMenuOpen();
+        expect(targetElement).toHaveMenuClosed();
 
         fireEvent.click(targetElement);
         expect(targetElement).toHaveMenuOpen();
 
         fireEvent.click(targetElement);
-        expect(targetElement).not.toHaveMenuOpen();
+        expect(targetElement).toHaveMenuClosed();
       });
     });
 
@@ -177,7 +215,7 @@ describe("Dropdown", () => {
 
           fireEvent.keyDown(menuElement, { key });
           fireEvent.keyUp(menuElement, { key });
-          expect(targetElement).not.toHaveMenuOpen();
+          expect(targetElement).toHaveMenuClosed();
           expect(document.activeElement).toEqual(targetElement);
         });
       });
@@ -272,7 +310,7 @@ describe("Dropdown", () => {
       it("pressing 'Tab' closes the menu and moves focus to the next focusable element", async () => {
         const { targetElement } = createMenu(`
           <div class="dropdown">
-            <button class="dropdown-toggle" aria-haspopup="true">Sort by</button>
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Sort by</button>
             <span class="dropdown-menu" role="menu">
               <a role="menuitem" href="http://example.tld/first">First</a>
               <a role="menuitem" href="http://example.tld/second">Second</a>
@@ -285,14 +323,14 @@ describe("Dropdown", () => {
         fireEvent.keyDown(targetElement, { key: "Enter" });
         await userEvent.tab();
 
-        expect(targetElement).not.toHaveMenuOpen();
+        expect(targetElement).toHaveMenuClosed();
         expect(document.activeElement).toEqual(screen.getByRole("textbox"));
       });
 
       it("pressing 'Shift+Tab' closes the menu and returns focus to the target element", async () => {
         const { targetElement } = createMenu(`
           <div class="dropdown">
-            <button class="dropdown-toggle" aria-haspopup="true">Sort by</button>
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Sort by</button>
             <span class="dropdown-menu" role="menu">
               <a role="menuitem" href="http://example.tld/first">First</a>
               <a role="menuitem" href="http://example.tld/second">Second</a>
@@ -305,7 +343,7 @@ describe("Dropdown", () => {
         fireEvent.keyDown(targetElement, { key: "Enter" });
         await userEvent.tab({ shift: true });
 
-        expect(targetElement).not.toHaveMenuOpen();
+        expect(targetElement).toHaveMenuClosed();
         expect(document.activeElement).toEqual(screen.getByRole("button"));
       });
 
@@ -313,7 +351,7 @@ describe("Dropdown", () => {
         it("moves focus to the next menu item with a label that starts with such char", async () => {
           const { targetElement } = createMenu(`
           <div class="dropdown">
-            <button class="dropdown-toggle" aria-haspopup="true">Sort by</button>
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Sort by</button>
             <span class="dropdown-menu" role="menu">
               <a role="menuitem" href="http://example.tld/apricots">Apricots</a>
               <a role="menuitem" href="http://example.tld/asparagus">Asparagus</a>
@@ -337,7 +375,7 @@ describe("Dropdown", () => {
         it("keeps focus when no menu item starts with such char", async () => {
           const { targetElement } = createMenu(`
           <div class="dropdown">
-            <button class="dropdown-toggle" aria-haspopup="true">Sort by</button>
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Sort by</button>
             <span class="dropdown-menu" role="menu">
               <a role="menuitem" href="http://example.tld/apricots">Apricots</a>
               <a role="menuitem" href="http://example.tld/asparagus">Asparagus</a>
@@ -366,7 +404,7 @@ describe("Dropdown", () => {
         expect(targetElement).toHaveMenuOpen();
 
         await userEvent.click(targetElement);
-        expect(targetElement).not.toHaveMenuOpen();
+        expect(targetElement).toHaveMenuClosed();
       });
     });
 
@@ -404,16 +442,16 @@ describe("Dropdown", () => {
         expect(targetElement).toHaveMenuOpen();
 
         await userEvent.click(document.body);
-        expect(targetElement).not.toHaveMenuOpen();
+        expect(targetElement).toHaveMenuClosed();
       });
     });
   });
 
-  describe("with role=menuitemradio", () => {
+  describe("with role='menuitemradio'", () => {
     it("attaches keyboard event handlers", async () => {
       const { targetElement } = createMenu(`
         <div class="dropdown">
-          <button class="dropdown-toggle" aria-haspopup="true">Sort by</button>
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Sort by</button>
           <ul class="dropdown-menu" role="menu">
             <li role="none"><a role="menuitemradio" aria-checked="true" href="http://example.tld/apricots">Apricots</a></li>
             <li role="none"><a role="menuitemradio" href="http://example.tld/asparagus">Asparagus</a></li>
