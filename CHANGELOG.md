@@ -1,3 +1,11 @@
+## [4.15.1](https://github.com/zendesk/copenhagen_theme/compare/v4.15.0...v4.15.1) (2025-11-19)
+
+
+### Bug Fixes
+
+* **attachments:** enable keyboard navigation with Enter/Space in attachments field ([d447cb8](https://github.com/zendesk/copenhagen_theme/commit/d447cb842c61b32c07f90a0e9c42656093f38917))
+* **attachments:** removed refs ([9faaef9](https://github.com/zendesk/copenhagen_theme/commit/9faaef97c4272516d36cd82988dc9a758bc8f8b0))
+
 # [4.15.0](https://github.com/zendesk/copenhagen_theme/compare/v4.14.1...v4.15.0) (2025-11-19)
 
 
