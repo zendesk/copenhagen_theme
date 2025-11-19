@@ -3,7 +3,6 @@ import { File, FileList } from "@zendeskgarden/react-forms";
 import { Progress } from "@zendeskgarden/react-loaders";
 import { Tooltip } from "@zendeskgarden/react-tooltips";
 import type { KeyboardEvent } from "react";
-import { useRef } from "react";
 import styled from "styled-components";
 import type { AttachedFile } from "./useAttachedFiles";
 import { useTranslation } from "react-i18next";
@@ -22,8 +21,6 @@ export function FileListItem({
   onRemove,
 }: FileListItemProps): JSX.Element {
   const { t } = useTranslation();
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const deleteButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleFileKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.code === "Delete" || e.code === "Backspace" || e.code === "Enter") {
@@ -81,7 +78,6 @@ export function FileListItem({
             <FileNameWrapper>{fileName}</FileNameWrapper>
             <Tooltip content={stopUploadLabel}>
               <File.Close
-                ref={closeButtonRef}
                 aria-label={t(
                   "new-request-form.attachments.stop-upload-aria-label",
                   "Stop uploading {{fileName}}",
@@ -112,7 +108,6 @@ export function FileListItem({
             </FileNameWrapper>
             <Tooltip content={removeFileLabel}>
               <File.Delete
-                ref={deleteButtonRef}
                 aria-label={t(
                   "new-request-form.attachments.remove-file-aria-label",
                   "Remove file: {{fileName}}",
