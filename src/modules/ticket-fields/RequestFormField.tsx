@@ -27,6 +27,7 @@ interface RequestFormFieldProps {
     value: TicketFieldObject["value"]
   ) => void;
   buildLookupFieldOptions?: LookupFieldProps["buildLookupFieldOptions"];
+  renderLookupFieldOption?: LookupFieldProps["renderOption"];
 }
 
 export const RequestFormField = ({
@@ -43,6 +44,7 @@ export const RequestFormField = ({
   handleDueDateChange,
   handleChange,
   buildLookupFieldOptions,
+  renderLookupFieldOption,
 }: RequestFormFieldProps) => {
   switch (field.type) {
     case "text":
@@ -144,6 +146,7 @@ export const RequestFormField = ({
           visibleFields={visibleFields}
           onChange={(value) => handleChange(field, value)}
           buildLookupFieldOptions={buildLookupFieldOptions}
+          renderOption={renderLookupFieldOption}
         />
       );
     default:

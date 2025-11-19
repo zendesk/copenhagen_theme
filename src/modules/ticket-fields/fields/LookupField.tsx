@@ -11,7 +11,6 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import type {
   TicketFieldObject,
   TicketFieldOptionObject,
-  ITAMAssetOptionObject,
 } from "../data-types/TicketFieldObject";
 import { Span } from "@zendeskgarden/react-typography";
 import debounce from "lodash.debounce";
@@ -51,12 +50,6 @@ export function getCustomObjectKey(targetType: string) {
   return targetType.replace("zen:custom_object:", "");
 }
 
-function isITAMAssetOption(
-  option: TicketFieldOptionObject | ITAMAssetOptionObject
-): option is ITAMAssetOptionObject {
-  return "serialNumber" in option;
-}
-
 const EMPTY_OPTION = {
   value: "",
   name: "-",
@@ -71,7 +64,8 @@ export interface LookupFieldProps {
   buildLookupFieldOptions?: (
     records: CustomObjectRecord[],
     field: TicketFieldObject
-  ) => Promise<(TicketFieldOptionObject | ITAMAssetOptionObject)[]>;
+  ) => Promise<TicketFieldOptionObject[]>;
+  renderOption?: (option: TicketFieldOptionObject) => React.ReactNode;
 }
 
 export function LookupField({
@@ -81,6 +75,7 @@ export function LookupField({
   onChange,
   visibleFields,
   buildLookupFieldOptions,
+  renderOption,
 }: LookupFieldProps) {
   const {
     id: fieldId,
@@ -93,12 +88,9 @@ export function LookupField({
     relationship_target_type,
   } = field;
 
-  const [options, setOptions] = useState<
-    (TicketFieldOptionObject | ITAMAssetOptionObject)[]
-  >([]);
-  const [selectedOption, setSelectedOption] = useState<
-    TicketFieldOptionObject | ITAMAssetOptionObject | null
-  >(null);
+  const [options, setOptions] = useState<TicketFieldOptionObject[]>([]);
+  const [selectedOption, setSelectedOption] =
+    useState<TicketFieldOptionObject | null>(null);
   const [inputValue, setInputValue] = useState<string>(value as string);
   const [isLoadingOptions, setIsLoadingOptions] = useState<boolean>(false);
   const { t } = useTranslation();
@@ -326,20 +318,7 @@ export function LookupField({
               label={option.name}
               data-test-id={`option-${option.name}`}
             >
-              {isITAMAssetOption(option) && option.serialNumber && (
-                <>
-                  {option.name}
-                  <Option.Meta>
-                    <Span hue="grey">
-                      {t(
-                        "cph-theme-ticket-fields.lookup-field.serial-number-label",
-                        "SN: {{serialNumber}}",
-                        { serialNumber: option.serialNumber }
-                      )}
-                    </Span>
-                  </Option.Meta>
-                </>
-              )}
+              {renderOption ? renderOption(option) : option.name}
             </Option>
           ))}
       </Combobox>

@@ -6,12 +6,12 @@ import { getColorV8 } from "@zendeskgarden/react-theming";
 import { useTranslation } from "react-i18next";
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import { CollapsibleDescription } from "./CollapsibleDescription";
-import type {
-  TicketFieldObject,
-  ITAMAssetOptionObject,
-} from "../../../ticket-fields/data-types/TicketFieldObject";
+import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
 import type { CustomObjectRecord } from "../../../ticket-fields/data-types/CustomObjectRecord";
 import { useAssetDataFetchers } from "../../../service-catalog/hooks/useAssetDataFetchers";
+import type { ITAMAssetOptionObject } from "../../data-types/ITAMAssetOptionObject";
+import { Span } from "@zendeskgarden/react-typography";
+import { Option } from "@zendeskgarden/react-dropdowns.next";
 
 const Form = styled.form`
   display: flex;
@@ -271,6 +271,26 @@ export function ItemRequestForm({
     }));
   };
 
+  const renderLookupFieldOption = (option: ITAMAssetOptionObject) => {
+    if (option.serialNumber) {
+      return (
+        <>
+          {option.name}
+          <Option.Meta>
+            <Span hue="grey">
+              {t(
+                "service-catalog.item.serial-number-label",
+                "SN: {{serialNumber}}",
+                { serialNumber: option.serialNumber }
+              )}
+            </Span>
+          </Option.Meta>
+        </>
+      );
+    }
+    return option.name;
+  };
+
   return (
     <Form onSubmit={onSubmit} noValidate>
       <LeftColumn>
@@ -311,6 +331,7 @@ export function ItemRequestForm({
                 handleChange={handleChange}
                 visibleFields={requestFields}
                 buildLookupFieldOptions={buildLookupFieldOptions}
+                renderLookupFieldOption={renderLookupFieldOption}
               />
             );
           })}
