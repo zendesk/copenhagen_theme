@@ -64,7 +64,8 @@ export interface LookupFieldProps {
   buildLookupFieldOptions?: (
     records: CustomObjectRecord[],
     field: TicketFieldObject
-  ) => Promise<{ name: string; value: string }[]>;
+  ) => Promise<TicketFieldOptionObject[]>;
+  renderOption?: (option: TicketFieldOptionObject) => React.ReactNode;
 }
 
 export function LookupField({
@@ -74,6 +75,7 @@ export function LookupField({
   onChange,
   visibleFields,
   buildLookupFieldOptions,
+  renderOption,
 }: LookupFieldProps) {
   const {
     id: fieldId,
@@ -315,7 +317,9 @@ export function LookupField({
               value={option.value}
               label={option.name}
               data-test-id={`option-${option.name}`}
-            />
+            >
+              {renderOption ? renderOption(option) : option.name}
+            </Option>
           ))}
       </Combobox>
       {error && <Message validation="error">{error}</Message>}
