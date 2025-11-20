@@ -20,7 +20,8 @@ export const useAssetDataFetchers = (
         data.custom_object_record.custom_object_fields?.[
           "standard::description"
         ];
-      return { assetIds: ids, assetDescription: description };
+      const name = data.custom_object_record.name;
+      return { assetIds: ids, assetDescription: description, assetName: name };
     } catch (error) {
       console.error(error);
       return undefined;
@@ -46,10 +47,12 @@ export const useAssetDataFetchers = (
         data.custom_object_record.custom_object_fields?.[
           "standard::description"
         ];
+      const name = data.custom_object_record.name;
       return {
         assetTypeIds: ids,
         isHiddenAssetsType,
         assetTypeDescription: description,
+        assetTypeName: name,
       };
     } catch (error) {
       console.error(error);
@@ -57,6 +60,7 @@ export const useAssetDataFetchers = (
         assetTypeIds: undefined,
         isHiddenAssetsType: undefined,
         assetTypeDescription: undefined,
+        assetTypeName: undefined,
       };
     }
   }, [assetTypeOptionId]);
