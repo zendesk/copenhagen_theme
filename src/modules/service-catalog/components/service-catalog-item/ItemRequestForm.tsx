@@ -90,8 +90,14 @@ type AssetTypeState = {
   hidden: boolean;
   ready: boolean;
   description?: string;
+  name?: string;
 };
-type AssetState = { ids: string[]; ready: boolean; description?: string };
+type AssetState = {
+  ids: string[];
+  ready: boolean;
+  description?: string;
+  name?: string;
+};
 
 const isAssetField = (f: TicketFieldObject) =>
   f.relationship_target_type === ASSET_KEY;
@@ -143,11 +149,13 @@ export function ItemRequestForm({
     hidden: false,
     ready: false,
     description: undefined,
+    name: undefined,
   });
   const [assetState, setAssetState] = useState<AssetState>({
     ids: [],
     ready: false,
     description: undefined,
+    name: undefined,
   });
   const [isHiddenAssetsType, setIsHiddenAssetsType] = useState(false);
 
@@ -165,6 +173,7 @@ export function ItemRequestForm({
         const hidden = !!res?.isHiddenAssetsType;
         const raw = res?.assetTypeIds;
         const description = res?.assetTypeDescription;
+        const name = res?.assetTypeName;
 
         let ids: string[] = [];
 
@@ -176,7 +185,7 @@ export function ItemRequestForm({
 
         ids = ids.map((s) => s.trim()).filter(Boolean);
 
-        setAssetTypeState({ ids, hidden, ready: true, description });
+        setAssetTypeState({ ids, hidden, ready: true, description, name });
         setIsHiddenAssetsType(hidden);
       } catch (e) {
         if (!alive) return;
@@ -185,6 +194,7 @@ export function ItemRequestForm({
           hidden: false,
           ready: true,
           description: undefined,
+          name: undefined,
         });
       }
 
@@ -193,7 +203,8 @@ export function ItemRequestForm({
         if (!alive) return;
 
         const raw = res?.assetIds;
-        const description = res?.assetDescription as string | undefined;
+        const description = res?.assetDescription;
+        const name = res?.assetName;
 
         let ids: string[] = [];
 
@@ -205,10 +216,15 @@ export function ItemRequestForm({
 
         ids = ids.map((s) => s.trim()).filter(Boolean);
 
-        setAssetState({ ids, ready: true, description });
+        setAssetState({ ids, ready: true, description, name });
       } catch (e) {
         if (!alive) return;
-        setAssetState({ ids: [], ready: true, description: undefined });
+        setAssetState({
+          ids: [],
+          ready: true,
+          description: undefined,
+          name: undefined,
+        });
       }
     };
 
@@ -278,6 +294,11 @@ export function ItemRequestForm({
             }
             const customField = {
               ...field,
+              label: isAssetField(field)
+                ? assetState.name || field.label
+                : isAssetTypeField(field)
+                ? assetTypeState.name || field.label
+                : field.label,
               description: isAssetField(field)
                 ? assetState.description || field.description
                 : isAssetTypeField(field)
