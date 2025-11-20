@@ -1,3 +1,10 @@
+## [4.15.2](https://github.com/zendesk/copenhagen_theme/compare/v4.15.1...v4.15.2) (2025-11-20)
+
+
+### Bug Fixes
+
+* label should be taken from asset api ([6982b49](https://github.com/zendesk/copenhagen_theme/commit/6982b497fc0e6d2cbb54caaae0446d4c5869d3a1))
+
 ## [4.15.1](https://github.com/zendesk/copenhagen_theme/compare/v4.15.0...v4.15.1) (2025-11-19)
 
 
