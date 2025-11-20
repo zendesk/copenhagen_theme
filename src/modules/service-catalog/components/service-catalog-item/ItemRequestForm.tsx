@@ -9,6 +9,9 @@ import { CollapsibleDescription } from "./CollapsibleDescription";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
 import type { CustomObjectRecord } from "../../../ticket-fields/data-types/CustomObjectRecord";
 import { useAssetDataFetchers } from "../../../service-catalog/hooks/useAssetDataFetchers";
+import type { ITAMAssetOptionObject } from "../../data-types/ITAMAssetOptionObject";
+import { Span } from "@zendeskgarden/react-typography";
+import { Option } from "@zendeskgarden/react-dropdowns.next";
 
 const Form = styled.form`
   display: flex;
@@ -90,8 +93,14 @@ type AssetTypeState = {
   hidden: boolean;
   ready: boolean;
   description?: string;
+  name?: string;
 };
-type AssetState = { ids: string[]; ready: boolean; description?: string };
+type AssetState = {
+  ids: string[];
+  ready: boolean;
+  description?: string;
+  name?: string;
+};
 
 const isAssetField = (f: TicketFieldObject) =>
   f.relationship_target_type === ASSET_KEY;
@@ -143,11 +152,13 @@ export function ItemRequestForm({
     hidden: false,
     ready: false,
     description: undefined,
+    name: undefined,
   });
   const [assetState, setAssetState] = useState<AssetState>({
     ids: [],
     ready: false,
     description: undefined,
+    name: undefined,
   });
   const [isHiddenAssetsType, setIsHiddenAssetsType] = useState(false);
 
@@ -165,6 +176,7 @@ export function ItemRequestForm({
         const hidden = !!res?.isHiddenAssetsType;
         const raw = res?.assetTypeIds;
         const description = res?.assetTypeDescription;
+        const name = res?.assetTypeName;
 
         let ids: string[] = [];
 
@@ -176,7 +188,7 @@ export function ItemRequestForm({
 
         ids = ids.map((s) => s.trim()).filter(Boolean);
 
-        setAssetTypeState({ ids, hidden, ready: true, description });
+        setAssetTypeState({ ids, hidden, ready: true, description, name });
         setIsHiddenAssetsType(hidden);
       } catch (e) {
         if (!alive) return;
@@ -185,6 +197,7 @@ export function ItemRequestForm({
           hidden: false,
           ready: true,
           description: undefined,
+          name: undefined,
         });
       }
 
@@ -193,7 +206,8 @@ export function ItemRequestForm({
         if (!alive) return;
 
         const raw = res?.assetIds;
-        const description = res?.assetDescription as string | undefined;
+        const description = res?.assetDescription;
+        const name = res?.assetName;
 
         let ids: string[] = [];
 
@@ -205,10 +219,15 @@ export function ItemRequestForm({
 
         ids = ids.map((s) => s.trim()).filter(Boolean);
 
-        setAssetState({ ids, ready: true, description });
+        setAssetState({ ids, ready: true, description, name });
       } catch (e) {
         if (!alive) return;
-        setAssetState({ ids: [], ready: true, description: undefined });
+        setAssetState({
+          ids: [],
+          ready: true,
+          description: undefined,
+          name: undefined,
+        });
       }
     };
 
@@ -222,11 +241,17 @@ export function ItemRequestForm({
   const buildLookupFieldOptions = async (
     records: CustomObjectRecord[],
     field: TicketFieldObject
-  ) => {
+  ): Promise<ITAMAssetOptionObject[]> => {
     if (!Array.isArray(records) || records.length === 0) return [];
 
-    const options = records.map((rec) => {
-      const base = { name: rec.name, value: rec.id };
+    const options: ITAMAssetOptionObject[] = records.map((rec) => {
+      const base = {
+        name: rec.name,
+        value: rec.id,
+        serialNumber: rec.custom_object_fields["standard::serial_number"] as
+          | string
+          | undefined,
+      };
 
       if (rec.custom_object_key === "standard::itam_asset") {
         const fields = (rec.custom_object_fields ?? {}) as {
@@ -255,7 +280,31 @@ export function ItemRequestForm({
       }
       return list;
     }
-    return options.map(({ name, value }) => ({ name, value }));
+    return options.map(({ name, value, serialNumber }) => ({
+      name,
+      value,
+      serialNumber,
+    }));
+  };
+
+  const renderLookupFieldOption = (option: ITAMAssetOptionObject) => {
+    if (option.serialNumber) {
+      return (
+        <>
+          {option.name}
+          <Option.Meta>
+            <Span hue="grey">
+              {t(
+                "service-catalog.item.serial-number-label",
+                "SN: {{serialNumber}}",
+                { serialNumber: option.serialNumber }
+              )}
+            </Span>
+          </Option.Meta>
+        </>
+      );
+    }
+    return option.name;
   };
 
   return (
@@ -278,6 +327,11 @@ export function ItemRequestForm({
             }
             const customField = {
               ...field,
+              label: isAssetField(field)
+                ? assetState.name || field.label
+                : isAssetTypeField(field)
+                ? assetTypeState.name || field.label
+                : field.label,
               description: isAssetField(field)
                 ? assetState.description || field.description
                 : isAssetTypeField(field)
@@ -298,6 +352,7 @@ export function ItemRequestForm({
                 handleChange={handleChange}
                 visibleFields={requestFields}
                 buildLookupFieldOptions={buildLookupFieldOptions}
+                renderLookupFieldOption={renderLookupFieldOption}
               />
             );
           })}
