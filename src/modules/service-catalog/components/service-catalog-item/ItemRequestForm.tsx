@@ -85,8 +85,13 @@ const LeftColumn = styled.div`
 export const ASSET_TYPE_KEY = "zen:custom_object:standard::itam_asset_type";
 export const ASSET_KEY = "zen:custom_object:standard::itam_asset";
 
-type AssetTypeState = { ids: string[]; hidden: boolean; ready: boolean };
-type AssetState = { ids: string[]; ready: boolean };
+type AssetTypeState = {
+  ids: string[];
+  hidden: boolean;
+  ready: boolean;
+  description?: string;
+};
+type AssetState = { ids: string[]; ready: boolean; description?: string };
 
 const isAssetField = (f: TicketFieldObject) =>
   f.relationship_target_type === ASSET_KEY;
@@ -137,10 +142,12 @@ export function ItemRequestForm({
     ids: [],
     hidden: false,
     ready: false,
+    description: undefined,
   });
   const [assetState, setAssetState] = useState<AssetState>({
     ids: [],
     ready: false,
+    description: undefined,
   });
   const [isHiddenAssetsType, setIsHiddenAssetsType] = useState(false);
 
@@ -157,6 +164,7 @@ export function ItemRequestForm({
 
         const hidden = !!res?.isHiddenAssetsType;
         const raw = res?.assetTypeIds;
+        const description = res?.assetTypeDescription;
 
         let ids: string[] = [];
 
@@ -168,31 +176,39 @@ export function ItemRequestForm({
 
         ids = ids.map((s) => s.trim()).filter(Boolean);
 
-        setAssetTypeState({ ids, hidden, ready: true });
+        setAssetTypeState({ ids, hidden, ready: true, description });
         setIsHiddenAssetsType(hidden);
       } catch (e) {
         if (!alive) return;
-        setAssetTypeState({ ids: [], hidden: false, ready: true });
+        setAssetTypeState({
+          ids: [],
+          hidden: false,
+          ready: true,
+          description: undefined,
+        });
       }
 
       try {
-        const idsStr = await fetchAssets();
+        const res = await fetchAssets();
         if (!alive) return;
+
+        const raw = res?.assetIds;
+        const description = res?.assetDescription as string | undefined;
 
         let ids: string[] = [];
 
-        if (typeof idsStr === "string") {
-          ids = idsStr.split(",");
-        } else if (Array.isArray(idsStr)) {
-          ids = idsStr.map(String);
+        if (typeof raw === "string") {
+          ids = raw.split(",");
+        } else if (Array.isArray(raw)) {
+          ids = raw.map(String);
         }
 
         ids = ids.map((s) => s.trim()).filter(Boolean);
 
-        setAssetState({ ids, ready: true });
+        setAssetState({ ids, ready: true, description });
       } catch (e) {
         if (!alive) return;
-        setAssetState({ ids: [], ready: true });
+        setAssetState({ ids: [], ready: true, description: undefined });
       }
     };
 
@@ -260,10 +276,19 @@ export function ItemRequestForm({
                 </>
               );
             }
+            const customField = {
+              ...field,
+              description: isAssetField(field)
+                ? assetState.description || field.description
+                : isAssetTypeField(field)
+                ? assetTypeState.description || field.description
+                : field.description,
+            };
+
             return (
               <RequestFormField
                 key={field.id}
-                field={field}
+                field={customField}
                 baseLocale={baseLocale}
                 hasAtMentions={hasAtMentions}
                 userRole={userRole}

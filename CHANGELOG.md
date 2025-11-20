@@ -1,3 +1,25 @@
+## [4.15.1](https://github.com/zendesk/copenhagen_theme/compare/v4.15.0...v4.15.1) (2025-11-19)
+
+
+### Bug Fixes
+
+* **attachments:** enable keyboard navigation with Enter/Space in attachments field ([d447cb8](https://github.com/zendesk/copenhagen_theme/commit/d447cb842c61b32c07f90a0e9c42656093f38917))
+* **attachments:** removed refs ([9faaef9](https://github.com/zendesk/copenhagen_theme/commit/9faaef97c4272516d36cd82988dc9a758bc8f8b0))
+
+# [4.15.0](https://github.com/zendesk/copenhagen_theme/compare/v4.14.1...v4.15.0) (2025-11-19)
+
+
+### Bug Fixes
+
+* eslint ([428d305](https://github.com/zendesk/copenhagen_theme/commit/428d305b7926dde5fa3a972165029307ec4ee56a))
+* feedback in CR ([f8323fc](https://github.com/zendesk/copenhagen_theme/commit/f8323fcd7aceaebb40451e91465d9bb99c3eea84))
+* tests ([0336c3a](https://github.com/zendesk/copenhagen_theme/commit/0336c3aa2251f82b9f9c14b410e659c53f9b8d58))
+
+
+### Features
+
+* show description from API ([d3dc29a](https://github.com/zendesk/copenhagen_theme/commit/d3dc29ab2955c19fec80928fea9ee649d6ca0754))
+
 ## [4.14.1](https://github.com/zendesk/copenhagen_theme/compare/v4.14.0...v4.14.1) (2025-11-18)
 
 

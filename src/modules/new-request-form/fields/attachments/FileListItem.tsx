@@ -23,7 +23,14 @@ export function FileListItem({
   const { t } = useTranslation();
 
   const handleFileKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.code === "Delete" || e.code === "Backspace") {
+    if (e.code === "Delete" || e.code === "Backspace" || e.code === "Enter") {
+      e.preventDefault();
+      onRemove();
+    }
+  };
+
+  const handleFileKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.code === "Space") {
       e.preventDefault();
       onRemove();
     }
@@ -64,6 +71,7 @@ export function FileListItem({
           { fileName }
         )}
         onKeyDown={handleFileKeyDown}
+        onKeyUp={handleFileKeyUp}
       >
         {file.status === "pending" ? (
           <>
