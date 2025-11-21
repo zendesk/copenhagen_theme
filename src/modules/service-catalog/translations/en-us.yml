@@ -143,3 +143,8 @@ parts:
       title: "Empty state with search description"
       screenshot: "https://drive.google.com/file/d/10DiQB3DDf9x13owivlJs9QMNWVXCKdOd/view?usp=drive_link"
       value: "Enter your keywords in the search field."
+  - translation:
+      key: "service-catalog.item.serial-number-label"
+      title: "Label prefix for serial number shown in lookup field options. Serial number (SN) abbreviation can be translated as per language"
+      screenshot: "https://drive.google.com/file/d/1H4Tsm7YHGdtFnSElJH6ZUIIU7VyySq2S/view?usp=sharing"
+      value: "SN: {{serialNumber}}"
