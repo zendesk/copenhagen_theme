@@ -1,8 +1,9 @@
 import { screen, render, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import type { ReactElement } from "react";
+import { useState, type ReactElement } from "react";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
 import ApprovalRequestListFilters from "./ApprovalRequestListFilters";
+import type { ApprovalRequestDropdownStatus } from "../../types";
 
 jest.mock(
   "@zendeskgarden/svg-icons/src/16/search-stroke.svg",
@@ -39,7 +40,9 @@ describe("ApprovalRequestListFilters", () => {
 
     await user.click(combobox);
 
-    expect(screen.getByRole("option", { name: "Any" })).toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.getByRole("option", { name: "Any" })).toBeInTheDocument()
+    );
     expect(
       screen.getByRole("option", { name: "Decision pending" })
     ).toBeInTheDocument();
@@ -52,28 +55,34 @@ describe("ApprovalRequestListFilters", () => {
     ).toBeInTheDocument();
   });
 
-  it("calls setApprovalRequestStatus when the status filter changes", async () => {
+  it("updates the displayed status label when a new status is selected", async () => {
     const user = userEvent.setup();
 
-    renderWithTheme(
-      <ApprovalRequestListFilters
-        approvalRequestStatus="any"
-        setApprovalRequestStatus={mockSetApprovalRequestStatus}
-        setSearchTerm={mockSetSearchTerm}
-      />
-    );
+    function Wrapper() {
+      const [status, setStatus] =
+        useState<ApprovalRequestDropdownStatus>("any");
+      return (
+        <ApprovalRequestListFilters
+          approvalRequestStatus={status}
+          setApprovalRequestStatus={setStatus}
+          setSearchTerm={() => {}}
+        />
+      );
+    }
 
-    const combobox = screen.getByRole("combobox", {
-      name: /status/i,
-    });
+    const { container } = renderWithTheme(<Wrapper />);
+
+    const combobox = screen.getByRole("combobox", { name: /status/i });
 
     await user.click(combobox);
-
     await user.click(screen.getByRole("option", { name: "Approved" }));
 
-    expect(mockSetApprovalRequestStatus).toHaveBeenCalledWith("approved");
-    waitFor(() => {
-      expect(combobox).toHaveValue("Approved");
+    const selectedValue = container.querySelector(
+      '[data-garden-id="dropdowns.combobox.value"]'
+    );
+
+    await waitFor(() => {
+      expect(selectedValue).toHaveTextContent("Approved");
     });
   });
 
