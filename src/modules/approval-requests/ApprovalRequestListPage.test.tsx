@@ -110,7 +110,7 @@ describe("ApprovalRequestListPage", () => {
     );
     await user.type(searchInput, "Hardware");
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(screen.getByText("Hardware request")).toBeInTheDocument();
       expect(screen.queryByText("Software license")).not.toBeInTheDocument();
     });
