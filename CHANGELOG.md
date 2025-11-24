@@ -1,3 +1,15 @@
+# [4.17.0](https://github.com/zendesk/copenhagen_theme/compare/v4.16.0...v4.17.0) (2025-11-24)
+
+
+### Bug Fixes
+
+* feedback in CR ([bfe25ce](https://github.com/zendesk/copenhagen_theme/commit/bfe25ce4ee07aa3e1c049127f9eea3d4f5847301))
+
+
+### Features
+
+* add translation for serial number label ([dada4f9](https://github.com/zendesk/copenhagen_theme/commit/dada4f9d3b20745a0716406b13ca15d6824c2702))
+
 # [4.16.0](https://github.com/zendesk/copenhagen_theme/compare/v4.15.2...v4.16.0) (2025-11-20)
 
 
