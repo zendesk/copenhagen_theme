@@ -1,7 +1,6 @@
-import { screen, render, waitFor } from "@testing-library/react";
+import { render } from "../test/render";
+import { screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import type { ReactElement } from "react";
-import { ThemeProvider } from "@zendeskgarden/react-theming";
 import ApprovalRequestListPage from "./ApprovalRequestListPage";
 import { useSearchApprovalRequests } from "./hooks/useSearchApprovalRequests";
 
@@ -12,10 +11,6 @@ jest.mock(
 
 jest.mock("./hooks/useSearchApprovalRequests");
 const mockUseSearchApprovalRequests = useSearchApprovalRequests as jest.Mock;
-
-const renderWithTheme = (ui: ReactElement) => {
-  return render(<ThemeProvider>{ui}</ThemeProvider>);
-};
 
 const mockApprovalRequests = [
   {
@@ -50,7 +45,7 @@ describe("ApprovalRequestListPage", () => {
       isLoading: true,
     });
 
-    renderWithTheme(
+    render(
       <ApprovalRequestListPage baseLocale="en-US" helpCenterPath="/hc/en-us" />
     );
 
@@ -66,7 +61,7 @@ describe("ApprovalRequestListPage", () => {
       isLoading: false,
     });
 
-    renderWithTheme(
+    render(
       <ApprovalRequestListPage baseLocale="en-US" helpCenterPath="/hc/en-us" />
     );
 
@@ -84,7 +79,7 @@ describe("ApprovalRequestListPage", () => {
       isLoading: false,
     });
 
-    renderWithTheme(
+    render(
       <ApprovalRequestListPage baseLocale="en-US" helpCenterPath="/hc/en-us" />
     );
 
@@ -101,7 +96,7 @@ describe("ApprovalRequestListPage", () => {
       isLoading: false,
     });
 
-    renderWithTheme(
+    render(
       <ApprovalRequestListPage baseLocale="en-US" helpCenterPath="/hc/en-us" />
     );
 
@@ -126,7 +121,7 @@ describe("ApprovalRequestListPage", () => {
       isLoading: false,
     });
 
-    renderWithTheme(
+    render(
       <ApprovalRequestListPage baseLocale="en-US" helpCenterPath="/hc/en-us" />
     );
 
@@ -155,7 +150,7 @@ describe("ApprovalRequestListPage", () => {
     });
 
     expect(() =>
-      renderWithTheme(
+      render(
         <ApprovalRequestListPage
           baseLocale="en-US"
           helpCenterPath="/hc/en-us"
