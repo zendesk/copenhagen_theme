@@ -1,12 +1,5 @@
 import type { AnswerBotArticle } from "../data-types";
-import {
-  Modal,
-  Header,
-  Body,
-  Footer,
-  Close,
-  FooterItem,
-} from "@zendeskgarden/react-modals";
+import { Modal } from "@zendeskgarden/react-modals";
 import { Accordion } from "@zendeskgarden/react-accordions";
 import { Anchor, Button } from "@zendeskgarden/react-buttons";
 import { useState } from "react";
@@ -15,7 +8,7 @@ import { Paragraph } from "@zendeskgarden/react-typography";
 import { useModalContainer, addFlashNotification } from "../../shared";
 import { useTranslation } from "react-i18next";
 import CheckCircleStrokeIcon from "@zendeskgarden/svg-icons/src/16/check-circle-stroke.svg";
-import { getColorV8 } from "@zendeskgarden/react-theming";
+import { getColor } from "@zendeskgarden/react-theming";
 
 interface AnswerBotModalProps {
   authToken: string;
@@ -34,8 +27,8 @@ const H3 = styled.h3`
   font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
 
-const StyledHeader = styled(Header)`
-  color: ${(props) => getColorV8("successHue", 700, props.theme)};
+const StyledHeader = styled(Modal.Header)`
+  color: ${({ theme }) => getColor({ theme, hue: "successHue", shade: 700 })};
 `;
 
 const StyledSuccessIcon = styled(CheckCircleStrokeIcon)`
@@ -153,7 +146,7 @@ export function AnswerBotModal({
           "Your request was successfully submitted"
         )}
       </StyledHeader>
-      <Body>
+      <Modal.Body>
         <H3>
           {t(
             "new-request-form.answer-bot-modal.title",
@@ -198,9 +191,9 @@ export function AnswerBotModal({
             </Accordion.Section>
           ))}
         </Accordion>
-      </Body>
-      <Footer>
-        <FooterItem>
+      </Modal.Body>
+      <Modal.Footer>
+        <Modal.FooterItem>
           <Button
             onClick={() => {
               markArticleAsIrrelevant();
@@ -211,8 +204,8 @@ export function AnswerBotModal({
               "No, I need help"
             )}
           </Button>
-        </FooterItem>
-        <FooterItem>
+        </Modal.FooterItem>
+        <Modal.FooterItem>
           <Button
             isPrimary
             onClick={() => {
@@ -224,9 +217,9 @@ export function AnswerBotModal({
               "Yes, close my request"
             )}
           </Button>
-        </FooterItem>
-      </Footer>
-      <Close aria-label={t("new-request-form.close-label", "Close")} />
+        </Modal.FooterItem>
+      </Modal.Footer>
+      <Modal.Close aria-label={t("new-request-form.close-label", "Close")} />
     </Modal>
   );
 }

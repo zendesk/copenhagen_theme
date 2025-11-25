@@ -1,18 +1,9 @@
 import { memo } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import {
-  Table,
-  Head,
-  Row,
-  Cell,
-  Body,
-  HeaderRow,
-  HeaderCell,
-  SortableCell,
-} from "@zendeskgarden/react-tables";
+import { Table } from "@zendeskgarden/react-tables";
 import { Anchor } from "@zendeskgarden/react-buttons";
-import { getColorV8 } from "@zendeskgarden/react-theming";
+import { getColor } from "@zendeskgarden/react-theming";
 import ApprovalStatusTag from "../approval-request/ApprovalStatusTag";
 import { formatApprovalRequestDate } from "../../utils";
 import type { SearchApprovalRequest } from "../../types";
@@ -20,7 +11,7 @@ import NoApprovalRequestsText from "./NoApprovalRequestsText";
 
 const ApprovalRequestAnchor = styled(Anchor)`
   &:visited {
-    color: ${(props) => getColorV8("blue", 600, props.theme)};
+    color: ${({ theme }) => getColor({ theme, hue: "blue", shade: 600 })};
   }
 `;
 
@@ -61,64 +52,68 @@ function ApprovalRequestListTable({
 
   return (
     <Table size="large">
-      <Head>
-        <HeaderRow>
-          <HeaderCell width="40%" isTruncated>
+      <Table.Head>
+        <Table.HeaderRow>
+          <Table.HeaderCell width="40%" isTruncated>
             {t("approval-requests.list.table.subject", "Subject")}
-          </HeaderCell>
-          <HeaderCell isTruncated>
+          </Table.HeaderCell>
+          <Table.HeaderCell isTruncated>
             {t("approval-requests.list.table.requester", "Requester")}
-          </HeaderCell>
-          <HeaderCell isTruncated>
+          </Table.HeaderCell>
+          <Table.HeaderCell isTruncated>
             {t("approval-requests.list.table.sent-by", "Sent by")}
-          </HeaderCell>
-          <SortableCell
+          </Table.HeaderCell>
+          <Table.SortableCell
             onClick={handleSortClick}
             sort={sortDirection}
             cellProps={sortableCellProps}
           >
             {t("approval-requests.list.table.sent-on", "Sent on")}
-          </SortableCell>
-          <HeaderCell isTruncated>
+          </Table.SortableCell>
+          <Table.HeaderCell isTruncated>
             {t(
               "approval-requests.list.table.approval-status",
               "Approval status"
             )}
-          </HeaderCell>
-        </HeaderRow>
-      </Head>
-      <Body>
+          </Table.HeaderCell>
+        </Table.HeaderRow>
+      </Table.Head>
+      <Table.Body>
         {approvalRequests.length === 0 ? (
-          <Row>
-            <Cell colSpan={5}>
+          <Table.Row>
+            <Table.Cell colSpan={5}>
               <NoApprovalRequestsText />
-            </Cell>
-          </Row>
+            </Table.Cell>
+          </Table.Row>
         ) : (
           approvalRequests.map((approvalRequest) => (
-            <Row key={approvalRequest.id}>
-              <Cell isTruncated>
+            <Table.Row key={approvalRequest.id}>
+              <Table.Cell isTruncated>
                 <ApprovalRequestAnchor
                   href={`${helpCenterPath}/approval_requests/${approvalRequest.id}`}
                 >
                   {approvalRequest.subject}
                 </ApprovalRequestAnchor>
-              </Cell>
-              <Cell isTruncated>{approvalRequest.requester_name}</Cell>
-              <Cell isTruncated>{approvalRequest.created_by_name}</Cell>
-              <Cell isTruncated>
+              </Table.Cell>
+              <Table.Cell isTruncated>
+                {approvalRequest.requester_name}
+              </Table.Cell>
+              <Table.Cell isTruncated>
+                {approvalRequest.created_by_name}
+              </Table.Cell>
+              <Table.Cell isTruncated>
                 {formatApprovalRequestDate(
                   approvalRequest.created_at,
                   baseLocale
                 )}
-              </Cell>
-              <Cell isTruncated>
+              </Table.Cell>
+              <Table.Cell isTruncated>
                 <ApprovalStatusTag status={approvalRequest.status} />
-              </Cell>
-            </Row>
+              </Table.Cell>
+            </Table.Row>
           ))
         )}
-      </Body>
+      </Table.Body>
     </Table>
   );
 }

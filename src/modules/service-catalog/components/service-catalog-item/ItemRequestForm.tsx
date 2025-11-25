@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { RequestFormField } from "../../../ticket-fields";
 import { Button } from "@zendeskgarden/react-buttons";
-import { getColorV8 } from "@zendeskgarden/react-theming";
+import { getColor } from "@zendeskgarden/react-theming";
 import { useTranslation } from "react-i18next";
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import { CollapsibleDescription } from "./CollapsibleDescription";
@@ -11,7 +11,7 @@ import type { CustomObjectRecord } from "../../../ticket-fields/data-types/Custo
 import { useAssetDataFetchers } from "../../../service-catalog/hooks/useAssetDataFetchers";
 import type { ITAMAssetOptionObject } from "../../data-types/ITAMAssetOptionObject";
 import { Span } from "@zendeskgarden/react-typography";
-import { Option } from "@zendeskgarden/react-dropdowns.next";
+import { Option } from "@zendeskgarden/react-dropdowns";
 
 const Form = styled.form`
   display: flex;
@@ -41,17 +41,18 @@ const ButtonWrapper = styled.div`
   margin-inline-start: ${(props) => props.theme.space.xl};
   padding: ${(props) => props.theme.space.lg};
   border: ${(props) => props.theme.borders.sm}
-    ${(props) => getColorV8("grey", 300, props.theme)};
+    ${({ theme }) => getColor({ theme, hue: "grey", shade: 300 })};
   height: fit-content;
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     position: sticky;
     top: 0;
-    background: ${(props) => props.theme.colors.background};
+    background: ${({ theme }) =>
+      getColor({ theme, variable: "background.default" })};
     padding: ${(props) => props.theme.space.lg};
     border: none;
     border-top: ${(props) => props.theme.borders.sm}
-      ${(props) => getColorV8("grey", 300, props.theme)};
+      ${({ theme }) => getColor({ theme, hue: "grey", shade: 300 })};
     width: 100vw;
     margin-inline-start: 0;
   }

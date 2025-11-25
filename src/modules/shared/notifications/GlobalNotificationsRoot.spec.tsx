@@ -1,4 +1,6 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render } from "../../test/render";
+import { screen } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
 import { GlobalNotificationsRoot } from "./GlobalNotificationsRoot";
 import type { INotificationProps } from "@zendeskgarden/react-notifications";
 import { notify } from "./notify";
@@ -15,6 +17,7 @@ function TestTrigger() {
 
 describe("GlobalNotificationsRoot", () => {
   it("renders toast in DOM when notify() is called", async () => {
+    const user = userEvent.setup();
     render(
       <>
         <GlobalNotificationsRoot />
@@ -22,7 +25,7 @@ describe("GlobalNotificationsRoot", () => {
       </>
     );
 
-    fireEvent.click(screen.getByTestId("trigger"));
+    await user.click(screen.getByTestId("trigger"));
 
     expect(await screen.findByText(payload.title)).toBeInTheDocument();
     expect(await screen.findByText(payload.message)).toBeInTheDocument();

@@ -1,12 +1,7 @@
-import { screen, render } from "@testing-library/react";
-import type { ReactElement } from "react";
-import { ThemeProvider } from "@zendeskgarden/react-theming";
+import { render } from "../../../test/render";
+import { screen } from "@testing-library/react";
 import ApprovalTicketDetails from "./ApprovalTicketDetails";
 import type { ApprovalRequestTicket } from "../../types";
-
-const renderWithTheme = (ui: ReactElement) => {
-  return render(<ThemeProvider>{ui}</ThemeProvider>);
-};
 
 const mockTicket: ApprovalRequestTicket = {
   id: "123",
@@ -23,7 +18,7 @@ const mockTicket: ApprovalRequestTicket = {
 
 describe("ApprovalTicketDetails", () => {
   it("renders basic ticket details", () => {
-    renderWithTheme(<ApprovalTicketDetails ticket={mockTicket} />);
+    render(<ApprovalTicketDetails ticket={mockTicket} />);
 
     expect(screen.getByText("Ticket details")).toBeInTheDocument();
     expect(screen.getByText("John Requester")).toBeInTheDocument();
@@ -40,7 +35,7 @@ describe("ApprovalTicketDetails", () => {
       ],
     };
 
-    renderWithTheme(<ApprovalTicketDetails ticket={ticketWithCustomFields} />);
+    render(<ApprovalTicketDetails ticket={ticketWithCustomFields} />);
 
     expect(screen.getByText("Department")).toBeInTheDocument();
     expect(screen.getByText("IT")).toBeInTheDocument();
@@ -57,7 +52,7 @@ describe("ApprovalTicketDetails", () => {
       ],
     };
 
-    renderWithTheme(<ApprovalTicketDetails ticket={ticketWithBooleanFields} />);
+    render(<ApprovalTicketDetails ticket={ticketWithBooleanFields} />);
 
     expect(screen.getByText("Urgent")).toBeInTheDocument();
     expect(screen.getByText("Yes")).toBeInTheDocument();
@@ -77,7 +72,7 @@ describe("ApprovalTicketDetails", () => {
       ],
     };
 
-    renderWithTheme(<ApprovalTicketDetails ticket={ticketWithArrayFields} />);
+    render(<ApprovalTicketDetails ticket={ticketWithArrayFields} />);
 
     expect(screen.getByText("Categories")).toBeInTheDocument();
     expect(screen.getByText("Hardware")).toBeInTheDocument();
@@ -93,7 +88,7 @@ describe("ApprovalTicketDetails", () => {
       ],
     };
 
-    renderWithTheme(<ApprovalTicketDetails ticket={ticketWithEmptyFields} />);
+    render(<ApprovalTicketDetails ticket={ticketWithEmptyFields} />);
 
     expect(screen.getByText("Empty Field")).toBeInTheDocument();
     expect(screen.getAllByText("-")).toHaveLength(2);

@@ -2,13 +2,14 @@ import { memo } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { MD } from "@zendeskgarden/react-typography";
-import { getColorV8 } from "@zendeskgarden/react-theming";
+import { getColor } from "@zendeskgarden/react-theming";
 import { APPROVAL_REQUEST_STATES } from "../../constants";
 import { formatApprovalRequestDate } from "../../utils";
 import type { ApprovalDecision } from "../../types";
 
 const Container = styled.div`
-  border-top: ${(props) => `1px solid ${getColorV8("grey", 300, props.theme)}`};
+  border-top: ${({ theme }) =>
+    `1px solid ${getColor({ theme, hue: "grey", shade: 300 })}`};
   display: flex;
   flex-direction: column;
   padding-top: ${(props) => props.theme.space.base * 4}px; /* 16px */
@@ -19,7 +20,7 @@ const PreviousDecisionTitle = styled(MD)`
 `;
 
 const FieldLabel = styled(MD)`
-  color: ${(props) => getColorV8("grey", 600, props.theme)};
+  color: ${({ theme }) => getColor({ theme, hue: "grey", shade: 600 })};
 `;
 
 function getPreviousDecisionFallbackLabel(status: string) {

@@ -2,8 +2,8 @@ import { memo } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { MD } from "@zendeskgarden/react-typography";
-import { getColorV8 } from "@zendeskgarden/react-theming";
-import { Grid, Row, Col } from "@zendeskgarden/react-grid";
+import { getColor } from "@zendeskgarden/react-theming";
+import { Grid } from "@zendeskgarden/react-grid";
 import type { ApprovalRequest } from "../../types";
 import ApprovalStatusTag from "./ApprovalStatusTag";
 import { formatApprovalRequestDate } from "../../utils";
@@ -13,7 +13,8 @@ import ApprovalRequestPreviousDecision from "./ApprovalRequestPreviousDecision";
 const Container = styled(Grid)`
   padding: ${(props) => props.theme.space.base * 6}px; /* 24px */
   margin-left: 0;
-  background: ${(props) => getColorV8("background", 650, props.theme)};
+  background: ${({ theme }) =>
+    getColor({ theme, variable: "background.default" })};
   border-radius: ${(props) => props.theme.borderRadii.md}; /* 4px */
   max-width: 296px;
 
@@ -32,10 +33,10 @@ const WrappedText = styled(MD)`
 `;
 
 const FieldLabel = styled(MD)`
-  color: ${(props) => getColorV8("grey", 600, props.theme)};
+  color: ${({ theme }) => getColor({ theme, hue: "grey", shade: 600 })};
 `;
 
-const DetailRow = styled(Row)`
+const DetailRow = styled(Grid.Row)`
   margin-bottom: ${(props) => props.theme.space.sm}; /* 12px */
 
   &:last-child {
@@ -85,83 +86,83 @@ function ApprovalRequestDetails({
         )}
       </ApprovalRequestHeader>
       <DetailRow>
-        <Col size={4}>
+        <Grid.Col size={4}>
           <FieldLabel>
             {t(
               "approval-requests.request.approval-request-details.sent-by",
               "Sent by"
             )}
           </FieldLabel>
-        </Col>
-        <Col size={8}>
+        </Grid.Col>
+        <Grid.Col size={8}>
           <WrappedText>{approvalRequest.created_by_user.name}</WrappedText>
-        </Col>
+        </Grid.Col>
       </DetailRow>
       <DetailRow>
-        <Col size={4}>
+        <Grid.Col size={4}>
           <FieldLabel>
             {t(
               "approval-requests.request.approval-request-details.sent-on",
               "Sent on"
             )}
           </FieldLabel>
-        </Col>
-        <Col size={8}>
+        </Grid.Col>
+        <Grid.Col size={8}>
           <MD>
             {formatApprovalRequestDate(approvalRequest.created_at, baseLocale)}
           </MD>
-        </Col>
+        </Grid.Col>
       </DetailRow>
       <DetailRow>
-        <Col size={4}>
+        <Grid.Col size={4}>
           <FieldLabel>
             {t(
               "approval-requests.request.approval-request-details.approver",
               "Approver"
             )}
           </FieldLabel>
-        </Col>
-        <Col size={8}>
+        </Grid.Col>
+        <Grid.Col size={8}>
           <WrappedText>{approvalRequest.assignee_user.name}</WrappedText>
-        </Col>
+        </Grid.Col>
       </DetailRow>
       <DetailRow>
-        <Col size={4}>
+        <Grid.Col size={4}>
           <FieldLabel>
             {t(
               "approval-requests.request.approval-request-details.status",
               "Status"
             )}
           </FieldLabel>
-        </Col>
-        <Col size={8}>
+        </Grid.Col>
+        <Grid.Col size={8}>
           <MD>
             <ApprovalStatusTag status={approvalRequest.status} />
           </MD>
-        </Col>
+        </Grid.Col>
       </DetailRow>
       {shouldShowApprovalRequestComment && (
         <DetailRow>
-          <Col size={4}>
+          <Grid.Col size={4}>
             <FieldLabel>
               {t(
                 "approval-requests.request.approval-request-details.comment_v2",
                 "Reason"
               )}
             </FieldLabel>
-          </Col>
-          <Col size={8}>
+          </Grid.Col>
+          <Grid.Col size={8}>
             <WrappedText>
               {approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
                 ? approvalRequest.withdrawn_reason
                 : approvalRequest.decisions[0]?.decision_notes ?? "-"}
             </WrappedText>
-          </Col>
+          </Grid.Col>
         </DetailRow>
       )}
       {approvalRequest.decided_at && (
         <DetailRow>
-          <Col size={4}>
+          <Grid.Col size={4}>
             <FieldLabel>
               {t(
                 approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
@@ -172,15 +173,15 @@ function ApprovalRequestDetails({
                   : "Decided"
               )}
             </FieldLabel>
-          </Col>
-          <Col size={8}>
+          </Grid.Col>
+          <Grid.Col size={8}>
             <MD>
               {formatApprovalRequestDate(
                 approvalRequest.decided_at,
                 baseLocale
               )}
             </MD>
-          </Col>
+          </Grid.Col>
         </DetailRow>
       )}
       {shouldShowPreviousDecision && approvalRequest.decisions[0] && (

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { type IOptionProps } from "@zendeskgarden/react-dropdowns.next";
+import { type IOptionProps } from "@zendeskgarden/react-dropdowns";
 import type { TicketFieldOptionObject } from "../data-types/TicketFieldObject";
 import { useTranslation } from "react-i18next";
 

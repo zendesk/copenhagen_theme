@@ -1,6 +1,6 @@
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import styled from "styled-components";
-import { getColorV8 } from "@zendeskgarden/react-theming";
+import { getColor } from "@zendeskgarden/react-theming";
 import { ItemThumbnail } from "../item-thumbnail/ItemThumbnail";
 
 const ItemContainer = styled.a`
@@ -10,8 +10,8 @@ const ItemContainer = styled.a`
   border-radius: ${(props) => props.theme.borderRadii.md};
   padding: ${(props) => props.theme.space.md};
   border: ${(props) => props.theme.borders.sm}
-    ${(props) => getColorV8("grey", 300, props.theme)};
-  color: ${(props) => props.theme.colors.foreground};
+    ${({ theme }) => getColor({ theme, hue: "grey", shade: 300 })};
+  color: ${({ theme }) => getColor({ theme, variable: "foreground.default" })};
 
   &:hover {
     border-color: ${(props) => props.theme.colors.primaryHue};
@@ -47,7 +47,7 @@ const TextContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: ${(props) => props.theme.space.xxs};
-  color: ${(props) => props.theme.colors.foreground};
+  color: ${({ theme }) => getColor({ theme, variable: "foreground.default" })};
   margin-top: ${(props) => props.theme.space.sm};
 `;
 

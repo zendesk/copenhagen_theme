@@ -1,12 +1,5 @@
-import type { ISelectedOption } from "@zendeskgarden/react-dropdowns.next";
-import {
-  Field as GardenField,
-  Label,
-  Hint,
-  Combobox,
-  Option,
-  Message,
-} from "@zendeskgarden/react-dropdowns.next";
+import type { ISelectedOption } from "@zendeskgarden/react-dropdowns";
+import { Field, Combobox, Option } from "@zendeskgarden/react-dropdowns";
 import { Span } from "@zendeskgarden/react-typography";
 import type { TicketFieldObject } from "../data-types/TicketFieldObject";
 import { useRef, useEffect } from "react";
@@ -30,13 +23,13 @@ export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
   }, [wrapperRef, required]);
 
   return (
-    <GardenField>
-      <Label>
+    <Field>
+      <Field.Label>
         {label}
         {required && <Span aria-hidden="true">*</Span>}
-      </Label>
+      </Field.Label>
       {description && (
-        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+        <Field.Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <Combobox
         ref={wrapperRef}
@@ -67,7 +60,7 @@ export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
           />
         ))}
       </Combobox>
-      {error && <Message validation="error">{error}</Message>}
-    </GardenField>
+      {error && <Field.Message validation="error">{error}</Field.Message>}
+    </Field>
   );
 }

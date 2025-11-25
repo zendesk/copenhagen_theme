@@ -4,7 +4,7 @@ import { getColor } from "@zendeskgarden/react-theming";
 
 const StyledNewCommentIndicator = styled.div`
   align-items: center;
-  color: ${({ theme }) => getColor("red", 600, theme)}; // #CC3340
+  color: ${({ theme }) => getColor({ theme, hue: "red", shade: 600 })};
   display: flex;
   font-size: ${({ theme }) => theme.fontSizes.md};
   text-align: center;
@@ -15,7 +15,8 @@ const StyledNewCommentIndicator = styled.div`
   &:after {
     content: "";
     flex: 1;
-    border-bottom: 1px solid ${(props) => getColor("red", 600, props.theme)}; // #CC3340
+    border-bottom: 1px solid
+      ${(props) => getColor({ theme: props.theme, hue: "red", shade: 600 })};
   }
 
   &:before {
