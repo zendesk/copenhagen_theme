@@ -1,6 +1,6 @@
 import type { IButtonProps } from "@zendeskgarden/react-buttons";
 import type { IGardenTheme } from "@zendeskgarden/react-theming";
-import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
+import { DEFAULT_THEME, getColor } from "@zendeskgarden/react-theming";
 import { css } from "styled-components";
 
 export interface Settings {
@@ -12,6 +12,39 @@ export interface Settings {
   hover_link_color: string;
   visited_link_color: string;
 }
+
+const createAccessibleFormControlStyle = (isWrapper: boolean) => {
+  const invalidSelector = isWrapper
+    ? ':has(input[aria-invalid="true"])'
+    : '[aria-invalid="true"]';
+
+  return css`
+    /* Boost default border contrast - use :not() to preserve validation colors */
+    &:not(${invalidSelector}) {
+      border-color: ${(p) =>
+        getColor({
+          theme: p.theme,
+          variable: "border.default",
+          dark: { offset: -100 },
+          light: { offset: 300 },
+        })};
+    }
+
+    /* Enhanced hover state */
+    &:hover:not(${invalidSelector}) {
+      border-color: ${(p) =>
+        getColor({
+          theme: p.theme,
+          variable: "border.primaryEmphasis",
+          dark: { offset: -100 },
+          light: { offset: 100 },
+        })};
+    }
+  `;
+};
+
+const accessibleFormInputStyle = createAccessibleFormControlStyle(false);
+const accessibleFormWrapperStyle = createAccessibleFormControlStyle(true);
 
 export function createTheme(settings: Settings): IGardenTheme {
   return {
@@ -56,6 +89,10 @@ export function createTheme(settings: Settings): IGardenTheme {
             color: ${settings.brand_text_color};
           `}
       `,
+      "forms.input": accessibleFormInputStyle,
+      "forms.textarea": accessibleFormInputStyle,
+      "forms.faux_input": accessibleFormInputStyle,
+      "dropdowns.combobox.trigger": accessibleFormWrapperStyle,
     },
   };
 }
