@@ -1,3 +1,10 @@
+# [4.18.0](https://github.com/zendesk/copenhagen_theme/compare/v4.17.0...v4.18.0) (2025-11-25)
+
+
+### Features
+
+* upgrade [@zendeskgarden](https://github.com/zendeskgarden) to 9.12.0 ([f476e38](https://github.com/zendesk/copenhagen_theme/commit/f476e387cbd18d2492c1b903c75c1cd11966af2a))
+
 # [4.17.0](https://github.com/zendesk/copenhagen_theme/compare/v4.16.0...v4.17.0) (2025-11-24)
 
 
