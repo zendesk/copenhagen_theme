@@ -110,7 +110,8 @@
   },
   "resolutions": {
     "@types/react": "^17.x",
-    "nwsapi": "^2.2.20"
+    "nwsapi": "^2.2.20",
+    "@zendeskgarden/container-utilities": "2.0.2"
   },
   "commitlint": {
     "extends": [
