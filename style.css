@@ -3953,6 +3953,11 @@ code.hljs {
   background-color: transparent;
   box-shadow: 0 0.125rem 0.25rem rgba(28, 29, 27, 0.075);
 }
+.callout--attachment {
+  color: #4c067d;
+  background-color: #faf1ff;
+  border-color: #7d0ec9;
+}
 .callout__title {
   font-size: 1.2em;
   font-weight: 800;

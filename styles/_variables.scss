@@ -47,6 +47,20 @@ $q-brand-info: (
   900: #00232d
 );
 
+$q-brand-attachment: (
+  10: #faf1ff,
+  50: #f1e0fb,
+  100: #e9c9fc,
+  200: #deabfe,
+  300: #d08bff,
+  400: #bf66ff,
+  500: #a446e9,
+  600: #7d0ec9,
+  700: #6700aa,
+  800: #4c067d,
+  900: #37025d,
+);
+
 $q-brand-danger: (
   10: #ffeeee,
   50: #ffdadb,
@@ -231,6 +245,15 @@ $q-bg-success-medium-hover: map-get($q-brand-success,500);
 $q-bg-success-weak-hover: map-get($q-brand-success,100);
 $q-bg-success-weaker-hover: map-get($q-brand-success,50);
 
+$q-bg-attachment-strong: map-get($q-brand-attachment,700);
+$q-bg-attachment-medium: map-get($q-brand-attachment,600);
+$q-bg-attachment-weak: map-get($q-brand-attachment,50);
+$q-bg-attachment-weaker: map-get($q-brand-attachment,10);
+$q-bg-attachment-strong-hover: map-get($q-brand-attachment,800);
+$q-bg-attachment-medium-hover: map-get($q-brand-attachment,700);
+$q-bg-attachment-weak-hover: map-get($q-brand-attachment,100);
+$q-bg-attachment-weaker-hover: map-get($q-brand-attachment,50);
+
 $q-bg-warning-strong: map-get($q-brand-warning,200);
 $q-bg-warning-strong-hover: map-get($q-brand-warning,300);
 $q-bg-warning-medium: map-get($q-brand-warning,100);
@@ -287,6 +310,9 @@ $q-border-success-weak: map-get($q-brand-success,200);
 $q-border-info-strong: map-get($q-brand-info,500);
 $q-border-info-medium: map-get($q-brand-info,400);
 $q-border-info-weak: map-get($q-brand-info,200);
+$q-border-attachment-strong: map-get($q-brand-attachment,600);
+$q-border-attachment-medium: map-get($q-brand-attachment,500);
+$q-border-attachment-weak: map-get($q-brand-attachment,300);
 $q-border-warning-strong: map-get($q-brand-warning,500);
 $q-border-warning-medium: map-get($q-brand-warning,400);
 $q-border-warning-weak: map-get($q-brand-warning,200);
@@ -305,6 +331,7 @@ $q-text-brand-strong: map-get($q-brand-primary,700);
 $q-text-success: map-get($q-brand-success,600);
 $q-text-warning: map-get($q-brand-warning,600);
 $q-text-info: map-get($q-brand-info,600);
+$q-text-attachment: map-get($q-brand-attachment,800);
 $q-text-danger: map-get($q-brand-danger,600);
 $q-text-link: map-get($q-brand-primary,600);
 $q-text-link-hover: map-get($q-brand-primary,700);
@@ -323,6 +350,8 @@ $q-text-ondanger-strong: $q-text-inverse-strong;
 $q-text-ondanger-medium: map-get($q-brand-danger,700);
 $q-text-oninfo-strong: $q-text-inverse-strong;
 $q-text-oninfo-medium: map-get($q-brand-info,700);
+$q-text-onattachment-strong: $q-text-inverse-strong;
+$q-text-onattachment-medium: map-get($q-brand-attachment,700);
 
 
 

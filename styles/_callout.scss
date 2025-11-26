@@ -52,6 +52,13 @@
         box-shadow: $q-shadow-sm;
     }
 
+
+    &--attachment {
+        color: $q-text-attachment;
+        background-color: $q-bg-attachment-weaker;
+        border-color: $q-border-attachment-strong;
+    }
+
     &__title {
         font-size: 1.2em;
         font-weight: 800;
