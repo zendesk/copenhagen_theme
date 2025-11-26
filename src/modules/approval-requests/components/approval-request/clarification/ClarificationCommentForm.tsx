@@ -13,6 +13,7 @@ interface ClarificationCommentFormProps {
   currentUserAvatarUrl: string;
   currentUserName: string;
   markAllCommentsAsRead: () => void;
+  approvalRequestId: string;
 }
 
 const FormContainer = styled(Grid)`
@@ -38,6 +39,7 @@ function ClarificationCommentForm({
   currentUserAvatarUrl,
   currentUserName,
   markAllCommentsAsRead,
+  approvalRequestId,
 }: ClarificationCommentFormProps) {
   const {
     comment_form_aria_label,
@@ -65,6 +67,7 @@ function ClarificationCommentForm({
     onSubmit: handleSubmitComment,
     baseLocale,
     markAllCommentsAsRead,
+    approvalRequestId,
   });
 
   return (

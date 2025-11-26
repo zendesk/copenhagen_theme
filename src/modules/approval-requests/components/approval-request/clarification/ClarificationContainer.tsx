@@ -153,6 +153,7 @@ export default function ClarificationContainer({
           currentUserAvatarUrl={currentUserAvatarUrl}
           currentUserName={currentUserName}
           markAllCommentsAsRead={markAllCommentsAsRead}
+          approvalRequestId={approvalRequestId}
         />
       )}
     </Container>

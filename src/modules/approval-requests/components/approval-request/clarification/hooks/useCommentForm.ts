@@ -2,15 +2,18 @@ import type React from "react";
 import { useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MAX_CHAR_COUNT, WARNING_THRESHOLD } from "../constants";
+import {submitComment} from "../../../../submitComment";
 
 export const useCommentForm = ({
   onSubmit,
   baseLocale,
   markAllCommentsAsRead,
+  approvalRequestId,
 }: {
   onSubmit: (comment: string) => Promise<unknown>;
   baseLocale: string;
   markAllCommentsAsRead: () => void;
+  approvalRequestId: string;
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const buttonsContainerRef = useRef<HTMLDivElement | null>(null);
@@ -59,7 +62,7 @@ export const useCommentForm = ({
 
     if (isValid) {
       try {
-        await onSubmit(comment);
+        await submitComment(approvalRequestId, comment);
         markAllCommentsAsRead();
         // clear form
         handleCancel();
