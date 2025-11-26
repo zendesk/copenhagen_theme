@@ -7,10 +7,12 @@ export const useCommentForm = ({
   onSubmit,
   baseLocale,
   markAllCommentsAsRead,
+  approvalRequestId,
 }: {
-  onSubmit: (comment: string) => Promise<unknown>;
+  onSubmit: (approvalRequestId: string, comment: string) => Promise<unknown>;
   baseLocale: string;
   markAllCommentsAsRead: () => void;
+  approvalRequestId: string;
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const buttonsContainerRef = useRef<HTMLDivElement | null>(null);
@@ -59,7 +61,7 @@ export const useCommentForm = ({
 
     if (isValid) {
       try {
-        await onSubmit(comment);
+        await onSubmit(approvalRequestId, comment);
         markAllCommentsAsRead();
         // clear form
         handleCancel();
