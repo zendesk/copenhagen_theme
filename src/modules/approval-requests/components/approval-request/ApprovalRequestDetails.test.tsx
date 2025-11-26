@@ -1,12 +1,7 @@
-import { screen, render } from "@testing-library/react";
-import type { ReactElement } from "react";
-import { ThemeProvider } from "@zendeskgarden/react-theming";
-import ApprovalRequestDetails from "./ApprovalRequestDetails";
+import { render } from "../../../test/render";
+import { screen } from "@testing-library/react";
 import type { ApprovalRequest } from "../../types";
-
-const renderWithTheme = (ui: ReactElement) => {
-  return render(<ThemeProvider>{ui}</ThemeProvider>);
-};
+import ApprovalRequestDetails from "./ApprovalRequestDetails";
 
 const mockApprovalRequest: ApprovalRequest = {
   id: "123",
@@ -47,7 +42,7 @@ const mockApprovalRequest: ApprovalRequest = {
 
 describe("ApprovalRequestDetails", () => {
   it("renders the basic approval request details without the decision notes and decided date", () => {
-    renderWithTheme(
+    render(
       <ApprovalRequestDetails
         approvalRequest={mockApprovalRequest}
         baseLocale="en-US"
@@ -58,7 +53,7 @@ describe("ApprovalRequestDetails", () => {
     expect(screen.getByText("John Sender")).toBeInTheDocument();
     expect(screen.getByText("Jane Approver")).toBeInTheDocument();
     expect(screen.getByText("Decision pending")).toBeInTheDocument();
-    expect(screen.queryByText("Comment")).not.toBeInTheDocument();
+    expect(screen.queryByText("Reason")).not.toBeInTheDocument();
     expect(screen.queryByText("Decided")).not.toBeInTheDocument();
   });
 
@@ -83,14 +78,14 @@ describe("ApprovalRequestDetails", () => {
       ],
     };
 
-    renderWithTheme(
+    render(
       <ApprovalRequestDetails
         approvalRequest={approvalRequestWithNotesAndDecision}
         baseLocale="en-US"
       />
     );
 
-    expect(screen.getByText("Comment")).toBeInTheDocument();
+    expect(screen.getByText("Reason")).toBeInTheDocument();
     expect(screen.getByText(/this looks good to me/i)).toBeInTheDocument();
     expect(screen.getByText("Decided")).toBeInTheDocument();
     expect(screen.getByText(/this looks good to me/i)).toBeInTheDocument();
@@ -104,7 +99,7 @@ describe("ApprovalRequestDetails", () => {
       decided_at: "2024-02-21T15:45:00Z",
     };
 
-    renderWithTheme(
+    render(
       <ApprovalRequestDetails
         approvalRequest={withdrawnRequest}
         baseLocale="en-US"
@@ -137,7 +132,7 @@ describe("ApprovalRequestDetails", () => {
       ],
     };
 
-    renderWithTheme(
+    render(
       <ApprovalRequestDetails
         approvalRequest={withdrawnWithPriorApproval}
         baseLocale="en-US"
@@ -170,7 +165,7 @@ describe("ApprovalRequestDetails", () => {
       ],
     };
 
-    renderWithTheme(
+    render(
       <ApprovalRequestDetails
         approvalRequest={approvedRequest}
         baseLocale="en-US"

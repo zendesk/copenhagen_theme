@@ -2,7 +2,7 @@ import { useState, useCallback, memo } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Button } from "@zendeskgarden/react-buttons";
-import { Field, Label, Message, Textarea } from "@zendeskgarden/react-forms";
+import { Field, Textarea } from "@zendeskgarden/react-forms";
 import { Avatar } from "@zendeskgarden/react-avatars";
 import { submitApprovalDecision } from "../../submitApprovalDecision";
 import type { ApprovalDecision } from "../../submitApprovalDecision";
@@ -170,7 +170,7 @@ function ApproverActions({
     return (
       <CommentSection>
         <Field>
-          <Label>{fieldLabel}</Label>
+          <Field.Label>{fieldLabel}</Field.Label>
           <TextAreaContainer>
             {shouldShowAvatar && (
               <Avatar>
@@ -189,12 +189,12 @@ function ApproverActions({
                 validation={shouldShowValidationError ? "error" : undefined}
               />
               {shouldShowValidationError && (
-                <Message validation="error">
+                <Field.Message validation="error">
                   {t(
                     "approval-requests.request.approver-actions.denial-reason-validation",
                     "Enter a reason for denial"
                   )}
-                </Message>
+                </Field.Message>
               )}
             </TextAreaAndMessage>
           </TextAreaContainer>

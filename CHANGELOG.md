@@ -1,3 +1,89 @@
+# [4.18.0](https://github.com/zendesk/copenhagen_theme/compare/v4.17.0...v4.18.0) (2025-11-25)
+
+
+### Features
+
+* upgrade [@zendeskgarden](https://github.com/zendeskgarden) to 9.12.0 ([f476e38](https://github.com/zendesk/copenhagen_theme/commit/f476e387cbd18d2492c1b903c75c1cd11966af2a))
+
+# [4.17.0](https://github.com/zendesk/copenhagen_theme/compare/v4.16.0...v4.17.0) (2025-11-24)
+
+
+### Bug Fixes
+
+* feedback in CR ([bfe25ce](https://github.com/zendesk/copenhagen_theme/commit/bfe25ce4ee07aa3e1c049127f9eea3d4f5847301))
+
+
+### Features
+
+* add translation for serial number label ([dada4f9](https://github.com/zendesk/copenhagen_theme/commit/dada4f9d3b20745a0716406b13ca15d6824c2702))
+
+# [4.16.0](https://github.com/zendesk/copenhagen_theme/compare/v4.15.2...v4.16.0) (2025-11-20)
+
+
+### Bug Fixes
+
+* code review ([852fd2d](https://github.com/zendesk/copenhagen_theme/commit/852fd2dc2f1bb9fbff39d6c2eff383e4e98f2942))
+* eslint ([ce8c25d](https://github.com/zendesk/copenhagen_theme/commit/ce8c25df3f0ade49246a681e5f0262764a408422))
+* feedback in CR ([85bd8d0](https://github.com/zendesk/copenhagen_theme/commit/85bd8d04d8212400dad68be03302b05c247837ae))
+
+
+### Features
+
+* add serial number to option in lookupfield ([1f459c3](https://github.com/zendesk/copenhagen_theme/commit/1f459c364349e50aea40547c49a32d1ceed71f28))
+
+## [4.15.2](https://github.com/zendesk/copenhagen_theme/compare/v4.15.1...v4.15.2) (2025-11-20)
+
+
+### Bug Fixes
+
+* label should be taken from asset api ([6982b49](https://github.com/zendesk/copenhagen_theme/commit/6982b497fc0e6d2cbb54caaae0446d4c5869d3a1))
+
+## [4.15.1](https://github.com/zendesk/copenhagen_theme/compare/v4.15.0...v4.15.1) (2025-11-19)
+
+
+### Bug Fixes
+
+* **attachments:** enable keyboard navigation with Enter/Space in attachments field ([d447cb8](https://github.com/zendesk/copenhagen_theme/commit/d447cb842c61b32c07f90a0e9c42656093f38917))
+* **attachments:** removed refs ([9faaef9](https://github.com/zendesk/copenhagen_theme/commit/9faaef97c4272516d36cd82988dc9a758bc8f8b0))
+
+# [4.15.0](https://github.com/zendesk/copenhagen_theme/compare/v4.14.1...v4.15.0) (2025-11-19)
+
+
+### Bug Fixes
+
+* eslint ([428d305](https://github.com/zendesk/copenhagen_theme/commit/428d305b7926dde5fa3a972165029307ec4ee56a))
+* feedback in CR ([f8323fc](https://github.com/zendesk/copenhagen_theme/commit/f8323fcd7aceaebb40451e91465d9bb99c3eea84))
+* tests ([0336c3a](https://github.com/zendesk/copenhagen_theme/commit/0336c3aa2251f82b9f9c14b410e659c53f9b8d58))
+
+
+### Features
+
+* show description from API ([d3dc29a](https://github.com/zendesk/copenhagen_theme/commit/d3dc29ab2955c19fec80928fea9ee649d6ca0754))
+
+## [4.14.1](https://github.com/zendesk/copenhagen_theme/compare/v4.14.0...v4.14.1) (2025-11-18)
+
+
+### Bug Fixes
+
+* another test ([8e43727](https://github.com/zendesk/copenhagen_theme/commit/8e4372729d55925bc742e5d3a602240523b4a235))
+* misc style fixes ([dc314b8](https://github.com/zendesk/copenhagen_theme/commit/dc314b8e8631049c42eee701df2bd8fbb0bb8963))
+* tests ([a38da09](https://github.com/zendesk/copenhagen_theme/commit/a38da09a81d698470904bc34d3e2ea230b9dffb9))
+* update test mock ([e9724db](https://github.com/zendesk/copenhagen_theme/commit/e9724db33fe85b5717993c0adfa587344d7d7228))
+* various style fixes ([28936e6](https://github.com/zendesk/copenhagen_theme/commit/28936e645b5009c02f3653ee299a38ab6f887ba4))
+
+# [4.14.0](https://github.com/zendesk/copenhagen_theme/compare/v4.13.3...v4.14.0) (2025-11-18)
+
+
+### Bug Fixes
+
+* added aria-expanded="false" to all dropdown-toggle buttons in template files ([3a45137](https://github.com/zendesk/copenhagen_theme/commit/3a45137a4e5242f2a55156304b82caf4f669d608))
+* ensure Dropdown constructs target buttons w/ aria-expanded="false", updates value when toggled ([c43b3c5](https://github.com/zendesk/copenhagen_theme/commit/c43b3c55169dea8ceea408c8f689421b193e00d1))
+
+
+### Features
+
+* changed Dropdown class to add necessary attributes (aria-expanded, aria-haspopup) if missing ([4254bcb](https://github.com/zendesk/copenhagen_theme/commit/4254bcba32c63e6c11c4ad33cbab4879383e1306))
+
 ## [4.13.3](https://github.com/zendesk/copenhagen_theme/compare/v4.13.2...v4.13.3) (2025-11-12)
 
 

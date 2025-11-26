@@ -2,13 +2,16 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { RequestFormField } from "../../../ticket-fields";
 import { Button } from "@zendeskgarden/react-buttons";
-import { getColorV8 } from "@zendeskgarden/react-theming";
+import { getColor } from "@zendeskgarden/react-theming";
 import { useTranslation } from "react-i18next";
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import { CollapsibleDescription } from "./CollapsibleDescription";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
 import type { CustomObjectRecord } from "../../../ticket-fields/data-types/CustomObjectRecord";
 import { useAssetDataFetchers } from "../../../service-catalog/hooks/useAssetDataFetchers";
+import type { ITAMAssetOptionObject } from "../../data-types/ITAMAssetOptionObject";
+import { Span } from "@zendeskgarden/react-typography";
+import { Option } from "@zendeskgarden/react-dropdowns";
 
 const Form = styled.form`
   display: flex;
@@ -38,17 +41,18 @@ const ButtonWrapper = styled.div`
   margin-inline-start: ${(props) => props.theme.space.xl};
   padding: ${(props) => props.theme.space.lg};
   border: ${(props) => props.theme.borders.sm}
-    ${(props) => getColorV8("grey", 300, props.theme)};
+    ${({ theme }) => getColor({ theme, hue: "grey", shade: 300 })};
   height: fit-content;
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     position: sticky;
     top: 0;
-    background: ${(props) => props.theme.colors.background};
+    background: ${({ theme }) =>
+      getColor({ theme, variable: "background.default" })};
     padding: ${(props) => props.theme.space.lg};
     border: none;
     border-top: ${(props) => props.theme.borders.sm}
-      ${(props) => getColorV8("grey", 300, props.theme)};
+      ${({ theme }) => getColor({ theme, hue: "grey", shade: 300 })};
     width: 100vw;
     margin-inline-start: 0;
   }
@@ -85,8 +89,19 @@ const LeftColumn = styled.div`
 export const ASSET_TYPE_KEY = "zen:custom_object:standard::itam_asset_type";
 export const ASSET_KEY = "zen:custom_object:standard::itam_asset";
 
-type AssetTypeState = { ids: string[]; hidden: boolean; ready: boolean };
-type AssetState = { ids: string[]; ready: boolean };
+type AssetTypeState = {
+  ids: string[];
+  hidden: boolean;
+  ready: boolean;
+  description?: string;
+  name?: string;
+};
+type AssetState = {
+  ids: string[];
+  ready: boolean;
+  description?: string;
+  name?: string;
+};
 
 const isAssetField = (f: TicketFieldObject) =>
   f.relationship_target_type === ASSET_KEY;
@@ -137,10 +152,14 @@ export function ItemRequestForm({
     ids: [],
     hidden: false,
     ready: false,
+    description: undefined,
+    name: undefined,
   });
   const [assetState, setAssetState] = useState<AssetState>({
     ids: [],
     ready: false,
+    description: undefined,
+    name: undefined,
   });
   const [isHiddenAssetsType, setIsHiddenAssetsType] = useState(false);
 
@@ -157,6 +176,8 @@ export function ItemRequestForm({
 
         const hidden = !!res?.isHiddenAssetsType;
         const raw = res?.assetTypeIds;
+        const description = res?.assetTypeDescription;
+        const name = res?.assetTypeName;
 
         let ids: string[] = [];
 
@@ -168,31 +189,46 @@ export function ItemRequestForm({
 
         ids = ids.map((s) => s.trim()).filter(Boolean);
 
-        setAssetTypeState({ ids, hidden, ready: true });
+        setAssetTypeState({ ids, hidden, ready: true, description, name });
         setIsHiddenAssetsType(hidden);
       } catch (e) {
         if (!alive) return;
-        setAssetTypeState({ ids: [], hidden: false, ready: true });
+        setAssetTypeState({
+          ids: [],
+          hidden: false,
+          ready: true,
+          description: undefined,
+          name: undefined,
+        });
       }
 
       try {
-        const idsStr = await fetchAssets();
+        const res = await fetchAssets();
         if (!alive) return;
+
+        const raw = res?.assetIds;
+        const description = res?.assetDescription;
+        const name = res?.assetName;
 
         let ids: string[] = [];
 
-        if (typeof idsStr === "string") {
-          ids = idsStr.split(",");
-        } else if (Array.isArray(idsStr)) {
-          ids = idsStr.map(String);
+        if (typeof raw === "string") {
+          ids = raw.split(",");
+        } else if (Array.isArray(raw)) {
+          ids = raw.map(String);
         }
 
         ids = ids.map((s) => s.trim()).filter(Boolean);
 
-        setAssetState({ ids, ready: true });
+        setAssetState({ ids, ready: true, description, name });
       } catch (e) {
         if (!alive) return;
-        setAssetState({ ids: [], ready: true });
+        setAssetState({
+          ids: [],
+          ready: true,
+          description: undefined,
+          name: undefined,
+        });
       }
     };
 
@@ -206,11 +242,17 @@ export function ItemRequestForm({
   const buildLookupFieldOptions = async (
     records: CustomObjectRecord[],
     field: TicketFieldObject
-  ) => {
+  ): Promise<ITAMAssetOptionObject[]> => {
     if (!Array.isArray(records) || records.length === 0) return [];
 
-    const options = records.map((rec) => {
-      const base = { name: rec.name, value: rec.id };
+    const options: ITAMAssetOptionObject[] = records.map((rec) => {
+      const base = {
+        name: rec.name,
+        value: rec.id,
+        serialNumber: rec.custom_object_fields["standard::serial_number"] as
+          | string
+          | undefined,
+      };
 
       if (rec.custom_object_key === "standard::itam_asset") {
         const fields = (rec.custom_object_fields ?? {}) as {
@@ -239,7 +281,31 @@ export function ItemRequestForm({
       }
       return list;
     }
-    return options.map(({ name, value }) => ({ name, value }));
+    return options.map(({ name, value, serialNumber }) => ({
+      name,
+      value,
+      serialNumber,
+    }));
+  };
+
+  const renderLookupFieldOption = (option: ITAMAssetOptionObject) => {
+    if (option.serialNumber) {
+      return (
+        <>
+          {option.name}
+          <Option.Meta>
+            <Span hue="grey">
+              {t(
+                "service-catalog.item.serial-number-label",
+                "SN: {{serialNumber}}",
+                { serialNumber: option.serialNumber }
+              )}
+            </Span>
+          </Option.Meta>
+        </>
+      );
+    }
+    return option.name;
   };
 
   return (
@@ -260,10 +326,24 @@ export function ItemRequestForm({
                 </>
               );
             }
+            const customField = {
+              ...field,
+              label: isAssetField(field)
+                ? assetState.name || field.label
+                : isAssetTypeField(field)
+                ? assetTypeState.name || field.label
+                : field.label,
+              description: isAssetField(field)
+                ? assetState.description || field.description
+                : isAssetTypeField(field)
+                ? assetTypeState.description || field.description
+                : field.description,
+            };
+
             return (
               <RequestFormField
                 key={field.id}
-                field={field}
+                field={customField}
                 baseLocale={baseLocale}
                 hasAtMentions={hasAtMentions}
                 userRole={userRole}
@@ -273,6 +353,7 @@ export function ItemRequestForm({
                 handleChange={handleChange}
                 visibleFields={requestFields}
                 buildLookupFieldOptions={buildLookupFieldOptions}
+                renderLookupFieldOption={renderLookupFieldOption}
               />
             );
           })}

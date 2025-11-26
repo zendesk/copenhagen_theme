@@ -1,12 +1,5 @@
-import type { IComboboxProps } from "@zendeskgarden/react-dropdowns.next";
-import {
-  Field as GardenField,
-  Label,
-  Hint,
-  Combobox,
-  Option,
-  Message,
-} from "@zendeskgarden/react-dropdowns.next";
+import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
+import { Field, Combobox, Option } from "@zendeskgarden/react-dropdowns";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type {
   TicketFieldObject,
@@ -64,7 +57,8 @@ export interface LookupFieldProps {
   buildLookupFieldOptions?: (
     records: CustomObjectRecord[],
     field: TicketFieldObject
-  ) => Promise<{ name: string; value: string }[]>;
+  ) => Promise<TicketFieldOptionObject[]>;
+  renderOption?: (option: TicketFieldOptionObject) => React.ReactNode;
 }
 
 export function LookupField({
@@ -74,6 +68,7 @@ export function LookupField({
   onChange,
   visibleFields,
   buildLookupFieldOptions,
+  renderOption,
 }: LookupFieldProps) {
   const {
     id: fieldId,
@@ -260,13 +255,13 @@ export function LookupField({
   };
 
   return (
-    <GardenField>
-      <Label>
+    <Field>
+      <Field.Label>
         {label}
         {required && <Span aria-hidden="true">*</Span>}
-      </Label>
+      </Field.Label>
       {description && (
-        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+        <Field.Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <Combobox
         inputProps={{ required }}
@@ -315,11 +310,13 @@ export function LookupField({
               value={option.value}
               label={option.name}
               data-test-id={`option-${option.name}`}
-            />
+            >
+              {renderOption ? renderOption(option) : option.name}
+            </Option>
           ))}
       </Combobox>
-      {error && <Message validation="error">{error}</Message>}
+      {error && <Field.Message validation="error">{error}</Field.Message>}
       <input type="hidden" name={name} value={selectedOption?.value} />
-    </GardenField>
+    </Field>
   );
 }

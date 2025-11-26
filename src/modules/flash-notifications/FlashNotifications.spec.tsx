@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "../test/render";
+import { screen } from "@testing-library/react";
 import { GlobalNotificationsRoot } from "../shared/notifications/GlobalNotificationsRoot";
 import { FLASH_NOTIFICATIONS_KEY } from "../shared";
 import type { ToastNotification } from "../shared";

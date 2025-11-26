@@ -1,21 +1,18 @@
-import { screen, render } from "@testing-library/react";
-import type { ReactElement } from "react";
-import { ThemeProvider } from "@zendeskgarden/react-theming";
+import { screen } from "@testing-library/react";
+import { render } from "../test/render";
 import ApprovalRequestPage from "./ApprovalRequestPage";
 import { useApprovalRequest } from "./hooks/useApprovalRequest";
-import { ToastProvider } from "@zendeskgarden/react-notifications";
 import type { ApprovalRequest } from "./types";
 
+jest.mock("@zendeskgarden/svg-icons/src/16/headset-fill.svg", () => "svg-mock");
+jest.mock(
+  "@zendeskgarden/svg-icons/src/12/circle-sm-fill.svg",
+  () => "svg-mock"
+);
 jest.mock("./hooks/useApprovalRequest");
 const mockUseApprovalRequest = useApprovalRequest as jest.Mock;
-
-const renderWithTheme = (ui: ReactElement) => {
-  return render(
-    <ToastProvider>
-      <ThemeProvider>{ui}</ThemeProvider>
-    </ToastProvider>
-  );
-};
+const mockUserAvatarUrl = "https://example.com/avatar.jpg";
+const mockUserName = "Test User";
 
 const mockApprovalRequest: ApprovalRequest = {
   id: "123",
@@ -48,6 +45,16 @@ const mockApprovalRequest: ApprovalRequest = {
   },
 };
 
+const baseProps = {
+  approvalWorkflowInstanceId: "456",
+  approvalRequestId: "123",
+  baseLocale: "en-US",
+  helpCenterPath: "/hc/en-us",
+  organizations: [],
+  userAvatarUrl: mockUserAvatarUrl,
+  userName: mockUserName,
+};
+
 describe("ApprovalRequestPage", () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -61,16 +68,7 @@ describe("ApprovalRequestPage", () => {
       errorFetchingApprovalRequest: null,
     });
 
-    renderWithTheme(
-      <ApprovalRequestPage
-        approvalWorkflowInstanceId="456"
-        approvalRequestId="123"
-        baseLocale="en-US"
-        helpCenterPath="/hc/en-us"
-        organizations={[]}
-        userId={1}
-      />
-    );
+    render(<ApprovalRequestPage {...baseProps} userId={1} />);
 
     expect(screen.getByRole("progressbar")).toBeInTheDocument();
   });
@@ -83,12 +81,9 @@ describe("ApprovalRequestPage", () => {
       errorFetchingApprovalRequest: null,
     });
 
-    renderWithTheme(
+    render(
       <ApprovalRequestPage
-        approvalWorkflowInstanceId="456"
-        approvalRequestId="123"
-        baseLocale="en-US"
-        helpCenterPath="/hc/en-us"
+        {...baseProps}
         organizations={[{ id: 1, name: "Test Org" }]}
         userId={1}
       />
@@ -106,16 +101,7 @@ describe("ApprovalRequestPage", () => {
       errorFetchingApprovalRequest: null,
     });
 
-    renderWithTheme(
-      <ApprovalRequestPage
-        approvalWorkflowInstanceId="456"
-        approvalRequestId="123"
-        baseLocale="en-US"
-        helpCenterPath="/hc/en-us"
-        organizations={[]}
-        userId={2}
-      />
-    );
+    render(<ApprovalRequestPage {...baseProps} userId={2} />);
 
     expect(screen.getAllByText("Approve request").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Deny request").length).toBeGreaterThan(0);
@@ -129,13 +115,9 @@ describe("ApprovalRequestPage", () => {
       errorFetchingApprovalRequest: null,
     });
 
-    renderWithTheme(
+    render(
       <ApprovalRequestPage
-        approvalWorkflowInstanceId="456"
-        approvalRequestId="123"
-        baseLocale="en-US"
-        helpCenterPath="/hc/en-us"
-        organizations={[]}
+        {...baseProps}
         userId={3} // Different from assignee_user.id
       />
     );
@@ -158,18 +140,40 @@ describe("ApprovalRequestPage", () => {
     });
 
     expect(() =>
-      renderWithTheme(
-        <ApprovalRequestPage
-          approvalWorkflowInstanceId="456"
-          approvalRequestId="123"
-          baseLocale="en-US"
-          helpCenterPath="/hc/en-us"
-          organizations={[]}
-          userId={1}
-        />
-      )
+      render(<ApprovalRequestPage {...baseProps} userId={1} />)
     ).toThrow("Failed to fetch");
 
     consoleSpy.mockRestore();
+  });
+
+  it("renders Clarification comment section when clarification_flow_messages is present (effectively arturo `approvals_clarification_flow_end_users` enabled)", () => {
+    const approvalRequestWithClarification = {
+      ...mockApprovalRequest,
+      clarification_flow_messages: [],
+    };
+
+    mockUseApprovalRequest.mockReturnValue({
+      approvalRequest: approvalRequestWithClarification,
+      setApprovalRequest: jest.fn(),
+      isLoading: false,
+      errorFetchingApprovalRequest: null,
+    });
+
+    render(<ApprovalRequestPage {...baseProps} userId={1} />);
+
+    expect(screen.getByText(/Comments/i)).toBeInTheDocument();
+  });
+
+  it("renders without Clarification comment section when clarification_flow_messages is absent", () => {
+    mockUseApprovalRequest.mockReturnValue({
+      approvalRequest: mockApprovalRequest,
+      setApprovalRequest: jest.fn(),
+      isLoading: false,
+      errorFetchingApprovalRequest: null,
+    });
+
+    render(<ApprovalRequestPage {...baseProps} userId={1} />);
+
+    expect(screen.queryByText(/clarification/i)).not.toBeInTheDocument();
   });
 });

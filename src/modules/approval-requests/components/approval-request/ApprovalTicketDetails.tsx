@@ -2,7 +2,7 @@ import { memo } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { MD } from "@zendeskgarden/react-typography";
-import { getColorV8 } from "@zendeskgarden/react-theming";
+import { getColor } from "@zendeskgarden/react-theming";
 import { Grid } from "@zendeskgarden/react-grid";
 import { Tag } from "@zendeskgarden/react-tags";
 import type { ApprovalRequestTicket } from "../../types";
@@ -10,7 +10,7 @@ import type { ApprovalRequestTicket } from "../../types";
 const TicketContainer = styled(Grid)`
   padding: ${(props) => props.theme.space.md}; /* 20px */
   border: ${(props) => props.theme.borders.sm}
-    ${(props) => getColorV8("grey", 300, props.theme)};
+    ${({ theme }) => getColor({ theme, hue: "grey", shade: 300 })};
   border-radius: ${(props) => props.theme.borderRadii.md}; /* 4px */
 `;
 
@@ -19,7 +19,7 @@ const TicketDetailsHeader = styled(MD)`
 `;
 
 const FieldLabel = styled(MD)`
-  color: ${(props) => getColorV8("grey", 600, props.theme)};
+  color: ${({ theme }) => getColor({ theme, hue: "grey", shade: 600 })};
 `;
 
 const MultiselectTag = styled(Tag)`

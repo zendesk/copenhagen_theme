@@ -2,11 +2,8 @@ import type { ChangeEvent } from "react";
 import { useState } from "react";
 import type { TicketFieldObject } from "../data-types/TicketFieldObject";
 import {
-  Label,
   Field as GardenField,
-  Hint,
   Checkbox as GardenCheckbox,
-  Message,
 } from "@zendeskgarden/react-forms";
 import { Span } from "@zendeskgarden/react-typography";
 
@@ -35,15 +32,17 @@ export function Checkbox({ field, onChange }: CheckboxProps): JSX.Element {
         value={checkboxValue ? "on" : "off"}
         onChange={handleChange}
       >
-        <Label>
+        <GardenField.Label>
           {label}
           {required && <Span aria-hidden="true">*</Span>}
-        </Label>
+        </GardenField.Label>
         {description && (
-          <Hint dangerouslySetInnerHTML={{ __html: description }} />
+          <GardenField.Hint dangerouslySetInnerHTML={{ __html: description }} />
         )}
       </GardenCheckbox>
-      {error && <Message validation="error">{error}</Message>}
+      {error && (
+        <GardenField.Message validation="error">{error}</GardenField.Message>
+      )}
     </GardenField>
   );
 }
