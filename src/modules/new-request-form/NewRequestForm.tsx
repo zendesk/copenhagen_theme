@@ -1,4 +1,4 @@
-import type { AnswerBot, RequestForm } from "./data-types";
+import type {AnswerBot, AnswerBotGenerative, RequestForm} from "./data-types";
 import { Fragment, useCallback, useState } from "react";
 import { TicketFormField } from "./ticket-form-field/TicketFormField";
 import { ParentTicketField } from "./parent-ticket-field/ParentTicketField";
@@ -34,6 +34,7 @@ export interface NewRequestFormProps {
   organizations: Array<Organization>;
   answerBotModal: {
     answerBot: AnswerBot;
+    answerBotGenerative: AnswerBotGenerative
     hasRequestManagement: boolean;
     isSignedIn: boolean;
     helpCenterPath: string;

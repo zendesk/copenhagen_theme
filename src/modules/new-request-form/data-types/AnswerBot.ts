@@ -32,3 +32,10 @@ export enum FeedbackType {
   POSITIVE = "resolution",
   NEGATIVE = "rejection",
 }
+
+export interface AnswerBotGenerative {
+  auth_token: string | null;
+  interaction_access_token: string | null;
+  articles: AnswerBotArticle[];
+  request_id: number | null;
+}
