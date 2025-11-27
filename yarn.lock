@@ -5074,9 +5074,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendesk/help-center-wysiwyg@npm:0.1.0":
-  version: 0.1.0
-  resolution: "@zendesk/help-center-wysiwyg@npm:0.1.0"
+"@zendesk/help-center-wysiwyg@npm:0.2.0":
+  version: 0.2.0
+  resolution: "@zendesk/help-center-wysiwyg@npm:0.2.0"
   dependencies:
     "@ckeditor/ckeditor5-basic-styles": "npm:41.3.0"
     "@ckeditor/ckeditor5-block-quote": "npm:41.3.0"
@@ -5093,10 +5093,10 @@ __metadata:
     "@ckeditor/ckeditor5-paste-from-office": "npm:41.3.0"
     "@ckeditor/ckeditor5-theme-lark": "npm:41.3.0"
     "@ckeditor/ckeditor5-typing": "npm:41.3.0"
-    "@zendeskgarden/css-variables": "npm:6.4.6"
+    "@zendeskgarden/css-variables": "npm:7.0.0"
     "@zendeskgarden/svg-icons": "npm:7.0.0"
     lodash.debounce: "npm:4.0.8"
-  checksum: 10c0/34f6ea93b422b688e7676b69f19a6a52374f18a85ed27a6042198a3aec16858294f38e6475787be744eb02a90ecde8f4151d620b1130fb97debbc901897228f3
+  checksum: 10c0/f35a2d0449fb0480ce8bb2f8048c7e50a152c114de3c0b450f4a69a8e7f46945dd4c073a80b8ab9aefd5fbabefc8f5c4fbfbe5a811a6e6a454192f3a5904c618
   languageName: node
   linkType: hard
 
@@ -5393,10 +5393,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/css-variables@npm:6.4.6":
-  version: 6.4.6
-  resolution: "@zendeskgarden/css-variables@npm:6.4.6"
-  checksum: 10c0/cb5ab84e1d4a102661fe12523d7c6aa611af6b80015402273fac7696c57d74870c5e7ee50c975d8dbf97469902d089590358ddb0042dc826d395c399c9dc46d8
+"@zendeskgarden/css-variables@npm:7.0.0":
+  version: 7.0.0
+  resolution: "@zendeskgarden/css-variables@npm:7.0.0"
+  checksum: 10c0/6e11a6dd58a4aee9c9ab855b43551cde2c229bfef0d55ce62b34ebb0ae31b46895cd9ca58f1b9d6295a0ee4662d7a429584d9cf3714c07106bfd03ccddb7708f
   languageName: node
   linkType: hard
 
@@ -7847,7 +7847,7 @@ __metadata:
     "@types/styled-components": "npm:^5.1.26"
     "@typescript-eslint/eslint-plugin": "npm:^6.1.0"
     "@typescript-eslint/parser": "npm:^6.1.0"
-    "@zendesk/help-center-wysiwyg": "npm:0.1.0"
+    "@zendesk/help-center-wysiwyg": "npm:0.2.0"
     "@zendesk/zcli": "npm:1.0.0-beta.52"
     "@zendeskgarden/container-grid": "npm:^3.0.14"
     "@zendeskgarden/container-utilities": "npm:^2.0.2"
