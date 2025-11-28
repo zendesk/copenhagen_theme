@@ -1,4 +1,4 @@
-import type { AnswerBot, RequestForm } from "./data-types";
+import type { AnswerBot, AnswerBotGenerative, RequestForm } from "./data-types";
 import { Fragment, useCallback, useState } from "react";
 import { TicketFormField } from "./ticket-form-field/TicketFormField";
 import { ParentTicketField } from "./parent-ticket-field/ParentTicketField";
@@ -34,6 +34,7 @@ export interface NewRequestFormProps {
   organizations: Array<Organization>;
   answerBotModal: {
     answerBot: AnswerBot;
+    answerBotGenerative: AnswerBotGenerative
     hasRequestManagement: boolean;
     isSignedIn: boolean;
     helpCenterPath: string;
@@ -88,7 +89,7 @@ export function NewRequestForm({
     inline_attachments_fields,
     description_mimetype_field,
   } = requestForm;
-  const { answerBot } = answerBotModal;
+  const { answerBot, answerBotGenerative } = answerBotModal;
   const {
     ticketFields: prefilledTicketFields,
     emailField,
@@ -153,8 +154,7 @@ export function NewRequestForm({
     !!answerBot?.articles?.length &&
     !!answerBot?.request_id;
 
-  const answerBotGenerativeModalEnabled =
-    !answerBotModalEnabled && answerBot.request_id;
+  const answerBotGenerativeModalEnabled = !!answerBotGenerative?.request_id;
 
   return (
     <>
@@ -283,7 +283,7 @@ export function NewRequestForm({
       )}
       {answerBotGenerativeModalEnabled && (
         <GenerativeAnswerBotModal
-          requestId={Number(answerBot.request_id)}
+          requestId={Number(answerBotGenerative.request_id)}
           redirectTo={answerBotModal.helpCenterPath}
         />
       )}
