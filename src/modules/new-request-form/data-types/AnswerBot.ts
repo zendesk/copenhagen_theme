@@ -34,8 +34,5 @@ export enum FeedbackType {
 }
 
 export interface AnswerBotGenerative {
-  auth_token: string | null;
-  interaction_access_token: string | null;
-  articles: AnswerBotArticle[];
   request_id: number | null;
 }
