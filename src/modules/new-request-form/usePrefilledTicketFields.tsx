@@ -1,13 +1,28 @@
 import { useMemo } from "react";
 import DOMPurify from "dompurify";
 import type { TicketFieldObject } from "../ticket-fields/data-types/TicketFieldObject";
-import { ALLOWED_HTML_TAGS } from "../shared";
 
 const MAX_URL_LENGTH = 2048;
 const TICKET_FIELD_PREFIX = "tf_";
 const DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
 
 const ALLOWED_BOOLEAN_VALUES = ["true", "false"];
+const ALLOWED_HTML_TAGS = [
+  "pre",
+  "strong",
+  "b",
+  "p",
+  "blockquote",
+  "ul",
+  "ol",
+  "li",
+  "h2",
+  "h3",
+  "h4",
+  "i",
+  "em",
+  "br",
+];
 
 interface Fields {
   ticketFields: TicketFieldObject[];

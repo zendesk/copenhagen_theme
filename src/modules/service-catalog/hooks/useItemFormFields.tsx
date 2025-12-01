@@ -6,7 +6,6 @@ import type { EndUserCondition } from "../../ticket-fields/data-types/EndUserCon
 import { getCustomObjectKey } from "../../ticket-fields/fields/LookupField";
 import { getVisibleFields } from "../../ticket-fields/getVisibleFields";
 import DOMPurify from "dompurify";
-import { ALLOWED_HTML_TAGS } from "../../shared";
 
 const getFieldValue = (field: TicketField) => {
   if (field.type === "tagger") {
@@ -30,7 +29,7 @@ const formatField = (field: TicketField): TicketFieldObject => {
   } = field;
 
   const sanitizedDescription = DOMPurify.sanitize(description, {
-    ALLOWED_TAGS: ALLOWED_HTML_TAGS,
+    ALLOWED_TAGS: [],
   });
 
   return {
