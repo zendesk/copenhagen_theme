@@ -1,3 +1,11 @@
+# [4.19.0](https://github.com/zendesk/copenhagen_theme/compare/v4.18.1...v4.19.0) (2025-12-01)
+
+
+### Features
+
+* sanitize ticket field descriptions in Service Catalog using DOMPurify ([85208b6](https://github.com/zendesk/copenhagen_theme/commit/85208b68e56ee75c63ca235e6630371681967e4b))
+* simplify the validation solution ([deab4f4](https://github.com/zendesk/copenhagen_theme/commit/deab4f4902c005651050c7d32d09ba277b07f800))
+
 ## [4.18.1](https://github.com/zendesk/copenhagen_theme/compare/v4.18.0...v4.18.1) (2025-11-26)
 
 
