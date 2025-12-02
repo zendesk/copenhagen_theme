@@ -264,7 +264,7 @@ a:hover, a:active, a:focus {
   -moz-appearance: none;
   background: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23CCC' d='M0 0h10L5 6 0 0z'/%3E%3C/svg%3E%0A") no-repeat #fff;
   background-position: right 10px center;
-  border: 1px solid #87929D;
+  border: 1px solid #848F99;
   border-radius: 4px;
   padding: 8px 30px 8px 10px;
   outline: none;
@@ -278,7 +278,7 @@ a:hover, a:active, a:focus {
   display: none;
 }
 .hbs-form textarea, .search textarea {
-  border: 1px solid #87929D;
+  border: 1px solid #848F99;
   border-radius: 2px;
   resize: vertical;
   width: 100%;
@@ -407,7 +407,7 @@ ul {
 
 .button-secondary {
   color: lighten($text_color, 20%);
-  border: 1px solid #87929D;
+  border: 1px solid #848F99;
   background-color: transparent;
 }
 .button-secondary:visited {
@@ -415,7 +415,7 @@ ul {
 }
 .button-secondary:hover, .button-secondary:focus, .button-secondary:active {
   color: $text_color;
-  border: 1px solid #87929D;
+  border: 1px solid #848F99;
   background-color: darken($background_color, 3%);
 }
 
@@ -529,7 +529,7 @@ ul {
 }
 
 .form-field input {
-  border: 1px solid #87929D;
+  border: 1px solid #848F99;
   border-radius: 4px;
   padding: 10px;
   width: 100%;
@@ -539,7 +539,7 @@ ul {
 }
 
 .form-field input[type=text] {
-  border: 1px solid #87929D;
+  border: 1px solid #848F99;
   border-radius: 4px;
 }
 .form-field input[type=text]:focus {
@@ -552,7 +552,7 @@ ul {
 
 .form-field .nesty-input {
   border-radius: 4px;
-  border: 1px solid #87929D;
+  border: 1px solid #848F99;
   height: 40px;
   line-height: 40px;
   outline: none;
@@ -564,7 +564,7 @@ ul {
 }
 
 .form-field .hc-multiselect-toggle {
-  border: 1px solid #87929D;
+  border: 1px solid #848F99;
 }
 
 .form-field .hc-multiselect-toggle:focus {
@@ -1005,7 +1005,7 @@ ul {
 }
 
 .search {
-  border-color: #87929D;
+  border-color: #848F99;
   border-radius: 30px;
   border-style: solid;
   border-width: 1px;
@@ -1880,7 +1880,7 @@ ul {
   color: $hover_link_color;
 }
 .article-return-to-top {
-  border-top: 1px solid #87929D;
+  border-top: 1px solid #848F99;
 }
 @media (min-width: 1024px) {
   .article-return-to-top {
@@ -4708,12 +4708,12 @@ html[dir=rtl] .notification-left-aligned {
 
 /***** WYSIWYG Editor *****/
 #hc-wysiwyg {
-  border: 1px solid #87929D;
+  border: 1px solid #848F99;
 }
 
 /***** Upload Dropzone *****/
 .upload-dropzone {
-  border: 1px solid #87929D;
+  border: 1px solid #848F99;
 }
 
 /***** Summary component *****/

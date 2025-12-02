@@ -1,3 +1,11 @@
+# [4.20.0](https://github.com/zendesk/copenhagen_theme/compare/v4.19.0...v4.20.0) (2025-12-02)
+
+
+### Features
+
+* improve form controls border contrast for accessibility ([19ff9ec](https://github.com/zendesk/copenhagen_theme/commit/19ff9ec949d59464783f688e780f768a2e24d6b3))
+* update wysiwyg to improve form controls contrast ([68564cc](https://github.com/zendesk/copenhagen_theme/commit/68564cc05573aa65877b8c5638c7e3a34f4981d6))
+
 # [4.19.0](https://github.com/zendesk/copenhagen_theme/compare/v4.18.1...v4.19.0) (2025-12-01)
 
 
