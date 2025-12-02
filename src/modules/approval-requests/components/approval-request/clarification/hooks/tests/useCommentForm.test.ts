@@ -41,6 +41,7 @@ describe("useCommentForm", () => {
   it("should return initial values", () => {
     const { result } = renderHook(() =>
       useCommentForm({
+        approvalRequestId: "123",
         onSubmit: successOnSubmit,
         baseLocale,
         markAllCommentsAsRead,
@@ -59,6 +60,7 @@ describe("useCommentForm", () => {
     it("should not submit when input is empty", () => {
       const { result } = renderHook(() =>
         useCommentForm({
+          approvalRequestId: "123",
           onSubmit: successOnSubmit,
           baseLocale,
           markAllCommentsAsRead,
@@ -78,6 +80,7 @@ describe("useCommentForm", () => {
     it("should submit when input is not empty", async () => {
       const { result } = renderHook(() =>
         useCommentForm({
+          approvalRequestId: "123",
           onSubmit: successOnSubmit,
           baseLocale,
           markAllCommentsAsRead,
@@ -102,6 +105,7 @@ describe("useCommentForm", () => {
     it("should handleBlur", () => {
       const { result } = renderHook(() =>
         useCommentForm({
+          approvalRequestId: "123",
           onSubmit: successOnSubmit,
           baseLocale,
           markAllCommentsAsRead,
@@ -127,6 +131,7 @@ describe("useCommentForm", () => {
     it("should submit when input is not empty and user clicks enter", async () => {
       const { result } = renderHook(() =>
         useCommentForm({
+          approvalRequestId: "123",
           onSubmit: successOnSubmit,
           baseLocale,
           markAllCommentsAsRead,
@@ -150,6 +155,7 @@ describe("useCommentForm", () => {
     it("should show charLimitMessage warning when 10 characters remaining", () => {
       const { result } = renderHook(() =>
         useCommentForm({
+          approvalRequestId: "123",
           onSubmit: successOnSubmit,
           baseLocale,
           markAllCommentsAsRead,
@@ -172,6 +178,7 @@ describe("useCommentForm", () => {
     it("should update charLimitMessage and validation warning with 1 character remaining", () => {
       const { result } = renderHook(() =>
         useCommentForm({
+          approvalRequestId: "123",
           onSubmit: successOnSubmit,
           baseLocale,
           markAllCommentsAsRead,
@@ -193,6 +200,7 @@ describe("useCommentForm", () => {
     it("should truncate input exceeding max length", () => {
       const { result } = renderHook(() =>
         useCommentForm({
+          approvalRequestId: "123",
           onSubmit: successOnSubmit,
           baseLocale,
           markAllCommentsAsRead,
@@ -210,6 +218,7 @@ describe("useCommentForm", () => {
     it("should clear error validation when user types valid input after error", () => {
       const { result } = renderHook(() =>
         useCommentForm({
+          approvalRequestId: "123",
           onSubmit: successOnSubmit,
           baseLocale,
           markAllCommentsAsRead,
@@ -230,6 +239,7 @@ describe("useCommentForm", () => {
     it("calls markAllCommentsAsRead after successful submit", async () => {
       const { result } = renderHook(() =>
         useCommentForm({
+          approvalRequestId: "123",
           onSubmit: successOnSubmit,
           baseLocale,
           markAllCommentsAsRead,
@@ -251,6 +261,7 @@ describe("useCommentForm", () => {
       it("does not submit on Enter with Shift (allows newline)", () => {
         const { result } = renderHook(() =>
           useCommentForm({
+            approvalRequestId: "123",
             onSubmit: successOnSubmit,
             baseLocale,
             markAllCommentsAsRead,
@@ -270,6 +281,7 @@ describe("useCommentForm", () => {
       it("submits on Enter", async () => {
         const { result } = renderHook(() =>
           useCommentForm({
+            approvalRequestId: "123",
             onSubmit: successOnSubmit,
             baseLocale,
             markAllCommentsAsRead,
@@ -292,6 +304,7 @@ describe("useCommentForm", () => {
       it("cancels on Escape key", () => {
         const { result } = renderHook(() =>
           useCommentForm({
+            approvalRequestId: "123",
             onSubmit: successOnSubmit,
             baseLocale,
             markAllCommentsAsRead,
@@ -318,6 +331,7 @@ describe("useCommentForm", () => {
       it("prevents input when max length reached and non-allowed key pressed", () => {
         const { result } = renderHook(() =>
           useCommentForm({
+            approvalRequestId: "123",
             onSubmit: successOnSubmit,
             baseLocale,
             markAllCommentsAsRead,
@@ -342,6 +356,7 @@ describe("useCommentForm", () => {
       it("allows navigation keys and shortcuts at max length", () => {
         const { result } = renderHook(() =>
           useCommentForm({
+            approvalRequestId: "123",
             onSubmit: successOnSubmit,
             baseLocale,
             markAllCommentsAsRead,
