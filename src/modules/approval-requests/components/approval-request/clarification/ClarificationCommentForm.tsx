@@ -7,7 +7,7 @@ import { useSubmitComment } from "./hooks/useSubmitComment";
 import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 import { DEFAULT_AVATAR_URL } from "./constants";
-import {ApprovalClarificationFlowMessage} from "../../../types";
+import type { ApprovalClarificationFlowMessage } from "../../../types";
 
 interface ClarificationCommentFormProps {
   baseLocale: string;
@@ -15,7 +15,7 @@ interface ClarificationCommentFormProps {
   currentUserName: string;
   markAllCommentsAsRead: () => void;
   approvalRequestId: string;
-  onUpdatedComments: (comment: ApprovalClarificationFlowMessage[]) => void;
+  onUpdatedComments: (comments: ApprovalClarificationFlowMessage[]) => void;
 }
 
 const FormContainer = styled(Grid)`
@@ -42,7 +42,7 @@ function ClarificationCommentForm({
   currentUserName,
   markAllCommentsAsRead,
   approvalRequestId,
-  onUpdatedComments
+  onUpdatedComments,
 }: ClarificationCommentFormProps) {
   const {
     comment_form_aria_label,
@@ -53,13 +53,16 @@ function ClarificationCommentForm({
 
   const { submitComment, isLoading = false } = useSubmitComment();
 
-  const handleSubmitComment = async (approvalRequestId: string, comment: string) => {
+  const handleSubmitComment = async (
+    approvalRequestId: string,
+    comment: string
+  ) => {
     const result = await submitComment(approvalRequestId, comment);
 
     if (result.success && result.data) {
-      onUpdatedComments(result.data)
+      onUpdatedComments(result.data);
     }
-  }
+  };
 
   const {
     buttonsContainerRef,

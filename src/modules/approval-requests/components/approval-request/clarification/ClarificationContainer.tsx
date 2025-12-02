@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useGetClarificationCopy } from "./hooks/useGetClarificationCopy";
 import { getColor, getColorV8 } from "@zendeskgarden/react-theming";
 import { MD } from "@zendeskgarden/react-typography";
@@ -68,15 +68,15 @@ export default function ClarificationContainer({
   status,
 }: ClarificationContainerProps) {
   const copy = useGetClarificationCopy();
-  const [comments, setComments] = useState<ApprovalClarificationFlowMessage[]>(clarificationFlowMessages)
+  const [comments, setComments] = useState<ApprovalClarificationFlowMessage[]>(
+    clarificationFlowMessages
+  );
 
-  const hasComments =
-      comments && comments.length > 0;
+  const hasComments = comments && comments.length > 0;
   const isTerminalStatus =
     !!status &&
     (status === "withdrawn" || status === "approved" || status === "rejected");
-  const canComment =
-    !isTerminalStatus && comments!.length < MAX_COMMENTS;
+  const canComment = !isTerminalStatus && comments!.length < MAX_COMMENTS;
 
   const showCommentHeader = !isTerminalStatus || hasComments;
 
@@ -104,10 +104,11 @@ export default function ClarificationContainer({
   }, [markAllCommentsAsRead]);
 
   const handleUpdatedComments = useCallback(
-      (newComments: ApprovalClarificationFlowMessage[]) => {
-        setComments(newComments)
-      }, []
-  )
+    (newComments: ApprovalClarificationFlowMessage[]) => {
+      setComments(newComments);
+    },
+    []
+  );
 
   return (
     <Container showCommentHeader={showCommentHeader}>
@@ -121,7 +122,7 @@ export default function ClarificationContainer({
       )}
       <CommentListArea data-testid="comment-list-area">
         {hasComments &&
-            comments.map((comment) => {
+          comments.map((comment) => {
             const commentKey = buildCommentEntityKey(
               approvalRequestId,
               comment
