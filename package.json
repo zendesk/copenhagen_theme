@@ -40,6 +40,8 @@
     "dompurify": "3.2.5",
     "eslint-plugin-check-file": "^2.6.2",
     "i18next": "^23.10.1",
+    "linkify-string": "^4.3.2",
+    "linkifyjs": "^4.3.2",
     "lodash.debounce": "^4.0.8",
     "node-fetch": "2.6.9",
     "react": "^17.0.2",

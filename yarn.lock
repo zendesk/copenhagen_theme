@@ -7889,6 +7889,8 @@ __metadata:
     jest-environment-jsdom: "npm:^29.6.1"
     js-yaml: "npm:^4.1.0"
     lighthouse: "npm:12.6.0"
+    linkify-string: "npm:^4.3.2"
+    linkifyjs: "npm:^4.3.2"
     lodash.debounce: "npm:^4.0.8"
     node-fetch: "npm:2.6.9"
     prettier: "npm:2.8.4"
@@ -13335,6 +13337,22 @@ __metadata:
   version: 1.2.4
   resolution: "lines-and-columns@npm:1.2.4"
   checksum: 10c0/3da6ee62d4cd9f03f5dc90b4df2540fb85b352081bee77fe4bbcd12c9000ead7f35e0a38b8d09a9bb99b13223446dd8689ff3c4959807620726d788701a83d2d
+  languageName: node
+  linkType: hard
+
+"linkify-string@npm:^4.3.2":
+  version: 4.3.2
+  resolution: "linkify-string@npm:4.3.2"
+  peerDependencies:
+    linkifyjs: ^4.0.0
+  checksum: 10c0/674e908b46aa6da3ee7e5c0749464d8de55f4d44933d7e9dea4d2f9bb5af0137d45142494288cd120335e21d8298c76ec4524ab6e67edede4613adb5f17f7dc6
+  languageName: node
+  linkType: hard
+
+"linkifyjs@npm:^4.3.2":
+  version: 4.3.2
+  resolution: "linkifyjs@npm:4.3.2"
+  checksum: 10c0/1a85e6b368304a4417567fe5e38651681e3e82465590836942d1b4f3c834cc35532898eb1e2479f6337d9144b297d418eb708b6be8ed0b3dc3954a3588e07971
   languageName: node
   linkType: hard
 

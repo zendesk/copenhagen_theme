@@ -5,7 +5,7 @@ import type { TicketFieldObject } from "../../ticket-fields/data-types/TicketFie
 import type { EndUserCondition } from "../../ticket-fields/data-types/EndUserCondition";
 import { getCustomObjectKey } from "../../ticket-fields/fields/LookupField";
 import { getVisibleFields } from "../../ticket-fields/getVisibleFields";
-import DOMPurify from "dompurify";
+import linkifyStr from "linkify-string";
 
 const getFieldValue = (field: TicketField) => {
   if (field.type === "tagger") {
@@ -28,9 +28,7 @@ const formatField = (field: TicketField): TicketFieldObject => {
     relationship_filter,
   } = field;
 
-  const sanitizedDescription = DOMPurify.sanitize(description, {
-    ALLOWED_TAGS: [],
-  });
+  const sanitizedDescription = linkifyStr(description);
 
   return {
     id,
