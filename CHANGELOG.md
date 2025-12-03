@@ -1,3 +1,10 @@
+# [4.21.0](https://github.com/zendesk/copenhagen_theme/compare/v4.20.0...v4.21.0) (2025-12-03)
+
+
+### Features
+
+* linkify description in service catalog fields description ([12b15aa](https://github.com/zendesk/copenhagen_theme/commit/12b15aa3edc6664424d5969dfce45718eb2ff9f4))
+
 # [4.20.0](https://github.com/zendesk/copenhagen_theme/compare/v4.19.0...v4.20.0) (2025-12-02)
 
 
