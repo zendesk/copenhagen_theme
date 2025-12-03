@@ -1,3 +1,10 @@
+# [4.22.0](https://github.com/zendesk/copenhagen_theme/compare/v4.21.0...v4.22.0) (2025-12-03)
+
+
+### Features
+
+* updated CKEditor to the latest version and improved a11y ([0eda14d](https://github.com/zendesk/copenhagen_theme/commit/0eda14d5c920c8724bfef327292a65b5d1af56bd))
+
 # [4.21.0](https://github.com/zendesk/copenhagen_theme/compare/v4.20.0...v4.21.0) (2025-12-03)
 
 
