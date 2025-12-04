@@ -1,3 +1,11 @@
+# [4.23.0](https://github.com/zendesk/copenhagen_theme/compare/v4.22.0...v4.23.0) (2025-12-04)
+
+
+### Features
+
+* add approval request polling ([f8c9805](https://github.com/zendesk/copenhagen_theme/commit/f8c9805703a5718d2b2d3d9b181e5e79fb49dd0b))
+* post clarification comments and make stateful ([84ee762](https://github.com/zendesk/copenhagen_theme/commit/84ee762118513d316ff5fe498105363af25b5cdd))
+
 # [4.22.0](https://github.com/zendesk/copenhagen_theme/compare/v4.21.0...v4.22.0) (2025-12-03)
 
 
