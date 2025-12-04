@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useGetClarificationCopy } from "./hooks/useGetClarificationCopy";
 import { getColor, getColorV8 } from "@zendeskgarden/react-theming";
 import { MD } from "@zendeskgarden/react-typography";
@@ -68,13 +68,15 @@ export default function ClarificationContainer({
   status,
 }: ClarificationContainerProps) {
   const copy = useGetClarificationCopy();
-  const hasComments =
-    clarificationFlowMessages && clarificationFlowMessages.length > 0;
+  const [comments, setComments] = useState<ApprovalClarificationFlowMessage[]>(
+    clarificationFlowMessages
+  );
+
+  const hasComments = comments && comments.length > 0;
   const isTerminalStatus =
     !!status &&
     (status === "withdrawn" || status === "approved" || status === "rejected");
-  const canComment =
-    !isTerminalStatus && clarificationFlowMessages!.length < MAX_COMMENTS;
+  const canComment = !isTerminalStatus && comments!.length < MAX_COMMENTS;
 
   const showCommentHeader = !isTerminalStatus || hasComments;
 
@@ -84,7 +86,7 @@ export default function ClarificationContainer({
     markCommentAsVisible,
     markAllCommentsAsRead,
   } = useGetUnreadComments({
-    comments: clarificationFlowMessages,
+    comments,
     currentUserId,
     approvalRequestId,
   });
@@ -101,6 +103,13 @@ export default function ClarificationContainer({
     };
   }, [markAllCommentsAsRead]);
 
+  const handleUpdatedComments = useCallback(
+    (newComments: ApprovalClarificationFlowMessage[]) => {
+      setComments(newComments);
+    },
+    []
+  );
+
   return (
     <Container showCommentHeader={showCommentHeader}>
       {showCommentHeader && (
@@ -113,7 +122,7 @@ export default function ClarificationContainer({
       )}
       <CommentListArea data-testid="comment-list-area">
         {hasComments &&
-          clarificationFlowMessages.map((comment) => {
+          comments.map((comment) => {
             const commentKey = buildCommentEntityKey(
               approvalRequestId,
               comment
@@ -145,7 +154,7 @@ export default function ClarificationContainer({
       </CommentListArea>
       <CommentLimitAlert
         approvalRequestId={approvalRequestId}
-        commentCount={clarificationFlowMessages!.length}
+        commentCount={comments!.length}
         currentUserId={currentUserId}
         isTerminalStatus={isTerminalStatus}
       />
@@ -155,6 +164,8 @@ export default function ClarificationContainer({
           currentUserAvatarUrl={currentUserAvatarUrl}
           currentUserName={currentUserName}
           markAllCommentsAsRead={markAllCommentsAsRead}
+          approvalRequestId={approvalRequestId}
+          onUpdatedComments={handleUpdatedComments}
         />
       )}
     </Container>

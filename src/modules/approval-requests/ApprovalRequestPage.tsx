@@ -95,7 +95,11 @@ function ApprovalRequestPage({
     setApprovalRequest,
     errorFetchingApprovalRequest: error,
     isLoading,
-  } = useApprovalRequest(approvalWorkflowInstanceId, approvalRequestId);
+  } = useApprovalRequest({
+    approvalWorkflowInstanceId: approvalWorkflowInstanceId,
+    approvalRequestId: approvalRequestId,
+    enablePolling: true,
+  });
 
   const { hasUserViewedBefore, markUserViewed } = useUserViewedApprovalStatus({
     approvalRequestId: approvalRequest?.id,
@@ -171,6 +175,7 @@ function ApprovalRequestPage({
         {hasClarificationEnabled && (
           <ClarificationArea>
             <ClarificationContainer
+              key={approvalRequest?.clarification_flow_messages?.length}
               approvalRequestId={approvalRequest.id}
               baseLocale={baseLocale}
               clarificationFlowMessages={

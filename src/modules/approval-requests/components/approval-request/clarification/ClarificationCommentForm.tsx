@@ -7,12 +7,15 @@ import { useSubmitComment } from "./hooks/useSubmitComment";
 import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 import { DEFAULT_AVATAR_URL } from "./constants";
+import type { ApprovalClarificationFlowMessage } from "../../../types";
 
 interface ClarificationCommentFormProps {
   baseLocale: string;
   currentUserAvatarUrl: string;
   currentUserName: string;
   markAllCommentsAsRead: () => void;
+  approvalRequestId: string;
+  onUpdatedComments: (comments: ApprovalClarificationFlowMessage[]) => void;
 }
 
 const FormContainer = styled(Grid)`
@@ -38,6 +41,8 @@ function ClarificationCommentForm({
   currentUserAvatarUrl,
   currentUserName,
   markAllCommentsAsRead,
+  approvalRequestId,
+  onUpdatedComments,
 }: ClarificationCommentFormProps) {
   const {
     comment_form_aria_label,
@@ -46,7 +51,18 @@ function ClarificationCommentForm({
     validation_empty_input,
   } = useGetClarificationCopy();
 
-  const { handleSubmitComment, isLoading = false } = useSubmitComment();
+  const { submitComment, isLoading = false } = useSubmitComment();
+
+  const handleSubmitComment = async (
+    approvalRequestId: string,
+    comment: string
+  ) => {
+    const result = await submitComment(approvalRequestId, comment);
+
+    if (result.success && result.data) {
+      onUpdatedComments(result.data);
+    }
+  };
 
   const {
     buttonsContainerRef,
@@ -65,6 +81,7 @@ function ClarificationCommentForm({
     onSubmit: handleSubmitComment,
     baseLocale,
     markAllCommentsAsRead,
+    approvalRequestId,
   });
 
   return (

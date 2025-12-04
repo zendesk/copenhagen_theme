@@ -1,4 +1,4 @@
-import { screen, fireEvent, within } from "@testing-library/react";
+import { screen, fireEvent, within, act } from "@testing-library/react";
 import ClarificationContainer from "../ClarificationContainer";
 import { useGetClarificationCopy } from "../hooks/useGetClarificationCopy";
 import { useGetUnreadComments } from "../hooks/useGetUnreadComments";
@@ -18,6 +18,19 @@ jest.mock("../hooks/useGetUnreadComments");
 jest.mock("../NewCommentIndicator");
 
 jest.mock("@zendeskgarden/svg-icons/src/16/headset-fill.svg", () => "svg-mock");
+
+jest.mock("../ClarificationCommentForm", () => {
+  return jest.fn(({ onUpdatedComments }) => {
+    (
+      global as unknown as {
+        mockOnUpdatedComments: (
+          comments: ApprovalClarificationFlowMessage[]
+        ) => void;
+      }
+    ).mockOnUpdatedComments = onUpdatedComments;
+    return <div data-testid="mock-comment-form" />;
+  });
+});
 
 const createClarificationFlowMessage = (
   index: number
@@ -112,6 +125,25 @@ describe("ClarificationContainer", () => {
     ).not.toBeInTheDocument();
   });
 
+  it("initializes comments state with clarificationFlowMessages prop", () => {
+    const customMessages = Array.from({ length: 3 }, (_, i) =>
+      createClarificationFlowMessage(i + 1)
+    );
+
+    renderWithTheme(
+      <ClarificationContainer
+        {...defaultProps}
+        clarificationFlowMessages={customMessages}
+      />
+    );
+
+    const commentListArea = screen.getByTestId("comment-list-area");
+
+    customMessages.forEach(({ message }) => {
+      expect(within(commentListArea).getByText(message)).toBeInTheDocument();
+    });
+  });
+
   it("renders ClarificationComment components for each message", () => {
     renderWithTheme(
       <ClarificationContainer
@@ -147,6 +179,38 @@ describe("ClarificationContainer", () => {
     );
 
     expect(screen.getByTestId("new-comment-indicator")).toBeInTheDocument();
+  });
+
+  it("updates displayed comments when new comment is added through the form", () => {
+    const initialMessages = [createClarificationFlowMessage(1)];
+
+    renderWithTheme(
+      <ClarificationContainer
+        {...defaultProps}
+        clarificationFlowMessages={initialMessages}
+      />
+    );
+
+    expect(screen.getByText("Comment message 1")).toBeInTheDocument();
+    expect(screen.queryByText("Comment message 2")).not.toBeInTheDocument();
+
+    const updatedMessages = [
+      createClarificationFlowMessage(1),
+      createClarificationFlowMessage(2),
+    ];
+
+    act(() => {
+      (
+        global as unknown as {
+          mockOnUpdatedComments: (
+            comments: ApprovalClarificationFlowMessage[]
+          ) => void;
+        }
+      ).mockOnUpdatedComments(updatedMessages);
+    });
+
+    expect(screen.getByText("Comment message 1")).toBeInTheDocument();
+    expect(screen.getByText("Comment message 2")).toBeInTheDocument();
   });
 
   it("does not render NewCommentIndicator if status is terminal", () => {
@@ -186,7 +250,11 @@ describe("ClarificationContainer", () => {
       />
     );
 
-    expect(screen.getByRole("textbox")).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /add notes or ask for additional information about this request/i
+      )
+    ).toBeInTheDocument();
   });
 
   it("calls markAllCommentsAsRead on window beforeunload event", () => {
