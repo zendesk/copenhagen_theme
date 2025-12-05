@@ -59,5 +59,42 @@ module.exports = {
         },
       },
     ],
+    "import/no-restricted-paths": [
+      "error",
+      {
+        zones: [
+          {
+            target: "./src/modules/approval-requests",
+            from: "./src/modules",
+            except: ["./shared", "./test", "./approval-requests", "./ticket-fields"],
+          },
+          {
+            target: "./src/modules/new-request-form",
+            from: "./src/modules",
+            except: ["./shared", "./test", "./new-request-form", "./ticket-fields"],
+          },
+          {
+            target: "./src/modules/service-catalog",
+            from: "./src/modules",
+            except: ["./shared", "./test", "./service-catalog", "./ticket-fields"],
+          },
+          {
+            target: "./src/modules/flash-notifications",
+            from: "./src/modules",
+            except: ["./shared", "./test", "./flash-notifications", "./ticket-fields"],
+          },
+          {
+            target: "./src/modules/ticket-fields",
+            from: "./src/modules",
+            except: ["./shared", "./test", "./ticket-fields", "./flash-notifications"],
+          },
+          {
+            target: "./src/modules/shared",
+            from: "./src/modules",
+            except: ["./shared", "./test", "./flash-notifications", "./ticket-fields"],
+          },
+        ],
+      },
+    ],
   },
 };
