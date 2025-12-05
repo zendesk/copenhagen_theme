@@ -90,46 +90,73 @@ export function ServiceCatalogItem({
     );
     if (!response?.ok) {
       if (response?.status === 422) {
-        const errorData: ServiceRequestResponse = await response.json();
-        const invalidFieldErrors = errorData.details.base;
-        const missingErrorFields = invalidFieldErrors.filter(
-          (errorField) =>
-            !requestFields.some((field) => field.id === errorField.field_key)
-        );
+        try {
+          const errorData: ServiceRequestResponse = await response.json();
+          const invalidFieldErrors = errorData?.details?.base ?? [];
+          const missingErrorFields = invalidFieldErrors.filter(
+            (errorField) =>
+              !requestFields.some((field) => field.id === errorField.field_key)
+          );
 
-        if (missingErrorFields.length > 0) {
+          if (missingErrorFields.length > 0) {
+            notify({
+              type: "error",
+              title: t(
+                "service-catalog.item.service-request-error-title",
+                "Service couldn't be submitted"
+              ),
+              message: (
+                <>
+                  {t(
+                    "service-catalog.item.service-request-refresh-message",
+                    "Refresh the page and try again in a few seconds."
+                  )}{" "}
+                  <StyledNotificationLink
+                    href={`${helpCenterPath}/services/${serviceCatalogItem.id}`}
+                  >
+                    {t(
+                      "service-catalog.item.service-request-refresh-link-text",
+                      "Refresh the page"
+                    )}
+                  </StyledNotificationLink>
+                </>
+              ),
+            });
+          } else if (invalidFieldErrors.length > 0) {
+            // Show generic error if there are field errors but all fields are in the form
+            notify({
+              type: "error",
+              title: t(
+                "service-catalog.item.service-request-error-title",
+                "Service couldn't be submitted"
+              ),
+              message: t(
+                "service-catalog.item.service-request-error-message",
+                "Give it a moment and try it again"
+              ),
+            });
+          }
+
+          const updatedFields = requestFields.map((field) => {
+            const errorField = invalidFieldErrors.find(
+              (errorField) => errorField.field_key === field.id
+            );
+            return { ...field, error: errorField?.description || null };
+          });
+          setRequestFields(updatedFields);
+        } catch {
           notify({
             type: "error",
             title: t(
               "service-catalog.item.service-request-error-title",
               "Service couldn't be submitted"
             ),
-            message: (
-              <>
-                {t(
-                  "service-catalog.item.service-request-refresh-message",
-                  "Refresh the page and try again in a few seconds."
-                )}{" "}
-                <StyledNotificationLink
-                  href={`${helpCenterPath}/services/${serviceCatalogItem.id}`}
-                >
-                  {t(
-                    "service-catalog.item.service-request-refresh-link-text",
-                    "Refresh the page"
-                  )}
-                </StyledNotificationLink>
-              </>
+            message: t(
+              "service-catalog.item.service-request-error-message",
+              "Give it a moment and try it again"
             ),
           });
         }
-
-        const updatedFields = requestFields.map((field) => {
-          const errorField = invalidFieldErrors.find(
-            (errorField) => errorField.field_key === field.id
-          );
-          return { ...field, error: errorField?.description || null };
-        });
-        setRequestFields(updatedFields);
       } else {
         notify({
           title: t(
