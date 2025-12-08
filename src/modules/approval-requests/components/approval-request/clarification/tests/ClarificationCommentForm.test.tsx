@@ -17,6 +17,8 @@ describe("ClarificationCommentForm", () => {
     currentUserAvatarUrl: "https://example.com/avatar.png",
     currentUserName: "Jane Doe",
     markAllCommentsAsRead: mockMarkAllCommentsAsRead,
+    approvalRequestId: "123",
+    onUpdatedComments: jest.fn(),
   };
 
   beforeEach(() => {
@@ -79,7 +81,7 @@ describe("ClarificationCommentForm", () => {
     );
     (useSubmitComment as jest.Mock).mockReturnValue({
       status: "",
-      handleSubmitComment: handleSubmitCommentMock,
+      submitComment: handleSubmitCommentMock,
     });
 
     renderWithTheme(<ClarificationCommentForm {...props} />);
@@ -93,7 +95,37 @@ describe("ClarificationCommentForm", () => {
       await userEvent.click(submitBtn);
     });
 
-    expect(handleSubmitCommentMock).toHaveBeenCalledWith("Test comment");
+    expect(handleSubmitCommentMock).toHaveBeenCalledWith("123", "Test comment");
+  });
+
+  it("calls onUpdatedComments with data when comment submission succeeds", async () => {
+    const sampleData = [{ id: 1, message: "test reply" }];
+    const handleSubmitMock = jest
+      .fn()
+      .mockResolvedValue({ success: true, data: sampleData });
+    (useSubmitComment as jest.Mock).mockReturnValue({
+      isLoading: false,
+      submitComment: handleSubmitMock,
+    });
+
+    const onUpdatedCommentsMock = jest.fn();
+
+    renderWithTheme(
+      <ClarificationCommentForm
+        {...props}
+        onUpdatedComments={onUpdatedCommentsMock}
+      />
+    );
+
+    await userEvent.type(screen.getByRole("textbox"), "Hello");
+
+    const submitBtn = await screen.findByRole("button", { name: /send/i });
+    await act(async () => {
+      await userEvent.click(submitBtn);
+    });
+
+    expect(handleSubmitMock).toHaveBeenCalledWith("123", "Hello");
+    expect(onUpdatedCommentsMock).toHaveBeenCalledWith(sampleData);
   });
 
   it("calls handleCancel when the cancel button is clicked", async () => {

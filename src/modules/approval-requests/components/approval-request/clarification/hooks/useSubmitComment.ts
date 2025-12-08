@@ -3,18 +3,40 @@ import { useState } from "react";
 export const useSubmitComment = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmitComment = async (comment: string) => {
+  const submitComment = async (approvalRequestId: string, comment: string) => {
     setIsLoading(true);
     try {
-      console.log("Submitting comment:", comment);
+      const currentUserRequest = await fetch("/api/v2/users/me.json");
+      if (!currentUserRequest.ok) {
+        throw new Error("Error fetching current user data");
+      }
+      const currentUser = await currentUserRequest.json();
 
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      const response = await fetch(
+        `/api/v2/approval_clarification_flow_messages`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": currentUser.user.authenticity_token,
+          },
+          body: JSON.stringify({
+            approval_request_id: approvalRequestId,
+            message: comment,
+          }),
+        }
+      );
 
-      return { success: true, message: "Comment logged successfully" };
+      if (!response.ok) {
+        throw new Error(`Failed to submit comment: ${response.status}`);
+      }
+      const data = await response.json();
+
+      return { success: true, data: data.clarification_flow_messages };
     } finally {
       setIsLoading(false);
     }
   };
 
-  return { handleSubmitComment, isLoading };
+  return { submitComment, isLoading };
 };
