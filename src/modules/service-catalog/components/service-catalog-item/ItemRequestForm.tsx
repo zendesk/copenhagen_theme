@@ -12,6 +12,8 @@ import { useAssetDataFetchers } from "../../../service-catalog/hooks/useAssetDat
 import type { ITAMAssetOptionObject } from "../../data-types/ITAMAssetOptionObject";
 import { Span } from "@zendeskgarden/react-typography";
 import { Option } from "@zendeskgarden/react-dropdowns";
+import { Attachments } from "../../../ticket-fields/fields/attachments/Attachments";
+import { AttachmentsInputName } from "../../constants";
 
 const Form = styled.form`
   display: flex;
@@ -357,6 +359,18 @@ export function ItemRequestForm({
               />
             );
           })}
+          {/*Placeholder - It will be displayed only if we got attachments added in guide-client*/}
+          <Attachments
+            field={{
+              name: AttachmentsInputName,
+              // Placeholder data for attachment component, will be replaced by actual data from API, user adds label/description in guide-client
+              label: "Upload a file",
+              description: "It can be PDF, JPG, PNG files",
+              error: null,
+              attachments: [],
+            }}
+            baseLocale={baseLocale}
+          />
         </FieldsContainer>
       </LeftColumn>
       <RightColumn>
