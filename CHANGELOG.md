@@ -1,3 +1,10 @@
+## [4.23.1](https://github.com/zendesk/copenhagen_theme/compare/v4.23.0...v4.23.1) (2025-12-09)
+
+
+### Bug Fixes
+
+* (service-catalog)service catalog item is able to be saved with one required field missing ([2583838](https://github.com/zendesk/copenhagen_theme/commit/25838382fee4a1d439a4cedf1f0607090b5c4e41))
+
 # [4.23.0](https://github.com/zendesk/copenhagen_theme/compare/v4.22.0...v4.23.0) (2025-12-04)
 
 
