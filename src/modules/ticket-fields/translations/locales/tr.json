@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Bir dosya seçin veya buraya sürükleyip bırakın",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Dosyaları buraya bırakın",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Dosya:{{fileName}}, kaldırmak için Sil tuşuna basın",
+  "cph-theme-ticket-fields.attachments.remove-file": "Dosyayı kaldır",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Dosyayı kaldır: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Karşıya yüklemeyi durdur",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "{{fileName}} dosyasını karşıya yüklemeyi durdur",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "{{fileName}} karşıya yüklenirken bir hata oluştu. Yeniden deneyin veya başka bir dosya yükleyin.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Karşıya yükleme hatası",
+  "cph-theme-ticket-fields.attachments.uploading": "{{fileName}} karşıya yükleniyor",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Son 4 hane)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Geri",
   "cph-theme-ticket-fields.dropdown.empty-option": "Bir seçim yapın",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Öğeler yükleniyor...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Eşleşme bulunamadı",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Ara {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Ara {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} karşıya yüklemesi başarısız oldu"
 }

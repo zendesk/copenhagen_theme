@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Đang chờ quyết định",
   "approval-requests.status.denied": "Đã từ chối",
   "approval-requests.status.info-needed": "Thông tin cần",
-  "approval-requests.status.withdrawn": "Đã rút lại"
+  "approval-requests.status.withdrawn": "Đã rút lại",
+  "txt.approval_requests.clarification.cancel_button": "Hủy bỏ",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Nhập bình luận để yêu cầu thêm thông tin về yêu cầu phê duyệt này",
+  "txt.approval_requests.clarification.description": "Thêm ghi chú hoặc yêu cầu thêm thông tin về yêu cầu này",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Bạn không thể thêm bình luận nữa, người phê duyệt vẫn có thể phê duyệt hoặc từ chối.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Đã đạt giới hạn bình luận",
+  "txt.approval_requests.clarification.new_comment_indicator": "Bình luận mới",
+  "txt.approval_requests.clarification.new_comments_indicator": "Bình luận mới",
+  "txt.approval_requests.clarification.submit_button": "Gửi",
+  "txt.approval_requests.clarification.title": "Bình luận",
+  "txt.approval_requests.validation.characters_remaining.few": "Còn {{numCharacters}} ký tự",
+  "txt.approval_requests.validation.characters_remaining.many": "Còn {{numCharacters}} ký tự",
+  "txt.approval_requests.validation.characters_remaining.one": "Còn {{numCharacters}} ký tự",
+  "txt.approval_requests.validation.characters_remaining.other": "Còn {{numCharacters}} ký tự",
+  "txt.approval_requests.validation.characters_remaining.two": "Còn {{numCharacters}} ký tự",
+  "txt.approval_requests.validation.characters_remaining.zero": "Còn {{numCharacters}} ký tự",
+  "txt.approval_requests.validation.empty_comment_error": "Nhập bình luận"
 }

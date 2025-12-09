@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "เลือกไฟล์หรือลากแล้ววางที่นี่",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "วางไฟล์ที่นี่",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "ไฟล์: {{fileName}} กดลบเพื่อนำออก",
+  "cph-theme-ticket-fields.attachments.remove-file": "ลบไฟล์ออก",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "ลบไฟล์ออก: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "หยุดการอัปโหลด",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "หยุดการอัปโหลด {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "เกิดข้อผิดพลาดในการอัปโหลด {{fileName}} ลองอีกครั้งหรืออัปโหลดไฟล์อื่น",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "เกิดข้อผิดพลาดในการอัปโหลด",
+  "cph-theme-ticket-fields.attachments.uploading": "กำลังอัปโหลด {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(เลข 4 หลักสุดท้าย)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "ย้อนกลับ",
   "cph-theme-ticket-fields.dropdown.empty-option": "เลือกตัวเลือก",
   "cph-theme-ticket-fields.lookup-field.loading-options": "กำลังโหลดรายการ...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "ไม่พบรายการที่ตรงกัน",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "ค้นหา {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "ค้นหา {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "อัปโหลด {{fileName}} ไม่สำเร็จ"
 }

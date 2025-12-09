@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "कोई फ़ाइल चुनें या यहां खींचें और छोड़ें",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "फाइलों को यहां छोड़ें",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "फ़ाइल: {{fileName}}, हटाने के लिए डिलीट दबाएँ",
+  "cph-theme-ticket-fields.attachments.remove-file": "फ़ाइल हटाएँ",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "फ़ाइल हटाएँ: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "अपलोड बंद करें",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "{{fileName}} को अपलोड करना बंद करें",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "{{fileName}}अपलोड करने में कोई त्रुटि थी। पुनः प्रयास करें या कोई अन्य फ़ाइल अपलोड करें।",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "त्रुटि अपलोड करें",
+  "cph-theme-ticket-fields.attachments.uploading": "{{fileName}} अपलोड हो रहा है",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(आखिरी 4 अक्षर)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "पीछे",
   "cph-theme-ticket-fields.dropdown.empty-option": "कोई विकल्प चुनें",
   "cph-theme-ticket-fields.lookup-field.loading-options": "आइटम लोड हो रहे हैं...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "कोई मिलान नहीं मिले",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "खोज {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "खोज {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} को अपलोड करना विफ़ल रहा"
 }

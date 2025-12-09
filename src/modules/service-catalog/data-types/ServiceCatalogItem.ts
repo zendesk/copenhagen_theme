@@ -7,5 +7,6 @@ export interface ServiceCatalogItem {
   custom_object_fields: {
     "standard::asset_option": string;
     "standard::asset_type_option": string;
+    "standard::attachment_option": string;
   };
 }

@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "ファイルを選択するか、ここにドラッグ＆ドロップします",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "ファイルをここにドロップ",
+  "cph-theme-ticket-fields.attachments.error-separator": "また、 ",
+  "cph-theme-ticket-fields.attachments.file": "ファイル：{{fileName}}、Deleteキーを押して削除",
+  "cph-theme-ticket-fields.attachments.remove-file": "ファイルを削除",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "ファイルを削除：{{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "アップロードを停止",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "{{fileName}}のアップロードを停止",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "{{fileName}}のアップロード中にエラーが発生しました。もう一度やり直すか、別のファイルをアップロードしてください。",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "アップロードエラー",
+  "cph-theme-ticket-fields.attachments.uploading": "{{fileName}}をアップロード中",
   "cph-theme-ticket-fields.credit-card-digits-hint": "（下4桁）",
   "cph-theme-ticket-fields.dropdown.back-option-label": "戻る",
   "cph-theme-ticket-fields.dropdown.empty-option": "オプションを選択",
   "cph-theme-ticket-fields.lookup-field.loading-options": "アイテムを読み込んでいます...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "一致するものが見つかりません",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "{{label}}を検索"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "{{label}}を検索",
+  "cph-theme-ticket-fields.upload-failed-title": "{{fileName}}をアップロードできませんでした"
 }

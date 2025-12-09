@@ -1,4 +1,5 @@
 {
+  "service-catalog.attachments-required-error": "Tải lên một tập tin để tiếp tục",
   "service-catalog.clear-search": "Xóa tìm kiếm",
   "service-catalog.empty-state.description": "Sau khi các dịch vụ được thêm vào danh mục, bạn sẽ tìm thấy chúng ở đây.",
   "service-catalog.empty-state.go-to-homepage": "Đi đến trang chủ",
@@ -6,8 +7,11 @@
   "service-catalog.empty-state.search-description": "Nhập từ khóa của bạn vào trường tìm kiếm.",
   "service-catalog.item.read-less": "Ẩn bớt",
   "service-catalog.item.read-more": "Đọc thêm",
+  "service-catalog.item.serial-number-label": "Số sê-ri: {{serialNumber}}",
   "service-catalog.item.service-request-error-message": "Hãy chờ một lát và thử lại",
   "service-catalog.item.service-request-error-title": "Không thể gửi dịch vụ",
+  "service-catalog.item.service-request-refresh-link-text": "Hãy làm mới trang",
+  "service-catalog.item.service-request-refresh-message": "Hãy làm mới trang và thử lại sau vài giây.",
   "service-catalog.item.service-request-submitted": "Yêu cầu dịch vụ đã gửi",
   "service-catalog.item.submit-button": "Gửi yêu cầu",
   "service-catalog.pagination.next": "Tiếp theo",

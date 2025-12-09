@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "cph-theme-ticket-fields.attachments.choose-file-label",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "cph-theme-ticket-fields.attachments.drop-files-label",
+  "cph-theme-ticket-fields.attachments.error-separator": "cph-theme-ticket-fields.attachments.error-separator",
+  "cph-theme-ticket-fields.attachments.file": "cph-theme-ticket-fields.attachments.file",
+  "cph-theme-ticket-fields.attachments.remove-file": "cph-theme-ticket-fields.attachments.remove-file",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "cph-theme-ticket-fields.attachments.remove-file-aria-label",
+  "cph-theme-ticket-fields.attachments.stop-upload": "cph-theme-ticket-fields.attachments.stop-upload",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "cph-theme-ticket-fields.attachments.stop-upload-aria-label",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "cph-theme-ticket-fields.attachments.upload-error-description",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "cph-theme-ticket-fields.attachments.upload-error-title",
+  "cph-theme-ticket-fields.attachments.uploading": "cph-theme-ticket-fields.attachments.uploading",
   "cph-theme-ticket-fields.credit-card-digits-hint": "cph-theme-ticket-fields.credit-card-digits-hint",
   "cph-theme-ticket-fields.dropdown.back-option-label": "cph-theme-ticket-fields.dropdown.back-option-label",
   "cph-theme-ticket-fields.dropdown.empty-option": "cph-theme-ticket-fields.dropdown.empty-option",
   "cph-theme-ticket-fields.lookup-field.loading-options": "cph-theme-ticket-fields.lookup-field.loading-options",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "cph-theme-ticket-fields.lookup-field.no-matches-found",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "cph-theme-ticket-fields.lookup-field.placeholder"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "cph-theme-ticket-fields.lookup-field.placeholder",
+  "cph-theme-ticket-fields.upload-failed-title": "cph-theme-ticket-fields.upload-failed-title"
 }

@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Velg en fil eller dra og slipp her",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Slipp filer her",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Fil: {{fileName}}, trykk på Slett for å fjerne",
+  "cph-theme-ticket-fields.attachments.remove-file": "Fjern fil",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Fjern fil: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Stopp opplasting",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Stopp opplasting av {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Det oppsto en feil under opplasting av {{fileName}}. Prøv på nytt, eller last opp en annen fil.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Opplastingsfeil",
+  "cph-theme-ticket-fields.attachments.uploading": "Laster opp {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(4 siste sifre)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Tilbake",
   "cph-theme-ticket-fields.dropdown.empty-option": "Velg et alternativ",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Laster inn elementer ...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Fant ingen samsvarende",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Søk {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Søk {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Opplasting av {{fileName}} mislyktes"
 }

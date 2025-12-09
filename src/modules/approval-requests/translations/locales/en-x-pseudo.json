@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "[ผู้龍Ḍḛḛͼḭḭṡḭḭṓṓṇ ṗḛḛṇḍḭḭṇḡ龍ผู้]",
   "approval-requests.status.denied": "[ผู้龍Ḍḛḛṇḭḭḛḛḍ龍ผู้]",
   "approval-requests.status.info-needed": "[ผู้龍ḬḬṇϝṓṓ ṇḛḛḛḛḍḛḛḍ龍ผู้]",
-  "approval-requests.status.withdrawn": "[ผู้龍Ŵḭḭṭḥḍṛααẁṇ龍ผู้]"
+  "approval-requests.status.withdrawn": "[ผู้龍Ŵḭḭṭḥḍṛααẁṇ龍ผู้]",
+  "txt.approval_requests.clarification.cancel_button": "[ผู้龍Ḉααṇͼḛḛḽ龍ผู้]",
+  "txt.approval_requests.clarification.comment_form_aria_label": "[ผู้龍ḚḚṇṭḛḛṛ αα ͼṓṓṃṃḛḛṇṭ ṭṓṓ ααṡḳ ϝṓṓṛ ααḍḍḭḭṭḭḭṓṓṇααḽ ḭḭṇϝṓṓṛṃααṭḭḭṓṓṇ ααḅṓṓṵṵṭ ṭḥḭḭṡ ααṗṗṛṓṓṽααḽ ṛḛḛʠṵṵḛḛṡṭ龍ผู้]",
+  "txt.approval_requests.clarification.description": "[ผู้龍ḀḀḍḍ ṇṓṓṭḛḛṡ ṓṓṛ ααṡḳ ϝṓṓṛ ααḍḍḭḭṭḭḭṓṓṇααḽ ḭḭṇϝṓṓṛṃααṭḭḭṓṓṇ ααḅṓṓṵṵṭ ṭḥḭḭṡ ṛḛḛʠṵṵḛḛṡṭ龍ผู้]",
+  "txt.approval_requests.clarification.max_comment_alert_message": "[ผู้龍ŶŶṓṓṵṵ ͼααṇ'ṭ ααḍḍ ṃṓṓṛḛḛ ͼṓṓṃṃḛḛṇṭṡ, ααṗṗṛṓṓṽḛḛṛṡ ͼααṇ ṡṭḭḭḽḽ ααṗṗṛṓṓṽḛḛ ṓṓṛ ḍḛḛṇẏẏ.龍ผู้]",
+  "txt.approval_requests.clarification.max_comment_alert_title": "[ผู้龍Ḉṓṓṃṃḛḛṇṭ ḽḭḭṃḭḭṭ ṛḛḛααͼḥḛḛḍ龍ผู้]",
+  "txt.approval_requests.clarification.new_comment_indicator": "[ผู้龍Ṅḛḛẁ ͼṓṓṃṃḛḛṇṭ龍ผู้]",
+  "txt.approval_requests.clarification.new_comments_indicator": "[ผู้龍Ṅḛḛẁ ͼṓṓṃṃḛḛṇṭṡ龍ผู้]",
+  "txt.approval_requests.clarification.submit_button": "[ผู้龍Ṣḛḛṇḍ龍ผู้]",
+  "txt.approval_requests.clarification.title": "[ผู้龍Ḉṓṓṃṃḛḛṇṭṡ龍ผู้]",
+  "txt.approval_requests.validation.characters_remaining.few": "[ผู้龍{{numCharacters}} ͼḥααṛααͼṭḛḛṛṡ ṛḛḛṃααḭḭṇḭḭṇḡ龍ผู้]",
+  "txt.approval_requests.validation.characters_remaining.many": "[ผู้龍{{numCharacters}} ͼḥααṛααͼṭḛḛṛṡ ṛḛḛṃααḭḭṇḭḭṇḡ龍ผู้]",
+  "txt.approval_requests.validation.characters_remaining.one": "[ผู้龍{{numCharacters}} ͼḥααṛααͼṭḛḛṛ ṛḛḛṃααḭḭṇḭḭṇḡ龍ผู้]",
+  "txt.approval_requests.validation.characters_remaining.other": "[ผู้龍{{numCharacters}} ͼḥααṛααͼṭḛḛṛṡ ṛḛḛṃααḭḭṇḭḭṇḡ龍ผู้]",
+  "txt.approval_requests.validation.characters_remaining.two": "[ผู้龍{{numCharacters}} ͼḥααṛααͼṭḛḛṛṡ ṛḛḛṃααḭḭṇḭḭṇḡ龍ผู้]",
+  "txt.approval_requests.validation.characters_remaining.zero": "[ผู้龍{{numCharacters}} ͼḥααṛααͼṭḛḛṛṡ ṛḛḛṃααḭḭṇḭḭṇḡ龍ผู้]",
+  "txt.approval_requests.validation.empty_comment_error": "[ผู้龍ḚḚṇṭḛḛṛ αα ͼṓṓṃṃḛḛṇṭ龍ผู้]"
 }

@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Elegir un archivo o arrastrar y soltar uno aquí",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Soltar los archivos aquí",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Archivo: {{fileName}} presione Borrar para eliminar",
+  "cph-theme-ticket-fields.attachments.remove-file": "Eliminar archivo",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Eliminar archivo: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Detener carga",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Dejar de cargar {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Hubo un error al cargar {{fileName}}. Vuelva a intentarlo o cargue otro archivo.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Error de carga",
+  "cph-theme-ticket-fields.attachments.uploading": "Cargando {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Atrás",
   "cph-theme-ticket-fields.dropdown.empty-option": "Seleccione una opción",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Cargando elementos...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "No se encontraron coincidencias",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Buscar {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Buscar {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Falló la carga de {{fileName}}"
 }

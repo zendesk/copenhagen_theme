@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "選擇檔案或拖放至此處",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "將檔案放置在此處",
+  "cph-theme-ticket-fields.attachments.error-separator": "； ",
+  "cph-theme-ticket-fields.attachments.file": "檔案：{{fileName}}，按一下 Delete 即可移除",
+  "cph-theme-ticket-fields.attachments.remove-file": "移除檔案",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "移除檔案：{{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "停止上傳",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "停止上傳 {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "上傳 {{fileName}} 時發生錯誤。請再試一次，或上傳另一個檔案。",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "上傳錯誤",
+  "cph-theme-ticket-fields.attachments.uploading": "正在上傳 {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "（最後 4 位數）",
   "cph-theme-ticket-fields.dropdown.back-option-label": "返回",
   "cph-theme-ticket-fields.dropdown.empty-option": "請選取一項",
   "cph-theme-ticket-fields.lookup-field.loading-options": "項目載入中...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "找不到符合項目",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "搜尋「{{label}}」"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "搜尋「{{label}}」",
+  "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} 上傳失敗"
 }
