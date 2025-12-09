@@ -31,7 +31,9 @@ jest.mock("../fetchCsrfToken", () => ({
 }));
 
 const mockRequestId = 123;
-const mockRedirectTo = "/hc/en-us/requests";
+const mockHelpCenterPath = "/hc/en-us";
+const mockRequestsPath = "/hc/en-us/requests";
+const mockRequestPath = "/hc/en-us/requests/123";
 const mockAuthToken = "test-auth-token";
 
 const mockGenerativeResponse = {
@@ -77,17 +79,21 @@ const renderWithMock = (mock = mockGenerativeResponse) => {
   render(
     <GenerativeAnswerBotModal
       requestId={mockRequestId}
-      redirectTo={mockRedirectTo}
+      hasRequestManagement={true}
+      isSignedIn={true}
+      helpCenterPath={mockHelpCenterPath}
+      requestsPath={mockRequestsPath}
+      requestPath={mockRequestPath}
     />
   );
 };
 
 describe("GenerativeAnswerBotModal", () => {
   beforeEach(() => {
-    // Mock window.location.href
+    // Mock window.location.assign
     Object.defineProperty(window, "location", {
       value: {
-        href: "",
+        assign: jest.fn(),
       },
       writable: true,
     });
@@ -134,7 +140,7 @@ describe("GenerativeAnswerBotModal", () => {
         type: "success",
         message: "Your request has been solved",
       });
-      expect(window.location.href).toBe(mockRedirectTo);
+      expect(window.location.assign).toHaveBeenCalledWith(mockRequestPath);
     });
   });
 
@@ -168,7 +174,7 @@ describe("GenerativeAnswerBotModal", () => {
         type: "success",
         message: "Your request was successfully submitted",
       });
-      expect(window.location.href).toBe(mockRedirectTo);
+      expect(window.location.assign).toHaveBeenCalledWith(mockRequestPath);
     });
   });
 
@@ -244,7 +250,7 @@ describe("GenerativeAnswerBotModal", () => {
         type: "success",
         message: "Your request was successfully submitted",
       });
-      expect(window.location.href).toBe(mockRedirectTo);
+      expect(window.location.assign).toHaveBeenCalledWith(mockRequestPath);
     });
   });
 });
