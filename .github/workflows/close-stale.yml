@@ -1,0 +1,24 @@
+name: "Close stale issues and PR"
+on:
+    schedule:
+        - cron: "0 20 * * *"
+
+permissions:
+    actions: write
+    contents: write # only for delete-branch option
+    issues: write
+    pull-requests: write
+
+jobs:
+    stale:
+        runs-on: arc-runner-imprint # could probably run on a way smaller runner
+        steps:
+            - uses: actions/stale@3a9db7e6a41a89f618792c92c0e97cc736e1b13f # v10
+              with:
+                  stale-issue-message: "This issue is stale because it has been open 60 days with no activity. Remove stale label or comment or this will be closed in 7 days."
+                  stale-pr-message: "This PR is stale because it has been open 60 days with no activity. Remove stale label or comment or this will be closed in 7 days."
+                  close-issue-message: "This issue was closed because it has been stale for 7 days with no activity."
+                  # days-before-stale: 60 # default is 60 already
+                  # days-before-close: 7 # default is 7 already
+                  exempt-issue-labels: "no-stale"
+                  exempt-pr-labels: "no-stale"

@@ -3,7 +3,7 @@ name: Lighthouse
 
 jobs:
   lighthouse:
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-imprint
     steps:
       - name: Checkout
         uses: zendesk/checkout@v3
