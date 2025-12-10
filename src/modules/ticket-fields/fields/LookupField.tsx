@@ -273,7 +273,7 @@ export function LookupField({
         placeholder={t(
           "cph-theme-ticket-fields.lookup-field.placeholder",
           "Search {{label}}",
-          { label: label.toLowerCase() }
+          { label }
         )}
         onFocus={onFocus}
         onChange={handleChange}
