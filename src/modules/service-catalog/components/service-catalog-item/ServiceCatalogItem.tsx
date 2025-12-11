@@ -9,6 +9,8 @@ import { addFlashNotification, notify } from "../../../shared";
 import { useTranslation } from "react-i18next";
 import { Anchor } from "@zendeskgarden/react-buttons";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
+import { AttachmentsInputName } from "../../constants";
+import type { Attachment } from "../../../ticket-fields/data-types/AttachmentsField";
 
 const Container = styled.div`
   display: flex;
@@ -63,6 +65,13 @@ export function ServiceCatalogItem({
     throw errorFetchingItem;
   }
 
+  function parseAttachments(formData: FormData): Attachment[] {
+    return formData
+      .getAll(AttachmentsInputName)
+      .filter((a): a is string => typeof a === "string")
+      .map((a) => JSON.parse(a));
+  }
+
   const handleRequestSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -82,12 +91,17 @@ export function ServiceCatalogItem({
     if (!serviceCatalogItem || !associatedLookupField) {
       return;
     }
+
+    const attachments = parseAttachments(formData);
+
     const response = await submitServiceItemRequest(
       serviceCatalogItem,
       requestFieldsWithFormData,
       associatedLookupField,
-      baseLocale
+      baseLocale,
+      attachments
     );
+
     if (!response?.ok) {
       if (response?.status === 422) {
         try {

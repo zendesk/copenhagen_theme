@@ -6,6 +6,7 @@ export interface Attachment {
 
 export interface AttachmentField {
   name: string;
+  description?: string;
   label: string;
   error: string | null;
   attachments: Attachment[];
