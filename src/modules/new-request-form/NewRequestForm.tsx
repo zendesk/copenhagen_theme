@@ -159,7 +159,8 @@ export function NewRequestForm({
     !!answerBot?.request_id;
 
   const answerBotGenerativeModalEnabled =
-    !!answerBotGenerativeExperience?.request_id;
+    answerBotGenerativeExperience &&
+    Boolean(answerBotGenerativeExperience.request_id);
 
   return (
     <>
