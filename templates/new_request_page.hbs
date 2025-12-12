@@ -47,15 +47,7 @@
       isSignedIn: {{json signed_in}},
       helpCenterPath: {{json (page_path 'help_center')}},
       requestsPath: {{json (page_path 'requests')}},
-      requestPath: {{#if answer_bot.request_id}}
-        {{json (page_path 'request' id=answer_bot.request_id)}}
-      {{else}}
-        {{#if answer_bot_generative_experience.request_id}}
-          {{json (page_path 'request' id=answer_bot_generative_experience.request_id)}}
-        {{else}}
-          ""
-        {{/if}}
-      {{/if}}
+      requestPath: {{json (page_path 'request' id=request_id)}}
     },
   };
 
