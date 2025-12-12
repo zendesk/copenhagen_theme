@@ -254,6 +254,12 @@
           "type": "file",
           "description": "community_image_description",
           "label": "community_image_label"
+        },
+        {
+          "identifier": "service_catalog_hero_image",
+          "type": "file",
+          "description": "service_catalog_hero_image_description",
+          "label": "service_catalog_hero_image_label"
         }
       ]
     },
