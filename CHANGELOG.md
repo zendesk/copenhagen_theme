@@ -1,3 +1,17 @@
+## [4.23.2](https://github.com/zendesk/copenhagen_theme/compare/v4.23.1...v4.23.2) (2025-12-12)
+
+
+### Bug Fixes
+
+* fixed rendering errors with custom theme colors ([29f6e90](https://github.com/zendesk/copenhagen_theme/commit/29f6e90e1949a3f9e37e637558af235d5f53bd99)), closes [#edc4c4](https://github.com/zendesk/copenhagen_theme/issues/edc4c4)
+
+## [4.23.1](https://github.com/zendesk/copenhagen_theme/compare/v4.23.0...v4.23.1) (2025-12-09)
+
+
+### Bug Fixes
+
+* (service-catalog)service catalog item is able to be saved with one required field missing ([2583838](https://github.com/zendesk/copenhagen_theme/commit/25838382fee4a1d439a4cedf1f0607090b5c4e41))
+
 # [4.23.0](https://github.com/zendesk/copenhagen_theme/compare/v4.22.0...v4.23.0) (2025-12-04)
 
 
