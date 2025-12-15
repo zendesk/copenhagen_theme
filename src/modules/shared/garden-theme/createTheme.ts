@@ -2,6 +2,7 @@ import type { IButtonProps } from "@zendeskgarden/react-buttons";
 import type { IGardenTheme } from "@zendeskgarden/react-theming";
 import { DEFAULT_THEME, getColor } from "@zendeskgarden/react-theming";
 import { css } from "styled-components";
+import { normalizeColorForGarden } from "./normalizeColorForGarden";
 
 export interface Settings {
   background_color: string;
@@ -52,41 +53,41 @@ export function createTheme(settings: Settings): IGardenTheme {
     rtl: document.dir === "rtl",
     colors: {
       ...DEFAULT_THEME.colors,
-      primaryHue: settings.brand_color,
+      primaryHue: normalizeColorForGarden(settings.brand_color),
       variables: {
         ...DEFAULT_THEME.colors.variables,
         light: {
           ...DEFAULT_THEME.colors.variables.light,
           background: {
             ...DEFAULT_THEME.colors.variables.light.background,
-            default: settings.background_color,
+            default: normalizeColorForGarden(settings.background_color),
           },
           foreground: {
             ...DEFAULT_THEME.colors.variables.light.foreground,
-            default: settings.text_color,
+            default: normalizeColorForGarden(settings.text_color),
           },
         },
       },
     },
     components: {
       "buttons.anchor": css`
-        color: ${settings.link_color};
+        color: ${normalizeColorForGarden(settings.link_color)};
 
         :hover,
         :active,
         :focus {
-          color: ${settings.hover_link_color};
+          color: ${normalizeColorForGarden(settings.hover_link_color)};
         }
 
         &:visited {
-          color: ${settings.visited_link_color};
+          color: ${normalizeColorForGarden(settings.visited_link_color)};
         }
       `,
       "buttons.button": css`
         ${(props: IButtonProps) =>
           props.isPrimary &&
           css`
-            color: ${settings.brand_text_color};
+            color: ${normalizeColorForGarden(settings.brand_text_color)};
           `}
       `,
       "forms.input": accessibleFormInputStyle,
