@@ -4730,6 +4730,7 @@ zd-summary-block {
 .service-catalog-hero {
   background-image: url($service_catalog_hero_image);
   margin-bottom: 10px;
+  height: 320px;
 }
 .service-catalog-description {
   display: flow-root;
