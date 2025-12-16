@@ -1,6 +1,10 @@
 import type { IButtonProps } from "@zendeskgarden/react-buttons";
 import type { IGardenTheme } from "@zendeskgarden/react-theming";
-import { DEFAULT_THEME, getColor } from "@zendeskgarden/react-theming";
+import {
+  DEFAULT_THEME,
+  getColor,
+  focusStyles,
+} from "@zendeskgarden/react-theming";
 import { css } from "styled-components";
 import { normalizeColorForGarden } from "./normalizeColorForGarden";
 
@@ -20,8 +24,9 @@ const createAccessibleFormControlStyle = (isWrapper: boolean) => {
     : '[aria-invalid="true"]';
 
   return css`
-    /* Boost default border contrast - use :not() to preserve validation colors */
-    &:not(${invalidSelector}) {
+    /* Boost default & hover border contrast - use :not() to preserve validation colors */
+    &:not(${invalidSelector}),
+    &:hover:not(${invalidSelector}) {
       border-color: ${(p) =>
         getColor({
           theme: p.theme,
@@ -31,16 +36,25 @@ const createAccessibleFormControlStyle = (isWrapper: boolean) => {
         })};
     }
 
-    /* Enhanced hover state */
-    &:hover:not(${invalidSelector}) {
-      border-color: ${(p) =>
-        getColor({
-          theme: p.theme,
-          variable: "border.primaryEmphasis",
+    /* Change focus indicator color to color in neutral hue */
+    ${(p) =>
+      focusStyles({
+        theme: p.theme,
+        selector: `&:focus-visible, &:focus-within:not([aria-disabled="true"])`,
+        color: {
+          variable: "border.default",
           dark: { offset: -100 },
-          light: { offset: 100 },
-        })};
-    }
+          light: { offset: 600 },
+        },
+        styles: {
+          borderColor: getColor({
+            theme: p.theme,
+            variable: "border.default",
+            dark: { offset: -200 },
+            light: { offset: 400 },
+          }),
+        },
+      })}
   `;
 };
 
