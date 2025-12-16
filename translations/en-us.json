@@ -60,8 +60,6 @@
   "request_list_group_label": "Requests list",
   "scoped_community_search_description": "Search results are confined to the topic the user is in",
   "scoped_community_search_label": "Scoped search in Community",
-  "service_catalog_hero_image_description": "Hero image on the service catalog page",
-  "service_catalog_hero_image_label": "Service catalog hero image",
   "scoped_knowledge_base_search_description": "Search results are confined to the category the user is in",
   "scoped_knowledge_base_search_label": "Scoped search in Knowledge Base",
   "scoped_knowledge_base_search_label_v2": "Scoped search in help center",
