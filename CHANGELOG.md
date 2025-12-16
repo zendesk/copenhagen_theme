@@ -1,3 +1,10 @@
+## [4.23.3](https://github.com/zendesk/copenhagen_theme/compare/v4.23.2...v4.23.3) (2025-12-15)
+
+
+### Bug Fixes
+
+* bring back capitalization for the lookap field  placeholder ([395c6aa](https://github.com/zendesk/copenhagen_theme/commit/395c6aa7b6ff3c68ef07efb7bc38bdff11827433))
+
 ## [4.23.2](https://github.com/zendesk/copenhagen_theme/compare/v4.23.1...v4.23.2) (2025-12-12)
 
 
