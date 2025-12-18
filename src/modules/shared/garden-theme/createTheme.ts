@@ -53,7 +53,7 @@ export function createTheme(settings: Settings): IGardenTheme {
     rtl: document.dir === "rtl",
     colors: {
       ...DEFAULT_THEME.colors,
-      primaryHue: normalizeColorForGarden(settings.brand_color),
+      primaryHue: settings.brand_color,
       variables: {
         ...DEFAULT_THEME.colors.variables,
         light: {
