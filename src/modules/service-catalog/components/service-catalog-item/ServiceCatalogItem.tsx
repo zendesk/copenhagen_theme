@@ -11,6 +11,9 @@ import { Anchor } from "@zendeskgarden/react-buttons";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
 import { AttachmentsInputName } from "../../constants";
 import type { Attachment } from "../../../ticket-fields/data-types/AttachmentsField";
+import { useAttachmentsOption } from "../../hooks/useAttachmentsOption";
+import { useState } from "react";
+import type { AttachmentsError } from "../../data-types/Attachments";
 
 const Container = styled.div`
   display: flex;
@@ -55,14 +58,32 @@ export function ServiceCatalogItem({
     error,
     setRequestFields,
     handleChange,
+    isRequestFieldsLoading,
   } = useItemFormFields(serviceCatalogItem, baseLocale);
   const { t } = useTranslation();
+
+  const attachmentsOptionId =
+    serviceCatalogItem?.custom_object_fields?.["standard::attachment_option"];
+
+  const {
+    attachmentsOption,
+    errorAttachmentsOption,
+    isLoadingAttachmentsOption,
+  } = useAttachmentsOption(attachmentsOptionId);
+
+  const [attachmentsRequiredError, setAttachmentsRequiredError] =
+    useState<AttachmentsError>(null);
+
   if (error) {
     throw error;
   }
 
   if (errorFetchingItem) {
     throw errorFetchingItem;
+  }
+
+  if (errorAttachmentsOption) {
+    throw errorAttachmentsOption;
   }
 
   function parseAttachments(formData: FormData): Attachment[] {
@@ -72,11 +93,35 @@ export function ServiceCatalogItem({
       .map((a) => JSON.parse(a));
   }
 
+  function validateAttachmentsRequired(attachments: Attachment[]): boolean {
+    if (attachmentsOption) {
+      if (
+        attachmentsOption.custom_object_fields["standard::is_required"] &&
+        attachments.length === 0
+      ) {
+        setAttachmentsRequiredError(
+          t(
+            "service-catalog.attachments-required-error",
+            "Upload a file to continue."
+          )
+        );
+        return true;
+      }
+    }
+    attachmentsRequiredError && setAttachmentsRequiredError(null);
+    return false;
+  }
+
   const handleRequestSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
     const isAssetTypeFieldHidden = formData.get("isAssetTypeHidden") === "true";
+    const attachments = parseAttachments(formData);
+
+    if (validateAttachmentsRequired(attachments)) {
+      return;
+    }
 
     const requestFieldsWithFormData = requestFields.map((field) => {
       if (isAssetTypeField(field) && isAssetTypeFieldHidden) {
@@ -91,8 +136,6 @@ export function ServiceCatalogItem({
     if (!serviceCatalogItem || !associatedLookupField) {
       return;
     }
-
-    const attachments = parseAttachments(formData);
 
     const response = await submitServiceItemRequest(
       serviceCatalogItem,
@@ -193,8 +236,7 @@ export function ServiceCatalogItem({
         ),
       });
       const data = await response?.json();
-      const redirectUrl = `${helpCenterPath}/requests/${data.request.id}`;
-      window.location.href = redirectUrl;
+      window.location.href = `${helpCenterPath}/requests/${data.request.id}`;
     }
   };
 
@@ -208,6 +250,8 @@ export function ServiceCatalogItem({
       {serviceCatalogItem && (
         <ItemRequestForm
           requestFields={requestFields}
+          isRequestFieldsLoading={isRequestFieldsLoading}
+          isLoadingAttachmentsOption={isLoadingAttachmentsOption}
           serviceCatalogItem={serviceCatalogItem}
           baseLocale={baseLocale}
           hasAtMentions={hasAtMentions}
@@ -217,6 +261,9 @@ export function ServiceCatalogItem({
           defaultOrganizationId={defaultOrganizationId}
           handleChange={handleChange}
           onSubmit={handleRequestSubmit}
+          attachmentsOption={attachmentsOption}
+          attachmentsRequiredError={attachmentsRequiredError}
+          setAttachmentsRequiredError={setAttachmentsRequiredError}
         />
       )}
     </Container>
