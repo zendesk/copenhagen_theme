@@ -61,6 +61,9 @@ export function createTheme(settings: Settings): IGardenTheme {
           background: {
             ...DEFAULT_THEME.colors.variables.light.background,
             default: normalizeColorForGarden(settings.background_color),
+            raised: normalizeColorForGarden(settings.background_color),
+            recessed: normalizeColorForGarden(settings.background_color),
+            subtle: normalizeColorForGarden(settings.background_color),
           },
           foreground: {
             ...DEFAULT_THEME.colors.variables.light.foreground,
