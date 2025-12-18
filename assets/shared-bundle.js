@@ -16,7 +16,7 @@ function e(e,t){return t.forEach((function(t){t&&"string"!=typeof t&&!Array.isAr
     &:hover:not(${t}) {
       border-color: ${e=>Do({theme:e.theme,variable:"border.primaryEmphasis",dark:{offset:-100},light:{offset:100}})};
     }
-  `},ui=ci(!1),di=ci(!0);function fi(e){return{...An,rtl:"rtl"===document.dir,colors:{...An.colors,primaryHue:li(e.brand_color),variables:{...An.colors.variables,light:{...An.colors.variables.light,background:{...An.colors.variables.light.background,default:li(e.background_color)},foreground:{...An.colors.variables.light.foreground,default:li(e.text_color)}}}},components:{"buttons.anchor":fn`
+  `},ui=ci(!1),di=ci(!0);function fi(e){return{...An,rtl:"rtl"===document.dir,colors:{...An.colors,primaryHue:li(e.brand_color),variables:{...An.colors.variables,light:{...An.colors.variables.light,background:{...An.colors.variables.light.background,default:li(e.background_color),raised:li(e.background_color),recessed:li(e.background_color),subtle:li(e.background_color)},foreground:{...An.colors.variables.light.foreground,default:li(e.text_color)}}}},components:{"buttons.anchor":fn`
         color: ${li(e.link_color)};
 
         :hover,

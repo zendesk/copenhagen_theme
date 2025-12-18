@@ -1,3 +1,10 @@
+## [4.23.4](https://github.com/zendesk/copenhagen_theme/compare/v4.23.3...v4.23.4) (2025-12-18)
+
+
+### Bug Fixes
+
+* update createTheme to include garden v9 color overrides ([162c1f6](https://github.com/zendesk/copenhagen_theme/commit/162c1f61eca468c5bfaecf22641659b3ea7a2d29))
+
 ## [4.23.3](https://github.com/zendesk/copenhagen_theme/compare/v4.23.2...v4.23.3) (2025-12-15)
 
 
