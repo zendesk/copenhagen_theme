@@ -71,7 +71,7 @@ parts:
       key: "cph-theme-ticket-fields.attachments.choose-file-label"
       title: "Label for the attachments field"
       screenshot: "https://drive.google.com/file/d/1T_2Eahrfs8iITZWvgAR6wxrxEdsy2D2G/view?usp=drive_link"
-      value: "qChoose a file or drag and drop here"
+      value: "Choose a file or drag and drop here"
   - translation:
       key: "cph-theme-ticket-fields.attachments.stop-upload"
       title: "Tooltip for the button for stopping the upload of an attachment"
