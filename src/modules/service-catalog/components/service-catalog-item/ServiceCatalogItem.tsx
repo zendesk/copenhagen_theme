@@ -101,8 +101,8 @@ export function ServiceCatalogItem({
       ) {
         setAttachmentsRequiredError(
           t(
-            "cph-theme-service-catalog.attachments-required-error",
-            "Upload a file"
+            "service-catalog.attachments-required-error",
+            "Upload a file to continue."
           )
         );
         return true;
