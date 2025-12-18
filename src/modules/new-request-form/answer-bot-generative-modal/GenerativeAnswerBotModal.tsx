@@ -35,12 +35,20 @@ const submitFeedbackEndpoint = (feedbackType: FeedbackType, token: string) =>
 
 interface AnswerBotModalProps {
   requestId: number;
-  redirectTo: string;
+  hasRequestManagement: boolean;
+  isSignedIn: boolean;
+  helpCenterPath: string;
+  requestsPath: string;
+  requestPath: string;
 }
 
 export function GenerativeAnswerBotModal({
   requestId,
-  redirectTo,
+  hasRequestManagement,
+  isSignedIn,
+  helpCenterPath,
+  requestsPath,
+  requestPath,
 }: AnswerBotModalProps): JSX.Element {
   const modalContainer = useModalContainer();
   const { t } = useTranslation();
@@ -83,17 +91,33 @@ export function GenerativeAnswerBotModal({
     fetchGeneratedAnswer();
   }, [requestId]);
 
-  const redirectToHelpCenterPath = () => (window.location.href = redirectTo);
+  const getRedirectUrl = () => {
+    if (!isSignedIn) {
+      const searchParams = new URLSearchParams();
+      searchParams.set("return_to", requestsPath);
+      return `${helpCenterPath}?${searchParams.toString()}`;
+    } else if (hasRequestManagement) {
+      return requestPath;
+    } else {
+      return helpCenterPath;
+    }
+  };
 
-  const onClose = () => {
+  const addFlashNotificationAndRedirect = (message: string) => {
     addFlashNotification({
       type: "success",
-      message: t(
+      message,
+    });
+    window.location.assign(getRedirectUrl());
+  };
+
+  const onClose = () => {
+    addFlashNotificationAndRedirect(
+      t(
         "new-request-form.answer-bot-generative-modal.request-submitted",
         "Your request was successfully submitted"
-      ),
-    });
-    redirectToHelpCenterPath();
+      )
+    );
   };
 
   const onReject = async () => await sendFeedback(FeedbackType.NEGATIVE);
@@ -138,20 +162,17 @@ export function GenerativeAnswerBotModal({
       if (!response.ok) {
         handleFeedbackError();
       } else {
-        addFlashNotification({
-          type: "success",
-          message:
-            feedbackType === FeedbackType.POSITIVE
-              ? t(
-                  "new-request-form.answer-bot-generative-modal.request-closed",
-                  "Your request has been solved"
-                )
-              : t(
-                  "new-request-form.answer-bot-generative-modal.request-submitted",
-                  "Your request was successfully submitted"
-                ),
-        });
-        redirectToHelpCenterPath();
+        addFlashNotificationAndRedirect(
+          feedbackType === FeedbackType.POSITIVE
+            ? t(
+                "new-request-form.answer-bot-generative-modal.request-closed",
+                "Your request has been solved"
+              )
+            : t(
+                "new-request-form.answer-bot-generative-modal.request-submitted",
+                "Your request was successfully submitted"
+              )
+        );
       }
     } catch (error) {
       handleFeedbackError();
