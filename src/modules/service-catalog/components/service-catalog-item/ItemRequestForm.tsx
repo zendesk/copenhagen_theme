@@ -335,9 +335,11 @@ export function ItemRequestForm({
   );
 
   const renderRequestFields = () => {
+    console.log(isRequestFieldsLoading, isLoadingAttachmentsOption)
     if (isRequestFieldsLoading || isLoadingAttachmentsOption) {
       return null;
     }
+
     const attachmentsPosition =
       attachmentsOption?.custom_object_fields?.["standard::position"];
 
@@ -352,6 +354,9 @@ export function ItemRequestForm({
             "Test description",
           error: attachmentsRequiredError,
           attachments: [],
+          isRequired:
+            attachmentsOption.custom_object_fields["standard::is_required"] ??
+            false,
         }}
         baseLocale={baseLocale}
         onUploadingChange={handleAttachmentsOnUpload}

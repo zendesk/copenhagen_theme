@@ -223,7 +223,9 @@ export function Attachments({
 
   return (
     <GardenField>
-      <GardenField.Label>{label}</GardenField.Label>
+      <GardenField.Label>
+        {label}{field.isRequired ? "*" : ""}
+      </GardenField.Label>
 
       {field.description && (
         <GardenField.Hint>{field.description}</GardenField.Hint>
