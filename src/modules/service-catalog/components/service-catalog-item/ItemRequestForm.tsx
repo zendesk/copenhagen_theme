@@ -335,7 +335,6 @@ export function ItemRequestForm({
   );
 
   const renderRequestFields = () => {
-    console.log(isRequestFieldsLoading, isLoadingAttachmentsOption)
     if (isRequestFieldsLoading || isLoadingAttachmentsOption) {
       return null;
     }
