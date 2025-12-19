@@ -1,4 +1,4 @@
-import { useDownshiftEnvironment } from "@zendesk/garden-shadow";
+import { useDownshiftEnvironment } from "../../../../shared/garden-shadow/src/useDownshiftEnvironment";
 import {
   Dropdown,
   Item,

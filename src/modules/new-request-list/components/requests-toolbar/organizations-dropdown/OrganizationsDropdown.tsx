@@ -9,7 +9,7 @@ import {
   Item,
   Autocomplete,
 } from "@zendeskgarden/react-dropdowns.legacy";
-import { useDownshiftEnvironment } from "@zendesk/garden-shadow";
+import { useDownshiftEnvironment } from "../../../../shared/garden-shadow/src/useDownshiftEnvironment";
 import type { Organization } from "../../../data-types";
 
 interface OrganizationsDropdownProps {

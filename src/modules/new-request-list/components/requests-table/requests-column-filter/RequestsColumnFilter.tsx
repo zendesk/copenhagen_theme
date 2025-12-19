@@ -7,7 +7,7 @@ import {
   HeaderItem,
 } from "@zendeskgarden/react-dropdowns.legacy";
 import { Table } from "@zendeskgarden/react-tables";
-import { useDownshiftEnvironment } from "@zendesk/garden-shadow";
+import { useDownshiftEnvironment } from "../../../../shared/garden-shadow/src/useDownshiftEnvironment";
 import styled from "styled-components";
 import { RequestsColumnModal } from "./RequestsColumnModal";
 import { useTranslation } from "react-i18next";
@@ -40,9 +40,8 @@ export function RequestsColumnFilter({
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [lastSelectedColumns, setLastSelectedColumns] = useState(
-    selectedColumns
-  );
+  const [lastSelectedColumns, setLastSelectedColumns] =
+    useState(selectedColumns);
   const downshiftEnvironment = useDownshiftEnvironment();
 
   const hasSeeMoreColumns =

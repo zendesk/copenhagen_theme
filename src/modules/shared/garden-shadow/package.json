@@ -1,0 +1,32 @@
+{
+  "name": "@zendesk/garden-shadow",
+  "version": "0.3.0",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --build",
+    "cleanup": "tsc --build --clean"
+  },
+  "peerDependencies": {
+    "@zendeskgarden/react-dropdowns.legacy": "9.12.0",
+    "downshift": "^8.0.0",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
+    "styled-components": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/react": ">=16.8.0",
+    "@types/react-dom": ">=16.8.0",
+    "@types/styled-components": "^5.0.0",
+    "@zendeskgarden/react-dropdowns.legacy": "9.12.0",
+    "@zendeskgarden/react-theming": "^8.0.0",
+    "downshift": "^8.0.0",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
+    "react-is": ">=16.8.0",
+    "styled-components": "^5.0.0"
+  }
+}

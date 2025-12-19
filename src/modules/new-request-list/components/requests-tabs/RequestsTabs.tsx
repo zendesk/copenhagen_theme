@@ -20,7 +20,7 @@ import {
 import styled from "styled-components";
 import type { Organization } from "../../data-types";
 import { Mobile, Desktop } from "../../utils/mediaQuery";
-import { useDownshiftEnvironment } from "@zendesk/garden-shadow";
+import { useDownshiftEnvironment } from "../../../shared/garden-shadow/src/useDownshiftEnvironment";
 import { useState } from "react";
 
 const Container = styled.div`

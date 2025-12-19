@@ -1,5 +1,5 @@
 import type { HCData } from "./data-types/hc/HCData";
-import { ShadowRootContainer } from "@zendesk/garden-shadow";
+import { ShadowRootContainer } from "../shared/garden-shadow/src/ShadowRootContainer";
 import { ModalContainerProvider } from "../shared/garden-theme/modal-container/ModalContainerProvider";
 
 import { createTheme } from "../shared/garden-theme/createTheme";
