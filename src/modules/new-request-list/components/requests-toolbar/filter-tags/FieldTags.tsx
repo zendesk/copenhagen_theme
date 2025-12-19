@@ -68,9 +68,11 @@ export function FieldTags({
       dateStyle: "long",
     });
 
-    return ((longDate as Intl.DateTimeFormat) as {
-      formatRange: (start: Date, end: Date) => string;
-    }).formatRange(startDate, endDate);
+    return (
+      longDate as Intl.DateTimeFormat as {
+        formatRange: (start: Date, end: Date) => string;
+      }
+    ).formatRange(startDate, endDate);
   };
 
   const getDateLabel = (values: FilterValue[]): string => {

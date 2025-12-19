@@ -6,8 +6,7 @@ import {
   Label,
   Select,
 } from "@zendeskgarden/react-dropdowns.legacy";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { FilterValue } from "../../../data-types/FilterValue";
 import { useFilterTranslations } from "../i18n";
 import { useTranslation } from "react-i18next";

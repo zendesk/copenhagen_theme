@@ -3,9 +3,10 @@ import type { User, OrganizationMembership, Organization } from "../data-types";
 import type { CursorPaginatedResponse } from "../utils/pagination/CursorPaginatedResponse";
 import { fetchAllCursorPages } from "../utils/pagination/fetchAllCursorPages";
 
-export function useOrganizations(
-  user?: User
-): { organizations: Organization[]; error?: Error } {
+export function useOrganizations(user?: User): {
+  organizations: Organization[];
+  error?: Error;
+} {
   const [organizations, setOrganizations] = useState<Organization[]>([]);
   const [error, setError] = useState<Error | undefined>();
 

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import type React from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Anchor, Button } from "@zendeskgarden/react-buttons";
 import { Checkbox, Field } from "@zendeskgarden/react-forms";

@@ -31,9 +31,8 @@ export function RequestsColumnModal({
 }: RequestsColumnModalProps): JSX.Element {
   const { t } = useTranslation();
 
-  const [selectedIdentifiers, setSelectedIdentifiers] = useState<string[]>(
-    selectedColumns
-  );
+  const [selectedIdentifiers, setSelectedIdentifiers] =
+    useState<string[]>(selectedColumns);
   const [searchValue, setSearchValue] = useState("");
   const modalContainer = useModalContainer();
 

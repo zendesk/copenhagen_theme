@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import type { CustomStatus } from "../data-types";
 
-export function useCustomStatuses(
-  customStatusesEnabled: boolean
-): {
+export function useCustomStatuses(customStatusesEnabled: boolean): {
   customStatuses: CustomStatus[];
   error?: Error;
 } {
@@ -20,9 +18,8 @@ export function useCustomStatuses(
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      const {
-        custom_statuses,
-      }: { custom_statuses: CustomStatus[] } = await response.json();
+      const { custom_statuses }: { custom_statuses: CustomStatus[] } =
+        await response.json();
       setCustomStatuses(custom_statuses);
     } catch (error) {
       setError(error as Error);

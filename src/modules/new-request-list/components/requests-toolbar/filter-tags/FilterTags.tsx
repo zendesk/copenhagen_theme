@@ -1,8 +1,10 @@
 import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import type { FilterValuesMap } from "../../../data-types/FilterValue";
-import type { FilterValue } from "../../../data-types/FilterValue";
+import type {
+  FilterValuesMap,
+  FilterValue,
+} from "../../../data-types/FilterValue";
 import { FieldTags } from "./FieldTags";
 import type { Organization, TicketField } from "../../../data-types";
 import type { MultiSelectOption } from "../filter-modal/Multiselect";

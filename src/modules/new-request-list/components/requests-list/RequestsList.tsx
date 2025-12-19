@@ -78,9 +78,8 @@ export default function List({
       ? requests.map((request) => request.requester_id)
       : [];
 
-  const { users: usersWithAliases, isLoading: usersLoading } = useShowManyUsers(
-    userIds
-  );
+  const { users: usersWithAliases, isLoading: usersLoading } =
+    useShowManyUsers(userIds);
 
   const isLoading =
     isLoadingRequests || isLoadingTicketFields || isLoadingUser || usersLoading;
