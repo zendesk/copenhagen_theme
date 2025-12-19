@@ -7,7 +7,7 @@ jest.mock("../../../hooks/usePushNotification", () => ({
 import { act, fireEvent, screen, render } from "@testing-library/react";
 import FollowOrganizationsModal from "./FollowOrganizationsModal";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
-import { ModalContainerProvider } from "@zendesk/guide-garden-theming";
+import { ModalContainerProvider } from "../../../../shared/garden-theme/modal-container/ModalContainerProvider";
 import type { User } from "../../../data-types";
 
 const user: User = {

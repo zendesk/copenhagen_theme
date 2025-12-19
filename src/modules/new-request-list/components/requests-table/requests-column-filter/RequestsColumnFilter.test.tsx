@@ -4,7 +4,7 @@ import { ThemeProvider } from "@zendeskgarden/react-theming";
 import { RequestsColumnFilter } from "./RequestsColumnFilter";
 import type { RequestAttribute } from "../RequestAttribute";
 import localStorage from "../../../utils/localStorage";
-import { ModalContainerProvider } from "@zendesk/guide-garden-theming";
+import { ModalContainerProvider } from "../../../../shared/garden-theme/modal-container/ModalContainerProvider";
 import { createTheme } from "../../../../shared";
 import { ticketFields } from "../../../apiMocks";
 import { DEFAULT_DESKTOP_COLUMNS } from "../RequestsTable";

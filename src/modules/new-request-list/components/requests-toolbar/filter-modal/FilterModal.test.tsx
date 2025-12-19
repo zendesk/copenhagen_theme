@@ -16,7 +16,7 @@ import {
 } from "@testing-library/react";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
 
-import { ModalContainerProvider } from "@zendesk/guide-garden-theming";
+import { ModalContainerProvider } from "../../../../shared/garden-theme/modal-container/ModalContainerProvider";
 import { useUser } from "../../../hooks/useUser";
 import { useTicketFields } from "../../../hooks/useTicketFields";
 import { useOrganizations } from "../../../hooks/useOrganizations";

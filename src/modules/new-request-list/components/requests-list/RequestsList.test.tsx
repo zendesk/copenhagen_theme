@@ -22,7 +22,7 @@ import {
   ORG_REQUESTS_TAB_NAME,
 } from "../../data-types/request-list-params";
 import localStorage from "../../utils/localStorage";
-import { ModalContainerProvider } from "@zendesk/guide-garden-theming";
+import { ModalContainerProvider } from "../../../shared/garden-theme/modal-container/ModalContainerProvider";
 import { createTheme } from "../../../shared";
 import {
   organizations,
