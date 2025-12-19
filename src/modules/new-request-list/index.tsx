@@ -1,9 +1,8 @@
 import type { HCData } from "./data-types/hc/HCData";
 import { ShadowRootContainer } from "@zendesk/garden-shadow";
-import {
-  createGardenTheme,
-  ModalContainerProvider,
-} from "@zendesk/guide-garden-theming";
+import { ModalContainerProvider } from "@zendesk/guide-garden-theming";
+
+import { createTheme } from "../shared/garden-theme/createTheme";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
 import ReactDOM from "react-dom";
 import List from "./components/requests-list/RequestsList";
@@ -35,7 +34,7 @@ export default async function RequestListApp(
       mode={inCypress ? "open" : "closed"}
       data-test-id={inCypress ? "guide-requests-app" : undefined}
     >
-      <ThemeProvider theme={createGardenTheme(data.user.rtl, settings)}>
+      <ThemeProvider theme={createTheme(settings)}>
         <ErrorBoundary helpCenterPath={helpCenterPath}>
           <PushNotificationContext.Provider value={pushNotification}>
             <ModalContainerProvider>

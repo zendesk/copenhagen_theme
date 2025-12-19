@@ -4,10 +4,8 @@ import { ThemeProvider } from "@zendeskgarden/react-theming";
 import { RequestsColumnFilter } from "./RequestsColumnFilter";
 import type { RequestAttribute } from "../RequestAttribute";
 import localStorage from "../../../utils/localStorage";
-import {
-  createGardenTheme,
-  ModalContainerProvider,
-} from "@zendesk/guide-garden-theming";
+import { ModalContainerProvider } from "@zendesk/guide-garden-theming";
+import { createTheme } from "../../../../shared";
 import { ticketFields } from "../../../apiMocks";
 import { DEFAULT_DESKTOP_COLUMNS } from "../RequestsTable";
 
@@ -57,7 +55,17 @@ const renderComponent = ({
   requestAttributes = createRequestAttributes(),
 }: RenderComponentOptions = {}) => {
   const result = render(
-    <ThemeProvider theme={createGardenTheme(false, {})}>
+    <ThemeProvider
+      theme={createTheme({
+        background_color: "",
+        text_color: "",
+        brand_color: "",
+        brand_text_color: "",
+        link_color: "",
+        hover_link_color: "",
+        visited_link_color: "",
+      })}
+    >
       <ModalContainerProvider>
         <RequestsColumnFilter
           selectedColumns={selectedColumns}

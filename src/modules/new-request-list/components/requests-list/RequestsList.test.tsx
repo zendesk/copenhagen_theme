@@ -22,10 +22,8 @@ import {
   ORG_REQUESTS_TAB_NAME,
 } from "../../data-types/request-list-params";
 import localStorage from "../../utils/localStorage";
-import {
-  createGardenTheme,
-  ModalContainerProvider,
-} from "@zendesk/guide-garden-theming";
+import { ModalContainerProvider } from "@zendesk/guide-garden-theming";
+import { createTheme } from "../../../shared";
 import {
   organizations,
   requests,
@@ -51,7 +49,17 @@ const renderComponent = async (params?: Partial<RequestListParams>) => {
   });
 
   render(
-    <ThemeProvider theme={createGardenTheme(false, {})}>
+    <ThemeProvider
+      theme={createTheme({
+        background_color: "",
+        text_color: "",
+        brand_color: "",
+        brand_text_color: "",
+        link_color: "",
+        hover_link_color: "",
+        visited_link_color: "",
+      })}
+    >
       <ModalContainerProvider>
         <List locale="en-us" customStatusesEnabled={false} />
       </ModalContainerProvider>
