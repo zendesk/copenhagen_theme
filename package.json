@@ -33,6 +33,7 @@
     "@zendeskgarden/react-notifications": "9.12.0",
     "@zendeskgarden/react-pagination": "9.12.0",
     "@zendeskgarden/react-tables": "9.12.0",
+    "@zendeskgarden/react-tabs": "9.12.0",
     "@zendeskgarden/react-tags": "9.12.0",
     "@zendeskgarden/react-theming": "9.12.0",
     "@zendeskgarden/react-tooltips": "9.12.0",
