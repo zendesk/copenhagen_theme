@@ -138,19 +138,25 @@ export function useItemFormFields(
   const [associatedLookupField, setAssociatedLookupField] =
     useState<TicketFieldObject | null>();
   const [error, setError] = useState<unknown>(null);
+  const [isRequestFieldsLoading, setIsRequestFieldsLoading] = useState(false);
 
   useEffect(() => {
+    if (!serviceCatalogItem?.form_id) return;
+
     const fetchAndSetFields = async () => {
-      if (serviceCatalogItem && serviceCatalogItem.form_id) {
-        try {
-          const { requestFields, associatedLookupField, endUserConditions } =
-            await fetchTicketFields(serviceCatalogItem.form_id, baseLocale);
-          setAssociatedLookupField(associatedLookupField);
-          setEndUserConditions(endUserConditions);
-          setAllRequestFields(requestFields);
-        } catch (error) {
-          setError(error);
-        }
+      setIsRequestFieldsLoading(true);
+      setError(null);
+
+      try {
+        const { requestFields, associatedLookupField, endUserConditions } =
+          await fetchTicketFields(serviceCatalogItem.form_id, baseLocale);
+        setAssociatedLookupField(associatedLookupField);
+        setEndUserConditions(endUserConditions);
+        setAllRequestFields(requestFields);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsRequestFieldsLoading(false);
       }
     };
 
@@ -178,5 +184,6 @@ export function useItemFormFields(
     error,
     setRequestFields: setAllRequestFields,
     handleChange,
+    isRequestFieldsLoading,
   };
 }
