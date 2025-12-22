@@ -7,7 +7,7 @@ import type { ChangeEventHandler } from "react";
 import { useState } from "react";
 import SearchIcon from "@zendeskgarden/svg-icons/src/16/search-stroke.svg";
 import styled from "styled-components";
-import { useModalContainer } from "@zendesk/guide-garden-theming";
+import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 import type { RequestAttribute } from "../RequestAttribute";
 
 const StyledBody = styled(Modal.Body)`

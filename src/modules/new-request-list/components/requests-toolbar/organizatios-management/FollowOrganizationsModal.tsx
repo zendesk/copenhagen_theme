@@ -10,7 +10,7 @@ import { Dots } from "@zendeskgarden/react-loaders";
 import styled from "styled-components";
 import type { Organization, User } from "../../../data-types";
 import { usePushNotification } from "../../../hooks/usePushNotification";
-import { useModalContainer } from "@zendesk/guide-garden-theming";
+import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 
 interface OrganizationsManagementProps {
   organizations: Organization[];

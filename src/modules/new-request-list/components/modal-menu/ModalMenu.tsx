@@ -1,4 +1,4 @@
-import { useModalContainer } from "@zendesk/guide-garden-theming";
+import { useModalContainer } from "../../../shared/garden-theme/modal-container/useModalContainer";
 import { Menu } from "@zendeskgarden/react-dropdowns.legacy";
 import type { ReactNode } from "react";
 

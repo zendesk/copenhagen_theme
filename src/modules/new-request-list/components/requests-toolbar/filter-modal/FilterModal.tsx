@@ -16,7 +16,7 @@ import { FilterValueField } from "./FilterValueField";
 import type { FilterProperty } from "./FilterPropertyDropdown";
 import { FilterPropertyDropdown } from "./FilterPropertyDropdown";
 import type { FormErrors, FormState } from "./FormState";
-import { useModalContainer } from "@zendesk/guide-garden-theming";
+import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 import type { Organization, TicketField } from "../../../data-types";
 import type { MultiSelectOption } from "./Multiselect";
 
