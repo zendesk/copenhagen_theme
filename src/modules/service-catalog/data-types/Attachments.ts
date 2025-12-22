@@ -20,7 +20,7 @@ export interface CustomObjectFields {
   "standard::brand_id": number;
   "standard::description": string | null;
   "standard::is_required": boolean;
-  "standard::position": number;
+  "standard::position_in_portal": number;
 }
 
 export type AttachmentsError = string | null;

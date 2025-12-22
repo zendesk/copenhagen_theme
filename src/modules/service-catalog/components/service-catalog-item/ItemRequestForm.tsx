@@ -340,7 +340,7 @@ export function ItemRequestForm({
     }
 
     const attachmentsPosition =
-      attachmentsOption?.custom_object_fields?.["standard::position"];
+      attachmentsOption?.custom_object_fields?.["standard::position_in_portal"];
 
     const attachmentsElement = attachmentsOption ? (
       <Attachments
