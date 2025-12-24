@@ -57,7 +57,7 @@ export function DateFilter({
       case "custom":
         return t("guide-requests-app.custom", "Custom");
       default:
-        return dateRangeI18n[value];
+        return dateRangeI18n[value] || "";
     }
   };
 

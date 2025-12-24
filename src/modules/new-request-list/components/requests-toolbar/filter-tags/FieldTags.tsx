@@ -19,26 +19,33 @@ interface FieldTagsProps {
 }
 
 function getTextLabel(values: FilterValue[]): string {
-  const value = values[0].substring(1);
-  if (value === "*") {
+  const value = values[0]?.substring(1);
+  if (!value || value === "*") {
     return "";
   }
   return value.substring(1, value.length - 1);
 }
 
 function getNumberLabel(values: FilterValue[]): string {
-  if (values.length === 1) {
-    const value = values[0].substring(1);
-    return value === "*" ? "" : value;
-  } else if (values.length === 2) {
-    return `${values[0].substring(2)} - ${values[1].substring(2)}`;
-  } else {
-    return "";
+  const [first, second] = values;
+
+  if (values.length === 1 && first) {
+    const trimmed = first.substring(1);
+    if (!trimmed || trimmed === "*") {
+      return "";
+    }
+    return trimmed;
   }
+
+  if (values.length === 2 && first && second) {
+    return `${first.substring(2)} - ${second.substring(2)}`;
+  }
+
+  return "";
 }
 
 function getCreditCardLabel(values: FilterValue[]): string {
-  const value = values[0].substring(2);
+  const value = values[0]?.substring(2);
   return value === "" ? "" : `XXXXXXXXXXXX${value}`;
 }
 
@@ -62,8 +69,8 @@ export function FieldTags({
     const { i18n } = useTranslation();
     const currentLocale = i18n.language;
 
-    const startDate = new Date(from.substring(2));
-    const endDate = new Date(to.substring(2));
+    const startDate = new Date(from!.substring(2));
+    const endDate = new Date(to!.substring(2));
     const longDate = new Intl.DateTimeFormat(currentLocale, {
       dateStyle: "long",
     });
@@ -76,14 +83,18 @@ export function FieldTags({
   };
 
   const getDateLabel = (values: FilterValue[]): string => {
-    return values.length === 1
-      ? createDefaultDateRangeI18N()[values[0]]
-      : getDateRangeLabel(values);
+    const firstValue = values[0];
+
+    if (values.length === 1 && firstValue !== undefined) {
+      return createDefaultDateRangeI18N()[firstValue] || "";
+    } else {
+      return getDateRangeLabel(values);
+    }
   };
 
   if (identifier === "organization") {
     const organization = organizations.find(
-      (o) => String(o.id) === values[0].substring(1)
+      (o) => String(o.id) === values[0]?.substring(1)
     );
 
     return organization ? (
