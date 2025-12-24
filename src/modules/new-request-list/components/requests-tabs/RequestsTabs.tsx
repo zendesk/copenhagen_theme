@@ -45,7 +45,9 @@ const StyledMenu = styled(Menu)`
   width: 100%;
 `;
 
-function getDefaultOrganization(organizations: Organization[]): Organization {
+function getDefaultOrganization(
+  organizations: Organization[]
+): Organization | undefined {
   const defaultOrganization = organizations.find(
     (organization) => organization.default
   );
@@ -92,10 +94,13 @@ export default function RequestsTabs({
 
   function handleTabSelect(name: SelectedTabName) {
     if (name === ORG_REQUESTS_TAB_NAME) {
-      onTabSelected({
-        name: ORG_REQUESTS_TAB_NAME,
-        organizationId: getDefaultOrganization(organizations).id,
-      });
+      const defaultOrg = getDefaultOrganization(organizations);
+      if (defaultOrg) {
+        onTabSelected({
+          name: ORG_REQUESTS_TAB_NAME,
+          organizationId: defaultOrg.id,
+        });
+      }
     } else {
       onTabSelected({ name });
     }
@@ -128,10 +133,7 @@ export default function RequestsTabs({
           <StyledMenu
             popperModifiers={{
               offset: {
-                fn(data: {
-                  styles: { width: string };
-                  offsets: { reference: { width: string | number } };
-                }) {
+                fn(data: any) {
                   data.styles.width = `${parseInt(
                     String(data.offsets.reference.width),
                     10
