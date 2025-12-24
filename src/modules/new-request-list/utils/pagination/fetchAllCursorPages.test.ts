@@ -215,6 +215,13 @@ describe("fetchAllPages", () => {
               }),
           });
         }
+        default: {
+          return Promise.resolve({
+            status: 404,
+            ok: false,
+            statusText: "Not Found",
+          });
+        }
       }
     });
 
