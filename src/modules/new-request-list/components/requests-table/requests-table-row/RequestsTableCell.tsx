@@ -94,6 +94,7 @@ export function RequestsTableCell({
     pending: pending,
     solved: solved,
     closed: solved,
+    default: pending,
   };
 
   const getCustomFieldValue = (identifier: string) =>
@@ -118,7 +119,10 @@ export function RequestsTableCell({
 
   const getStatusLabel = () => {
     if (!customStatusesEnabled) {
-      return { label: STATUS_MAPPING[status].label, tooltip: undefined };
+      return {
+        label: STATUS_MAPPING[status] || STATUS_MAPPING["default"],
+        tooltip: undefined,
+      };
     }
 
     const customStatus = customStatuses.find(
@@ -131,7 +135,7 @@ The same applies for the description. */
     const label =
       customStatus?.label ||
       customStatus?.end_user_label ||
-      STATUS_MAPPING[status].label;
+      STATUS_MAPPING[status]?.label;
     const description =
       customStatus?.description || customStatus?.end_user_description;
     return {
@@ -166,10 +170,14 @@ The same applies for the description. */
 
   if (identifier === "status") {
     const { label, tooltip } = getStatusLabel();
+    const defaultColor = "#038153"; // make pending status the default color
+    const statusMapping = STATUS_MAPPING?.[status]?.color ?? defaultColor;
     return (
       <Table.Cell data-test-id={`table-cell-${identifier}`}>
-        <Tag hue={STATUS_MAPPING[status].color}>
-          <TruncatedText tooltip={tooltip}>{label}</TruncatedText>
+        <Tag hue={statusMapping}>
+          <TruncatedText tooltip={tooltip}>
+            {typeof label === "string" ? label : ""}
+          </TruncatedText>
         </Tag>
       </Table.Cell>
     );
