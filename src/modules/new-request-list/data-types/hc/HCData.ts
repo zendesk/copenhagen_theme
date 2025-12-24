@@ -1,8 +1,8 @@
-import type { ThemeSettings } from "@zendesk/guide-garden-theming";
+import type { Settings } from "../../../shared/garden-theme/createTheme";
 
 interface Theme {
   apiVersion: number;
-  settings: ThemeSettings;
+  settings: Settings;
 }
 
 interface HCUser {
