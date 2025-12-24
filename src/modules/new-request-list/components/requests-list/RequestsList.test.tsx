@@ -51,13 +51,13 @@ const renderComponent = async (params?: Partial<RequestListParams>) => {
   render(
     <ThemeProvider
       theme={createTheme({
-        background_color: "",
-        text_color: "",
-        brand_color: "",
-        brand_text_color: "",
-        link_color: "",
-        hover_link_color: "",
-        visited_link_color: "",
+        background_color: "#ffffff",
+        text_color: "#000000",
+        brand_color: "#0000ff",
+        brand_text_color: "#ffffff",
+        link_color: "#0000ff",
+        hover_link_color: "#0000aa",
+        visited_link_color: "#800080",
       })}
     >
       <ModalContainerProvider>
