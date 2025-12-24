@@ -19,8 +19,9 @@ const StyledMenu = styled(Menu)`
 
 const OPEN_MODAL_VALUE = "__openModal__";
 
+// primaryEmphasis is the color used for links https://garden.zendesk.com/design/color#hierarchy
 const SeeMoreColumnsItem = styled(Item)`
-  color: ${(p) => p.theme.settings?.linkColor};
+  color: ${(p) => p.theme.colors.variables.light.background.primaryEmphasis};
 `;
 
 export interface RequestsColumnFilterProps {
@@ -112,7 +113,7 @@ export function RequestsColumnFilter({
               enabled: false,
             },
             offset: {
-              fn: (data: { offsets: { popper: { top: number } } }) => {
+              fn: (data: any) => {
                 /**
                  * Ensure correct placement relative to trigger
                  **/
