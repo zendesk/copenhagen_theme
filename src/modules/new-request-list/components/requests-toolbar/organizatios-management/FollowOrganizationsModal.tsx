@@ -254,29 +254,25 @@ export default function FollowOrganizationsModal(
             <Modal.Close aria-label="Close Alert" onClick={onCloseAlert} />
           </StyledAlert>
         )}
-        {subscriptions.map((o, i) => {
-          if (i < amountShowing) {
-            return (
-              <StyledField key={o.organizationId}>
-                <Checkbox
-                  data-test-id={`checkbox_${o.organizationId}`}
-                  checked={o.isChecked}
-                  onChange={() => subscriptionStateChange(o.organizationId)}
-                >
-                  <Field.Label>{o.name}</Field.Label>
-                </Checkbox>
-                {o.isError && (
-                  <Field.Message validation="error">
-                    {t(
-                      "guide-requests-app.organizationSubscriptionCouldNotBeSaved",
-                      "Organization subscription could not be saved"
-                    )}
-                  </Field.Message>
+        {subscriptions.slice(0, amountShowing).map((o) => (
+          <StyledField key={o.organizationId}>
+            <Checkbox
+              data-test-id={`checkbox_${o.organizationId}`}
+              checked={o.isChecked}
+              onChange={() => subscriptionStateChange(o.organizationId)}
+            >
+              <Field.Label>{o.name}</Field.Label>
+            </Checkbox>
+            {o.isError && (
+              <Field.Message validation="error">
+                {t(
+                  "guide-requests-app.organizationSubscriptionCouldNotBeSaved",
+                  "Organization subscription could not be saved"
                 )}
-              </StyledField>
-            );
-          }
-        })}
+              </Field.Message>
+            )}
+          </StyledField>
+        ))}
         {organizations.length > DEFAULT_SHOWING_AMOUNT &&
           amountShowing < organizations.length && (
             <Anchor onClick={onShowMore}>
