@@ -8,7 +8,7 @@ import ReactDOM from "react-dom";
 import List from "./components/requests-list/RequestsList";
 import { PushNotificationContext } from "./contexts/PushNotification";
 import { initI18next, loadTranslations } from "./i18n";
-import { ErrorBoundary } from "./components/error-boundary/ErrorBoundary";
+import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const inCypress = (window as any).Cypress;
 
