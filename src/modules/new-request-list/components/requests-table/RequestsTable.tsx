@@ -97,7 +97,8 @@ export function RequestsTable({
         const label =
           requestAttributesLabels[identifier] ??
           ticketFields.find((field) => field.type === identifier)
-            ?.title_in_portal;
+            ?.title_in_portal ??
+          identifier;
         return { identifier, label };
       }),
       ...ticketFields
