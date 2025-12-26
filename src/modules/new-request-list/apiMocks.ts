@@ -1,0 +1,230 @@
+import type {
+  User,
+  Organization,
+  Request,
+  TicketField,
+  RequestUser,
+} from "./data-types";
+
+export const user: User = {
+  id: 10,
+  name: "Pipoca",
+  role: "end-user",
+  organization_id: "10",
+  locale: "en-us",
+  authenticity_token: "12345",
+};
+
+export const organizations: Organization[] = [
+  {
+    id: 1,
+    name: "My Organization",
+    default: true,
+  },
+  {
+    id: 2,
+    name: "Another Organization",
+    default: false,
+  },
+];
+
+export const ticketFields: TicketField[] = [
+  {
+    id: 123,
+    type: "subject",
+    title: "Subject",
+    description: "",
+    active: true,
+    title_in_portal: "Subject",
+  },
+  {
+    id: 234,
+    type: "status",
+    title: "Status",
+    description: "Request status",
+    active: true,
+    title_in_portal: "Status",
+  },
+  {
+    active: true,
+    custom_field_options: [
+      {
+        name: "Dropdown Field Option #1",
+        value: "first",
+        id: 1,
+      },
+      {
+        name: "Dropdown Field Option #2",
+        value: "second",
+        id: 2,
+      },
+    ],
+    id: 420,
+    description: "DropdownField EndUser Description",
+    title: "DropdownField",
+    title_in_portal: "DropdownFieldEndUser",
+    type: "tagger",
+  },
+  {
+    active: true,
+    custom_field_options: [
+      {
+        name: "Multiselect Field Option #1",
+        value: "first",
+        id: 1,
+      },
+      {
+        name: "Multiselect Field Option #2",
+        value: "second",
+        id: 2,
+      },
+    ],
+    id: 421,
+    description: "Multiselect EndUser Description",
+    title: "Multiselect Field",
+    title_in_portal: "MultiselectFieldEndUser",
+    type: "multiselect",
+  },
+  {
+    active: true,
+    id: 422,
+    description: "Date Field EndUser Description",
+    title: "Date Field",
+    title_in_portal: "DateField",
+    type: "date",
+  },
+  {
+    active: true,
+    id: 423,
+    description: "Priority Field EndUser Description",
+    title: "Priority",
+    title_in_portal: "Priority",
+    type: "priority",
+  },
+  {
+    active: true,
+    id: 424,
+    description: "Type Field EndUser Description",
+    title: "Type",
+    title_in_portal: "Type",
+    type: "tickettype",
+  },
+  {
+    active: true,
+    id: 425,
+    description: "Text Field EndUser Description",
+    title: "Text",
+    title_in_portal: "TextField",
+    type: "text",
+  },
+  {
+    active: true,
+    id: 426,
+    description: "Multiline Field EndUser Description",
+    title: "Textarea",
+    title_in_portal: "MultilineField",
+    type: "textarea",
+  },
+  {
+    active: true,
+    id: 427,
+    description: "Checkbox Field EndUser Description",
+    title: "Text",
+    title_in_portal: "CheckboxField",
+    type: "checkbox",
+  },
+  {
+    active: true,
+    id: 428,
+    description: "Number Field EndUser Description",
+    title: "Text",
+    title_in_portal: "NumberField",
+    type: "integer",
+  },
+  {
+    active: true,
+    id: 429,
+    description: "Decimal Field EndUser Description",
+    title: "Text",
+    title_in_portal: "DecimalField",
+    type: "decimal",
+  },
+  {
+    active: true,
+    id: 430,
+    description: "Regexp Field EndUser Description",
+    title: "Text",
+    title_in_portal: "RegexpField",
+    type: "regexp",
+  },
+  {
+    active: true,
+    id: 431,
+    description: "Creditcard Field EndUser Description",
+    title: "Text",
+    title_in_portal: "CreditcardField",
+    type: "partialcreditcard",
+  },
+];
+
+export const requests: Request[] = [
+  {
+    id: 1,
+    subject: "My request",
+    description: "",
+    created_at: "2019-03-03t19:31:31z",
+    updated_at: "2020-06-03t19:31:31z",
+    status: "open",
+    priority: "low",
+    type: "incident",
+    requester_id: 10,
+    custom_fields: [
+      { id: 420, value: "second" },
+      { id: 421, value: ["first", "second"] },
+      { id: 422, value: "2022-06-03" },
+      { id: 425, value: "Some text" },
+      { id: 426, value: "Some multi-line text" },
+      { id: 427, value: true },
+      { id: 428, value: "323" },
+      { id: 429, value: "323.123456" },
+      { id: 430, value: "Validated string" },
+      { id: 431, value: "XXXXXXXXXXXX5100" },
+    ],
+  },
+  {
+    id: 2,
+    subject: "Xylophone is broken",
+    description: "",
+    created_at: "2020-06-03t19:31:31z",
+    updated_at: "2020-09-03t19:31:31z",
+    status: "closed",
+    custom_fields: [{ id: 420, value: "second" }],
+    priority: "normal",
+    type: "problem",
+    requester_id: 10,
+  },
+  {
+    id: 3,
+    subject: "",
+    description: "Description for request with empty subject",
+    created_at: "2021-06-03t19:31:31z",
+    updated_at: "2021-09-03t19:31:31z",
+    status: "closed",
+    priority: "high",
+    type: "problem",
+    custom_fields: [],
+    requester_id: 11,
+  },
+];
+
+export const requestUsers: RequestUser[] = [
+  {
+    id: 10,
+    name: "Pepper Pie",
+  },
+  {
+    id: 11,
+    name: "Deolinda Dalila",
+    alias: "Dally DiRoli",
+  },
+];
