@@ -133,6 +133,7 @@ export default function RequestsTabs({
           <StyledMenu
             popperModifiers={{
               offset: {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 fn(data: any) {
                   data.styles.width = `${parseInt(
                     String(data.offsets.reference.width),

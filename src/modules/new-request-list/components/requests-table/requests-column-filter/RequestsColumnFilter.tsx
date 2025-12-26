@@ -113,6 +113,7 @@ export function RequestsColumnFilter({
               enabled: false,
             },
             offset: {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               fn: (data: any) => {
                 /**
                  * Ensure correct placement relative to trigger

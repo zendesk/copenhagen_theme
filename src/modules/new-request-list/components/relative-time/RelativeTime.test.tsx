@@ -1,4 +1,3 @@
-import React from "react";
 import { act, render, screen } from "@testing-library/react";
 import RelativeTime from "./RelativeTime";
 import { addSeconds, addMinutes } from "date-fns";

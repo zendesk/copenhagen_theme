@@ -5,7 +5,6 @@ jest.mock("../../../hooks/useRequests");
 jest.mock("../../../hooks/useParams");
 
 import type { FilterValuesMap } from "../../../data-types/FilterValue";
-import React from "react";
 import { FilterModal } from "./FilterModal";
 import "@testing-library/jest-dom";
 import {

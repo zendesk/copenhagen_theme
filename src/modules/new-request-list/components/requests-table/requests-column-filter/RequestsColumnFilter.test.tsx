@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen, fireEvent, within } from "@testing-library/react";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
 import { RequestsColumnFilter } from "./RequestsColumnFilter";

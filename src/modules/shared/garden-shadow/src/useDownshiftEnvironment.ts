@@ -1,4 +1,4 @@
-import { useShadowRoot } from "./ShadowRootContainer";
+import { useShadowRoot } from "./shadow-root-container";
 import type { Environment } from "downshift";
 
 export function useDownshiftEnvironment(): Environment | undefined {

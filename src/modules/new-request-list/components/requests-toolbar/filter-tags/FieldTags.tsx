@@ -57,7 +57,8 @@ export function FieldTags({
   customStatusOptions,
   onFilterRemoved,
 }: FieldTagsProps): JSX.Element {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLocale = i18n.language;
 
   const {
     checkboxFilterValuesI18N,
@@ -66,9 +67,6 @@ export function FieldTags({
   } = useFilterTranslations();
 
   const getDateRangeLabel = ([from, to]: FilterValue[]): string => {
-    const { i18n } = useTranslation();
-    const currentLocale = i18n.language;
-
     const startDate = new Date(from!.substring(2));
     const endDate = new Date(to!.substring(2));
     const longDate = new Intl.DateTimeFormat(currentLocale, {

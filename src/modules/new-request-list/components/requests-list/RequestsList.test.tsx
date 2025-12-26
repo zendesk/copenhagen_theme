@@ -5,7 +5,6 @@ jest.mock("../../hooks/useRequests");
 jest.mock("../../hooks/useParams");
 jest.mock("../../hooks/useShowManyUsers");
 
-import React from "react";
 import { render, screen, act, fireEvent } from "@testing-library/react";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
 import List from "./RequestsList";
