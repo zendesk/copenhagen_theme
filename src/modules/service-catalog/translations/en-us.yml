@@ -148,3 +148,9 @@ parts:
       title: "Label prefix for serial number shown in lookup field options. Serial number (SN) abbreviation can be translated as per language"
       screenshot: "https://drive.google.com/file/d/1H4Tsm7YHGdtFnSElJH6ZUIIU7VyySq2S/view?usp=sharing"
       value: "SN: {{serialNumber}}"
+  - translation:
+      key: "service-catalog.attachments-required-error"
+      title: "Error message for attachments required field validation"
+      screenshot: "https://drive.google.com/file/d/1pzBRSy9JYwExx8v2HsMPbh-aLlKvod57/view?usp=sharing"
+      value: "Upload a file to continue"
+
