@@ -4813,15 +4813,15 @@ __metadata:
   linkType: hard
 
 "@zendesk/zcli-apps@npm:^1.0.0-beta.50":
-  version: 1.0.0-beta.50
-  resolution: "@zendesk/zcli-apps@npm:1.0.0-beta.50"
+  version: 1.0.0-beta.54
+  resolution: "@zendesk/zcli-apps@npm:1.0.0-beta.54"
   dependencies:
     adm-zip: "npm:0.5.10"
     archiver: "npm:^5.3.1"
     axios: "npm:^1.7.5"
     chalk: "npm:^4.1.2"
     cors: "npm:^2.8.5"
-    express: "npm:^4.17.1"
+    express: "npm:^4.21.2"
     form-data: "npm:^4.0.0"
     fs-extra: "npm:^10.0.0"
     morgan: "npm:^1.10.0"
@@ -4831,7 +4831,7 @@ __metadata:
     uuid: "npm:^8.3.2"
   bin:
     zcli-apps: bin/run
-  checksum: 10c0/00b6f7698e62ab14b48b43395801bd7c8eee793b17100200f0e91e543f7bf175254abae8eded3db76a06df16b24d3a22bf8cc792e35b91a9cd13a3981f865dff
+  checksum: 10c0/6b432902b070e997108d948ad9cbdbe81ccb72a8b1fbe7ebd1afd0bf0f87ddfdd63180cc25c78fb46cd476bd851bcf7e4dce4d7f8a827f3b5d6edf21dbc6668c
   languageName: node
   linkType: hard
 
@@ -4852,8 +4852,8 @@ __metadata:
   linkType: hard
 
 "@zendesk/zcli-themes@npm:^1.0.0-beta.52":
-  version: 1.0.0-beta.52
-  resolution: "@zendesk/zcli-themes@npm:1.0.0-beta.52"
+  version: 1.0.0-beta.53
+  resolution: "@zendesk/zcli-themes@npm:1.0.0-beta.53"
   dependencies:
     "@types/inquirer": "npm:^8.0.0"
     "@types/ws": "npm:^8.5.4"
@@ -4861,14 +4861,14 @@ __metadata:
     chalk: "npm:^4.1.2"
     chokidar: "npm:^3.5.3"
     cors: "npm:^2.8.5"
-    express: "npm:^4.17.1"
+    express: "npm:^4.21.2"
     glob: "npm:^10.1.0"
     inquirer: "npm:^8.0.0"
     sass: "npm:1.60.0"
     ws: "npm:^8.13.0"
   bin:
     zcli-themes: bin/run
-  checksum: 10c0/de20464ac655caef67e2d8dd05775ab48d7e934be12d39b6a78b41ade76eb2c9d954e3c3a20a314b604d5d7d247e48e3f6f9a7499dd5a70f4056f282cc15a6d9
+  checksum: 10c0/40fdcf4564d732ae51b8e96b0d566f860c297ea66a93eda841f7040e16494dab98cb4baa143d38b03d250e7c48b9a758076b51e636d214e1bca80628be89516b
   languageName: node
   linkType: hard
 
@@ -9636,7 +9636,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express@npm:^4.17.1":
+"express@npm:^4.21.2":
   version: 4.21.2
   resolution: "express@npm:4.21.2"
   dependencies:

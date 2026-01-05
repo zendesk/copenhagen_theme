@@ -41,12 +41,13 @@
     organizations: {{json user.organizations}},
     wysiwyg: true,
     answerBotModal: {
-      answerBot: {{json answer_bot}},
+      answerBot: {{#if answer_bot}}{{json answer_bot}}{{else}}null{{/if}},
+      answerBotGenerativeExperience: {{#if answer_bot_generative_experience}}{{json answer_bot_generative_experience}}{{else}}null{{/if}},
       hasRequestManagement: {{json help_center.request_management_enabled}},
       isSignedIn: {{json signed_in}},
       helpCenterPath: {{json (page_path 'help_center')}},
       requestsPath: {{json (page_path 'requests')}},
-      requestPath: {{json (page_path 'request' id=answer_bot.request_id)}}
+      requestPath: {{json (page_path 'request' id=request_id)}}
     },
   };
 
