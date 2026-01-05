@@ -1,3 +1,16 @@
+# [4.24.0](https://github.com/zendesk/copenhagen_theme/compare/v4.23.5...v4.24.0) (2026-01-05)
+
+
+### Bug Fixes
+
+* improve answerBotGenerativeExperience null check ([938112f](https://github.com/zendesk/copenhagen_theme/commit/938112f8b3325ac01608fa2d50eba630cb90fafa))
+* simplify requestPath logic in new_request_page template ([ff86edf](https://github.com/zendesk/copenhagen_theme/commit/ff86edf4db850ff52eee7f1280bca8361ad2634a))
+
+
+### Features
+
+* added answerBotGenerativeExperience field ([8cd74e8](https://github.com/zendesk/copenhagen_theme/commit/8cd74e8701523de16b29932945c77d3d394bf151))
+
 ## [4.23.5](https://github.com/zendesk/copenhagen_theme/compare/v4.23.4...v4.23.5) (2025-12-18)
 
 
