@@ -1,3 +1,10 @@
+## [4.23.5](https://github.com/zendesk/copenhagen_theme/compare/v4.23.4...v4.23.5) (2025-12-18)
+
+
+### Bug Fixes
+
+* remove normalize from primaryhue ([f3d2cfc](https://github.com/zendesk/copenhagen_theme/commit/f3d2cfc6b2c08ee5e09092e6789bfad7ef4b777e))
+
 ## [4.23.4](https://github.com/zendesk/copenhagen_theme/compare/v4.23.3...v4.23.4) (2025-12-18)
 
 
