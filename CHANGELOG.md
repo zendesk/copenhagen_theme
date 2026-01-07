@@ -1,3 +1,10 @@
+## [4.24.1](https://github.com/zendesk/copenhagen_theme/compare/v4.24.0...v4.24.1) (2026-01-07)
+
+
+### Bug Fixes
+
+* removed old resolution for @zendeskgarden/container-utilities ([3672c4f](https://github.com/zendesk/copenhagen_theme/commit/3672c4fddf76bff6df0ef6b4c011d3e207559865)), closes [#706](https://github.com/zendesk/copenhagen_theme/issues/706)
+
 # [4.24.0](https://github.com/zendesk/copenhagen_theme/compare/v4.23.5...v4.24.0) (2026-01-05)
 
 
