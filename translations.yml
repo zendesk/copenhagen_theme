@@ -178,6 +178,16 @@ parts:
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
       value: "Search settings"
   - translation:
+      key: "txt.help_center_copenhagen_theme.service_catalog_hero_image_description"
+      title: "Description for the service catalog hero image setting"
+      screenshot: "https://drive.google.com/file/d/16NcOBXQPVGmsVZ5ymsUUygRm2SBPqNCm/view?usp=sharing"
+      value: "Hero image on the service catalog page"       
+  - translation:
+      key: "txt.help_center_copenhagen_theme.service_catalog_hero_image_label"
+      title: "Label for the service catalog hero image setting"
+      screenshot: "https://drive.google.com/file/d/16NcOBXQPVGmsVZ5ymsUUygRm2SBPqNCm/view?usp=sharing"
+      value: "Service catalog hero image"
+  - translation:
       key: "txt.help_center_copenhagen_theme.instant_search_label"
       title: "Label for the instant search setting"
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"

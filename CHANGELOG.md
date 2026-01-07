@@ -1,3 +1,44 @@
+# [4.24.0](https://github.com/zendesk/copenhagen_theme/compare/v4.23.5...v4.24.0) (2026-01-05)
+
+
+### Bug Fixes
+
+* improve answerBotGenerativeExperience null check ([938112f](https://github.com/zendesk/copenhagen_theme/commit/938112f8b3325ac01608fa2d50eba630cb90fafa))
+* simplify requestPath logic in new_request_page template ([ff86edf](https://github.com/zendesk/copenhagen_theme/commit/ff86edf4db850ff52eee7f1280bca8361ad2634a))
+
+
+### Features
+
+* added answerBotGenerativeExperience field ([8cd74e8](https://github.com/zendesk/copenhagen_theme/commit/8cd74e8701523de16b29932945c77d3d394bf151))
+
+## [4.23.5](https://github.com/zendesk/copenhagen_theme/compare/v4.23.4...v4.23.5) (2025-12-18)
+
+
+### Bug Fixes
+
+* remove normalize from primaryhue ([f3d2cfc](https://github.com/zendesk/copenhagen_theme/commit/f3d2cfc6b2c08ee5e09092e6789bfad7ef4b777e))
+
+## [4.23.4](https://github.com/zendesk/copenhagen_theme/compare/v4.23.3...v4.23.4) (2025-12-18)
+
+
+### Bug Fixes
+
+* update createTheme to include garden v9 color overrides ([162c1f6](https://github.com/zendesk/copenhagen_theme/commit/162c1f61eca468c5bfaecf22641659b3ea7a2d29))
+
+## [4.23.3](https://github.com/zendesk/copenhagen_theme/compare/v4.23.2...v4.23.3) (2025-12-15)
+
+
+### Bug Fixes
+
+* bring back capitalization for the lookap field  placeholder ([395c6aa](https://github.com/zendesk/copenhagen_theme/commit/395c6aa7b6ff3c68ef07efb7bc38bdff11827433))
+
+## [4.23.2](https://github.com/zendesk/copenhagen_theme/compare/v4.23.1...v4.23.2) (2025-12-12)
+
+
+### Bug Fixes
+
+* fixed rendering errors with custom theme colors ([29f6e90](https://github.com/zendesk/copenhagen_theme/commit/29f6e90e1949a3f9e37e637558af235d5f53bd99)), closes [#edc4c4](https://github.com/zendesk/copenhagen_theme/issues/edc4c4)
+
 ## [4.23.1](https://github.com/zendesk/copenhagen_theme/compare/v4.23.0...v4.23.1) (2025-12-09)
 
 

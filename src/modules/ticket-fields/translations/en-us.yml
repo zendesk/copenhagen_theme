@@ -41,3 +41,64 @@ parts:
       title: "Label for the back option in a multi-level dropdown, used to return to the previous menu."
       screenshot: "https://drive.google.com/file/d/1u_eLJAGP8bGvQE7cteCQyCNJT13_9dOu/view?usp=drive_link"
       value: "Back"
+
+  - translation:
+      key: "cph-theme-ticket-fields.upload-failed-title"
+      title: "Title of the notification shown when the upload of an attachment failed"
+      screenshot: "https://drive.google.com/file/d/1HaYFIjlr89IWfu-HweJbTRjC23u3bLP-/view?usp=sharing"
+      value: "{{fileName}} upload failed"
+  - translation:
+      key: "cph-theme-ticket-fields.attachments.error-separator"
+      title: "Separator between errors for the same file - please localize according to your language's punctuation rules"
+      screenshot: "https://drive.google.com/file/d/1z8VM5w7BLz9E5iJlAzX1mVuvv9Jz0XGL/view?usp=sharing"
+      value: "; "
+  - translation:
+      key: "cph-theme-ticket-fields.attachments.upload-error-title"
+      title: "Title of the notification shown when the upload of an attachment failed"
+      screenshot: "https://drive.google.com/file/d/19pYyTsdX_PzxZpMmN3-1sQn7gG_3bxl6/view?usp=drive_link"
+      value: "Upload error"
+  - translation:
+      key: "cph-theme-ticket-fields.attachments.upload-error-description"
+      title: "Description of the notification shown when the upload of an attachment failed. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [There was an error uploading the file {{fileName}}. Try again or upload another file.] "
+      screenshot: "https://drive.google.com/file/d/19pYyTsdX_PzxZpMmN3-1sQn7gG_3bxl6/view?usp=drive_link"
+      value: "There was an error uploading {{fileName}}. Try again or upload another file."
+  - translation:
+      key: "cph-theme-ticket-fields.attachments.drop-files-label"
+      title: "Label shown when a file is dragged over the attachment field"
+      screenshot: "https://drive.google.com/file/d/1T_2Eahrfs8iITZWvgAR6wxrxEdsy2D2G/view?usp=drive_link"
+      value: "Drop files here"
+  - translation:
+      key: "cph-theme-ticket-fields.attachments.choose-file-label"
+      title: "Label for the attachments field"
+      screenshot: "https://drive.google.com/file/d/1T_2Eahrfs8iITZWvgAR6wxrxEdsy2D2G/view?usp=drive_link"
+      value: "Choose a file or drag and drop here"
+  - translation:
+      key: "cph-theme-ticket-fields.attachments.stop-upload"
+      title: "Tooltip for the button for stopping the upload of an attachment"
+      screenshot: "https://drive.google.com/file/d/1Y6yeqp3fbfJbuq7tT8VutsLa80GZju-V/view?usp=drive_link"
+      value: "Stop upload"
+  - translation:
+      key: "cph-theme-ticket-fields.attachments.remove-file"
+      title: "Tooltip for the button for removing an attachment"
+      screenshot: "https://drive.google.com/file/d/1JFVE2twzUkg-U6gGAs2EHqD-3jPvtJDA/view?usp=drive_link"
+      value: "Remove file"
+  - translation:
+      key: "cph-theme-ticket-fields.attachments.stop-upload-aria-label"
+      title: "[A11Y] Hidden label for screen readers for stopping the upload of an attachment. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Stop uploading the file {{fileName}}]"
+      screenshot: "https://drive.google.com/file/d/1Y6yeqp3fbfJbuq7tT8VutsLa80GZju-V/view?usp=drive_link"
+      value: "Stop uploading {{fileName}}"
+  - translation:
+      key: "cph-theme-ticket-fields.attachments.remove-file-aria-label"
+      title: "[A11Y] Hidden label for screen readers for removing an attachment. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Removing the file {{fileName}}]"
+      screenshot: "https://drive.google.com/file/d/1JFVE2twzUkg-U6gGAs2EHqD-3jPvtJDA/view?usp=drive_link"
+      value: "Remove file: {{fileName}}"
+  - translation:
+      key: "cph-theme-ticket-fields.attachments.uploading"
+      title: "[A11Y] Hidden label for screen readers for the upload attachment progress bar. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Uploading the file {{fileName}}]"
+      screenshot: "https://drive.google.com/file/d/1Y6yeqp3fbfJbuq7tT8VutsLa80GZju-V/view?usp=drive_link"
+      value: "Uploading {{fileName}}"
+  - translation:
+      key: "cph-theme-ticket-fields.attachments.file"
+      title: "[A11Y] Hidden label for screen readers informing how they can remove the file with keyboard navigation. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Press Delete to remove the file {{fileName}}]"
+      screenshot: "https://drive.google.com/file/d/1JFVE2twzUkg-U6gGAs2EHqD-3jPvtJDA/view?usp=drive_link"
+      value: "File: {{fileName}}, press delete to remove"
