@@ -5092,16 +5092,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/container-utilities@npm:2.0.2":
-  version: 2.0.2
-  resolution: "@zendeskgarden/container-utilities@npm:2.0.2"
+"@zendeskgarden/container-utilities@npm:^2.0.0, @zendeskgarden/container-utilities@npm:^2.0.2, @zendeskgarden/container-utilities@npm:^2.0.3":
+  version: 2.0.5
+  resolution: "@zendeskgarden/container-utilities@npm:2.0.5"
   dependencies:
     "@babel/runtime": "npm:^7.8.4"
     "@reach/auto-id": "npm:^0.18.0"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/54fa8d3ada8da2704f7f500589024f6fc56e361a22b12b69ea502f018a9f61c067951214d4e664fdfba817a5262c90ab0d04544cbe743b5c80a3d5f43eb3b6bb
+  checksum: 10c0/110e2faddd3610dcd774a29762d86e845f045fc5dff0b44c7f32164f54096ba78ce1e4c70b913cf45bb91dea5755c56952c519a45e10de846c956726f7324992
   languageName: node
   linkType: hard
 
