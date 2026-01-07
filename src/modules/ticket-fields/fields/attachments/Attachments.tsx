@@ -224,7 +224,8 @@ export function Attachments({
   return (
     <GardenField>
       <GardenField.Label>
-        {label}{field.isRequired ? "*" : ""}
+        {label}
+        {field.isRequired ? "*" : ""}
       </GardenField.Label>
 
       {field.description && (
