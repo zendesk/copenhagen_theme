@@ -1,18 +1,30 @@
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
+import type { Attachment } from "../../../ticket-fields/data-types/AttachmentsField";
 
-export async function submitServiceItemRequest(
-  serviceCatalogItem: ServiceCatalogItem,
-  requestFields: TicketFieldObject[],
-  associatedLookupField: TicketFieldObject,
-  baseLocale: string
-) {
+const getCurrentUser = async () => {
   try {
     const currentUserRequest = await fetch("/api/v2/users/me.json");
     if (!currentUserRequest.ok) {
       throw new Error("Error fetching current user data");
     }
-    const currentUser = await currentUserRequest.json();
+
+    return await currentUserRequest.json();
+  } catch (error) {
+    throw new Error("Error fetching current user data");
+  }
+};
+
+export async function submitServiceItemRequest(
+  serviceCatalogItem: ServiceCatalogItem,
+  requestFields: TicketFieldObject[],
+  associatedLookupField: TicketFieldObject,
+  baseLocale: string,
+  attachments: Attachment[]
+) {
+  try {
+    const currentUser = await getCurrentUser();
+    const uploadTokens = attachments.map((a) => a.id);
 
     const customFields = requestFields.map((field) => {
       return {
@@ -31,6 +43,7 @@ export async function submitServiceItemRequest(
           subject: `${serviceCatalogItem.name}`,
           comment: {
             html_body: `<a href="/hc/en-us/services/${serviceCatalogItem.id}" style="text-decoration: underline" target="_blank" rel="noopener noreferrer">${serviceCatalogItem.name}</a>`,
+            uploads: uploadTokens,
           },
           ticket_form_id: serviceCatalogItem.form_id,
           custom_fields: [

@@ -12,6 +12,7 @@ describe("useItemFormFields", () => {
     custom_object_fields: {
       "standard::asset_option": "",
       "standard::asset_type_option": "",
+      "standard::attachment_option": "",
     },
   };
 

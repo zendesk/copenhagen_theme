@@ -4,18 +4,26 @@ import {
   Input,
   FileList,
 } from "@zendeskgarden/react-forms";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { useTranslation } from "react-i18next";
-import type { AttachmentField } from "../../data-types";
+import type { AttachmentField } from "../../data-types/AttachmentsField";
 import { FileListItem } from "./FileListItem";
 import type { AttachedFile } from "./useAttachedFiles";
 import { useAttachedFiles } from "./useAttachedFiles";
 import { notify } from "../../../shared";
+import styled from "styled-components";
+
+const StyledErrorMessage = styled(GardenField.Message)<{
+  hasDescription?: boolean;
+}>`
+  margin-top: ${(props) => (props.hasDescription ? props.theme.space.xxs : 0)};
+`;
 
 interface AttachmentProps {
   field: AttachmentField;
   baseLocale: string;
+  onUploadingChange?: (isUploading: boolean) => void;
 }
 
 async function fetchCsrfToken() {
@@ -39,6 +47,7 @@ export interface UploadFileResponse {
 export function Attachments({
   field,
   baseLocale,
+  onUploadingChange,
 }: AttachmentProps): JSX.Element {
   const { label, error, name, attachments } = field;
   const {
@@ -56,13 +65,17 @@ export function Attachments({
   );
   const { t } = useTranslation();
 
+  const isUploading = files.some((file) => file.status === "pending");
+
+  useEffect(() => {
+    onUploadingChange?.(isUploading);
+  }, [isUploading, onUploadingChange]);
+
   const uploadFailedTitle = useCallback(
     (file: File) => {
-      return t(
-        "new-request-form.attachments.upload-failed-title",
-        "Upload failed",
-        { fileName: file.name }
-      );
+      return t("cph-theme-ticket-fields.upload-failed-title", "Upload failed", {
+        fileName: file.name,
+      });
     },
     [t]
   );
@@ -77,7 +90,7 @@ export function Attachments({
           ?.map(
             (errorString: { description: string }) => errorString?.description
           )
-          .join(t("new-request-form.attachments.error-separator", "; "));
+          .join(t("cph-theme-ticket-fields.attachments.error-separator", "; "));
         return {
           title: uploadFailedTitle(file),
           errorMessage,
@@ -93,11 +106,11 @@ export function Attachments({
       } else {
         return {
           title: t(
-            "new-request-form.attachments.upload-error-title",
+            "cph-theme-ticket-fields.attachments.upload-error-title",
             "Upload error"
           ),
           errorMessage: t(
-            "new-request-form.attachments.upload-error-description",
+            "cph-theme-ticket-fields.attachments.upload-error-description",
             "There was an error uploading {{fileName}}. Try again or upload another file.",
             { fileName: file.name }
           ),
@@ -210,22 +223,36 @@ export function Attachments({
 
   return (
     <GardenField>
-      <GardenField.Label>{label}</GardenField.Label>
-      {error && (
-        <GardenField.Message validation="error">{error}</GardenField.Message>
+      <GardenField.Label>
+        {label}
+        {field.isRequired ? "*" : ""}
+      </GardenField.Label>
+
+      {field.description && (
+        <GardenField.Hint>{field.description}</GardenField.Hint>
       )}
+
+      {error && (
+        <StyledErrorMessage
+          validation="error"
+          hasDescription={!!field.description}
+        >
+          {error}
+        </StyledErrorMessage>
+      )}
+
       <FileUpload {...getRootProps()} isDragging={isDragActive}>
         {isDragActive ? (
           <span>
             {t(
-              "new-request-form.attachments.drop-files-label",
+              "cph-theme-ticket-fields.attachments.drop-files-label",
               "Drop files here"
             )}
           </span>
         ) : (
           <span>
             {t(
-              "new-request-form.attachments.choose-file-label",
+              "cph-theme-ticket-fields.attachments.choose-file-label",
               "Choose a file or drag and drop here"
             )}
           </span>

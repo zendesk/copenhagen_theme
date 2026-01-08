@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import type { Attachment } from "../../data-types";
+import type { Attachment } from "../../data-types/AttachmentsField";
 
 export interface PendingFile {
   status: "pending";
