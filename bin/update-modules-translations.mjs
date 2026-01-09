@@ -8,6 +8,7 @@ import { resolve } from "node:path";
 import { glob } from "glob";
 import { load } from "js-yaml";
 import { parseArgs } from "node:util";
+import { sep as filePathSeparator } from "path";
 
 const BASE_URL = `https://static.zdassets.com/translations`;
 
@@ -67,7 +68,7 @@ async function getModules() {
   for (const file of files) {
     const content = await readFile(file);
     const parsedContent = load(content);
-    const moduleName = file.split("/")[2];
+    const moduleName = file.split(filePathSeparator)[2];
     result[moduleName] = parsedContent.packages[0];
   }
 
