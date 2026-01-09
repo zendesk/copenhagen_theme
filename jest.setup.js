@@ -1,5 +1,20 @@
 import { jest } from "@jest/globals";
 
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: {},
+  },
+  lng: "en",
+  interpolation: {
+    escapeValue: false,
+  },
+  keySeparator: false,
+  pluralSeparator: ".",
+});
+
 Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: jest.fn().mockImplementation((query) => ({
