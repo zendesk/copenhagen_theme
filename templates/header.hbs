@@ -18,7 +18,7 @@
         <li>{{link 'new_request' class='submit-a-request'}}</li>
         {{#unless signed_in}}
           <li>
-            {{#link "sign_in" class="sign-in"}}
+            {{#link "sign_in" class="sign-in" role="link"}}
               {{t 'sign_in'}}
             {{/link}}
           </li>
@@ -79,7 +79,7 @@
           <li class="nav-divider"></li>
         {{else}}
           <li class="item">
-            {{#link "sign_in"}}
+            {{#link "sign_in" role="link"}}
               {{t 'sign_in'}}
             {{/link}}
           </li>
