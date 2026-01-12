@@ -1,3 +1,10 @@
+# [4.25.0](https://github.com/zendesk/copenhagen_theme/compare/v4.24.1...v4.25.0) (2026-01-08)
+
+
+### Features
+
+* add service catalog hero image with translations ([2077092](https://github.com/zendesk/copenhagen_theme/commit/2077092aaaba6bf5566a5b2c39e43c85d4db87f9))
+
 ## [4.24.1](https://github.com/zendesk/copenhagen_theme/compare/v4.24.0...v4.24.1) (2026-01-07)
 
 
