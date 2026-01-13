@@ -1,3 +1,12 @@
+## [4.25.1](https://github.com/zendesk/copenhagen_theme/compare/v4.25.0...v4.25.1) (2026-01-12)
+
+
+### Bug Fixes
+
+* add empty role ([749b6e9](https://github.com/zendesk/copenhagen_theme/commit/749b6e90028bc5bb9e5081bf1ecd717f94841fb4))
+* update role attribute for sign-in link ([d0cc4c7](https://github.com/zendesk/copenhagen_theme/commit/d0cc4c738d951c112056fc0575da9f90c8a74f85))
+* update role for mobile menu ([ac9d36f](https://github.com/zendesk/copenhagen_theme/commit/ac9d36ff0720e317a42c268f97a1414b05370f33))
+
 # [4.25.0](https://github.com/zendesk/copenhagen_theme/compare/v4.24.1...v4.25.0) (2026-01-08)
 
 
