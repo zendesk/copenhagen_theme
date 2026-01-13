@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "approval-requests.status.decision-pending",
   "approval-requests.status.denied": "approval-requests.status.denied",
   "approval-requests.status.info-needed": "approval-requests.status.info-needed",
-  "approval-requests.status.withdrawn": "approval-requests.status.withdrawn"
+  "approval-requests.status.withdrawn": "approval-requests.status.withdrawn",
+  "txt.approval_requests.clarification.cancel_button": "txt.approval_requests.clarification.cancel_button",
+  "txt.approval_requests.clarification.comment_form_aria_label": "txt.approval_requests.clarification.comment_form_aria_label",
+  "txt.approval_requests.clarification.description": "txt.approval_requests.clarification.description",
+  "txt.approval_requests.clarification.max_comment_alert_message": "txt.approval_requests.clarification.max_comment_alert_message",
+  "txt.approval_requests.clarification.max_comment_alert_title": "txt.approval_requests.clarification.max_comment_alert_title",
+  "txt.approval_requests.clarification.new_comment_indicator": "txt.approval_requests.clarification.new_comment_indicator",
+  "txt.approval_requests.clarification.new_comments_indicator": "txt.approval_requests.clarification.new_comments_indicator",
+  "txt.approval_requests.clarification.submit_button": "txt.approval_requests.clarification.submit_button",
+  "txt.approval_requests.clarification.title": "txt.approval_requests.clarification.title",
+  "txt.approval_requests.validation.characters_remaining.few": "txt.approval_requests.validation.characters_remaining.few",
+  "txt.approval_requests.validation.characters_remaining.many": "txt.approval_requests.validation.characters_remaining.many",
+  "txt.approval_requests.validation.characters_remaining.one": "txt.approval_requests.validation.characters_remaining.one",
+  "txt.approval_requests.validation.characters_remaining.other": "txt.approval_requests.validation.characters_remaining.other",
+  "txt.approval_requests.validation.characters_remaining.two": "txt.approval_requests.validation.characters_remaining.two",
+  "txt.approval_requests.validation.characters_remaining.zero": "txt.approval_requests.validation.characters_remaining.zero",
+  "txt.approval_requests.validation.empty_comment_error": "txt.approval_requests.validation.empty_comment_error"
 }

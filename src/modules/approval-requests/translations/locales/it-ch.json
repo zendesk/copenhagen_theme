@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "In attesa di decisione",
   "approval-requests.status.denied": "Rifiutata",
   "approval-requests.status.info-needed": "Informazioni necessarie",
-  "approval-requests.status.withdrawn": "Ritirata"
+  "approval-requests.status.withdrawn": "Ritirata",
+  "txt.approval_requests.clarification.cancel_button": "Annulla",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Inserisci un commento per chiedere ulteriori informazioni su questa richiesta approvazione",
+  "txt.approval_requests.clarification.description": "Aggiungi note o chiedi ulteriori informazioni su questa richiesta",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Non puoi aggiungere altri commenti, gli approvatori possono comunque approvare o rifiutare.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Raggiunto il limite di commenti",
+  "txt.approval_requests.clarification.new_comment_indicator": "Nuovo commento",
+  "txt.approval_requests.clarification.new_comments_indicator": "Nuovi commenti",
+  "txt.approval_requests.clarification.submit_button": "Invia",
+  "txt.approval_requests.clarification.title": "Commenti",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} caratteri rimanenti",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} caratteri rimanenti",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}} carattere rimanente",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} caratteri rimanenti",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} caratteri rimanenti",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} caratteri rimanenti",
+  "txt.approval_requests.validation.empty_comment_error": "Digita un commento"
 }

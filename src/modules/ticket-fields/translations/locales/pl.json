@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Wybierz plik lub przeciągnij i upuść go tutaj",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Upuść pliki tutaj",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Plik: {{fileName}}, naciśnij Usuń, aby go usunąć",
+  "cph-theme-ticket-fields.attachments.remove-file": "Usuń plik",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Usuń plik: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Zatrzymaj przesyłanie",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Zatrzymaj przesyłanie {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Podczas przesyłania wystąpił błąd {{fileName}}. Spróbuj ponownie lub prześlij inny plik.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Błąd przesyłania",
+  "cph-theme-ticket-fields.attachments.uploading": "Przesyłanie {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(ostatnie 4 cyfry)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Wstecz",
   "cph-theme-ticket-fields.dropdown.empty-option": "Wybierz opcję",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Ładowanie elementów...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Nie znaleziono dopasowań",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Szukaj {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Szukaj {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Nie udało się przesłać {{fileName}}"
 }

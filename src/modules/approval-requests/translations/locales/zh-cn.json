@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "待回应决定",
   "approval-requests.status.denied": "已拒绝",
   "approval-requests.status.info-needed": "需要信息",
-  "approval-requests.status.withdrawn": "已撤回"
+  "approval-requests.status.withdrawn": "已撤回",
+  "txt.approval_requests.clarification.cancel_button": "取消",
+  "txt.approval_requests.clarification.comment_form_aria_label": "输入评论以询问关于此批准请求的更多信息",
+  "txt.approval_requests.clarification.description": "添加注释或询问关于此请求的更多信息",
+  "txt.approval_requests.clarification.max_comment_alert_message": "您无法添加更多评论，但批准者仍然可以批准或拒绝。",
+  "txt.approval_requests.clarification.max_comment_alert_title": "已达到评论限制",
+  "txt.approval_requests.clarification.new_comment_indicator": "新评论",
+  "txt.approval_requests.clarification.new_comments_indicator": "新评论",
+  "txt.approval_requests.clarification.submit_button": "发送",
+  "txt.approval_requests.clarification.title": "评论",
+  "txt.approval_requests.validation.characters_remaining.few": "剩余 {{numCharacters}} 个字符",
+  "txt.approval_requests.validation.characters_remaining.many": "剩余 {{numCharacters}} 个字符",
+  "txt.approval_requests.validation.characters_remaining.one": "剩余 {{numCharacters}} 个字符",
+  "txt.approval_requests.validation.characters_remaining.other": "剩余 {{numCharacters}} 个字符",
+  "txt.approval_requests.validation.characters_remaining.two": "剩余 {{numCharacters}} 个字符",
+  "txt.approval_requests.validation.characters_remaining.zero": "剩余 {{numCharacters}} 个字符",
+  "txt.approval_requests.validation.empty_comment_error": "输入评论"
 }

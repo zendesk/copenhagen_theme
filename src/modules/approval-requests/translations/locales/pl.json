@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Oczekiwanie na decyzję",
   "approval-requests.status.denied": "Odrzucone",
   "approval-requests.status.info-needed": "Potrzebne informacje",
-  "approval-requests.status.withdrawn": "Wycofano"
+  "approval-requests.status.withdrawn": "Wycofano",
+  "txt.approval_requests.clarification.cancel_button": "Anuluj",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Wpisz komentarz, aby poprosić o dodatkowe informacje na temat tej prośby o zatwierdzenie",
+  "txt.approval_requests.clarification.description": "Dodaj notatki lub poproś o dodatkowe informacje na temat tego zlecenia",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Nie możesz dodać więcej komentarzy, osoby zatwierdzające mogą je zatwierdzić lub odrzucić.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Osiągnięto limit komentarzy",
+  "txt.approval_requests.clarification.new_comment_indicator": "Nowy komentarz",
+  "txt.approval_requests.clarification.new_comments_indicator": "Nowe komentarze",
+  "txt.approval_requests.clarification.submit_button": "Wyślij",
+  "txt.approval_requests.clarification.title": "Komentarze",
+  "txt.approval_requests.validation.characters_remaining.few": "Masz jeszcze {{numCharacters}} znaki",
+  "txt.approval_requests.validation.characters_remaining.many": "Masz jeszcze {{numCharacters}} znaków",
+  "txt.approval_requests.validation.characters_remaining.one": "Masz jeszcze {{numCharacters}} znak",
+  "txt.approval_requests.validation.characters_remaining.other": "Masz jeszcze {{numCharacters}} znaków",
+  "txt.approval_requests.validation.characters_remaining.two": "Masz jeszcze {{numCharacters}} znaki",
+  "txt.approval_requests.validation.characters_remaining.zero": "Masz jeszcze {{numCharacters}} znaków",
+  "txt.approval_requests.validation.empty_comment_error": "Wpisz komentarz"
 }

@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "بانتظار صدور قرار",
   "approval-requests.status.denied": "مرفوض",
   "approval-requests.status.info-needed": "هناك حاجة إلى معلومات",
-  "approval-requests.status.withdrawn": "تم السحب"
+  "approval-requests.status.withdrawn": "تم السحب",
+  "txt.approval_requests.clarification.cancel_button": "إلغاء",
+  "txt.approval_requests.clarification.comment_form_aria_label": "أدخل تعليقًا لطلب معلومات إضافية حول طلب الموافقة هذا",
+  "txt.approval_requests.clarification.description": "أضف ملاحظات أو اطلب معلومات إضافية حول هذا الطلب",
+  "txt.approval_requests.clarification.max_comment_alert_message": "لا يمكنك إضافة المزيد من التعليقات، ولا يزال بإمكان المصادقين الموافقة أو الرفض.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "بلغت الحد الأقصى للتعليقات",
+  "txt.approval_requests.clarification.new_comment_indicator": "تعليق جديد",
+  "txt.approval_requests.clarification.new_comments_indicator": "تعليقات جديدة",
+  "txt.approval_requests.clarification.submit_button": "إرسال",
+  "txt.approval_requests.clarification.title": "تعليقات",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} من الحروف المتبقية",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} من الحروف المتبقية",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}} حرف متبقٍ",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} من الحروف المتبقية",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} من الحروف المتبقية",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} من الحروف المتبقية",
+  "txt.approval_requests.validation.empty_comment_error": "أدخِل تعليقًا"
 }

@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Beslissing in afwachting",
   "approval-requests.status.denied": "Geweigerd",
   "approval-requests.status.info-needed": "Info nodig",
-  "approval-requests.status.withdrawn": "Ingetrokken"
+  "approval-requests.status.withdrawn": "Ingetrokken",
+  "txt.approval_requests.clarification.cancel_button": "Annuleren",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Geef een opmerking op om aanvullende informatie over deze goedkeuringsaanvraag te vragen",
+  "txt.approval_requests.clarification.description": "Voeg notities toe of vraag om aanvullende informatie over deze aanvraag",
+  "txt.approval_requests.clarification.max_comment_alert_message": "U kunt geen opmerkingen meer toevoegen. Goedkeurders kunnen nog wel goedkeuren of afwijzen.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Limiet voor opmerkingen bereikt",
+  "txt.approval_requests.clarification.new_comment_indicator": "Nieuwe opmerking",
+  "txt.approval_requests.clarification.new_comments_indicator": "Nieuwe opmerkingen",
+  "txt.approval_requests.clarification.submit_button": "Verzenden",
+  "txt.approval_requests.clarification.title": "Opmerkingen",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} tekens resterend",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} tekens resterend",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}} teken resterend",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} tekens resterend",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} tekens resterend",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} tekens resterend",
+  "txt.approval_requests.validation.empty_comment_error": "Geef een opmerking op"
 }

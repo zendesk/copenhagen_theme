@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Beslut väntar",
   "approval-requests.status.denied": "Nekad",
   "approval-requests.status.info-needed": "Information behövs",
-  "approval-requests.status.withdrawn": "Tillbakadragen"
+  "approval-requests.status.withdrawn": "Tillbakadragen",
+  "txt.approval_requests.clarification.cancel_button": "Avbryt",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Ange en kommentar för att be om ytterligare information om denna förfrågan om godkännande",
+  "txt.approval_requests.clarification.description": "Lägg till anteckningar eller be om ytterligare information om denna förfrågan",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Du kan inte lägga till fler kommentarer, men godkännare kan fortfarande godkänna eller avvisa.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Kommentarsgräns uppnådd",
+  "txt.approval_requests.clarification.new_comment_indicator": "Ny kommentar",
+  "txt.approval_requests.clarification.new_comments_indicator": "Nya kommentarer",
+  "txt.approval_requests.clarification.submit_button": "Skicka",
+  "txt.approval_requests.clarification.title": "Kommentarer",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} tecken kvar",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} tecken kvar",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}} tecken kvar",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} tecken kvar",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} tecken kvar",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} tecken kvar",
+  "txt.approval_requests.validation.empty_comment_error": "Ange en kommentar"
 }

@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "待決定",
   "approval-requests.status.denied": "已拒絕",
   "approval-requests.status.info-needed": "需要資訊",
-  "approval-requests.status.withdrawn": "已撤銷"
+  "approval-requests.status.withdrawn": "已撤銷",
+  "txt.approval_requests.clarification.cancel_button": "取消",
+  "txt.approval_requests.clarification.comment_form_aria_label": "輸入評論以要求提供關於此批准請求的更多資訊",
+  "txt.approval_requests.clarification.description": "新增備註或要求提供關於此請求的更多資訊",
+  "txt.approval_requests.clarification.max_comment_alert_message": "您無法新增更多評論，核准人仍可核准或拒絕。",
+  "txt.approval_requests.clarification.max_comment_alert_title": "已達到評論上限",
+  "txt.approval_requests.clarification.new_comment_indicator": "新評論",
+  "txt.approval_requests.clarification.new_comments_indicator": "新評論",
+  "txt.approval_requests.clarification.submit_button": "傳送",
+  "txt.approval_requests.clarification.title": "評論",
+  "txt.approval_requests.validation.characters_remaining.few": "剩餘 {{numCharacters}} 個字元",
+  "txt.approval_requests.validation.characters_remaining.many": "剩餘 {{numCharacters}} 個字元",
+  "txt.approval_requests.validation.characters_remaining.one": "剩餘 {{numCharacters}} 個字元",
+  "txt.approval_requests.validation.characters_remaining.other": "剩餘 {{numCharacters}} 個字元",
+  "txt.approval_requests.validation.characters_remaining.two": "剩餘 {{numCharacters}} 個字元",
+  "txt.approval_requests.validation.characters_remaining.zero": "剩餘 {{numCharacters}} 個字元",
+  "txt.approval_requests.validation.empty_comment_error": "輸入評論"
 }

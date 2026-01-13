@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Kies een bestand of sleep en zet het hier neer",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Zet bestanden hier neer",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Bestand: {{fileName}}, druk op Delete om te verwijderen",
+  "cph-theme-ticket-fields.attachments.remove-file": "Bestand verwijderen",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Bestand {{fileName}} verwijderen",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Upload stoppen",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Stoppen met uploaden van {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Fout tijdens uploaden van {{fileName}}. Probeer het opnieuw of upload een ander bestand.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Fout bij uploaden",
+  "cph-theme-ticket-fields.attachments.uploading": "{{fileName}} wordt geüpload",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Laatste 4 cijfers)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Terug",
   "cph-theme-ticket-fields.dropdown.empty-option": "Selecteer een optie",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Items laden...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Geen overeenkomsten gevonden",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Zoek in {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Zoek in {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Upload van {{fileName}} mislukt"
 }

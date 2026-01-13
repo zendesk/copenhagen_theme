@@ -1,4 +1,5 @@
 {
+  "service-catalog.attachments-required-error": "Upload en fil for at fortsætte",
   "service-catalog.clear-search": "Ryd søgning",
   "service-catalog.empty-state.description": "Når først tjenester er føjet til kataloget, kan du finde dem her.",
   "service-catalog.empty-state.go-to-homepage": "Gå til startsiden",
@@ -6,8 +7,11 @@
   "service-catalog.empty-state.search-description": "Indtast dine nøgleord i søgefeltet.",
   "service-catalog.item.read-less": "Læs mindre",
   "service-catalog.item.read-more": "Læs mere",
+  "service-catalog.item.serial-number-label": "S/N: {{serialNumber}}",
   "service-catalog.item.service-request-error-message": "Vent et øjeblik og prøv igen",
   "service-catalog.item.service-request-error-title": "Tjenesten kunne ikke indsendes",
+  "service-catalog.item.service-request-refresh-link-text": "Opdater siden",
+  "service-catalog.item.service-request-refresh-message": "Opdater siden og prøv igen om nogle få sekunder.",
   "service-catalog.item.service-request-submitted": "Anmodning om service blev indsendt",
   "service-catalog.item.submit-button": "Indsend anmodning",
   "service-catalog.pagination.next": "Næste",

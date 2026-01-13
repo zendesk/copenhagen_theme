@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "決定待ち",
   "approval-requests.status.denied": "否認済み",
   "approval-requests.status.info-needed": "情報が必要",
-  "approval-requests.status.withdrawn": "取消済み"
+  "approval-requests.status.withdrawn": "取消済み",
+  "txt.approval_requests.clarification.cancel_button": "キャンセル",
+  "txt.approval_requests.clarification.comment_form_aria_label": "この承認リクエストに関する追加情報を求めるコメントを入力します",
+  "txt.approval_requests.clarification.description": "このリクエストに関するメモを追加するか、追加情報を求めます",
+  "txt.approval_requests.clarification.max_comment_alert_message": "コメントを追加することはできません。承認者は承認または否認できます。",
+  "txt.approval_requests.clarification.max_comment_alert_title": "コメント数の上限に達しました",
+  "txt.approval_requests.clarification.new_comment_indicator": "新規コメント",
+  "txt.approval_requests.clarification.new_comments_indicator": "新規コメント",
+  "txt.approval_requests.clarification.submit_button": "送信",
+  "txt.approval_requests.clarification.title": "コメント",
+  "txt.approval_requests.validation.characters_remaining.few": "残り{{numCharacters}}文字",
+  "txt.approval_requests.validation.characters_remaining.many": "残り{{numCharacters}}文字",
+  "txt.approval_requests.validation.characters_remaining.one": "残り{{numCharacters}}文字",
+  "txt.approval_requests.validation.characters_remaining.other": "残り{{numCharacters}}文字",
+  "txt.approval_requests.validation.characters_remaining.two": "残り{{numCharacters}}文字",
+  "txt.approval_requests.validation.characters_remaining.zero": "残り{{numCharacters}}文字",
+  "txt.approval_requests.validation.empty_comment_error": "コメントを入力してください"
 }

@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Очікується рішення",
   "approval-requests.status.denied": "Відхилено",
   "approval-requests.status.info-needed": "Потрібна інформація",
-  "approval-requests.status.withdrawn": "Анульовано"
+  "approval-requests.status.withdrawn": "Анульовано",
+  "txt.approval_requests.clarification.cancel_button": "Скасувати",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Введіть коментар, щоб запросити додаткову інформацію про цей запит на затвердження",
+  "txt.approval_requests.clarification.description": "Додайте примітки або запросіть додаткову інформацію про цей запит",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Ви не можете додавати більше коментарів; особи, що затверджують, можуть схвалити або відхилити їх.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Використано максимальну кількість коментарів",
+  "txt.approval_requests.clarification.new_comment_indicator": "Новий коментар",
+  "txt.approval_requests.clarification.new_comments_indicator": "Нові коментарі",
+  "txt.approval_requests.clarification.submit_button": "Надіслати",
+  "txt.approval_requests.clarification.title": "Коментарі",
+  "txt.approval_requests.validation.characters_remaining.few": "Залишилося символів: {{numCharacters}}",
+  "txt.approval_requests.validation.characters_remaining.many": "Залишилося символів: {{numCharacters}}",
+  "txt.approval_requests.validation.characters_remaining.one": "Залишився {{numCharacters}} символ",
+  "txt.approval_requests.validation.characters_remaining.other": "Залишилося символів: {{numCharacters}}",
+  "txt.approval_requests.validation.characters_remaining.two": "Залишилося символів: {{numCharacters}}",
+  "txt.approval_requests.validation.characters_remaining.zero": "Залишилося символів: {{numCharacters}}",
+  "txt.approval_requests.validation.empty_comment_error": "Введіть коментар"
 }

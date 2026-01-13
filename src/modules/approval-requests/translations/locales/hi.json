@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "निर्णय लंबित",
   "approval-requests.status.denied": "अस्वीकृत",
   "approval-requests.status.info-needed": "जानकारी की जरूरत है",
-  "approval-requests.status.withdrawn": "वापिस लिया गया"
+  "approval-requests.status.withdrawn": "वापिस लिया गया",
+  "txt.approval_requests.clarification.cancel_button": "रद्द करें",
+  "txt.approval_requests.clarification.comment_form_aria_label": "इस अनुमोदन अनुरोध के बारे में अतिरिक्त जानकारी मांगने के लिए एक टिप्पणी दर्ज करें",
+  "txt.approval_requests.clarification.description": "नोट जोड़ें या इस अनुरोध के बारे में अतिरिक्त जानकारी मांगें",
+  "txt.approval_requests.clarification.max_comment_alert_message": "आप अधिक टिप्पणियाँ नहीं जोड़ सकते हैं, अनुमोदक अभी भी अनुमोदित या अस्वीकार कर सकते हैं।",
+  "txt.approval_requests.clarification.max_comment_alert_title": "टिप्पणी सीमा पूरी हो गई",
+  "txt.approval_requests.clarification.new_comment_indicator": "नई टिप्पणी",
+  "txt.approval_requests.clarification.new_comments_indicator": "नई टिप्पणियां",
+  "txt.approval_requests.clarification.submit_button": "भेजें",
+  "txt.approval_requests.clarification.title": "टिप्पणियाँ",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} वर्ण शेष हैं",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} वर्ण शेष हैं",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}} वर्ण शेष है",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} वर्ण शेष हैं",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} वर्ण शेष हैं",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} वर्ण शेष हैं",
+  "txt.approval_requests.validation.empty_comment_error": "कोई टिप्पणी दर्ज करें"
 }

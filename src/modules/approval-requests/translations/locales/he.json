@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "בהמתנה להחלטה",
   "approval-requests.status.denied": "נדחתה",
   "approval-requests.status.info-needed": "דרוש מידע",
-  "approval-requests.status.withdrawn": "נמשכה"
+  "approval-requests.status.withdrawn": "נמשכה",
+  "txt.approval_requests.clarification.cancel_button": "ביטול",
+  "txt.approval_requests.clarification.comment_form_aria_label": "הזן הערה כדי לבקש מידע נוסף על בקשת אישור זו",
+  "txt.approval_requests.clarification.description": "הוסף הערות או בקש מידע נוסף לגבי בקשה זו",
+  "txt.approval_requests.clarification.max_comment_alert_message": "אי אפשר להוסיף הערות, המאשרים עדיין יכולים לאשר או לדחות.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "הגעת למגבלת ההערות",
+  "txt.approval_requests.clarification.new_comment_indicator": "הערה חדשה",
+  "txt.approval_requests.clarification.new_comments_indicator": "הערות חדשות",
+  "txt.approval_requests.clarification.submit_button": "שלח",
+  "txt.approval_requests.clarification.title": "הערות",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} תווים נותרו",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} תווים נותרו",
+  "txt.approval_requests.validation.characters_remaining.one": "נותר תו {{numCharacters}}",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} תווים נותרו",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} תווים נותרו",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} תווים נותרו",
+  "txt.approval_requests.validation.empty_comment_error": "הוסף הערה"
 }

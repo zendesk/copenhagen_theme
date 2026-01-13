@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Επιλέξτε ένα αρχείο ή σύρετε και αποθέστε εδώ",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Αποθέστε τα αρχεία εδώ",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Αρχείο: {{fileName}}, πατήστε Διαγραφή για κατάργηση",
+  "cph-theme-ticket-fields.attachments.remove-file": "Κατάργηση αρχείου",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Αφαίρεση αρχείου: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Διακοπή αποστολής",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Διακοπή αποστολής του {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Υπήρξε σφάλμα κατά την αποστολή του {{fileName}}. Δοκιμάστε ξανά ή ανεβάστε άλλο αρχείο.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Σφάλμα αποστολής",
+  "cph-theme-ticket-fields.attachments.uploading": "Γίνεται αποστολή {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(4 τελευταία ψηφία)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Προηγούμενο",
   "cph-theme-ticket-fields.dropdown.empty-option": "Ορίστε μια επιλογή",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Φόρτωση στοιχείων...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Δεν βρέθηκαν αποτελέσματα",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Αναζήτηση για {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Αναζήτηση για {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Η αποστολή του {{fileName}} απέτυχε"
 }

@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Decizie în așteptare",
   "approval-requests.status.denied": "Refuzat",
   "approval-requests.status.info-needed": "Informații necesare",
-  "approval-requests.status.withdrawn": "Retras"
+  "approval-requests.status.withdrawn": "Retras",
+  "txt.approval_requests.clarification.cancel_button": "Anulare",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Introduceți un comentariu pentru a obține informații suplimentare despre această solicitare de aprobare",
+  "txt.approval_requests.clarification.description": "Adăugați note sau obțineți informații suplimentare despre această solicitare",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Nu puteți adăuga mai multe comentarii, persoanele responsabile de aprobare pot aproba sau refuza în continuare.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Limita de comentarii a fost atinsă",
+  "txt.approval_requests.clarification.new_comment_indicator": "Comentariu nou",
+  "txt.approval_requests.clarification.new_comments_indicator": "Comentarii noi",
+  "txt.approval_requests.clarification.submit_button": "Trimitere",
+  "txt.approval_requests.clarification.title": "Comentarii",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} caractere rămase",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} caractere rămase",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}} caracter rămas",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} caractere rămase",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} caractere rămase",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} caractere rămase",
+  "txt.approval_requests.validation.empty_comment_error": "Introduceți un comentariu"
 }
