@@ -1,4 +1,3 @@
-import { useDownshiftEnvironment } from "../../../../shared/garden-shadow/src/useDownshiftEnvironment";
 import {
   Dropdown,
   Field,
@@ -42,7 +41,7 @@ export function DateFilter({
   const { t } = useTranslation();
 
   const [selectedItem, setSelectedItem] = useState<ItemValue | null>(null);
-  const downshiftEnvironment = useDownshiftEnvironment();
+
   const { createDefaultDateRangeI18N } = useFilterTranslations();
   const dateRangeI18n = createDefaultDateRangeI18N();
   const customDatesInitialValues: [Date, Date] = [new Date(), new Date()];
@@ -168,11 +167,7 @@ export function DateFilter({
 
   return (
     <>
-      <Dropdown
-        selectedItem={selectedItem}
-        onSelect={handleItemSelected}
-        downshiftProps={{ environment: downshiftEnvironment }}
-      >
+      <Dropdown selectedItem={selectedItem} onSelect={handleItemSelected}>
         <Field>
           <Label>{label}</Label>
           <Select validation={errors.dateFilterItem ? "error" : undefined}>
