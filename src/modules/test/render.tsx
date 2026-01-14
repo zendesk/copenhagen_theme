@@ -3,6 +3,7 @@ import { render as rtlRender } from "@testing-library/react";
 import { ThemeProvider, DEFAULT_THEME } from "@zendeskgarden/react-theming";
 import { ToastProvider } from "@zendeskgarden/react-notifications";
 import { initI18next } from "../shared/i18n";
+import { ModalContainerProvider } from "../shared/garden-theme/modal-container/ModalContainerProvider";
 
 export const testTheme = DEFAULT_THEME;
 
@@ -13,7 +14,9 @@ type ProvidersProps = {
 const Providers = ({ children }: ProvidersProps) => {
   return (
     <ThemeProvider theme={testTheme}>
-      <ToastProvider>{children}</ToastProvider>
+      <ModalContainerProvider>
+        <ToastProvider>{children}</ToastProvider>
+      </ModalContainerProvider>
     </ThemeProvider>
   );
 };
@@ -21,7 +24,7 @@ const Providers = ({ children }: ProvidersProps) => {
 export const render = (ui: ReactElement) => {
   initI18next("en-us");
 
-  rtlRender(ui, {
+  return rtlRender(ui, {
     wrapper: Providers,
   });
 };
