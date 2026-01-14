@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Entscheidung ausstehend",
   "approval-requests.status.denied": "Abgelehnt",
   "approval-requests.status.info-needed": "Weitere Informationen erforderlich",
-  "approval-requests.status.withdrawn": "Zurückgezogen"
+  "approval-requests.status.withdrawn": "Zurückgezogen",
+  "txt.approval_requests.clarification.cancel_button": "Abbrechen",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Geben Sie einen Kommentar ein, um weitere Informationen zu dieser Genehmigungsanfrage anzufordern",
+  "txt.approval_requests.clarification.description": "Notizen hinzufügen oder zusätzliche Informationen zu dieser Anfrage anfordern",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Sie können keine weiteren Kommentare hinzufügen. Genehmiger können weiterhin genehmigen oder ablehnen.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Höchstwert für Kommentare erreicht",
+  "txt.approval_requests.clarification.new_comment_indicator": "Neuer Kommentar",
+  "txt.approval_requests.clarification.new_comments_indicator": "Neue Kommentare",
+  "txt.approval_requests.clarification.submit_button": "Senden",
+  "txt.approval_requests.clarification.title": "Kommentare",
+  "txt.approval_requests.validation.characters_remaining.few": "Noch {{numCharacters}} Zeichen",
+  "txt.approval_requests.validation.characters_remaining.many": "Noch {{numCharacters}} Zeichen",
+  "txt.approval_requests.validation.characters_remaining.one": "Noch {{numCharacters}} Zeichen",
+  "txt.approval_requests.validation.characters_remaining.other": "Noch {{numCharacters}} Zeichen",
+  "txt.approval_requests.validation.characters_remaining.two": "Noch {{numCharacters}} Zeichen",
+  "txt.approval_requests.validation.characters_remaining.zero": "Noch {{numCharacters}} Zeichen",
+  "txt.approval_requests.validation.empty_comment_error": "Kommentar eingeben"
 }

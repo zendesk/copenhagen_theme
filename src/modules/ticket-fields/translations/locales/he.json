@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "בחר קובץ או גרור ושחרר כאן",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "שחרר את הקבצים כאן",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "קובץ: {{fileName}}, הקש Delete כדי להסיר",
+  "cph-theme-ticket-fields.attachments.remove-file": "הסר קובץ",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "הסר קובץ: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "עצור העלאה",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "הפסק את ההעלאה של {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "אירעה שגיאה בהעלאת הקובץ {{fileName}}. נסה שוב או העלה קובץ אחר.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "שגיאת העלאה",
+  "cph-theme-ticket-fields.attachments.uploading": "מעלה את {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(4 הספרות האחרונות)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "הקודם",
   "cph-theme-ticket-fields.dropdown.empty-option": "בחר אפשרות",
   "cph-theme-ticket-fields.lookup-field.loading-options": "טוען פריטים...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "לא נמצאו התאמות",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "חיפוש {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "חיפוש {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "ההעלאה של {{fileName}} נכשלה"
 }

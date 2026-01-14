@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Choisir un fichier ou glisser-déposer ici",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Déposer les fichiers ici",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Fichier : {{fileName}}, appuyez sur Supprimer pour le supprimer",
+  "cph-theme-ticket-fields.attachments.remove-file": "Supprimer le fichier",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Supprimer le fichier : {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Arrêter le chargement",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Arrêter le chargement de {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Une erreur est survenue lors du chargement de {{fileName}}. Réessayez ou chargez un autre fichier.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Erreur de chargement",
+  "cph-theme-ticket-fields.attachments.uploading": "Chargement du fichier {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(4 derniers chiffres)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Retour",
   "cph-theme-ticket-fields.dropdown.empty-option": "Sélectionnez une option",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Chargement des éléments en cours...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Aucun résultat",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Rechercher {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Rechercher {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Échec du chargement de {{fileName}}"
 }

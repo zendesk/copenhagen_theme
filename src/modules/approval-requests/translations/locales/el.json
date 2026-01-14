@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Απόφαση σε εκκρεμότητα",
   "approval-requests.status.denied": "Απορρίφθηκε",
   "approval-requests.status.info-needed": "Χρειάζονται πληροφορίες",
-  "approval-requests.status.withdrawn": "Ανακλήθηκε"
+  "approval-requests.status.withdrawn": "Ανακλήθηκε",
+  "txt.approval_requests.clarification.cancel_button": "Ακύρωση",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Εισαγάγετε ένα σχόλιο για να ζητήσετε πρόσθετες πληροφορίες σχετικά με αυτό το αίτημα έγκρισης",
+  "txt.approval_requests.clarification.description": "Προσθέστε σημειώσεις ή ζητήστε πρόσθετες πληροφορίες σχετικά με αυτό το αίτημα",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Δεν μπορείτε να προσθέσετε περισσότερα σχόλια, αλλά οι υπεύθυνοι έγκρισης μπορούν ακόμα να το εγκρίνουν ή να το απορρίψουν.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Συμπληρώθηκε το όριο σχολίων",
+  "txt.approval_requests.clarification.new_comment_indicator": "Νέο σχόλιο",
+  "txt.approval_requests.clarification.new_comments_indicator": "Νέα σχόλια",
+  "txt.approval_requests.clarification.submit_button": "Αποστολή",
+  "txt.approval_requests.clarification.title": "Σχόλια",
+  "txt.approval_requests.validation.characters_remaining.few": "Απομένουν {{numCharacters}} χαρακτήρες",
+  "txt.approval_requests.validation.characters_remaining.many": "Απομένουν {{numCharacters}} χαρακτήρες",
+  "txt.approval_requests.validation.characters_remaining.one": "Απομένει {{numCharacters}} χαρακτήρας",
+  "txt.approval_requests.validation.characters_remaining.other": "Απομένουν {{numCharacters}} χαρακτήρες",
+  "txt.approval_requests.validation.characters_remaining.two": "Απομένουν {{numCharacters}} χαρακτήρες",
+  "txt.approval_requests.validation.characters_remaining.zero": "Απομένουν {{numCharacters}} χαρακτήρες",
+  "txt.approval_requests.validation.empty_comment_error": "Γράψτε ένα σχόλιο"
 }

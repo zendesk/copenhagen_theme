@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Chọn một tập tin hoặc kéo và thả ở đây",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Thả tập tin vào đây",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Tập tin: {{fileName}}, nhấn xóa để xóa",
+  "cph-theme-ticket-fields.attachments.remove-file": "Xóa tập tin",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Xóa tập tin: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Dừng tải lên",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Dừng tải lên {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Đã xảy ra lỗi khi tải lên {{fileName}}. Hãy thử lại hoặc tải lên một tập tin khác.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Lỗi tải lên",
+  "cph-theme-ticket-fields.attachments.uploading": "Đang tải lên {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(4 chữ số cuối)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Quay lại",
   "cph-theme-ticket-fields.dropdown.empty-option": "Chọn một tùy chọn",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Đang tải các mục...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Không tìm thấy kết quả phù hợp",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Tìm kiếm {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Tìm kiếm {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Tải lên {{fileName}} không thành công"
 }

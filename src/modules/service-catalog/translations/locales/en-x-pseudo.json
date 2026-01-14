@@ -1,4 +1,5 @@
 {
+  "service-catalog.attachments-required-error": "[ผู้龍ṲṲṗḽṓṓααḍ αα ϝḭḭḽḛḛ ṭṓṓ ͼṓṓṇṭḭḭṇṵṵḛḛ龍ผู้]",
   "service-catalog.clear-search": "[ผู้龍Ḉḽḛḛααṛ ṡḛḛααṛͼḥ龍ผู้]",
   "service-catalog.empty-state.description": "[ผู้龍ṎṎṇͼḛḛ ṡḛḛṛṽḭḭͼḛḛṡ ααṛḛḛ ααḍḍḛḛḍ ṭṓṓ ͼααṭααḽṓṓḡ, ẏẏṓṓṵṵ'ḽḽ ϝḭḭṇḍ ṭḥḛḛṃ ḥḛḛṛḛḛ.龍ผู้]",
   "service-catalog.empty-state.go-to-homepage": "[ผู้龍Ḡṓṓ ṭṓṓ ṭḥḛḛ ḥṓṓṃḛḛṗααḡḛḛ龍ผู้]",
@@ -6,8 +7,11 @@
   "service-catalog.empty-state.search-description": "[ผู้龍ḚḚṇṭḛḛṛ ẏẏṓṓṵṵṛ ḳḛḛẏẏẁṓṓṛḍṡ ḭḭṇ ṭḥḛḛ ṡḛḛααṛͼḥ ϝḭḭḛḛḽḍ.龍ผู้]",
   "service-catalog.item.read-less": "[ผู้龍Ṛḛḛααḍ ḽḛḛṡṡ龍ผู้]",
   "service-catalog.item.read-more": "[ผู้龍Ṛḛḛααḍ ṃṓṓṛḛḛ龍ผู้]",
+  "service-catalog.item.serial-number-label": "[ผู้龍ṢṄ: {{serialNumber}}龍ผู้]",
   "service-catalog.item.service-request-error-message": "[ผู้龍Ḡḭḭṽḛḛ ḭḭṭ αα ṃṓṓṃḛḛṇṭ ααṇḍ ṭṛẏẏ ḭḭṭ ααḡααḭḭṇ龍ผู้]",
   "service-catalog.item.service-request-error-title": "[ผู้龍Ṣḛḛṛṽḭḭͼḛḛ ͼṓṓṵṵḽḍṇ'ṭ ḅḛḛ ṡṵṵḅṃḭḭṭṭḛḛḍ龍ผู้]",
+  "service-catalog.item.service-request-refresh-link-text": "[ผู้龍Ṛḛḛϝṛḛḛṡḥ ṭḥḛḛ ṗααḡḛḛ龍ผู้]",
+  "service-catalog.item.service-request-refresh-message": "[ผู้龍Ṛḛḛϝṛḛḛṡḥ ṭḥḛḛ ṗααḡḛḛ ααṇḍ ṭṛẏẏ ααḡααḭḭṇ ḭḭṇ αα ϝḛḛẁ ṡḛḛͼṓṓṇḍṡ.龍ผู้]",
   "service-catalog.item.service-request-submitted": "[ผู้龍Ṣḛḛṛṽḭḭͼḛḛ ṛḛḛʠṵṵḛḛṡṭ ṡṵṵḅṃḭḭṭṭḛḛḍ龍ผู้]",
   "service-catalog.item.submit-button": "[ผู้龍Ṣṵṵḅṃḭḭṭ ṛḛḛʠṵṵḛḛṡṭ龍ผู้]",
   "service-catalog.pagination.next": "[ผู้龍Ṅḛḛẋṭ龍ผู้]",

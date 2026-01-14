@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Изберете файл или го плъзнете и пуснете тук",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Пуснете файловете тук",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Файл: {{fileName}}, натиснете „Delete“ за премахване",
+  "cph-theme-ticket-fields.attachments.remove-file": "Премахване на файл",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Премахване на файл: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Спиране на качването",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Спиране на качването на {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Възникна грешка при качването на {{fileName}}. Опитайте отново или качете друг файл.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Грешка при качването",
+  "cph-theme-ticket-fields.attachments.uploading": "Качване на {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(последните 4 цифри)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Назад",
   "cph-theme-ticket-fields.dropdown.empty-option": "Изберете опция",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Зареждане на елементите…",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Няма открити съвпадения",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Търсене на {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Търсене на {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Качването на {{fileName}} е неуспешно"
 }

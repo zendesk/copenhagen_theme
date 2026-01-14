@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "파일을 선택하거나 여기에 드래그 앤 드롭하세요",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "파일을 여기에 드롭하세요",
+  "cph-theme-ticket-fields.attachments.error-separator": ". ",
+  "cph-theme-ticket-fields.attachments.file": "파일: {{fileName}}, 제거하려면 delete 키를 누르세요.",
+  "cph-theme-ticket-fields.attachments.remove-file": "파일 제거",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "파일 제거: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "업로드 중지",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "{{fileName}} 업로드 중지",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "{{fileName}}을(를) 업로드하는 중 오류가 발생했습니다. 다시 시도하거나 다른 파일을 업로드하세요.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "업로드 오류",
+  "cph-theme-ticket-fields.attachments.uploading": "{{fileName}} 업로드 중",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(마지막 4자리)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "뒤로",
   "cph-theme-ticket-fields.dropdown.empty-option": "옵션 선택",
   "cph-theme-ticket-fields.lookup-field.loading-options": "항목 로드 중...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "일치 항목을 찾지 못함",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "{{label}} 검색"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "{{label}} 검색",
+  "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} 업로드 실패"
 }

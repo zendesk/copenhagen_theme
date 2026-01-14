@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "결정 보류 중",
   "approval-requests.status.denied": "거부됨",
   "approval-requests.status.info-needed": "정보 필요",
-  "approval-requests.status.withdrawn": "철회됨"
+  "approval-requests.status.withdrawn": "철회됨",
+  "txt.approval_requests.clarification.cancel_button": "취소",
+  "txt.approval_requests.clarification.comment_form_aria_label": "이 승인 요청에 대한 추가 정보를 요청하려면 댓글을 입력하세요.",
+  "txt.approval_requests.clarification.description": "이 요청에 대한 메모를 추가하거나 추가 정보를 요청하세요.",
+  "txt.approval_requests.clarification.max_comment_alert_message": "댓글을 더 추가할 수 없으며 승인자가 계속 승인하거나 거부할 수 있습니다.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "댓글 수 제한 도달",
+  "txt.approval_requests.clarification.new_comment_indicator": "새 댓글",
+  "txt.approval_requests.clarification.new_comments_indicator": "새 댓글",
+  "txt.approval_requests.clarification.submit_button": "보내기",
+  "txt.approval_requests.clarification.title": "댓글",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}}자 남음",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}}자 남음",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}}자 남음",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}}자 남음",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}}자 남음",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}}자 남음",
+  "txt.approval_requests.validation.empty_comment_error": "댓글을 입력하세요."
 }

@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "รอการตัดสินใจ",
   "approval-requests.status.denied": "ปฏิเสธแล้ว",
   "approval-requests.status.info-needed": "ข้อมูลที่จําเป็น",
-  "approval-requests.status.withdrawn": "ยกเลิก"
+  "approval-requests.status.withdrawn": "ยกเลิก",
+  "txt.approval_requests.clarification.cancel_button": "ยกเลิก",
+  "txt.approval_requests.clarification.comment_form_aria_label": "ป้อนข้อคิดเห็นเพื่อขอข้อมูลเพิ่มเติมเกี่ยวกับคำร้องขอการอนุมัตินี้",
+  "txt.approval_requests.clarification.description": "เพิ่มหมายเหตุหรือขอข้อมูลเพิ่มเติมเกี่ยวกับคำร้องขอนี้",
+  "txt.approval_requests.clarification.max_comment_alert_message": "คุณไม่สามารถเพิ่มข้อคิดเห็นเพิ่มเติมได้ แต่ผู้อนุมัติยังสามารถอนุมัติหรือปฏิเสธได้",
+  "txt.approval_requests.clarification.max_comment_alert_title": "ถึงขีดจำกัดข้อคิดเห็นแล้ว",
+  "txt.approval_requests.clarification.new_comment_indicator": "ข้อคิดเห็นใหม่",
+  "txt.approval_requests.clarification.new_comments_indicator": "ข้อคิดเห็นใหม่",
+  "txt.approval_requests.clarification.submit_button": "ส่ง",
+  "txt.approval_requests.clarification.title": "ข้อคิดเห็น",
+  "txt.approval_requests.validation.characters_remaining.few": "เหลือตัวอักษร {{numCharacters}} ตัว",
+  "txt.approval_requests.validation.characters_remaining.many": "เหลือตัวอักษร {{numCharacters}} ตัว",
+  "txt.approval_requests.validation.characters_remaining.one": "เหลือตัวอักษร {{numCharacters}} ตัว",
+  "txt.approval_requests.validation.characters_remaining.other": "เหลือตัวอักษร {{numCharacters}} ตัว",
+  "txt.approval_requests.validation.characters_remaining.two": "เหลือตัวอักษร {{numCharacters}} ตัว",
+  "txt.approval_requests.validation.characters_remaining.zero": "เหลือตัวอักษร {{numCharacters}} ตัว",
+  "txt.approval_requests.validation.empty_comment_error": "ป้อนข้อคิดเห็น"
 }

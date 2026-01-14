@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Vyberte súbor alebo ho presuňte a pustite sem",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Súbory pustite sem",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Súbor: {{fileName}}, stlačením klávesu Delete odoberte",
+  "cph-theme-ticket-fields.attachments.remove-file": "Odobrať súbor",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Odobratie súboru: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Zastaviť nahrávanie",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Zastavenie nahrávania {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Pri nahrávaní súboru {{fileName}} sa vyskytla chyba. Skúste to znova alebo nahrajte iný súbor.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Chyba pri nahrávaní",
+  "cph-theme-ticket-fields.attachments.uploading": "Nahráva sa súbor {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(posledné 4 číslice)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Späť",
   "cph-theme-ticket-fields.dropdown.empty-option": "Vyberte možnosť",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Načítavajú sa položky…",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Nenašli sa žiadne zhody",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Vyhľadávať {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Vyhľadávať {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Nahrávanie súboru {{fileName}} zlyhalo"
 }

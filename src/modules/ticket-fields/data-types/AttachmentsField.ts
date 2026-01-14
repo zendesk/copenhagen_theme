@@ -9,4 +9,6 @@ export interface AttachmentField {
   label: string;
   error: string | null;
   attachments: Attachment[];
+  description?: string;
+  isRequired?: boolean;
 }
