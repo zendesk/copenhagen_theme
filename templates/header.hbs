@@ -1,53 +1,51 @@
 <a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
 
 <header class="header">
-  <div class="logo">
-    {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" />
-      {{#if settings.show_brand_name}}
-        <span aria-hidden="true">{{help_center.name}}</span>
-      {{/if}}
+  <div class="header-left">
+    <div class="logo">
+      <a href="{{settings.learn_link}}" class="learn-link"> 
+        <img src="{{settings.logo}}" class="site-logo" />
+      </a>
+    </div>
+    {{#link 'help_center' class="support-center"}}
+      Support Center
     {{/link}}
   </div>
 
   <div class="nav-wrapper-desktop">
-    <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
-      <ul class="user-nav-list">
-        <li>{{link 'community'}}</li>
-        <li>{{link 'service_catalog'}}</li>
-        <li>{{link 'new_request' class='submit-a-request'}}</li>
-        {{#unless signed_in}}
-          <li>
-            {{#link "sign_in" class="sign-in" role="link"}}
-              {{t 'sign_in'}}
-            {{/link}}
-          </li>
-        {{/unless}}
-      </ul>
-    </nav>
-    {{#if signed_in}}
-      <div class="user-info dropdown">
-        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-          {{user_avatar class="user-avatar"}}
-          <span>
-            {{user_name}}
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-          </span>
-        </button>
-        <div class="dropdown-menu" role="menu">
-          {{#my_profile role="menuitem"}}{{t 'profile'}}{{/my_profile}}
-          {{link "requests" role="menuitem"}}
-          {{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}
-          {{link "approval_requests" role="menuitem"}}
-          {{contact_details role="menuitem"}}
-          {{change_password role="menuitem"}}
-          <div class="separator" role="separator"></div>
-          {{link "sign_out" role="menuitem"}}
+    <div class="header-right">
+      {{#if signed_in}}
+        <div class="user-info dropdown">
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            {{user_avatar class="user-avatar"}}
+            <span class="user-name">
+              {{user_name}}
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+              </svg>
+            </span>
+          </button>
+          <div class="dropdown-menu" role="menu">
+            {{#my_profile role="menuitem"}}{{t 'profile'}}{{/my_profile}}
+            {{link "requests" role="menuitem"}}
+            {{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}
+            {{link "approval_requests" role="menuitem"}}
+            {{contact_details role="menuitem"}}
+            {{change_password role="menuitem"}}
+            <div class="separator" role="separator"></div>
+            {{link "sign_out" role="menuitem"}}
+          </div>
         </div>
-      </div>
-    {{/if}}
+        {{#link 'requests' class="dashboard-button"}}
+          Dashboard
+        {{/link}}
+      {{else}}
+        {{#link "sign_in" class="sign-in" role="link"}}
+          {{t 'sign_in'}}
+        {{/link}}
+      {{/if}}
+      <img src="{{settings.logo-sm}}" class="mit-logo-right" alt="MIT" />
+    </div>
   </div>
 
   <div class="nav-wrapper-mobile">
@@ -59,6 +57,7 @@
         <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
       </svg>
     </button>
+    <img src="{{settings.logo-sm}}" class="mit-logo-right" alt="MIT" />
     <nav class="menu-list-mobile" id="user-nav-mobile" aria-expanded="false">
       <ul class="menu-list-mobile-items">
         {{#if signed_in}}

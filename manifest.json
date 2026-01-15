@@ -220,6 +220,12 @@
           "label": "logo_label"
         },
         {
+          "identifier": "logo-sm",
+          "type": "file",
+          "description": "logo_sm_description",
+          "label": "logo_sm_label"
+        },
+        {
           "identifier": "show_brand_name",
           "type": "checkbox",
           "description": "show_brand_name_description",
@@ -231,6 +237,18 @@
           "type": "file",
           "description": "favicon_description",
           "label": "favicon_label"
+        }
+      ]
+    },
+    {
+      "label": "header_page_group_label",
+      "variables": [
+        {
+          "identifier": "learn_link",
+          "type": "text",
+          "description": "learn_link_description",
+          "label": "learn_link_label",
+          "value": "https://learn.mit.edu/"
         }
       ]
     },

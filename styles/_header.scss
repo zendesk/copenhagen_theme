@@ -1,31 +1,69 @@
 /***** Header *****/
-$header-height: 71px;
+$header-height: 64px;
+$header-bg: #303337;
 
 .header {
-  @include max-width-container;
   position: relative;
   align-items: center;
   display: flex;
   height: $header-height;
   justify-content: space-between;
+  background-color: $header-bg !important;
+  padding: 0 32px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  z-index: 100;
 }
 
-.logo img {
-  max-height: 37px;
-  vertical-align: middle;
+.header-left {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  flex-shrink: 0;
 }
 
-.logo span {
-  margin: 0 10px;
-  color: $brand_color;
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  
+  img {
+    max-height: 24px;
+    height: auto;
+    width: auto;
+    display: block;
+  }
+  
+  a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    
+    &:hover, &:focus, &:active {
+      text-decoration: none;
+      opacity: 0.9;
+    }
+  }
 }
 
-.logo a {
-  display: inline-block;
-}
-
-.logo a:hover, .logo a:focus, .logo a:active {
+.support-center {
+  font-size: 14px;
+  color: white !important;
   text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+  
+  &:hover, &:focus, &:active, &:visited {
+    color: white !important;
+    text-decoration: none;
+  }
+  
+  &:hover {
+    color: rgba(255, 255, 255, 0.85) !important;
+  }
 }
 
 .user-nav {
@@ -73,55 +111,179 @@ $header-height: 71px;
 .nav-wrapper-desktop {
   @include mobile { display: none; }
   @include tablet { display: none; }
-  @include desktop { display: inline-block; }
+  @include desktop { 
+    display: flex;
+    align-items: center;
+  }
+}
 
-  a {
-    @include tablet {
-      display: inline-block;
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid #DDE1E6;
+  border-radius: 4px;
+  
+  .dropdown-toggle {
+    background: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    cursor: pointer;
+    color: #FFFFFF;
+    
+    .user-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
     }
-
-    border: 0;
-    color: $link_color;
+    
+    .user-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #FFFFFF;
+      
+      .dropdown-chevron-icon {
+        width: 12px;
+        height: 12px;
+        stroke: currentColor;
+      }
+    }
+    
+    &:hover, &:focus {
+      opacity: 0.8;
+    }
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 200px;
+    z-index: 1000;
     display: none;
-    font-size: 14px;
-    padding: 0 20px 0 0;
-    width: auto;
-
-    [dir="rtl"] & { padding: 0 0 0 20px;}
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: transparent;
-      color: $link_color;
-      text-decoration: underline;
+    
+    &[role="menu"] {
+      padding: 8px 0;
     }
+    
+    a, button {
+      display: block;
+      padding: 8px 16px;
+      color: $text_color;
+      text-decoration: none;
+      font-size: 14px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      background: none;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: #f3f3f3;
+      }
+    }
+    
+    .separator {
+      height: 1px;
+      background-color: #ddd;
+      margin: 8px 0;
+    }
+  }
+  
+  &.dropdown[aria-expanded="true"] .dropdown-menu,
+  .dropdown-toggle[aria-expanded="true"] ~ .dropdown-menu {
+    display: block;
+  }
+}
+
+.dashboard-button {
+  background-color: #DDE1E6;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 12px;
+  color: black;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+  
+  &:hover, &:focus, &:active {
+    background-color: #DDE1E6;
+    opacity: 0.8;
+    text-decoration: none;
+  }
+}
+
+.mit-logo-right {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.sign-in {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  
+  &:hover, &:focus {
+    opacity: 0.8;
+    text-decoration: none;
   }
 }
 
 .nav-wrapper-mobile {
   @include desktop { display: none; }
+  display: flex;
+  align-items: center;
+  gap: 12px;
 
   .menu-button-mobile {
     background: none;
     border: 0;
     width: auto;
-    min-width: 71px;
+    min-width: 40px;
     cursor: pointer;
+    color: #FFFFFF;
+    padding: 8px;
 
     .icon-menu {
       padding: 7px;
       vertical-align: middle;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
     }
 
     &[aria-expanded="true"] {
       .icon-menu {
-        background: #f3f3f3;
+        opacity: 0.8;
       }
     }
+  }
+  
+  .mit-logo-right {
+    height: 24px;
+    width: auto;
+    display: block;
   }
 
   .menu-list-mobile {
@@ -134,6 +296,7 @@ $header-height: 71px;
     left: 0;
     top: $header-height;
     z-index: 2;
+    background-color: $header-bg;
 
     &[aria-expanded="false"] {
       display: none;
