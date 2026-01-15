@@ -52,6 +52,8 @@
   "logo_label": "Logo",
   "logo_sm_description": "Small MIT logo for header",
   "logo_sm_label": "MIT Logo (Small)",
+  "logo_sm_black_description": "Small black MIT logo for footer",
+  "logo_sm_black_label": "MIT Logo (Small, Black)",
   "post_sharing_description": "Show social media sharing on post",
   "post_sharing_label": "Social sharing",
   "recent_activity_description": "Show recent activity on home page",

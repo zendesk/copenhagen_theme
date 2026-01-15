@@ -226,6 +226,12 @@
           "label": "logo_sm_label"
         },
         {
+          "identifier": "logo-sm-black",
+          "type": "file",
+          "description": "logo_sm_black_description",
+          "label": "logo_sm_black_label"
+        },
+        {
           "identifier": "show_brand_name",
           "type": "checkbox",
           "description": "show_brand_name_description",
