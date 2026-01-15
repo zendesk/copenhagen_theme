@@ -1,4 +1,3 @@
-import { useDownshiftEnvironment } from "../../../../shared/garden-shadow/src/useDownshiftEnvironment";
 import {
   Dropdown,
   Item,
@@ -34,14 +33,9 @@ export const FilterTypeDropdown = (
 
   const { onFilterTypeSelect, selectedFilter, errors } = props;
   const { filterTypeDropdownI18N } = useFilterTranslations();
-  const downshiftEnvironment = useDownshiftEnvironment();
 
   return (
-    <Dropdown
-      onSelect={onFilterTypeSelect}
-      selectedItem={selectedFilter}
-      downshiftProps={{ environment: downshiftEnvironment }}
-    >
+    <Dropdown onSelect={onFilterTypeSelect} selectedItem={selectedFilter}>
       <Field>
         <Label>
           {t("guide-requests-app.filter-modal.filterTypeLabel", "Filter type")}
