@@ -1,24 +1,21 @@
-import type { HCData } from "./data-types/hc/HCData";
+import type { Settings } from "../shared";
 import { createTheme } from "../shared/garden-theme/createTheme";
 import { ThemeProviders } from "../shared/garden-theme/ThemeProviders";
 import { render } from "react-dom";
 import { RequestsList } from "./components/requests-list/RequestsList";
-import { PushNotificationContext } from "./contexts/PushNotification";
+import type { RequestsListProps } from "./components/requests-list/RequestsList";
 import { initI18next, loadTranslations } from "../shared/i18n";
 import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const inCypress = (window as any).Cypress;
 
 export async function renderRequestList(
-  container: Element,
-  data: HCData
+  themeSettings: Settings,
+  props: RequestsListProps,
+  container: Element
 ): Promise<void> {
-  const {
-    theme: { settings },
-    user: { locale },
-    pushNotification,
-    hasCustomStatusesEnabled,
-  } = data;
+  const { locale } = props;
+  const { customStatusesEnabled } = props;
 
   initI18next(locale);
 
@@ -31,16 +28,14 @@ export async function renderRequestList(
 
   render(
     <ThemeProviders
-      theme={createTheme(settings)}
+      theme={createTheme(themeSettings)}
       data-test-id={inCypress ? "guide-requests-app" : undefined}
     >
       <ErrorBoundary helpCenterPath={helpCenterPath}>
-        <PushNotificationContext.Provider value={pushNotification}>
-          <RequestsList
-            locale={locale}
-            customStatusesEnabled={hasCustomStatusesEnabled}
-          />
-        </PushNotificationContext.Provider>
+        <RequestsList
+          locale={locale}
+          customStatusesEnabled={customStatusesEnabled}
+        />
       </ErrorBoundary>
     </ThemeProviders>,
     container
