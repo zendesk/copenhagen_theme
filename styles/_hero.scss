@@ -1,16 +1,83 @@
 /***** Hero component *****/
 .hero {
-  background-image: url($homepage_background_image);
-  background-position: center;
-  background-size: cover;
-  height: 300px;
-  padding: 0 20px;
+  background-color: #F3F4F84D;
+  padding: 80px 200px;
   text-align: center;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  &-container {
+    position: relative;
+    padding-bottom: 80px;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 100%;
+      background-color: #F3F4F84D;
+      z-index: 0;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 1px;
+      background-color: #DDE1E6;
+      z-index: 0;
+    }
+    
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+  }
 
   &-inner {
-    @include vertical-align;
-    max-width: 610px;
+    max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  &-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #212326;
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  &-subtitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: #212326;
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  &-search {
+    width: 100%;
+    max-width: 844px;
+    display: flex;
+    align-items: center;
   }
 }

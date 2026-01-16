@@ -28,9 +28,70 @@ $padding-right: 20px;
     border: none;
   }
 
-  &-full input[type="search"], 
-  &-full .clear-button {
-    border-color: #fff;
+  &-full {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 24px 0px 24px;
+    gap: 8px;
+    width: 100%;
+    max-width: 844px;
+    height: 72px;
+    background: #FFFFFF;
+    border: 2px solid #B8C2CC;
+    box-shadow: 0px 8px 20px rgba(120, 147, 172, 0.1);
+    border-radius: 8px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    
+    // Reset default search styles
+    border-color: #B8C2CC;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 8px;
+    
+    // Style the form that Zendesk generates
+    form {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      gap: 8px;
+      height: 100%;
+    }
+    
+    input[type="search"], 
+    .clear-button {
+      border-color: transparent;
+      border-radius: 0;
+      height: 100%;
+    }
+    
+    input[type="search"] {
+      padding-left: 0;
+      padding-right: 20px;
+      border: none;
+      background: transparent;
+      height: auto;
+      font-size: 16px;
+      flex: 1;
+    }
+    
+    .search-icon {
+      position: static;
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: #B8C2CC;
+      margin: 0;
+    }
+    
+    .clear-button {
+      flex-shrink: 0;
+      width: auto;
+      padding: 0 12px;
+    }
   }
 
   input[type="search"] {
@@ -58,7 +119,12 @@ $padding-right: 20px;
     &:-webkit-autofill:focus {
       -webkit-box-shadow: 0 0 0 1000px #fff inset;
     }
-
+    
+    .search-full & {
+      flex: 1 1 auto;
+      height: auto;
+      min-height: 0;
+    }
   }
 
   .clear-button {
@@ -159,5 +225,13 @@ $padding-right: 20px;
   [dir="rtl"] & {
     left: auto;
     right: 15px;
+  }
+  
+  .search-full & {
+    position: static;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: #B8C2CC;
   }
 }

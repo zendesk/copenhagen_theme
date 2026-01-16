@@ -1,17 +1,23 @@
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
-<section id="main-content" class="section hero">
+<section id="main-content" class="hero">
   <div class="hero-inner">
+    <div class="hero-content">
+      <h1 class="hero-title">MIT Learn Support Center</h1>
+      <p class="hero-subtitle">How can we help you today?</p>
+    </div>
     <h2 class="visibility-hidden">{{ t 'search' }}</h2>
-    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-    </svg>
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
+    <div class="hero-search">
+      {{!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+      </svg> --}}
+      {{search submit=false instant=settings.instant_search class='search search-full'}}
+    </div>
   </div>
 </section>
 
-<div class="container">
+<div class="container hero-container">
   <section class="section knowledge-base">
     <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
     <section class="categories blocks">
@@ -28,9 +34,7 @@
             {{#each sections}}
               <li class="blocks-item">
                 <a href='{{url}}' class="blocks-item-link">
-                  <span class="blocks-item-title">
-                    {{name}}
-                  </span>
+                  <span class="blocks-item-title">{{name}}</span>
                   <span class="blocks-item-description">{{excerpt description}}</span>
                 </a>
               </li>
@@ -63,21 +67,18 @@
       </section>
     {{/if}}
   </section>
-
-  {{#if help_center.community_enabled}}
-    <section class="section home-section community">
-      <h2>{{t 'community'}}</h2>
-      {{#link 'community' class='community-link'}}
-        {{t 'join_conversation'}}
-      {{/link}}
-
-      <div class="community-image"></div>
-    </section>
-  {{/if}}
-
-  <section class="section home-section activity">
-    {{#if settings.show_recent_activity}}
-      {{recent_activity}}
-    {{/if}}
-  </section>
 </div>
+
+<section class="section contact-cta">
+  <div class="container">
+    <div class="contact-cta-content">
+      <h2 class="contact-cta-title">Can't find what you're looking for?</h2>
+      <a href="{{page_path 'new_request'}}" class="contact-cta-button">
+        Contact Us
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

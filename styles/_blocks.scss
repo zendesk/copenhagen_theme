@@ -1,6 +1,7 @@
 /***** Blocks *****/
 /* Used in Homepage#categories and Community#topics */
 .blocks {
+
   &-list {
     @include tablet {
       margin: 0 -15px;
@@ -8,33 +9,33 @@
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: stretch;
+    gap: 32px;
     list-style: none;
     padding: 0;
   }
 
   &-item {
     @include tablet {
-      margin: 0 15px 30px;
+      margin: 0;
     }
 
-    border: 1px solid $brand_color;
-    border-radius: 4px;
+    border: 2px solid $low-contrast-border-color;
+    border-radius: 8px;
     box-sizing: border-box;
-    color: $brand_color;
     display: flex;
-    flex: 1 0 340px;
-    margin: 0 0 30px;
     max-width: 100%;
     text-align: center;
 
     &:hover,
     &:focus,
     &:active {
-      background-color: $brand_color;
+      background-color: transparent;
+      border-color: $brand_color;
 
       * {
-        color: $brand_text_color;
+        color: black;
         text-decoration: none;
       }
     }
@@ -78,7 +79,9 @@
 
   &-item-title {
     margin-bottom: 0;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
   }
 
   &-item-description {
