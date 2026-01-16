@@ -1,13 +1,10 @@
-const pushNotification = jest.fn();
-
-jest.mock("../../../hooks/usePushNotification", () => ({
-  usePushNotification: () => pushNotification,
-}));
+jest.mock("../../../../shared/notifications/notify");
 
 import { act, fireEvent, screen } from "@testing-library/react";
 import FollowOrganizationsModal from "./FollowOrganizationsModal";
 import { render } from "../../../../test/render";
 import type { User } from "../../../data-types";
+import { notify } from "../../../../shared";
 
 const user: User = {
   id: 10,
@@ -262,7 +259,6 @@ describe("Follow organizations modal", () => {
     describe("when successful", () => {
       beforeEach(async () => {
         await renderComponent();
-
         fireEvent.click(screen.getByRole("checkbox", { name: /org_2/ }));
         fireEvent.click(screen.getByText("Save"));
         await act(() => Promise.resolve());
@@ -284,8 +280,8 @@ describe("Follow organizations modal", () => {
         expect(props.onClose).toHaveBeenCalled();
       });
 
-      test("it calls pushNotifications", async () => {
-        expect(pushNotification).toHaveBeenCalled();
+      test("it calls notify", async () => {
+        expect(notify).toHaveBeenCalled();
       });
     });
   });
@@ -300,7 +296,7 @@ describe("Follow organizations modal", () => {
 
       expect(props.onClose).toHaveBeenCalled();
       expect(fetch).toHaveBeenCalledTimes(2);
-      expect(pushNotification).not.toHaveBeenCalled();
+      expect(notify).not.toHaveBeenCalled();
     });
   });
 });

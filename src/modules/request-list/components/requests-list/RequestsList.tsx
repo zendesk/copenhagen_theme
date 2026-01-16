@@ -25,7 +25,7 @@ import { useTicketFields } from "../../hooks/useTicketFields";
 import { useCustomStatuses } from "../../hooks/useCustomStatuses";
 import { RequestLoadingState } from "./RequestLoadingState";
 import { useShowManyUsers } from "../../hooks/useShowManyUsers";
-interface RequestsListProps {
+export interface RequestsListProps {
   locale: string;
   customStatusesEnabled: boolean;
 }
