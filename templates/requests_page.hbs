@@ -8,14 +8,21 @@
 </div>
 
 <script type="module">
-  const requestListSettings = {{json settings}}; 
-  const themeProps = { settings: requestListSettings }; 
-  const userProps = { locale:{{json help_center.base_locale}}, } 
-  const dataProps = { user: userProps, theme: themeProps, }; 
+  const themeSettings = {{json settings}}; 
+  const userData = {{json user}};
+
+
+  debugger
+  const props = {   
+    locale: {{json help_center.base_locale}},
+    customStatusesEnabled: {{json help_center.custom_statuses_enabled}},  
+  }; 
   
   import { renderRequestList } from "request-list"; 
   const container = document.getElementById("main-content"); 
 
-  renderRequestList(container,dataProps);
+  renderRequestList(
+    themeSettings, props, container
+  );
 
 </script>

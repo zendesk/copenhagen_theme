@@ -16,10 +16,3 @@ interface Notification {
 }
 
 export type pushNotification = (notification: Notification) => void;
-
-export interface HCData {
-  theme: Theme;
-  user: HCUser;
-  hasCustomStatusesEnabled: boolean;
-  pushNotification: pushNotification;
-}
