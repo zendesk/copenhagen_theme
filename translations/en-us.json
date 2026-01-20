@@ -42,6 +42,8 @@
   "hover_link_color_description": "Text color for the hover state of link elements",
   "hover_link_color_label": "Hover link color",
   "images_group_label": "Images",
+  "search_empty_icon_label": "Search empty-state icon",
+  "search_empty_icon_description": "Icon shown when a search returns no results",
   "instant_search_description": "Show suggested articles on search",
   "instant_search_label": "Instant search",
   "learn_link_description": "Specify the URL for Learn link in header",

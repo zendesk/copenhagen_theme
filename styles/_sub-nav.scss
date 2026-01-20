@@ -6,6 +6,9 @@
   gap: 15px 30px;
   justify-content: space-between;
   margin-bottom: 55px;
+  padding-bottom: 20px;
+  border-bottom: none;
+  position: relative;
 
   @include tablet {
     flex-direction: row;
@@ -14,6 +17,25 @@
   // Inner pages breadcrumbs
   .breadcrumbs {
     margin: 0;
+    font-size: 14px;
+    
+    li:first-child a {
+      color: #A31F34;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    a {
+      color: #626A73;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   // Inner pages search field
@@ -31,4 +53,16 @@
       font-size: $font-size-base; 
     }
   }
+}
+
+.sub-nav::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 1px;
+  background-color: #A31F34;
+  pointer-events: none;
 }

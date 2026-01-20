@@ -280,6 +280,12 @@
           "label": "community_image_label"
         },
         {
+          "identifier": "search_empty_icon",
+          "type": "file",
+          "description": "search_empty_icon_description",
+          "label": "search_empty_icon_label"
+        },
+        {
           "identifier": "service_catalog_hero_image",
           "type": "file",
           "description": "service_catalog_hero_image_description",
