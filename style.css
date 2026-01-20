@@ -4404,13 +4404,13 @@ ul {
 }
 
 /* By default use bold instead of italic to highlight */
-.search-results-description em {
+.search-result-description em {
   font-style: normal;
   font-weight: bold;
 }
 
 /* Add a yellow background for Chinese */
-html[lang|=zh] .search-results-description em {
+html[lang|=zh] .search-result-description em {
   font-style: normal;
   background: yellow;
 }
