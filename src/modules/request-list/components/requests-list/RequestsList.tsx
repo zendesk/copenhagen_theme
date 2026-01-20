@@ -40,7 +40,7 @@ export function RequestsList({
     {
       query: "",
       page: 1,
-      sort: null,
+      sort: { order: "desc", by: "updated_at" },
       selectedTab: { name: MY_REQUESTS_TAB_NAME },
       filters: {},
     },
