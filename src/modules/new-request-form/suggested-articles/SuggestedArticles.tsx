@@ -111,7 +111,17 @@ export function SuggestedArticles({
         <UnstyledList>
           {articles.map((article) => (
             <ListItem key={article.html_url}>
-              <Anchor href={article.html_url}>{article.name}</Anchor>
+              <Anchor
+                isExternal
+                rel="noopener"
+                externalIconLabel={t(
+                  "new-request-form.suggested-articles.external-link-label",
+                  "(Opens in a new tab)"
+                )}
+                href={article.html_url}
+              >
+                {article.name}
+              </Anchor>
             </ListItem>
           ))}
         </UnstyledList>
