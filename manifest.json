@@ -397,18 +397,6 @@
           "value": true
         }
       ]
-    },
-    {
-      "label": "request_list_group_label",
-      "variables": [
-        {
-          "identifier": "request_list_beta",
-          "type": "checkbox",
-          "description": "request_list_beta_description",
-          "label": "request_list_beta_label",
-          "value": false
-        }
-      ]
     }
   ]
 }
