@@ -115,7 +115,7 @@ export function SuggestedArticles({
                 isExternal
                 rel="noopener"
                 externalIconLabel={t(
-                  "new-request-form.suggested-articles.external-link-label",
+                  "new-request-form.suggested-articles-external-link-label",
                   "(Opens in a new tab)"
                 )}
                 href={article.html_url}
