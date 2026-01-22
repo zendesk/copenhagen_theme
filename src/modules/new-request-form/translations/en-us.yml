@@ -68,7 +68,7 @@ parts:
       screenshot: "https://drive.google.com/file/d/1enaOJceIEIVn_uYqvaF4AHlE1_RIpjqe/view?usp=drive_link"
       value: "Suggested articles"
   - translation:
-      key: "new-request-form.suggested-articles.external-link-label"
+      key: "new-request-form.suggested-articles-external-link-label"
       title: "[A11Y] Aria label for icon that opens in a new tab"
       screenshot: "https://drive.google.com/file/d/1zz4zl-uerdf4UTTvX7gm5gqLo-r3hMlW/view?usp=drive_link"
       value: "(Opens in a new tab)"
