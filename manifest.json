@@ -1,7 +1,7 @@
 {
-  "name": "Copenhagen - Service Catalog 0.77",
+  "name": "Copenhagen 12-30.2",
   "author": "Zendesk",
-  "version": "4.9.1",
+  "version": "4.23.6",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -279,7 +279,7 @@
           "type": "checkbox",
           "description": "scoped_community_search_description",
           "label": "scoped_community_search_label",
-          "value": true
+          "value": false
         }
       ]
     },
@@ -369,14 +369,14 @@
           "type": "checkbox",
           "description": "follow_post_description",
           "label": "follow_post_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_post_sharing",
           "type": "checkbox",
           "description": "post_sharing_description",
           "label": "post_sharing_label",
-          "value": true
+          "value": false
         }
       ]
     },
@@ -388,7 +388,7 @@
           "type": "checkbox",
           "description": "follow_topic_description",
           "label": "follow_topic_label",
-          "value": true
+          "value": false
         }
       ]
     },

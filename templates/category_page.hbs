@@ -1,530 +1,63 @@
-{{!-- category_page.hbs --}}
-
-<main class="category-page" id="main-content">
-  <style>
-    .onboarding-wrapper {
-      max-width: 1080px;
-      margin: 32px auto 48px;
-      padding: 24px 28px 28px;
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 29, 91, 0.10);
-      border: 1px solid rgba(0, 48, 135, 0.08);
-      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    .onboarding-header {
-      margin-bottom: 16px;
-    }
-
-    .onboarding-title {
-      font-size: 22px;
-      font-weight: 600;
-      color: #001b4f;
-      margin: 0 0 4px;
-    }
-
-    .onboarding-subtitle {
-      font-size: 14px;
-      color: #5f6b8c;
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    .onboarding-tabs {
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 20px 0 16px;
-      background: #f3f5fb;
-      padding: 4px;
-      border-radius: 999px;
-    }
-
-    .onboarding-tab {
-      border-radius: 999px;
-      padding: 8px 18px;
-      font-size: 13px;
-      font-weight: 500;
-      border: none;
-      cursor: pointer;
-      background: transparent;
-      color: #003087;
-      min-width: 100px;
-      text-align: center;
-      transition:
-        background 0.18s ease,
-        color 0.18s ease,
-        box-shadow 0.18s ease,
-        transform 0.12s ease;
-    }
-
-    .onboarding-tab:hover {
-      background: #e3e9ff;
-      transform: translateY(-1px);
-    }
-
-    .onboarding-tab.active {
-      background: linear-gradient(180deg, #003087 0%, #002266 100%);
-      color: #ffffff;
-      box-shadow:
-        0 6px 14px rgba(0, 48, 135, 0.35),
-        0 2px 0 rgba(0, 30, 100, 0.55);
-      transform: translateY(-1px);
-    }
-
-    .onboarding-panel {
-      display: none;
-      margin-top: 10px;
-    }
-
-    .onboarding-panel.active {
-      display: block;
-    }
-
-    .onboarding-panel-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #001b4f;
-      margin: 0 0 6px;
-    }
-
-    .onboarding-panel-text {
-      font-size: 14px;
-      color: #5f6b8c;
-      margin: 0 0 12px;
-      line-height: 1.6;
-      max-width: 720px;
-    }
-
-    .onboarding-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 9px 18px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
-      text-decoration: none;
-      background: linear-gradient(180deg, #003087 0%, #002266 100%);
-      color: #ffffff !important;
-      box-shadow:
-        0 6px 16px rgba(0, 48, 135, 0.35),
-        0 3px 0 rgba(0, 30, 100, 0.55);
-      transition:
-        transform 0.14s ease,
-        box-shadow 0.14s ease,
-        filter 0.14s ease;
-    }
-
-    .onboarding-link:hover {
-      transform: translateY(-2px);
-      box-shadow:
-        0 10px 22px rgba(0, 48, 135, 0.35),
-        0 4px 0 rgba(0, 30, 100, 0.55);
-      filter: brightness(1.05);
-    }
-
-    .onboarding-link:active {
-      transform: translateY(0);
-      box-shadow:
-        0 4px 14px rgba(0, 48, 135, 0.25),
-        0 2px 0 rgba(0, 30, 100, 0.55);
-    }
-
-    .onboarding-link span[aria-hidden="true"] {
-      transition: transform 0.14s ease;
-    }
-
-    .onboarding-link:hover span[aria-hidden="true"] {
-      transform: translateX(2px);
-    }
-
-    .onboarding-faq {
-      margin-top: 26px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(0, 48, 135, 0.09);
-    }
-
-    .onboarding-faq-title {
-      font-size: 17px;
-      font-weight: 600;
-      color: #001b4f;
-      margin: 0 0 6px;
-    }
-
-    .onboarding-faq-intro {
-      font-size: 13px;
-      color: #5f6b8c;
-      margin: 0 0 14px;
-      line-height: 1.5;
-      max-width: 720px;
-    }
-
-    .onboarding-faq-group {
-      margin-bottom: 12px;
-      max-width: 780px;
-    }
-
-    .onboarding-faq-question {
-      font-size: 14px;
-      font-weight: 600;
-      color: #003087;
-      margin: 0 0 4px;
-    }
-
-    .onboarding-faq-answer {
-      font-size: 13px;
-      color: #5f6b8c;
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    .resource-sections {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 24px;
-      margin-top: 20px;
-    }
-
-    .resource-column {
-      min-width: 0;
-    }
-
-    .resource-section-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: #001b4f;
-      margin: 0 0 8px;
-    }
-
-    .resource-section-text {
-      font-size: 13px;
-      color: #5f6b8c;
-      margin: 0 0 10px;
-      line-height: 1.6;
-    }
-
-    .resource-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .resource-list-item {
-      margin-bottom: 8px;
-    }
-
-    .resource-link {
-      font-size: 13px;
-      font-weight: 500;
-      color: #003087;
-      text-decoration: none;
-    }
-
-    .resource-link:hover {
-      text-decoration: underline;
-    }
-
-    .resource-link-description {
-      display: block;
-      font-size: 12px;
-      color: #707a96;
-      margin-top: 2px;
-    }
-
-    .resource-card {
-      border-radius: 12px;
-      border: 1px solid rgba(0, 48, 135, 0.08);
-      background: #f9faff;
-      padding: 14px 14px 12px;
-      margin-bottom: 12px;
-    }
-
-    .resource-card-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: #001b4f;
-      margin: 0 0 4px;
-    }
-
-    .resource-card-text {
-      font-size: 13px;
-      color: #5f6b8c;
-      margin: 0 0 6px;
-      line-height: 1.5;
-    }
-
-    .resource-card a {
-      font-size: 13px;
-      font-weight: 500;
-      color: #003087;
-      text-decoration: none;
-    }
-
-    .resource-card a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-      .onboarding-wrapper {
-        margin: 20px 0 32px;
-        padding: 20px 16px 22px;
-        border-radius: 0;
-      }
-
-      .resource-sections {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 20px;
-      }
-    }
-  </style>
-
-  {{!-- 1) Getting Started category → Device onboarding --}}
-  {{#is category.id 43319402603419}}
-    <div class="onboarding-wrapper">
-      <div class="onboarding-header">
-        <h2 class="onboarding-title">Device onboarding</h2>
-        <p class="onboarding-subtitle">
-          Choose your device type to view ARPA‑H onboarding steps and setup links.
-        </p>
-      </div>
-
-      <div class="onboarding-tabs" role="tablist" aria-label="Device onboarding">
-        <button class="onboarding-tab active" data-target="onboarding-windows" role="tab" aria-selected="true">
-          Windows
-        </button>
-        <button class="onboarding-tab" data-target="onboarding-ios" role="tab" aria-selected="false">
-          iOS
-        </button>
-        <button class="onboarding-tab" data-target="onboarding-macos" role="tab" aria-selected="false">
-          macOS
-        </button>
-      </div>
-
-      <div id="onboarding-windows" class="onboarding-panel active" role="tabpanel">
-        <h3 class="onboarding-panel-title">Windows onboarding</h3>
-        <p class="onboarding-panel-text">
-          Follow the ARPA‑H Windows onboarding flow to set up your laptop, sign in with your ARPA‑H credentials,
-          and configure required security and collaboration tools.
-        </p>
-        <a href="https://cdn.arpa-h.gov/itdi/windows/start/#/" class="onboarding-link" target="_blank" rel="noopener">
-          Open Windows onboarding
-          <span aria-hidden="true">→</span>
-        </a>
-      </div>
-
-      <div id="onboarding-ios" class="onboarding-panel" role="tabpanel">
-        <h3 class="onboarding-panel-title">iOS onboarding</h3>
-        <p class="onboarding-panel-text">
-          Use this guide to enroll your ARPA‑H‑managed iPhone or iPad, install required apps, and configure secure access
-          to email, calendar, and collaboration tools.
-        </p>
-        <a href="https://cdn.arpa-h.gov/itdi/ios/start/#/" class="onboarding-link" target="_blank" rel="noopener">
-          Open iOS onboarding
-          <span aria-hidden="true">→</span>
-        </a>
-      </div>
-
-      <div id="onboarding-macos" class="onboarding-panel" role="tabpanel">
-        <h3 class="onboarding-panel-title">macOS onboarding</h3>
-        <p class="onboarding-panel-text">
-          Start here to set up your ARPA‑H Mac, enroll the device, and configure security, productivity, and
-          collaboration tools for daily work.
-        </p>
-        <a href="https://cdn.arpa-h.gov/itdi/macos/start/#/" class="onboarding-link" target="_blank" rel="noopener">
-          Open macOS onboarding
-          <span aria-hidden="true">→</span>
-        </a>
-      </div>
-
-      <article class="onboarding-faq">
-        <h3 class="onboarding-faq-title">Device onboarding FAQs</h3>
-        <p class="onboarding-faq-intro">
-          Find answers to common questions about setting up your ARPA‑H devices, signing in, installing apps,
-          and accessing collaboration tools.
-        </p>
-
-        <section class="onboarding-faq-group">
-          <h4 class="onboarding-faq-question">Do I need to complete onboarding for every device type?</h4>
-          <p class="onboarding-faq-answer">
-            No. Complete the onboarding flow for each ARPA‑H‑managed device you actually use
-            (for example, your Windows laptop and your iPhone). You don’t need to run all
-            three flows if you don’t have those devices.
-          </p>
-        </section>
-
-        <section class="onboarding-faq-group">
-          <h4 class="onboarding-faq-question">How long does the initial onboarding take?</h4>
-          <p class="onboarding-faq-answer">
-            Most ARPA‑H device setups take 45 minutes to an hour, depending on your network connection.
-          </p>
-        </section>
-
-        <section class="onboarding-faq-group">
-          <h4 class="onboarding-faq-question">Who do I contact if something fails during onboarding?</h4>
-          <p class="onboarding-faq-answer">
-            If you get stuck, capture a screenshot of the error (if possible) and contact the ARPA‑H IT Service Desk
-            with your device type (Windows, iOS, or macOS) and a brief description of where in the onboarding flow
-            you encountered the issue.
-          </p>
-        </section>
-
-        <section class="onboarding-faq-group">
-          <h4 class="onboarding-faq-question">Can I pause onboarding and come back later?</h4>
-          <p class="onboarding-faq-answer">
-            Yes. You can typically pause between major steps (for example, after signing in or after installing core apps).
-            It is recommended that you do not let your computer fall asleep during this process
-          </p>
-        </section>
-      </article>
+<div class="container-divider"></div>
+<div class="container">
+  <div class="sub-nav">
+    {{breadcrumbs}}
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+      </svg>
+      {{search scoped=settings.scoped_kb_search submit=false}}
     </div>
+  </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        var tabs = document.querySelectorAll('.onboarding-tab');
-        var panels = document.querySelectorAll('.onboarding-panel');
-
-        tabs.forEach(function (tab) {
-          tab.addEventListener('click', function () {
-            var targetId = tab.getAttribute('data-target');
-
-            tabs.forEach(function (t) {
-              t.classList.remove('active');
-              t.setAttribute('aria-selected', 'false');
-            });
-            panels.forEach(function (panel) {
-              panel.classList.remove('active');
-            });
-
-            tab.classList.add('active');
-            tab.setAttribute('aria-selected', 'true');
-            var targetPanel = document.getElementById(targetId);
-            if (targetPanel) {
-              targetPanel.classList.add('active');
-            }
-          });
-        });
-      });
-    </script>
-  {{/is}}
-
-  {{!-- 2) Self help resources category → Self help layout --}}
-  {{#is category.id 43320369566875}}
-    <div class="onboarding-wrapper">
-      <div class="onboarding-header">
-        <h2 class="onboarding-title">Self help resources</h2>
-        <p class="onboarding-subtitle">
-          Use these self‑service resources to quickly solve common IT issues, learn how to use ARPA‑H tools,
-          and get back to work faster without opening a ticket.
-        </p>
-      </div>
-
-      <div class="resource-sections">
-        <div class="resource-column">
-          <h3 class="resource-section-title">Popular self‑service guides</h3>
-          <p class="resource-section-text">
-            Start with these commonly used resources to resolve frequent requests and issues on your own.
-          </p>
-
-          <div class="resource-card">
-            <h4 class="resource-card-title">Device onboarding</h4>
-            <p class="resource-card-text">
-              Set up your ARPA‑H‑managed Windows, macOS, or iOS device, enroll it, and configure required apps.
-            </p>
-            <a href="/hc/en-us/categories/43319402603419-Getting-Started">
-              Open device onboarding guide →
-            </a>
-          </div>
-
-          <div class="resource-card">
-            <h4 class="resource-card-title">Resetting your ARPA‑H password</h4>
-            <p class="resource-card-text">
-              Step‑by‑step instructions to reset your ARPA‑H credentials and regain access if you’re locked out.
-            </p>
-            <a href="/hc/en-us/articles/NeedsAnArticleHere/Kevin">
-              View password reset instructions →
-            </a>
-          </div>
-
-          <div class="resource-card">
-            <h4 class="resource-card-title">Application Resources</h4>
-            <p class="resource-card-text">
-              Access our self-service instructions for ARPA-H approved applications
-            </p>
-            <a href="/hc/en-us/articles/ZZZZZZZ">
-              ARPA-H Application List →
-            </a>
-          </div>
-        </div>
-
-        <div class="resource-column">
-          <h3 class="resource-section-title">Browse resources</h3>
-          <p class="resource-section-text">
-            Explore resources by topic.
-          </p>
-      </div>
-
-      <article class="onboarding-faq">
-        <h3 class="onboarding-faq-title">Self‑help resources FAQs</h3>
-        <p class="onboarding-faq-intro">
-          Not sure which article to start with? These FAQs can help you navigate the self‑service options.
-        </p>
-
-        <section class="onboarding-faq-group">
-          <h4 class="onboarding-faq-question">
-            When should I use self‑help vs. submit a ticket?
-          </h4>
-          <p class="onboarding-faq-answer">
-            Most common issues (passwords, onboarding, basic app setup) can be resolved using these guides. 
-            If the steps don’t work or your situation is unique, please submit a ticket.
-          </p>
-        </section>
-
-        <section class="onboarding-faq-group">
-          <h4 class="onboarding-faq-question">
-            How do I know if an article is up to date?
-          </h4>
-          <p class="onboarding-faq-answer">
-            Articles are reviewed regularly by the ARPA‑H IT team. If you see screenshots or instructions that look
-            out of date, please include a note in your ticket so we can update the resource.
-          </p>
-        </section>
-      </article>
-    </div>
-  {{/is}}
-
-  {{!-- 3) Default layout for all other categories --}}
-  {{#isnt category.id 43319402603419}}
-    {{#isnt category.id 43320369566875}}
+  <div class="category-container">
+    <div class="category-content">
       <header class="page-header">
-        <h1 class="page-title">
-          {{category.name}}
-        </h1>
+        <h1>{{category.name}}</h1>
         {{#if category.description}}
-          <p class="page-description">{{category.description}}</p>
+          <p class="page-header-description">{{category.description}}</p>
         {{/if}}
       </header>
 
-      <div class="section-tree">
+      <div id="main-content" class="section-tree">
         {{#each sections}}
           <section class="section">
-            <h2 class="section-title">
+            <h2 class="section-tree-title">
               <a href="{{url}}">{{name}}</a>
             </h2>
-            {{#if description}}
-              <p class="section-description">{{description}}</p>
+            {{#if articles}}
+              <ul class="article-list">
+                {{#each articles}}
+                  <li class="article-list-item{{#if promoted}} article-promoted{{/if}}">
+                    {{#if promoted}}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="icon-star" title="{{t 'promoted'}}">
+                        <path fill="currentColor" d="M2.88 11.73c-.19 0-.39-.06-.55-.18a.938.938 0 01-.37-1.01l.8-3L.35 5.57a.938.938 0 01-.3-1.03c.12-.37.45-.63.85-.65L4 3.73 5.12.83c.14-.37.49-.61.88-.61s.74.24.88.6L8 3.73l3.11.17a.946.946 0 01.55 1.68L9.24 7.53l.8 3a.95.95 0 01-1.43 1.04L6 9.88l-2.61 1.69c-.16.1-.34.16-.51.16z"/>
+                      </svg>
+                    {{/if}}
+                    <a href="{{url}}" class="article-list-link">{{title}}</a>
+                    {{#if internal}}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
+                        <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
+                        <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
+                      </svg>
+                    {{/if}}
+                  </li>
+                {{/each}}
+              </ul>
+              {{#if more_articles}}
+                <a href="{{url}}" class="see-all-articles">
+                  {{t 'show_all_articles' count=article_count}}
+                </a>
+              {{/if}}
             {{/if}}
-            <ul class="article-list">
-              {{#each articles}}
-                <li class="article-list-item">
-                  <a href="{{url}}">{{title}}</a>
-                </li>
-              {{/each}}
-            </ul>
           </section>
+        {{else}}
+          <i class="category-empty">
+            <a href="{{category.url}}">{{t 'empty'}}</a>
+          </i>
         {{/each}}
       </div>
-    {{/isnt}}
-  {{/isnt}}
-</main>
+    </div>
+  </div>
+</div>

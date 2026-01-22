@@ -1,586 +1,134 @@
-{{! ========================================================= }}
-{{!  ARPA-H ITDI — HOME PAGE TEMPLATE                         }}
-{{! ========================================================= }}
-
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-  body,
-  h1, h2, h3, h4, h5, h6,
-  p, a, span, button {
-    font-family: 'Poppins', sans-serif !important;
-  }
-
-  /* Smooth fade-out when navigating away */
-  body {
-    background-color: #ffffff;
-    background-image: url("{{asset 'background.png'}}");
-    background-repeat: no-repeat;
-    background-position: right top;
-    background-size: cover;
-    opacity: 1;
-    transition: opacity 0.25s ease-out;
-  }
-
-  body.page-fade-out {
-    opacity: 0;
-  }
-
-  /* ---------------- HERO WRAPPER ---------------- */
-
-  .custom-hero-wrapper {
-    position: relative;
-    z-index: 10;
-    padding: 110px 20px 120px;
-    text-align: center;
-    color: #fff;
-  }
-
-  /* ---------------- TITLE ROW (LOGO + TEXT) ---------------- */
-
-  .hero-title-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-    margin-bottom: 12px;
-  }
-
-  .hero-logo {
-    height: 64px;
-    width: auto;
-  }
-
-  .hero-title-text {
-    margin: 0;
-    color: #ffffff !important;
-    font-size: 40px;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-  }
-
-  .hero-sub {
-    color: #ffffff;
-    font-size: 18px;
-    margin-bottom: 40px;
-  }
-
-  /* ---------------- SEARCH BAR ---------------- */
-
-  .homepage-search {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .homepage-search input {
-    width: 100%;
-    border-radius: 40px;
-    padding: 22px 65px 22px 30px;
-    border: none;
-    font-size: 17px;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.18);
-  }
-
-  .homepage-search input::-webkit-search-cancel-button {
-    display: none !important;
-  }
-
-  .search-btn {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #0057D8;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  .search-btn svg {
-    width: 22px;
-    height: 22px;
-    color: #ffffff;
-  }
-
-  .search-icon {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #777;
-    opacity: 0.9;
-    z-index: 2;
-  }
-
-  /* ---------------- H ICON (for bullets) ---------------- */
-
-  .h-icon {
-    height: 18px;
-    width: auto;
-    display: inline-block;
-  }
-
-  /* ==================================================== */
-  /*  CONTENT BELOW HERO – WIDER & CENTERED               */
-  /* ==================================================== */
-
-  .itdi-content {
-    max-width: 1120px;         /* wider to better fill screen */
-    margin: -40px auto 80px;   /* pull section up slightly and center */
-    padding: 0 20px;
-  }
-
-  .home-sections-wrapper {
-    margin-top: 20px;
-  }
-
-  .section-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: #001b4f;
-    text-align: center;
-  }
-
-  .section-subtitle {
-    font-size: 13px;
-    color: #5f6b8c;
-    margin-bottom: 16px;
-    text-align: center;
-  }
-
-  /* ---------- RESOURCE CARDS (2 WIDE) ---------- */
-
-  .home-card-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-    justify-content: center;
-  }
-
-  .home-card {
-    flex: 1 1 340px;           /* two cards stretch wider */
-    max-width: 520px;
-    background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 60%, #eef2ff 100%);
-    border-radius: 18px;
-    padding: 18px 18px 16px;
-    text-align: left;
-    box-shadow: 0 10px 26px rgba(0, 29, 91, 0.12);
-    border: 1px solid rgba(0, 48, 135, 0.08);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition:
-      transform 0.18s ease,
-      box-shadow 0.18s ease,
-      border-color 0.18s ease,
-      background 0.18s ease;
-  }
-
-  .home-card::after {
-    content: "";
-    position: absolute;
-    right: -30px;
-    top: -30px;
-    width: 90px;
-    height: 90px;
-    background: radial-gradient(circle at center, rgba(0, 87, 216, 0.16), transparent 70%);
-    opacity: 0;
-    transition: opacity 0.18s ease;
-  }
-
-  .home-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 32px rgba(0, 29, 91, 0.18);
-    border-color: rgba(0, 48, 135, 0.25);
-    background: linear-gradient(145deg, #ffffff 0%, #f3f6ff 60%, #e3e9ff 100%);
-  }
-
-  .home-card:hover::after {
-    opacity: 1;
-  }
-
-  .home-card:active {
-    transform: translateY(-1px) scale(0.99);
-    box-shadow: 0 8px 20px rgba(0, 29, 91, 0.16);
-  }
-
-  .home-card-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
-
-  .home-card-icon {
-    height: 28px;
-    width: 28px;
-    border-radius: 999px;
-    background: rgba(0, 48, 135, 0.08);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .home-card-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: #001b4f;
-    margin: 0;
-  }
-
-  .home-card-text {
-    font-size: 13px;
-    color: #5f6b8c;
-    margin: 0 0 10px;
-    line-height: 1.45;
-  }
-
-  .home-card-link {
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    color: #0057D8;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .home-card-link span[aria-hidden="true"] {
-    transition: transform 0.16s ease;
-  }
-
-  .home-card-link:hover span[aria-hidden="true"] {
-    transform: translateX(2px);
-  }
-
-  /* ---------- "NEED MORE HELP?" BAND ---------- */
-
-  .help-band {
-    margin-top: 26px;
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 18px 20px;
-    box-shadow: 0 8px 22px rgba(0, 29, 91, 0.08);
-    border: 1px solid rgba(0, 48, 135, 0.1);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 16px;
-    justify-content: space-between;
-  }
-
-  .help-band-text {
-    max-width: 480px;
-  }
-
-  .help-band-title {
-    font-size: 17px;
-    font-weight: 600;
-    color: #001b4f;
-    margin: 0 0 4px;
-  }
-
-  .help-band-desc {
-    font-size: 13px;
-    color: #5f6b8c;
-    margin: 0;
-    line-height: 1.4;
-  }
-
-  .help-band-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .cta-btn {
-    border-radius: 999px;
-    padding: 9px 18px;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: none;
-    cursor: pointer;
-    transition:
-      transform 0.14s ease,
-      box-shadow 0.14s ease,
-      background 0.14s ease,
-      color 0.14s ease;
-  }
-
-  .cta-btn-primary {
-    background: linear-gradient(180deg, #003087 0%, #002266 100%);
-    color: #ffffff !important;   /* force white text */
-    box-shadow:
-      0 6px 16px rgba(0, 48, 135, 0.35),
-      0 3px 0 rgba(0, 30, 100, 0.55);
-  }
-
-  .cta-btn-secondary {
-    background: #f2f5ff;
-    color: #003087;
-    border: 1px solid rgba(0, 48, 135, 0.3);
-    box-shadow: none;
-  }
-
-  .cta-btn:hover {
-    transform: translateY(-1px);
-    box-shadow:
-      0 10px 22px rgba(0, 48, 135, 0.30),
-      0 4px 0 rgba(0, 30, 100, 0.55);
-  }
-
-  .cta-btn-secondary:hover {
-    background: #e3e8ff;
-  }
-
-  .cta-btn:active {
-    transform: translateY(0);
-    box-shadow:
-      0 4px 14px rgba(0, 48, 135, 0.22),
-      0 2px 0 rgba(0, 30, 100, 0.55);
-  }
-
-  /* ---------- POPULAR TOPICS ---------- */
-
-  .popular-topics {
-    margin-top: 26px;
-  }
-
-  .popular-topics-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-  }
-
-  .topic-pill {
-    font-size: 12px;
-    padding: 5px 11px;
-    border-radius: 999px;
-    background: #e8edff;
-    color: #003087;
-    text-decoration: none;
-    transition:
-      background 0.14s ease,
-      transform 0.14s ease,
-      box-shadow 0.14s ease;
-  }
-
-  .topic-pill:hover {
-    background: #d7e1ff;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(0, 29, 91, 0.18);
-  }
-
-  /* ---------- RESPONSIVE ---------- */
-
-  @media (max-width: 768px) {
-    .custom-hero-wrapper {
-      padding: 80px 16px 90px;
-    }
-
-    .hero-title-row {
-      flex-direction: column;
-    }
-
-    .hero-title-text {
-      font-size: 30px;
-    }
-
-    .hero-logo {
-      height: 52px;
-    }
-
-    .itdi-content {
-      max-width: 100%;
-      margin: 0 auto 40px;
-      padding: 0 16px;
-    }
-
-    .home-card-grid {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .home-card {
-      max-width: 100%;
-    }
-
-    .help-band {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .help-band-text {
-      max-width: 100%;
-    }
-
-    .help-band-actions {
-      width: 100%;
-      justify-content: flex-start;
-    }
-  }
-</style>
-
-{{! ========================================================= }}
-{{!  HERO CONTENT OVER EXISTING THEME BANNER                 }}
-{{! ========================================================= }}
+<!-- Customized 12-23-25 -->
+<h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
 <section id="main-content" class="section hero">
-  <div class="custom-hero-wrapper">
-
-    <div class="hero-title-row">
-      <img src="{{asset 'ARPAHLOGO2.png'}}" alt="ARPA-H logo" class="hero-logo" />
-      <h1 class="hero-title-text">ITDI Service Hub</h1>
-    </div>
-
-    <p class="hero-sub">
-      ARPA-Humans can search the knowledge base, request a service, or report an issue.
-    </p>
-
-    <div class="homepage-search">
-      <h2 class="visibility-hidden">{{ t 'search' }}</h2>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" focusable="false" viewBox="0 0 24 24" class="search-icon" aria-hidden="true">
-        <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor"/>
-        <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2"/>
-      </svg>
-      {{search submit=false instant=settings.instant_search class='search search-full' placeholder="Search the ARPA-H Knowledge Base"}}
-    </div>
-
-  </div>
+  <div class="hero-inner">
+    {{!-- <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+    </svg>
+    {{search submit=false instant=settings.instant_search class='search search-full'}}
+    --}}
+   {{#if signed_in}}
+    <div class="centered-buttons">
+		  <span class="item">{{#link 'new_request' class='submit-a-request'}}Report an issue{{/link}}</span>
+      <span class="item"><a href="https://arpah1746463021.zendesk.com/hc/en-us/services" class="submit-a-request">Services</a></span>
+    </div> 
+   {{/if}}     
 </section>
 
-{{! ========================================================= }}
-{{!  KEY RESOURCES, HELP BAND, POPULAR TOPICS                }}
-{{! ========================================================= }}
-
-<section class="itdi-content">
-  <div class="home-sections-wrapper">
-
-    <!-- KEY ITDI RESOURCES -->
-    <div class="self-service-section">
-      <h2 class="section-title">Explore ITDI resources</h2>
-      <p class="section-subtitle">
-        Access onboarding guidance and Self-Help Resources for ARPA‑H tools and services.
-      </p>
-
-      <div class="home-card-grid">
-
-        <!-- Getting Started -->
-        <article class="home-card">
-          <div>
-            <div class="home-card-header">
-              <div class="home-card-icon">
-                <img src="{{asset 'ARPAHLOGO3.png'}}" alt="ARPA-H H icon" class="h-icon" />
-              </div>
-              <h3 class="home-card-title">Getting Started</h3>
-            </div>
-            <p class="home-card-text">
-              New to ARPA‑H? Use these resources to set up your device(s), and access core applications.
-            </p>
-          </div>
-          <a href="/hc/en-us/categories/43319402603419-Getting-Started" class="home-card-link fade-link">
-            Open Getting Started
-            <span aria-hidden="true">→</span>
-          </a>
-        </article>
-
-        <!-- Self-Help Resources / Knowledge Base -->
-        <article class="home-card">
-          <div>
-            <div class="home-card-header">
-              <div class="home-card-icon">
-                <img src="{{asset 'ARPAHLOGO3.png'}}" alt="ARPA-H H icon" class="h-icon" />
-              </div>
-              <h3 class="home-card-title">Self‑Help Resources</h3>
-            </div>
-            <p class="home-card-text">
-              Browse FAQs and troubleshooting articles for ARPA‑H systems and services before submitting a request.
-            </p>
-          </div>
-          <a href="/hc/en-us/categories/43320369566875" class="home-card-link fade-link">
-            Browse self‑help articles
-            <span aria-hidden="true">→</span>
-          </a>
-        </article>
-
+{{#unless signed_in}}
+<div class="container banner-container">
+  {{#if settings.display_alert_banner}}
+    <div class="nav-wrapper-desktop alert-banner">
+      <div class="bell-notice-text">
+        <div class="inner-site-notice">
+          <p>
+            {{settings.alert_banner_text}}
+          </p>
+        </div>
       </div>
     </div>
-
-    <!-- NEED MORE HELP BAND -->
-    <div class="help-band">
-      <div class="help-band-text">
-        <h3 class="help-band-title">Still need help from ITDI?</h3>
-        <p class="help-band-desc">
-          If you can’t resolve your issue using the knowledge base, submit a request and our team will follow up.
-          Use <strong>Request a Service</strong> for access, onboarding, or new capabilities, and
-          <strong>Report an Issue</strong> for incidents or something that isn’t working.
-        </p>
+    <div class="nav-wrapper-mobile alert-wrapper-mobile">
+      <div class="alert-banner-text">
+        <div class="inner-site-notice">
+          <p>
+            {{settings.alert_banner_text}}
+          </p>
+        </div>
       </div>
 
-      <div class="help-band-actions">
-        <!-- Update these hrefs with your actual Zendesk form IDs -->
-        <a href="/hc/en-us/requests/new?ticket_form_id=SERVICE_CATALOG_FORM_ID"
-           class="cta-btn cta-btn-primary fade-link">
-          <span>Request a Service</span>
-        </a>
-
-        <a href="/hc/en-us/requests/new?ticket_form_id=INCIDENT_FORM_ID"
-           class="cta-btn cta-btn-secondary fade-link">
-          <span>Report an Issue</span>
-        </a>
-      </div>
     </div>
+  {{/if}}
+</div>
+{{/unless}}
+<div class="container">
+  <section class="section knowledge-base">
+    <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
+    <section class="categories blocks">
+      <ul class="blocks-list">
+        {{#each categories}}
+          {{#if ../has_multiple_categories}}
+            {{!-- <li class="blocks-item"> --}}
+            <li class="blocks-item blocks-item-category-{{id}}">
+              <a href='{{url}}' class="blocks-item-link">
+                   <!-- Category image -->
+                <span class="blocks-item-img-wrapper">
+                  {{! Human Resources }}
+                  {{#is id 37066828975515}}<img class="blocks-item-img" alt="People at table icon representing Human Resources." src="{{asset 'ARPA-H-icons-humanresouces-01-rgb-full-color.svg'}}" />{{/is}} 
+                  {{! Service Desk }}
+                  {{#is id 19382804915227}}<img class="blocks-item-img" alt="Magifying class icon representing help desk."  src="{{asset 'ARPA-H-icons-magnifying-glass-rgb-full-color.svg'}}" />{{/is}}
+                  {{! Asset Management }}
+                  {{#is id 30126071388315}}<img class="blocks-item-img" alt="Icon representing asset management." src="{{asset 'ARPA-H-icons-community-rgb-full-color.svg'}}" />{{/is}}
+                  {{! Self Service }}
+                  {{#is id 19382827542427}}<img class="blocks-item-img" alt="Oganization chart icon representing user support." src="{{asset 'ARPA-H-icons-org-chart-02-rgb-full-color.svg'}}" />{{/is}}
+                  {{! External User Support }}
+                  {{#is id 37066784640923}}<img class="blocks-item-img" alt="Shaking hands icon represening external user support." src="{{asset 'ARPA-H-icons-handshake-01-rgb-full-color.svg'}}" />{{/is}}
+                </span>
+                <!-- End category image -->
+                <span class="blocks-item-title">{{name}}</span>
+                <span class="blocks-item-description">{{excerpt description}}</span>
+              </a>
+            </li>
+          {{else}}
+            {{#each sections}}
+              <li class="blocks-item">
+                <a href='{{url}}' class="blocks-item-link">
+                  <span class="blocks-item-img-wrapper">
+                    {{! Self Service FAQs}}
+                    {{#is id 19383045462299}}<img class="blocks-item-img" alt="Magifying class icon representing FAQs." src="{{asset 'ARPA-H-icons-magnifying-glass-rgb-full-color.svg'}}" /> {{/is}}
+                  </span>
+                  <span class="blocks-item-title">
+                    {{name}}
+                  </span>
+                  <span class="blocks-item-description">{{excerpt description}}</span>
+                </a>
+              </li>
+            {{/each}}
+          {{/if}}
+        {{/each}}
+      </ul>
+      {{pagination}}
+    </section>
 
-    <!-- POPULAR TOPICS -->
-    <div class="popular-topics">
-      <h2 class="section-title">Popular topics</h2>
-      <p class="section-subtitle">
-        Quick links to some of the most frequently used ARPA‑H ITDI resources.
-      </p>
-      <div class="popular-topics-list">
-        <!-- Replace with real links/labels as needed -->
-        <a class="topic-pill fade-link" href="/hc/en-us/search?utf8=✓&query=password+reset">Password reset</a>
-        <a class="topic-pill fade-link" href="/hc/en-us/search?utf8=✓&query=VPN">VPN access</a>
-        <a class="topic-pill fade-link" href="/hc/en-us/search?utf8=✓&query=Teams">External collaboration tools</a>
-        <a class="topic-pill fade-link" href="/hc/en-us/search?utf8=✓&query=laptop">Device setup</a>
-      </div>
-    </div>
+    {{#if promoted_articles}}
+      <section class="articles">
+        <h2>{{t 'promoted_articles'}}</h2>
+        <ul class="article-list promoted-articles">
+          {{#each promoted_articles}}
+            <li class="promoted-articles-item">
+                <a href="{{url}}">
+                  {{title}}
 
-  </div>
-</section>
+                  {{#if internal}}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
+                      <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
+                      <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
+                    </svg>
+                  {{/if}}
+                </a>
+            </li>
+          {{/each}}
+        </ul>
+      </section>
+    {{/if}}
+  </section>
+{{!--
+  {{#if help_center.community_enabled}}
+    <section class="section home-section community">
+      <h2>{{t 'community'}}</h2>
+      {{#link 'community' class='community-link'}}
+        {{t 'join_conversation'}}
+      {{/link}}
 
-<script>
-// Simple fade-out on navigation for key links/cards
-document.addEventListener('DOMContentLoaded', function () {
-  const fadeLinks = document.querySelectorAll('.fade-link');
-
-  fadeLinks.forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
-
-      e.preventDefault();
-      document.body.classList.add('page-fade-out');
-      setTimeout(function () {
-        window.location.href = href;
-      }, 220); // slightly less than CSS transition (0.25s)
-    });
-  });
-});
-</script>
+      <div class="community-image"></div>
+    </section>
+  {{/if}}
+--}}
+  <section class="section home-section activity">
+    {{#if settings.show_recent_activity}}
+      {{recent_activity}}
+    {{/if}}
+  </section>
+</div>
