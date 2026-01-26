@@ -133,12 +133,12 @@ parts:
       title: "Search for services in the Service List"
       screenshot: "https://drive.google.com/file/d/1JHDB_jxDaL0ozmpUTYIhYMaCm4-4SN27/view?usp=drive_link"
       value: "Search for services"
-  - translation: 
+  - translation:
       key: "service-catalog.clear-search"
       title: "Clear search button"
       screenshot: "https://drive.google.com/file/d/11u8u7DOlPvAMZcFlsj_aPU1mPOSzjBxY/view?usp=drive_link"
       value: "Clear search"
-  - translation: 
+  - translation:
       key: "service-catalog.empty-state.search-description"
       title: "Empty state with search description"
       screenshot: "https://drive.google.com/file/d/10DiQB3DDf9x13owivlJs9QMNWVXCKdOd/view?usp=drive_link"
@@ -153,4 +153,13 @@ parts:
       title: "Error message for attachments required field validation"
       screenshot: "https://drive.google.com/file/d/1pzBRSy9JYwExx8v2HsMPbh-aLlKvod57/view?usp=sharing"
       value: "Upload a file to continue"
-
+  - translation:
+      key: "service-catalog.asset-type-required-error"
+      title: "Error message for the required field validation of asset type"
+      screenshot: "https://drive.google.com/file/d/1ltxeEIUX0KXNzhjYcXuwXG-ZCG-MEC2z/view?usp=sharing"
+      value: "Select an asset type"
+  - translation:
+      key: "service-catalog.asset-required-error"
+      title: "Error message for the required field validation for asset"
+      screenshot: "https://drive.google.com/file/d/1ltxeEIUX0KXNzhjYcXuwXG-ZCG-MEC2z/view?usp=sharing"
+      value: "Select an asset"
