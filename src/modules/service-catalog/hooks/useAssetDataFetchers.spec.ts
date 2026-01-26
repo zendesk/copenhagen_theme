@@ -49,6 +49,7 @@ describe("useAssetDataFetchers (direct option IDs)", () => {
     );
 
     (global.fetch as jest.Mock).mockResolvedValueOnce({
+      ok: true,
       json: () => Promise.resolve(mockAssetResponse),
     });
 
@@ -99,25 +100,34 @@ describe("useAssetDataFetchers (direct option IDs)", () => {
     expect(response).toBeUndefined();
   });
 
-  it("fetchAssets: returns undefined on error", async () => {
+  it("fetchAssets: throws error on network failure", async () => {
     (global.fetch as jest.Mock).mockRejectedValueOnce(new Error("boom"));
 
     const { result } = renderHook(() =>
       useAssetDataFetchers("AO-123", "AT-999")
     );
 
-    let response:
-      | { assetIds: string | undefined; assetDescription: string | undefined }
-      | undefined;
-    await act(async () => {
-      response = await result.current.fetchAssets();
+    await expect(result.current.fetchAssets()).rejects.toThrow("boom");
+  });
+
+  it("fetchAssets: throws error on non-ok response", async () => {
+    (global.fetch as jest.Mock).mockResolvedValueOnce({
+      ok: false,
+      status: 404,
     });
 
-    expect(response).toBeUndefined();
+    const { result } = renderHook(() =>
+      useAssetDataFetchers("AO-123", "AT-999")
+    );
+
+    await expect(result.current.fetchAssets()).rejects.toThrow(
+      "Error fetching asset data"
+    );
   });
 
   it("fetchAssetTypes: returns object with ids, hidden flag, description, and name", async () => {
     (global.fetch as jest.Mock).mockResolvedValueOnce({
+      ok: true,
       json: () =>
         Promise.resolve(
           assetTypeOptionRecordPayload(
@@ -179,30 +189,25 @@ describe("useAssetDataFetchers (direct option IDs)", () => {
     expect(out).toBeUndefined();
   });
 
-  it("fetchAssetTypes: returns { undefined, undefined, undefined, undefined } on error", async () => {
+  it("fetchAssetTypes: throws error on network failure", async () => {
     (global.fetch as jest.Mock).mockRejectedValueOnce(new Error("network"));
 
     const { result } = renderHook(() => useAssetDataFetchers("AO-1", "AT-err"));
 
-    let out:
-      | {
-          assetTypeIds?: string;
-          isHiddenAssetsType?: boolean;
-          assetTypeDescription?: string;
-          assetTypeName?: string;
-        }
-      | undefined;
+    await expect(result.current.fetchAssetTypes()).rejects.toThrow("network");
+  });
 
-    await act(async () => {
-      out = await result.current.fetchAssetTypes();
+  it("fetchAssetTypes: throws error on non-ok response", async () => {
+    (global.fetch as jest.Mock).mockResolvedValueOnce({
+      ok: false,
+      status: 500,
     });
 
-    expect(out).toEqual({
-      assetTypeIds: undefined,
-      isHiddenAssetsType: undefined,
-      assetTypeDescription: undefined,
-      assetTypeName: undefined,
-    });
+    const { result } = renderHook(() => useAssetDataFetchers("AO-1", "AT-err"));
+
+    await expect(result.current.fetchAssetTypes()).rejects.toThrow(
+      "Error fetching asset type data"
+    );
   });
 
   it("gracefully handles both option IDs undefined", async () => {
