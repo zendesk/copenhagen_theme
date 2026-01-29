@@ -1,3 +1,16 @@
+# [4.26.0](https://github.com/zendesk/copenhagen_theme/compare/v4.25.1...v4.26.0) (2026-01-29)
+
+
+### Bug Fixes
+
+* open suggested artcle in new tab ([4272045](https://github.com/zendesk/copenhagen_theme/commit/42720452bd696c5271f64e0cb8e325ba69b6cb29))
+* relabel a string to avoid leaf node issue ([20dd1a9](https://github.com/zendesk/copenhagen_theme/commit/20dd1a9ce01da833b8977792ce1e2dcf5408f92e))
+
+
+### Features
+
+* enable reusable attachment field and uploads in Service Catalog items ([f9b205e](https://github.com/zendesk/copenhagen_theme/commit/f9b205e74b7fe39c6346a278320163528009d121))
+
 ## [4.25.1](https://github.com/zendesk/copenhagen_theme/compare/v4.25.0...v4.25.1) (2026-01-12)
 
 
