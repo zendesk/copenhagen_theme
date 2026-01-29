@@ -88,7 +88,7 @@ export function RequestsList({
     throw loadingError;
   }
 
-  const { customStatuses } = useCustomStatuses(customStatusesEnabled);
+  const { customStatuses } = useCustomStatuses(customStatusesEnabled, locale);
 
   const handleTabSelected = (newSelectedTab: SelectedTab): void => {
     push({
