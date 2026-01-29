@@ -51,6 +51,7 @@ jest.mock("./ItemRequestForm", () => ({
     </form>
   ),
   ASSET_TYPE_KEY: "zen:custom_object:standard::itam_asset_type",
+  ASSET_KEY: "zen:custom_object:standard::itam_asset",
 }));
 
 import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
@@ -154,6 +155,10 @@ describe("ServiceCatalogItem", () => {
       setRequestFields: jest.fn(),
       handleChange: jest.fn(),
       isRequestFieldsLoading: false,
+      assetTypeHiddenValue: "",
+      isAssetTypeHidden: false,
+      assetTypeIds: [],
+      assetIds: [],
     });
   });
 

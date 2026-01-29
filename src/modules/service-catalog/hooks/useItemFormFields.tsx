@@ -6,6 +6,58 @@ import type { EndUserCondition } from "../../ticket-fields/data-types/EndUserCon
 import { getCustomObjectKey } from "../../ticket-fields/fields/LookupField";
 import { getVisibleFields } from "../../ticket-fields/getVisibleFields";
 import linkifyStr from "linkify-string";
+import { useAssetDataFetchers } from "./useAssetDataFetchers";
+import type {
+  AssetTypeOptionData,
+  AssetOptionData,
+  AssetConfig,
+} from "../data-types/Assets";
+
+const ASSET_TYPE_KEY = "zen:custom_object:standard::itam_asset_type";
+const ASSET_KEY = "zen:custom_object:standard::itam_asset";
+
+const processAssetConfig = (
+  assetTypeData?: AssetTypeOptionData,
+  assetData?: AssetOptionData
+): AssetConfig => {
+  let assetTypeIdsList: string[] = [];
+  if (assetTypeData?.assetTypeIds) {
+    const raw = assetTypeData.assetTypeIds;
+    if (Array.isArray(raw)) {
+      assetTypeIdsList = raw.map(String);
+    } else if (typeof raw === "string") {
+      assetTypeIdsList = raw.split(",");
+    }
+    assetTypeIdsList = assetTypeIdsList.map((s) => s.trim()).filter(Boolean);
+  }
+
+  let assetIdsList: string[] = [];
+  if (assetData?.assetIds) {
+    const raw = assetData.assetIds;
+    if (typeof raw === "string") {
+      assetIdsList = raw.split(",");
+    } else if (Array.isArray(raw)) {
+      assetIdsList = raw.map(String);
+    }
+    assetIdsList = assetIdsList.map((s) => s.trim()).filter(Boolean);
+  }
+
+  const isHidden = !!assetTypeData?.isHiddenAssetsType;
+
+  return {
+    assetTypeIds: assetTypeIdsList,
+    assetIds: assetIdsList,
+    isAssetTypeHidden: isHidden,
+    assetTypeHiddenValue:
+      isHidden && assetTypeIdsList[0] ? assetTypeIdsList[0] : "",
+    assetTypeLabel: assetTypeData?.assetTypeName,
+    assetTypeDescription: assetTypeData?.assetTypeDescription,
+    assetTypeIsRequired: assetTypeData?.isRequired || false,
+    assetLabel: assetData?.assetName,
+    assetDescription: assetData?.assetDescription,
+    assetIsRequired: assetData?.isRequired || false,
+  };
+};
 
 const getFieldValue = (field: TicketField) => {
   if (field.type === "tagger") {
@@ -53,6 +105,31 @@ const isAssociatedLookupField = (field: TicketField) => {
     return true;
   }
   return false;
+};
+
+const enrichFieldsWithAssetConfig = (
+  fields: TicketFieldObject[],
+  assetConfig: AssetConfig
+): TicketFieldObject[] => {
+  return fields.map((field) => {
+    if (field.relationship_target_type === ASSET_TYPE_KEY) {
+      return {
+        ...field,
+        label: assetConfig.assetTypeLabel || field.label,
+        description: assetConfig.assetTypeDescription || field.description,
+        required: assetConfig.assetTypeIsRequired || field.required,
+      };
+    }
+    if (field.relationship_target_type === ASSET_KEY) {
+      return {
+        ...field,
+        label: assetConfig.assetLabel || field.label,
+        description: assetConfig.assetDescription || field.description,
+        required: assetConfig.assetIsRequired || field.required,
+      };
+    }
+    return field;
+  });
 };
 
 interface FetchTicketFieldsResult {
@@ -139,29 +216,77 @@ export function useItemFormFields(
     useState<TicketFieldObject | null>();
   const [error, setError] = useState<unknown>(null);
   const [isRequestFieldsLoading, setIsRequestFieldsLoading] = useState(false);
+  const [assetConfig, setAssetConfig] = useState<AssetConfig>({
+    assetTypeIds: [],
+    assetIds: [],
+    isAssetTypeHidden: false,
+    assetTypeHiddenValue: "",
+    assetTypeIsRequired: false,
+    assetIsRequired: false,
+  });
+
+  const assetOptionId =
+    serviceCatalogItem?.custom_object_fields?.["standard::asset_option"];
+  const assetTypeOptionId =
+    serviceCatalogItem?.custom_object_fields?.["standard::asset_type_option"];
+
+  const { fetchAssets, fetchAssetTypes } = useAssetDataFetchers(
+    assetOptionId ?? "",
+    assetTypeOptionId ?? ""
+  );
 
   useEffect(() => {
     if (!serviceCatalogItem?.form_id) return;
 
-    const fetchAndSetFields = async () => {
+    let alive = true;
+
+    const fetchAllData = async () => {
       setIsRequestFieldsLoading(true);
       setError(null);
 
       try {
+        const [ticketFieldsResult, assetTypeData, assetData] =
+          await Promise.all([
+            fetchTicketFields(serviceCatalogItem.form_id, baseLocale),
+            fetchAssetTypes(),
+            fetchAssets(),
+          ]);
+
+        if (!alive) return;
+
         const { requestFields, associatedLookupField, endUserConditions } =
-          await fetchTicketFields(serviceCatalogItem.form_id, baseLocale);
+          ticketFieldsResult;
+
+        const processedAssetConfig = processAssetConfig(
+          assetTypeData,
+          assetData
+        );
+        setAssetConfig(processedAssetConfig);
         setAssociatedLookupField(associatedLookupField);
         setEndUserConditions(endUserConditions);
-        setAllRequestFields(requestFields);
+
+        const enrichedFields = enrichFieldsWithAssetConfig(
+          requestFields,
+          processedAssetConfig
+        );
+        setAllRequestFields(enrichedFields);
       } catch (error) {
-        setError(error);
+        if (alive) {
+          setError(error);
+        }
       } finally {
-        setIsRequestFieldsLoading(false);
+        if (alive) {
+          setIsRequestFieldsLoading(false);
+        }
       }
     };
 
-    fetchAndSetFields();
-  }, [baseLocale, serviceCatalogItem]);
+    fetchAllData();
+
+    return () => {
+      alive = false;
+    };
+  }, [baseLocale, serviceCatalogItem?.form_id, fetchAssets, fetchAssetTypes]);
 
   const handleChange = useCallback(
     (field: TicketFieldObject, value: TicketFieldObject["value"]) => {
@@ -185,5 +310,9 @@ export function useItemFormFields(
     setRequestFields: setAllRequestFields,
     handleChange,
     isRequestFieldsLoading,
+    assetTypeHiddenValue: assetConfig.assetTypeHiddenValue,
+    isAssetTypeHidden: assetConfig.isAssetTypeHidden,
+    assetTypeIds: assetConfig.assetTypeIds,
+    assetIds: assetConfig.assetIds,
   };
 }
