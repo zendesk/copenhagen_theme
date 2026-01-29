@@ -1,3 +1,10 @@
+## [4.26.1](https://github.com/zendesk/copenhagen_theme/compare/v4.26.0...v4.26.1) (2026-01-29)
+
+
+### Bug Fixes
+
+* updated new-request-form translation strings to add external link label ([6293e9a](https://github.com/zendesk/copenhagen_theme/commit/6293e9a717d4133675d16da031010c7044978c17)), closes [#734](https://github.com/zendesk/copenhagen_theme/issues/734)
+
 # [4.26.0](https://github.com/zendesk/copenhagen_theme/compare/v4.25.1...v4.26.0) (2026-01-29)
 
 
