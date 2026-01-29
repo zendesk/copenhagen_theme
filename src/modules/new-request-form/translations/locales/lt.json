@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Tolesnis stebėjimas, kurio metu prašoma {{parentId}}",
   "new-request-form.required-fields-info": "Laukai, pažymėti žvaigždute (*), yra privalomi.",
   "new-request-form.submit": "Pateikti",
-  "new-request-form.suggested-articles": "Siūlomi straipsniai"
+  "new-request-form.suggested-articles": "Siūlomi straipsniai",
+  "new-request-form.suggested-articles-external-link-label": "(Opens in a new tab)"
 }

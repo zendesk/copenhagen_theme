@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Подальші дії за запитом {{parentId}}",
   "new-request-form.required-fields-info": "Поля, позначені зірочкою (*), є обов'язковими для заповнення.",
   "new-request-form.submit": "Надіслати",
-  "new-request-form.suggested-articles": "Пропоновані статті"
+  "new-request-form.suggested-articles": "Пропоновані статті",
+  "new-request-form.suggested-articles-external-link-label": "(відкривається в новій вкладці)"
 }

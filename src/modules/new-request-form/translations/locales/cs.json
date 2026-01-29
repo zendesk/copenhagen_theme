@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Navazující tiket pro požadavek {{parentId}}",
   "new-request-form.required-fields-info": "Pole označená hvězdičkou (*) jsou povinná.",
   "new-request-form.submit": "Odeslat",
-  "new-request-form.suggested-articles": "Doporučené články"
+  "new-request-form.suggested-articles": "Doporučené články",
+  "new-request-form.suggested-articles-external-link-label": "(Otevře se na nové záložce.)"
 }

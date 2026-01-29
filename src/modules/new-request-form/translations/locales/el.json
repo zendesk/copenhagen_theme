@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Συμπληρωματικό στο αίτημα {{parentId}}",
   "new-request-form.required-fields-info": "Τα πεδία με αστερίσκο (*) είναι υποχρεωτικά.",
   "new-request-form.submit": "Υποβολή",
-  "new-request-form.suggested-articles": "Προτεινόμενα άρθρα"
+  "new-request-form.suggested-articles": "Προτεινόμενα άρθρα",
+  "new-request-form.suggested-articles-external-link-label": "(Ανοίγει σε νέα καρτέλα)"
 }

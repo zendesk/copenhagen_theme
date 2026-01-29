@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Tindak lanjut atas permintaan {{parentId}}",
   "new-request-form.required-fields-info": "Bidang yang ditandai dengan tanda bintang (*) wajib diisi.",
   "new-request-form.submit": "Kirim",
-  "new-request-form.suggested-articles": "Artikel yang disarankan"
+  "new-request-form.suggested-articles": "Artikel yang disarankan",
+  "new-request-form.suggested-articles-external-link-label": "(Terbuka di tab baru)"
 }

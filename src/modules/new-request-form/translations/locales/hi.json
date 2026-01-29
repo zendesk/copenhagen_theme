@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "{{parentId}} का अनुरोध करने के लिए फ़ॉलो-अप",
   "new-request-form.required-fields-info": "तारांकन चिह्न (*) से चिह्नित फ़ील्ड आवश्यक हैं।",
   "new-request-form.submit": "भेजें",
-  "new-request-form.suggested-articles": "सुझाए गए आलेख"
+  "new-request-form.suggested-articles": "सुझाए गए आलेख",
+  "new-request-form.suggested-articles-external-link-label": "(एक नए टैब में खुलता है)"
 }

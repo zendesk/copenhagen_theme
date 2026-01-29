@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "متابعة طلب {{parentId}}",
   "new-request-form.required-fields-info": "الحقول التي عليها علامة النجمة (*) مطلوبة.",
   "new-request-form.submit": "إرسال",
-  "new-request-form.suggested-articles": "مقالات مقترحة"
+  "new-request-form.suggested-articles": "مقالات مقترحة",
+  "new-request-form.suggested-articles-external-link-label": "(يفتح في علامة تبويب جديدة)"
 }

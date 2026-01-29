@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Kontynuacja zlecenia {{parentId}}",
   "new-request-form.required-fields-info": "Pola oznaczone gwiazdką (*) są wymagane.",
   "new-request-form.submit": "Wyślij",
-  "new-request-form.suggested-articles": "Propozycje artykułów"
+  "new-request-form.suggested-articles": "Propozycje artykułów",
+  "new-request-form.suggested-articles-external-link-label": "(otwiera się w nowej karcie)"
 }

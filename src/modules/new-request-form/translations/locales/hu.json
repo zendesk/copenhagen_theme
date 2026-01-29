@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Nyomon követés a(z) {{parentId}} kérelemhez",
   "new-request-form.required-fields-info": "A csillaggal (*) jelzett mezők kitöltése kötelező.",
   "new-request-form.submit": "Küldés",
-  "new-request-form.suggested-articles": "Javasolt cikkek"
+  "new-request-form.suggested-articles": "Javasolt cikkek",
+  "new-request-form.suggested-articles-external-link-label": "(Új lapon nyílik meg)"
 }
