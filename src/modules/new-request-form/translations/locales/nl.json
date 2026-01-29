@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Follow-up van aanvraag {{parentId}}",
   "new-request-form.required-fields-info": "Velden met een sterretje (*) zijn vereist.",
   "new-request-form.submit": "Verzenden",
-  "new-request-form.suggested-articles": "Voorgestelde artikelen"
+  "new-request-form.suggested-articles": "Voorgestelde artikelen",
+  "new-request-form.suggested-articles-external-link-label": "(Opent in een nieuw tabblad)"
 }

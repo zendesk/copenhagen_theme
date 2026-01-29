@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Nadväzujúci tiket pri žiadosti {{parentId}}",
   "new-request-form.required-fields-info": "Polia označené hviezdičkou (*) sú povinné.",
   "new-request-form.submit": "Vložiť",
-  "new-request-form.suggested-articles": "Odporúčané články"
+  "new-request-form.suggested-articles": "Odporúčané články",
+  "new-request-form.suggested-articles-external-link-label": "(Otvorí sa na novej karte)"
 }

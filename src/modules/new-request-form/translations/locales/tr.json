@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "{{parentId}} talep etmek için ekleyin",
   "new-request-form.required-fields-info": "Yıldız işareti (*) ile işaretlenen alanların doldurulması zorunludur.",
   "new-request-form.submit": "Gönder",
-  "new-request-form.suggested-articles": "Önerilen makaleler"
+  "new-request-form.suggested-articles": "Önerilen makaleler",
+  "new-request-form.suggested-articles-external-link-label": "(Yeni bir sekmede açılır)"
 }

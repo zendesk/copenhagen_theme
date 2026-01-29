@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "跟进请求 {{parentId}}",
   "new-request-form.required-fields-info": "标有星号 (*) 的字段是必填字段。",
   "new-request-form.submit": "提交",
-  "new-request-form.suggested-articles": "推荐文章"
+  "new-request-form.suggested-articles": "推荐文章",
+  "new-request-form.suggested-articles-external-link-label": "（在新标签中打开）"
 }

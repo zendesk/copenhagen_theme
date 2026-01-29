@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Uppföljning av förfrågan {{parentId}}",
   "new-request-form.required-fields-info": "Fält markerade med en asterisk (*) är obligatoriska.",
   "new-request-form.submit": "Skicka in",
-  "new-request-form.suggested-articles": "Föreslagna artiklar"
+  "new-request-form.suggested-articles": "Föreslagna artiklar",
+  "new-request-form.suggested-articles-external-link-label": "(Öppnas på en ny flik)"
 }

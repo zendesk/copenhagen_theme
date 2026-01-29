@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Theo dõi để yêu cầu {{parentId}}",
   "new-request-form.required-fields-info": "Các trường đánh dấu sao (*) là bắt buộc.",
   "new-request-form.submit": "Gửi",
-  "new-request-form.suggested-articles": "Bài viết được đề xuất"
+  "new-request-form.suggested-articles": "Bài viết được đề xuất",
+  "new-request-form.suggested-articles-external-link-label": "(Mở trong tab mới)"
 }

@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Folgeanfrage zu {{parentId}}",
   "new-request-form.required-fields-info": "Mit einem Sternchen (*) markierte Felder sind Pflichtfelder.",
   "new-request-form.submit": "Senden",
-  "new-request-form.suggested-articles": "Vorgeschlagene Beiträge"
+  "new-request-form.suggested-articles": "Vorgeschlagene Beiträge",
+  "new-request-form.suggested-articles-external-link-label": "(Wird in einer neuen Registerkarte geöffnet)"
 }

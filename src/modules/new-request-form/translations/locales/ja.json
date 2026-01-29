@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "リクエスト{{parentId}}の補足",
   "new-request-form.required-fields-info": "アスタリスク（*）が付いているフィールドは必須です。",
   "new-request-form.submit": "送信",
-  "new-request-form.suggested-articles": "おすすめの記事"
+  "new-request-form.suggested-articles": "おすすめの記事",
+  "new-request-form.suggested-articles-external-link-label": "（新しいタブで開きます）"
 }
