@@ -11,7 +11,7 @@ import styled from "styled-components";
 import { Alert } from "@zendeskgarden/react-notifications";
 import { useFormSubmit } from "./useFormSubmit";
 import { usePrefilledTicketFields } from "./usePrefilledTicketFields";
-import { Attachments } from "./fields/attachments/Attachments";
+import { Attachments } from "../ticket-fields/fields/attachments/Attachments";
 import { getVisibleFields } from "../ticket-fields/getVisibleFields";
 import { CcField } from "./fields/cc-field/CcField";
 import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";

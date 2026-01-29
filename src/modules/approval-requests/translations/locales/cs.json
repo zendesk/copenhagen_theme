@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Čeká se na rozhodnutí",
   "approval-requests.status.denied": "Zamítnuto",
   "approval-requests.status.info-needed": "Požadované informace",
-  "approval-requests.status.withdrawn": "Staženo"
+  "approval-requests.status.withdrawn": "Staženo",
+  "txt.approval_requests.clarification.cancel_button": "Zrušit",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Zadejte komentář a požádejte o další informace o tomto požadavku na schválení",
+  "txt.approval_requests.clarification.description": "Přidejte poznámky nebo požádejte o další informace o tomto požadavku",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Nemůžete přidat další komentáře, schvalovatelé je ale mohou schválit nebo zamítnout.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Bylo dosaženo limitu komentářů",
+  "txt.approval_requests.clarification.new_comment_indicator": "Nový komentář",
+  "txt.approval_requests.clarification.new_comments_indicator": "Nové komentáře",
+  "txt.approval_requests.clarification.submit_button": "Odeslat",
+  "txt.approval_requests.clarification.title": "Komentáře",
+  "txt.approval_requests.validation.characters_remaining.few": "Zbývající počet znaků: {{numCharacters}}",
+  "txt.approval_requests.validation.characters_remaining.many": "Zbývající počet znaků: {{numCharacters}}",
+  "txt.approval_requests.validation.characters_remaining.one": "Zbývá {{numCharacters}} znak",
+  "txt.approval_requests.validation.characters_remaining.other": "Zbývající počet znaků: {{numCharacters}}",
+  "txt.approval_requests.validation.characters_remaining.two": "Zbývající počet znaků: {{numCharacters}}",
+  "txt.approval_requests.validation.characters_remaining.zero": "Zbývající počet znaků: {{numCharacters}}",
+  "txt.approval_requests.validation.empty_comment_error": "Zadejte komentář"
 }

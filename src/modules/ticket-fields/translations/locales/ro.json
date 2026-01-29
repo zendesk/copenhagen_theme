@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Alegeți un fișier sau glisați și fixați aici",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Glisați fișierele aici",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Fișier: {{fileName}}, apăsați pe Ștergere pentru a elimina",
+  "cph-theme-ticket-fields.attachments.remove-file": "Eliminare fișier",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Eliminare fișier: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Oprire încărcare",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Opriți încărcarea {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "A apărut o eroare la încărcarea {{fileName}}. Încercați din nou sau încărcați un alt fișier.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Eroare de încărcare",
+  "cph-theme-ticket-fields.attachments.uploading": "Se încarcă {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Ultimele 4 cifre)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Înapoi",
   "cph-theme-ticket-fields.dropdown.empty-option": "Selectați o opțiune",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Se încarcă articolele...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Nu s-au găsit corespondențe",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Căutare {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Căutare {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Încărcarea {{fileName}} a eșuat"
 }

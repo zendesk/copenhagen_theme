@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Keputusan tertunda",
   "approval-requests.status.denied": "Ditolak",
   "approval-requests.status.info-needed": "Info yang dibutuhkan",
-  "approval-requests.status.withdrawn": "Ditarik"
+  "approval-requests.status.withdrawn": "Ditarik",
+  "txt.approval_requests.clarification.cancel_button": "Batal",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Masukkan komentar untuk meminta informasi tambahan tentang permintaan persetujuan ini",
+  "txt.approval_requests.clarification.description": "Tambahkan catatan atau minta informasi tambahan tentang permintaan ini",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Anda tidak dapat menambahkan lebih banyak komentar, penyetujui masih dapat menyetujui atau menolak.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Batas komentar tercapai",
+  "txt.approval_requests.clarification.new_comment_indicator": "Komentar baru",
+  "txt.approval_requests.clarification.new_comments_indicator": "Komentar baru",
+  "txt.approval_requests.clarification.submit_button": "Kirim",
+  "txt.approval_requests.clarification.title": "Komentar",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} karakter tersisa",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} karakter tersisa",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}} karakter tersisa",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} karakter tersisa",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} karakter tersisa",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} karakter tersisa",
+  "txt.approval_requests.validation.empty_comment_error": "Masukkan komentar"
 }

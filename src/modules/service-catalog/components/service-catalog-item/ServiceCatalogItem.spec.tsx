@@ -34,6 +34,11 @@ jest.mock("../../../shared/notifications", () => ({
   addFlashNotification: jest.fn(),
 }));
 
+// Mock useAttachmentsOption
+jest.mock("../../hooks/useAttachmentsOption", () => ({
+  useAttachmentsOption: jest.fn(),
+}));
+
 // Mock ItemRequestForm to simplify testing
 jest.mock("./ItemRequestForm", () => ({
   ItemRequestForm: ({
@@ -50,6 +55,7 @@ jest.mock("./ItemRequestForm", () => ({
 
 import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
 import { useItemFormFields } from "../../hooks/useItemFormFields";
+import { useAttachmentsOption } from "../../hooks/useAttachmentsOption";
 
 const mockUseServiceCatalogItem = useServiceCatalogItem as jest.MockedFunction<
   typeof useServiceCatalogItem
@@ -92,6 +98,7 @@ describe("ServiceCatalogItem", () => {
     custom_object_fields: {
       "standard::asset_option": "",
       "standard::asset_type_option": "",
+      "standard::attachment_option": "",
     },
   };
 
@@ -122,8 +129,18 @@ describe("ServiceCatalogItem", () => {
     relationship_target_type: "standard::service_catalog_item",
   };
 
+  const mockUseAttachmentsOption = useAttachmentsOption as jest.MockedFunction<
+    typeof useAttachmentsOption
+  >;
+
   beforeEach(() => {
     jest.clearAllMocks();
+
+    mockUseAttachmentsOption.mockReturnValue({
+      attachmentsOption: undefined,
+      errorAttachmentsOption: null,
+      isLoadingAttachmentsOption: false,
+    });
 
     mockUseServiceCatalogItem.mockReturnValue({
       serviceCatalogItem: mockServiceCatalogItem,
@@ -136,6 +153,7 @@ describe("ServiceCatalogItem", () => {
       error: null,
       setRequestFields: jest.fn(),
       handleChange: jest.fn(),
+      isRequestFieldsLoading: false,
     });
   });
 

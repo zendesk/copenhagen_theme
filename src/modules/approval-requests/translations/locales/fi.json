@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Odottaa päätöstä",
   "approval-requests.status.denied": "Hylätty",
   "approval-requests.status.info-needed": "Tietoja tarvitaan",
-  "approval-requests.status.withdrawn": "Peruutettu"
+  "approval-requests.status.withdrawn": "Peruutettu",
+  "txt.approval_requests.clarification.cancel_button": "Peruuta",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Kirjoita kommentti pyytääksesi lisätietoja tästä hyväksyntäpyynnöstä",
+  "txt.approval_requests.clarification.description": "Lisää huomautuksia tai pyydä lisätietoja tästä pyynnöstä",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Et voi lisätä muita kommentteja, hyväksyjät voivat silti hyväksyä tai hylätä.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Kommenttien raja saavutettu",
+  "txt.approval_requests.clarification.new_comment_indicator": "Uusi kommentti",
+  "txt.approval_requests.clarification.new_comments_indicator": "Uusia kommentteja",
+  "txt.approval_requests.clarification.submit_button": "Lähetä",
+  "txt.approval_requests.clarification.title": "Kommentit",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} merkkiä jäljellä",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} merkkiä jäljellä",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}} merkki jäljellä",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} merkkiä jäljellä",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} merkkiä jäljellä",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} merkkiä jäljellä",
+  "txt.approval_requests.validation.empty_comment_error": "Lisää kommentti"
 }

@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Escolha um arquivo ou arraste e solte aqui",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Solte os arquivos aqui",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Pressione Delete para remover o arquivo {{fileName}}",
+  "cph-theme-ticket-fields.attachments.remove-file": "Remover arquivo",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Remover arquivo: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Interromper carregamento",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Interromper carregamento do arquivo {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Erro ao carregar {{fileName}}. Tente novamente ou carregue outro arquivo.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Erro de carregamento",
+  "cph-theme-ticket-fields.attachments.uploading": "Carregando {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Voltar",
   "cph-theme-ticket-fields.dropdown.empty-option": "Selecionar uma opção",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Carregando itens...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Nenhuma correspondência encontrada",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Pesquisar {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Pesquisar {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Erro ao carregar {{fileName}}"
 }

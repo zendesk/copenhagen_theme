@@ -1,4 +1,5 @@
 {
+  "service-catalog.attachments-required-error": "Încărcați un fișier pentru a continua",
   "service-catalog.clear-search": "Golire căutare",
   "service-catalog.empty-state.description": "Odată ce serviciile sunt adăugate în catalog, le veți găsi aici.",
   "service-catalog.empty-state.go-to-homepage": "Mergeți la pagina de pornire",
@@ -6,8 +7,11 @@
   "service-catalog.empty-state.search-description": "Introduceți cuvintele cheie în câmpul de căutare.",
   "service-catalog.item.read-less": "Citiți mai puțin",
   "service-catalog.item.read-more": "Citiți mai mult",
+  "service-catalog.item.serial-number-label": "Număr de serie: {{serialNumber}}",
   "service-catalog.item.service-request-error-message": "Așteptați un moment și apoi încercați din nou",
   "service-catalog.item.service-request-error-title": "Serviciul nu a putut fi trimis",
+  "service-catalog.item.service-request-refresh-link-text": "Reîmprospătați pagina",
+  "service-catalog.item.service-request-refresh-message": "Reîmprospătați pagina și încercați din nou în câteva secunde.",
   "service-catalog.item.service-request-submitted": "Solicitare de serviciu trimisă",
   "service-catalog.item.submit-button": "Trimitere solicitare",
   "service-catalog.pagination.next": "Înainte",

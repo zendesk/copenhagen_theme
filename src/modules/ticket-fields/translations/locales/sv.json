@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Välj en fil eller dra och släpp den här",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Släpp filer här",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Fil: {{fileName}}, tryck på delete-tangenten för att ta bort",
+  "cph-theme-ticket-fields.attachments.remove-file": "Ta bort fil",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Ta bort fil: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Stoppa uppladdning",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Stoppa uppladdning av {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Ett fel inträffade vid uppladdning av {{fileName}}. Försök igen eller ladda upp en annan fil.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Uppladdningsfel",
+  "cph-theme-ticket-fields.attachments.uploading": "Uppladdning av {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(4 sista siffror)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Tillbaka",
   "cph-theme-ticket-fields.dropdown.empty-option": "Välj ett alternativ",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Läser in objekt...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Inga träffar hittades",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Sök {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Sök {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Det gick inte att ladda upp {{fileName}}"
 }

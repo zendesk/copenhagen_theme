@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Vyberte soubor nebo ho sem přetáhněte",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Sem přetáhněte soubory",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Soubor: {{fileName}}, stisknutím klávesy delete jej smažete",
+  "cph-theme-ticket-fields.attachments.remove-file": "Odstranit soubor",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Odstranit soubor: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Zastavit upload",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Zastavit uploading {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Při uploadování souboru {{fileName}}došlo k chybě. Zkuste to znovu nebo uploadujte jiný soubor.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Chyba při uploadu",
+  "cph-theme-ticket-fields.attachments.uploading": "Uploaduje se soubor {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Poslední 4 číslice)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Zpět",
   "cph-theme-ticket-fields.dropdown.empty-option": "Vyberte možnost",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Načítání položek…",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Nebyly nalezeny žádné shody",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Hledat {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Hledat {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Chyba při uploadování {{fileName}}"
 }
