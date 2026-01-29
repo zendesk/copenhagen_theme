@@ -55,21 +55,50 @@ const mockGenerativeResponse = {
   },
 };
 
-const renderWithMock = (mock = mockGenerativeResponse) => {
-  // Mock fetch
+const renderWithMock = (
+  mock = mockGenerativeResponse,
+  statusSequence: string[] = ["completed"]
+) => {
+  // Mock fetch to simulate the polling flow
+  let statusCallCount = 0;
   global.fetch = jest.fn((url) => {
-    if (url.toString().includes("generate_reply")) {
-      return Promise.resolve({
-        json: () => Promise.resolve(mock),
-        ok: true,
-      });
-    }
-    if (url.toString().includes("generative_deflection")) {
+    const urlStr = url.toString();
+
+    // Initial call to generate_reply_v2
+    if (urlStr.includes("generate_reply_v2")) {
       return Promise.resolve({
         ok: true,
         json: () => Promise.resolve({}),
       });
     }
+
+    // Polling call to check status
+    if (urlStr.includes("generate_reply_status")) {
+      const status =
+        statusSequence[Math.min(statusCallCount, statusSequence.length - 1)];
+      statusCallCount++;
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ status }),
+      });
+    }
+
+    // Fetch the actual generated response
+    if (urlStr.includes("generated_response")) {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mock),
+      });
+    }
+
+    // Feedback submission
+    if (urlStr.includes("generative_deflection")) {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({}),
+      });
+    }
+
     return Promise.resolve({
       ok: false,
       json: () => Promise.resolve({}),
@@ -252,5 +281,47 @@ describe("GenerativeAnswerBotModal", () => {
       });
       expect(window.location.assign).toHaveBeenCalledWith(mockRequestPath);
     });
+  });
+
+  test("polls status multiple times before getting completed status", async () => {
+    jest.useFakeTimers();
+    renderWithMock(mockGenerativeResponse, ["pending", "pending", "completed"]);
+
+    // Should show loading initially
+    expect(screen.queryByText("This is a generated answer.")).toBeNull();
+
+    // Fast-forward time to allow polling and flush promises
+    await jest.runAllTimersAsync();
+
+    // Wait for the answer to appear after polling completes
+    expect(
+      await screen.findByText("This is a generated answer.")
+    ).toBeVisible();
+
+    // Verify fetch was called for status multiple times
+    expect(fetch).toHaveBeenCalledWith(
+      `/hc/answer_bot/generate_reply_status/${mockRequestId}`,
+      expect.any(Object)
+    );
+
+    jest.useRealTimers();
+  });
+
+  test("handles failed status and shows error", async () => {
+    renderWithMock(mockGenerativeResponse, ["failed"]);
+
+    // Wait for the modal to show the error state
+    expect(
+      await screen.findByText("An agent will be in touch soon")
+    ).toBeVisible();
+  });
+
+  test("handles not_found status and shows error", async () => {
+    renderWithMock(mockGenerativeResponse, ["not_found"]);
+
+    // Wait for the modal to show the error state
+    expect(
+      await screen.findByText("An agent will be in touch soon")
+    ).toBeVisible();
   });
 });
