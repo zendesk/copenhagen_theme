@@ -25,7 +25,7 @@ import { useTicketFields } from "../../hooks/useTicketFields";
 import { useCustomStatuses } from "../../hooks/useCustomStatuses";
 import { RequestLoadingState } from "./RequestLoadingState";
 import { useShowManyUsers } from "../../hooks/useShowManyUsers";
-interface RequestsListProps {
+export interface RequestsListProps {
   locale: string;
   customStatusesEnabled: boolean;
 }
@@ -40,7 +40,7 @@ export function RequestsList({
     {
       query: "",
       page: 1,
-      sort: null,
+      sort: { order: "desc", by: "updated_at" },
       selectedTab: { name: MY_REQUESTS_TAB_NAME },
       filters: {},
     },
@@ -88,7 +88,7 @@ export function RequestsList({
     throw loadingError;
   }
 
-  const { customStatuses } = useCustomStatuses(customStatusesEnabled);
+  const { customStatuses } = useCustomStatuses(customStatusesEnabled, locale);
 
   const handleTabSelected = (newSelectedTab: SelectedTab): void => {
     push({

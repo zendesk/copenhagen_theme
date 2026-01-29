@@ -9,7 +9,7 @@ import { Alert } from "@zendeskgarden/react-notifications";
 import { Dots } from "@zendeskgarden/react-loaders";
 import styled from "styled-components";
 import type { Organization, User } from "../../../data-types";
-import { usePushNotification } from "../../../hooks/usePushNotification";
+import { notify } from "../../../../shared/notifications/notify";
 import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 
 interface OrganizationsManagementProps {
@@ -60,8 +60,6 @@ export default function FollowOrganizationsModal(
   );
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
-
-  const pushNotification = usePushNotification();
 
   const modalContainer = useModalContainer();
 
@@ -188,9 +186,9 @@ export default function FollowOrganizationsModal(
     setIsUpdating(false);
 
     if (!updatedOrganizationSubscriptionState.some((oss) => oss.isError)) {
-      pushNotification({
+      notify({
         type: "success",
-        title: t(
+        message: t(
           "guide-requests-app.organizationSubscriptionUpdated",
           "Organization subscription updated"
         ),

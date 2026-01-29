@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import type { Request, RequestUser } from "../data-types";
 import { useTranslation } from "react-i18next";
-import { usePushNotification } from "./usePushNotification";
+import { notify } from "../../shared/notifications/notify";
 import withAbort from "../utils/withAbort";
 import type { RequestListParams } from "../data-types/request-list-params";
 import {
@@ -70,8 +70,6 @@ export function useRequests(
     isLoading: true,
   });
 
-  const pushNotification = usePushNotification();
-
   async function fetchRequests(signal: AbortSignal) {
     const searchParams = new URLSearchParams();
     const searchQuery = query.length ? query : "*";
@@ -113,9 +111,9 @@ export function useRequests(
       if (response.status === 406) {
         const { error } = await response.json();
         if (error.includes("Number of search words exceeds the limit")) {
-          pushNotification({
+          notify({
             type: "error",
-            title: t(
+            message: t(
               "guide-requests-app.SearchPhraseIsTooLong",
               "Search phrase is too long. Try something shorter."
             ),

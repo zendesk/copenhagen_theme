@@ -33,7 +33,7 @@ import {
 const defaultParams: RequestListParams = {
   query: "",
   page: 1,
-  sort: null,
+  sort: { order: "desc", by: "updated_at" },
   selectedTab: { name: MY_REQUESTS_TAB_NAME },
   filters: {},
 };
@@ -95,6 +95,18 @@ describe("Rendering", () => {
     expect(screen.getAllByText("Jun 3, 2020")[0]).toBeInTheDocument();
     expect(screen.getAllByText("Open")[0]).toBeInTheDocument();
   }, 10000);
+
+  test("applies a default sort of updated at and descending", async () => {
+    await renderComponent();
+
+    expect(useParams).toHaveBeenCalledWith(
+      expect.objectContaining({
+        sort: { order: "desc", by: "updated_at" },
+      }),
+      expect.any(Function),
+      expect.any(Function)
+    );
+  });
 
   test("renders the request description when the subject is empty", async () => {
     await renderComponent();
@@ -230,7 +242,7 @@ describe("Sorting", () => {
 
   describe("updated at", () => {
     test("<RequestsList /> can sort on the column", async () => {
-      await renderComponent();
+      await renderComponent({ sort: null });
 
       fireEvent.click(screen.getByRole("button", { name: /updated date/i }));
 

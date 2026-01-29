@@ -9,7 +9,6 @@ import {
   Item,
   Autocomplete,
 } from "@zendeskgarden/react-dropdowns.legacy";
-import { useDownshiftEnvironment } from "../../../../shared/garden-shadow/src/useDownshiftEnvironment";
 import type { Organization } from "../../../data-types";
 
 interface OrganizationsDropdownProps {
@@ -35,7 +34,6 @@ export default function OrganizationsDropdown({
   const { t } = useTranslation();
 
   const [inputValue, setInputValue] = useState<string>("");
-  const downshiftEnvironment = useDownshiftEnvironment();
 
   const selectedOrganization = organizations.find(
     (organization) => organization.id === currentOrganizationId
@@ -51,7 +49,6 @@ export default function OrganizationsDropdown({
       onInputValueChange={setInputValue}
       selectedItem={currentOrganizationId}
       onSelect={onSelect}
-      downshiftProps={{ environment: downshiftEnvironment }}
     >
       <StyledField>
         <Label>{t("guide-requests-app.organization", "Organization")}</Label>

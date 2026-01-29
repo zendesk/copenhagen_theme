@@ -20,7 +20,6 @@ import {
 import styled from "styled-components";
 import type { Organization } from "../../data-types";
 import { Mobile, Desktop } from "../../utils/mediaQuery";
-import { useDownshiftEnvironment } from "../../../shared/garden-shadow/src/useDownshiftEnvironment";
 import { useState } from "react";
 
 const Container = styled.div`
@@ -68,7 +67,6 @@ export default function RequestsTabs({
   const { t } = useTranslation();
 
   const [iconIsRotated, setIconIsRotated] = useState(false);
-  const downshiftEnvironment = useDownshiftEnvironment();
 
   const getTabLabel = (tab: SelectedTabName) => {
     switch (tab) {
@@ -115,7 +113,6 @@ export default function RequestsTabs({
       <Mobile>
         <Dropdown
           onSelect={handleMobileTabSelected}
-          downshiftProps={{ environment: downshiftEnvironment }}
           onStateChange={({ isOpen }) => {
             if (isOpen != null) {
               setIconIsRotated(isOpen);

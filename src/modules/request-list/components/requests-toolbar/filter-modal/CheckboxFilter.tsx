@@ -1,4 +1,3 @@
-import { useDownshiftEnvironment } from "../../../../shared/garden-shadow/src/useDownshiftEnvironment";
 import {
   Dropdown,
   Field,
@@ -52,7 +51,6 @@ export function CheckboxFilter({
 
   const { checkboxFilterValuesI18N } = useFilterTranslations();
   const [value, setValue] = useState<CheckboxFilterValue | null>(null);
-  const downshiftEnvironment = useDownshiftEnvironment();
 
   useEffect(() => {
     onSelect(validateForm(null));
@@ -64,11 +62,7 @@ export function CheckboxFilter({
   };
 
   return (
-    <Dropdown
-      selectedItem={value}
-      onSelect={handleSelect}
-      downshiftProps={{ environment: downshiftEnvironment }}
-    >
+    <Dropdown selectedItem={value} onSelect={handleSelect}>
       <Field>
         <Label>
           {t(

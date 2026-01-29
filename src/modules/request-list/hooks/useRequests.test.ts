@@ -1,4 +1,4 @@
-jest.mock("./usePushNotification");
+jest.mock("../../shared/notifications/notify");
 
 import type { Request, RequestUser } from "../data-types";
 import { renderHook } from "@testing-library/react-hooks";
@@ -8,7 +8,7 @@ import {
   MY_REQUESTS_TAB_NAME,
   CCD_REQUESTS_TAB_NAME,
 } from "../data-types/request-list-params";
-import { usePushNotification } from "./usePushNotification";
+import { notify } from "../../shared/notifications/notify";
 
 const signal = new AbortController().signal;
 
@@ -110,8 +110,7 @@ test("limits request results to 1000 records", async () => {
   );
 });
 
-test("calls push pushNotifications when requests fetches fails with a 406 error", async () => {
-  const pushNotification = jest.fn();
+test("calls notify when requests fetches fails with a 406 error", async () => {
   const push = jest.fn();
 
   (fetch as jest.Mock).mockImplementationOnce(() =>
@@ -122,14 +121,14 @@ test("calls push pushNotifications when requests fetches fails with a 406 error"
     })
   );
 
-  (usePushNotification as jest.Mock).mockReturnValue(pushNotification);
+  (notify as jest.Mock).mockReturnValue(notify);
 
   const { waitFor } = renderHook(() => useRequests(defaultParams, push));
 
   await waitFor(() => {
-    expect(pushNotification).toHaveBeenCalledWith({
+    expect(notify).toHaveBeenCalledWith({
       type: "error",
-      title: "Search phrase is too long. Try something shorter.",
+      message: "Search phrase is too long. Try something shorter.",
     });
     expect(push).toHaveBeenCalledWith({ page: 1, query: "" });
   });
