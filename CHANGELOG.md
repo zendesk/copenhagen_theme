@@ -1,3 +1,16 @@
+# [4.27.0](https://github.com/zendesk/copenhagen_theme/compare/v4.26.1...v4.27.0) (2026-02-02)
+
+
+### Bug Fixes
+
+* locale missing from custom statuses ([05027f6](https://github.com/zendesk/copenhagen_theme/commit/05027f6cb82b2d598c230f157afb8a475d838fca))
+* use same default sort applied to current list ([0e7751b](https://github.com/zendesk/copenhagen_theme/commit/0e7751bcc27f9be342c834f9e71839d9ed6635db))
+
+
+### Features
+
+* replace old request list with new ([d0c62a4](https://github.com/zendesk/copenhagen_theme/commit/d0c62a4631ce0ea3d5543fa90b0785ab97efd89a))
+
 ## [4.26.1](https://github.com/zendesk/copenhagen_theme/compare/v4.26.0...v4.26.1) (2026-01-29)
 
 
