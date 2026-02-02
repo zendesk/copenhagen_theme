@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Чакащ решение",
   "approval-requests.status.denied": "Отказан",
   "approval-requests.status.info-needed": "Нужна е информация",
-  "approval-requests.status.withdrawn": "Оттеглен"
+  "approval-requests.status.withdrawn": "Оттеглен",
+  "txt.approval_requests.clarification.cancel_button": "Отказ",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Въведете коментар, за да поискате допълнителна информация за тази заявка за одобрение",
+  "txt.approval_requests.clarification.description": "Добавете забележки или поискайте допълнителна информация за тази заявка",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Не можете да добавяте повече коментари, но одобряващите все още могат да одобряват или отказват.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Ограничението за коментари е достигнато",
+  "txt.approval_requests.clarification.new_comment_indicator": "Нов коментар",
+  "txt.approval_requests.clarification.new_comments_indicator": "Нови коментари",
+  "txt.approval_requests.clarification.submit_button": "Изпращане",
+  "txt.approval_requests.clarification.title": "Коментари",
+  "txt.approval_requests.validation.characters_remaining.few": "Остават {{numCharacters}} знака",
+  "txt.approval_requests.validation.characters_remaining.many": "Остават {{numCharacters}} знака",
+  "txt.approval_requests.validation.characters_remaining.one": "Остава {{numCharacters}} знак",
+  "txt.approval_requests.validation.characters_remaining.other": "Остават {{numCharacters}} знака",
+  "txt.approval_requests.validation.characters_remaining.two": "Остават {{numCharacters}} знака",
+  "txt.approval_requests.validation.characters_remaining.zero": "Остават {{numCharacters}} знака",
+  "txt.approval_requests.validation.empty_comment_error": "Въведете коментар"
 }

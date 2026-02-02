@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "[ผู้龍Ḉḥṓṓṓṓṡḛḛ αα ϝḭḭḽḛḛ ṓṓṛ ḍṛααḡ ααṇḍ ḍṛṓṓṗ ḥḛḛṛḛḛ龍ผู้]",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "[ผู้龍Ḍṛṓṓṗ ϝḭḭḽḛḛṡ ḥḛḛṛḛḛ龍ผู้]",
+  "cph-theme-ticket-fields.attachments.error-separator": "[ผู้龍; 龍ผู้]",
+  "cph-theme-ticket-fields.attachments.file": "[ผู้龍Ḟḭḭḽḛḛ: {{fileName}}, ṗṛḛḛṡṡ ḍḛḛḽḛḛṭḛḛ ṭṓṓ ṛḛḛṃṓṓṽḛḛ龍ผู้]",
+  "cph-theme-ticket-fields.attachments.remove-file": "[ผู้龍Ṛḛḛṃṓṓṽḛḛ ϝḭḭḽḛḛ龍ผู้]",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "[ผู้龍Ṛḛḛṃṓṓṽḛḛ ϝḭḭḽḛḛ: {{fileName}}龍ผู้]",
+  "cph-theme-ticket-fields.attachments.stop-upload": "[ผู้龍Ṣṭṓṓṗ ṵṵṗḽṓṓααḍ龍ผู้]",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "[ผู้龍Ṣṭṓṓṗ ṵṵṗḽṓṓααḍḭḭṇḡ {{fileName}}龍ผู้]",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "[ผู้龍Ṫḥḛḛṛḛḛ ẁααṡ ααṇ ḛḛṛṛṓṓṛ ṵṵṗḽṓṓααḍḭḭṇḡ {{fileName}}. Ṫṛẏẏ ααḡααḭḭṇ ṓṓṛ ṵṵṗḽṓṓααḍ ααṇṓṓṭḥḛḛṛ ϝḭḭḽḛḛ.龍ผู้]",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "[ผู้龍ṲṲṗḽṓṓααḍ ḛḛṛṛṓṓṛ龍ผู้]",
+  "cph-theme-ticket-fields.attachments.uploading": "[ผู้龍ṲṲṗḽṓṓααḍḭḭṇḡ {{fileName}}龍ผู้]",
   "cph-theme-ticket-fields.credit-card-digits-hint": "[ผู้龍(Ḻααṡṭ 4 ḍḭḭḡḭḭṭṡ)龍ผู้]",
   "cph-theme-ticket-fields.dropdown.back-option-label": "[ผู้龍Ḃααͼḳ龍ผู้]",
   "cph-theme-ticket-fields.dropdown.empty-option": "[ผู้龍Ṣḛḛḽḛḛͼṭ ααṇ ṓṓṗṭḭḭṓṓṇ龍ผู้]",
   "cph-theme-ticket-fields.lookup-field.loading-options": "[ผู้龍Ḻṓṓααḍḭḭṇḡ ḭḭṭḛḛṃṡ...龍ผู้]",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "[ผู้龍Ṅṓṓ ṃααṭͼḥḛḛṡ ϝṓṓṵṵṇḍ龍ผู้]",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "[ผู้龍Ṣḛḛααṛͼḥ {{label}}龍ผู้]"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "[ผู้龍Ṣḛḛααṛͼḥ {{label}}龍ผู้]",
+  "cph-theme-ticket-fields.upload-failed-title": "[ผู้龍{{fileName}} ṵṵṗḽṓṓααḍ ϝααḭḭḽḛḛḍ龍ผู้]"
 }

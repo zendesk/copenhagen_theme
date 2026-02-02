@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Decisión pendiente",
   "approval-requests.status.denied": "Denegado",
   "approval-requests.status.info-needed": "Se necesita información",
-  "approval-requests.status.withdrawn": "Retirado"
+  "approval-requests.status.withdrawn": "Retirado",
+  "txt.approval_requests.clarification.cancel_button": "Cancelar",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Ingrese un comentario para solicitar información adicional sobre esta solicitud de aprobación",
+  "txt.approval_requests.clarification.description": "Agregue notas o solicite información adicional sobre esta solicitud",
+  "txt.approval_requests.clarification.max_comment_alert_message": "No se pueden agregar más comentarios, los aprobadores pueden aprobar o denegar.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Se alcanzó el límite de comentarios",
+  "txt.approval_requests.clarification.new_comment_indicator": "Nuevo comentario",
+  "txt.approval_requests.clarification.new_comments_indicator": "Nuevos comentarios",
+  "txt.approval_requests.clarification.submit_button": "Enviar",
+  "txt.approval_requests.clarification.title": "Comentarios",
+  "txt.approval_requests.validation.characters_remaining.few": "Quedan {{numCharacters}} caracteres",
+  "txt.approval_requests.validation.characters_remaining.many": "Quedan {{numCharacters}} caracteres",
+  "txt.approval_requests.validation.characters_remaining.one": "Queda {{numCharacters}} carácter",
+  "txt.approval_requests.validation.characters_remaining.other": "Quedan {{numCharacters}} caracteres",
+  "txt.approval_requests.validation.characters_remaining.two": "Quedan {{numCharacters}} caracteres",
+  "txt.approval_requests.validation.characters_remaining.zero": "Quedan {{numCharacters}} caracteres",
+  "txt.approval_requests.validation.empty_comment_error": "Escriba un comentario"
 }

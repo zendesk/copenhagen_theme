@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Čakajúce rozhodnutie",
   "approval-requests.status.denied": "Zamietnuté",
   "approval-requests.status.info-needed": "Potrebné informácie",
-  "approval-requests.status.withdrawn": "Odvolané"
+  "approval-requests.status.withdrawn": "Odvolané",
+  "txt.approval_requests.clarification.cancel_button": "Zrušiť",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Zadajte komentár a požiadajte o ďalšie informácie o tejto požiadavke na schválenie",
+  "txt.approval_requests.clarification.description": "Pridajte poznámky alebo požiadajte o ďalšie informácie o tejto požiadavke",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Nemôžete pridať ďalšie komentáre, schvaľovatelia môžu stále schvaľovať alebo odmietať.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Bol dosiahnutý limit komentárov",
+  "txt.approval_requests.clarification.new_comment_indicator": "Nový komentár",
+  "txt.approval_requests.clarification.new_comments_indicator": "Nové komentáre",
+  "txt.approval_requests.clarification.submit_button": "Odoslať",
+  "txt.approval_requests.clarification.title": "Komentáre",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} zostávajúce znaky",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} zostávajúceho znaku",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}} zostávajúci znak",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} zostávajúcich znakov",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} zostávajúce znaky",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} zostávajúcich znakov",
+  "txt.approval_requests.validation.empty_comment_error": "Zadajte komentár"
 }

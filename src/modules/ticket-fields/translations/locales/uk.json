@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Виберіть файл або перетягніть його сюди",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Перетягніть файли сюди",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Файл: {{fileName}}, натисніть «Видалити» для вилучення",
+  "cph-theme-ticket-fields.attachments.remove-file": "Видалити файл",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Видалити файл: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Зупинити передавання",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Зупинити передавання {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Під час передавання {{fileName}} виникла помилка. Спробуйте ще раз або завантажте інший файл.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Помилка передавання",
+  "cph-theme-ticket-fields.attachments.uploading": "Передавання {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Останні 4 цифри)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Назад",
   "cph-theme-ticket-fields.dropdown.empty-option": "Виберіть варіант",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Завантаження елементів...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Збігів не знайдено",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Пошук {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Пошук {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Не вдалося передати {{fileName}}"
 }

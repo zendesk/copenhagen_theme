@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Afgørelse venter",
   "approval-requests.status.denied": "Afvist",
   "approval-requests.status.info-needed": "Oplysninger nødvendige",
-  "approval-requests.status.withdrawn": "Tilbagetrukket"
+  "approval-requests.status.withdrawn": "Tilbagetrukket",
+  "txt.approval_requests.clarification.cancel_button": "Annuller",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Indtast en kommentar for at bede om yderligere oplysninger om denne anmodning om godkendelse",
+  "txt.approval_requests.clarification.description": "Tilføj notater eller bed om yderligere oplysninger om denne anmodning",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Du kan ikke tilføje flere kommentarer, men godkendere kan stadig godkende eller afvise.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Grænsen for kommentarer er nået",
+  "txt.approval_requests.clarification.new_comment_indicator": "Ny kommentar",
+  "txt.approval_requests.clarification.new_comments_indicator": "Nye kommentarer",
+  "txt.approval_requests.clarification.submit_button": "Send",
+  "txt.approval_requests.clarification.title": "Kommentarer",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} tegn tilbage",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} tegn tilbage",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}} tegn tilbage",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} tegn tilbage",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} tegn tilbage",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} tegn tilbage",
+  "txt.approval_requests.validation.empty_comment_error": "Indtast en kommentar"
 }

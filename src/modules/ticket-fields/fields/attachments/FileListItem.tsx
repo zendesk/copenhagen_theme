@@ -52,11 +52,11 @@ export function FileListItem({
     file.status === "pending" ? file.file_name : file.value.file_name;
 
   const stopUploadLabel = t(
-    "new-request-form.attachments.stop-upload",
+    "cph-theme-ticket-fields.attachments.stop-upload",
     "Stop upload"
   );
   const removeFileLabel = t(
-    "new-request-form.attachments.remove-file",
+    "cph-theme-ticket-fields.attachments.remove-file",
     "Remove file"
   );
 
@@ -66,7 +66,7 @@ export function FileListItem({
         type="generic"
         tabIndex={0}
         aria-label={t(
-          "new-request-form.attachments.file",
+          "cph-theme-ticket-fields.attachments.file",
           "File: {{fileName}}, press delete to remove",
           { fileName }
         )}
@@ -79,7 +79,7 @@ export function FileListItem({
             <Tooltip content={stopUploadLabel}>
               <File.Close
                 aria-label={t(
-                  "new-request-form.attachments.stop-upload-aria-label",
+                  "cph-theme-ticket-fields.attachments.stop-upload-aria-label",
                   "Stop uploading {{fileName}}",
                   { fileName }
                 )}
@@ -93,7 +93,7 @@ export function FileListItem({
             <Progress
               value={file.progress}
               aria-label={t(
-                "new-request-form.attachments.uploading",
+                "cph-theme-ticket-fields.attachments.uploading",
                 "Uploading {{fileName}}",
                 { fileName }
               )}
@@ -109,7 +109,7 @@ export function FileListItem({
             <Tooltip content={removeFileLabel}>
               <File.Delete
                 aria-label={t(
-                  "new-request-form.attachments.remove-file-aria-label",
+                  "cph-theme-ticket-fields.attachments.remove-file-aria-label",
                   "Remove file: {{fileName}}",
                   { fileName }
                 )}

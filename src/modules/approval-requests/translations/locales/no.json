@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Avgjørelse venter",
   "approval-requests.status.denied": "Avslått",
   "approval-requests.status.info-needed": "Trenger informasjon",
-  "approval-requests.status.withdrawn": "Tilbaketrukket"
+  "approval-requests.status.withdrawn": "Tilbaketrukket",
+  "txt.approval_requests.clarification.cancel_button": "Avbryt",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Skriv inn en kommentar for å be om mer informasjon om denne godkjenningsforespørselen",
+  "txt.approval_requests.clarification.description": "Legg til merknader eller be om tilleggsinformasjon om denne forespørselen",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Du kan ikke legge til flere kommentarer, godkjennere kan fremdeles godkjenne eller avslå.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Grensen for kommentarer er nådd",
+  "txt.approval_requests.clarification.new_comment_indicator": "Ny kommentar",
+  "txt.approval_requests.clarification.new_comments_indicator": "Nye kommentarer",
+  "txt.approval_requests.clarification.submit_button": "Send",
+  "txt.approval_requests.clarification.title": "Kommentarer",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} tegn igjen",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} tegn igjen",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}} tegn igjen",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} tegn igjen",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} tegn igjen",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} tegn igjen",
+  "txt.approval_requests.validation.empty_comment_error": "Skriv en kommentar"
 }

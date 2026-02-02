@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "اختر ملفًا أو قم بالسحب والإسقاط هنا",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "أسقِط الملفات هنا",
+  "cph-theme-ticket-fields.attachments.error-separator": "؛ ",
+  "cph-theme-ticket-fields.attachments.file": "الملف: {{fileName}}، اضغط على حذف لإزالته",
+  "cph-theme-ticket-fields.attachments.remove-file": "إزالة الملف",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "إزالة الملف: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "إيقاف التحميل",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "إيقاف تحميل {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "حدث خطأ أثناء تحميل {{fileName}}. حاول مرة أخرى أو قم بتحميل ملف آخر.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "خطأ في التحميل",
+  "cph-theme-ticket-fields.attachments.uploading": "جارٍ تحميل {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(آخر 4 أرقام)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "السابق",
   "cph-theme-ticket-fields.dropdown.empty-option": "حدّد خيارًا",
   "cph-theme-ticket-fields.lookup-field.loading-options": "جارٍ تحميل العناصر...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "لم يتم العثور على نتائج مطابقة",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "بحث في {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "بحث في {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "فشل تحميل {{fileName}}"
 }

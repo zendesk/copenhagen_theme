@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "В ожидании решения",
   "approval-requests.status.denied": "Отклонено",
   "approval-requests.status.info-needed": "Требуется информация",
-  "approval-requests.status.withdrawn": "Аннулировано"
+  "approval-requests.status.withdrawn": "Аннулировано",
+  "txt.approval_requests.clarification.cancel_button": "Отмена",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Введите комментарий, чтобы запросить дополнительную информацию об этом запросе на утверждение",
+  "txt.approval_requests.clarification.description": "Добавьте примечания или запросите дополнительную информацию об этом запросе",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Вы не можете добавить больше комментариев, но согласующие лица все еще могут утверждать или отклонять запросы.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Достигнуто предельное количество комментариев",
+  "txt.approval_requests.clarification.new_comment_indicator": "Новый комментарий",
+  "txt.approval_requests.clarification.new_comments_indicator": "Новые комментарии",
+  "txt.approval_requests.clarification.submit_button": "Отправить",
+  "txt.approval_requests.clarification.title": "Комментарии",
+  "txt.approval_requests.validation.characters_remaining.few": "Осталось такое количество символов: {{numCharacters}}",
+  "txt.approval_requests.validation.characters_remaining.many": "Осталось такое количество символов: {{numCharacters}}",
+  "txt.approval_requests.validation.characters_remaining.one": "Остался {{numCharacters}} символ",
+  "txt.approval_requests.validation.characters_remaining.other": "Осталось такое количество символов: {{numCharacters}}",
+  "txt.approval_requests.validation.characters_remaining.two": "Осталось такое количество символов: {{numCharacters}}",
+  "txt.approval_requests.validation.characters_remaining.zero": "Осталось такое количество символов: {{numCharacters}}",
+  "txt.approval_requests.validation.empty_comment_error": "Введите комментарий"
 }

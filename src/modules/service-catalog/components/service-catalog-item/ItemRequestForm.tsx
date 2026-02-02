@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import { RequestFormField } from "../../../ticket-fields";
 import { Button } from "@zendeskgarden/react-buttons";
 import { getColor } from "@zendeskgarden/react-theming";
@@ -12,6 +12,12 @@ import { useAssetDataFetchers } from "../../../service-catalog/hooks/useAssetDat
 import type { ITAMAssetOptionObject } from "../../data-types/ITAMAssetOptionObject";
 import { Span } from "@zendeskgarden/react-typography";
 import { Option } from "@zendeskgarden/react-dropdowns";
+import { Attachments } from "../../../ticket-fields/fields/attachments/Attachments";
+import { AttachmentsInputName } from "../../constants";
+import type {
+  AttachmentsError,
+  AttachmentsOption,
+} from "../../data-types/Attachments";
 
 const Form = styled.form`
   display: flex;
@@ -122,6 +128,11 @@ interface ItemRequestFormProps {
     value: string | string[] | boolean | null
   ) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  attachmentsOption: AttachmentsOption | undefined;
+  attachmentsRequiredError: AttachmentsError;
+  setAttachmentsRequiredError: (error: AttachmentsError) => void;
+  isRequestFieldsLoading: boolean;
+  isLoadingAttachmentsOption: boolean;
 }
 
 export function ItemRequestForm({
@@ -135,6 +146,11 @@ export function ItemRequestForm({
   defaultOrganizationId,
   handleChange,
   onSubmit,
+  attachmentsOption,
+  attachmentsRequiredError,
+  setAttachmentsRequiredError,
+  isRequestFieldsLoading,
+  isLoadingAttachmentsOption,
 }: ItemRequestFormProps) {
   const { t } = useTranslation();
 
@@ -147,6 +163,8 @@ export function ItemRequestForm({
     assetOptionId,
     assetTypeOptionId
   );
+
+  const [isUploadingAttachments, setIsUploadingAttachments] = useState(false);
 
   const [assetTypeState, setAssetTypeState] = useState<AssetTypeState>({
     ids: [],
@@ -308,6 +326,105 @@ export function ItemRequestForm({
     return option.name;
   };
 
+  const handleAttachmentsOnUpload = useCallback(
+    (status: boolean) => {
+      setAttachmentsRequiredError(null);
+      setIsUploadingAttachments(status);
+    },
+    [setAttachmentsRequiredError, setIsUploadingAttachments]
+  );
+
+  const renderRequestFields = () => {
+    if (isRequestFieldsLoading || isLoadingAttachmentsOption) {
+      return null;
+    }
+
+    const attachmentsPosition =
+      attachmentsOption?.custom_object_fields?.["standard::position_in_portal"];
+
+    const attachmentsElement = attachmentsOption ? (
+      <Attachments
+        key="attachments"
+        field={{
+          name: AttachmentsInputName,
+          label: attachmentsOption.name,
+          description:
+            attachmentsOption.custom_object_fields["standard::description"] ??
+            "",
+          error: attachmentsRequiredError,
+          attachments: [],
+          isRequired:
+            attachmentsOption.custom_object_fields["standard::is_required"] ??
+            false,
+        }}
+        baseLocale={baseLocale}
+        onUploadingChange={handleAttachmentsOnUpload}
+      />
+    ) : null;
+
+    const elements: React.ReactNode[] = [];
+
+    requestFields.forEach((field, index) => {
+      if (
+        attachmentsElement &&
+        typeof attachmentsPosition === "number" &&
+        index === attachmentsPosition
+      ) {
+        elements.push(attachmentsElement);
+      }
+
+      if (isAssetTypeField(field) && isHiddenAssetsType) {
+        elements.push(
+          <Fragment key={field.id}>
+            <input type="hidden" name={field.name} value={hiddenValue} />
+            <input type="hidden" name="isAssetTypeHidden" value="true" />
+          </Fragment>
+        );
+        return;
+      }
+
+      const customField = {
+        ...field,
+        label: isAssetField(field)
+          ? assetState.name || field.label
+          : isAssetTypeField(field)
+          ? assetTypeState.name || field.label
+          : field.label,
+        description: isAssetField(field)
+          ? assetState.description || field.description
+          : isAssetTypeField(field)
+          ? assetTypeState.description || field.description
+          : field.description,
+      };
+
+      elements.push(
+        <RequestFormField
+          key={field.id}
+          field={customField}
+          baseLocale={baseLocale}
+          hasAtMentions={hasAtMentions}
+          userRole={userRole}
+          userId={userId}
+          brandId={brandId}
+          defaultOrganizationId={defaultOrganizationId}
+          handleChange={handleChange}
+          visibleFields={requestFields}
+          buildLookupFieldOptions={buildLookupFieldOptions}
+          renderLookupFieldOption={renderLookupFieldOption}
+        />
+      );
+    });
+    if (
+      attachmentsElement &&
+      typeof attachmentsPosition === "number" &&
+      attachmentsPosition >= requestFields.length
+    ) {
+      elements.push(attachmentsElement);
+    }
+
+    return elements;
+  };
+
   return (
     <Form onSubmit={onSubmit} noValidate>
       <LeftColumn>
@@ -316,52 +433,17 @@ export function ItemRequestForm({
           description={serviceCatalogItem.description}
           thumbnailUrl={serviceCatalogItem.thumbnail_url}
         />
-        <FieldsContainer>
-          {requestFields.map((field) => {
-            if (isAssetTypeField(field) && isHiddenAssetsType) {
-              return (
-                <>
-                  <input type="hidden" name={field.name} value={hiddenValue} />
-                  <input type="hidden" name="isAssetTypeHidden" value="true" />
-                </>
-              );
-            }
-            const customField = {
-              ...field,
-              label: isAssetField(field)
-                ? assetState.name || field.label
-                : isAssetTypeField(field)
-                ? assetTypeState.name || field.label
-                : field.label,
-              description: isAssetField(field)
-                ? assetState.description || field.description
-                : isAssetTypeField(field)
-                ? assetTypeState.description || field.description
-                : field.description,
-            };
-
-            return (
-              <RequestFormField
-                key={field.id}
-                field={customField}
-                baseLocale={baseLocale}
-                hasAtMentions={hasAtMentions}
-                userRole={userRole}
-                userId={userId}
-                brandId={brandId}
-                defaultOrganizationId={defaultOrganizationId}
-                handleChange={handleChange}
-                visibleFields={requestFields}
-                buildLookupFieldOptions={buildLookupFieldOptions}
-                renderLookupFieldOption={renderLookupFieldOption}
-              />
-            );
-          })}
-        </FieldsContainer>
+        <FieldsContainer>{renderRequestFields()}</FieldsContainer>
       </LeftColumn>
       <RightColumn>
         <ButtonWrapper>
-          <Button isPrimary size="large" isStretched type="submit">
+          <Button
+            disabled={isUploadingAttachments}
+            isPrimary
+            size="large"
+            isStretched
+            type="submit"
+          >
             {t("service-catalog.item.submit-button", "Submit request")}
           </Button>
         </ButtonWrapper>

@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Karar bekleniyor",
   "approval-requests.status.denied": "Reddedildi",
   "approval-requests.status.info-needed": "Gereken bilgi",
-  "approval-requests.status.withdrawn": "Geri çekildi"
+  "approval-requests.status.withdrawn": "Geri çekildi",
+  "txt.approval_requests.clarification.cancel_button": "İptal et",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Bu onay talebi hakkında ek bilgi istemek için bir yorum girin",
+  "txt.approval_requests.clarification.description": "Bu talep hakkında notlar ekleyin veya ek bilgi isteyin",
+  "txt.approval_requests.clarification.max_comment_alert_message": "Daha fazla yorum ekleyemezsiniz, onaylayanlar yine de onaylayabilir veya reddedebilir.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Yorum limitine ulaşıldı",
+  "txt.approval_requests.clarification.new_comment_indicator": "Yeni yorum",
+  "txt.approval_requests.clarification.new_comments_indicator": "Yeni yorumlar",
+  "txt.approval_requests.clarification.submit_button": "Gönder",
+  "txt.approval_requests.clarification.title": "Yorumlar",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} karakter kaldı",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} karakter kaldı",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}} karakter kaldı",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} karakter kaldı",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} karakter kaldı",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} karakter kaldı",
+  "txt.approval_requests.validation.empty_comment_error": "Bir yorum girin"
 }

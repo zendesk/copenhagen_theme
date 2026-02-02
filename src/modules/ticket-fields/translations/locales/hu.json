@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Válassza ki vagy húzza ide a kívánt fájlt",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Húzza ide a fájlokat",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Fájl: {{fileName}}, az eltávolításához nyomja meg a Delete billentyűt",
+  "cph-theme-ticket-fields.attachments.remove-file": "Fájl eltávolítása",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Fájl eltávolítása: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Feltöltés leállítása",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "{{fileName}} feltöltésének leállítása",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Hiba történt a(z) {{fileName}} feltöltése során. Próbálja meg újra, vagy töltsön fel egy másik fájlt.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Feltöltési hiba",
+  "cph-theme-ticket-fields.attachments.uploading": "{{fileName}} feltöltése folyamatban",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Utolsó négy számjegy)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Vissza",
   "cph-theme-ticket-fields.dropdown.empty-option": "Lehetőség kiválasztása",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Elemek betöltése…",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Nincs találat",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "{{label}} keresése"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "{{label}} keresése",
+  "cph-theme-ticket-fields.upload-failed-title": "A(z) {{fileName}} feltöltése sikertelen volt"
 }

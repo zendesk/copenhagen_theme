@@ -1,7 +1,7 @@
 {
   "name": "Copenhagen",
   "author": "Zendesk",
-  "version": "4.25.1",
+  "version": "4.27.0",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -395,18 +395,6 @@
           "description": "follow_topic_description",
           "label": "follow_topic_label",
           "value": true
-        }
-      ]
-    },
-    {
-      "label": "request_list_group_label",
-      "variables": [
-        {
-          "identifier": "request_list_beta",
-          "type": "checkbox",
-          "description": "request_list_beta_description",
-          "label": "request_list_beta_label",
-          "value": false
         }
       ]
     }

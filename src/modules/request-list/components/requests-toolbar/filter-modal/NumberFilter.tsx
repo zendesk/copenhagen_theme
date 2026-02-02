@@ -1,4 +1,3 @@
-import { useDownshiftEnvironment } from "../../../../shared/garden-shadow/src/useDownshiftEnvironment";
 import {
   Dropdown,
   Item,
@@ -58,7 +57,7 @@ export function NumberFilter({
   type,
 }: NumberFilterProps): JSX.Element {
   const { t } = useTranslation();
-  const downshiftEnvironment = useDownshiftEnvironment();
+
   const [filter, setFilter] = useState<NumberFilter | null>(null);
 
   const validateForm = (
@@ -235,13 +234,7 @@ export function NumberFilter({
 
   return (
     <Container>
-      <Dropdown
-        selectedItem={filter?.type}
-        onSelect={handleFilterTypeSelect}
-        downshiftProps={{
-          environment: downshiftEnvironment,
-        }}
-      >
+      <Dropdown selectedItem={filter?.type} onSelect={handleFilterTypeSelect}>
         <DropdownField>
           <DropdownLabel>
             {t(

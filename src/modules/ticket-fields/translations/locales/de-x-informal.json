@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Datei auswählen oder hierher ziehen",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Dateien hier ablegen",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "Datei: {{fileName}}, zum Entfernen die Löschtaste drücken",
+  "cph-theme-ticket-fields.attachments.remove-file": "Datei entfernen",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Datei entfernen: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Upload anhalten",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "{{fileName}} nicht mehr hochladen",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Fehler beim Hochladen von {{fileName}}. Versuchen Sie es erneut oder laden Sie eine andere Datei hoch.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Fehler beim Hochladen",
+  "cph-theme-ticket-fields.attachments.uploading": "{{fileName}} wird hochgeladen",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Letzte vier Ziffern)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Zurück",
   "cph-theme-ticket-fields.dropdown.empty-option": "Wählen Sie eine Option aus",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Elemente werden geladen...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Keine Übereinstimmungen gefunden",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Suche {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Suche {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Fehler beim Hochladen von {{fileName}}"
 }

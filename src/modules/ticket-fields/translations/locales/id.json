@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Pilih file atau tarik dan letakkan di sini",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Letakkan file di sini",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "File: {{fileName}}, tekan hapus untuk menghapus",
+  "cph-theme-ticket-fields.attachments.remove-file": "Hapus file",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Hapus File: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Berhenti mengunggah",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Berhenti mengunggah {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Terjadi kesalahan saat mengunggah {{fileName}}. Cobalah lagi atau unggah file lain.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Kesalahan Mengunggah",
+  "cph-theme-ticket-fields.attachments.uploading": "Mengunggah {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(4 digit terakhir)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Kembali",
   "cph-theme-ticket-fields.dropdown.empty-option": "Pilih opsi",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Memuat item...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Tidak ditemukan kecocokan",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Cari {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Cari {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} unggahan gagal"
 }

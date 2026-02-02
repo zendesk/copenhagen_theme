@@ -42,5 +42,21 @@
   "approval-requests.status.decision-pending": "Decision pending",
   "approval-requests.status.denied": "Denied",
   "approval-requests.status.info-needed": "Info needed",
-  "approval-requests.status.withdrawn": "Withdrawn"
+  "approval-requests.status.withdrawn": "Withdrawn",
+  "txt.approval_requests.clarification.cancel_button": "Cancel",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Enter a comment to ask for additional information about this approval request",
+  "txt.approval_requests.clarification.description": "Add notes or ask for additional information about this request",
+  "txt.approval_requests.clarification.max_comment_alert_message": "You can't add more comments, approvers can still approve or deny.",
+  "txt.approval_requests.clarification.max_comment_alert_title": "Comment limit reached",
+  "txt.approval_requests.clarification.new_comment_indicator": "New comment",
+  "txt.approval_requests.clarification.new_comments_indicator": "New comments",
+  "txt.approval_requests.clarification.submit_button": "Send",
+  "txt.approval_requests.clarification.title": "Comments",
+  "txt.approval_requests.validation.characters_remaining.few": "{{numCharacters}} characters remaining",
+  "txt.approval_requests.validation.characters_remaining.many": "{{numCharacters}} characters remaining",
+  "txt.approval_requests.validation.characters_remaining.one": "{{numCharacters}} character remaining",
+  "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} characters remaining",
+  "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} characters remaining",
+  "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} characters remaining",
+  "txt.approval_requests.validation.empty_comment_error": "Enter a comment"
 }

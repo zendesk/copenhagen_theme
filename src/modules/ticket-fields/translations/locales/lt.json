@@ -1,8 +1,20 @@
 {
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Choose a file or drag and drop here",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Drop files here",
+  "cph-theme-ticket-fields.attachments.error-separator": "; ",
+  "cph-theme-ticket-fields.attachments.file": "File: {{fileName}}, press delete to remove",
+  "cph-theme-ticket-fields.attachments.remove-file": "Remove file",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Stop upload",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Upload error",
+  "cph-theme-ticket-fields.attachments.uploading": "Uploading {{fileName}}",
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Paskutiniai 4 skaitmenys)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Back",
   "cph-theme-ticket-fields.dropdown.empty-option": "Pasirinkti parinktį",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Įkeliami elementai...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Rungtynių nerasta",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Ieškoti {{label}}"
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Ieškoti {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} upload failed"
 }
