@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import type { CustomStatus } from "../data-types";
 
-export function useCustomStatuses(customStatusesEnabled: boolean): {
+export function useCustomStatuses(
+  customStatusesEnabled: boolean,
+  locale: string
+): {
   customStatuses: CustomStatus[];
   error?: Error;
 } {
@@ -14,7 +17,9 @@ export function useCustomStatuses(customStatusesEnabled: boolean): {
     }
 
     try {
-      const response = await fetch("/api/v2/custom_statuses?active=true");
+      const response = await fetch(
+        `/api/v2/custom_statuses?active=true&locale=${locale}`
+      );
       if (!response.ok) {
         throw new Error(response.statusText);
       }
