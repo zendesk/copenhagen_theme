@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Seguiment de la sol·licitud {{parentId}}",
   "new-request-form.required-fields-info": "Els camps marcats amb un asterisc (*) són obligatoris.",
   "new-request-form.submit": "Enviar",
-  "new-request-form.suggested-articles": "Articles suggerits"
+  "new-request-form.suggested-articles": "Articles suggerits",
+  "new-request-form.suggested-articles-external-link-label": "(Se abre en una pestaña nueva)"
 }

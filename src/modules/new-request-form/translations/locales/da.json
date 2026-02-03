@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Følg op på anmodning {{parentId}}",
   "new-request-form.required-fields-info": "Felter markeret med en stjerne (*) er obligatoriske.",
   "new-request-form.submit": "Indsend",
-  "new-request-form.suggested-articles": "Foreslåede artikler"
+  "new-request-form.suggested-articles": "Foreslåede artikler",
+  "new-request-form.suggested-articles-external-link-label": "(åbner i en ny fane)"
 }

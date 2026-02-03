@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "請求 {{parentId}} 的後續跟進",
   "new-request-form.required-fields-info": "標有星號 (*) 的欄位為必填欄位。",
   "new-request-form.submit": "提交",
-  "new-request-form.suggested-articles": "推薦文章"
+  "new-request-form.suggested-articles": "推薦文章",
+  "new-request-form.suggested-articles-external-link-label": "（在新分頁中開啟）"
 }

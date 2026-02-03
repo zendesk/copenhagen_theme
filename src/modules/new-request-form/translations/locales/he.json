@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "מעקב לבקשה {{parentId}}",
   "new-request-form.required-fields-info": "השדות המסומנים בכוכבית (*) הם שדות חובה.",
   "new-request-form.submit": "שלח",
-  "new-request-form.suggested-articles": "מאמרים מוצעים"
+  "new-request-form.suggested-articles": "מאמרים מוצעים",
+  "new-request-form.suggested-articles-external-link-label": "(נפתח בלשונית חדשה)"
 }

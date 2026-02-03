@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Дополнение к запросу {{parentId}}",
   "new-request-form.required-fields-info": "Помеченные звездочкой (*) поля обязательны для заполнения.",
   "new-request-form.submit": "Отправить",
-  "new-request-form.suggested-articles": "Предложенные статьи"
+  "new-request-form.suggested-articles": "Предложенные статьи",
+  "new-request-form.suggested-articles-external-link-label": "(открывается в новой вкладке)"
 }

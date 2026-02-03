@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Oppfølging av forespørsel {{parentId}}",
   "new-request-form.required-fields-info": "Felter merket med en stjerne (*) er obligatoriske.",
   "new-request-form.submit": "Send inn",
-  "new-request-form.suggested-articles": "Foreslåtte artikler"
+  "new-request-form.suggested-articles": "Foreslåtte artikler",
+  "new-request-form.suggested-articles-external-link-label": "(Åpnes i en ny fane)"
 }

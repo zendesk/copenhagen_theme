@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "요청 {{parentId}}에 대한 후속 작업",
   "new-request-form.required-fields-info": "별표(*)가 표시된 필드는 필수입니다.",
   "new-request-form.submit": "제출",
-  "new-request-form.suggested-articles": "추천 문서"
+  "new-request-form.suggested-articles": "추천 문서",
+  "new-request-form.suggested-articles-external-link-label": "(새 탭에서 열기)"
 }

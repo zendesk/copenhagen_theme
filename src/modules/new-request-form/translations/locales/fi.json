@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Jatkoa pyynnölle {{parentId}}",
   "new-request-form.required-fields-info": "Tähdellä (*) merkityt kentät ovat pakollisia.",
   "new-request-form.submit": "Lähetä",
-  "new-request-form.suggested-articles": "Ehdotetut artikkelit"
+  "new-request-form.suggested-articles": "Ehdotetut artikkelit",
+  "new-request-form.suggested-articles-external-link-label": "(Avautuu uuteen välilehteen)"
 }

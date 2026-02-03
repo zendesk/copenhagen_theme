@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Последващи действия във връзка със заявката {{parentId}}",
   "new-request-form.required-fields-info": "Полетата, отбелязани със звездичка (*), са задължителни.",
   "new-request-form.submit": "Подаване",
-  "new-request-form.suggested-articles": "Предложени статии"
+  "new-request-form.suggested-articles": "Предложени статии",
+  "new-request-form.suggested-articles-external-link-label": "(Отваря се в нов раздел)"
 }

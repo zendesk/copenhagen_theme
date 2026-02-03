@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "new-request-form.parent-request-link",
   "new-request-form.required-fields-info": "new-request-form.required-fields-info",
   "new-request-form.submit": "new-request-form.submit",
-  "new-request-form.suggested-articles": "new-request-form.suggested-articles"
+  "new-request-form.suggested-articles": "new-request-form.suggested-articles",
+  "new-request-form.suggested-articles-external-link-label": "new-request-form.suggested-articles-external-link-label"
 }

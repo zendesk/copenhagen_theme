@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Continuarea comunicării pentru solicitarea {{parentId}}",
   "new-request-form.required-fields-info": "Câmpurile marcate cu un asterisc (*) sunt obligatorii.",
   "new-request-form.submit": "Trimitere",
-  "new-request-form.suggested-articles": "Articole sugerate"
+  "new-request-form.suggested-articles": "Articole sugerate",
+  "new-request-form.suggested-articles-external-link-label": "(Se deschide într-o filă nouă)"
 }

@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "ติดตามคําร้องขอ {{parentId}}",
   "new-request-form.required-fields-info": "ต้องกรองช่องที่มีเครื่องหมายดอกจัน (*)",
   "new-request-form.submit": "ส่ง",
-  "new-request-form.suggested-articles": "บทความที่แนะนำ"
+  "new-request-form.suggested-articles": "บทความที่แนะนำ",
+  "new-request-form.suggested-articles-external-link-label": "(เปิดในแท็บใหม่)"
 }

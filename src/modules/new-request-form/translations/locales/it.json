@@ -53,5 +53,6 @@
   "new-request-form.parent-request-link": "Follow-up alla richiesta {{parentId}}",
   "new-request-form.required-fields-info": "I campi contrassegnati da un asterisco (*) sono obbligatori.",
   "new-request-form.submit": "Invia",
-  "new-request-form.suggested-articles": "Articoli suggeriti"
+  "new-request-form.suggested-articles": "Articoli suggeriti",
+  "new-request-form.suggested-articles-external-link-label": "(Si apre in una nuova scheda)"
 }

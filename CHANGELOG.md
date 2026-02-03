@@ -1,3 +1,43 @@
+# [4.28.0](https://github.com/zendesk/copenhagen_theme/compare/v4.27.0...v4.28.0) (2026-02-03)
+
+
+### Features
+
+* update generative reply logic to use polling ([5c2df63](https://github.com/zendesk/copenhagen_theme/commit/5c2df638a1e78d06dab8a9d9bc05a5b95c91dcac))
+
+# [4.27.0](https://github.com/zendesk/copenhagen_theme/compare/v4.26.1...v4.27.0) (2026-02-02)
+
+
+### Bug Fixes
+
+* locale missing from custom statuses ([05027f6](https://github.com/zendesk/copenhagen_theme/commit/05027f6cb82b2d598c230f157afb8a475d838fca))
+* use same default sort applied to current list ([0e7751b](https://github.com/zendesk/copenhagen_theme/commit/0e7751bcc27f9be342c834f9e71839d9ed6635db))
+
+
+### Features
+
+* replace old request list with new ([d0c62a4](https://github.com/zendesk/copenhagen_theme/commit/d0c62a4631ce0ea3d5543fa90b0785ab97efd89a))
+
+## [4.26.1](https://github.com/zendesk/copenhagen_theme/compare/v4.26.0...v4.26.1) (2026-01-29)
+
+
+### Bug Fixes
+
+* updated new-request-form translation strings to add external link label ([6293e9a](https://github.com/zendesk/copenhagen_theme/commit/6293e9a717d4133675d16da031010c7044978c17)), closes [#734](https://github.com/zendesk/copenhagen_theme/issues/734)
+
+# [4.26.0](https://github.com/zendesk/copenhagen_theme/compare/v4.25.1...v4.26.0) (2026-01-29)
+
+
+### Bug Fixes
+
+* open suggested artcle in new tab ([4272045](https://github.com/zendesk/copenhagen_theme/commit/42720452bd696c5271f64e0cb8e325ba69b6cb29))
+* relabel a string to avoid leaf node issue ([20dd1a9](https://github.com/zendesk/copenhagen_theme/commit/20dd1a9ce01da833b8977792ce1e2dcf5408f92e))
+
+
+### Features
+
+* enable reusable attachment field and uploads in Service Catalog items ([f9b205e](https://github.com/zendesk/copenhagen_theme/commit/f9b205e74b7fe39c6346a278320163528009d121))
+
 ## [4.25.1](https://github.com/zendesk/copenhagen_theme/compare/v4.25.0...v4.25.1) (2026-01-12)
 
 
