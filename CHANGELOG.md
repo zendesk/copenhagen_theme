@@ -1,3 +1,10 @@
+# [4.28.0](https://github.com/zendesk/copenhagen_theme/compare/v4.27.0...v4.28.0) (2026-02-03)
+
+
+### Features
+
+* update generative reply logic to use polling ([5c2df63](https://github.com/zendesk/copenhagen_theme/commit/5c2df638a1e78d06dab8a9d9bc05a5b95c91dcac))
+
 # [4.27.0](https://github.com/zendesk/copenhagen_theme/compare/v4.26.1...v4.27.0) (2026-02-02)
 
 
