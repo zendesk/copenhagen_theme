@@ -1,7 +1,4 @@
-import type {
-  CitationArticle,
-  GenerativeAnswerBotResponse,
-} from "../data-types";
+import type { CitationArticle } from "../data-types";
 import { FeedbackType } from "../data-types";
 import {
   Modal,
@@ -10,7 +7,7 @@ import {
   Footer,
   Close,
 } from "@zendeskgarden/react-modals";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useModalContainer, addFlashNotification, notify } from "../../shared";
 import { useTranslation } from "react-i18next";
 import { GenerativeAnswerBotModalBody } from "./GenerativeAnswerBotModalBody";
@@ -28,8 +25,12 @@ type GenerativeModalState = {
   isSubmittingFeedback: boolean;
 };
 
+const fetchGenerateReplyStatusEndpoint = (requestId: number) =>
+  `/hc/answer_bot/generate_reply_status/${requestId}`;
 const generateReplyEndpoint = (requestId: number) =>
-  `/hc/answer_bot/generate_reply/${requestId}`;
+  `/hc/answer_bot/generate_reply_v2/${requestId}`;
+const fetchGeneratedResponseEndpoint = (requestId: number) =>
+  `/hc/answer_bot/generated_response/${requestId}`;
 const submitFeedbackEndpoint = (feedbackType: FeedbackType, token: string) =>
   `/api/v2/answer_bot/generative_deflection/${feedbackType}?auth_token=${token}`;
 
@@ -61,16 +62,26 @@ export function GenerativeAnswerBotModal({
     isSubmittingFeedback: false,
   });
 
+  const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
+
   useEffect(() => {
-    async function fetchGeneratedAnswer() {
+    let isMounted = true;
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const pendingCallback = async (_requestId: number) => {
+      return false;
+    };
+
+    const completedCallback = async (requestId: number) => {
       try {
-        const response = await fetch(generateReplyEndpoint(requestId), {
-          credentials: "same-origin",
-        });
-
-        const data = (await response.json()) as GenerativeAnswerBotResponse;
-        const { generated_answer, citations, ticket_deflection } = data;
-
+        const response = await fetch(
+          fetchGeneratedResponseEndpoint(requestId),
+          {
+            credentials: "same-origin",
+          }
+        );
+        const { generated_answer, citations, ticket_deflection } =
+          await response.json();
         setModalState((prev) => ({
           ...prev,
           generatedAnswer: generated_answer,
@@ -79,16 +90,100 @@ export function GenerativeAnswerBotModal({
           isLoading: false,
           isError: !generated_answer,
         }));
+        return true;
       } catch (error) {
         setModalState((prev) => ({
           ...prev,
-          isLoading: false,
           isError: true,
+          isLoading: false,
         }));
+        return true;
       }
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const failedCallback = async (_requestId: number) => {
+      setModalState((prev) => ({
+        ...prev,
+        isError: true,
+        isLoading: false,
+      }));
+      return true;
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const notFoundCallback = async (_requestId: number) => {
+      setModalState((prev) => ({
+        ...prev,
+        isError: true,
+        isLoading: false,
+      }));
+      return true;
+    };
+
+    const jobMapping: Record<string, (requestId: number) => Promise<boolean>> =
+      {
+        pending: pendingCallback,
+        completed: completedCallback,
+        failed: failedCallback,
+        not_found: notFoundCallback,
+      };
+    async function generateReply() {
+      try {
+        await fetch(generateReplyEndpoint(requestId), {
+          credentials: "same-origin",
+        });
+      } catch (error) {
+        if (isMounted) {
+          setModalState((prev) => ({
+            ...prev,
+            isError: true,
+            isLoading: false,
+          }));
+        }
+      }
+
+      const fetchGenerateReply = async () => {
+        try {
+          const response = await fetch(
+            fetchGenerateReplyStatusEndpoint(requestId),
+            { credentials: "same-origin" }
+          );
+          const { status } = await response.json();
+          if (!jobMapping[status])
+            throw new Error(`Unknown job status: ${status}`);
+          return await jobMapping[status]?.(requestId);
+        } catch (error) {
+          setModalState((prev) => ({
+            ...prev,
+            isError: true,
+            isLoading: false,
+          }));
+          return true;
+        }
+      };
+
+      if (await fetchGenerateReply()) return;
+
+      intervalIdRef.current = setInterval(async () => {
+        if (await fetchGenerateReply()) {
+          if (intervalIdRef.current) {
+            clearInterval(intervalIdRef.current);
+            intervalIdRef.current = null;
+          }
+        }
+      }, 2000);
     }
 
-    fetchGeneratedAnswer();
+    generateReply();
+
+    return () => {
+      isMounted = false;
+      if (intervalIdRef.current) {
+        clearInterval(intervalIdRef.current);
+        intervalIdRef.current = null;
+      }
+    };
   }, [requestId]);
 
   const getRedirectUrl = () => {
