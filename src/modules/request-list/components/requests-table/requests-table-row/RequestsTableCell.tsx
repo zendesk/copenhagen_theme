@@ -179,7 +179,10 @@ The same applies for the description. */
   }
 
   if (identifier === "requester") {
-    const nameOrAlias = user?.alias === undefined ? user?.name : user?.alias;
+    const nameOrAlias =
+      user?.alias === undefined || user?.alias === ""
+        ? user?.name
+        : user?.alias;
 
     return (
       <TruncatedTableCell identifier={identifier}>
