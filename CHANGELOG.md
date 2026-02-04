@@ -1,3 +1,10 @@
+# [4.29.0](https://github.com/zendesk/copenhagen_theme/compare/v4.28.0...v4.29.0) (2026-02-04)
+
+
+### Features
+
+* add required validation for Assets ([9b21de8](https://github.com/zendesk/copenhagen_theme/commit/9b21de842da80563d274e7d3ad746f7abd94073c))
+
 # [4.28.0](https://github.com/zendesk/copenhagen_theme/compare/v4.27.0...v4.28.0) (2026-02-03)
 
 
