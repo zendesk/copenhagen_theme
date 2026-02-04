@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { useState } from "react";
 import { useItemFormFields } from "../../hooks/useItemFormFields";
-import { ItemRequestForm, ASSET_TYPE_KEY } from "./ItemRequestForm";
+import { ItemRequestForm } from "./ItemRequestForm";
 import type { Organization } from "../../../ticket-fields/data-types/Organization";
 import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
 import { submitServiceItemRequest } from "./submitServiceItemRequest";
@@ -9,10 +10,14 @@ import { addFlashNotification, notify } from "../../../shared";
 import { useTranslation } from "react-i18next";
 import { Anchor } from "@zendeskgarden/react-buttons";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
-import { AttachmentsInputName } from "../../constants";
+import {
+  AttachmentsInputName,
+  ASSET_TYPE_KEY,
+  ASSET_KEY,
+} from "../../constants";
 import type { Attachment } from "../../../ticket-fields/data-types/AttachmentsField";
 import { useAttachmentsOption } from "../../hooks/useAttachmentsOption";
-import { useState } from "react";
+import { useValidateServiceItemForm } from "../../hooks/useValidateServiceItemForm";
 import type { AttachmentsError } from "../../data-types/Attachments";
 
 const Container = styled.div`
@@ -28,6 +33,9 @@ const StyledNotificationLink = styled(Anchor)`
 
 const isAssetTypeField = (field: TicketFieldObject) =>
   field.relationship_target_type === ASSET_TYPE_KEY;
+
+const isAssetField = (field: TicketFieldObject) =>
+  field.relationship_target_type === ASSET_KEY;
 
 export interface ServiceCatalogItemProps {
   serviceCatalogItemId: number;
@@ -59,6 +67,10 @@ export function ServiceCatalogItem({
     setRequestFields,
     handleChange,
     isRequestFieldsLoading,
+    assetTypeHiddenValue,
+    isAssetTypeHidden,
+    assetTypeIds,
+    assetIds,
   } = useItemFormFields(serviceCatalogItem, baseLocale);
   const { t } = useTranslation();
 
@@ -71,8 +83,25 @@ export function ServiceCatalogItem({
     isLoadingAttachmentsOption,
   } = useAttachmentsOption(attachmentsOptionId);
 
+  const { validate } = useValidateServiceItemForm(attachmentsOption);
+
   const [attachmentsRequiredError, setAttachmentsRequiredError] =
     useState<AttachmentsError>(null);
+  const [assetTypeError, setAssetTypeError] = useState<string | null>(null);
+  const [assetError, setAssetError] = useState<string | null>(null);
+
+  const handleFieldChange = (
+    field: TicketFieldObject,
+    value: string | string[] | boolean | null
+  ) => {
+    if (isAssetTypeField(field) && value) {
+      setAssetTypeError(null);
+    } else if (isAssetField(field) && value) {
+      setAssetError(null);
+    }
+
+    handleChange(field, value);
+  };
 
   if (error) {
     throw error;
@@ -93,23 +122,17 @@ export function ServiceCatalogItem({
       .map((a) => JSON.parse(a));
   }
 
-  function validateAttachmentsRequired(attachments: Attachment[]): boolean {
-    if (attachmentsOption) {
-      if (
-        attachmentsOption.custom_object_fields["standard::is_required"] &&
-        attachments.length === 0
-      ) {
-        setAttachmentsRequiredError(
-          t(
-            "service-catalog.attachments-required-error",
-            "Upload a file to continue."
-          )
-        );
-        return true;
-      }
-    }
-    attachmentsRequiredError && setAttachmentsRequiredError(null);
-    return false;
+  function validateForm(
+    fields: TicketFieldObject[],
+    attachments: Attachment[]
+  ): boolean {
+    const { hasError, errors } = validate(fields, attachments);
+
+    setAttachmentsRequiredError(errors.attachments);
+    setAssetTypeError(errors.assetType);
+    setAssetError(errors.asset);
+
+    return hasError;
   }
 
   const handleRequestSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -118,10 +141,6 @@ export function ServiceCatalogItem({
     const formData = new FormData(form);
     const isAssetTypeFieldHidden = formData.get("isAssetTypeHidden") === "true";
     const attachments = parseAttachments(formData);
-
-    if (validateAttachmentsRequired(attachments)) {
-      return;
-    }
 
     const requestFieldsWithFormData = requestFields.map((field) => {
       if (isAssetTypeField(field) && isAssetTypeFieldHidden) {
@@ -132,6 +151,10 @@ export function ServiceCatalogItem({
       }
       return field;
     });
+
+    if (validateForm(requestFieldsWithFormData, attachments)) {
+      return;
+    }
 
     if (!serviceCatalogItem || !associatedLookupField) {
       return;
@@ -259,11 +282,17 @@ export function ServiceCatalogItem({
           userId={userId}
           brandId={brandId}
           defaultOrganizationId={defaultOrganizationId}
-          handleChange={handleChange}
+          handleChange={handleFieldChange}
           onSubmit={handleRequestSubmit}
           attachmentsOption={attachmentsOption}
           attachmentsRequiredError={attachmentsRequiredError}
           setAttachmentsRequiredError={setAttachmentsRequiredError}
+          assetTypeError={assetTypeError}
+          assetError={assetError}
+          assetTypeHiddenValue={assetTypeHiddenValue}
+          isAssetTypeHidden={isAssetTypeHidden}
+          assetTypeIds={assetTypeIds}
+          assetIds={assetIds}
         />
       )}
     </Container>

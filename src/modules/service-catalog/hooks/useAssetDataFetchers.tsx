@@ -5,64 +5,56 @@ export const useAssetDataFetchers = (
   assetTypeOptionId: string
 ) => {
   const fetchAssets = useCallback(async () => {
-    try {
-      if (!assetOptionId) return undefined;
+    if (!assetOptionId) return undefined;
 
-      const res = await fetch(
-        `/api/v2/custom_objects/standard::service_catalog_asset_option/records/${assetOptionId}`
-      );
-      const data = await res.json();
-      const ids =
-        data.custom_object_record.custom_object_fields?.[
-          "standard::asset_filter_ids"
-        ];
-      const description =
-        data.custom_object_record.custom_object_fields?.[
-          "standard::description"
-        ];
-      const name = data.custom_object_record.name;
-      return { assetIds: ids, assetDescription: description, assetName: name };
-    } catch (error) {
-      console.error(error);
-      return undefined;
+    const res = await fetch(
+      `/api/v2/custom_objects/standard::service_catalog_asset_option/records/${assetOptionId}`
+    );
+    if (!res.ok) {
+      throw new Error("Error fetching asset data");
     }
+    const data = await res.json();
+
+    if (!data?.custom_object_record) {
+      throw new Error("Missing custom_object_record in asset response");
+    }
+
+    const { name, custom_object_fields } = data.custom_object_record;
+    const fields = custom_object_fields ?? {};
+
+    return {
+      assetIds: fields["standard::asset_filter_ids"],
+      assetDescription: fields["standard::description"],
+      assetName: name,
+      isRequired: fields["standard::is_required"],
+    };
   }, [assetOptionId]);
 
   const fetchAssetTypes = useCallback(async () => {
-    try {
-      if (!assetTypeOptionId) return undefined;
+    if (!assetTypeOptionId) return undefined;
 
-      const res = await fetch(
-        `/api/v2/custom_objects/standard::service_catalog_asset_type_option/records/${assetTypeOptionId}`
-      );
-      const data = await res.json();
-      const ids = data.custom_object_record.custom_object_fields?.[
-        "standard::asset_type_ids"
-      ] as string;
-      const isHiddenAssetsType =
-        !!data.custom_object_record.custom_object_fields?.[
-          "standard::is_hidden"
-        ];
-      const description =
-        data.custom_object_record.custom_object_fields?.[
-          "standard::description"
-        ];
-      const name = data.custom_object_record.name;
-      return {
-        assetTypeIds: ids,
-        isHiddenAssetsType,
-        assetTypeDescription: description,
-        assetTypeName: name,
-      };
-    } catch (error) {
-      console.error(error);
-      return {
-        assetTypeIds: undefined,
-        isHiddenAssetsType: undefined,
-        assetTypeDescription: undefined,
-        assetTypeName: undefined,
-      };
+    const res = await fetch(
+      `/api/v2/custom_objects/standard::service_catalog_asset_type_option/records/${assetTypeOptionId}`
+    );
+    if (!res.ok) {
+      throw new Error("Error fetching asset type data");
     }
+    const data = await res.json();
+
+    if (!data?.custom_object_record) {
+      throw new Error("Missing custom_object_record in asset type response");
+    }
+
+    const { name, custom_object_fields } = data.custom_object_record;
+    const fields = custom_object_fields ?? {};
+
+    return {
+      assetTypeIds: fields["standard::asset_type_ids"] as string,
+      isHiddenAssetsType: !!fields["standard::is_hidden"],
+      assetTypeDescription: fields["standard::description"],
+      assetTypeName: name,
+      isRequired: fields["standard::is_required"],
+    };
   }, [assetTypeOptionId]);
 
   return { fetchAssets, fetchAssetTypes };

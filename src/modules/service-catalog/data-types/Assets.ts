@@ -80,3 +80,31 @@ export interface Links {
 }
 
 export type AssetsApiResponse = AssignedAssetResponse | AssetTypeResponse;
+
+export interface AssetTypeOptionData {
+  assetTypeIds?: string | string[];
+  isHiddenAssetsType?: boolean;
+  assetTypeDescription?: string;
+  assetTypeName?: string;
+  isRequired?: boolean;
+}
+
+export interface AssetOptionData {
+  assetIds?: string | string[];
+  assetDescription?: string;
+  assetName?: string;
+  isRequired?: boolean;
+}
+
+export interface AssetConfig {
+  assetTypeIds: string[];
+  assetIds: string[];
+  isAssetTypeHidden: boolean;
+  assetTypeHiddenValue: string;
+  assetTypeLabel?: string;
+  assetTypeDescription?: string;
+  assetTypeIsRequired: boolean;
+  assetLabel?: string;
+  assetDescription?: string;
+  assetIsRequired: boolean;
+}
