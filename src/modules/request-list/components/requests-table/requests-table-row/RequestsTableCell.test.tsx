@@ -180,6 +180,15 @@ describe("RequestsTableCell", () => {
         screen.getAllByText("Baby", { exact: false })[0]
       ).toBeInTheDocument();
     });
+
+    test("renders requester name when alias is empty", () => {
+      const userWithEmptyAlias = { ...mockAliasUser, alias: "" };
+      renderCell({ identifier: "requester", user: userWithEmptyAlias });
+
+      expect(
+        screen.getAllByText("Paolo", { exact: false })[0]
+      ).toBeInTheDocument();
+    });
   });
 
   describe("Custom field rendering", () => {
