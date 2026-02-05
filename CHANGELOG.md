@@ -1,3 +1,11 @@
+## [4.29.1](https://github.com/zendesk/copenhagen_theme/compare/v4.29.0...v4.29.1) (2026-02-05)
+
+
+### Bug Fixes
+
+* check truthy alias for requester name display ([37c886a](https://github.com/zendesk/copenhagen_theme/commit/37c886a97f02e66b1b91bdd3395935c8a265b9ec))
+* show requester name when empty string alias ([e2642cc](https://github.com/zendesk/copenhagen_theme/commit/e2642cc46f4bed223c76af4a0adf7123f7bc8cca))
+
 # [4.29.0](https://github.com/zendesk/copenhagen_theme/compare/v4.28.0...v4.29.0) (2026-02-04)
 
 
