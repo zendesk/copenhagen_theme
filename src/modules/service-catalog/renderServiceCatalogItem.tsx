@@ -11,6 +11,7 @@ import {
 } from "../shared";
 import type { Settings } from "../shared";
 import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
+import { ServiceCatalogApolloProvider } from "./graphql";
 
 export async function renderServiceCatalogItem(
   container: HTMLElement,
@@ -25,11 +26,13 @@ export async function renderServiceCatalogItem(
     () => import(`../shared/translations/locales/${baseLocale}.json`),
   ]);
   render(
-    <ThemeProviders theme={createTheme(settings)}>
-      <ErrorBoundary helpCenterPath={helpCenterPath}>
-        <ServiceCatalogItem {...props} />
-      </ErrorBoundary>
-    </ThemeProviders>,
+    <ServiceCatalogApolloProvider>
+      <ThemeProviders theme={createTheme(settings)}>
+        <ErrorBoundary helpCenterPath={helpCenterPath}>
+          <ServiceCatalogItem {...props} />
+        </ErrorBoundary>
+      </ThemeProviders>
+    </ServiceCatalogApolloProvider>,
     container
   );
 }
