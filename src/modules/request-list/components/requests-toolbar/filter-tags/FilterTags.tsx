@@ -55,12 +55,7 @@ export function FilterTags({
         );
       })}
       {Object.keys(filters).length > 0 && (
-        <Button
-          isBasic
-          size="small"
-          data-test-id={"button-clear-filters"}
-          onClick={() => onFiltersChanged({})}
-        >
+        <Button isBasic size="small" onClick={() => onFiltersChanged({})}>
           {t("guide-requests-app.clearFilters", "Clear filters")}
         </Button>
       )}
