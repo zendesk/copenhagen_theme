@@ -128,7 +128,6 @@ export function CustomDateFilter({
                   </Field.Label>
                   <DatePickerRange.Start>
                     <Input
-                      data-test-id="custom-datepicker-start-date"
                       validation={errors.startDate ? "error" : undefined}
                     />
                   </DatePickerRange.Start>
@@ -141,10 +140,7 @@ export function CustomDateFilter({
                     {t("guide-requests-app.endDate", "End")}
                   </Field.Label>
                   <DatePickerRange.End>
-                    <Input
-                      data-test-id="custom-datepicker-end-date"
-                      validation={errors.endDate ? "error" : undefined}
-                    />
+                    <Input validation={errors.endDate ? "error" : undefined} />
                   </DatePickerRange.End>
                   <FieldError errors={errors} field="endDate" />
                 </Field>
@@ -152,7 +148,7 @@ export function CustomDateFilter({
             </Grid.Row>
             <Grid.Row>
               <Grid.Col>
-                <DatePickerRange.Calendar data-test-id="custom-datepicker" />
+                <DatePickerRange.Calendar />
               </Grid.Col>
             </Grid.Row>
           </Container>

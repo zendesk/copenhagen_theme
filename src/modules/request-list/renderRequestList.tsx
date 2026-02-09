@@ -6,8 +6,6 @@ import { RequestsList } from "./components/requests-list/RequestsList";
 import type { RequestsListProps } from "./components/requests-list/RequestsList";
 import { initI18next, loadTranslations } from "../shared/i18n";
 import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const inCypress = (window as any).Cypress;
 
 export async function renderRequestList(
   themeSettings: Settings,
@@ -27,10 +25,7 @@ export async function renderRequestList(
   const helpCenterPath = `/hc/${locale}`;
 
   render(
-    <ThemeProviders
-      theme={createTheme(themeSettings)}
-      data-test-id={inCypress ? "guide-requests-app" : undefined}
-    >
+    <ThemeProviders theme={createTheme(themeSettings)}>
       <ErrorBoundary helpCenterPath={helpCenterPath}>
         <RequestsList
           locale={locale}

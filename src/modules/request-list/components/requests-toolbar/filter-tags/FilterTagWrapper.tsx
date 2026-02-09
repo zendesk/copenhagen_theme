@@ -10,7 +10,6 @@ type FilterTagWrapperProps = PropsWithChildren<{
 
 export function FilterTagWrapper({
   field,
-  values,
   onFilterRemoved,
   children,
 }: FilterTagWrapperProps): JSX.Element {
@@ -30,10 +29,7 @@ export function FilterTagWrapper({
       onKeyDown={(e) => handleFilterKeyDown(e)}
     >
       {children}
-      <Tag.Close
-        data-test-id={`remove-filter-${field}${values.join(" ")}`}
-        onClick={() => onFilterRemoved()}
-      />
+      <Tag.Close onClick={() => onFilterRemoved()} />
     </Tag>
   );
 }

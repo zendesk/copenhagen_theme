@@ -26,7 +26,7 @@ export default function RequestsSearch({
 
   return (
     <form onSubmit={onSearchChange}>
-      <Field data-test-id={"requests-search"}>
+      <Field>
         <Field.Label hidden>
           {t("guide-requests-app.searchField.Label", "Search")}
         </Field.Label>
