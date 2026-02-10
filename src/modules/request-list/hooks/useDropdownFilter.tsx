@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Item } from "@zendeskgarden/react-dropdowns.legacy";
+import { Option as DropdownOption } from "@zendeskgarden/react-dropdowns";
 import { useTranslation } from "react-i18next";
 
 export function useDropdownFilter<
@@ -9,11 +9,10 @@ export function useDropdownFilter<
   options: readonly Option[],
   key: Key
 ): {
-  dropdownProps: {
-    inputValue: string;
-    onInputValueChange: (value: string) => void;
-  };
-  renderItems: (render: (option: Option) => JSX.Element) => JSX.Element;
+  inputValue: string;
+  onInputValueChange: (value: string) => void;
+  matchingOptions: readonly Option[];
+  noMatchesOption: JSX.Element | null;
 } {
   const { t } = useTranslation();
 
@@ -33,26 +32,24 @@ export function useDropdownFilter<
 
   const onInputValueChange = (value: string) => setInputValue(value);
 
-  const dropdownProps = {
-    inputValue,
-    onInputValueChange,
-  };
-
-  const renderItems = (render: (option: Option) => JSX.Element) =>
-    matchingFields.length ? (
-      <>{matchingFields.map((option) => render(option))}</>
-    ) : (
-      <Item disabled>
-        {t(
-          "guide-requests-app.filters-modal.no-matches-found",
-          "No matches found"
-        )}
-      </Item>
-    );
-
   useEffect(() => {
     filterMatchingOptionsRef.current(inputValue);
   }, [inputValue]);
 
-  return { dropdownProps, renderItems };
+  return {
+    inputValue,
+    onInputValueChange,
+    matchingOptions: matchingFields,
+    noMatchesOption:
+      matchingFields.length === 0 ? (
+        <DropdownOption
+          isDisabled
+          label={t(
+            "guide-requests-app.filters-modal.no-matches-found",
+            "No matches found"
+          )}
+          value="__no_matches__"
+        />
+      ) : null,
+  };
 }
