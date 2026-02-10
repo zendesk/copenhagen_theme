@@ -188,6 +188,23 @@ The same applies for the description. */
     );
   }
 
+  if (identifier === "subject") {
+    const requestUrl = `/hc/requests/${id}`;
+
+    const navigateToRequestPage = (e: MouseEvent) => {
+      e.preventDefault();
+      location.assign(requestUrl);
+    };
+
+    return (
+      <Table.Cell role="rowheader" data-test-id={`table-cell-${identifier}`}>
+        <Subject href={requestUrl} onClick={navigateToRequestPage}>
+          <TruncatedText>{subject || description}</TruncatedText>
+        </Subject>
+      </Table.Cell>
+    );
+  }
+
   const ticketField = ticketFields.find(
     (field) => String(field.id) === identifier || field.type === identifier
   );
@@ -197,23 +214,6 @@ The same applies for the description. */
   }
 
   switch (ticketField.type) {
-    case "subject": {
-      const requestUrl = `/hc/requests/${id}`;
-
-      const navigateToRequestPage = (e: MouseEvent) => {
-        e.preventDefault();
-        location.assign(requestUrl);
-      };
-
-      return (
-        <Table.Cell role="rowheader" data-test-id={`table-cell-${identifier}`}>
-          <Subject href={requestUrl} onClick={navigateToRequestPage}>
-            <TruncatedText>{subject || description}</TruncatedText>
-          </Subject>
-        </Table.Cell>
-      );
-    }
-
     case "priority":
       return (
         <TruncatedTableCell identifier={identifier}>

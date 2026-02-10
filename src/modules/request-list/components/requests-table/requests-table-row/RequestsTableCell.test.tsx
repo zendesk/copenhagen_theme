@@ -244,4 +244,35 @@ describe("RequestsTableCell", () => {
       }
     );
   });
+
+  describe("Subject column", () => {
+    test("renders subject as a clickable link", () => {
+      renderCell({ identifier: "subject" });
+      const link = screen.getByRole("link");
+      expect(link).toHaveAttribute("href", "/hc/requests/123");
+      expect(screen.getAllByText("Test Subject")[0]).toBeInTheDocument();
+    });
+
+    test("renders description when subject is not available", () => {
+      const requestWithoutSubject = {
+        ...mockRequest,
+        subject: "",
+      };
+      renderCell({ identifier: "subject", request: requestWithoutSubject });
+      expect(screen.getAllByText("No Jenny uhuh")[0]).toBeInTheDocument();
+    });
+
+    test("renders subject even when subject ticket field is not in ticketFields", () => {
+      const ticketFieldsWithoutSubject = mockTicketFields.filter(
+        (field) => field.type !== "subject"
+      );
+      renderCell({
+        identifier: "subject",
+        ticketFields: ticketFieldsWithoutSubject,
+      });
+      const link = screen.getByRole("link");
+      expect(link).toHaveAttribute("href", "/hc/requests/123");
+      expect(screen.getAllByText("Test Subject")[0]).toBeInTheDocument();
+    });
+  });
 });
