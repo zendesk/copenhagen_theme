@@ -233,17 +233,16 @@ export function NumberFilter({
 
   const formatDisplayValue = (value: string | null): string => {
     if (!value) return "";
-    return filterTypeDropdownI18N[value as keyof typeof filterTypeDropdownI18N] || "";
+    return (
+      filterTypeDropdownI18N[value as keyof typeof filterTypeDropdownI18N] || ""
+    );
   };
 
   return (
     <Container>
       <DropdownField>
         <DropdownField.Label>
-          {t(
-            "guide-requests-app.filter-modal.filterTypeLabel",
-            "Filter type"
-          )}
+          {t("guide-requests-app.filter-modal.filterTypeLabel", "Filter type")}
         </DropdownField.Label>
         <Combobox
           isEditable={false}
@@ -251,7 +250,9 @@ export function NumberFilter({
           inputValue={formatDisplayValue(filter?.type ?? null)}
           onChange={(changes) => {
             if (changes.selectionValue !== undefined) {
-              handleFilterTypeSelect(changes.selectionValue as NumberFilter["type"]);
+              handleFilterTypeSelect(
+                changes.selectionValue as NumberFilter["type"]
+              );
             }
           }}
           validation={errors.filterType ? "error" : undefined}
@@ -259,7 +260,10 @@ export function NumberFilter({
         >
           <Option label={filterTypeDropdownI18N.anyValue} value="anyValue" />
           <Option label={filterTypeDropdownI18N.range} value="range" />
-          <Option label={filterTypeDropdownI18N.exactMatch} value="exactMatch" />
+          <Option
+            label={filterTypeDropdownI18N.exactMatch}
+            value="exactMatch"
+          />
         </Combobox>
         <FieldError errors={errors} field="filterType" />
       </DropdownField>

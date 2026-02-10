@@ -1,11 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import {
-  Combobox,
-  Field,
-  Option,
-} from "@zendeskgarden/react-dropdowns";
+import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import type { Organization } from "../../../data-types";
 
 interface OrganizationsDropdownProps {
@@ -40,14 +36,19 @@ export default function OrganizationsDropdown({
 
   return (
     <StyledField>
-      <Field.Label>{t("guide-requests-app.organization", "Organization")}</Field.Label>
+      <Field.Label>
+        {t("guide-requests-app.organization", "Organization")}
+      </Field.Label>
       <Combobox
         isAutocomplete
         selectionValue={String(currentOrganizationId)}
         inputValue={selectedOrganization?.name ?? inputValue}
         data-test-id="organizations-menu"
         onChange={(changes) => {
-          if (changes.selectionValue !== undefined && changes.selectionValue !== null) {
+          if (
+            changes.selectionValue !== undefined &&
+            changes.selectionValue !== null
+          ) {
             onOrganizationSelected(Number(changes.selectionValue));
           }
           if (changes.inputValue !== undefined) {

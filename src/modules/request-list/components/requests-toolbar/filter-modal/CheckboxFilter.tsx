@@ -1,8 +1,4 @@
-import {
-  Combobox,
-  Field,
-  Option,
-} from "@zendeskgarden/react-dropdowns";
+import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import { useEffect, useState } from "react";
 import type { CheckboxFilterValue } from "../../../data-types/FilterValue";
 import { useFilterTranslations } from "../i18n";
@@ -89,7 +85,10 @@ export function CheckboxFilter({
         listboxAppendToNode={modalContainer}
       >
         <Option label={checkboxFilterValuesI18N[":checked"]} value=":checked" />
-        <Option label={checkboxFilterValuesI18N[":unchecked"]} value=":unchecked" />
+        <Option
+          label={checkboxFilterValuesI18N[":unchecked"]}
+          value=":unchecked"
+        />
       </Combobox>
       <FieldError errors={errors} field="filterValue" />
     </Field>

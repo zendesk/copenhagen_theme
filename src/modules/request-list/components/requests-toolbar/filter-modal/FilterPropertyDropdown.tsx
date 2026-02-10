@@ -1,8 +1,4 @@
-import {
-  Combobox,
-  Field,
-  Option,
-} from "@zendeskgarden/react-dropdowns";
+import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import { useDropdownFilter } from "../../../hooks/useDropdownFilter";
 import { useTranslation } from "react-i18next";
 import { FieldError } from "./FieldError";

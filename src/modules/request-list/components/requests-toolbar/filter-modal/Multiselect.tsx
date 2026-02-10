@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Combobox,
-  Field,
-  Option,
-} from "@zendeskgarden/react-dropdowns";
+import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import { useDropdownFilter } from "../../../hooks/useDropdownFilter";
 import type { FilterValue } from "../../../data-types/FilterValue";
 import { FieldError } from "./FieldError";
@@ -34,9 +30,7 @@ export function Multiselect({
   const { t } = useTranslation();
   const modalContainer = useModalContainer();
 
-  const validateForm = (
-    selectedValues: string[]
-  ): FormState<FormFieldKey> => {
+  const validateForm = (selectedValues: string[]): FormState<FormFieldKey> => {
     if (selectedValues.length > 0) {
       return {
         state: "valid",
@@ -56,7 +50,7 @@ export function Multiselect({
   };
 
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
-  const { inputValue, onInputValueChange, matchingOptions, noMatchesOption } =
+  const { onInputValueChange, matchingOptions, noMatchesOption } =
     useDropdownFilter(options, "value");
 
   useEffect(() => {
@@ -77,9 +71,7 @@ export function Multiselect({
         selectionValue={selectedValues}
         onChange={(changes) => {
           if (changes.selectionValue !== undefined) {
-            handleChange(
-              (changes.selectionValue as string[] | null) ?? []
-            );
+            handleChange((changes.selectionValue as string[] | null) ?? []);
           }
           if (changes.inputValue !== undefined) {
             onInputValueChange(changes.inputValue);

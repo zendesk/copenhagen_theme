@@ -5,6 +5,8 @@ import {
   ItemGroup,
   Separator,
 } from "@zendeskgarden/react-dropdowns";
+
+import { Tooltip } from "@zendeskgarden/react-tooltips";
 import { Table } from "@zendeskgarden/react-tables";
 import styled from "styled-components";
 import { RequestsColumnModal } from "./RequestsColumnModal";
@@ -56,6 +58,7 @@ export function RequestsColumnFilter({
     selectedItems?: Array<{ value: string; type?: string }>;
   }) => {
     if (changes.isExpanded === true) {
+      // Cache the last selected columns when dropdown is opened
       setLastSelectedColumns(selectedColumns);
     }
 
@@ -66,7 +69,7 @@ export function RequestsColumnFilter({
       return;
     }
 
-    // Handle checkbox item selections
+    // Handle checkbox item
     if (changes.selectedItems) {
       const selectedValues = changes.selectedItems
         .map((item) => item.value)
@@ -80,6 +83,11 @@ export function RequestsColumnFilter({
     }
   };
 
+  const showAndHideColumnsLabel = t(
+    "guide-requests-app.column-selection.show-hide-columns",
+    "Show and hide columns"
+  );
+
   return (
     <>
       <Menu
@@ -89,22 +97,15 @@ export function RequestsColumnFilter({
         placement="bottom-end"
         restoreFocus={false}
         button={(props) => (
-          <Table.OverflowButton
-            {...props}
-            aria-label={t(
-              "guide-requests-app.column-selection.show-hide-columns",
-              "Show and hide columns"
-            )}
-          />
+          <Tooltip content={showAndHideColumnsLabel} placement="start">
+            <Table.OverflowButton
+              {...props}
+              aria-label={showAndHideColumnsLabel}
+            />
+          </Tooltip>
         )}
       >
-        <ItemGroup
-          legend={t(
-            "guide-requests-app.column-selection.show-hide-columns",
-            "Show and hide columns"
-          )}
-          type="checkbox"
-        >
+        <ItemGroup legend={showAndHideColumnsLabel} type="checkbox">
           {requestAttributes.map(({ identifier, label }) => {
             if (
               !defaultDesktopColumns.includes(identifier) &&
