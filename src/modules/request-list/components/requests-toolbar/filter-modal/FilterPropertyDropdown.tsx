@@ -1,15 +1,13 @@
 import {
-  Item,
-  Label,
+  Combobox,
   Field,
-  Dropdown,
-  Autocomplete,
-} from "@zendeskgarden/react-dropdowns.legacy";
+  Option,
+} from "@zendeskgarden/react-dropdowns";
 import { useDropdownFilter } from "../../../hooks/useDropdownFilter";
 import { useTranslation } from "react-i18next";
 import { FieldError } from "./FieldError";
 import type { FormErrors } from "./FormState";
-import { ModalMenu } from "../../modal-menu/ModalMenu";
+import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 import type { Organization, TicketField } from "../../../data-types";
 
 const HIDDEN_FIELDS = [
@@ -50,6 +48,7 @@ export function FilterPropertyDropdown({
   errors,
 }: FilterPropertyDropdownProps): JSX.Element {
   const { t } = useTranslation();
+  const modalContainer = useModalContainer();
 
   const filterProperties: FilterProperty[] = [
     {
@@ -85,37 +84,48 @@ export function FilterPropertyDropdown({
       })),
   ];
 
-  const { dropdownProps, renderItems } = useDropdownFilter(
-    filterProperties,
-    "label"
+  const { inputValue, onInputValueChange, matchingOptions, noMatchesOption } =
+    useDropdownFilter(filterProperties, "label");
+
+  const propertyByIdentifier = new Map(
+    filterProperties.map((p) => [p.identifier, p])
   );
 
   return (
-    <Dropdown
-      {...dropdownProps}
-      selectedItem={selectedProperty}
-      onSelect={onSelect}
-      downshiftProps={{
-        defaultHighlightedIndex: 0,
-        itemToString: (property: FilterProperty) => `${property?.identifier}`,
-      }}
-    >
-      <Field>
-        <Label>
-          {t("guide-requests-app.filters-modal.select-filter", "Select filter")}
-        </Label>
-        <Autocomplete validation={errors.ticketField ? "error" : undefined}>
-          {selectedProperty?.label}
-        </Autocomplete>
-        <FieldError errors={errors} field="ticketField" />
-      </Field>
-      <ModalMenu>
-        {renderItems((property) => (
-          <Item key={property.identifier} value={property}>
-            {property.label}
-          </Item>
-        ))}
-      </ModalMenu>
-    </Dropdown>
+    <Field>
+      <Field.Label>
+        {t("guide-requests-app.filters-modal.select-filter", "Select filter")}
+      </Field.Label>
+      <Combobox
+        isAutocomplete
+        selectionValue={selectedProperty?.identifier ?? null}
+        inputValue={selectedProperty?.label ?? inputValue}
+        onChange={(changes) => {
+          if (changes.selectionValue !== undefined) {
+            const property = propertyByIdentifier.get(
+              changes.selectionValue as string
+            );
+            if (property) {
+              onSelect(property);
+            }
+          }
+          if (changes.inputValue !== undefined) {
+            onInputValueChange(changes.inputValue);
+          }
+        }}
+        validation={errors.ticketField ? "error" : undefined}
+        listboxAppendToNode={modalContainer}
+      >
+        {noMatchesOption ||
+          matchingOptions.map((property) => (
+            <Option
+              key={property.identifier}
+              label={property.label}
+              value={property.identifier}
+            />
+          ))}
+      </Combobox>
+      <FieldError errors={errors} field="ticketField" />
+    </Field>
   );
 }

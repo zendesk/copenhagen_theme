@@ -2,13 +2,10 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import {
-  Dropdown,
-  Label,
-  Menu,
+  Combobox,
   Field,
-  Item,
-  Autocomplete,
-} from "@zendeskgarden/react-dropdowns.legacy";
+  Option,
+} from "@zendeskgarden/react-dropdowns";
 import type { Organization } from "../../../data-types";
 
 interface OrganizationsDropdownProps {
@@ -16,11 +13,6 @@ interface OrganizationsDropdownProps {
   currentOrganizationId: number;
   onOrganizationSelected: (organizationId: number) => void;
 }
-
-const StyledMenu = styled(Menu)`
-  max-height: 100%;
-  overflow-y: visible;
-`;
 
 const StyledField = styled(Field)`
   width: 200px;
@@ -39,41 +31,39 @@ export default function OrganizationsDropdown({
     (organization) => organization.id === currentOrganizationId
   );
 
-  const onSelect = (orgId: number) => {
-    onOrganizationSelected(orgId);
-  };
+  const filteredOrganizations = organizations.filter((organization) =>
+    organization.name
+      .trim()
+      .toLowerCase()
+      .includes(inputValue.trim().toLowerCase())
+  );
 
   return (
-    <Dropdown
-      inputValue={inputValue}
-      onInputValueChange={setInputValue}
-      selectedItem={currentOrganizationId}
-      onSelect={onSelect}
-    >
-      <StyledField>
-        <Label>{t("guide-requests-app.organization", "Organization")}</Label>
-        <Autocomplete data-test-id="organizations-menu">
-          {selectedOrganization?.name}
-        </Autocomplete>
-      </StyledField>
-      <StyledMenu placement="bottom-start">
-        {organizations
-          .filter((organization) =>
-            organization.name
-              .trim()
-              .toLowerCase()
-              .includes(inputValue.trim().toLowerCase())
-          )
-          .map((organization) => (
-            <Item
-              key={organization.id}
-              value={organization.id}
-              data-test-id={`organization-${organization.id}`}
-            >
-              {organization.name}
-            </Item>
-          ))}
-      </StyledMenu>
-    </Dropdown>
+    <StyledField>
+      <Field.Label>{t("guide-requests-app.organization", "Organization")}</Field.Label>
+      <Combobox
+        isAutocomplete
+        selectionValue={String(currentOrganizationId)}
+        inputValue={selectedOrganization?.name ?? inputValue}
+        data-test-id="organizations-menu"
+        onChange={(changes) => {
+          if (changes.selectionValue !== undefined && changes.selectionValue !== null) {
+            onOrganizationSelected(Number(changes.selectionValue));
+          }
+          if (changes.inputValue !== undefined) {
+            setInputValue(changes.inputValue);
+          }
+        }}
+      >
+        {filteredOrganizations.map((organization) => (
+          <Option
+            key={organization.id}
+            label={organization.name}
+            value={String(organization.id)}
+            data-test-id={`organization-${organization.id}`}
+          />
+        ))}
+      </Combobox>
+    </StyledField>
   );
 }
