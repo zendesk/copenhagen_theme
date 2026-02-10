@@ -130,7 +130,9 @@ describe("Columns", () => {
     expect(
       screen.getByRole("menuitemcheckbox", { name: "Subject" })
     ).toBeInTheDocument();
-    expect(screen.getByRole("menuitemcheckbox", { name: "ID" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("menuitemcheckbox", { name: "ID" })
+    ).toBeInTheDocument();
     expect(
       screen.getByRole("menuitemcheckbox", { name: "Status" })
     ).toBeInTheDocument();
@@ -201,7 +203,9 @@ describe("Columns", () => {
     fireEvent.click(
       screen.getByRole("button", { name: "Show and hide columns" })
     );
-    fireEvent.click(screen.getByRole("menuitemcheckbox", { name: "NumberField" }));
+    fireEvent.click(
+      screen.getByRole("menuitemcheckbox", { name: "NumberField" })
+    );
 
     expect(onSelectedColumnsChanged).toHaveBeenCalledWith(
       DEFAULT_DESKTOP_COLUMNS

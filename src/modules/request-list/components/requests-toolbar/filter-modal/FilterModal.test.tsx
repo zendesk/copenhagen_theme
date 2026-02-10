@@ -252,7 +252,9 @@ describe("<FilterModal />", () => {
 
       fireEvent.click(screen.getByText("Apply filter"));
 
-      const dropdownOptionsDropdown = screen.getByLabelText("DropdownFieldEndUser");
+      const dropdownOptionsDropdown = screen.getByLabelText(
+        "DropdownFieldEndUser"
+      );
       expect(dropdownOptionsDropdown).toHaveAttribute("aria-invalid", "true");
 
       expect(screen.getByText("Select at least one value")).toBeInTheDocument();
@@ -270,7 +272,9 @@ describe("<FilterModal />", () => {
 
       fireEvent.click(screen.getByText("Apply filter"));
 
-      const dropdownOptionsDropdown = screen.getByLabelText("MultiselectFieldEndUser");
+      const dropdownOptionsDropdown = screen.getByLabelText(
+        "MultiselectFieldEndUser"
+      );
       expect(dropdownOptionsDropdown).toHaveAttribute("aria-invalid", "true");
 
       expect(screen.getByText("Select at least one value")).toBeInTheDocument();
@@ -313,9 +317,10 @@ describe("<FilterModal />", () => {
 
       fireEvent.click(screen.getByText("Apply filter"));
 
-      expect(
-        screen.getByLabelText("Select filter")
-      ).toHaveAttribute("aria-invalid", "true");
+      expect(screen.getByLabelText("Select filter")).toHaveAttribute(
+        "aria-invalid",
+        "true"
+      );
 
       expect(screen.getByText("Select a filter")).toBeInTheDocument();
 
@@ -505,9 +510,7 @@ describe("<FilterModal />", () => {
       fireEvent.click(
         screen.getByRole("option", { name: "DropdownFieldEndUser" })
       );
-      fireEvent.click(
-        screen.getByLabelText("DropdownFieldEndUser")
-      );
+      fireEvent.click(screen.getByLabelText("DropdownFieldEndUser"));
       fireEvent.click(
         screen.getByRole("option", { name: "Dropdown Field Option #1" })
       );
@@ -527,9 +530,7 @@ describe("<FilterModal />", () => {
 
       fireEvent.click(screen.getByLabelText("Select filter"));
       fireEvent.click(screen.getByRole("option", { name: "Created date" }));
-      fireEvent.click(
-        screen.getByLabelText("Created date")
-      );
+      fireEvent.click(screen.getByLabelText("Created date"));
       fireEvent.click(screen.getByRole("option", { name: "In the past year" }));
       fireEvent.click(screen.getByText("Apply filter"));
 
@@ -545,9 +546,7 @@ describe("<FilterModal />", () => {
 
       fireEvent.click(screen.getByLabelText("Select filter"));
       fireEvent.click(screen.getByRole("option", { name: "Updated date" }));
-      fireEvent.click(
-        screen.getByLabelText("Updated date")
-      );
+      fireEvent.click(screen.getByLabelText("Updated date"));
       fireEvent.click(screen.getByRole("option", { name: "In the past week" }));
       fireEvent.click(screen.getByText("Apply filter"));
 
@@ -563,9 +562,7 @@ describe("<FilterModal />", () => {
 
       fireEvent.click(screen.getByLabelText("Select filter"));
       fireEvent.click(screen.getByRole("option", { name: "Created date" }));
-      fireEvent.click(
-        screen.getByLabelText("Created date")
-      );
+      fireEvent.click(screen.getByLabelText("Created date"));
       fireEvent.click(screen.getByRole("option", { name: "Custom" }));
 
       fireEvent.click(screen.getByText("Start"));
@@ -749,7 +746,9 @@ describe("<FilterModal />", () => {
     const dropdownFieldItem = screen.getByText("DropdownFieldEndUser");
     fireEvent.click(dropdownFieldItem);
 
-    const dropdownOptionsDropdown = screen.getByLabelText("DropdownFieldEndUser");
+    const dropdownOptionsDropdown = screen.getByLabelText(
+      "DropdownFieldEndUser"
+    );
     fireEvent.click(dropdownOptionsDropdown);
 
     fireEvent.click(screen.getByText("Dropdown Field Option #1"));
