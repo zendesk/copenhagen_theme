@@ -1,10 +1,8 @@
 import {
-  Dropdown,
-  Item,
-  Select,
+  Combobox,
   Field as DropdownField,
-  Label as DropdownLabel,
-} from "@zendeskgarden/react-dropdowns.legacy";
+  Option,
+} from "@zendeskgarden/react-dropdowns";
 import { Field, Input } from "@zendeskgarden/react-forms";
 import { Grid } from "@zendeskgarden/react-grid";
 import { useEffect, useState } from "react";
@@ -13,7 +11,7 @@ import { useFilterTranslations } from "../i18n";
 import { FieldError } from "./FieldError";
 import type { FormErrors, FormState } from "./FormState";
 import { useTranslation } from "react-i18next";
-import { ModalMenu } from "../../modal-menu/ModalMenu";
+import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 
 type FormFieldKey = "filterType" | "minValue" | "maxValue" | "exactValue";
 
@@ -57,6 +55,7 @@ export function NumberFilter({
   type,
 }: NumberFilterProps): JSX.Element {
   const { t } = useTranslation();
+  const modalContainer = useModalContainer();
 
   const [filter, setFilter] = useState<NumberFilter | null>(null);
 
@@ -232,27 +231,38 @@ export function NumberFilter({
 
   const { filterTypeDropdownI18N } = useFilterTranslations();
 
+  const formatDisplayValue = (value: string | null): string => {
+    if (!value) return "";
+    return filterTypeDropdownI18N[value as keyof typeof filterTypeDropdownI18N] || "";
+  };
+
   return (
     <Container>
-      <Dropdown selectedItem={filter?.type} onSelect={handleFilterTypeSelect}>
-        <DropdownField>
-          <DropdownLabel>
-            {t(
-              "guide-requests-app.filter-modal.filterTypeLabel",
-              "Filter type"
-            )}
-          </DropdownLabel>
-          <Select validation={errors.filterType ? "error" : undefined}>
-            {filter ? filterTypeDropdownI18N[filter.type] : ""}
-          </Select>
-          <FieldError errors={errors} field="filterType" />
-        </DropdownField>
-        <ModalMenu>
-          <Item value="anyValue">{filterTypeDropdownI18N.anyValue}</Item>
-          <Item value="range">{filterTypeDropdownI18N.range}</Item>
-          <Item value="exactMatch">{filterTypeDropdownI18N.exactMatch}</Item>
-        </ModalMenu>
-      </Dropdown>
+      <DropdownField>
+        <DropdownField.Label>
+          {t(
+            "guide-requests-app.filter-modal.filterTypeLabel",
+            "Filter type"
+          )}
+        </DropdownField.Label>
+        <Combobox
+          isEditable={false}
+          selectionValue={filter?.type ?? null}
+          inputValue={formatDisplayValue(filter?.type ?? null)}
+          onChange={(changes) => {
+            if (changes.selectionValue !== undefined) {
+              handleFilterTypeSelect(changes.selectionValue as NumberFilter["type"]);
+            }
+          }}
+          validation={errors.filterType ? "error" : undefined}
+          listboxAppendToNode={modalContainer}
+        >
+          <Option label={filterTypeDropdownI18N.anyValue} value="anyValue" />
+          <Option label={filterTypeDropdownI18N.range} value="range" />
+          <Option label={filterTypeDropdownI18N.exactMatch} value="exactMatch" />
+        </Combobox>
+        <FieldError errors={errors} field="filterType" />
+      </DropdownField>
       {filter?.type === "range" && (
         <Grid.Row>
           <Grid.Col>

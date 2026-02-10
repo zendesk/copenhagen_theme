@@ -91,7 +91,7 @@ describe("Columns", () => {
     fireEvent.click(
       screen.getByRole("button", { name: "Show and hide columns" })
     );
-    fireEvent.click(screen.getByRole("menuitem", { name: "ID" }));
+    fireEvent.click(screen.getByRole("menuitemcheckbox", { name: "ID" }));
 
     expect(onSelectedColumnsChanged).toHaveBeenCalledWith(
       selectedColumnIdentifiers.filter((identifier) => identifier !== "id")
@@ -108,12 +108,12 @@ describe("Columns", () => {
     );
 
     // Deselect Status and ID
-    fireEvent.click(screen.getByRole("menuitem", { name: "Status" }));
+    fireEvent.click(screen.getByRole("menuitemcheckbox", { name: "Status" }));
     expect(onSelectedColumnsChanged).toHaveBeenCalledWith(
       DEFAULT_DESKTOP_COLUMNS.filter((id) => id !== "status")
     );
 
-    fireEvent.click(screen.getByRole("menuitem", { name: "ID" }));
+    fireEvent.click(screen.getByRole("menuitemcheckbox", { name: "ID" }));
     expect(onSelectedColumnsChanged).toHaveBeenCalledWith(
       DEFAULT_DESKTOP_COLUMNS.filter((id) => id !== "id")
     );
@@ -128,11 +128,11 @@ describe("Columns", () => {
 
     // All default desktop columns should be shown in the dropdown
     expect(
-      screen.getByRole("menuitem", { name: "Subject" })
+      screen.getByRole("menuitemcheckbox", { name: "Subject" })
     ).toBeInTheDocument();
-    expect(screen.getByRole("menuitem", { name: "ID" })).toBeInTheDocument();
+    expect(screen.getByRole("menuitemcheckbox", { name: "ID" })).toBeInTheDocument();
     expect(
-      screen.getByRole("menuitem", { name: "Status" })
+      screen.getByRole("menuitemcheckbox", { name: "Status" })
     ).toBeInTheDocument();
   });
 
@@ -201,7 +201,7 @@ describe("Columns", () => {
     fireEvent.click(
       screen.getByRole("button", { name: "Show and hide columns" })
     );
-    fireEvent.click(screen.getByRole("menuitem", { name: "NumberField" }));
+    fireEvent.click(screen.getByRole("menuitemcheckbox", { name: "NumberField" }));
 
     expect(onSelectedColumnsChanged).toHaveBeenCalledWith(
       DEFAULT_DESKTOP_COLUMNS
@@ -213,7 +213,7 @@ describe("Columns", () => {
     );
 
     expect(
-      screen.queryByRole("menuitem", { name: "NumberField" })
+      screen.queryByRole("menuitemcheckbox", { name: "NumberField" })
     ).not.toBeInTheDocument();
 
     unmount4();

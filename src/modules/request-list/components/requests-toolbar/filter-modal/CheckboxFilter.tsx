@@ -1,17 +1,15 @@
 import {
-  Dropdown,
+  Combobox,
   Field,
-  Item,
-  Label,
-  Select,
-} from "@zendeskgarden/react-dropdowns.legacy";
+  Option,
+} from "@zendeskgarden/react-dropdowns";
 import { useEffect, useState } from "react";
 import type { CheckboxFilterValue } from "../../../data-types/FilterValue";
 import { useFilterTranslations } from "../i18n";
 import { FieldError } from "./FieldError";
 import type { FormErrors, FormState } from "./FormState";
 import { useTranslation } from "react-i18next";
-import { ModalMenu } from "../../modal-menu/ModalMenu";
+import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 
 type FormFieldKey = "filterValue";
 
@@ -27,6 +25,7 @@ export function CheckboxFilter({
   errors,
 }: CheckboxFilterProps): JSX.Element {
   const { t } = useTranslation();
+  const modalContainer = useModalContainer();
 
   const validateForm = (
     checkboxFilterValue: CheckboxFilterValue | null
@@ -61,27 +60,38 @@ export function CheckboxFilter({
     onSelect(validateForm(item));
   };
 
+  const formatDisplayValue = (val: string | null): string => {
+    if (!val) return "";
+    return checkboxFilterValuesI18N[val as CheckboxFilterValue] || "";
+  };
+
   return (
-    <Dropdown selectedItem={value} onSelect={handleSelect}>
-      <Field>
-        <Label>
-          {t(
-            "guide-requests-app.filters-modal.select-field-value",
-            "Select {{field_name}}",
-            {
-              field_name: label,
-            }
-          )}
-        </Label>
-        <Select validation={errors.filterValue ? "error" : undefined}>
-          {value ? checkboxFilterValuesI18N[value] : ""}
-        </Select>
-        <FieldError errors={errors} field="filterValue" />
-      </Field>
-      <ModalMenu>
-        <Item value=":checked">{checkboxFilterValuesI18N[":checked"]}</Item>
-        <Item value=":unchecked">{checkboxFilterValuesI18N[":unchecked"]}</Item>
-      </ModalMenu>
-    </Dropdown>
+    <Field>
+      <Field.Label>
+        {t(
+          "guide-requests-app.filters-modal.select-field-value",
+          "Select {{field_name}}",
+          {
+            field_name: label,
+          }
+        )}
+      </Field.Label>
+      <Combobox
+        isEditable={false}
+        selectionValue={value}
+        inputValue={formatDisplayValue(value)}
+        onChange={(changes) => {
+          if (changes.selectionValue !== undefined) {
+            handleSelect(changes.selectionValue as CheckboxFilterValue);
+          }
+        }}
+        validation={errors.filterValue ? "error" : undefined}
+        listboxAppendToNode={modalContainer}
+      >
+        <Option label={checkboxFilterValuesI18N[":checked"]} value=":checked" />
+        <Option label={checkboxFilterValuesI18N[":unchecked"]} value=":unchecked" />
+      </Combobox>
+      <FieldError errors={errors} field="filterValue" />
+    </Field>
   );
 }

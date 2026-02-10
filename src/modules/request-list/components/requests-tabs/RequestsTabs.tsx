@@ -1,11 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { Button } from "@zendeskgarden/react-buttons";
 import {
-  Dropdown,
   Menu,
   Item,
-  Trigger,
-} from "@zendeskgarden/react-dropdowns.legacy";
+} from "@zendeskgarden/react-dropdowns";
 import { Tabs } from "@zendeskgarden/react-tabs";
 import ChevronIcon from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
 import type {
@@ -38,10 +36,6 @@ const StyledButton = styled(Button)`
   &:hover {
     color: ${(p) => p.theme.colors.primaryHue};
   }
-`;
-
-const StyledMenu = styled(Menu)`
-  width: 100%;
 `;
 
 function getDefaultOrganization(
@@ -111,42 +105,30 @@ export default function RequestsTabs({
   return (
     <Container>
       <Mobile>
-        <Dropdown
-          onSelect={handleMobileTabSelected}
-          onStateChange={({ isOpen }) => {
-            if (isOpen != null) {
-              setIconIsRotated(isOpen);
-            }
-          }}
-        >
-          <Trigger>
-            <StyledButton isBasic isStretched>
+        <Menu
+          button={(props) => (
+            <StyledButton {...props} isBasic isStretched>
               {getTabLabel(selectedTab.name)}
               <Button.EndIcon isRotated={iconIsRotated}>
                 <ChevronIcon />
               </Button.EndIcon>
             </StyledButton>
-          </Trigger>
-          <StyledMenu
-            popperModifiers={{
-              offset: {
-                fn(data) {
-                  data.styles.width = `${parseInt(
-                    String(data.offsets.reference.width),
-                    10
-                  )}px`;
-                  return data;
-                },
-              },
-            }}
-          >
-            {availableTabs.map((tabName) => (
-              <Item key={tabName} value={tabName}>
-                {getTabLabel(tabName)}
-              </Item>
-            ))}
-          </StyledMenu>
-        </Dropdown>
+          )}
+          onChange={(changes) => {
+            if (changes.value) {
+              handleMobileTabSelected(changes.value as SelectedTabName);
+            }
+            if (changes.isExpanded !== undefined) {
+              setIconIsRotated(changes.isExpanded);
+            }
+          }}
+        >
+          {availableTabs.map((tabName) => (
+            <Item key={tabName} value={tabName}>
+              {getTabLabel(tabName)}
+            </Item>
+          ))}
+        </Menu>
       </Mobile>
       <Desktop>
         <Tabs onChange={handleTabSelect} selectedItem={selectedTab.name}>

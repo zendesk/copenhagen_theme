@@ -1,20 +1,15 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import {
-  Dropdown,
-  Trigger,
   Menu,
   Item,
-  HeaderItem,
-} from "@zendeskgarden/react-dropdowns.legacy";
+  ItemGroup,
+  Separator,
+} from "@zendeskgarden/react-dropdowns";
 import { Table } from "@zendeskgarden/react-tables";
 import styled from "styled-components";
 import { RequestsColumnModal } from "./RequestsColumnModal";
 import { useTranslation } from "react-i18next";
 import type { RequestAttribute } from "../RequestAttribute";
-
-const StyledMenu = styled(Menu)`
-  max-height: 380px;
-`;
 
 const OPEN_MODAL_VALUE = "__openModal__";
 
@@ -46,85 +41,70 @@ export function RequestsColumnFilter({
   const hasSeeMoreColumns =
     requestAttributes.length > defaultDesktopColumns.length;
 
-  const handleSelect = (items: string[]) => {
-    if (items.length === 0) {
-      onSelectedColumnsChanged([]);
-      return;
-    }
+  const controlledSelectedItems = useMemo(
+    () =>
+      selectedColumns.map((col) => ({
+        value: col,
+        type: "checkbox" as const,
+      })),
+    [selectedColumns]
+  );
 
-    onSelectedColumnsChanged(items.filter((item) => item !== OPEN_MODAL_VALUE));
-  };
-
-  // Garden augments the Downshift object with a custom `selectedItems` property:
-  // https://github.com/zendeskgarden/react-components/blob/354a84d162fe194b6f484f597d46fca2acbf8160/packages/dropdowns/src/elements/Dropdown/Dropdown.tsx#L152-L156
-  // This results in a TS type error when using this property even though that is
-  // the Garden approved/documented way to access mutliple selected items.
-  // The usage of `any` here is to work around that error when testing in JEST:
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleStateChange = (changes: any) => {
-    if (changes.isOpen === true) {
-      // Cache the last selected columns when dropdown is opened
+  const handleChange = (changes: {
+    isExpanded?: boolean;
+    value?: string;
+    selectedItems?: Array<{ value: string; type?: string }>;
+  }) => {
+    if (changes.isExpanded === true) {
       setLastSelectedColumns(selectedColumns);
     }
 
-    if (
-      "selectedItems" in changes &&
-      changes.selectedItems[changes.selectedItems.length - 1] ===
-        OPEN_MODAL_VALUE
-    ) {
+    // Handle "See more columns" selection
+    if (changes.value === OPEN_MODAL_VALUE) {
       setIsDropdownOpen(false);
       setIsModalOpen(true);
       return;
     }
 
-    if (changes.isOpen != null) {
-      setIsDropdownOpen("selectedItems" in changes || changes.isOpen);
+    // Handle checkbox item selections
+    if (changes.selectedItems) {
+      const selectedValues = changes.selectedItems
+        .map((item) => item.value)
+        .filter((v) => v !== OPEN_MODAL_VALUE);
+      onSelectedColumnsChanged(selectedValues);
+      return;
+    }
+
+    if (changes.isExpanded !== undefined) {
+      setIsDropdownOpen(changes.isExpanded);
     }
   };
 
   return (
     <>
-      <Dropdown
-        isOpen={isDropdownOpen}
-        selectedItems={selectedColumns}
-        onSelect={handleSelect}
-        onStateChange={handleStateChange}
-      >
-        <Trigger>
+      <Menu
+        isExpanded={isDropdownOpen}
+        selectedItems={controlledSelectedItems}
+        onChange={handleChange}
+        placement="bottom-end"
+        restoreFocus={false}
+        button={(props) => (
           <Table.OverflowButton
+            {...props}
             aria-label={t(
               "guide-requests-app.column-selection.show-hide-columns",
               "Show and hide columns"
             )}
           />
-        </Trigger>
-        <StyledMenu
-          placement="bottom-end"
-          popperModifiers={{
-            preventOverflow: {
-              boundariesElement: "viewport",
-            },
-            flip: {
-              enabled: false,
-            },
-            offset: {
-              fn: (data) => {
-                /**
-                 * Ensure correct placement relative to trigger
-                 **/
-                data.offsets.popper.top -= 2;
-
-                return data;
-              },
-            },
-          }}
+        )}
+      >
+        <ItemGroup
+          legend={t(
+            "guide-requests-app.column-selection.show-hide-columns",
+            "Show and hide columns"
+          )}
+          type="checkbox"
         >
-          <HeaderItem>
-            {t(
-              "guide-requests-app.column-selection.show-hide-columns",
-              "Show and hide columns"
-            )}
-          </HeaderItem>
           {requestAttributes.map(({ identifier, label }) => {
             if (
               !defaultDesktopColumns.includes(identifier) &&
@@ -143,23 +123,26 @@ export function RequestsColumnFilter({
               </Item>
             );
           })}
-          {hasSeeMoreColumns && (
+        </ItemGroup>
+        {hasSeeMoreColumns && (
+          <>
+            <Separator />
             <SeeMoreColumnsItem value={OPEN_MODAL_VALUE}>
               {t(
                 "guide-requests-app.column-selection.see-more-columns",
                 "See more columns"
               )}
             </SeeMoreColumnsItem>
-          )}
-        </StyledMenu>
-      </Dropdown>
+          </>
+        )}
+      </Menu>
       {isModalOpen && (
         <RequestsColumnModal
           onClose={() => {
             setIsModalOpen(false);
           }}
           selectedColumns={selectedColumns}
-          onSelectedColumnsChanged={handleSelect}
+          onSelectedColumnsChanged={onSelectedColumnsChanged}
           requestAttributes={requestAttributes}
         />
       )}
