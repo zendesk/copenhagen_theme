@@ -12,6 +12,9 @@ import debounce from "lodash.debounce";
 import { useServiceCatalogItems } from "../../hooks/useServiceCatalogItems";
 import { notify } from "../../../shared";
 
+const ALL_SERVICES_ID = "all-categories-virtual-id";
+const UNCATEGORIZED_ID = "uncategorized-virtual-id";
+
 const StyledCol = styled(Grid.Col)`
   margin-bottom: ${(props) => props.theme.space.md};
 `;
@@ -33,6 +36,7 @@ export function ServiceCatalogList({
   helpCenterPath: string;
 }) {
   const [searchInputValue, setSearchInputValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState<ServiceCatalogItem[]>([]);
 
   const { t } = useTranslation();
 
@@ -73,6 +77,36 @@ export function ServiceCatalogList({
     return () => debouncedUpdateServiceCatalogItems.cancel();
   }, [debouncedUpdateServiceCatalogItems]);
 
+  useEffect(() => {
+    const onChange = () => {
+      const params = new URLSearchParams(window.location.search);
+      const categoryId = params.get("category_id");
+
+      // No category selected -> show all fetched items
+      if (!categoryId) {
+        setFilteredItems(serviceCatalogItems);
+        return;
+      }
+
+      // Explicit 'all' virtual id -> also show all items
+      if (categoryId === ALL_SERVICES_ID) {
+        setFilteredItems(serviceCatalogItems);
+        return;
+      }
+
+      // Otherwise filter by category id
+      const filtered = serviceCatalogItems.filter((item) => String(item.categoryId) === String(categoryId));
+      setFilteredItems(filtered);
+    };
+
+    // Run once on mount so direct links like ?category_id=laptop filter immediately
+    onChange();
+    window.addEventListener("popstate", onChange);
+    return () => {
+      window.removeEventListener("popstate", onChange);
+    };
+  }, [serviceCatalogItems]);
+
   const handleNextClick = () => {
     if (meta && meta.after_cursor) {
       fetchServiceCatalogItems(
@@ -95,6 +129,7 @@ export function ServiceCatalogList({
     setSearchInputValue(value);
     debouncedUpdateServiceCatalogItems(value, null);
   };
+  console.log('filteredItems', filteredItems);
 
   return (
     <Container>
@@ -115,16 +150,20 @@ export function ServiceCatalogList({
         <>
           <StyledGrid>
             <Grid.Row wrap="wrap">
-              {serviceCatalogItems.length !== 0 &&
-                serviceCatalogItems.map((record: ServiceCatalogItem) => (
-                  <StyledCol key={record.id} xs={12} sm={6} md={4} lg={3}>
-                    <ServiceCatalogListItem
-                      key={record.id}
-                      serviceItem={record}
-                      helpCenterPath={helpCenterPath}
-                    />
-                  </StyledCol>
-                ))}
+              {(() => {
+                const itemsToRender = filteredItems.length ? filteredItems : serviceCatalogItems;
+                return (
+                  itemsToRender.map((record: ServiceCatalogItem) => (
+                    <StyledCol key={record.id} xs={12} sm={6} md={4} lg={3}>
+                      <ServiceCatalogListItem
+                        key={record.id}
+                        serviceItem={record}
+                        helpCenterPath={helpCenterPath}
+                      />
+                    </StyledCol>
+                  ))
+                );
+              })()}
             </Grid.Row>
           </StyledGrid>
           {serviceCatalogItems.length === 0 && (
