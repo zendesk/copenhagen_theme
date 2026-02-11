@@ -6,7 +6,7 @@ import ChevronDownIcon from "@zendeskgarden/svg-icons/src/12/chevron-down-fill.s
 import ChevronUpIcon from "@zendeskgarden/svg-icons/src/12/chevron-up-fill.svg";
 import { getColor } from "@zendeskgarden/react-theming";
 import { useTranslation } from "react-i18next";
-// import { useServiceCatalogCategoryTree } from "../../hooks/useServiceCatalogCategoryTree";
+import { useServiceCatalogCategoryTree } from "../../hooks/useServiceCatalogCategoryTree";
 import { Spinner } from "@zendeskgarden/react-loaders";
 import { notify } from "../../../shared";
 
@@ -15,7 +15,7 @@ const INDENT_PER_LEVEL = 20;
 const BASE_PADDING_LEFT = 32;
 const ARROW_MARGIN_LEFT = 12;
 
-const ALL_SERVICES_ID = "all-categories-virtual-id";
+export const ALL_SERVICES_ID = "all-categories-virtual-id";
 const UNCATEGORIZED_ID = "uncategorized-virtual-id";
 
 const Container = styled.div`
@@ -30,9 +30,6 @@ const SidebarHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: ${(props) => props.theme.space.sm};
-`;
-
-const SidebarHeaderTitle = styled.div`
 `;
 
 const StyledSidebarItem = styled.div<{
@@ -136,14 +133,6 @@ const LoadingContainer = styled.div`
   height: 100%;
 `;
 
-const categories = [
-    {id: "all", name:"All services", items_count: 0, children: []},
-    {id: "1223", name:"HR", items_count: 3, children: [{id: "1227", name:"Payroll", items_count: 5, children: []}, {id: "1228", name:"Recently solved", items_count: 1, children: []}, {id: "1229", name:"Offboarding", items_count: 13, children: [{id: "1230", name:"Contractor", items_count: 4, children: []}, {id: "1231", name:"Regular Employee", items_count: 5, children: []}]}]},
-    {id: "laptop", name:"IT", items_count: 2, children: []},
-    {id: "1225", name:"Legal", items_count: 1, children: []},
-    {id: "1226", name:"Sales Operations", items_count: 0, children: []},
-];
-
 export interface Category {
   id: string;
   name: string;
@@ -171,7 +160,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({category, nestingLevel, expa
 
     const { t } = useTranslation();
 
-    const displayName = isAllServices ? "All services": isUncategorized ? t("service-catalog-admin.uncategorized"): category.name;  
+    const displayName = isAllServices ? t("service-catalog-sidebar.all-services") : isUncategorized ? t("service-catalog-sidebar.uncategorized") : category.name;
 
     const handleExpandClick = (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -188,17 +177,17 @@ const CategoryItem: React.FC<CategoryItemProps> = ({category, nestingLevel, expa
           onClick={() => onSelect(category.id)}
           tabIndex={0}
           role="button"
-        //   onKeyDown={e => {
-        //     if (e.key === "Enter" || e.key === " ") {
-        //       e.preventDefault();
-        //       onSelect(category.id);
-        //     }
-        //   }}
-        //   data-test-id={
-        //     isAllServices
-        //       ? "sidebar-all-services"
-        //       : `sidebar-category-${category.id}`
-        //   }
+          onKeyDown={e => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onSelect(category.id);
+            }
+          }}
+          data-test-id={
+            isAllServices
+              ? "sidebar-all-services"
+              : `sidebar-category-${category.id}`
+          }
         >
           <CategoryItemContainer $nestingLevel={hasChildren ? nestingLevel : 0}>
             {hasChildren && (
@@ -212,11 +201,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({category, nestingLevel, expa
             )}
             <ItemContent>
               <SidebarItemName>{displayName}</SidebarItemName>
-              <ItemCount
-                // data-test-id={
-                //   isAllServices ? "sidebar-services-count" : undefined
-                // }
-              >
+              <ItemCount>
                 {category.items_count}
               </ItemCount>
             </ItemContent>
@@ -247,7 +232,7 @@ export const ServiceCatalogCategoriesSidebar = () => {
     const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
     const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
 
-//   const { categoryTree, isLoading, error } = useServiceCatalogCategoryTree();
+  const { categoryTree, isLoading, error } = useServiceCatalogCategoryTree();
   const { t } = useTranslation();
 
   const fetchedCategories: Category[] = Array.isArray(categoryTree) ? categoryTree : [];
@@ -294,11 +279,11 @@ export const ServiceCatalogCategoriesSidebar = () => {
       if (error) {
         notify({
           title: t(
-            "service-catalog.categories-error-title",
+            "service-catalog-sidebar.categories-error-title",
             "Categories couldn't be loaded"
           ),
           message: t(
-            "service-catalog.categories-error-message",
+            "service-catalog-sidebar.categories-error-message",
             "Give it a moment and try again"
           ),
           type: "error",
