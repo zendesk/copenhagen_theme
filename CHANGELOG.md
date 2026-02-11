@@ -1,3 +1,10 @@
+## [4.29.2](https://github.com/zendesk/copenhagen_theme/compare/v4.29.1...v4.29.2) (2026-02-11)
+
+
+### Bug Fixes
+
+* add additional if clause for subject fields ([cc02488](https://github.com/zendesk/copenhagen_theme/commit/cc02488c4708871a49d0effbaa061a5ca6beed99))
+
 ## [4.29.1](https://github.com/zendesk/copenhagen_theme/compare/v4.29.0...v4.29.1) (2026-02-05)
 
 
