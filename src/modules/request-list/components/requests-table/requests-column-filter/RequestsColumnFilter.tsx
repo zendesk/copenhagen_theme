@@ -5,6 +5,7 @@ import {
   ItemGroup,
   Separator,
 } from "@zendeskgarden/react-dropdowns";
+import type { ISelectedItem } from "@zendeskgarden/react-dropdowns";
 
 import { Tooltip } from "@zendeskgarden/react-tooltips";
 import { Table } from "@zendeskgarden/react-tables";
@@ -43,12 +44,8 @@ export function RequestsColumnFilter({
   const hasSeeMoreColumns =
     requestAttributes.length > defaultDesktopColumns.length;
 
-  const controlledSelectedItems = useMemo(
-    () =>
-      selectedColumns.map((col) => ({
-        value: col,
-        type: "checkbox" as const,
-      })),
+  const controlledSelectedItems = useMemo<ISelectedItem[]>(
+    () => selectedColumns.map((col) => ({ value: col })),
     [selectedColumns]
   );
 
