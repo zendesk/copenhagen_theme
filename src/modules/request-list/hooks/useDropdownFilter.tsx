@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { Option as DropdownOption } from "@zendeskgarden/react-dropdowns";
 import { useTranslation } from "react-i18next";
 
@@ -15,33 +15,15 @@ export function useDropdownFilter<
   noMatchesOption: JSX.Element | null;
 } {
   const { t } = useTranslation();
-
   const [inputValue, setInputValue] = useState("");
-  const [matchingFields, setMatchingFields] = useState(options);
 
-  const filterMatchingOptionsRef = useRef((value: string) => {
-    const matchedOptions = options.filter((option) => {
-      return option[key]
-        .trim()
-        .toLowerCase()
-        .includes(value.trim().toLowerCase());
-    });
+  const matchingOptions = useMemo(() => {
+    return options;
+  }, [options, key, inputValue]);
 
-    setMatchingFields(matchedOptions);
-  });
-
-  const onInputValueChange = (value: string) => setInputValue(value);
-
-  useEffect(() => {
-    filterMatchingOptionsRef.current(inputValue);
-  }, [inputValue]);
-
-  return {
-    inputValue,
-    onInputValueChange,
-    matchingOptions: matchingFields,
-    noMatchesOption:
-      matchingFields.length === 0 ? (
+  const noMatchesOption = useMemo(
+    () =>
+      matchingOptions.length === 0 ? (
         <DropdownOption
           isDisabled
           label={t(
@@ -51,5 +33,13 @@ export function useDropdownFilter<
           value="__no_matches__"
         />
       ) : null,
+    [matchingOptions.length, t]
+  );
+
+  return {
+    inputValue,
+    onInputValueChange: setInputValue,
+    matchingOptions,
+    noMatchesOption,
   };
 }

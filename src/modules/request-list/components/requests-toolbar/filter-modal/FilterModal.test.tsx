@@ -523,6 +523,25 @@ describe("<FilterModal />", () => {
       );
     });
 
+    test("allows the selection of a different filter after the first one is selected", async () => {
+      await renderComponent(onFiltersChanged);
+
+      fireEvent.click(screen.getByLabelText("Select filter"));
+      fireEvent.click(screen.getByRole("option", { name: "Created date" }));
+      fireEvent.click(screen.getByLabelText("Created date"));
+
+      fireEvent.click(screen.getByLabelText("Select filter"));
+      fireEvent.click(screen.getByRole("option", { name: "Status" }));
+      fireEvent.click(screen.getByLabelText("Status"));
+
+      fireEvent.click(screen.getByRole("option", { name: "Solved" }));
+      fireEvent.click(screen.getByText("Apply filter"));
+
+      expect(onFiltersChanged).toHaveBeenCalledWith({
+        status: [":solved :closed"],
+      });
+    });
+
     test("filter by created date", async () => {
       jest.setSystemTime(new Date("2024-02-29"));
 
