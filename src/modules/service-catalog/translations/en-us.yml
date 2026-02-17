@@ -163,3 +163,23 @@ parts:
       title: "Error message for the required field validation for asset"
       screenshot: "https://drive.google.com/file/d/1ltxeEIUX0KXNzhjYcXuwXG-ZCG-MEC2z/view?usp=sharing"
       value: "Select an asset"
+  - translation:
+      key: "service-catalog-sidebar.collapse-category"
+      title: "[A11Y] Hidden label for screen readers for the collapse category button in the service catalog sidebar"
+      screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=sharing"
+      value: "Collapse"
+  - translation:
+      key: "service-catalog-sidebar.expand-category"
+      title: "[A11Y] Hidden label for screen readers for the expand category button in the service catalog sidebar"
+      screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=sharing"
+      value: "Expand"
+  - translation:
+      key: "service-catalog-sidebar.all-services"
+      title: "Label for the navigation item in the service catalog sidebar that shows all services"
+      screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=share_link"
+      value: "All services"
+  - translation:
+      key: "service-catalog-sidebar.uncategorized"
+      title: "Label for the navigation item in the service catalog sidebar that shows uncategorized services"
+      screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=share_link"
+      value: "Uncategorized"
