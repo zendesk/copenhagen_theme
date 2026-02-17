@@ -12,7 +12,8 @@ export function useServiceCatalogItems(): {
   errorFetchingItems: unknown;
   fetchServiceCatalogItems: (
     searchInputValue: string,
-    currentCursor: string | null
+    currentCursor: string | null,
+    categoryId?: string | null
   ) => void;
 } {
   const [meta, setMeta] = useState<Meta | null>(null);
@@ -24,7 +25,11 @@ export function useServiceCatalogItems(): {
   >([]);
 
   const fetchData = useCallback(
-    async (searchInputValue: string, currentCursor: string | null) => {
+    async (
+      searchInputValue: string,
+      currentCursor: string | null,
+      categoryId?: string | null
+    ) => {
       setIsLoading(true);
 
       const searchParams = new URLSearchParams();
@@ -38,6 +43,12 @@ export function useServiceCatalogItems(): {
 
       if (searchInputValue) {
         searchParams.set("query", searchInputValue);
+      }
+
+      // Server-side filtering by category (preferred). If the API doesn't
+      // support this yet, see ticket PDSC-503 for server-side filtering work.
+      if (categoryId) {
+        searchParams.set("category_id", String(categoryId));
       }
 
       try {

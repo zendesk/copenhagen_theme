@@ -1,8 +1,7 @@
 import { render } from "react-dom";
 
-import { ServiceCatalogCategoriesSidebar } from "./components/service-catalog-categories-sidebar";
+import { ServiceCatalogPage } from "./components/ServiceCatalogPage";
 
-import type { ServiceCatalogItemProps } from "./components/service-catalog-item/ServiceCatalogItem";
 import {
   createTheme,
   ThemeProviders,
@@ -12,12 +11,12 @@ import {
 import type { Settings } from "../shared";
 import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
 
-export async function renderServiceCatalogCategoriesSidebar(
+export async function renderServiceCatalogPage(
   container: HTMLElement,
   settings: Settings,
-  props: ServiceCatalogItemProps
+  baseLocale: string,
+  helpCenterPath: string
 ) {
-  const { baseLocale, helpCenterPath } = props;
   initI18next(baseLocale);
   await loadTranslations(baseLocale, [
     () => import(`./translations/locales/${baseLocale}.json`),
@@ -27,7 +26,7 @@ export async function renderServiceCatalogCategoriesSidebar(
   render(
     <ThemeProviders theme={createTheme(settings)}>
       <ErrorBoundary helpCenterPath={helpCenterPath}>
-        <ServiceCatalogCategoriesSidebar />
+        <ServiceCatalogPage helpCenterPath={helpCenterPath} />
       </ErrorBoundary>
     </ThemeProviders>,
     container

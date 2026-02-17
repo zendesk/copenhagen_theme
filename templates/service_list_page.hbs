@@ -7,27 +7,17 @@
 
   <h1>{{t 'services'}}</h1>
 
-  <div class="service-catalog-main-content">
-      <aside id="service-catalog-sidebar" class="search-results-sidebar"></aside>
-      <div id="service-catalog-list" class="service-catalog-list" role="region" aria-label="{{t 'service_catalog.list'}}"></div>
-     </div>
-  </div>
+  <div id="service-catalog-main-content" class="service-catalog-main-content"></div>
 </div>
 
 <script type="module">
-  import { renderServiceCatalogList, renderServiceCatalogCategoriesSidebar } from "service-catalog";
+  import { renderServiceCatalogPage } from "service-catalog"; 
 
   const settings = {{json settings}};
   const helpCenterPath = {{json (page_path 'help_center')}};
-  const listContainer = document.getElementById("service-catalog-list");
-  const sidebarContainer = document.getElementById("service-catalog-sidebar");
+  const main = document.getElementById("service-catalog-main-content");
 
   const baseLocale = {{json help_center.base_locale}};
-  const sidebarProps = { baseLocale, helpCenterPath };
 
-  // Sidebar renderer expects (container, settings, props)
-  renderServiceCatalogCategoriesSidebar(sidebarContainer, settings, sidebarProps);
-
-  // List renderer expects (container, settings, helpCenterPath, baseLocale)
-  renderServiceCatalogList(listContainer, settings, helpCenterPath, baseLocale);
+  renderServiceCatalogPage(main, settings, baseLocale, helpCenterPath);
 </script>

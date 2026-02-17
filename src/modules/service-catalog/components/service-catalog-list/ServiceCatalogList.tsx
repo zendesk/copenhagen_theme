@@ -11,7 +11,7 @@ import { Search } from "./Search";
 import debounce from "lodash.debounce";
 import { useServiceCatalogItems } from "../../hooks/useServiceCatalogItems";
 import { notify } from "../../../shared";
-import { ALL_SERVICES_ID } from "../../components/service-catalog-categories-sidebar";
+import { ALL_SERVICES_ID } from "../service-catalog-categories-sidebar/constants";
 
 const StyledCol = styled(Grid.Col)`
   margin-bottom: ${(props) => props.theme.space.md};
@@ -30,8 +30,10 @@ const StyledGrid = styled(Grid)`
 
 export function ServiceCatalogList({
   helpCenterPath,
+  selectedCategoryId,
 }: {
   helpCenterPath: string;
+  selectedCategoryId: string | null;
 }) {
   const [searchInputValue, setSearchInputValue] = useState("");
   const [filteredItems, setFilteredItems] = useState<ServiceCatalogItem[]>([]);
@@ -47,7 +49,8 @@ export function ServiceCatalogList({
     fetchServiceCatalogItems,
   } = useServiceCatalogItems();
 
-  if (errorFetchingItems) {
+  useEffect(() => {
+    if (!errorFetchingItems) return;
     notify({
       title: t(
         "service-catalog.service-list-error-title",
@@ -59,22 +62,44 @@ export function ServiceCatalogList({
       ),
       type: "error",
     });
+  }, [errorFetchingItems, t]);
+
+  if (errorFetchingItems) {
     throw errorFetchingItems;
   }
 
+  // Debounce the fetch function; include categoryId when calling so server can
+  // filter results. If the API doesn't support server-side category filtering
+  // yet, see ticket PDSC-503
   const debouncedUpdateServiceCatalogItems = useMemo(
-    () => debounce(fetchServiceCatalogItems, 300),
+    () =>
+      debounce(
+        (value: string, cursor: string | null, categoryId?: string | null) =>
+          fetchServiceCatalogItems(value, cursor, categoryId),
+        300
+      ),
     [fetchServiceCatalogItems]
   );
 
   useEffect(() => {
-    fetchServiceCatalogItems("", null);
-  }, [fetchServiceCatalogItems]);
+    // Initial load — request the first page and ask the server to filter by
+    // the currently selected category when available.
+    fetchServiceCatalogItems("", null, selectedCategoryId);
+  }, [fetchServiceCatalogItems, selectedCategoryId]);
 
   useEffect(() => {
     return () => debouncedUpdateServiceCatalogItems.cancel();
   }, [debouncedUpdateServiceCatalogItems]);
 
+  // NOTE / TODO: PDSC-503
+  // Backend currently does not support server-side filtering by `category_id`.
+  // We pass `category_id` to `fetchServiceCatalogItems` so the client is
+  // ready when the backend implements it. While the backend is not yet
+  // available, keep the client-side per-page filter below as a temporary
+  // fallback so selecting a category produces an immediate, predictable
+  // result on the currently-loaded page. Once PDSC-503 is completed remove
+  // this local filtering and rely entirely on server-side filtering and
+  // pagination (render server-returned `serviceCatalogItems`).
   useEffect(() => {
     const onChange = () => {
       const params = new URLSearchParams(window.location.search);
@@ -107,7 +132,8 @@ export function ServiceCatalogList({
     if (meta && meta.after_cursor) {
       fetchServiceCatalogItems(
         searchInputValue,
-        "page[after]=" + meta.after_cursor
+        "page[after]=" + meta.after_cursor,
+        selectedCategoryId
       );
     }
   };
@@ -116,14 +142,15 @@ export function ServiceCatalogList({
     if (meta && meta.before_cursor) {
       fetchServiceCatalogItems(
         searchInputValue,
-        "page[before]=" + meta.before_cursor
+        "page[before]=" + meta.before_cursor,
+        selectedCategoryId
       );
     }
   };
 
   const handleInputChange = (value: string) => {
     setSearchInputValue(value);
-    debouncedUpdateServiceCatalogItems(value, null);
+    debouncedUpdateServiceCatalogItems(value, null, selectedCategoryId);
   };
 
   return (
@@ -136,7 +163,7 @@ export function ServiceCatalogList({
       <span>
         {t("service-catalog.service-count", "{{count}} services", {
           "defaultValue.one": "{{count}} service",
-          count,
+          count: selectedCategoryId ? filteredItems.length : count,
         })}
       </span>
       {isLoading ? (
@@ -146,9 +173,10 @@ export function ServiceCatalogList({
           <StyledGrid>
             <Grid.Row wrap="wrap">
               {(() => {
-                const itemsToRender = filteredItems.length
-                  ? filteredItems
-                  : serviceCatalogItems;
+                // Render filteredItems directly. Server-side filtering is
+                // preferred (we pass `category_id` to the API); if the server
+                // doesn't support it yet, see ticket PDSC-503
+                const itemsToRender = filteredItems;
                 return itemsToRender.map((record: ServiceCatalogItem) => (
                   <StyledCol key={record.id} xs={12} sm={6} md={4} lg={3}>
                     <ServiceCatalogListItem
@@ -161,7 +189,7 @@ export function ServiceCatalogList({
               })()}
             </Grid.Row>
           </StyledGrid>
-          {serviceCatalogItems.length === 0 && (
+          {filteredItems.length === 0 && (
             <EmptyState
               helpCenterPath={helpCenterPath}
               searchInputValue={searchInputValue}
