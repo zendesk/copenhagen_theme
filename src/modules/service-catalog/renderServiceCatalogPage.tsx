@@ -1,6 +1,7 @@
 import { render } from "react-dom";
 
-import { ServiceCatalogList } from "./components/service-catalog-list/ServiceCatalogList";
+import { ServiceCatalogPage } from "./components/ServiceCatalogPage";
+
 import {
   createTheme,
   ThemeProviders,
@@ -10,11 +11,11 @@ import {
 import type { Settings } from "../shared";
 import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
 
-export async function renderServiceCatalogList(
+export async function renderServiceCatalogPage(
   container: HTMLElement,
   settings: Settings,
-  helpCenterPath: string,
-  baseLocale: string
+  baseLocale: string,
+  helpCenterPath: string
 ) {
   initI18next(baseLocale);
   await loadTranslations(baseLocale, [
@@ -25,7 +26,7 @@ export async function renderServiceCatalogList(
   render(
     <ThemeProviders theme={createTheme(settings)}>
       <ErrorBoundary helpCenterPath={helpCenterPath}>
-        <ServiceCatalogList helpCenterPath={helpCenterPath} />
+        <ServiceCatalogPage helpCenterPath={helpCenterPath} />
       </ErrorBoundary>
     </ThemeProviders>,
     container

@@ -4,6 +4,7 @@ export interface ServiceCatalogItem {
   description: string;
   form_id: number;
   thumbnail_url: string;
+  categoryId: string | null;
   custom_object_fields: {
     "standard::asset_option": string;
     "standard::asset_type_option": string;
