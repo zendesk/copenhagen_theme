@@ -1,3 +1,10 @@
+## [4.29.3](https://github.com/zendesk/copenhagen_theme/compare/v4.29.2...v4.29.3) (2026-02-19)
+
+
+### Bug Fixes
+
+* service catalog link in ticket comment uses absolute path ([d0640c5](https://github.com/zendesk/copenhagen_theme/commit/d0640c57c47919c7dc1db108d82d048d7408b152))
+
 ## [4.29.2](https://github.com/zendesk/copenhagen_theme/compare/v4.29.1...v4.29.2) (2026-02-11)
 
 
