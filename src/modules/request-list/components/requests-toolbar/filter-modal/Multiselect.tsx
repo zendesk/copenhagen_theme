@@ -1,18 +1,11 @@
 import { useEffect, useState } from "react";
-import {
-  Item,
-  Label,
-  Field,
-  Dropdown,
-  Multiselect as GardenMultiselect,
-} from "@zendeskgarden/react-dropdowns.legacy";
-import { Tag } from "@zendeskgarden/react-tags";
+import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import { useDropdownFilter } from "../../../hooks/useDropdownFilter";
 import type { FilterValue } from "../../../data-types/FilterValue";
 import { FieldError } from "./FieldError";
 import type { FormErrors, FormState } from "./FormState";
 import { useTranslation } from "react-i18next";
-import { ModalMenu } from "../../modal-menu/ModalMenu";
+import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 
 export interface MultiSelectOption {
   value: FilterValue;
@@ -35,14 +28,13 @@ export function Multiselect({
   errors,
 }: MultiselectProps): JSX.Element {
   const { t } = useTranslation();
+  const modalContainer = useModalContainer();
 
-  const validateForm = (
-    selectedOptions: MultiSelectOption[]
-  ): FormState<FormFieldKey> => {
-    if (selectedOptions.length > 0) {
+  const validateForm = (selectedValues: string[]): FormState<FormFieldKey> => {
+    if (selectedValues.length > 0) {
       return {
         state: "valid",
-        values: selectedOptions.map((option): FilterValue => option.value),
+        values: selectedValues.map((val): FilterValue => val as FilterValue),
       };
     } else {
       return {
@@ -57,50 +49,47 @@ export function Multiselect({
     }
   };
 
-  const [selectedOptions, setSelectedOptions] = useState<MultiSelectOption[]>(
-    []
-  );
-  const { dropdownProps, renderItems } = useDropdownFilter(options, "value");
+  const [selectedValues, setSelectedValues] = useState<string[]>([]);
+  const { onInputValueChange, matchingOptions, noMatchesOption } =
+    useDropdownFilter(options, "value");
 
   useEffect(() => {
     onSelect(validateForm([]));
   }, []);
 
-  function handleSelect(items: MultiSelectOption[]) {
-    setSelectedOptions(items);
-    onSelect(validateForm(items));
+  function handleChange(values: string[]) {
+    setSelectedValues(values);
+    onSelect(validateForm(values));
   }
 
   return (
-    <Dropdown
-      {...dropdownProps}
-      selectedItems={selectedOptions}
-      onSelect={handleSelect}
-      downshiftProps={{
-        defaultHighlightedIndex: 0,
-        itemToString: (option: MultiSelectOption) => option?.value,
-      }}
-    >
-      <Field>
-        <Label>{label}</Label>
-        <GardenMultiselect
-          renderItem={({ value, removeValue }) => (
-            <Tag>
-              <span>{(value as MultiSelectOption).label}</span>
-              <Tag.Close onClick={() => removeValue()} />
-            </Tag>
-          )}
-          validation={errors.selectedOptions ? "error" : undefined}
-        />
-        <FieldError errors={errors} field="selectedOptions" />
-      </Field>
-      <ModalMenu>
-        {renderItems((option) => (
-          <Item key={option.value} value={option}>
-            {option.label}
-          </Item>
-        ))}
-      </ModalMenu>
-    </Dropdown>
+    <Field>
+      <Field.Label>{label}</Field.Label>
+      <Combobox
+        isAutocomplete
+        isMultiselectable
+        selectionValue={selectedValues}
+        onChange={(changes) => {
+          if (changes.selectionValue !== undefined) {
+            handleChange((changes.selectionValue as string[] | null) ?? []);
+          }
+          if (changes.inputValue !== undefined) {
+            onInputValueChange(changes.inputValue);
+          }
+        }}
+        validation={errors.selectedOptions ? "error" : undefined}
+        listboxAppendToNode={modalContainer}
+      >
+        {noMatchesOption ||
+          matchingOptions.map((option) => (
+            <Option
+              key={option.value}
+              label={option.label}
+              value={option.value}
+            />
+          ))}
+      </Combobox>
+      <FieldError errors={errors} field="selectedOptions" />
+    </Field>
   );
 }

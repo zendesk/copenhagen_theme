@@ -1,16 +1,10 @@
-import {
-  Dropdown,
-  Item,
-  Field,
-  Select,
-  Label,
-} from "@zendeskgarden/react-dropdowns.legacy";
+import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import styled from "styled-components";
 import { useFilterTranslations } from "../i18n";
 import { FieldError } from "./FieldError";
 import type { FormErrors } from "./FormState";
 import { useTranslation } from "react-i18next";
-import { ModalMenu } from "../../modal-menu/ModalMenu";
+import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 
 export type FilterTypeValue = "anyValue" | "exactMatch";
 
@@ -22,7 +16,7 @@ interface FilterTypeDropdownProps {
   errors: FormErrors<FilterTypeKey>;
 }
 
-const StyledSelect = styled(Select)`
+const StyledCombobox = styled(Combobox)`
   margin-top: ${(p) => p.theme.space.xs};
 `;
 
@@ -33,22 +27,34 @@ export const FilterTypeDropdown = (
 
   const { onFilterTypeSelect, selectedFilter, errors } = props;
   const { filterTypeDropdownI18N } = useFilterTranslations();
+  const modalContainer = useModalContainer();
+
+  const formatDisplayValue = (value: string | null): string => {
+    if (!value) return "";
+    return filterTypeDropdownI18N[value as FilterTypeValue] || "";
+  };
 
   return (
-    <Dropdown onSelect={onFilterTypeSelect} selectedItem={selectedFilter}>
-      <Field>
-        <Label>
-          {t("guide-requests-app.filter-modal.filterTypeLabel", "Filter type")}
-        </Label>
-        <StyledSelect validation={errors["filterType"] ? "error" : undefined}>
-          {selectedFilter ? filterTypeDropdownI18N[selectedFilter] : ""}
-        </StyledSelect>
-        <FieldError errors={errors} field="filterType" />
-      </Field>
-      <ModalMenu>
-        <Item value="anyValue">{filterTypeDropdownI18N.anyValue}</Item>
-        <Item value="exactMatch">{filterTypeDropdownI18N.exactMatch}</Item>
-      </ModalMenu>
-    </Dropdown>
+    <Field>
+      <Field.Label>
+        {t("guide-requests-app.filter-modal.filterTypeLabel", "Filter type")}
+      </Field.Label>
+      <StyledCombobox
+        isEditable={false}
+        selectionValue={selectedFilter ?? null}
+        inputValue={formatDisplayValue(selectedFilter ?? null)}
+        onChange={(changes) => {
+          if (changes.selectionValue !== undefined) {
+            onFilterTypeSelect(changes.selectionValue as FilterTypeValue);
+          }
+        }}
+        validation={errors["filterType"] ? "error" : undefined}
+        listboxAppendToNode={modalContainer}
+      >
+        <Option label={filterTypeDropdownI18N.anyValue} value="anyValue" />
+        <Option label={filterTypeDropdownI18N.exactMatch} value="exactMatch" />
+      </StyledCombobox>
+      <FieldError errors={errors} field="filterType" />
+    </Field>
   );
 };

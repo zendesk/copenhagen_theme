@@ -1,5 +1,5 @@
-import { useRef, useState, useEffect } from "react";
-import { Item } from "@zendeskgarden/react-dropdowns.legacy";
+import { useMemo, useState } from "react";
+import { Option as DropdownOption } from "@zendeskgarden/react-dropdowns";
 import { useTranslation } from "react-i18next";
 
 export function useDropdownFilter<
@@ -9,50 +9,37 @@ export function useDropdownFilter<
   options: readonly Option[],
   key: Key
 ): {
-  dropdownProps: {
-    inputValue: string;
-    onInputValueChange: (value: string) => void;
-  };
-  renderItems: (render: (option: Option) => JSX.Element) => JSX.Element;
+  inputValue: string;
+  onInputValueChange: (value: string) => void;
+  matchingOptions: readonly Option[];
+  noMatchesOption: JSX.Element | null;
 } {
   const { t } = useTranslation();
-
   const [inputValue, setInputValue] = useState("");
-  const [matchingFields, setMatchingFields] = useState(options);
 
-  const filterMatchingOptionsRef = useRef((value: string) => {
-    const matchedOptions = options.filter((option) => {
-      return option[key]
-        .trim()
-        .toLowerCase()
-        .includes(value.trim().toLowerCase());
-    });
+  const matchingOptions = useMemo(() => {
+    return options;
+  }, [options, key, inputValue]);
 
-    setMatchingFields(matchedOptions);
-  });
+  const noMatchesOption = useMemo(
+    () =>
+      matchingOptions.length === 0 ? (
+        <DropdownOption
+          isDisabled
+          label={t(
+            "guide-requests-app.filters-modal.no-matches-found",
+            "No matches found"
+          )}
+          value="__no_matches__"
+        />
+      ) : null,
+    [matchingOptions.length, t]
+  );
 
-  const onInputValueChange = (value: string) => setInputValue(value);
-
-  const dropdownProps = {
+  return {
     inputValue,
-    onInputValueChange,
+    onInputValueChange: setInputValue,
+    matchingOptions,
+    noMatchesOption,
   };
-
-  const renderItems = (render: (option: Option) => JSX.Element) =>
-    matchingFields.length ? (
-      <>{matchingFields.map((option) => render(option))}</>
-    ) : (
-      <Item disabled>
-        {t(
-          "guide-requests-app.filters-modal.no-matches-found",
-          "No matches found"
-        )}
-      </Item>
-    );
-
-  useEffect(() => {
-    filterMatchingOptionsRef.current(inputValue);
-  }, [inputValue]);
-
-  return { dropdownProps, renderItems };
 }

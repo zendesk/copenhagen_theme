@@ -7,8 +7,8 @@ module.exports = {
     settings: {
       maxWaitForLoad: 10000,
       onlyCategories: ["accessibility"],
-      disableFullPageScreenshot: true,
-    },
+      disableFullPageScreenshot: true
+    }
   },
   // custom properties
   custom: {
@@ -17,74 +17,62 @@ module.exports = {
       tabindex: [
         {
           path: "*",
-          selector: "body.community-enabled > a.skip-navigation",
-        },
+          selector: "body.community-enabled > a.skip-navigation"
+        }
       ],
       "link-in-text-block": [
         {
           path: "/hc/:locale/community/topics/360000644279",
           selector:
-            "li > section.striped-list-item > span.striped-list-info > a#title-360006766859",
+            "li > section.striped-list-item > span.striped-list-info > a#title-360006766859"
         },
         {
           path: "/hc/:locale/community/topics/360000644279",
           selector:
-            "li > section.striped-list-item > span.striped-list-info > a#title-360006766799",
+            "li > section.striped-list-item > span.striped-list-info > a#title-360006766799"
         },
         {
           path: "/hc/:locale/community/posts",
           selector:
-            "li > section.striped-list-item > span.striped-list-info > a#title-360006766799",
+            "li > section.striped-list-item > span.striped-list-info > a#title-360006766799"
         },
         {
           path: "/hc/:locale/community/posts",
           selector:
-            "li > section.striped-list-item > span.striped-list-info > a#title-360006766859",
-        },
+            "li > section.striped-list-item > span.striped-list-info > a#title-360006766859"
+        }
       ],
       "aria-allowed-attr": [
         {
           path: "/hc/:locale/community/posts/new",
           selector:
-            "div#main-content > form.new_community_post > div.form-field > a.nesty-input",
-        },
+            "div#main-content > form.new_community_post > div.form-field > a.nesty-input"
+        }
       ],
       "td-has-header": [
         {
           path: "/hc/:locale/subscriptions",
-          selector: "main > div.container > div#main-content > table.table",
-        },
+          selector: "main > div.container > div#main-content > table.table"
+        }
       ],
       "label-content-name-mismatch": [
         {
           path: "/hc/:locale/articles/:id",
           selector:
-            "footer > div.article-votes > div.article-votes-controls > button.button",
-        },
+            "footer > div.article-votes > div.article-votes-controls > button.button"
+        }
       ],
       "target-size": [
         {
           path: "/hc/:locale/search",
           selector:
-            "header > div.search-result-title-container > h2.search-result-title > a",
+            "header > div.search-result-title-container > h2.search-result-title > a"
         },
         {
           path: "/hc/:locale/search",
-          selector: "nav > ol.breadcrumbs > li > a",
-        },
-      ],
-      label: [
-        {
-          path: "/hc/:locale/requests",
-          selector:
-            "div#main-content > div.sc-koXPp > div.sc-imWYAI > input#downshift-0-input",
-        },
-        {
-          path: "/hc/:locale/requests",
-          selector:
-            "thead.StyledHead-sc-spf23a-0 > tr.StyledBaseRow-sc-1t4zqg4-0 > th.StyledCell-sc-8hpncx-0 > input#downshift-1-input",
-        },
-      ],
-    },
-  },
+          selector: "nav > ol.breadcrumbs > li > a"
+        }
+      ]
+    }
+  }
 };
