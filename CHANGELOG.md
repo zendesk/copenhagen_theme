@@ -1,3 +1,10 @@
+# [4.30.0](https://github.com/zendesk/copenhagen_theme/compare/v4.29.3...v4.30.0) (2026-02-23)
+
+
+### Features
+
+* preserve newlines in Approval request decription ([5b49c4d](https://github.com/zendesk/copenhagen_theme/commit/5b49c4d9ec124efb3879d3a0a3cbfafbd9ef0bc5))
+
 ## [4.29.3](https://github.com/zendesk/copenhagen_theme/compare/v4.29.2...v4.29.3) (2026-02-19)
 
 
