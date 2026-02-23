@@ -487,4 +487,57 @@ describe("useItemFormFields", () => {
     const presentIds = result.current.requestFields.map((f) => f.id);
     expect(presentIds).toEqual([1, 6]);
   });
+
+  it("should filter out category lookup field from requestFields", async () => {
+    const categoryLookupField = {
+      id: 8,
+      type: "lookup",
+      description: "Category",
+      title_in_portal: "Category",
+      editable_in_portal: true,
+      relationship_target_type:
+        "zen:custom_object:standard::service_catalog_category",
+      required_in_portal: false,
+      active: true,
+    };
+
+    const formResponse = {
+      ticket_form: {
+        id: 1,
+        ticket_field_ids: [1, 2, 8],
+        active: true,
+      },
+    };
+
+    const ticketFieldResponse = {
+      ticket_fields: [textField, lookupField, categoryLookupField],
+    };
+
+    (globalThis.fetch as jest.Mock) = jest.fn((url) => {
+      return Promise.resolve({
+        json: () =>
+          Promise.resolve(
+            url.includes("/api/v2/ticket_forms/1")
+              ? formResponse
+              : url.includes(`/api/v2/ticket_fields?locale=${baseLocale}`)
+              ? ticketFieldResponse
+              : {}
+          ),
+        status: 200,
+        ok: true,
+      });
+    });
+
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useItemFormFields(serviceCatalogItem, baseLocale)
+    );
+
+    await waitForNextUpdate();
+
+    const presentIds = result.current.requestFields.map((f) => f.id);
+    expect(presentIds).toEqual([1]);
+    expect(result.current.associatedLookupField).toEqual(
+      expect.objectContaining({ id: 2, type: "lookup" })
+    );
+  });
 });
