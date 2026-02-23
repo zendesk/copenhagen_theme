@@ -176,4 +176,48 @@ describe("ApprovalRequestPage", () => {
 
     expect(screen.queryByText(/clarification/i)).not.toBeInTheDocument();
   });
+
+  it("renders the message with newlines preserved", () => {
+    const messageWithNewlines = "Line 1\nLine 2\n\nLine 3";
+    const approvalRequestWithNewlines = {
+      ...mockApprovalRequest,
+      message: messageWithNewlines,
+    };
+
+    mockUseApprovalRequest.mockReturnValue({
+      approvalRequest: approvalRequestWithNewlines,
+      setApprovalRequest: jest.fn(),
+      isLoading: false,
+      errorFetchingApprovalRequest: null,
+    });
+
+    render(<ApprovalRequestPage {...baseProps} userId={1} />);
+
+    const messageElement = screen.getByText(/Line 1.*Line 2.*Line 3/s);
+    expect(messageElement).toBeInTheDocument();
+
+    expect(messageElement.textContent).toBe(messageWithNewlines);
+  });
+
+  it("collapses multiple consecutive newlines in the message to two newlines", () => {
+    const messageWithMultipleNewlines = "Line 1\n\n\n\nLine 2\n\n\nLine 3";
+    const approvalRequestWithNewlines = {
+      ...mockApprovalRequest,
+      message: messageWithMultipleNewlines,
+    };
+
+    mockUseApprovalRequest.mockReturnValue({
+      approvalRequest: approvalRequestWithNewlines,
+      setApprovalRequest: jest.fn(),
+      isLoading: false,
+      errorFetchingApprovalRequest: null,
+    });
+
+    render(<ApprovalRequestPage {...baseProps} userId={1} />);
+
+    const messageElement = screen.getByText(/Line 1.*Line 2.*Line 3/s);
+    expect(messageElement).toBeInTheDocument();
+
+    expect(messageElement.textContent).toBe("Line 1\n\nLine 2\n\nLine 3");
+  });
 });
