@@ -97,14 +97,23 @@ const formatField = (field: TicketField): TicketFieldObject => {
   };
 };
 
+const HIDDEN_SERVICE_CATALOG_LOOKUP_KEYS = [
+  "standard::service_catalog_item",
+  "standard::service_catalog_category",
+];
+
 const isAssociatedLookupField = (field: TicketField) => {
   const customObjectKey = getCustomObjectKey(
     field.relationship_target_type as string
   );
-  if (customObjectKey === "standard::service_catalog_item") {
-    return true;
-  }
-  return false;
+  return customObjectKey === "standard::service_catalog_item";
+};
+
+const isHiddenServiceCatalogLookup = (field: TicketField) => {
+  const customObjectKey = getCustomObjectKey(
+    field.relationship_target_type as string
+  );
+  return HIDDEN_SERVICE_CATALOG_LOOKUP_KEYS.includes(customObjectKey);
 };
 
 const enrichFieldsWithAssetConfig = (
@@ -183,10 +192,11 @@ const fetchTicketFields = async (
       ) {
         if (
           ticketField.type === "lookup" &&
-          isAssociatedLookupField(ticketField)
+          isHiddenServiceCatalogLookup(ticketField)
         ) {
-          associatedLookupField = ticketField;
-
+          if (isAssociatedLookupField(ticketField)) {
+            associatedLookupField = ticketField;
+          }
           return null;
         }
         return formatField(ticketField);
