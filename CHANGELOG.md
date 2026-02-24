@@ -1,3 +1,10 @@
+## [4.30.1](https://github.com/zendesk/copenhagen_theme/compare/v4.30.0...v4.30.1) (2026-02-24)
+
+
+### Bug Fixes
+
+* hide category lookup field from submit request form ([4d9986f](https://github.com/zendesk/copenhagen_theme/commit/4d9986fc441fe3149335a07c68c607a46fa1dbc3))
+
 # [4.30.0](https://github.com/zendesk/copenhagen_theme/compare/v4.29.3...v4.30.0) (2026-02-23)
 
 
