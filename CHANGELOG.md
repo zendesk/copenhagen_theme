@@ -1,3 +1,31 @@
+## [4.30.1](https://github.com/zendesk/copenhagen_theme/compare/v4.30.0...v4.30.1) (2026-02-24)
+
+
+### Bug Fixes
+
+* hide category lookup field from submit request form ([4d9986f](https://github.com/zendesk/copenhagen_theme/commit/4d9986fc441fe3149335a07c68c607a46fa1dbc3))
+
+# [4.30.0](https://github.com/zendesk/copenhagen_theme/compare/v4.29.3...v4.30.0) (2026-02-23)
+
+
+### Features
+
+* preserve newlines in Approval request decription ([5b49c4d](https://github.com/zendesk/copenhagen_theme/commit/5b49c4d9ec124efb3879d3a0a3cbfafbd9ef0bc5))
+
+## [4.29.3](https://github.com/zendesk/copenhagen_theme/compare/v4.29.2...v4.29.3) (2026-02-19)
+
+
+### Bug Fixes
+
+* service catalog link in ticket comment uses absolute path ([d0640c5](https://github.com/zendesk/copenhagen_theme/commit/d0640c57c47919c7dc1db108d82d048d7408b152))
+
+## [4.29.2](https://github.com/zendesk/copenhagen_theme/compare/v4.29.1...v4.29.2) (2026-02-11)
+
+
+### Bug Fixes
+
+* add additional if clause for subject fields ([cc02488](https://github.com/zendesk/copenhagen_theme/commit/cc02488c4708871a49d0effbaa061a5ca6beed99))
+
 ## [4.29.1](https://github.com/zendesk/copenhagen_theme/compare/v4.29.0...v4.29.1) (2026-02-05)
 
 

@@ -33,11 +33,7 @@ export function useTicketFields(locale: string): UseTicketFields {
         () => listTicketFields(locale),
         "ticket_fields"
       );
-      setTicketFields(
-        response.filter(
-          (ticketField) => ticketField.active || ticketField.type == "subject"
-        )
-      );
+      setTicketFields(response.filter((ticketField) => ticketField.active));
 
       setIsLoading(false);
     } catch (error) {

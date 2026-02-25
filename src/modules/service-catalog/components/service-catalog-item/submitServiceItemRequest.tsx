@@ -20,7 +20,8 @@ export async function submitServiceItemRequest(
   requestFields: TicketFieldObject[],
   associatedLookupField: TicketFieldObject,
   baseLocale: string,
-  attachments: Attachment[]
+  attachments: Attachment[],
+  helpCenterPath: string
 ) {
   try {
     const currentUser = await getCurrentUser();
@@ -42,7 +43,7 @@ export async function submitServiceItemRequest(
         request: {
           subject: `${serviceCatalogItem.name}`,
           comment: {
-            html_body: `<a href="/hc/en-us/services/${serviceCatalogItem.id}" style="text-decoration: underline" target="_blank" rel="noopener noreferrer">${serviceCatalogItem.name}</a>`,
+            html_body: `<a href="${window.location.origin}${helpCenterPath}/services/${serviceCatalogItem.id}" style="text-decoration: underline" target="_blank" rel="noopener noreferrer">${serviceCatalogItem.name}</a>`,
             uploads: uploadTokens,
           },
           ticket_form_id: serviceCatalogItem.form_id,

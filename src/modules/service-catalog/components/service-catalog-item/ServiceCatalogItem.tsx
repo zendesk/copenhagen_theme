@@ -165,7 +165,8 @@ export function ServiceCatalogItem({
       requestFieldsWithFormData,
       associatedLookupField,
       baseLocale,
-      attachments
+      attachments,
+      helpCenterPath
     );
 
     if (!response?.ok) {

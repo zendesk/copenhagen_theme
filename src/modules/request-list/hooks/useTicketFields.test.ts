@@ -59,3 +59,30 @@ test("handles exceptions", async () => {
     isLoading: true,
   });
 });
+
+test("filters out inactive subject field", async () => {
+  const inactiveSubjectField: TicketField = {
+    id: 30,
+    type: "subject",
+    active: false,
+    title: "Subject",
+    title_in_portal: "Subject",
+    description: "",
+    custom_field_options: [],
+  };
+
+  fetchAllCursorPages.mockReturnValueOnce([
+    activeTicketField,
+    inactiveSubjectField,
+  ]);
+
+  const { result, waitForNextUpdate } = renderHook(() => useTicketFields("dk"));
+
+  await waitForNextUpdate();
+
+  expect(result.current).toEqual({
+    ticketFields: [activeTicketField],
+    error: undefined,
+    isLoading: false,
+  });
+});
