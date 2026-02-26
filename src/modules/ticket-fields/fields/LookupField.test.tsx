@@ -141,6 +141,74 @@ describe("buildAdvancedDynamicFilterParams", () => {
     expect(result).toEqual([]);
   });
 
+  it("returns ticket_brand_id filter with null value when no matching field exists", () => {
+    const filter: LookupRelationshipFieldFilter = {
+      all: [
+        {
+          field: "custom_object.testco.custom_fields.brandlurf",
+          operator: "matches",
+          value: "ticket_brand_id",
+        },
+      ],
+      any: [],
+    };
+    const fields: TicketFieldObject[] = [
+      {
+        id: 12345,
+        name: "Test Field 1",
+        value: "fooValue",
+        error: null,
+        label: "Test Field 1",
+        required: false,
+        description: "",
+        type: "text",
+        options: [],
+      },
+    ];
+
+    const result = buildAdvancedDynamicFilterParams(filter, fields);
+
+    expect(result).toEqual([{ key: "ticket_brand_id", value: null }]);
+  });
+
+  it("returns ticket_brand_id alongside ticket_fields filters", () => {
+    const filter: LookupRelationshipFieldFilter = {
+      all: [
+        {
+          field: "someField",
+          operator: "matches",
+          value: "ticket_fields_12345",
+        },
+        {
+          field: "brandField",
+          operator: "matches",
+          value: "ticket_brand_id",
+        },
+      ],
+      any: [],
+    };
+    const fields: TicketFieldObject[] = [
+      {
+        id: 12345,
+        name: "Test Field 1",
+        value: "fooValue",
+        error: null,
+        label: "Test Field 1",
+        required: false,
+        description: "",
+        type: "text",
+        options: [],
+      },
+    ];
+
+    const result = buildAdvancedDynamicFilterParams(filter, fields);
+
+    expect(result).toEqual([
+      { key: "ticket_fields_12345", value: "fooValue" },
+      { key: "ticket_brand_id", value: null },
+    ]);
+  });
+
   it("returns multiple filters if more than one matches", () => {
     const filter: LookupRelationshipFieldFilter = {
       all: [

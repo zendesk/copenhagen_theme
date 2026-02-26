@@ -143,6 +143,7 @@ export const RequestFormField = ({
               ? (organizationField?.value as string)
               : defaultOrganizationId
           }
+          brandId={brandId}
           visibleFields={visibleFields}
           onChange={(value) => handleChange(field, value)}
           buildLookupFieldOptions={buildLookupFieldOptions}
