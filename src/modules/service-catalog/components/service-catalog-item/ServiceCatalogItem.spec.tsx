@@ -96,6 +96,7 @@ describe("ServiceCatalogItem", () => {
     description: "Test Description",
     form_id: 100,
     thumbnail_url: "",
+    categories: [],
     custom_object_fields: {
       "standard::asset_option": "",
       "standard::asset_type_option": "",
