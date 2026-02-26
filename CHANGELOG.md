@@ -1,3 +1,10 @@
+## [4.30.2](https://github.com/zendesk/copenhagen_theme/compare/v4.30.1...v4.30.2) (2026-02-26)
+
+
+### Bug Fixes
+
+* pass ticket_brand_id in LURF autocomplete request ([5cfaecc](https://github.com/zendesk/copenhagen_theme/commit/5cfaecc28cd6350e9ebfb3643dd3057908b110d0))
+
 ## [4.30.1](https://github.com/zendesk/copenhagen_theme/compare/v4.30.0...v4.30.1) (2026-02-24)
 
 
