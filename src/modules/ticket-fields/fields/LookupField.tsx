@@ -52,6 +52,7 @@ export interface LookupFieldProps {
   field: TicketFieldObject;
   userId: number;
   organizationId: string | null;
+  brandId?: number;
   onChange: (value: string) => void;
   visibleFields: TicketFieldObject[];
   buildLookupFieldOptions?: (
@@ -65,6 +66,7 @@ export function LookupField({
   field,
   userId,
   organizationId,
+  brandId,
   onChange,
   visibleFields,
   buildLookupFieldOptions,
@@ -144,11 +146,21 @@ export function LookupField({
       );
 
       for (const { key: filterValue, value: fieldValue } of filterPairs) {
-        if (filterValue) {
-          const filterValueParam = `filter[dynamic_values][${filterValue}]`;
-          const fieldValueParam = fieldValue?.toString() || "";
-          searchParams.set(filterValueParam, fieldValueParam);
+        if (!filterValue) continue;
+
+        if (filterValue === "ticket_brand_id") {
+          if (brandId) {
+            searchParams.set(
+              "filter[dynamic_values][ticket_brand_id]",
+              brandId.toString()
+            );
+          }
+          continue;
         }
+
+        const filterValueParam = `filter[dynamic_values][${filterValue}]`;
+        const fieldValueParam = fieldValue?.toString() || "";
+        searchParams.set(filterValueParam, fieldValueParam);
       }
 
       if (organizationId) searchParams.set("organization_id", organizationId);
@@ -194,6 +206,7 @@ export function LookupField({
       }
     },
     [
+      brandId,
       customObjectKey,
       field,
       fieldId,
