@@ -102,3 +102,13 @@ parts:
       title: "[A11Y] Hidden label for screen readers informing how they can remove the file with keyboard navigation. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Press Delete to remove the file {{fileName}}]"
       screenshot: "https://drive.google.com/file/d/1JFVE2twzUkg-U6gGAs2EHqD-3jPvtJDA/view?usp=drive_link"
       value: "File: {{fileName}}, press delete to remove"
+  - translation:
+      key: "cph-theme-ticket-fields.search-field.no-matches-found"
+      title: "Message shown in combobox when searched option is not found"
+      screenshot: "https://drive.google.com/file/d/19FVPWQfvZyuayyi0qWLAXk_LDyup3Tf6/view?usp=drive_link"
+      value: "No matches found"
+  - translation:
+      key: "cph-theme-ticket-fields.search-field.placeholder"
+      title: "Placeholder shown in combobox, {{label}} will be replaced by field label. Alternative English for languages with grammar/declension issues: [Search label {{label}}]."
+      screenshot: "https://drive.google.com/file/d/1uy01ESlYxmssiOxDD5gVNhP96xCnDQd0/view?usp=drive_link"
+      value: "Search {{label}}"

@@ -5148,7 +5148,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/container-utilities@npm:^1.0.14, @zendeskgarden/container-utilities@npm:^1.0.6":
+"@zendeskgarden/container-utilities@npm:^1.0.0":
   version: 1.0.14
   resolution: "@zendeskgarden/container-utilities@npm:1.0.14"
   dependencies:
@@ -5158,19 +5158,6 @@ __metadata:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
   checksum: 10c0/9d30b274496ea77d06d4823cd35772f370ade8f7fcf1dc76e5d7ac0968b3dbb73b5667b2efba6145e46d2bc34f66add7892e5a39403fa0ef8f67facb2bce00f0
-  languageName: node
-  linkType: hard
-
-"@zendeskgarden/container-utilities@npm:^2.0.0, @zendeskgarden/container-utilities@npm:^2.0.2, @zendeskgarden/container-utilities@npm:^2.0.3, @zendeskgarden/container-utilities@npm:^2.0.5":
-  version: 2.0.5
-  resolution: "@zendeskgarden/container-utilities@npm:2.0.5"
-  dependencies:
-    "@babel/runtime": "npm:^7.8.4"
-    "@reach/auto-id": "npm:^0.18.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/110e2faddd3610dcd774a29762d86e845f045fc5dff0b44c7f32164f54096ba78ce1e4c70b913cf45bb91dea5755c56952c519a45e10de846c956726f7324992
   languageName: node
   linkType: hard
 
