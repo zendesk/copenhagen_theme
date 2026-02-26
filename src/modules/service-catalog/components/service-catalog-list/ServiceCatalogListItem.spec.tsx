@@ -18,6 +18,7 @@ describe("ServiceCatalogListItem", () => {
     description: "This is a keyboard &quot;from&quot; Atl Nacional",
     form_id: 456,
     thumbnail_url: "",
+    categories: [],
     custom_object_fields: {
       "standard::asset_option": "",
       "standard::asset_type_option": "",
