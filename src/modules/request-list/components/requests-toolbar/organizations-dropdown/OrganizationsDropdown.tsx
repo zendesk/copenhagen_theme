@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
@@ -21,17 +21,53 @@ export default function OrganizationsDropdown({
 }: OrganizationsDropdownProps): JSX.Element {
   const { t } = useTranslation();
 
-  const [inputValue, setInputValue] = useState<string>("");
+  const [filteredOrganizations, setFilteredOrganizations] =
+    useState(organizations);
 
   const selectedOrganization = organizations.find(
     (organization) => organization.id === currentOrganizationId
   );
 
-  const filteredOrganizations = organizations.filter((organization) =>
-    organization.name
-      .trim()
-      .toLowerCase()
-      .includes(inputValue.trim().toLowerCase())
+  const [inputValue, setInputValue] = useState(
+    selectedOrganization?.name ?? ""
+  );
+
+  const handleChange = useCallback(
+    (changes: {
+      selectionValue?: string | string[] | null;
+      inputValue?: string;
+    }) => {
+      const { inputValue, selectionValue } = changes;
+
+      if (inputValue !== undefined) {
+        setInputValue(inputValue);
+
+        if (inputValue === "") {
+          setFilteredOrganizations(organizations);
+        } else {
+          const matchedOrganizations = organizations.filter((organization) => {
+            return organization.name
+              .trim()
+              .toLowerCase()
+              .includes(inputValue.trim().toLowerCase());
+          });
+
+          setFilteredOrganizations(matchedOrganizations);
+        }
+      }
+
+      if (selectionValue !== undefined && selectionValue !== null) {
+        // Handle both string and string[] types for selectionValue
+        const value = Array.isArray(selectionValue)
+          ? selectionValue[0]
+          : selectionValue;
+
+        if (typeof value === "string") {
+          onOrganizationSelected(Number(value));
+        }
+      }
+    },
+    [organizations, onOrganizationSelected]
   );
 
   return (
@@ -42,28 +78,29 @@ export default function OrganizationsDropdown({
       <Combobox
         isAutocomplete
         selectionValue={String(currentOrganizationId)}
-        inputValue={selectedOrganization?.name ?? inputValue}
+        inputValue={inputValue}
         data-test-id="organizations-menu"
-        onChange={(changes) => {
-          if (
-            changes.selectionValue !== undefined &&
-            changes.selectionValue !== null
-          ) {
-            onOrganizationSelected(Number(changes.selectionValue));
-          }
-          if (changes.inputValue !== undefined) {
-            setInputValue(changes.inputValue);
-          }
-        }}
+        onChange={handleChange}
       >
-        {filteredOrganizations.map((organization) => (
+        {filteredOrganizations.length === 0 ? (
           <Option
-            key={organization.id}
-            label={organization.name}
-            value={String(organization.id)}
-            data-test-id={`organization-${organization.id}`}
+            isDisabled
+            label={t(
+              "guide-requests-app.filters-modal.no-matches-found",
+              "No matches found"
+            )}
+            value=""
           />
-        ))}
+        ) : (
+          filteredOrganizations.map((organization) => (
+            <Option
+              key={organization.id}
+              label={organization.name}
+              value={String(organization.id)}
+              data-test-id={`organization-${organization.id}`}
+            />
+          ))
+        )}
       </Combobox>
     </StyledField>
   );

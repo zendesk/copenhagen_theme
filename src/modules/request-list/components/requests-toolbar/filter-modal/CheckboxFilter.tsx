@@ -56,11 +56,6 @@ export function CheckboxFilter({
     onSelect(validateForm(item));
   };
 
-  const formatDisplayValue = (val: string | null): string => {
-    if (!val) return "";
-    return checkboxFilterValuesI18N[val as CheckboxFilterValue] || "";
-  };
-
   return (
     <Field>
       <Field.Label>
@@ -75,7 +70,6 @@ export function CheckboxFilter({
       <Combobox
         isEditable={false}
         selectionValue={value}
-        inputValue={formatDisplayValue(value)}
         onChange={(changes) => {
           if (changes.selectionValue !== undefined) {
             handleSelect(changes.selectionValue as CheckboxFilterValue);

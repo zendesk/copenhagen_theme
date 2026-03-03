@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
-import { useDropdownFilter } from "../../../hooks/useDropdownFilter";
 import type { FilterValue } from "../../../data-types/FilterValue";
 import { FieldError } from "./FieldError";
 import type { FormErrors, FormState } from "./FormState";
@@ -30,37 +29,84 @@ export function Multiselect({
   const { t } = useTranslation();
   const modalContainer = useModalContainer();
 
-  const validateForm = (selectedValues: string[]): FormState<FormFieldKey> => {
-    if (selectedValues.length > 0) {
-      return {
-        state: "valid",
-        values: selectedValues.map((val): FilterValue => val as FilterValue),
-      };
-    } else {
-      return {
-        state: "invalid",
-        errors: {
-          selectedOptions: t(
-            "guide-requests-app.filters-modal.multiselect-no-value-error",
-            "Select at least one value"
-          ),
-        },
-      };
-    }
-  };
-
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
-  const { onInputValueChange, matchingOptions, noMatchesOption } =
-    useDropdownFilter(options, "value");
+  const [filteredOptions, setFilteredOptions] = useState(options);
+  const [inputValue, setInputValue] = useState("");
+
+  const validateForm = useCallback(
+    (selectedLabels: string[]): FormState<FormFieldKey> => {
+      const selectedOptions = options.filter((option) =>
+        selectedLabels.includes(option.label)
+      );
+
+      if (selectedOptions.length > 0) {
+        return {
+          state: "valid",
+          values: selectedOptions.map((option): FilterValue => option.value),
+        };
+      } else {
+        return {
+          state: "invalid",
+          errors: {
+            selectedOptions: t(
+              "guide-requests-app.filters-modal.multiselect-no-value-error",
+              "Select at least one value"
+            ),
+          },
+        };
+      }
+    },
+    [options, t]
+  );
 
   useEffect(() => {
-    onSelect(validateForm([]));
-  }, []);
+    setFilteredOptions(options);
+  }, [options]);
 
-  function handleChange(values: string[]) {
-    setSelectedValues(values);
-    onSelect(validateForm(values));
-  }
+  const handleChange = useCallback(
+    (changes: {
+      selectionValue?: string | string[] | null;
+      inputValue?: string;
+    }) => {
+      const { inputValue, selectionValue } = changes;
+
+      if (inputValue !== undefined) {
+        setInputValue(inputValue);
+
+        if (inputValue === "") {
+          setFilteredOptions(options);
+        } else {
+          const matchedOptions = options.filter((option) => {
+            return option.label
+              .trim()
+              .toLowerCase()
+              .includes(inputValue.trim().toLowerCase());
+          });
+
+          setFilteredOptions(matchedOptions);
+        }
+      }
+
+      if (selectionValue !== undefined) {
+        const selectedLabels = (selectionValue as string[] | null) ?? [];
+        setSelectedValues(selectedLabels);
+        onSelect(validateForm(selectedLabels));
+      }
+    },
+    [options, onSelect, validateForm]
+  );
+
+  useEffect(() => {
+    onSelect({
+      state: "invalid",
+      errors: {
+        selectedOptions: t(
+          "guide-requests-app.filters-modal.multiselect-no-value-error",
+          "Select at least one value"
+        ),
+      },
+    });
+  }, [onSelect, t]);
 
   return (
     <Field>
@@ -69,25 +115,29 @@ export function Multiselect({
         isAutocomplete
         isMultiselectable
         selectionValue={selectedValues}
-        onChange={(changes) => {
-          if (changes.selectionValue !== undefined) {
-            handleChange((changes.selectionValue as string[] | null) ?? []);
-          }
-          if (changes.inputValue !== undefined) {
-            onInputValueChange(changes.inputValue);
-          }
-        }}
+        inputValue={inputValue}
+        onChange={handleChange}
         validation={errors.selectedOptions ? "error" : undefined}
         listboxAppendToNode={modalContainer}
       >
-        {noMatchesOption ||
-          matchingOptions.map((option) => (
+        {filteredOptions.length === 0 ? (
+          <Option
+            isDisabled
+            label={t(
+              "guide-requests-app.filters-modal.no-matches-found",
+              "No matches found"
+            )}
+            value=""
+          />
+        ) : (
+          filteredOptions.map((option) => (
             <Option
               key={option.value}
+              value={option.label}
               label={option.label}
-              value={option.value}
             />
-          ))}
+          ))
+        )}
       </Combobox>
       <FieldError errors={errors} field="selectedOptions" />
     </Field>

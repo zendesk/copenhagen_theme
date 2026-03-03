@@ -1,10 +1,12 @@
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
-import { useDropdownFilter } from "../../../hooks/useDropdownFilter";
+
 import { useTranslation } from "react-i18next";
 import { FieldError } from "./FieldError";
 import type { FormErrors } from "./FormState";
-import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 import type { Organization, TicketField } from "../../../data-types";
+import { useCallback, useState } from "react";
+
+import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 
 const HIDDEN_FIELDS = [
   "description",
@@ -44,6 +46,7 @@ export function FilterPropertyDropdown({
   errors,
 }: FilterPropertyDropdownProps): JSX.Element {
   const { t } = useTranslation();
+
   const modalContainer = useModalContainer();
 
   const filterProperties: FilterProperty[] = [
@@ -80,11 +83,46 @@ export function FilterPropertyDropdown({
       })),
   ];
 
-  const { inputValue, onInputValueChange, matchingOptions, noMatchesOption } =
-    useDropdownFilter(filterProperties, "label");
+  const [options, setOptions] = useState(filterProperties);
 
-  const propertyByIdentifier = new Map(
-    filterProperties.map((p) => [p.identifier, p])
+  const getOptionValue = useCallback(
+    (property: FilterProperty) => property.identifier,
+    []
+  );
+
+  const handleChange = useCallback(
+    (changes: {
+      selectionValue?: string | string[] | null;
+      inputValue?: string;
+    }) => {
+      const { inputValue, selectionValue } = changes;
+
+      if (inputValue !== undefined) {
+        if (inputValue === "") {
+          setOptions(filterProperties);
+        } else {
+          const matchedOptions = filterProperties.filter((option) => {
+            return option.label
+              .trim()
+              .toLowerCase()
+              .includes(inputValue.trim().toLowerCase());
+          });
+
+          setOptions(matchedOptions);
+        }
+      }
+
+      if (selectionValue && typeof selectionValue === "string") {
+        const selectedFilterProperty = filterProperties.find(
+          (property) => property.identifier === selectionValue
+        );
+
+        if (selectedFilterProperty) {
+          onSelect(selectedFilterProperty);
+        }
+      }
+    },
+    [filterProperties, onSelect]
   );
 
   return (
@@ -94,32 +132,31 @@ export function FilterPropertyDropdown({
       </Field.Label>
       <Combobox
         isAutocomplete
-        selectionValue={selectedProperty?.identifier ?? null}
-        inputValue={selectedProperty?.label ?? inputValue}
-        onChange={(changes) => {
-          if (changes.selectionValue !== undefined) {
-            const property = propertyByIdentifier.get(
-              changes.selectionValue as string
-            );
-            if (property) {
-              onSelect(property);
-            }
-          }
-          if (changes.inputValue !== undefined) {
-            onInputValueChange(changes.inputValue);
-          }
-        }}
+        onChange={handleChange}
+        selectionValue={
+          selectedProperty ? getOptionValue(selectedProperty) : null
+        }
         validation={errors.ticketField ? "error" : undefined}
         listboxAppendToNode={modalContainer}
       >
-        {noMatchesOption ||
-          matchingOptions.map((property) => (
+        {options.length === 0 ? (
+          <Option
+            isDisabled
+            label={t(
+              "guide-requests-app.filters-modal.no-matches-found",
+              "No matches found"
+            )}
+            value=""
+          />
+        ) : (
+          options.map((property) => (
             <Option
               key={property.identifier}
+              value={getOptionValue(property)}
               label={property.label}
-              value={property.identifier}
             />
-          ))}
+          ))
+        )}
       </Combobox>
       <FieldError errors={errors} field="ticketField" />
     </Field>
