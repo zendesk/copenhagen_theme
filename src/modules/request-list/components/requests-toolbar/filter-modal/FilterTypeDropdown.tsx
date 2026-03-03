@@ -29,11 +29,6 @@ export const FilterTypeDropdown = (
   const { filterTypeDropdownI18N } = useFilterTranslations();
   const modalContainer = useModalContainer();
 
-  const formatDisplayValue = (value: string | null): string => {
-    if (!value) return "";
-    return filterTypeDropdownI18N[value as FilterTypeValue] || "";
-  };
-
   return (
     <Field>
       <Field.Label>
@@ -42,7 +37,6 @@ export const FilterTypeDropdown = (
       <StyledCombobox
         isEditable={false}
         selectionValue={selectedFilter ?? null}
-        inputValue={formatDisplayValue(selectedFilter ?? null)}
         onChange={(changes) => {
           if (changes.selectionValue !== undefined) {
             onFilterTypeSelect(changes.selectionValue as FilterTypeValue);

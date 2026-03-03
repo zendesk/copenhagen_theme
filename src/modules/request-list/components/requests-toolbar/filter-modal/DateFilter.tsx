@@ -41,14 +41,6 @@ export function DateFilter({
   const dateRangeI18n = createDefaultDateRangeI18N();
   const customDatesInitialValues: [Date, Date] = [new Date(), new Date()];
 
-  const formatDisplayValue = (value: string | null): string => {
-    if (!value) return "";
-    if (value === "custom") {
-      return t("guide-requests-app.custom", "Custom");
-    }
-    return dateRangeI18n[value as FilterValue] || "";
-  };
-
   const validateCustomDates = ({
     values: [startDate, endDate],
     allowFutureDates,
@@ -161,7 +153,6 @@ export function DateFilter({
         <Combobox
           isEditable={false}
           selectionValue={selectedItem}
-          inputValue={formatDisplayValue(selectedItem)}
           onChange={(changes) => {
             if (changes.selectionValue !== undefined) {
               handleItemSelected(changes.selectionValue as ItemValue);

@@ -95,10 +95,6 @@ export default function RequestsTabs({
     }
   }
 
-  const handleMobileTabSelected = (name: SelectedTabName) => {
-    handleTabSelect(name);
-  };
-
   return (
     <Container>
       <Mobile>
@@ -113,7 +109,7 @@ export default function RequestsTabs({
           )}
           onChange={(changes) => {
             if (changes.value) {
-              handleMobileTabSelected(changes.value as SelectedTabName);
+              handleTabSelect(changes.value as SelectedTabName);
             }
             if (changes.isExpanded !== undefined) {
               setIconIsRotated(changes.isExpanded);

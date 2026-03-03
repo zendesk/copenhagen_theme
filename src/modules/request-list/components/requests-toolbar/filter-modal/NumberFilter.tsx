@@ -231,13 +231,6 @@ export function NumberFilter({
 
   const { filterTypeDropdownI18N } = useFilterTranslations();
 
-  const formatDisplayValue = (value: string | null): string => {
-    if (!value) return "";
-    return (
-      filterTypeDropdownI18N[value as keyof typeof filterTypeDropdownI18N] || ""
-    );
-  };
-
   return (
     <Container>
       <DropdownField>
@@ -247,7 +240,6 @@ export function NumberFilter({
         <Combobox
           isEditable={false}
           selectionValue={filter?.type ?? null}
-          inputValue={formatDisplayValue(filter?.type ?? null)}
           onChange={(changes) => {
             if (changes.selectionValue !== undefined) {
               handleFilterTypeSelect(
