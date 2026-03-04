@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { FieldError } from "./FieldError";
 import type { FormErrors } from "./FormState";
 import type { Organization, TicketField } from "../../../data-types";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 
@@ -49,41 +49,48 @@ export function FilterPropertyDropdown({
 
   const modalContainer = useModalContainer();
 
-  const filterProperties: FilterProperty[] = [
-    {
-      identifier: "created_at",
-      label: t("guide-requests-app.createdDate", "Created date"),
-    },
-    {
-      identifier: "updated_at",
-      label: t("guide-requests-app.updatedDate", "Updated date"),
-    },
-    hasCustomStatuses
-      ? {
-          identifier: "custom_status_id",
-          label: t("guide-requests-app.status", "Status"),
-        }
-      : {
-          identifier: "status",
-          label: t("guide-requests-app.status", "Status"),
-        },
-    ...(organizations.length > 1
-      ? [
-          {
-            identifier: "organization",
-            label: t("guide-requests-app.organization", "Organization"),
+  const filterProperties = useMemo(
+    () => [
+      {
+        identifier: "created_at",
+        label: t("guide-requests-app.createdDate", "Created date"),
+      },
+      {
+        identifier: "updated_at",
+        label: t("guide-requests-app.updatedDate", "Updated date"),
+      },
+      hasCustomStatuses
+        ? {
+            identifier: "custom_status_id",
+            label: t("guide-requests-app.status", "Status"),
+          }
+        : {
+            identifier: "status",
+            label: t("guide-requests-app.status", "Status"),
           },
-        ]
-      : []),
-    ...ticketFields
-      .filter((field) => !HIDDEN_FIELDS.includes(field.type))
-      .map(({ id, title_in_portal }) => ({
-        identifier: String(id),
-        label: title_in_portal,
-      })),
-  ];
+      ...(organizations.length > 1
+        ? [
+            {
+              identifier: "organization",
+              label: t("guide-requests-app.organization", "Organization"),
+            },
+          ]
+        : []),
+      ...ticketFields
+        .filter((field) => !HIDDEN_FIELDS.includes(field.type))
+        .map(({ id, title_in_portal }) => ({
+          identifier: String(id),
+          label: title_in_portal,
+        })),
+    ],
+    [t, hasCustomStatuses, organizations, ticketFields]
+  );
 
-  const [options, setOptions] = useState(filterProperties);
+  const [options, setOptions] = useState<FilterProperty[]>([]);
+
+  useEffect(() => {
+    setOptions(filterProperties);
+  }, [filterProperties]);
 
   const getOptionValue = useCallback(
     (property: FilterProperty) => property.identifier,

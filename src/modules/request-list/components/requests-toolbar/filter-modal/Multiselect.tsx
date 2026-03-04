@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import type { FilterValue } from "../../../data-types/FilterValue";
 import { FieldError } from "./FieldError";
@@ -33,6 +33,9 @@ export function Multiselect({
   const [filteredOptions, setFilteredOptions] = useState(options);
   const [inputValue, setInputValue] = useState("");
 
+  // Track initialization status
+  const isInitialized = useRef(false);
+
   const validateForm = useCallback(
     (selectedLabels: string[]): FormState<FormFieldKey> => {
       const selectedOptions = options.filter((option) =>
@@ -59,9 +62,24 @@ export function Multiselect({
     [options, t]
   );
 
+  // Update filtered options when options change
   useEffect(() => {
     setFilteredOptions(options);
-  }, [options]);
+
+    // Initialize form state only on first render
+    if (!isInitialized.current) {
+      onSelect({
+        state: "invalid",
+        errors: {
+          selectedOptions: t(
+            "guide-requests-app.filters-modal.multiselect-no-value-error",
+            "Select at least one value"
+          ),
+        },
+      });
+      isInitialized.current = true;
+    }
+  }, [options, onSelect, t]);
 
   const handleChange = useCallback(
     (changes: {
@@ -95,18 +113,6 @@ export function Multiselect({
     },
     [options, onSelect, validateForm]
   );
-
-  useEffect(() => {
-    onSelect({
-      state: "invalid",
-      errors: {
-        selectedOptions: t(
-          "guide-requests-app.filters-modal.multiselect-no-value-error",
-          "Select at least one value"
-        ),
-      },
-    });
-  }, [onSelect, t]);
 
   return (
     <Field>
