@@ -145,6 +145,10 @@ export function FilterPropertyDropdown({
         }
         validation={errors.ticketField ? "error" : undefined}
         listboxAppendToNode={modalContainer}
+        listboxAriaLabel={t(
+          "guide-requests-app.filters-modal.select-filter",
+          "Select filter"
+        )}
       >
         {options.length === 0 ? (
           <Option

@@ -160,6 +160,7 @@ export function DateFilter({
           }}
           validation={errors.dateFilterItem ? "error" : undefined}
           listboxAppendToNode={modalContainer}
+          listboxAriaLabel={label}
         >
           {Object.entries(dateRangeI18n).map(([value, label]) => (
             <Option key={value} label={label} value={value} />

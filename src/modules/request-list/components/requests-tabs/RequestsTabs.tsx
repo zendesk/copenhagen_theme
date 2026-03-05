@@ -115,6 +115,10 @@ export default function RequestsTabs({
               setIconIsRotated(changes.isExpanded);
             }
           }}
+          aria-label={t(
+            "guide-requests-app.requestTabsSelector",
+            "Request tabs selector"
+          )}
         >
           {availableTabs.map((tabName) => (
             <Item key={tabName} value={tabName}>

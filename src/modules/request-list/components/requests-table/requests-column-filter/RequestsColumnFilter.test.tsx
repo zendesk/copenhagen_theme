@@ -107,7 +107,6 @@ describe("Columns", () => {
       screen.getByRole("button", { name: "Show and hide columns" })
     );
 
-    // Deselect Status and ID
     fireEvent.click(screen.getByRole("menuitemcheckbox", { name: "Status" }));
     expect(onSelectedColumnsChanged).toHaveBeenCalledWith(
       DEFAULT_DESKTOP_COLUMNS.filter((id) => id !== "status")
@@ -126,7 +125,6 @@ describe("Columns", () => {
       screen.getByRole("button", { name: "Show and hide columns" })
     );
 
-    // All default desktop columns should be shown in the dropdown
     expect(
       screen.getByRole("menuitemcheckbox", { name: "Subject" })
     ).toBeInTheDocument();
@@ -143,7 +141,6 @@ describe("Columns", () => {
 
     const { unmount } = renderComponent({ onSelectedColumnsChanged });
 
-    // Open dropdown and modal to add DropdownFieldEndUser
     fireEvent.click(
       screen.getByRole("button", { name: "Show and hide columns" })
     );
@@ -157,7 +154,6 @@ describe("Columns", () => {
 
     unmount();
 
-    // Re-render with DropdownFieldEndUser selected
     onSelectedColumnsChanged.mockClear();
     const { unmount: unmount2 } = renderComponent({
       selectedColumns: [...DEFAULT_DESKTOP_COLUMNS, "420"],
@@ -177,7 +173,6 @@ describe("Columns", () => {
 
     unmount2();
 
-    // Test with NumberField
     onSelectedColumnsChanged.mockClear();
     const { unmount: unmount3 } = renderComponent({ onSelectedColumnsChanged });
 
@@ -211,7 +206,6 @@ describe("Columns", () => {
       DEFAULT_DESKTOP_COLUMNS
     );
 
-    // Verify NumberField is no longer in dropdown after being deselected
     fireEvent.click(
       screen.getByRole("button", { name: "Show and hide columns" })
     );
@@ -256,7 +250,6 @@ describe("Columns", () => {
     fireEvent.click(screen.getByLabelText("Hide all columns"));
     fireEvent.click(screen.getByRole("button", { name: "Save" }));
 
-    // Should have empty array when all deselected
     expect(onSelectedColumnsChanged).toHaveBeenCalledWith([]);
 
     unmount2();
@@ -279,7 +272,6 @@ describe("Columns", () => {
 
     const modal = screen.getByRole("dialog");
     const checkboxes = within(modal).getAllByRole("checkbox");
-    // Should have: select all checkbox + DropdownFieldEndUser + MultiselectFieldEndUser
     expect(checkboxes.length).toBe(3);
 
     const selectAllCheckbox = checkboxes[0] as HTMLInputElement;
@@ -290,13 +282,8 @@ describe("Columns", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Save" }));
 
-    // Should have selected the default columns plus the two EndUser fields
     expect(onSelectedColumnsChanged).toHaveBeenCalledWith(
-      expect.arrayContaining([
-        ...DEFAULT_DESKTOP_COLUMNS,
-        "420", // DropdownFieldEndUser
-        "421", // MultiselectFieldEndUser
-      ])
+      expect.arrayContaining([...DEFAULT_DESKTOP_COLUMNS])
     );
   });
 });

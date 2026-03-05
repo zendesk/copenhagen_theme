@@ -40,7 +40,8 @@ describe("<FilterPropertyDropdown />", () => {
   test("correctly selects first option with duplicate label by id", async () => {
     renderComponent();
 
-    fireEvent.click(screen.getByLabelText("Select filter"));
+    const filterDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterDropdowns[0]!);
 
     const creditCardOptions = screen.getAllByText("CreditcardField");
     expect(creditCardOptions).toHaveLength(2);
@@ -60,7 +61,8 @@ describe("<FilterPropertyDropdown />", () => {
   test("correctly selects second option with duplicate label by id", async () => {
     renderComponent();
 
-    fireEvent.click(screen.getByLabelText("Select filter"));
+    const filterDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterDropdowns[0]!);
 
     const creditCardOptions = screen.getAllByText("CreditcardField");
     expect(creditCardOptions).toHaveLength(2);
@@ -81,9 +83,10 @@ describe("<FilterPropertyDropdown />", () => {
     renderComponent();
     const user = userEvent.setup();
 
-    fireEvent.click(screen.getByLabelText("Select filter"));
+    const filterDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterDropdowns[0]!);
 
-    const input = screen.getByLabelText("Select filter");
+    const input = filterDropdowns[0]!;
 
     await user.clear(input);
     await user.type(input, "Date");
@@ -91,7 +94,8 @@ describe("<FilterPropertyDropdown />", () => {
     expect(screen.getByText("DateField")).toBeInTheDocument();
     expect(screen.queryByText("CreditcardField")).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByText("DateField"));
+    const dateFieldOptions = screen.getAllByText("DateField");
+    fireEvent.click(dateFieldOptions[0]!);
 
     expect(onSelectMock).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -101,13 +105,17 @@ describe("<FilterPropertyDropdown />", () => {
     );
 
     jest.clearAllMocks();
-    fireEvent.click(screen.getByLabelText("Select filter"));
-    await user.clear(input);
-    await user.type(input, "Created");
+
+    const filterDropdowns2 = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterDropdowns2[0]!);
+
+    await user.clear(filterDropdowns2[0]!);
+    await user.type(filterDropdowns2[0]!, "Created");
 
     expect(screen.getByText("Created date")).toBeInTheDocument();
 
-    fireEvent.click(screen.getByText("Created date"));
+    const createdDateOptions = screen.getAllByText("Created date");
+    fireEvent.click(createdDateOptions[0]!);
 
     expect(onSelectMock).toHaveBeenCalledWith(
       expect.objectContaining({

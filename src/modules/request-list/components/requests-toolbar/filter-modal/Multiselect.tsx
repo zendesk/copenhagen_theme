@@ -125,6 +125,7 @@ export function Multiselect({
         onChange={handleChange}
         validation={errors.selectedOptions ? "error" : undefined}
         listboxAppendToNode={modalContainer}
+        listboxAriaLabel={label}
       >
         {filteredOptions.length === 0 ? (
           <Option

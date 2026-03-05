@@ -91,6 +91,7 @@ export default function OrganizationsDropdown({
         inputValue={inputValue}
         data-test-id="organizations-menu"
         onChange={handleChange}
+        listboxAriaLabel={t("guide-requests-app.organization", "Organization")}
       >
         {filteredOrganizations.length === 0 ? (
           <Option

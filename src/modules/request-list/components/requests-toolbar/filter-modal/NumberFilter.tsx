@@ -249,6 +249,10 @@ export function NumberFilter({
           }}
           validation={errors.filterType ? "error" : undefined}
           listboxAppendToNode={modalContainer}
+          listboxAriaLabel={t(
+            "guide-requests-app.filter-modal.filterTypeLabel",
+            "Filter type"
+          )}
         >
           <Option label={filterTypeDropdownI18N.anyValue} value="anyValue" />
           <Option label={filterTypeDropdownI18N.range} value="range" />

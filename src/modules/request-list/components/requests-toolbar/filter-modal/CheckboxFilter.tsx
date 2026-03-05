@@ -77,6 +77,13 @@ export function CheckboxFilter({
         }}
         validation={errors.filterValue ? "error" : undefined}
         listboxAppendToNode={modalContainer}
+        listboxAriaLabel={t(
+          "guide-requests-app.filters-modal.select-field-value",
+          "Select {{field_name}}",
+          {
+            field_name: label,
+          }
+        )}
       >
         <Option label={checkboxFilterValuesI18N[":checked"]} value=":checked" />
         <Option
