@@ -21,7 +21,9 @@ export async function submitServiceItemRequest(
   associatedLookupField: TicketFieldObject,
   baseLocale: string,
   attachments: Attachment[],
-  helpCenterPath: string
+  helpCenterPath: string,
+  categoryLookupField?: TicketFieldObject | null,
+  categoryId?: string | null
 ) {
   try {
     const currentUser = await getCurrentUser();
@@ -33,6 +35,15 @@ export async function submitServiceItemRequest(
         value: field.value,
       };
     });
+
+    const lookupFields: Array<{ id: number; value: string | number }> = [
+      { id: associatedLookupField.id, value: serviceCatalogItem.id },
+    ];
+
+    if (categoryLookupField && categoryId) {
+      lookupFields.push({ id: categoryLookupField.id, value: categoryId });
+    }
+
     const response = await fetch(`/api/v2/requests?locale=${baseLocale}`, {
       method: "POST",
       headers: {
@@ -47,10 +58,7 @@ export async function submitServiceItemRequest(
             uploads: uploadTokens,
           },
           ticket_form_id: serviceCatalogItem.form_id,
-          custom_fields: [
-            ...customFields,
-            { id: associatedLookupField.id, value: serviceCatalogItem.id },
-          ],
+          custom_fields: [...customFields, ...lookupFields],
           via: {
             channel: "web form",
             source: 50,

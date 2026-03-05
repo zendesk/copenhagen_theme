@@ -1,6 +1,7 @@
 export interface ServiceCatalogItemCategory {
   id: string;
   name: string;
+  path: string[];
 }
 
 export interface ServiceCatalogItem {
