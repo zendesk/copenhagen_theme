@@ -381,6 +381,16 @@ parts:
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
       value: "Users can follow a specific topic"
   - translation:
+      key: "txt.help_center_copenhagen_theme.show_suggested_articles_label"
+      title: "Label for show suggested articles setting"
+      screenshot: ""
+      value: "Show suggested articles"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.show_suggested_articles_description"
+      title: "Description for the show suggested articles setting"
+      screenshot: ""
+      value: "Show suggested articles on community post page"
+  - translation:
       key: "txt.help_center_copenhagen_theme.show_brand_name_label"
       title: "Label for the show brand name setting"
       screenshot: "https://drive.google.com/file/d/16zQao3zk3uRScIUpkyc6bXAWwqHh3Zh-/view?usp=sharing"
