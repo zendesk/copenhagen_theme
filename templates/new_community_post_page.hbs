@@ -33,7 +33,9 @@
         {{/validate}}
       </div>
 
-      {{suggestion_list class='suggestion-list'}}
+      {{#if settings.show_suggested_articles}}
+        {{suggestion_list class="suggestion-list"}}
+      {{/if}}
 
       <div class="form-field">
         {{#required 'details'}}
