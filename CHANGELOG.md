@@ -1,3 +1,10 @@
+## [4.30.3](https://github.com/zendesk/copenhagen_theme/compare/v4.30.2...v4.30.3) (2026-03-06)
+
+
+### Bug Fixes
+
+* remove empty link from category and section page ([26d673c](https://github.com/zendesk/copenhagen_theme/commit/26d673cafb09153ab01857e5f8f099de0c9d9342))
+
 ## [4.30.2](https://github.com/zendesk/copenhagen_theme/compare/v4.30.1...v4.30.2) (2026-02-26)
 
 
