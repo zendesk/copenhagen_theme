@@ -139,8 +139,8 @@ export const RequestFormField = ({
           field={field}
           userId={userId}
           organizationId={
-            organizationField !== null
-              ? (organizationField?.value as string)
+            organizationField != null
+              ? (organizationField.value as string)
               : defaultOrganizationId
           }
           brandId={brandId}
