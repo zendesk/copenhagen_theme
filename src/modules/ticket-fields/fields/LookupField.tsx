@@ -163,7 +163,15 @@ export function LookupField({
         searchParams.set(filterValueParam, fieldValueParam);
       }
 
-      if (organizationId) searchParams.set("organization_id", organizationId);
+      const orgId =
+        organizationId != null &&
+        organizationId !== "undefined" &&
+        organizationId !== ""
+          ? Number(organizationId)
+          : Number.NaN;
+      if (!Number.isNaN(orgId) && Number.isInteger(orgId)) {
+        searchParams.set("organization_id", orgId.toString());
+      }
 
       setIsLoadingOptions(true);
       try {
