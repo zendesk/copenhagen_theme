@@ -48,8 +48,6 @@ const renderComponent = async (params?: Partial<RequestListParams>) => {
 
   render(<RequestsList locale="en-us" customStatusesEnabled={false} />);
 
-  // This is needed because of a “bug” with the Jest fake timers
-  // See: https://github.com/facebook/jest/issues/10221
   await act(() => Promise.resolve());
 };
 
@@ -91,9 +89,15 @@ describe("Rendering", () => {
       screen.getByRole("link", { name: "My request" })
     ).toBeInTheDocument();
     expect(screen.getByRole("cell", { name: "#1" })).toBeInTheDocument();
-    expect(screen.getAllByText("Mar 3, 2019")[0]).toBeInTheDocument();
-    expect(screen.getAllByText("Jun 3, 2020")[0]).toBeInTheDocument();
-    expect(screen.getAllByText("Open")[0]).toBeInTheDocument();
+
+    const marDates = screen.getAllByText("Mar 3, 2019");
+    expect(marDates[0]!).toBeInTheDocument();
+
+    const junDates = screen.getAllByText("Jun 3, 2020");
+    expect(junDates[0]!).toBeInTheDocument();
+
+    const openStatuses = screen.getAllByText("Open");
+    expect(openStatuses[0]!).toBeInTheDocument();
   }, 10000);
 
   test("applies a default sort of updated at and descending", async () => {
@@ -111,9 +115,10 @@ describe("Rendering", () => {
   test("renders the request description when the subject is empty", async () => {
     await renderComponent();
 
-    expect(
-      screen.getAllByText("Description for request with empty subject")[0]
-    ).toBeInTheDocument();
+    const descriptions = screen.getAllByText(
+      "Description for request with empty subject"
+    );
+    expect(descriptions[0]!).toBeInTheDocument();
   }, 10000);
 
   test("<RequestsList /> doesn't render 'Organizational requests' tab if there are no organizations", async () => {
@@ -128,13 +133,13 @@ describe("Rendering", () => {
   test("<RequestsList /> renders custom fields in filter modal", async () => {
     await renderComponent();
 
-    const filterButton = screen.getByRole("button", { name: "Filter" });
-    fireEvent.click(filterButton);
+    const filterButtons = screen.getAllByRole("button", { name: "Filter" });
+    fireEvent.click(filterButtons[0]!);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter", {
       selector: "input",
     });
-    fireEvent.click(filterTypeDropdown);
+    fireEvent.click(filterTypeDropdowns[0]!);
 
     expect(screen.getByText("DropdownFieldEndUser")).toBeInTheDocument();
     expect(screen.getByText("MultiselectFieldEndUser")).toBeInTheDocument();
@@ -150,24 +155,24 @@ describe("Rendering", () => {
   test("<RequestsList /> renders dropdown custom field options in filter modal", async () => {
     await renderComponent();
 
-    const filterButton = screen.getByRole("button", { name: "Filter" });
-    fireEvent.click(filterButton);
+    const filterButtons = screen.getAllByRole("button", { name: "Filter" });
+    fireEvent.click(filterButtons[0]!);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter", {
       selector: "input",
     });
-    fireEvent.click(filterTypeDropdown);
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    const dropdownFieldItem = screen.getByText("DropdownFieldEndUser");
-    fireEvent.click(dropdownFieldItem);
+    const dropdownFieldItems = screen.getAllByText("DropdownFieldEndUser");
+    fireEvent.click(dropdownFieldItems[0]!);
 
-    const dropdownOptionsDropdown = screen.getByLabelText(
+    const dropdownOptionsDropdowns = screen.getAllByLabelText(
       "DropdownFieldEndUser",
       {
         selector: "input",
       }
     );
-    fireEvent.click(dropdownOptionsDropdown);
+    fireEvent.click(dropdownOptionsDropdowns[0]!);
 
     expect(screen.getByText("Dropdown Field Option #1")).toBeInTheDocument();
     expect(screen.getByText("Dropdown Field Option #2")).toBeInTheDocument();
@@ -176,24 +181,26 @@ describe("Rendering", () => {
   test("<RequestsList /> renders multiselect custom field options in filter modal", async () => {
     await renderComponent();
 
-    const filterButton = screen.getByRole("button", { name: "Filter" });
-    fireEvent.click(filterButton);
+    const filterButtons = screen.getAllByRole("button", { name: "Filter" });
+    fireEvent.click(filterButtons[0]!);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter", {
       selector: "input",
     });
-    fireEvent.click(filterTypeDropdown);
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    const multiselectFieldItem = screen.getByText("MultiselectFieldEndUser");
-    fireEvent.click(multiselectFieldItem);
+    const multiselectFieldItems = screen.getAllByText(
+      "MultiselectFieldEndUser"
+    );
+    fireEvent.click(multiselectFieldItems[0]!);
 
-    const multiselectOptionsDropdown = screen.getByLabelText(
+    const multiselectOptionsDropdowns = screen.getAllByLabelText(
       "MultiselectFieldEndUser",
       {
         selector: "input",
       }
     );
-    fireEvent.click(multiselectOptionsDropdown);
+    fireEvent.click(multiselectOptionsDropdowns[0]!);
 
     expect(screen.getByText("Multiselect Field Option #1")).toBeInTheDocument();
     expect(screen.getByText("Multiselect Field Option #2")).toBeInTheDocument();
@@ -205,7 +212,10 @@ describe("Sorting", () => {
     test("<RequestsList /> can sort on the column", async () => {
       await renderComponent();
 
-      fireEvent.click(screen.getByRole("button", { name: /created date/i }));
+      const createdDateButtons = screen.getAllByRole("button", {
+        name: /created date/i,
+      });
+      fireEvent.click(createdDateButtons[0]!);
 
       expect(push).toHaveBeenCalledWith({
         page: 1,
@@ -218,7 +228,10 @@ describe("Sorting", () => {
         sort: { by: "created_at", order: "asc" },
       });
 
-      fireEvent.click(screen.getByRole("button", { name: /created date/i }));
+      const createdDateButtons = screen.getAllByRole("button", {
+        name: /created date/i,
+      });
+      fireEvent.click(createdDateButtons[0]!);
 
       expect(push).toHaveBeenCalledWith({
         page: 1,
@@ -231,7 +244,10 @@ describe("Sorting", () => {
         sort: { by: "created_at", order: "desc" },
       });
 
-      fireEvent.click(screen.getByRole("button", { name: /created date/i }));
+      const createdDateButtons = screen.getAllByRole("button", {
+        name: /created date/i,
+      });
+      fireEvent.click(createdDateButtons[0]!);
 
       expect(push).toHaveBeenCalledWith({
         page: 1,
@@ -244,7 +260,10 @@ describe("Sorting", () => {
     test("<RequestsList /> can sort on the column", async () => {
       await renderComponent({ sort: null });
 
-      fireEvent.click(screen.getByRole("button", { name: /updated date/i }));
+      const updatedDateButtons = screen.getAllByRole("button", {
+        name: /updated date/i,
+      });
+      fireEvent.click(updatedDateButtons[0]!);
 
       expect(push).toHaveBeenCalledWith({
         page: 1,
@@ -257,7 +276,10 @@ describe("Sorting", () => {
         sort: { by: "updated_at", order: "asc" },
       });
 
-      fireEvent.click(screen.getByRole("button", { name: /updated date/i }));
+      const updatedDateButtons = screen.getAllByRole("button", {
+        name: /updated date/i,
+      });
+      fireEvent.click(updatedDateButtons[0]!);
 
       expect(push).toHaveBeenCalledWith({
         page: 1,
@@ -270,7 +292,10 @@ describe("Sorting", () => {
         sort: { by: "updated_at", order: "desc" },
       });
 
-      fireEvent.click(screen.getByRole("button", { name: /updated date/i }));
+      const updatedDateButtons = screen.getAllByRole("button", {
+        name: /updated date/i,
+      });
+      fireEvent.click(updatedDateButtons[0]!);
 
       expect(push).toHaveBeenCalledWith({
         page: 1,
@@ -283,7 +308,8 @@ describe("Sorting", () => {
     test("<RequestsList /> can sort on the column", async () => {
       await renderComponent();
 
-      fireEvent.click(screen.getByRole("button", { name: "Status" }));
+      const statusButtons = screen.getAllByRole("button", { name: "Status" });
+      fireEvent.click(statusButtons[0]!);
 
       expect(push).toHaveBeenCalledWith({
         page: 1,
@@ -296,7 +322,8 @@ describe("Sorting", () => {
         sort: { by: "status", order: "asc" },
       });
 
-      fireEvent.click(screen.getByRole("button", { name: "Status" }));
+      const statusButtons = screen.getAllByRole("button", { name: "Status" });
+      fireEvent.click(statusButtons[0]!);
 
       expect(push).toHaveBeenCalledWith({
         page: 1,
@@ -308,7 +335,9 @@ describe("Sorting", () => {
       await renderComponent({
         sort: { by: "status", order: "desc" },
       });
-      fireEvent.click(screen.getByRole("button", { name: "Status" }));
+
+      const statusButtons = screen.getAllByRole("button", { name: "Status" });
+      fireEvent.click(statusButtons[0]!);
 
       expect(push).toHaveBeenCalledWith({
         page: 1,
@@ -324,10 +353,11 @@ describe("Filter tabs", () => {
       selectedTab: { name: ORG_REQUESTS_TAB_NAME, organizationId: 1 },
     });
 
-    fireEvent.click(screen.getByRole("combobox", { name: "Organization" }));
-    fireEvent.click(
-      screen.getByRole("option", { name: "Another Organization" })
-    );
+    const organizationDropdowns = screen.getAllByLabelText("Organization");
+    fireEvent.click(organizationDropdowns[0]!);
+
+    const anotherOrgOptions = screen.getAllByText("Another Organization");
+    fireEvent.click(anotherOrgOptions[0]!);
 
     expect(push).toHaveBeenCalledWith({
       page: 1,
@@ -338,9 +368,10 @@ describe("Filter tabs", () => {
   test("<RequestsList /> filters by the default organization on the 'Organizational requests' tab", async () => {
     await renderComponent();
 
-    fireEvent.click(
-      screen.getByRole("tab", { name: "Organizational requests" })
-    );
+    const orgTabs = screen.getAllByRole("tab", {
+      name: "Organizational requests",
+    });
+    fireEvent.click(orgTabs[0]!);
 
     expect(push).toHaveBeenCalledWith({
       page: 1,
@@ -358,7 +389,8 @@ describe("Navigating", () => {
 
     await renderComponent();
 
-    fireEvent.click(screen.getByRole("link", { name: "My request" }));
+    const requestLinks = screen.getAllByRole("link", { name: "My request" });
+    fireEvent.click(requestLinks[0]!);
 
     expect(locationAssignSpy).toHaveBeenCalledWith("/hc/requests/1");
   });

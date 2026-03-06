@@ -66,10 +66,18 @@ describe("<FilterModal />", () => {
   test("can filter by status", async () => {
     await renderComponent(onFiltersChanged);
 
-    fireEvent.click(screen.getByRole("combobox", { name: "Select filter" }));
-    fireEvent.click(screen.getByRole("option", { name: "Status" }));
-    fireEvent.click(screen.getByRole("combobox", { name: "Status" }));
-    fireEvent.click(screen.getByRole("option", { name: "Open" }));
+    const filterDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterDropdowns[0]!);
+
+    const statusOptions = screen.getAllByText("Status");
+    fireEvent.click(statusOptions[0]!);
+
+    const statusDropdowns = screen.getAllByLabelText("Status");
+    fireEvent.click(statusDropdowns[0]!);
+
+    const openOptions = screen.getAllByText("Open");
+    fireEvent.click(openOptions[0]!);
+
     fireEvent.click(screen.getByText("Apply filter"));
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
@@ -80,10 +88,18 @@ describe("<FilterModal />", () => {
   test("can filter by organizations", async () => {
     await renderComponent(onFiltersChanged);
 
-    fireEvent.click(screen.getByRole("combobox", { name: "Select filter" }));
-    fireEvent.click(screen.getByRole("option", { name: "Organization" }));
-    fireEvent.click(screen.getByRole("combobox", { name: "Organization" }));
-    fireEvent.click(screen.getByRole("option", { name: "My Organization" }));
+    const filterDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterDropdowns[0]!);
+
+    const organizationOptions = screen.getAllByText("Organization");
+    fireEvent.click(organizationOptions[0]!);
+
+    const orgDropdowns = screen.getAllByLabelText("Organization");
+    fireEvent.click(orgDropdowns[0]!);
+
+    const myOrgOptions = screen.getAllByText("My Organization");
+    fireEvent.click(myOrgOptions[0]!);
+
     fireEvent.click(screen.getByText("Apply filter"));
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
@@ -133,27 +149,32 @@ describe("<FilterModal />", () => {
     test("if min value is greater than min max value in number filter", async () => {
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
-      fireEvent.click(screen.getByRole("option", { name: "NumberField" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      const filterTypeSelect = screen.getByLabelText("Filter type", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeSelect);
-      fireEvent.click(screen.getByRole("option", { name: "Range" }));
+      const numberFieldOptions = screen.getAllByText("NumberField");
+      fireEvent.click(numberFieldOptions[0]!);
 
-      fireEvent.change(screen.getByLabelText("Min value"), {
+      const filterTypeSelects = screen.getAllByLabelText("Filter type");
+      fireEvent.click(filterTypeSelects[0]!);
+
+      const rangeOptions = screen.getAllByText("Range");
+      fireEvent.click(rangeOptions[0]!);
+
+      const minValueInputs = screen.getAllByLabelText("Min value");
+      fireEvent.change(minValueInputs[0]!, {
         target: { value: "10" },
       });
 
-      fireEvent.change(screen.getByLabelText("Max value"), {
+      const maxValueInputs = screen.getAllByLabelText("Max value");
+      fireEvent.change(maxValueInputs[0]!, {
         target: { value: "1" },
       });
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(
         screen.getByText("Select a value greater than min value")
@@ -165,27 +186,30 @@ describe("<FilterModal />", () => {
     test("if no value is inserted for max value in number filter", async () => {
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
-      fireEvent.click(screen.getByRole("option", { name: "NumberField" }));
-      const filterTypeSelect = screen.getByLabelText("Filter type", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeSelect);
-      fireEvent.click(screen.getByRole("option", { name: "Range" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      fireEvent.change(screen.getByLabelText("Min value"), {
+      const numberFieldOptions = screen.getAllByText("NumberField");
+      fireEvent.click(numberFieldOptions[0]!);
+
+      const filterTypeSelects = screen.getAllByLabelText("Filter type");
+      fireEvent.click(filterTypeSelects[0]!);
+
+      const rangeOptions = screen.getAllByText("Range");
+      fireEvent.click(rangeOptions[0]!);
+
+      const minValueInputs = screen.getAllByLabelText("Min value");
+      fireEvent.change(minValueInputs[0]!, {
         target: { value: "42" },
       });
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
-      expect(screen.getByLabelText("Max value")).toHaveAttribute(
-        "aria-invalid",
-        "true"
-      );
+      const maxValueInputs = screen.getAllByLabelText("Max value");
+      expect(maxValueInputs[0]!).toHaveAttribute("aria-invalid", "true");
 
       expect(screen.getByText("Insert a value")).toBeInTheDocument();
 
@@ -195,18 +219,22 @@ describe("<FilterModal />", () => {
     test("if no value is inserted for exact value in number filter", async () => {
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
-      fireEvent.click(screen.getByRole("option", { name: "NumberField" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      const filterTypeSelect = screen.getByLabelText("Filter type", {
-        selector: "input",
+      const numberFieldOptions = screen.getAllByText("NumberField");
+      fireEvent.click(numberFieldOptions[0]!);
+
+      const filterTypeSelects = screen.getAllByLabelText("Filter type");
+      fireEvent.click(filterTypeSelects[0]!);
+
+      const exactMatchOptions = screen.getAllByText("Exact match");
+      fireEvent.click(exactMatchOptions[0]!);
+
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
       });
-      fireEvent.click(filterTypeSelect);
-      fireEvent.click(screen.getByRole("option", { name: "Exact match" }));
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      fireEvent.click(applyButtons[0]!);
 
       expect(screen.getByText("Insert a value")).toBeInTheDocument();
 
@@ -216,27 +244,30 @@ describe("<FilterModal />", () => {
     test("if no value is inserted for min value in number filter", async () => {
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
-      fireEvent.click(screen.getByRole("option", { name: "NumberField" }));
-      const filterTypeSelect = screen.getByLabelText("Filter type", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeSelect);
-      fireEvent.click(screen.getByRole("option", { name: "Range" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      fireEvent.change(screen.getByLabelText("Max value"), {
+      const numberFieldOptions = screen.getAllByText("NumberField");
+      fireEvent.click(numberFieldOptions[0]!);
+
+      const filterTypeSelects = screen.getAllByLabelText("Filter type");
+      fireEvent.click(filterTypeSelects[0]!);
+
+      const rangeOptions = screen.getAllByText("Range");
+      fireEvent.click(rangeOptions[0]!);
+
+      const maxValueInputs = screen.getAllByLabelText("Max value");
+      fireEvent.change(maxValueInputs[0]!, {
         target: { value: "42" },
       });
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
-      expect(screen.getByLabelText("Min value")).toHaveAttribute(
-        "aria-invalid",
-        "true"
-      );
+      const minValueInputs = screen.getAllByLabelText("Min value");
+      expect(minValueInputs[0]!).toHaveAttribute("aria-invalid", "true");
 
       expect(screen.getByText("Insert a value")).toBeInTheDocument();
 
@@ -246,13 +277,16 @@ describe("<FilterModal />", () => {
     test("if no value is selected for custom dates", async () => {
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
-      fireEvent.click(screen.getByRole("option", { name: "DateField" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const dateFieldOptions = screen.getAllByText("DateField");
+      fireEvent.click(dateFieldOptions[0]!);
+
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(screen.getByText("Select a value")).toBeInTheDocument();
 
@@ -262,23 +296,22 @@ describe("<FilterModal />", () => {
     test("if no value is selected for dropdown custom fields", async () => {
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      const dropdownFieldItem = screen.getByText("DropdownFieldEndUser");
-      fireEvent.click(dropdownFieldItem);
+      const dropdownFieldItems = screen.getAllByText("DropdownFieldEndUser");
+      fireEvent.click(dropdownFieldItems[0]!);
 
-      fireEvent.click(screen.getByText("Apply filter"));
+      const applyButtons = screen.getAllByText("Apply filter");
+      fireEvent.click(applyButtons[0]!);
 
-      const dropdownOptionsDropdown = screen.getByLabelText(
-        "DropdownFieldEndUser",
-        {
-          selector: "div",
-        }
+      const dropdownOptionsDropdowns = screen.getAllByLabelText(
+        "DropdownFieldEndUser"
       );
-      expect(dropdownOptionsDropdown).toHaveAttribute("aria-invalid", "true");
+      expect(dropdownOptionsDropdowns[0]!).toHaveAttribute(
+        "aria-invalid",
+        "true"
+      );
 
       expect(screen.getByText("Select at least one value")).toBeInTheDocument();
       expect(onFiltersChanged).not.toHaveBeenCalled();
@@ -287,23 +320,24 @@ describe("<FilterModal />", () => {
     test("if no value is selected for multiselect custom fields", async () => {
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      const dropdownFieldItem = screen.getByText("MultiselectFieldEndUser");
-      fireEvent.click(dropdownFieldItem);
-
-      fireEvent.click(screen.getByText("Apply filter"));
-
-      const dropdownOptionsDropdown = screen.getByLabelText(
-        "MultiselectFieldEndUser",
-        {
-          selector: "div",
-        }
+      const multiselectFieldItems = screen.getAllByText(
+        "MultiselectFieldEndUser"
       );
-      expect(dropdownOptionsDropdown).toHaveAttribute("aria-invalid", "true");
+      fireEvent.click(multiselectFieldItems[0]!);
+
+      const applyButtons = screen.getAllByText("Apply filter");
+      fireEvent.click(applyButtons[0]!);
+
+      const multiselectOptionsDropdowns = screen.getAllByLabelText(
+        "MultiselectFieldEndUser"
+      );
+      expect(multiselectOptionsDropdowns[0]!).toHaveAttribute(
+        "aria-invalid",
+        "true"
+      );
 
       expect(screen.getByText("Select at least one value")).toBeInTheDocument();
 
@@ -313,25 +347,32 @@ describe("<FilterModal />", () => {
     test("if the format of the credit card filter is invalid", async () => {
       await renderComponent(onFiltersChanged);
 
-      fireEvent.click(screen.getByRole("combobox", { name: "Select filter" }));
-      fireEvent.click(screen.getByRole("option", { name: "CreditcardField" }));
-      const filterTypeSelect = screen.getByLabelText("Filter type", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeSelect);
-      fireEvent.click(screen.getByRole("option", { name: "Exact match" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      const creditCardInput = screen.getByLabelText(
+      const creditcardFieldOptions = screen.getAllByText("CreditcardField");
+      fireEvent.click(creditcardFieldOptions[0]!);
+
+      const filterTypeSelects = screen.getAllByLabelText("Filter type");
+      fireEvent.click(filterTypeSelects[0]!);
+
+      const exactMatchOptions = screen.getAllByText("Exact match");
+      fireEvent.click(exactMatchOptions[0]!);
+
+      const creditCardInputs = screen.getAllByLabelText(
         "Enter the last four digits of the credit card"
       );
 
-      fireEvent.change(creditCardInput, {
+      fireEvent.change(creditCardInputs[0]!, {
         target: { value: "abcd" },
       });
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
-      expect(creditCardInput).toHaveAttribute("aria-invalid", "true");
+      expect(creditCardInputs[0]!).toHaveAttribute("aria-invalid", "true");
 
       expect(
         screen.getByText(
@@ -345,11 +386,11 @@ describe("<FilterModal />", () => {
     test("if no field is selected", async () => {
       await renderComponent(onFiltersChanged);
 
-      fireEvent.click(screen.getByText("Apply filter"));
+      const applyButtons = screen.getAllByText("Apply filter");
+      fireEvent.click(applyButtons[0]!);
 
-      expect(
-        screen.getByLabelText("Select filter", { selector: "div" })
-      ).toHaveAttribute("aria-invalid", "true");
+      const filterInputs = screen.getAllByLabelText("Select filter");
+      expect(filterInputs[0]!).toHaveAttribute("aria-invalid", "true");
 
       expect(screen.getByText("Select a filter")).toBeInTheDocument();
 
@@ -359,18 +400,22 @@ describe("<FilterModal />", () => {
     test("can filter by checkbox field - Not selected", async () => {
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
-      fireEvent.click(screen.getByRole("option", { name: "CheckboxField" }));
-      const filterTypeSelect = screen.getByLabelText("Select CheckboxField", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeSelect);
-      fireEvent.click(screen.getByRole("option", { name: "Not selected" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const checkboxFieldOptions = screen.getAllByText("CheckboxField");
+      fireEvent.click(checkboxFieldOptions[0]!);
+
+      const checkboxSelects = screen.getAllByLabelText("Select CheckboxField");
+      fireEvent.click(checkboxSelects[0]!);
+
+      const notSelectedOptions = screen.getAllByText("Not selected");
+      fireEvent.click(notSelectedOptions[0]!);
+
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(onFiltersChanged).toHaveBeenCalledWith({
         custom_field_427: [":unchecked"],
@@ -380,13 +425,16 @@ describe("<FilterModal />", () => {
     test("if no value is selected for checkbox custom field filter", async () => {
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
-      fireEvent.click(screen.getByRole("option", { name: "CheckboxField" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const checkboxFieldOptions = screen.getAllByText("CheckboxField");
+      fireEvent.click(checkboxFieldOptions[0]!);
+
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(screen.getByText("Select a value")).toBeInTheDocument();
 
@@ -396,22 +444,27 @@ describe("<FilterModal />", () => {
     test("if decimal is entered in number custom fields - Exact match", async () => {
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
-      fireEvent.click(screen.getByRole("option", { name: "NumberField" }));
-      const filterTypeSelect = screen.getByLabelText("Filter type", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeSelect);
-      fireEvent.click(screen.getByRole("option", { name: "Exact match" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      fireEvent.change(screen.getByLabelText("Enter NumberField"), {
+      const numberFieldOptions = screen.getAllByText("NumberField");
+      fireEvent.click(numberFieldOptions[0]!);
+
+      const filterTypeSelects = screen.getAllByLabelText("Filter type");
+      fireEvent.click(filterTypeSelects[0]!);
+
+      const exactMatchOptions = screen.getAllByText("Exact match");
+      fireEvent.click(exactMatchOptions[0]!);
+
+      const numberFieldInputs = screen.getAllByLabelText("Enter NumberField");
+      fireEvent.change(numberFieldInputs[0]!, {
         target: { value: "42.12" },
       });
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(screen.getByText("Insert an integer value")).toBeInTheDocument();
 
@@ -421,26 +474,32 @@ describe("<FilterModal />", () => {
     test("if decimal is entered in number custom fields - Range minValue", async () => {
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
-      fireEvent.click(screen.getByRole("option", { name: "NumberField" }));
-      const filterTypeSelect = screen.getByLabelText("Filter type", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeSelect);
-      fireEvent.click(screen.getByRole("option", { name: "Range" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      fireEvent.change(screen.getByLabelText("Min value"), {
+      const numberFieldOptions = screen.getAllByText("NumberField");
+      fireEvent.click(numberFieldOptions[0]!);
+
+      const filterTypeSelects = screen.getAllByLabelText("Filter type");
+      fireEvent.click(filterTypeSelects[0]!);
+
+      const rangeOptions = screen.getAllByText("Range");
+      fireEvent.click(rangeOptions[0]!);
+
+      const minValueInputs = screen.getAllByLabelText("Min value");
+      fireEvent.change(minValueInputs[0]!, {
         target: { value: "1.1" },
       });
 
-      fireEvent.change(screen.getByLabelText("Max value"), {
+      const maxValueInputs = screen.getAllByLabelText("Max value");
+      fireEvent.change(maxValueInputs[0]!, {
         target: { value: "10" },
       });
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(screen.getByText("Insert an integer value")).toBeInTheDocument();
 
@@ -450,26 +509,32 @@ describe("<FilterModal />", () => {
     test("if decimal is entered in number custom fields - Range maxValue", async () => {
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
-      fireEvent.click(screen.getByRole("option", { name: "NumberField" }));
-      const filterTypeSelect = screen.getByLabelText("Filter type", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeSelect);
-      fireEvent.click(screen.getByRole("option", { name: "Range" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      fireEvent.change(screen.getByLabelText("Min value"), {
+      const numberFieldOptions = screen.getAllByText("NumberField");
+      fireEvent.click(numberFieldOptions[0]!);
+
+      const filterTypeSelects = screen.getAllByLabelText("Filter type");
+      fireEvent.click(filterTypeSelects[0]!);
+
+      const rangeOptions = screen.getAllByText("Range");
+      fireEvent.click(rangeOptions[0]!);
+
+      const minValueInputs = screen.getAllByLabelText("Min value");
+      fireEvent.change(minValueInputs[0]!, {
         target: { value: "1" },
       });
 
-      fireEvent.change(screen.getByLabelText("Max value"), {
+      const maxValueInputs = screen.getAllByLabelText("Max value");
+      fireEvent.change(maxValueInputs[0]!, {
         target: { value: "10.2" },
       });
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(screen.getByText("Insert an integer value")).toBeInTheDocument();
 
@@ -479,13 +544,16 @@ describe("<FilterModal />", () => {
     test("if filter type is not selected for number custom field filter", async () => {
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
-      fireEvent.click(screen.getByRole("option", { name: "NumberField" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const numberFieldOptions = screen.getAllByText("NumberField");
+      fireEvent.click(numberFieldOptions[0]!);
+
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(screen.getByText("Select a filter type")).toBeInTheDocument();
 
@@ -508,17 +576,22 @@ describe("<FilterModal />", () => {
 
         await renderComponent(onFiltersChanged);
 
-        const filterTypeDropdown = screen.getByLabelText("Select filter", {
-          selector: "input",
+        const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+        fireEvent.click(filterTypeDropdowns[0]!);
+
+        const dateFieldOptions = screen.getAllByText("DateField");
+        fireEvent.click(dateFieldOptions[0]!);
+
+        const dateDropdowns = screen.getAllByLabelText("DateField");
+        fireEvent.click(dateDropdowns[0]!);
+
+        const buttonOptions = screen.getAllByText(buttonText);
+        fireEvent.click(buttonOptions[0]!);
+
+        const applyButtons = screen.getAllByRole("button", {
+          name: "Apply filter",
         });
-        fireEvent.click(filterTypeDropdown);
-        fireEvent.click(screen.getByRole("option", { name: "DateField" }));
-        const dateDropdown = screen.getByLabelText("DateField", {
-          selector: "input",
-        });
-        fireEvent.click(dateDropdown);
-        fireEvent.click(screen.getByRole("option", { name: buttonText }));
-        fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+        fireEvent.click(applyButtons[0]!);
 
         expect(onFiltersChanged).toHaveBeenCalledWith({
           custom_field_422: [expectedFilter],
@@ -531,18 +604,21 @@ describe("<FilterModal />", () => {
 
       await renderComponent(onFiltersChanged);
 
-      const filterTypeDropdown = screen.getByLabelText("Select filter", {
-        selector: "input",
-      });
-      fireEvent.click(filterTypeDropdown);
-      fireEvent.click(screen.getByRole("option", { name: "DateField" }));
-      const dateDropdown = screen.getByLabelText("DateField", {
-        selector: "input",
-      });
-      fireEvent.click(dateDropdown);
-      fireEvent.click(screen.getByRole("option", { name: "Custom" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      const startDateInput = screen.getByRole("textbox", { name: "Start" });
+      const dateFieldOptions = screen.getAllByText("DateField");
+      fireEvent.click(dateFieldOptions[0]!);
+
+      const dateDropdowns = screen.getAllByLabelText("DateField");
+      fireEvent.click(dateDropdowns[0]!);
+
+      const customOptions = screen.getAllByText("Custom");
+      fireEvent.click(customOptions[0]!);
+
+      const startDateInputs = screen.getAllByRole("textbox", { name: "Start" });
+      const startDateInput = startDateInputs[0]!;
+
       const datepicker = startDateInput.closest(
         '[role="dialog"], .calendar-container, [data-calendar]'
       );
@@ -550,10 +626,12 @@ describe("<FilterModal />", () => {
       const calendarItem_15 = getAllByText(datepicker as HTMLElement, "15")[0]!;
 
       fireEvent.click(calendarItem_1);
-
       fireEvent.click(calendarItem_15);
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(onFiltersChanged).toHaveBeenCalledWith({
         custom_field_422: [">=2022-08-01", "<=2022-08-15"],
@@ -563,17 +641,24 @@ describe("<FilterModal />", () => {
     test("generates correct filter key for custom fields", async () => {
       await renderComponent(onFiltersChanged);
 
-      fireEvent.click(screen.getByRole("combobox", { name: "Select filter" }));
-      fireEvent.click(
-        screen.getByRole("option", { name: "DropdownFieldEndUser" })
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
+
+      const dropdownFieldOptions = screen.getAllByText("DropdownFieldEndUser");
+      fireEvent.click(dropdownFieldOptions[0]!);
+
+      const dropdownOptionsDropdowns = screen.getAllByLabelText(
+        "DropdownFieldEndUser"
       );
-      fireEvent.click(
-        screen.getByRole("combobox", { name: "DropdownFieldEndUser" })
-      );
-      fireEvent.click(
-        screen.getByRole("option", { name: "Dropdown Field Option #1" })
-      );
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      fireEvent.click(dropdownOptionsDropdowns[0]!);
+
+      const optionOneOptions = screen.getAllByText("Dropdown Field Option #1");
+      fireEvent.click(optionOneOptions[0]!);
+
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(onFiltersChanged).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -587,13 +672,20 @@ describe("<FilterModal />", () => {
 
       await renderComponent(onFiltersChanged);
 
-      fireEvent.click(screen.getByRole("combobox", { name: "Select filter" }));
-      fireEvent.click(screen.getByRole("option", { name: "Created date" }));
-      fireEvent.click(
-        screen.getByLabelText("Created date", { selector: "input" })
-      );
-      fireEvent.click(screen.getByRole("option", { name: "In the past year" }));
-      fireEvent.click(screen.getByText("Apply filter"));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
+
+      const createdDateOptions = screen.getAllByText("Created date");
+      fireEvent.click(createdDateOptions[0]!);
+
+      const createdDateDropdowns = screen.getAllByLabelText("Created date");
+      fireEvent.click(createdDateDropdowns[0]!);
+
+      const pastYearOptions = screen.getAllByText("In the past year");
+      fireEvent.click(pastYearOptions[0]!);
+
+      const applyButtons = screen.getAllByText("Apply filter");
+      fireEvent.click(applyButtons[0]!);
 
       expect(onFiltersChanged).toHaveBeenCalledWith({
         created_at: [">2023-02-28"],
@@ -605,13 +697,20 @@ describe("<FilterModal />", () => {
 
       await renderComponent(onFiltersChanged);
 
-      fireEvent.click(screen.getByRole("combobox", { name: "Select filter" }));
-      fireEvent.click(screen.getByRole("option", { name: "Updated date" }));
-      fireEvent.click(
-        screen.getByLabelText("Updated date", { selector: "input" })
-      );
-      fireEvent.click(screen.getByRole("option", { name: "In the past week" }));
-      fireEvent.click(screen.getByText("Apply filter"));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
+
+      const updatedDateOptions = screen.getAllByText("Updated date");
+      fireEvent.click(updatedDateOptions[0]!);
+
+      const updatedDateDropdowns = screen.getAllByLabelText("Updated date");
+      fireEvent.click(updatedDateDropdowns[0]!);
+
+      const pastWeekOptions = screen.getAllByText("In the past week");
+      fireEvent.click(pastWeekOptions[0]!);
+
+      const applyButtons = screen.getAllByText("Apply filter");
+      fireEvent.click(applyButtons[0]!);
 
       expect(onFiltersChanged).toHaveBeenCalledWith({
         updated_at: [">2025-08-10"],
@@ -623,15 +722,24 @@ describe("<FilterModal />", () => {
 
       await renderComponent(onFiltersChanged);
 
-      fireEvent.click(screen.getByRole("combobox", { name: "Select filter" }));
-      fireEvent.click(screen.getByRole("option", { name: "Created date" }));
-      fireEvent.click(
-        screen.getByLabelText("Created date", { selector: "input" })
-      );
-      fireEvent.click(screen.getByRole("option", { name: "Custom" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      fireEvent.click(screen.getByText("Start"));
-      const startDateInput = screen.getByRole("textbox", { name: "Start" });
+      const createdDateOptions = screen.getAllByText("Created date");
+      fireEvent.click(createdDateOptions[0]!);
+
+      const createdDateDropdowns = screen.getAllByLabelText("Created date");
+      fireEvent.click(createdDateDropdowns[0]!);
+
+      const customOptions = screen.getAllByText("Custom");
+      fireEvent.click(customOptions[0]!);
+
+      const startTexts = screen.getAllByText("Start");
+      fireEvent.click(startTexts[0]!);
+
+      const startDateInputs = screen.getAllByRole("textbox", { name: "Start" });
+      const startDateInput = startDateInputs[0]!;
+
       const datepicker =
         startDateInput.closest(
           '[role="dialog"], .calendar-container, [data-calendar]'
@@ -648,7 +756,10 @@ describe("<FilterModal />", () => {
       fireEvent.click(calendarItem_1_Aug);
       fireEvent.click(calendarItem_2_Aug);
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(onFiltersChanged).toHaveBeenCalledWith({
         created_at: [">=2025-08-01", "<=2025-08-02"],
@@ -660,18 +771,28 @@ describe("<FilterModal />", () => {
 
       await renderComponent(onFiltersChanged);
 
-      fireEvent.click(screen.getByRole("combobox", { name: "Select filter" }));
-      fireEvent.click(screen.getByRole("option", { name: "Updated date" }));
-      fireEvent.click(screen.getByRole("textbox"));
-      fireEvent.click(screen.getByRole("option", { name: "Custom" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      fireEvent.click(screen.getByText("Start"));
-      const startDateInput = screen.getByRole("textbox", { name: "Start" });
+      const updatedDateOptions = screen.getAllByText("Updated date");
+      fireEvent.click(updatedDateOptions[0]!);
+
+      const updatedDateDropdowns = screen.getAllByLabelText("Updated date");
+      fireEvent.click(updatedDateDropdowns[0]!);
+
+      const customOptions = screen.getAllByText("Custom");
+      fireEvent.click(customOptions[0]!);
+
+      const startTexts = screen.getAllByText("Start");
+      fireEvent.click(startTexts[0]!);
+
+      const startDateInputs = screen.getAllByRole("textbox", { name: "Start" });
+      const startDateInput = startDateInputs[0]!;
+
       const datepicker =
         startDateInput.closest(
           '[role="dialog"], .calendar-container, [data-calendar]'
         ) || startDateInput.parentElement?.parentElement;
-
       const calendarItem_1_Aug = getAllByText(
         datepicker as HTMLElement,
         "1"
@@ -684,7 +805,10 @@ describe("<FilterModal />", () => {
       fireEvent.click(calendarItem_1_Aug);
       fireEvent.click(calendarItem_2_Aug);
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(onFiltersChanged).toHaveBeenCalledWith({
         updated_at: [">=2025-08-01", "<=2025-08-02"],
@@ -696,12 +820,21 @@ describe("<FilterModal />", () => {
 
       await renderComponent(onFiltersChanged);
 
-      fireEvent.click(screen.getByRole("combobox", { name: "Select filter" }));
-      fireEvent.click(screen.getByRole("option", { name: "DateField" }));
-      fireEvent.click(screen.getByRole("textbox", { name: "DateField" }));
-      fireEvent.click(screen.getByRole("option", { name: "Custom" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      const startDateInput = screen.getByRole("textbox", { name: "Start" });
+      const dateFieldOptions = screen.getAllByText("DateField");
+      fireEvent.click(dateFieldOptions[0]!);
+
+      const dateDropdowns = screen.getAllByLabelText("DateField");
+      fireEvent.click(dateDropdowns[0]!);
+
+      const customOptions = screen.getAllByText("Custom");
+      fireEvent.click(customOptions[0]!);
+
+      const startDateInputs = screen.getAllByRole("textbox", { name: "Start" });
+      const startDateInput = startDateInputs[0]!;
+
       const datepicker =
         startDateInput.closest(
           '[role="dialog"], .calendar-container, [data-calendar]'
@@ -712,7 +845,10 @@ describe("<FilterModal />", () => {
       fireEvent.click(calendarItem_1);
       fireEvent.click(calendarItem_15);
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(onFiltersChanged).toHaveBeenCalledWith({
         custom_field_422: [">=2022-08-01", "<=2022-08-15"],
@@ -724,12 +860,21 @@ describe("<FilterModal />", () => {
 
       await renderComponent(onFiltersChanged);
 
-      fireEvent.click(screen.getByRole("combobox", { name: "Select filter" }));
-      fireEvent.click(screen.getByRole("option", { name: "DateField" }));
-      fireEvent.click(screen.getByRole("textbox", { name: "DateField" }));
-      fireEvent.click(screen.getByRole("option", { name: "Custom" }));
+      const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+      fireEvent.click(filterTypeDropdowns[0]!);
 
-      const startDateInput = screen.getByRole("textbox", { name: "Start" });
+      const dateFieldOptions = screen.getAllByText("DateField");
+      fireEvent.click(dateFieldOptions[0]!);
+
+      const dateDropdowns = screen.getAllByLabelText("DateField");
+      fireEvent.click(dateDropdowns[0]!);
+
+      const customOptions = screen.getAllByText("Custom");
+      fireEvent.click(customOptions[0]!);
+
+      const startDateInputs = screen.getAllByRole("textbox", { name: "Start" });
+      const startDateInput = startDateInputs[0]!;
+
       const datepicker =
         startDateInput.closest(
           '[role="dialog"], .calendar-container, [data-calendar]'
@@ -740,7 +885,10 @@ describe("<FilterModal />", () => {
       fireEvent.click(calendarItem_19);
       fireEvent.click(calendarItem_21);
 
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      const applyButtons = screen.getAllByRole("button", {
+        name: "Apply filter",
+      });
+      fireEvent.click(applyButtons[0]!);
 
       expect(onFiltersChanged).toHaveBeenCalledWith({
         custom_field_422: [">=2022-08-19", "<=2022-08-21"],
@@ -751,26 +899,32 @@ describe("<FilterModal />", () => {
   test("can filter by decimal custom fields - Range", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "DecimalField" }));
-    const filterTypeSelect = screen.getByLabelText("Filter type", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Range" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    fireEvent.change(screen.getByLabelText("Min value"), {
+    const decimalFieldOptions = screen.getAllByText("DecimalField");
+    fireEvent.click(decimalFieldOptions[0]!);
+
+    const filterTypeSelects = screen.getAllByLabelText("Filter type");
+    fireEvent.click(filterTypeSelects[0]!);
+
+    const rangeOptions = screen.getAllByText("Range");
+    fireEvent.click(rangeOptions[0]!);
+
+    const minValueInputs = screen.getAllByLabelText("Min value");
+    fireEvent.change(minValueInputs[0]!, {
       target: { value: "1.2" },
     });
 
-    fireEvent.change(screen.getByLabelText("Max value"), {
+    const maxValueInputs = screen.getAllByLabelText("Max value");
+    fireEvent.change(maxValueInputs[0]!, {
       target: { value: "1.45" },
     });
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_429: [">=1.2", "<=1.45"],
@@ -792,11 +946,22 @@ describe("<FilterModal />", () => {
       />
     );
 
-    fireEvent.click(screen.getByRole("combobox", { name: "Select filter" }));
-    fireEvent.click(screen.getByRole("option", { name: "Organization" }));
-    fireEvent.click(screen.getByRole("combobox", { name: "Organization" }));
-    fireEvent.click(screen.getByRole("option", { name: "My Organization" }));
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
+
+    const organizationOptions = screen.getAllByText("Organization");
+    fireEvent.click(organizationOptions[0]!);
+
+    const organizationDropdowns = screen.getAllByLabelText("Organization");
+    fireEvent.click(organizationDropdowns[0]!);
+
+    const myOrgOptions = screen.getAllByText("My Organization");
+    fireEvent.click(myOrgOptions[0]!);
+
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -809,24 +974,22 @@ describe("<FilterModal />", () => {
   test("can filter by dropdown custom fields", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    const dropdownFieldItem = screen.getByText("DropdownFieldEndUser");
-    fireEvent.click(dropdownFieldItem);
+    const dropdownFieldItems = screen.getAllByText("DropdownFieldEndUser");
+    fireEvent.click(dropdownFieldItems[0]!);
 
-    const dropdownOptionsDropdown = screen.getByLabelText(
-      "DropdownFieldEndUser",
-      {
-        selector: "input",
-      }
+    const dropdownOptionsDropdowns = screen.getAllByLabelText(
+      "DropdownFieldEndUser"
     );
-    fireEvent.click(dropdownOptionsDropdown);
+    fireEvent.click(dropdownOptionsDropdowns[0]!);
 
-    fireEvent.click(screen.getByText("Dropdown Field Option #1"));
-    fireEvent.click(screen.getByText("Apply filter"));
+    const optionOneOptions = screen.getAllByText("Dropdown Field Option #1");
+    fireEvent.click(optionOneOptions[0]!);
+
+    const applyButtons = screen.getAllByText("Apply filter");
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_420: [":first"],
@@ -836,21 +999,26 @@ describe("<FilterModal />", () => {
   test("can filter by multiselect custom fields", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(
-      screen.getByRole("option", { name: "MultiselectFieldEndUser" })
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
+
+    const multiselectFieldOptions = screen.getAllByText(
+      "MultiselectFieldEndUser"
     );
-    const dateDropdown = screen.getByLabelText("MultiselectFieldEndUser", {
-      selector: "input",
-    });
-    fireEvent.click(dateDropdown);
-    fireEvent.click(
-      screen.getByRole("option", { name: "Multiselect Field Option #1" })
+    fireEvent.click(multiselectFieldOptions[0]!);
+
+    const multiselectDropdowns = screen.getAllByLabelText(
+      "MultiselectFieldEndUser"
     );
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    fireEvent.click(multiselectDropdowns[0]!);
+
+    const optionOneOptions = screen.getAllByText("Multiselect Field Option #1");
+    fireEvent.click(optionOneOptions[0]!);
+
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_421: [":first"],
@@ -860,23 +1028,27 @@ describe("<FilterModal />", () => {
   test("can filter by text custom fields", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "MultilineField" }));
-    const filterTypeSelect = screen.getByLabelText("Filter type", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Exact match" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    const inputText = screen.getByLabelText("Enter MultilineField", {
+    const multilineFieldOptions = screen.getAllByText("MultilineField");
+    fireEvent.click(multilineFieldOptions[0]!);
+
+    const filterTypeSelects = screen.getAllByLabelText("Filter type");
+    fireEvent.click(filterTypeSelects[0]!);
+
+    const exactMatchOptions = screen.getAllByText("Exact match");
+    fireEvent.click(exactMatchOptions[0]!);
+
+    const inputTexts = screen.getAllByLabelText("Enter MultilineField", {
       selector: "input",
     });
-    fireEvent.change(inputText, { target: { value: "test" } });
+    fireEvent.change(inputTexts[0]!, { target: { value: "test" } });
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_426: [`:"test"`],
@@ -886,23 +1058,29 @@ describe("<FilterModal />", () => {
   test("can filter by text custom fields using a multi word phrase", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "MultilineField" }));
-    const filterTypeSelect = screen.getByLabelText("Filter type", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Exact match" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    const inputText = screen.getByLabelText("Enter MultilineField", {
+    const multilineFieldOptions = screen.getAllByText("MultilineField");
+    fireEvent.click(multilineFieldOptions[0]!);
+
+    const filterTypeSelects = screen.getAllByLabelText("Filter type");
+    fireEvent.click(filterTypeSelects[0]!);
+
+    const exactMatchOptions = screen.getAllByText("Exact match");
+    fireEvent.click(exactMatchOptions[0]!);
+
+    const inputTexts = screen.getAllByLabelText("Enter MultilineField", {
       selector: "input",
     });
-    fireEvent.change(inputText, { target: { value: "Phrase with spaces" } });
+    fireEvent.change(inputTexts[0]!, {
+      target: { value: "Phrase with spaces" },
+    });
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_426: [`:"Phrase with spaces"`],
@@ -912,18 +1090,22 @@ describe("<FilterModal />", () => {
   test("can filter by text custom fields - any value", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "MultilineField" }));
-    const filterTypeSelect = screen.getByLabelText("Filter type", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Any value" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const multilineFieldOptions = screen.getAllByText("MultilineField");
+    fireEvent.click(multilineFieldOptions[0]!);
+
+    const filterTypeSelects = screen.getAllByLabelText("Filter type");
+    fireEvent.click(filterTypeSelects[0]!);
+
+    const anyValueOptions = screen.getAllByText("Any value");
+    fireEvent.click(anyValueOptions[0]!);
+
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_426: [":*"],
@@ -933,13 +1115,16 @@ describe("<FilterModal />", () => {
   test("displays an error if no filter type is selected for text custom field", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "MultilineField" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const multilineFieldOptions = screen.getAllByText("MultilineField");
+    fireEvent.click(multilineFieldOptions[0]!);
+
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(screen.getByText("Select a filter type")).toBeInTheDocument();
 
@@ -949,23 +1134,27 @@ describe("<FilterModal />", () => {
   test("can filter by regexp custom fields - Exact match", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "RegexpField" }));
-    const filterTypeSelect = screen.getByLabelText("Filter type", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Exact match" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    const inputText = screen.getByLabelText("Enter RegexpField", {
+    const regexpFieldOptions = screen.getAllByText("RegexpField");
+    fireEvent.click(regexpFieldOptions[0]!);
+
+    const filterTypeSelects = screen.getAllByLabelText("Filter type");
+    fireEvent.click(filterTypeSelects[0]!);
+
+    const exactMatchOptions = screen.getAllByText("Exact match");
+    fireEvent.click(exactMatchOptions[0]!);
+
+    const inputTexts = screen.getAllByLabelText("Enter RegexpField", {
       selector: "input",
     });
-    fireEvent.change(inputText, { target: { value: "test" } });
+    fireEvent.change(inputTexts[0]!, { target: { value: "test" } });
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_430: [`:"test"`],
@@ -975,18 +1164,22 @@ describe("<FilterModal />", () => {
   test("can filter by regexp custom fields - any value", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "RegexpField" }));
-    const filterTypeSelect = screen.getByLabelText("Filter type", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Any value" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const regexpFieldOptions = screen.getAllByText("RegexpField");
+    fireEvent.click(regexpFieldOptions[0]!);
+
+    const filterTypeSelects = screen.getAllByLabelText("Filter type");
+    fireEvent.click(filterTypeSelects[0]!);
+
+    const anyValueOptions = screen.getAllByText("Any value");
+    fireEvent.click(anyValueOptions[0]!);
+
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_430: [":*"],
@@ -996,13 +1189,16 @@ describe("<FilterModal />", () => {
   test("displays an error if no filter type is selected for regexp custom field", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "RegexpField" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const regexpFieldOptions = screen.getAllByText("RegexpField");
+    fireEvent.click(regexpFieldOptions[0]!);
+
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(screen.getByText("Select a filter type")).toBeInTheDocument();
 
@@ -1012,19 +1208,22 @@ describe("<FilterModal />", () => {
   test("displays an error if no value is inserted for text custom field", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "MultilineField" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    const filterTypeSelect = screen.getByLabelText("Filter type", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Exact match" }));
+    const multilineFieldOptions = screen.getAllByText("MultilineField");
+    fireEvent.click(multilineFieldOptions[0]!);
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const filterTypeSelects = screen.getAllByLabelText("Filter type");
+    fireEvent.click(filterTypeSelects[0]!);
+
+    const exactMatchOptions = screen.getAllByText("Exact match");
+    fireEvent.click(exactMatchOptions[0]!);
+
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(screen.getByText("Insert a value")).toBeInTheDocument();
 
@@ -1034,18 +1233,22 @@ describe("<FilterModal />", () => {
   test("can filter by number custom fields - Any value", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "NumberField" }));
-    const filterTypeSelect = screen.getByLabelText("Filter type", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Any value" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const numberFieldOptions = screen.getAllByText("NumberField");
+    fireEvent.click(numberFieldOptions[0]!);
+
+    const filterTypeSelects = screen.getAllByLabelText("Filter type");
+    fireEvent.click(filterTypeSelects[0]!);
+
+    const anyValueOptions = screen.getAllByText("Any value");
+    fireEvent.click(anyValueOptions[0]!);
+
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_428: [":*"],
@@ -1055,26 +1258,32 @@ describe("<FilterModal />", () => {
   test("can filter by number custom fields - Range", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "NumberField" }));
-    const filterTypeSelect = screen.getByLabelText("Filter type", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Range" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    fireEvent.change(screen.getByLabelText("Min value"), {
+    const numberFieldOptions = screen.getAllByText("NumberField");
+    fireEvent.click(numberFieldOptions[0]!);
+
+    const filterTypeSelects = screen.getAllByLabelText("Filter type");
+    fireEvent.click(filterTypeSelects[0]!);
+
+    const rangeOptions = screen.getAllByText("Range");
+    fireEvent.click(rangeOptions[0]!);
+
+    const minValueInputs = screen.getAllByLabelText("Min value");
+    fireEvent.change(minValueInputs[0]!, {
       target: { value: "1" },
     });
 
-    fireEvent.change(screen.getByLabelText("Max value"), {
+    const maxValueInputs = screen.getAllByLabelText("Max value");
+    fireEvent.change(maxValueInputs[0]!, {
       target: { value: "10" },
     });
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_428: [">=1", "<=10"],
@@ -1084,22 +1293,27 @@ describe("<FilterModal />", () => {
   test("can filter by number custom fields - Exact match", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "NumberField" }));
-    const filterTypeSelect = screen.getByLabelText("Filter type", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Exact match" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    fireEvent.change(screen.getByLabelText("Enter NumberField"), {
+    const numberFieldOptions = screen.getAllByText("NumberField");
+    fireEvent.click(numberFieldOptions[0]!);
+
+    const filterTypeSelects = screen.getAllByLabelText("Filter type");
+    fireEvent.click(filterTypeSelects[0]!);
+
+    const exactMatchOptions = screen.getAllByText("Exact match");
+    fireEvent.click(exactMatchOptions[0]!);
+
+    const numberFieldInputs = screen.getAllByLabelText("Enter NumberField");
+    fireEvent.change(numberFieldInputs[0]!, {
       target: { value: "42" },
     });
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_428: [":42"],
@@ -1109,18 +1323,22 @@ describe("<FilterModal />", () => {
   test("can filter by checkbox field - Selected", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "CheckboxField" }));
-    const filterTypeSelect = screen.getByLabelText("Select CheckboxField", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Selected" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const checkboxFieldOptions = screen.getAllByText("CheckboxField");
+    fireEvent.click(checkboxFieldOptions[0]!);
+
+    const checkboxSelects = screen.getAllByLabelText("Select CheckboxField");
+    fireEvent.click(checkboxSelects[0]!);
+
+    const selectedOptions = screen.getAllByText("Selected");
+    fireEvent.click(selectedOptions[0]!);
+
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_427: [":checked"],
@@ -1130,25 +1348,29 @@ describe("<FilterModal />", () => {
   test("can filter by credit card custom fields - Last 4 digits", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "CreditcardField" }));
-    const filterTypeSelect = screen.getByLabelText("Filter type", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Exact match" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    fireEvent.change(
-      screen.getByLabelText("Enter the last four digits of the credit card"),
-      {
-        target: { value: "1234" },
-      }
+    const creditCardFieldOptions = screen.getAllByText("CreditcardField");
+    fireEvent.click(creditCardFieldOptions[0]!);
+
+    const filterTypeSelects = screen.getAllByLabelText("Filter type");
+    fireEvent.click(filterTypeSelects[0]!);
+
+    const exactMatchOptions = screen.getAllByText("Exact match");
+    fireEvent.click(exactMatchOptions[0]!);
+
+    const creditCardInputs = screen.getAllByLabelText(
+      "Enter the last four digits of the credit card"
     );
+    fireEvent.change(creditCardInputs[0]!, {
+      target: { value: "1234" },
+    });
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_431: [":*1234"],
@@ -1158,18 +1380,22 @@ describe("<FilterModal />", () => {
   test("can filter by credit card custom fields - Any value", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "CreditcardField" }));
-    const filterTypeSelect = screen.getByLabelText("Filter type", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Any value" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const creditCardFieldOptions = screen.getAllByText("CreditcardField");
+    fireEvent.click(creditCardFieldOptions[0]!);
+
+    const filterTypeSelects = screen.getAllByLabelText("Filter type");
+    fireEvent.click(filterTypeSelects[0]!);
+
+    const anyValueOptions = screen.getAllByText("Any value");
+    fireEvent.click(anyValueOptions[0]!);
+
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_431: [":*"],
@@ -1179,34 +1405,38 @@ describe("<FilterModal />", () => {
   test("displays an error if the format of the credit card filter is invalid", async () => {
     await renderComponent(onFiltersChanged);
 
-    const filterTypeDropdown = screen.getByLabelText("Select filter", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "CreditcardField" }));
-    const filterTypeSelect = screen.getByLabelText("Filter type", {
-      selector: "input",
-    });
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Exact match" }));
+    const filterTypeDropdowns = screen.getAllByLabelText("Select filter");
+    fireEvent.click(filterTypeDropdowns[0]!);
 
-    const creditCardInput = screen.getByLabelText(
+    const creditcardFieldOptions = screen.getAllByText("CreditcardField");
+    fireEvent.click(creditcardFieldOptions[0]!);
+
+    const filterTypeSelects = screen.getAllByLabelText("Filter type");
+    fireEvent.click(filterTypeSelects[0]!);
+
+    const exactMatchOptions = screen.getAllByText("Exact match");
+    fireEvent.click(exactMatchOptions[0]!);
+
+    const creditCardInputs = screen.getAllByLabelText(
       "Enter the last four digits of the credit card"
     );
 
-    fireEvent.change(creditCardInput, {
+    fireEvent.change(creditCardInputs[0]!, {
       target: { value: "abcd" },
     });
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+    const applyButtons = screen.getAllByRole("button", {
+      name: "Apply filter",
+    });
+    fireEvent.click(applyButtons[0]!);
 
-    expect(creditCardInput).toHaveAttribute("aria-invalid", "true");
+    expect(creditCardInputs[0]!).toHaveAttribute("aria-invalid", "true");
 
     expect(
       screen.getByText(
         "Enter the last four digits of the credit card, using only numbers"
       )
-    );
+    ).toBeInTheDocument();
 
     expect(onFiltersChanged).not.toHaveBeenCalled();
   });

@@ -1,18 +1,10 @@
-import { useEffect, useState } from "react";
-import {
-  Item,
-  Label,
-  Field,
-  Dropdown,
-  Multiselect as GardenMultiselect,
-} from "@zendeskgarden/react-dropdowns.legacy";
-import { Tag } from "@zendeskgarden/react-tags";
-import { useDropdownFilter } from "../../../hooks/useDropdownFilter";
+import { useCallback, useEffect, useState, useRef } from "react";
+import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import type { FilterValue } from "../../../data-types/FilterValue";
 import { FieldError } from "./FieldError";
 import type { FormErrors, FormState } from "./FormState";
 import { useTranslation } from "react-i18next";
-import { ModalMenu } from "../../modal-menu/ModalMenu";
+import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 
 export interface MultiSelectOption {
   value: FilterValue;
@@ -35,17 +27,48 @@ export function Multiselect({
   errors,
 }: MultiselectProps): JSX.Element {
   const { t } = useTranslation();
+  const modalContainer = useModalContainer();
 
-  const validateForm = (
-    selectedOptions: MultiSelectOption[]
-  ): FormState<FormFieldKey> => {
-    if (selectedOptions.length > 0) {
-      return {
-        state: "valid",
-        values: selectedOptions.map((option): FilterValue => option.value),
-      };
-    } else {
-      return {
+  const [selectedValues, setSelectedValues] = useState<string[]>([]);
+  const [filteredOptions, setFilteredOptions] = useState(options);
+  const [inputValue, setInputValue] = useState("");
+
+  // Track initialization status
+  const isInitialized = useRef(false);
+
+  const validateForm = useCallback(
+    (selectedLabels: string[]): FormState<FormFieldKey> => {
+      const selectedOptions = options.filter((option) =>
+        selectedLabels.includes(option.label)
+      );
+
+      if (selectedOptions.length > 0) {
+        return {
+          state: "valid",
+          values: selectedOptions.map((option): FilterValue => option.value),
+        };
+      } else {
+        return {
+          state: "invalid",
+          errors: {
+            selectedOptions: t(
+              "guide-requests-app.filters-modal.multiselect-no-value-error",
+              "Select at least one value"
+            ),
+          },
+        };
+      }
+    },
+    [options, t]
+  );
+
+  // Update filtered options when options change
+  useEffect(() => {
+    setFilteredOptions(options);
+
+    // Initialize form state only on first render
+    if (!isInitialized.current) {
+      onSelect({
         state: "invalid",
         errors: {
           selectedOptions: t(
@@ -53,54 +76,77 @@ export function Multiselect({
             "Select at least one value"
           ),
         },
-      };
+      });
+      isInitialized.current = true;
     }
-  };
+  }, [options, onSelect, t]);
 
-  const [selectedOptions, setSelectedOptions] = useState<MultiSelectOption[]>(
-    []
+  const handleChange = useCallback(
+    (changes: {
+      selectionValue?: string | string[] | null;
+      inputValue?: string;
+    }) => {
+      const { inputValue, selectionValue } = changes;
+
+      if (inputValue !== undefined) {
+        setInputValue(inputValue);
+
+        if (inputValue === "") {
+          setFilteredOptions(options);
+        } else {
+          const matchedOptions = options.filter((option) => {
+            return option.label
+              .trim()
+              .toLowerCase()
+              .includes(inputValue.trim().toLowerCase());
+          });
+
+          setFilteredOptions(matchedOptions);
+        }
+      }
+
+      if (selectionValue !== undefined) {
+        const selectedLabels = (selectionValue as string[] | null) ?? [];
+        setSelectedValues(selectedLabels);
+        onSelect(validateForm(selectedLabels));
+      }
+    },
+    [options, onSelect, validateForm]
   );
-  const { dropdownProps, renderItems } = useDropdownFilter(options, "value");
-
-  useEffect(() => {
-    onSelect(validateForm([]));
-  }, []);
-
-  function handleSelect(items: MultiSelectOption[]) {
-    setSelectedOptions(items);
-    onSelect(validateForm(items));
-  }
 
   return (
-    <Dropdown
-      {...dropdownProps}
-      selectedItems={selectedOptions}
-      onSelect={handleSelect}
-      downshiftProps={{
-        defaultHighlightedIndex: 0,
-        itemToString: (option: MultiSelectOption) => option?.value,
-      }}
-    >
-      <Field>
-        <Label>{label}</Label>
-        <GardenMultiselect
-          renderItem={({ value, removeValue }) => (
-            <Tag>
-              <span>{(value as MultiSelectOption).label}</span>
-              <Tag.Close onClick={() => removeValue()} />
-            </Tag>
-          )}
-          validation={errors.selectedOptions ? "error" : undefined}
-        />
-        <FieldError errors={errors} field="selectedOptions" />
-      </Field>
-      <ModalMenu>
-        {renderItems((option) => (
-          <Item key={option.value} value={option}>
-            {option.label}
-          </Item>
-        ))}
-      </ModalMenu>
-    </Dropdown>
+    <Field>
+      <Field.Label>{label}</Field.Label>
+      <Combobox
+        isAutocomplete
+        isMultiselectable
+        selectionValue={selectedValues}
+        inputValue={inputValue}
+        onChange={handleChange}
+        validation={errors.selectedOptions ? "error" : undefined}
+        listboxAppendToNode={modalContainer}
+        listboxAriaLabel={label}
+      >
+        {filteredOptions.length === 0 ? (
+          <Option
+            isDisabled
+            label={t(
+              "guide-requests-app.filters-modal.no-matches-found",
+              "No matches found"
+            )}
+            value=""
+          />
+        ) : (
+          filteredOptions.map((option) => (
+            <Option
+              key={option.value}
+              value={option.label}
+              label={option.label}
+            />
+          ))
+        )}
+      </Combobox>
+      <FieldError errors={errors} field="selectedOptions" />
+    </Field>
   );
 }
