@@ -1,3 +1,10 @@
+## [4.30.5](https://github.com/zendesk/copenhagen_theme/compare/v4.30.4...v4.30.5) (2026-03-10)
+
+
+### Bug Fixes
+
+* resolve dependabot security alerts ([75a396f](https://github.com/zendesk/copenhagen_theme/commit/75a396f1d8f61df1065edcb4a7fa9417eff7847a))
+
 ## [4.30.4](https://github.com/zendesk/copenhagen_theme/compare/v4.30.3...v4.30.4) (2026-03-10)
 
 
