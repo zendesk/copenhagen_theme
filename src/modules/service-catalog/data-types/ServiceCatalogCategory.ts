@@ -3,5 +3,5 @@ export interface ServiceCatalogCategory {
   name: string;
   items_count: number;
   updated_at: string;
-  children: ServiceCatalogCategory[];
+  children?: ServiceCatalogCategory[];
 }

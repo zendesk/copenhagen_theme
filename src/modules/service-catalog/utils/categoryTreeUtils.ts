@@ -8,7 +8,7 @@ export function findCategoryById(
 ): Category | null {
   for (const category of categories) {
     if (category.id === id) return category;
-    if (category.children.length) {
+    if (category.children?.length) {
       const found = findCategoryById(category.children, id);
       if (found) return found;
     }
@@ -24,7 +24,7 @@ export function findAncestorIds(
     if (category.id === targetId) {
       return [];
     }
-    if (category.children.length) {
+    if (category.children?.length) {
       const path = findAncestorIds(category.children, targetId);
       if (path !== null) {
         return [category.id, ...path];
