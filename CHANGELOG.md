@@ -1,3 +1,10 @@
+## [4.30.4](https://github.com/zendesk/copenhagen_theme/compare/v4.30.3...v4.30.4) (2026-03-10)
+
+
+### Bug Fixes
+
+* resolve organization_id="undefined" in LURF autocomplete for Service Catalog ([9a0896b](https://github.com/zendesk/copenhagen_theme/commit/9a0896b0159db87e802989b5e6c88536e6202b38))
+
 ## [4.30.3](https://github.com/zendesk/copenhagen_theme/compare/v4.30.2...v4.30.3) (2026-03-06)
 
 
