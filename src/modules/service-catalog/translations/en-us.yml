@@ -53,6 +53,11 @@ parts:
       screenshot: "https://drive.google.com/file/d/1BYDLuhii7aQs18TkKflGCpReb_UCKSeD/view?usp=drive_link"
       value: "Read less"
   - translation:
+      key: "service-catalog.item.change-category"
+      title: "Dropdown trigger to change the category of a multi-placed service catalog item"
+      screenshot: "https://drive.google.com/file/d/1i-5SW5902PNqnPu73-IwxaeuWEAvxGVw/view?usp=sharing"
+      value: "Change category"
+  - translation:
       key: "service-catalog.item.submit-button"
       title: "Button to submit a request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1kuv7v6Vtx787TdVz8AOmD6v0ow79Xd6c/view?usp=drive_link"
