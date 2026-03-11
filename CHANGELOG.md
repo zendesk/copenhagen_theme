@@ -1,3 +1,10 @@
+## [4.30.6](https://github.com/zendesk/copenhagen_theme/compare/v4.30.5...v4.30.6) (2026-03-11)
+
+
+### Bug Fixes
+
+* update wysiwyg to 1.1.0 ([e672471](https://github.com/zendesk/copenhagen_theme/commit/e672471706168ad4e84fcab19a8e34438b90ca32))
+
 ## [4.30.5](https://github.com/zendesk/copenhagen_theme/compare/v4.30.4...v4.30.5) (2026-03-10)
 
 
