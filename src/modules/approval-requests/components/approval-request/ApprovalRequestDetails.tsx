@@ -7,7 +7,7 @@ import { Grid } from "@zendeskgarden/react-grid";
 import type { ApprovalRequest } from "../../types";
 import ApprovalStatusTag from "./ApprovalStatusTag";
 import { formatApprovalRequestDate } from "../../utils";
-import { APPROVAL_REQUEST_STATES } from "../../constants";
+import { APPROVAL_REQUEST_STATES, ORIGINATION_TYPES } from "../../constants";
 import ApprovalRequestPreviousDecision from "./ApprovalRequestPreviousDecision";
 
 const Container = styled(Grid)`
@@ -95,7 +95,14 @@ function ApprovalRequestDetails({
           </FieldLabel>
         </Grid.Col>
         <Grid.Col size={8}>
-          <WrappedText>{approvalRequest.created_by_user.name}</WrappedText>
+          <WrappedText>
+            {approvalRequest.origination_type === ORIGINATION_TYPES.ACTION_FLOW
+              ? t(
+                  "approval-requests.request.approval-request-details.sent-by-action-flow",
+                  "Action flow"
+                )
+              : approvalRequest.created_by_user.name}
+          </WrappedText>
         </Grid.Col>
       </DetailRow>
       <DetailRow>

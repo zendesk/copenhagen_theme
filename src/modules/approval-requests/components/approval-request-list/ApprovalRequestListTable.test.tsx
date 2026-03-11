@@ -76,6 +76,75 @@ describe("ApprovalRequestListTable", () => {
     expect(screen.getByText("Approved")).toBeInTheDocument();
   });
 
+  it("displays 'Action flow' when origination_type is ACTION_FLOW_ORIGINATION", () => {
+    const actionFlowRequests: SearchApprovalRequest[] = [
+      {
+        id: 123,
+        subject: "Hardware request",
+        requester_name: "Jane Doe",
+        created_by_name: "John Doe",
+        created_at: "2024-02-20T10:00:00Z",
+        status: "active",
+        origination_type: "ACTION_FLOW_ORIGINATION",
+      },
+    ];
+
+    render(
+      <ApprovalRequestListTable
+        approvalRequests={actionFlowRequests}
+        helpCenterPath="/hc/en-us"
+        baseLocale="en-US"
+        sortDirection="desc"
+        onSortChange={mockOnSortChange}
+      />
+    );
+
+    expect(screen.getByText("Action flow")).toBeInTheDocument();
+    expect(screen.queryByText("John Doe")).not.toBeInTheDocument();
+  });
+
+  it("displays the creator's name when origination_type is UI_ORIGINATION", () => {
+    const uiOriginationRequests: SearchApprovalRequest[] = [
+      {
+        id: 123,
+        subject: "Hardware request",
+        requester_name: "Jane Doe",
+        created_by_name: "John Doe",
+        created_at: "2024-02-20T10:00:00Z",
+        status: "active",
+        origination_type: "UI_ORIGINATION",
+      },
+    ];
+
+    render(
+      <ApprovalRequestListTable
+        approvalRequests={uiOriginationRequests}
+        helpCenterPath="/hc/en-us"
+        baseLocale="en-US"
+        sortDirection="desc"
+        onSortChange={mockOnSortChange}
+      />
+    );
+
+    expect(screen.getByText("John Doe")).toBeInTheDocument();
+    expect(screen.queryByText("Action flow")).not.toBeInTheDocument();
+  });
+
+  it("displays the creator's name when origination_type is absent", () => {
+    render(
+      <ApprovalRequestListTable
+        approvalRequests={mockApprovalRequests}
+        helpCenterPath="/hc/en-us"
+        baseLocale="en-US"
+        sortDirection="desc"
+        onSortChange={mockOnSortChange}
+      />
+    );
+
+    expect(screen.getByText("John Doe")).toBeInTheDocument();
+    expect(screen.queryByText("Action flow")).not.toBeInTheDocument();
+  });
+
   it("renders the no approval requests text when the filtered approval requests are empty", () => {
     render(
       <ApprovalRequestListTable

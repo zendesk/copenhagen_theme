@@ -72,6 +72,11 @@ parts:
       screenshot: "https://drive.google.com/file/d/1-RFlHvEdegvChs6TuVTXxx6ubeSab-hc/view?usp=drive_link"
       value: "Sent by"
   - translation:
+      key: "approval-requests.request.approval-request-details.sent-by-action-flow"
+      title: "Value shown as the sender when the approval request was created by an action flow instead of a user"
+      screenshot: "https://drive.google.com/file/d/1zhm7qIpCcRH0lAKZylg7INwiIyTBXw4O/view?usp=drive_link"
+      value: "Action flow"
+  - translation:
       key: "approval-requests.request.approval-request-details.sent-on"
       title: "Label for the date that the approval request was submitted - Subject: 'approval request'"
       screenshot: "https://drive.google.com/file/d/1Kmy-XgNfCE5dgh-oipsc1P_sZ3gmvjD6/view?usp=drive_link"
