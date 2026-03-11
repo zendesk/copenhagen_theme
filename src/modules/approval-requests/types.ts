@@ -59,6 +59,7 @@ export interface SearchApprovalRequest {
   created_by_name: string;
   created_at: string;
   status: ApprovalRequestStatus;
+  origination_type?: string;
 }
 
 export type ApprovalClarificationFlowMessage = {

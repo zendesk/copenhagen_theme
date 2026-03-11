@@ -6,6 +6,7 @@ import { Anchor } from "@zendeskgarden/react-buttons";
 import { getColor } from "@zendeskgarden/react-theming";
 import ApprovalStatusTag from "../approval-request/ApprovalStatusTag";
 import { formatApprovalRequestDate } from "../../utils";
+import { ORIGINATION_TYPES } from "../../constants";
 import type { SearchApprovalRequest } from "../../types";
 import NoApprovalRequestsText from "./NoApprovalRequestsText";
 
@@ -99,7 +100,13 @@ function ApprovalRequestListTable({
                 {approvalRequest.requester_name}
               </Table.Cell>
               <Table.Cell isTruncated>
-                {approvalRequest.created_by_name}
+                {approvalRequest.origination_type ===
+                ORIGINATION_TYPES.ACTION_FLOW
+                  ? t(
+                      "approval-requests.request.approval-request-details.sent-by-action-flow",
+                      "Action flow"
+                    )
+                  : approvalRequest.created_by_name}
               </Table.Cell>
               <Table.Cell isTruncated>
                 {formatApprovalRequestDate(
