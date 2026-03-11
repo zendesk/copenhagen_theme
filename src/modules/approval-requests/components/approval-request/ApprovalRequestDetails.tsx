@@ -95,7 +95,14 @@ function ApprovalRequestDetails({
           </FieldLabel>
         </Grid.Col>
         <Grid.Col size={8}>
-          <WrappedText>{approvalRequest.created_by_user.name}</WrappedText>
+          <WrappedText>
+            {approvalRequest.origination_type === "ACTION_FLOW_ORIGINATION"
+              ? t(
+                  "approval-requests.request.approval-request-details.sent-by-action-flow",
+                  "Action flow"
+                )
+              : approvalRequest.created_by_user.name}
+          </WrappedText>
         </Grid.Col>
       </DetailRow>
       <DetailRow>

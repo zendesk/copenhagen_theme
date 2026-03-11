@@ -39,6 +39,7 @@ export interface ApprovalRequest {
   assignee_user: ApprovalRequestUser;
   ticket_details: ApprovalRequestTicket;
   withdrawn_reason: string | null;
+  origination_type?: string;
   clarification_flow_messages?: ApprovalClarificationFlowMessage[];
 }
 
