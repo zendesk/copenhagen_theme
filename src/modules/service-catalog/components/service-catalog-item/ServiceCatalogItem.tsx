@@ -95,7 +95,7 @@ export function ServiceCatalogItem({
     );
 
     setSelectedCategoryId(
-      matchesUrl ? matchesUrl.id : serviceCatalogItem.categories[0]!.id
+      matchesUrl ? matchesUrl.id : serviceCatalogItem.categories[0]?.id ?? null
     );
   }, [serviceCatalogItem]);
 
@@ -307,8 +307,13 @@ export function ServiceCatalogItem({
       ? organizations[0]?.id?.toString()
       : null;
 
-  const categorySelectorContainer =
-    document.getElementById("category-selector");
+  const [categorySelectorContainer, setCategorySelectorContainer] =
+    useState<HTMLElement | null>(null);
+  useEffect(() => {
+    setCategorySelectorContainer(
+      document.getElementById("category-selector")
+    );
+  }, []);
 
   return (
     <Container>
