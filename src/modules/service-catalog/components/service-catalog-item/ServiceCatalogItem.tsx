@@ -310,9 +310,7 @@ export function ServiceCatalogItem({
   const [categorySelectorContainer, setCategorySelectorContainer] =
     useState<HTMLElement | null>(null);
   useEffect(() => {
-    setCategorySelectorContainer(
-      document.getElementById("category-selector")
-    );
+    setCategorySelectorContainer(document.getElementById("category-selector"));
   }, []);
 
   return (
