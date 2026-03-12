@@ -131,7 +131,7 @@ export const CategoryItem: React.FC<CategoryItemProps> = ({
   selectedCategoryId,
   onSelect,
 }) => {
-  const hasChildren = category.children.length > 0;
+  const hasChildren = (category.children?.length ?? 0) > 0;
   const isExpanded = expandedCategories.has(category.id);
   const isAllServices = category.id === ALL_SERVICES_ID;
   const isUncategorized = category.id === UNCATEGORIZED_ID;
@@ -201,7 +201,7 @@ export const CategoryItem: React.FC<CategoryItemProps> = ({
       </CategoryItemWrapper>
       {hasChildren && isExpanded && (
         <>
-          {category.children.map((child) => (
+          {category.children?.map((child) => (
             <CategoryItem
               key={child.id}
               category={child}

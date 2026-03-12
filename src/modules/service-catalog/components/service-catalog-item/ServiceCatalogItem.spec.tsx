@@ -152,6 +152,7 @@ describe("ServiceCatalogItem", () => {
     mockUseItemFormFields.mockReturnValue({
       requestFields: mockRequestFields,
       associatedLookupField: mockAssociatedLookupField,
+      categoryLookupField: null,
       error: null,
       setRequestFields: jest.fn(),
       handleChange: jest.fn(),

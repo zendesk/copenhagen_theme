@@ -166,6 +166,7 @@ export function ServiceCatalogList({
                   <ServiceCatalogListItem
                     serviceItem={record}
                     helpCenterPath={helpCenterPath}
+                    selectedCategoryId={apiCategoryId}
                   />
                 </StyledCol>
               ))}

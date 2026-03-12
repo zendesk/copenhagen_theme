@@ -3,5 +3,5 @@ export interface Category {
   name: string;
   items_count: number;
   updated_at: string;
-  children: Category[];
+  children?: Category[];
 }

@@ -12,9 +12,15 @@
   &-main-content {
     display: flex;
     gap: 32px;
-  } 
+  }
 
   &-list {
     width: 100%;
+  }
+
+  &-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
 }
