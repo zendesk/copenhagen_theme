@@ -39,6 +39,7 @@ export interface ApprovalRequest {
   assignee_user: ApprovalRequestUser;
   ticket_details: ApprovalRequestTicket;
   withdrawn_reason: string | null;
+  origination_type?: string;
   clarification_flow_messages?: ApprovalClarificationFlowMessage[];
 }
 
@@ -58,6 +59,7 @@ export interface SearchApprovalRequest {
   created_by_name: string;
   created_at: string;
   status: ApprovalRequestStatus;
+  origination_type?: string;
 }
 
 export type ApprovalClarificationFlowMessage = {

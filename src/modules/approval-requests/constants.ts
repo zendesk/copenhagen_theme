@@ -1,3 +1,7 @@
+export const ORIGINATION_TYPES = {
+  ACTION_FLOW: "ACTION_FLOW_ORIGINATION",
+} as const;
+
 export const APPROVAL_REQUEST_STATES = {
   ACTIVE: "active",
   APPROVED: "approved",
