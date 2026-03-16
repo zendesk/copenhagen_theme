@@ -1,3 +1,11 @@
+# [4.31.0](https://github.com/zendesk/copenhagen_theme/compare/v4.30.6...v4.31.0) (2026-03-16)
+
+
+### Features
+
+* **approval-requests:** display "Action flow" as sent by value for action flow origination ([d4c7554](https://github.com/zendesk/copenhagen_theme/commit/d4c75544c56ea63ffcf79fca59df9689b20efb9c))
+* **approval-requests:** display "Action flow" in sent by column on list page ([6d2cca3](https://github.com/zendesk/copenhagen_theme/commit/6d2cca30613dd59126b1a4993e9a4acabcebe784))
+
 ## [4.30.6](https://github.com/zendesk/copenhagen_theme/compare/v4.30.5...v4.30.6) (2026-03-11)
 
 
