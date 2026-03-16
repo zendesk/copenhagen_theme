@@ -5,6 +5,9 @@ import {
   ItemGroup,
   Separator,
 } from "@zendeskgarden/react-dropdowns";
+import type { ISelectedItem } from "@zendeskgarden/react-dropdowns";
+
+import { Tooltip } from "@zendeskgarden/react-tooltips";
 import { Table } from "@zendeskgarden/react-tables";
 import styled from "styled-components";
 import { RequestsColumnModal } from "./RequestsColumnModal";
@@ -41,12 +44,8 @@ export function RequestsColumnFilter({
   const hasSeeMoreColumns =
     requestAttributes.length > defaultDesktopColumns.length;
 
-  const controlledSelectedItems = useMemo(
-    () =>
-      selectedColumns.map((col) => ({
-        value: col,
-        type: "checkbox" as const,
-      })),
+  const controlledSelectedItems = useMemo<ISelectedItem[]>(
+    () => selectedColumns.map((col) => ({ value: col })),
     [selectedColumns]
   );
 
@@ -56,17 +55,17 @@ export function RequestsColumnFilter({
     selectedItems?: Array<{ value: string; type?: string }>;
   }) => {
     if (changes.isExpanded === true) {
+      // Cache the last selected columns when dropdown is opened
       setLastSelectedColumns(selectedColumns);
     }
 
-    // Handle "See more columns" selection
     if (changes.value === OPEN_MODAL_VALUE) {
       setIsDropdownOpen(false);
       setIsModalOpen(true);
       return;
     }
 
-    // Handle checkbox item selections
+    // Handle checkbox item
     if (changes.selectedItems) {
       const selectedValues = changes.selectedItems
         .map((item) => item.value)
@@ -80,6 +79,11 @@ export function RequestsColumnFilter({
     }
   };
 
+  const showAndHideColumnsLabel = t(
+    "guide-requests-app.column-selection.show-hide-columns",
+    "Show and hide columns"
+  );
+
   return (
     <>
       <Menu
@@ -89,22 +93,15 @@ export function RequestsColumnFilter({
         placement="bottom-end"
         restoreFocus={false}
         button={(props) => (
-          <Table.OverflowButton
-            {...props}
-            aria-label={t(
-              "guide-requests-app.column-selection.show-hide-columns",
-              "Show and hide columns"
-            )}
-          />
+          <Tooltip content={showAndHideColumnsLabel} placement="start">
+            <Table.OverflowButton
+              {...props}
+              aria-label={showAndHideColumnsLabel}
+            />
+          </Tooltip>
         )}
       >
-        <ItemGroup
-          legend={t(
-            "guide-requests-app.column-selection.show-hide-columns",
-            "Show and hide columns"
-          )}
-          type="checkbox"
-        >
+        <ItemGroup legend={showAndHideColumnsLabel} type="checkbox">
           {requestAttributes.map(({ identifier, label }) => {
             if (
               !defaultDesktopColumns.includes(identifier) &&

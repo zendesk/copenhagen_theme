@@ -1,8 +1,4 @@
-import {
-  Combobox,
-  Field,
-  Option,
-} from "@zendeskgarden/react-dropdowns";
+import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import { useEffect, useState } from "react";
 import type { FilterValue } from "../../../data-types/FilterValue";
 import { useFilterTranslations } from "../i18n";
@@ -177,7 +173,10 @@ export function DateFilter({
           {Object.entries(dateRangeI18n).map(([value, label]) => (
             <Option key={value} label={label} value={value} />
           ))}
-          <Option label={t("guide-requests-app.custom", "Custom")} value="custom" />
+          <Option
+            label={t("guide-requests-app.custom", "Custom")}
+            value="custom"
+          />
         </Combobox>
         <FieldError errors={errors} field="dateFilterItem" />
       </Field>

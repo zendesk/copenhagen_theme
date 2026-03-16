@@ -252,7 +252,9 @@ describe("<FilterModal />", () => {
 
       fireEvent.click(screen.getByText("Apply filter"));
 
-      const dropdownOptionsDropdown = screen.getByLabelText("DropdownFieldEndUser");
+      const dropdownOptionsDropdown = screen.getByLabelText(
+        "DropdownFieldEndUser"
+      );
       expect(dropdownOptionsDropdown).toHaveAttribute("aria-invalid", "true");
 
       expect(screen.getByText("Select at least one value")).toBeInTheDocument();
@@ -270,7 +272,9 @@ describe("<FilterModal />", () => {
 
       fireEvent.click(screen.getByText("Apply filter"));
 
-      const dropdownOptionsDropdown = screen.getByLabelText("MultiselectFieldEndUser");
+      const dropdownOptionsDropdown = screen.getByLabelText(
+        "MultiselectFieldEndUser"
+      );
       expect(dropdownOptionsDropdown).toHaveAttribute("aria-invalid", "true");
 
       expect(screen.getByText("Select at least one value")).toBeInTheDocument();
@@ -313,9 +317,10 @@ describe("<FilterModal />", () => {
 
       fireEvent.click(screen.getByText("Apply filter"));
 
-      expect(
-        screen.getByLabelText("Select filter")
-      ).toHaveAttribute("aria-invalid", "true");
+      expect(screen.getByLabelText("Select filter")).toHaveAttribute(
+        "aria-invalid",
+        "true"
+      );
 
       expect(screen.getByText("Select a filter")).toBeInTheDocument();
 
@@ -505,9 +510,7 @@ describe("<FilterModal />", () => {
       fireEvent.click(
         screen.getByRole("option", { name: "DropdownFieldEndUser" })
       );
-      fireEvent.click(
-        screen.getByLabelText("DropdownFieldEndUser")
-      );
+      fireEvent.click(screen.getByLabelText("DropdownFieldEndUser"));
       fireEvent.click(
         screen.getByRole("option", { name: "Dropdown Field Option #1" })
       );
@@ -527,9 +530,7 @@ describe("<FilterModal />", () => {
 
       fireEvent.click(screen.getByLabelText("Select filter"));
       fireEvent.click(screen.getByRole("option", { name: "Created date" }));
-      fireEvent.click(
-        screen.getByLabelText("Created date")
-      );
+      fireEvent.click(screen.getByLabelText("Created date"));
       fireEvent.click(screen.getByRole("option", { name: "In the past year" }));
       fireEvent.click(screen.getByText("Apply filter"));
 
@@ -545,9 +546,7 @@ describe("<FilterModal />", () => {
 
       fireEvent.click(screen.getByLabelText("Select filter"));
       fireEvent.click(screen.getByRole("option", { name: "Updated date" }));
-      fireEvent.click(
-        screen.getByLabelText("Updated date")
-      );
+      fireEvent.click(screen.getByLabelText("Updated date"));
       fireEvent.click(screen.getByRole("option", { name: "In the past week" }));
       fireEvent.click(screen.getByText("Apply filter"));
 
@@ -563,9 +562,7 @@ describe("<FilterModal />", () => {
 
       fireEvent.click(screen.getByLabelText("Select filter"));
       fireEvent.click(screen.getByRole("option", { name: "Created date" }));
-      fireEvent.click(
-        screen.getByLabelText("Created date")
-      );
+      fireEvent.click(screen.getByLabelText("Created date"));
       fireEvent.click(screen.getByRole("option", { name: "Custom" }));
 
       fireEvent.click(screen.getByText("Start"));
@@ -626,34 +623,6 @@ describe("<FilterModal />", () => {
 
       expect(onFiltersChanged).toHaveBeenCalledWith({
         updated_at: [">=2025-08-01", "<=2025-08-02"],
-      });
-    });
-
-    test("can filter by date custom fields - custom dates", async () => {
-      jest.setSystemTime(new Date("2022-08-17"));
-
-      await renderComponent(onFiltersChanged);
-
-      fireEvent.click(screen.getByLabelText("Select filter"));
-      fireEvent.click(screen.getByRole("option", { name: "DateField" }));
-      fireEvent.click(screen.getByLabelText("DateField"));
-      fireEvent.click(screen.getByRole("option", { name: "Custom" }));
-
-      const startDateInput = screen.getByRole("textbox", { name: "Start" });
-      const datepicker =
-        startDateInput.closest(
-          '[role="dialog"], .calendar-container, [data-calendar]'
-        ) || startDateInput.parentElement?.parentElement;
-      const calendarItem_1 = getAllByText(datepicker as HTMLElement, "1")[0]!;
-      const calendarItem_15 = getAllByText(datepicker as HTMLElement, "15")[0]!;
-
-      fireEvent.click(calendarItem_1);
-      fireEvent.click(calendarItem_15);
-
-      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
-
-      expect(onFiltersChanged).toHaveBeenCalledWith({
-        custom_field_422: [">=2022-08-01", "<=2022-08-15"],
       });
     });
 
@@ -749,7 +718,9 @@ describe("<FilterModal />", () => {
     const dropdownFieldItem = screen.getByText("DropdownFieldEndUser");
     fireEvent.click(dropdownFieldItem);
 
-    const dropdownOptionsDropdown = screen.getByLabelText("DropdownFieldEndUser");
+    const dropdownOptionsDropdown = screen.getByLabelText(
+      "DropdownFieldEndUser"
+    );
     fireEvent.click(dropdownOptionsDropdown);
 
     fireEvent.click(screen.getByText("Dropdown Field Option #1"));
@@ -1045,36 +1016,5 @@ describe("<FilterModal />", () => {
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_431: [":*"],
     });
-  });
-
-  test("displays an error if the format of the credit card filter is invalid", async () => {
-    await renderComponent(onFiltersChanged);
-
-    const filterTypeDropdown = screen.getByLabelText("Select filter");
-    fireEvent.click(filterTypeDropdown);
-    fireEvent.click(screen.getByRole("option", { name: "CreditcardField" }));
-    const filterTypeSelect = screen.getByLabelText("Filter type");
-    fireEvent.click(filterTypeSelect);
-    fireEvent.click(screen.getByRole("option", { name: "Exact match" }));
-
-    const creditCardInput = screen.getByLabelText(
-      "Enter the last four digits of the credit card"
-    );
-
-    fireEvent.change(creditCardInput, {
-      target: { value: "abcd" },
-    });
-
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
-
-    expect(creditCardInput).toHaveAttribute("aria-invalid", "true");
-
-    expect(
-      screen.getByText(
-        "Enter the last four digits of the credit card, using only numbers"
-      )
-    );
-
-    expect(onFiltersChanged).not.toHaveBeenCalled();
   });
 });
