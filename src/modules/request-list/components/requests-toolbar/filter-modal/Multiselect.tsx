@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import type { FilterValue } from "../../../data-types/FilterValue";
 import { FieldError } from "./FieldError";
@@ -29,46 +29,18 @@ export function Multiselect({
   const { t } = useTranslation();
   const modalContainer = useModalContainer();
 
-  const [selectedValues, setSelectedValues] = useState<string[]>([]);
-  const [filteredOptions, setFilteredOptions] = useState(options);
-  const [inputValue, setInputValue] = useState("");
+  const validateForm = (selectedValues: string[]): FormState<FormFieldKey> => {
+    const selectedOptions = options.filter((option) =>
+      selectedValues.includes(option.value)
+    );
 
-  // Track initialization status
-  const isInitialized = useRef(false);
-
-  const validateForm = useCallback(
-    (selectedLabels: string[]): FormState<FormFieldKey> => {
-      const selectedOptions = options.filter((option) =>
-        selectedLabels.includes(option.label)
-      );
-
-      if (selectedOptions.length > 0) {
-        return {
-          state: "valid",
-          values: selectedOptions.map((option): FilterValue => option.value),
-        };
-      } else {
-        return {
-          state: "invalid",
-          errors: {
-            selectedOptions: t(
-              "guide-requests-app.filters-modal.multiselect-no-value-error",
-              "Select at least one value"
-            ),
-          },
-        };
-      }
-    },
-    [options, t]
-  );
-
-  // Update filtered options when options change
-  useEffect(() => {
-    setFilteredOptions(options);
-
-    // Initialize form state only on first render
-    if (!isInitialized.current) {
-      onSelect({
+    if (selectedOptions.length > 0) {
+      return {
+        state: "valid",
+        values: selectedOptions.map((option): FilterValue => option.value),
+      };
+    } else {
+      return {
         state: "invalid",
         errors: {
           selectedOptions: t(
@@ -76,43 +48,47 @@ export function Multiselect({
             "Select at least one value"
           ),
         },
-      });
-      isInitialized.current = true;
+      };
     }
-  }, [options, onSelect, t]);
+  };
 
-  const handleChange = useCallback(
-    (changes: {
-      selectionValue?: string | string[] | null;
-      inputValue?: string;
-    }) => {
-      const { inputValue, selectionValue } = changes;
+  const [selectedValues, setSelectedValues] = useState<string[]>(() => {
+    onSelect(validateForm([]));
+    return [];
+  });
+  const [inputValue, setInputValue] = useState("");
 
-      if (inputValue !== undefined) {
-        setInputValue(inputValue);
-
-        if (inputValue === "") {
-          setFilteredOptions(options);
-        } else {
-          const matchedOptions = options.filter((option) => {
-            return option.label
+  const filteredOptions =
+    inputValue === ""
+      ? options
+      : options.filter(
+          (option) =>
+            selectedValues.includes(option.value) ||
+            option.label
               .trim()
               .toLowerCase()
-              .includes(inputValue.trim().toLowerCase());
-          });
+              .includes(inputValue.trim().toLowerCase())
+        );
 
-          setFilteredOptions(matchedOptions);
-        }
-      }
+  const handleChange = (changes: {
+    selectionValue?: string | string[] | null;
+    inputValue?: string;
+  }) => {
+    const { inputValue, selectionValue } = changes;
 
-      if (selectionValue !== undefined) {
-        const selectedLabels = (selectionValue as string[] | null) ?? [];
-        setSelectedValues(selectedLabels);
-        onSelect(validateForm(selectedLabels));
-      }
-    },
-    [options, onSelect, validateForm]
-  );
+    if (inputValue !== undefined) {
+      setInputValue(inputValue);
+    }
+
+    if (selectionValue !== undefined && selectionValue !== null) {
+      const selected = Array.isArray(selectionValue)
+        ? selectionValue
+        : [selectionValue];
+
+      setSelectedValues(selected);
+      onSelect(validateForm(selected));
+    }
+  };
 
   return (
     <Field>
@@ -139,7 +115,7 @@ export function Multiselect({
           filteredOptions.map((option) => (
             <Option
               key={option.value}
-              value={option.label}
+              value={option.value}
               label={option.label}
             />
           ))

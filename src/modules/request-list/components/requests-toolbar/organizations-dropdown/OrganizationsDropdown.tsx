@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
@@ -24,23 +24,12 @@ export default function OrganizationsDropdown({
   const [filteredOrganizations, setFilteredOrganizations] =
     useState(organizations);
 
-  const selectedOrganization = organizations.find(
-    (organization) => organization.id === currentOrganizationId
-  );
-
-  const [inputValue, setInputValue] = useState(
-    selectedOrganization?.name ?? ""
-  );
-
-  // Sync input value when currentOrganizationId or organizations change
-  useEffect(() => {
-    const selectedOrg = organizations.find(
-      (org) => org.id === currentOrganizationId
+  const [inputValue, setInputValue] = useState(() => {
+    const selectedOrganization = organizations.find(
+      (organization) => organization.id === currentOrganizationId
     );
-    if (selectedOrg) {
-      setInputValue(selectedOrg.name);
-    }
-  }, [currentOrganizationId, organizations]);
+    return selectedOrganization?.name ?? "";
+  });
 
   const handleChange = useCallback(
     (changes: {
