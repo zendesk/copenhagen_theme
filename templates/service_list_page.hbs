@@ -7,18 +7,17 @@
 
   <h1>{{t 'services'}}</h1>
 
-  <div id="main-content">
-     <div id="service-catalog"></div>
-  </div>
+  <div id="service-catalog-main-content" class="service-catalog-main-content"></div>
 </div>
 
 <script type="module">
-  import { renderServiceCatalogList } from "service-catalog";
+  import { renderServiceCatalogPage } from "service-catalog"; 
 
   const settings = {{json settings}};
   const helpCenterPath = {{json (page_path 'help_center')}};
-  const container = document.getElementById("service-catalog");
+  const main = document.getElementById("service-catalog-main-content");
+
   const baseLocale = {{json help_center.base_locale}};
 
-  renderServiceCatalogList(container, settings, helpCenterPath, baseLocale);
+  renderServiceCatalogPage(main, settings, baseLocale, helpCenterPath);
 </script>
