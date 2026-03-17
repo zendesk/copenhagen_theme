@@ -161,6 +161,23 @@ describe("ApprovalRequestDetails", () => {
     expect(screen.queryByText("John Sender")).not.toBeInTheDocument();
   });
 
+  it("displays 'API' when origination_type is API_ORIGINATION", () => {
+    const apiOriginationRequest: ApprovalRequest = {
+      ...mockApprovalRequest,
+      origination_type: "API_ORIGINATION",
+    };
+
+    render(
+      <ApprovalRequestDetails
+        approvalRequest={apiOriginationRequest}
+        baseLocale="en-US"
+      />
+    );
+
+    expect(screen.getByText("API")).toBeInTheDocument();
+    expect(screen.queryByText("John Sender")).not.toBeInTheDocument();
+  });
+
   it("displays the creator's name when origination_type is UI_ORIGINATION", () => {
     const uiOriginationRequest: ApprovalRequest = {
       ...mockApprovalRequest,

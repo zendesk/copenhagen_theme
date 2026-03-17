@@ -102,8 +102,8 @@ function ApprovalRequestDetails({
                   "Action flow"
                 )
               : approvalRequest.origination_type === ORIGINATION_TYPES.API
-                ? "API"
-                : approvalRequest.created_by_user.name}
+              ? "API"
+              : approvalRequest.created_by_user.name}
           </WrappedText>
         </Grid.Col>
       </DetailRow>

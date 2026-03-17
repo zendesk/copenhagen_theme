@@ -106,10 +106,9 @@ function ApprovalRequestListTable({
                       "approval-requests.request.approval-request-details.sent-by-action-flow",
                       "Action flow"
                     )
-                  : approvalRequest.origination_type ===
-                      ORIGINATION_TYPES.API
-                    ? "API"
-                    : approvalRequest.created_by_name}
+                  : approvalRequest.origination_type === ORIGINATION_TYPES.API
+                  ? "API"
+                  : approvalRequest.created_by_name}
               </Table.Cell>
               <Table.Cell isTruncated>
                 {formatApprovalRequestDate(
