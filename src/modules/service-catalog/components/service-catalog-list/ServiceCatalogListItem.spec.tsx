@@ -70,10 +70,8 @@ describe("ServiceCatalogListItem", () => {
         />
       );
 
-      const itemContainer = screen.getByTestId(
-        "service-catalog-list-item-container"
-      );
-      expect(itemContainer).toHaveStyle(
+      const linkElement = screen.getByRole("link");
+      expect(linkElement).toHaveStyle(
         `color: ${getColor({
           theme: testTheme,
           variable: "foreground.default",
@@ -90,17 +88,15 @@ describe("ServiceCatalogListItem", () => {
       );
 
       const user = userEvent.setup();
-      const itemContainer = screen.getByTestId(
-        "service-catalog-list-item-container"
-      );
+      const linkElement = screen.getByRole("link");
       const defaultBorderColor = testTheme.palette.grey?.[300];
 
       expect(defaultBorderColor).toBeTruthy();
-      expect(itemContainer).toHaveStyle(`border-color: ${defaultBorderColor}`);
+      expect(linkElement).toHaveStyle(`border-color: ${defaultBorderColor}`);
 
-      await user.hover(itemContainer);
+      await user.hover(linkElement);
 
-      expect(itemContainer).toHaveStyle(
+      expect(linkElement).toHaveStyle(
         `border-color: ${testTheme.colors.primaryHue}`
       );
     });

@@ -33,6 +33,10 @@ const StyledGrid = styled(Grid)`
 
 const CategoryHeading = styled(XL).attrs({ tag: "h2", isBold: true })`
   margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 600px;
 `;
 
 function getApiCategoryId(selectedCategoryId: string | null): string | null {
