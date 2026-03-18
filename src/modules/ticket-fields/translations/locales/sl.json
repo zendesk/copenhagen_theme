@@ -10,11 +10,13 @@
   "cph-theme-ticket-fields.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
   "cph-theme-ticket-fields.attachments.upload-error-title": "Upload error",
   "cph-theme-ticket-fields.attachments.uploading": "Uploading {{fileName}}",
-  "cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+  "cph-theme-ticket-fields.credit-card-digits-hint": "(zadnje 4 števke)",
   "cph-theme-ticket-fields.dropdown.back-option-label": "Back",
-  "cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
-  "cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
-  "cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}",
+  "cph-theme-ticket-fields.dropdown.empty-option": "Izberite možnost",
+  "cph-theme-ticket-fields.lookup-field.loading-options": "Nalaganje predmetov ...",
+  "cph-theme-ticket-fields.lookup-field.no-matches-found": "Ni najdenih tekem",
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Iskanje {{label}}",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "No matches found",
+  "cph-theme-ticket-fields.search-field.placeholder": "Search {{label}}",
   "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} upload failed"
 }

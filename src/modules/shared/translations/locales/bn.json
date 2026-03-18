@@ -1,6 +1,6 @@
 {
-  "cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
-  "cph-theme-error-boundary.message": "Give it a moment and try again later",
-  "cph-theme-error-boundary.title": "Something went wrong.",
-  "cph-theme-shared.close-label": "Close"
+  "cph-theme-error-boundary.go-to-homepage": "হোমপেজে যান",
+  "cph-theme-error-boundary.message": "এক মুহূর্ত সময় দিন এবং পরে আবার চেষ্টা করুন",
+  "cph-theme-error-boundary.title": "কিছু একটা ভুল হয়েছে।",
+  "cph-theme-shared.close-label": "বন্ধ করুন"
 }

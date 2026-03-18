@@ -16,5 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "Elemente werden geladen...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Keine Übereinstimmungen gefunden",
   "cph-theme-ticket-fields.lookup-field.placeholder": "Suche {{label}}",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "Keine Übereinstimmungen gefunden",
+  "cph-theme-ticket-fields.search-field.placeholder": "{{label}} suchen",
   "cph-theme-ticket-fields.upload-failed-title": "Fehler beim Hochladen von {{fileName}}"
 }

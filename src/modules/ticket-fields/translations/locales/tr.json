@@ -16,5 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "Öğeler yükleniyor...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Eşleşme bulunamadı",
   "cph-theme-ticket-fields.lookup-field.placeholder": "Ara {{label}}",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "Eşleşme bulunamadı",
+  "cph-theme-ticket-fields.search-field.placeholder": "{{label}} ara",
   "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} karşıya yüklemesi başarısız oldu"
 }

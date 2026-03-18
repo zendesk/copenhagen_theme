@@ -16,5 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "正在加载项目…",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "未找到匹配项",
   "cph-theme-ticket-fields.lookup-field.placeholder": "搜索 {{label}}",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "未找到匹配项",
+  "cph-theme-ticket-fields.search-field.placeholder": "搜索 {{label}}",
   "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} 上传失败"
 }
