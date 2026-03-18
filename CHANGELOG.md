@@ -1,3 +1,10 @@
+# [4.32.0](https://github.com/zendesk/copenhagen_theme/compare/v4.31.0...v4.32.0) (2026-03-18)
+
+
+### Features
+
+* add taxonomy end-user view ([b63c515](https://github.com/zendesk/copenhagen_theme/commit/b63c51509433587215843d50f8c4f464b8c92c45))
+
 # [4.31.0](https://github.com/zendesk/copenhagen_theme/compare/v4.30.6...v4.31.0) (2026-03-16)
 
 

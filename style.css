@@ -4841,3 +4841,15 @@ zd-summary-block {
   font-style: italic;
   padding: 0 15px;
 }
+.service-catalog-main-content {
+  display: flex;
+  gap: 32px;
+}
+.service-catalog-list {
+  width: 100%;
+}
+.service-catalog-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
