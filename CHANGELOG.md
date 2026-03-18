@@ -1,3 +1,10 @@
+## [4.32.2](https://github.com/zendesk/copenhagen_theme/compare/v4.32.1...v4.32.2) (2026-03-18)
+
+
+### Bug Fixes
+
+* remove tags and truncate header ([73afe17](https://github.com/zendesk/copenhagen_theme/commit/73afe17555861bede4b1058149d683980a66f8fa))
+
 ## [4.32.1](https://github.com/zendesk/copenhagen_theme/compare/v4.32.0...v4.32.1) (2026-03-18)
 
 
