@@ -6,7 +6,7 @@
   "new-request-form.answer-bot-generative-modal.buttons.this_helped": "Esto ayudó a resolver mi solicitud",
   "new-request-form.answer-bot-generative-modal.buttons.view_sources": "Ver orígenes",
   "new-request-form.answer-bot-generative-modal.close_modal_aria_label": "Cerrar ventana modal",
-  "new-request-form.answer-bot-generative-modal.default.subtitle": "Si la siguiente información resuelve su solicitud y ya no necesita ayuda, puede informarnos haciendo clic en \"Esto ayudó, resolví mi solicitud\".",
+  "new-request-form.answer-bot-generative-modal.default.subtitle": "Si la siguiente información resuelve su solicitud y ya no necesita ayuda, puede informarnos haciendo clic en \"Esto ayudó a resolver mi solicitud\".",
   "new-request-form.answer-bot-generative-modal.default.title": "Su solicitud se envió correctamente",
   "new-request-form.answer-bot-generative-modal.error.subtitle": "La IA no pudo encontrar una respuesta esta vez. No se preocupe, un agente humano se comunicará con usted por correo electrónico en breve.",
   "new-request-form.answer-bot-generative-modal.error.title": "Un agente se comunicará pronto",

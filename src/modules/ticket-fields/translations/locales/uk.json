@@ -16,5 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "Завантаження елементів...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Збігів не знайдено",
   "cph-theme-ticket-fields.lookup-field.placeholder": "Пошук {{label}}",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "Немає збігів",
+  "cph-theme-ticket-fields.search-field.placeholder": "Пошук у розділі {{label}}",
   "cph-theme-ticket-fields.upload-failed-title": "Не вдалося передати {{fileName}}"
 }

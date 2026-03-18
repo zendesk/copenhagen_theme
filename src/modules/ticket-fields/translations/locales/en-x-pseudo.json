@@ -16,5 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "[ผู้龍Ḻṓṓααḍḭḭṇḡ ḭḭṭḛḛṃṡ...龍ผู้]",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "[ผู้龍Ṅṓṓ ṃααṭͼḥḛḛṡ ϝṓṓṵṵṇḍ龍ผู้]",
   "cph-theme-ticket-fields.lookup-field.placeholder": "[ผู้龍Ṣḛḛααṛͼḥ {{label}}龍ผู้]",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "[ผู้龍Ṅṓṓ ṃααṭͼḥḛḛṡ ϝṓṓṵṵṇḍ龍ผู้]",
+  "cph-theme-ticket-fields.search-field.placeholder": "[ผู้龍Ṣḛḛααṛͼḥ {{label}}龍ผู้]",
   "cph-theme-ticket-fields.upload-failed-title": "[ผู้龍{{fileName}} ṵṵṗḽṓṓααḍ ϝααḭḭḽḛḛḍ龍ผู้]"
 }

@@ -16,5 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "Se încarcă articolele...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Nu s-au găsit corespondențe",
   "cph-theme-ticket-fields.lookup-field.placeholder": "Căutare {{label}}",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "Nu s-au găsit corespondențe",
+  "cph-theme-ticket-fields.search-field.placeholder": "Căutare {{label}}",
   "cph-theme-ticket-fields.upload-failed-title": "Încărcarea {{fileName}} a eșuat"
 }

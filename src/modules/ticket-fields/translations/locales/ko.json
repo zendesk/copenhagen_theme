@@ -16,5 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "항목 로드 중...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "일치 항목을 찾지 못함",
   "cph-theme-ticket-fields.lookup-field.placeholder": "{{label}} 검색",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "일치하는 항목 없음",
+  "cph-theme-ticket-fields.search-field.placeholder": "{{label}} 검색",
   "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} 업로드 실패"
 }

@@ -16,5 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "Φόρτωση στοιχείων...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Δεν βρέθηκαν αποτελέσματα",
   "cph-theme-ticket-fields.lookup-field.placeholder": "Αναζήτηση για {{label}}",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "Δεν βρέθηκαν αποτελέσματα",
+  "cph-theme-ticket-fields.search-field.placeholder": "Αναζήτηση για {{label}}",
   "cph-theme-ticket-fields.upload-failed-title": "Η αποστολή του {{fileName}} απέτυχε"
 }
