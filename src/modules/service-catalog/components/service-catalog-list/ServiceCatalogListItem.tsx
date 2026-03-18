@@ -2,8 +2,13 @@ import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import styled from "styled-components";
 import { getColor } from "@zendeskgarden/react-theming";
 import { ItemThumbnail } from "../item-thumbnail/ItemThumbnail";
+import { useMemo } from "react";
 
-const ItemContainer = styled.a`
+const ItemContainer = styled.div`
+  height: 100%;
+`;
+
+const ItemLink = styled.a`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -64,18 +69,31 @@ const ServiceCatalogListItem = ({
     ? `${helpCenterPath}/services/${serviceItem.id}?category_id=${selectedCategoryId}`
     : `${helpCenterPath}/services/${serviceItem.id}`;
 
+  const decodeToText = (htmlString: string) => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = htmlString;
+    return tempDiv.textContent || tempDiv.innerText || "";
+  };
+
+  const titleText = useMemo(
+    () => decodeToText(serviceItem.name || ""),
+    [serviceItem.name]
+  );
+
+  const cleanText = useMemo(
+    () => decodeToText(serviceItem.description || ""),
+    [serviceItem.description]
+  );
+
   return (
-    <ItemContainer
-      data-testid="service-catalog-list-item-container"
-      href={itemUrl}
-    >
-      <ItemThumbnail size="medium" url={serviceItem.thumbnail_url} />
-      <TextContainer>
-        <ItemTitle>{serviceItem.name}</ItemTitle>
-        <ItemDescription
-          dangerouslySetInnerHTML={{ __html: serviceItem.description }}
-        />
-      </TextContainer>
+    <ItemContainer data-testid="service-catalog-list-item-container">
+      <ItemLink href={itemUrl}>
+        <ItemThumbnail size="medium" url={serviceItem.thumbnail_url} />
+        <TextContainer>
+          <ItemTitle>{titleText}</ItemTitle>
+          <ItemDescription>{cleanText}</ItemDescription>
+        </TextContainer>
+      </ItemLink>
     </ItemContainer>
   );
 };
