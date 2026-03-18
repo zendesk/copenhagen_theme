@@ -107,7 +107,10 @@ function ApprovalRequestListTable({
                       "Action flow"
                     )
                   : approvalRequest.origination_type === ORIGINATION_TYPES.API
-                  ? "API"
+                  ? t(
+                      "approval-requests.request.approval-request-details.sent-by-api",
+                      "API"
+                    )
                   : approvalRequest.created_by_name}
               </Table.Cell>
               <Table.Cell isTruncated>
