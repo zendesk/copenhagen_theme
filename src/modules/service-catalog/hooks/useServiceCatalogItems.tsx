@@ -12,19 +12,24 @@ export function useServiceCatalogItems(): {
   errorFetchingItems: unknown;
   fetchServiceCatalogItems: (
     searchInputValue: string,
-    currentCursor: string | null
+    currentCursor: string | null,
+    categoryId?: string | null
   ) => void;
 } {
   const [meta, setMeta] = useState<Meta | null>(null);
   const [count, setCount] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>(null);
   const [serviceCatalogItems, setServiceCatalogItems] = useState<
     ServiceCatalogItem[]
   >([]);
 
   const fetchData = useCallback(
-    async (searchInputValue: string, currentCursor: string | null) => {
+    async (
+      searchInputValue: string,
+      currentCursor: string | null,
+      categoryId?: string | null
+    ) => {
       setIsLoading(true);
 
       const searchParams = new URLSearchParams();
@@ -40,25 +45,27 @@ export function useServiceCatalogItems(): {
         searchParams.set("query", searchInputValue);
       }
 
+      if (categoryId) {
+        searchParams.set("category_id", String(categoryId));
+      }
+
       try {
         const response = await fetch(
           `/api/v2/help_center/service_catalog/items/search?${searchParams.toString()}`
         );
-        const data = await response.json();
 
-        if (response.ok) {
-          setMeta(data.meta);
-          setServiceCatalogItems(data.service_catalog_items);
-          setCount(data.count);
-          setIsLoading(false);
-        }
         if (!response.ok) {
-          setIsLoading(false);
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+
+        const data = await response.json();
+        setMeta(data.meta);
+        setServiceCatalogItems(data.service_catalog_items);
+        setCount(data.count);
       } catch (error) {
-        setIsLoading(false);
         setError(error);
+      } finally {
+        setIsLoading(false);
       }
     },
     []

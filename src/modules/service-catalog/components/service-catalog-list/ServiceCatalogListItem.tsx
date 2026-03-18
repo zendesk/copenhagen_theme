@@ -54,14 +54,20 @@ const TextContainer = styled.div`
 const ServiceCatalogListItem = ({
   serviceItem,
   helpCenterPath,
+  selectedCategoryId,
 }: {
   serviceItem: ServiceCatalogItem;
   helpCenterPath: string;
+  selectedCategoryId?: string | null;
 }) => {
+  const itemUrl = selectedCategoryId
+    ? `${helpCenterPath}/services/${serviceItem.id}?category_id=${selectedCategoryId}`
+    : `${helpCenterPath}/services/${serviceItem.id}`;
+
   return (
     <ItemContainer
       data-testid="service-catalog-list-item-container"
-      href={`${helpCenterPath}/services/${serviceItem.id}`}
+      href={itemUrl}
     >
       <ItemThumbnail size="medium" url={serviceItem.thumbnail_url} />
       <TextContainer>

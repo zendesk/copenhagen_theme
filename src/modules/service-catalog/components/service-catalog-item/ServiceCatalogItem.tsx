@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useItemFormFields } from "../../hooks/useItemFormFields";
 import { ItemRequestForm } from "./ItemRequestForm";
+import { CategorySelector } from "./CategorySelector";
 import type { Organization } from "../../../ticket-fields/data-types/Organization";
 import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
 import { submitServiceItemRequest } from "./submitServiceItemRequest";
@@ -48,6 +50,11 @@ export interface ServiceCatalogItemProps {
   helpCenterPath: string;
 }
 
+function getCategoryIdFromUrl(): string | null {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("category_id");
+}
+
 export function ServiceCatalogItem({
   serviceCatalogItemId,
   baseLocale,
@@ -63,6 +70,7 @@ export function ServiceCatalogItem({
   const {
     requestFields,
     associatedLookupField,
+    categoryLookupField,
     error,
     setRequestFields,
     handleChange,
@@ -73,6 +81,34 @@ export function ServiceCatalogItem({
     assetIds,
   } = useItemFormFields(serviceCatalogItem, baseLocale);
   const { t } = useTranslation();
+
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
+    null
+  );
+
+  useEffect(() => {
+    if (!serviceCatalogItem?.categories?.length) return;
+
+    const urlCategoryId = getCategoryIdFromUrl();
+    const matchesUrl = serviceCatalogItem.categories.find(
+      (c) => c.id === urlCategoryId
+    );
+
+    setSelectedCategoryId(
+      matchesUrl ? matchesUrl.id : serviceCatalogItem.categories[0]?.id ?? null
+    );
+  }, [serviceCatalogItem]);
+
+  const handleCategoryChange = useCallback((categoryId: string) => {
+    setSelectedCategoryId(categoryId);
+    const params = new URLSearchParams(window.location.search);
+    params.set("category_id", categoryId);
+    window.history.replaceState(
+      {},
+      "",
+      `${window.location.pathname}?${params.toString()}`
+    );
+  }, []);
 
   const attachmentsOptionId =
     serviceCatalogItem?.custom_object_fields?.["standard::attachment_option"];
@@ -166,7 +202,9 @@ export function ServiceCatalogItem({
       associatedLookupField,
       baseLocale,
       attachments,
-      helpCenterPath
+      helpCenterPath,
+      categoryLookupField,
+      selectedCategoryId
     );
 
     if (!response?.ok) {
@@ -269,8 +307,26 @@ export function ServiceCatalogItem({
       ? organizations[0]?.id?.toString()
       : null;
 
+  const [categorySelectorContainer, setCategorySelectorContainer] =
+    useState<HTMLElement | null>(null);
+  useEffect(() => {
+    setCategorySelectorContainer(document.getElementById("category-selector"));
+  }, []);
+
   return (
     <Container>
+      {categorySelectorContainer &&
+        serviceCatalogItem &&
+        selectedCategoryId &&
+        serviceCatalogItem.categories.length > 0 &&
+        createPortal(
+          <CategorySelector
+            categories={serviceCatalogItem.categories}
+            selectedCategoryId={selectedCategoryId}
+            onCategoryChange={handleCategoryChange}
+          />,
+          categorySelectorContainer
+        )}
       {serviceCatalogItem && (
         <ItemRequestForm
           requestFields={requestFields}
