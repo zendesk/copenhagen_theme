@@ -103,6 +103,33 @@ describe("ApprovalRequestListTable", () => {
     expect(screen.queryByText("John Doe")).not.toBeInTheDocument();
   });
 
+  it("displays 'API' when origination_type is API_ORIGINATION", () => {
+    const apiOriginationRequests: SearchApprovalRequest[] = [
+      {
+        id: 123,
+        subject: "Hardware request",
+        requester_name: "Jane Doe",
+        created_by_name: "John Doe",
+        created_at: "2024-02-20T10:00:00Z",
+        status: "active",
+        origination_type: "API_ORIGINATION",
+      },
+    ];
+
+    render(
+      <ApprovalRequestListTable
+        approvalRequests={apiOriginationRequests}
+        helpCenterPath="/hc/en-us"
+        baseLocale="en-US"
+        sortDirection="desc"
+        onSortChange={mockOnSortChange}
+      />
+    );
+
+    expect(screen.getByText("API")).toBeInTheDocument();
+    expect(screen.queryByText("John Doe")).not.toBeInTheDocument();
+  });
+
   it("displays the creator's name when origination_type is UI_ORIGINATION", () => {
     const uiOriginationRequests: SearchApprovalRequest[] = [
       {
