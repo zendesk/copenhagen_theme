@@ -15,6 +15,7 @@
   "approval-requests.request.approval-request-details.header": "অনুমোদনের অনুরোধের বিবরণ",
   "approval-requests.request.approval-request-details.previous-decision": "পূর্ববর্তী সিদ্ধান্ত",
   "approval-requests.request.approval-request-details.sent-by": "প্রেরক",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Action flow",
   "approval-requests.request.approval-request-details.sent-on": "পাঠানোর তারিখ",
   "approval-requests.request.approval-request-details.status": "স্ট্যাটাস",
   "approval-requests.request.approval-request-details.withdrawn-on": "প্রত্যাহারের তারিখ",

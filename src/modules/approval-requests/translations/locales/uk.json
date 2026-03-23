@@ -15,6 +15,7 @@
   "approval-requests.request.approval-request-details.header": "Інформація про запит на затвердження",
   "approval-requests.request.approval-request-details.previous-decision": "Попереднє рішення",
   "approval-requests.request.approval-request-details.sent-by": "Відправник",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Action flow",
   "approval-requests.request.approval-request-details.sent-on": "Дата надсилання",
   "approval-requests.request.approval-request-details.status": "Статус",
   "approval-requests.request.approval-request-details.withdrawn-on": "Дата анулювання",

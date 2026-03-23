@@ -15,6 +15,7 @@
   "approval-requests.request.approval-request-details.header": "Onay talebi ayrıntıları",
   "approval-requests.request.approval-request-details.previous-decision": "Önceki karar",
   "approval-requests.request.approval-request-details.sent-by": "Gönderen:",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Action flow",
   "approval-requests.request.approval-request-details.sent-on": "Gönderilme tarihi:",
   "approval-requests.request.approval-request-details.status": "Durum",
   "approval-requests.request.approval-request-details.withdrawn-on": "Çekilme tarihi",

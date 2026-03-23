@@ -15,6 +15,7 @@
   "approval-requests.request.approval-request-details.header": "Detalls de la sol·licitud d'aprovació",
   "approval-requests.request.approval-request-details.previous-decision": "Decisió anterior",
   "approval-requests.request.approval-request-details.sent-by": "Enviat per",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Action flow",
   "approval-requests.request.approval-request-details.sent-on": "Enviat el",
   "approval-requests.request.approval-request-details.status": "Estat",
   "approval-requests.request.approval-request-details.withdrawn-on": "Retirat el",

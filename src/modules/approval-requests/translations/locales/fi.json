@@ -15,6 +15,7 @@
   "approval-requests.request.approval-request-details.header": "Hyväksyntäpyynnön tiedot",
   "approval-requests.request.approval-request-details.previous-decision": "Edellinen päätös",
   "approval-requests.request.approval-request-details.sent-by": "Lähettäjä",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Action flow",
   "approval-requests.request.approval-request-details.sent-on": "Lähetetty",
   "approval-requests.request.approval-request-details.status": "Tila",
   "approval-requests.request.approval-request-details.withdrawn-on": "Peruutettu",
