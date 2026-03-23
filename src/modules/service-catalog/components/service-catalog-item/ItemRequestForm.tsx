@@ -125,6 +125,7 @@ interface ItemRequestFormProps {
   isAssetTypeHidden: boolean;
   assetTypeIds: string[];
   assetIds: string[];
+  isSubmitting: boolean;
 }
 
 export function ItemRequestForm({
@@ -149,6 +150,7 @@ export function ItemRequestForm({
   isAssetTypeHidden,
   assetTypeIds,
   assetIds,
+  isSubmitting,
 }: ItemRequestFormProps) {
   const { t } = useTranslation();
 
@@ -334,7 +336,7 @@ export function ItemRequestForm({
       <RightColumn>
         <ButtonWrapper>
           <Button
-            disabled={isUploadingAttachments}
+            disabled={isUploadingAttachments || isSubmitting}
             isPrimary
             size="large"
             isStretched
