@@ -383,13 +383,19 @@ parts:
   - translation:
       key: "txt.help_center_copenhagen_theme.show_suggested_articles_label"
       title: "Label for show suggested articles setting"
-      screenshot: ""
+      screenshot: "https://drive.google.com/file/d/1UrHbBwCWc2R-tzdOXCMoKj-ztZ9FXzfb/view?usp=sharing"
       value: "Show suggested articles"
   - translation:
       key: "txt.help_center_copenhagen_theme.show_suggested_articles_description"
       title: "Description for the show suggested articles setting"
       screenshot: ""
       value: "Show suggested articles on community post page"
+      obsolete: "2026-04-30"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.show_suggested_articles_in_new_request_form_description"
+      title: "Description for the setting to show suggested articles within the new request form"
+      screenshot: "https://drive.google.com/file/d/1UrHbBwCWc2R-tzdOXCMoKj-ztZ9FXzfb/view?usp=sharing"
+      value: "Show suggested articles on new request form"
   - translation:
       key: "txt.help_center_copenhagen_theme.show_brand_name_label"
       title: "Label for the show brand name setting"
