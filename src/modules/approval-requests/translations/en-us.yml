@@ -77,6 +77,11 @@ parts:
       screenshot: "https://drive.google.com/file/d/1zhm7qIpCcRH0lAKZylg7INwiIyTBXw4O/view?usp=drive_link"
       value: "Action flow"
   - translation:
+      key: "approval-requests.request.approval-request-details.sent-by-api"
+      title: "Value shown as the sender when the approval request was created by API instead of a user"
+      screenshot: "https://drive.google.com/file/d/1qHhChYV3t_Q_T4vhyBygkhMfnWwtoSUA/view?usp=sharing"
+      value: "API"
+  - translation:
       key: "approval-requests.request.approval-request-details.sent-on"
       title: "Label for the date that the approval request was submitted - Subject: 'approval request'"
       screenshot: "https://drive.google.com/file/d/1Kmy-XgNfCE5dgh-oipsc1P_sZ3gmvjD6/view?usp=drive_link"

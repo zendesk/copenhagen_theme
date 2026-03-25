@@ -2,6 +2,9 @@ import { render } from "../../../test/render";
 import { screen } from "@testing-library/react";
 import type { ApprovalRequest } from "../../types";
 import ApprovalRequestDetails from "./ApprovalRequestDetails";
+import { getSentByLabel } from "../../getSentByLabel";
+
+jest.mock("../../getSentByLabel");
 
 const mockApprovalRequest: ApprovalRequest = {
   id: "123",
@@ -41,7 +44,13 @@ const mockApprovalRequest: ApprovalRequest = {
 };
 
 describe("ApprovalRequestDetails", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("renders the basic approval request details without the decision notes and decided date", () => {
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
+
     render(
       <ApprovalRequestDetails
         approvalRequest={mockApprovalRequest}
@@ -78,6 +87,8 @@ describe("ApprovalRequestDetails", () => {
       ],
     };
 
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
+
     render(
       <ApprovalRequestDetails
         approvalRequest={approvalRequestWithNotesAndDecision}
@@ -98,6 +109,8 @@ describe("ApprovalRequestDetails", () => {
       withdrawn_reason: "No longer needed",
       decided_at: "2024-02-21T15:45:00Z",
     };
+
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
 
     render(
       <ApprovalRequestDetails
@@ -132,6 +145,8 @@ describe("ApprovalRequestDetails", () => {
       ],
     };
 
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
+
     render(
       <ApprovalRequestDetails
         approvalRequest={withdrawnWithPriorApproval}
@@ -150,6 +165,8 @@ describe("ApprovalRequestDetails", () => {
       origination_type: "ACTION_FLOW_ORIGINATION",
     };
 
+    (getSentByLabel as jest.Mock).mockReturnValue("Action flow");
+
     render(
       <ApprovalRequestDetails
         approvalRequest={actionFlowRequest}
@@ -161,11 +178,32 @@ describe("ApprovalRequestDetails", () => {
     expect(screen.queryByText("John Sender")).not.toBeInTheDocument();
   });
 
+  it("displays 'API' when origination_type is API_ORIGINATION", () => {
+    const apiOriginationRequest: ApprovalRequest = {
+      ...mockApprovalRequest,
+      origination_type: "API_ORIGINATION",
+    };
+
+    (getSentByLabel as jest.Mock).mockReturnValue("API");
+
+    render(
+      <ApprovalRequestDetails
+        approvalRequest={apiOriginationRequest}
+        baseLocale="en-US"
+      />
+    );
+
+    expect(screen.getByText("API")).toBeInTheDocument();
+    expect(screen.queryByText("John Sender")).not.toBeInTheDocument();
+  });
+
   it("displays the creator's name when origination_type is UI_ORIGINATION", () => {
     const uiOriginationRequest: ApprovalRequest = {
       ...mockApprovalRequest,
       origination_type: "UI_ORIGINATION",
     };
+
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
 
     render(
       <ApprovalRequestDetails
@@ -179,6 +217,8 @@ describe("ApprovalRequestDetails", () => {
   });
 
   it("displays the creator's name when origination_type is absent", () => {
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
+
     render(
       <ApprovalRequestDetails
         approvalRequest={mockApprovalRequest}
@@ -210,6 +250,8 @@ describe("ApprovalRequestDetails", () => {
         },
       ],
     };
+
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
 
     render(
       <ApprovalRequestDetails
