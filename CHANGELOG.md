@@ -1,3 +1,14 @@
+# [4.33.0](https://github.com/zendesk/copenhagen_theme/compare/v4.32.3...v4.33.0) (2026-03-25)
+
+
+### Features
+
+* **approval_requests:** refactor logic to extract common logic into a helper file ([64390b3](https://github.com/zendesk/copenhagen_theme/commit/64390b38dc03f888ef955aa6f3ae40e7e0827e7d))
+* **approval-requests:** add API_ORIGINATION constant ([7996f12](https://github.com/zendesk/copenhagen_theme/commit/7996f124402f772c336105437333f95250a8022b))
+* **approval-requests:** add translation for API origination ([aef00a0](https://github.com/zendesk/copenhagen_theme/commit/aef00a015fee24ea330e1927da27b16f0ee9eac3))
+* **approval-requests:** display "API" for API origination in details view ([250d882](https://github.com/zendesk/copenhagen_theme/commit/250d882c6e880b9983a1cedb89468a0561ea285f))
+* **approval-requests:** display "API" for API origination in list table ([38758ba](https://github.com/zendesk/copenhagen_theme/commit/38758ba8a259ec26caa2fd90cca3689c753d372c))
+
 ## [4.32.3](https://github.com/zendesk/copenhagen_theme/compare/v4.32.2...v4.32.3) (2026-03-25)
 
 
