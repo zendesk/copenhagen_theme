@@ -15,6 +15,7 @@
   "approval-requests.request.approval-request-details.header": "Details van goedkeuringsaanvraag",
   "approval-requests.request.approval-request-details.previous-decision": "Vorige beslissing",
   "approval-requests.request.approval-request-details.sent-by": "Verzonden door",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Action flow",
   "approval-requests.request.approval-request-details.sent-on": "Verzonden op",
   "approval-requests.request.approval-request-details.status": "Status",
   "approval-requests.request.approval-request-details.withdrawn-on": "Ingetrokken op",

@@ -15,6 +15,7 @@
   "approval-requests.request.approval-request-details.header": "Podrobnosti o požiadavke na schválenie",
   "approval-requests.request.approval-request-details.previous-decision": "Predchádzajúce rozhodnutie",
   "approval-requests.request.approval-request-details.sent-by": "Odosielateľ",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Action flow",
   "approval-requests.request.approval-request-details.sent-on": "Odoslané",
   "approval-requests.request.approval-request-details.status": "Stav",
   "approval-requests.request.approval-request-details.withdrawn-on": "Dátum odvolania",

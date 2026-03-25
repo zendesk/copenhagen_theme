@@ -40,6 +40,7 @@
     brandId: {{json brand.id}},
     organizations: {{json user.organizations}},
     wysiwyg: true,
+    showSuggestedArticles: settings.show_suggested_articles,
     answerBotModal: {
       answerBot: {{#if answer_bot}}{{json answer_bot}}{{else}}null{{/if}},
       answerBotGenerativeExperience: {{#if answer_bot_generative_experience}}{{json answer_bot_generative_experience}}{{else}}null{{/if}},

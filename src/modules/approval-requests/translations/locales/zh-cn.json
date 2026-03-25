@@ -15,6 +15,7 @@
   "approval-requests.request.approval-request-details.header": "批准请求详情",
   "approval-requests.request.approval-request-details.previous-decision": "上一个决定",
   "approval-requests.request.approval-request-details.sent-by": "发件人",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Action flow",
   "approval-requests.request.approval-request-details.sent-on": "发送于",
   "approval-requests.request.approval-request-details.status": "状态",
   "approval-requests.request.approval-request-details.withdrawn-on": "撤回日期",

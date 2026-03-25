@@ -397,6 +397,18 @@
           "value": true
         }
       ]
+    },
+    {
+      "label": "show_suggested_articles_label",
+      "variables": [
+        {
+          "identifier": "show_suggested_articles",
+          "type": "checkbox",
+          "description": "show_suggested_articles_description",
+          "label": "show_suggested_articles_label",
+          "value": true
+        }
+      ]
     }
   ]
 }
