@@ -1,3 +1,10 @@
+## [4.32.3](https://github.com/zendesk/copenhagen_theme/compare/v4.32.2...v4.32.3) (2026-03-25)
+
+
+### Bug Fixes
+
+* block submit button in service catalog details while pending request ([19d7ffe](https://github.com/zendesk/copenhagen_theme/commit/19d7ffedcb925c30297730fb8b57ac7895c9842b))
+
 ## [4.32.2](https://github.com/zendesk/copenhagen_theme/compare/v4.32.1...v4.32.2) (2026-03-18)
 
 
