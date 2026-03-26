@@ -15,6 +15,7 @@
   "approval-requests.request.approval-request-details.header": "Λεπτομέρειες αιτήματος έγκρισης",
   "approval-requests.request.approval-request-details.previous-decision": "Προηγούμενη απόφαση",
   "approval-requests.request.approval-request-details.sent-by": "Στάλθηκε από",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Ροή ενεργειών",
   "approval-requests.request.approval-request-details.sent-on": "Στάλθηκε στις",
   "approval-requests.request.approval-request-details.status": "Κατάσταση",
   "approval-requests.request.approval-request-details.withdrawn-on": "Ανακλήθηκε στις",
