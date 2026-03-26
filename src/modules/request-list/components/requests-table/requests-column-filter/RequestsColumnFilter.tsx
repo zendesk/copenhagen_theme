@@ -84,6 +84,11 @@ export function RequestsColumnFilter({
     "Show and hide columns"
   );
 
+  /*
+    There is a bug in garden v9 which makes the menu close after each selection. 
+    The current fix is setting restoreFocus={false}, then managing focus manually
+  */
+
   return (
     <>
       <Menu

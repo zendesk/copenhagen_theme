@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import type { FilterValue } from "../../../data-types/FilterValue";
 import { FieldError } from "./FieldError";
@@ -53,9 +53,13 @@ export function Multiselect({
   };
 
   const [selectedValues, setSelectedValues] = useState<string[]>(() => {
-    onSelect(validateForm([]));
     return [];
   });
+
+  useEffect(() => {
+    onSelect(validateForm([]));
+  }, []);
+
   const [inputValue, setInputValue] = useState("");
 
   const filteredOptions =
