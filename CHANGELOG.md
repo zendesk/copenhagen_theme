@@ -1,3 +1,10 @@
+## [4.33.3](https://github.com/zendesk/copenhagen_theme/compare/v4.33.2...v4.33.3) (2026-03-26)
+
+
+### Bug Fixes
+
+* update translations ([58f804a](https://github.com/zendesk/copenhagen_theme/commit/58f804ad1a1c786b08cb4991a3f1778b21f6a3a5))
+
 ## [4.33.2](https://github.com/zendesk/copenhagen_theme/compare/v4.33.1...v4.33.2) (2026-03-26)
 
 
