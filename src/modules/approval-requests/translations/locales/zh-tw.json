@@ -15,6 +15,8 @@
   "approval-requests.request.approval-request-details.header": "批准請求詳情",
   "approval-requests.request.approval-request-details.previous-decision": "上一個決定",
   "approval-requests.request.approval-request-details.sent-by": "傳送者",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "操作工作流程",
+  "approval-requests.request.approval-request-details.sent-by-api": "API",
   "approval-requests.request.approval-request-details.sent-on": "傳送時間",
   "approval-requests.request.approval-request-details.status": "狀態",
   "approval-requests.request.approval-request-details.withdrawn-on": "撤銷時間",

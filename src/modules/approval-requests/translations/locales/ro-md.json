@@ -15,6 +15,8 @@
   "approval-requests.request.approval-request-details.header": "Detalii privind solicitarea de aprobare",
   "approval-requests.request.approval-request-details.previous-decision": "Decizia anterioară",
   "approval-requests.request.approval-request-details.sent-by": "Trimis de",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Flux de acțiune",
+  "approval-requests.request.approval-request-details.sent-by-api": "API",
   "approval-requests.request.approval-request-details.sent-on": "Trimis la",
   "approval-requests.request.approval-request-details.status": "Stare",
   "approval-requests.request.approval-request-details.withdrawn-on": "Retras la",

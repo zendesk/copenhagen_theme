@@ -15,6 +15,8 @@
   "approval-requests.request.approval-request-details.header": "Подробности за заявката за одобрение",
   "approval-requests.request.approval-request-details.previous-decision": "Предишно решение",
   "approval-requests.request.approval-request-details.sent-by": "Изпратена от",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Процес за действие",
+  "approval-requests.request.approval-request-details.sent-by-api": "API",
   "approval-requests.request.approval-request-details.sent-on": "Изпратена на",
   "approval-requests.request.approval-request-details.status": "Статус",
   "approval-requests.request.approval-request-details.withdrawn-on": "Оттеглена на",

@@ -15,6 +15,8 @@
   "approval-requests.request.approval-request-details.header": "Detaljer om godkjenningsforespørsel",
   "approval-requests.request.approval-request-details.previous-decision": "Tidligere avgjørelse",
   "approval-requests.request.approval-request-details.sent-by": "Sendt av",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Handlingsflyt",
+  "approval-requests.request.approval-request-details.sent-by-api": "API",
   "approval-requests.request.approval-request-details.sent-on": "Sendt",
   "approval-requests.request.approval-request-details.status": "Status",
   "approval-requests.request.approval-request-details.withdrawn-on": "Tilbaketrukket",

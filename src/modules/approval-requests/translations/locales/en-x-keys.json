@@ -15,6 +15,8 @@
   "approval-requests.request.approval-request-details.header": "approval-requests.request.approval-request-details.header",
   "approval-requests.request.approval-request-details.previous-decision": "approval-requests.request.approval-request-details.previous-decision",
   "approval-requests.request.approval-request-details.sent-by": "approval-requests.request.approval-request-details.sent-by",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "approval-requests.request.approval-request-details.sent-by-action-flow",
+  "approval-requests.request.approval-request-details.sent-by-api": "approval-requests.request.approval-request-details.sent-by-api",
   "approval-requests.request.approval-request-details.sent-on": "approval-requests.request.approval-request-details.sent-on",
   "approval-requests.request.approval-request-details.status": "approval-requests.request.approval-request-details.status",
   "approval-requests.request.approval-request-details.withdrawn-on": "approval-requests.request.approval-request-details.withdrawn-on",
