@@ -4,7 +4,7 @@
   "new-request-form.answer-bot-generative-modal.buttons.ok": "Aceptar",
   "new-request-form.answer-bot-generative-modal.buttons.still_need_help": "Aún necesito ayuda",
   "new-request-form.answer-bot-generative-modal.buttons.this_helped": "Esto ayudó a resolver mi solicitud",
-  "new-request-form.answer-bot-generative-modal.buttons.view_sources": "Ver orígenes",
+  "new-request-form.answer-bot-generative-modal.buttons.view_sources": "Ver fuentes",
   "new-request-form.answer-bot-generative-modal.close_modal_aria_label": "Cerrar ventana modal",
   "new-request-form.answer-bot-generative-modal.default.subtitle": "Si la siguiente información resuelve su solicitud y ya no necesita ayuda, puede informarnos haciendo clic en \"Esto ayudó a resolver mi solicitud\".",
   "new-request-form.answer-bot-generative-modal.default.title": "Su solicitud se envió correctamente",

@@ -15,6 +15,7 @@
   "approval-requests.request.approval-request-details.header": "Chi tiết yêu cầu phê duyệt",
   "approval-requests.request.approval-request-details.previous-decision": "Quyết định trước đó",
   "approval-requests.request.approval-request-details.sent-by": "Được gửi bởi",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Luồng thao tác",
   "approval-requests.request.approval-request-details.sent-on": "Đã gửi vào",
   "approval-requests.request.approval-request-details.status": "Trạng thái",
   "approval-requests.request.approval-request-details.withdrawn-on": "Đã rút lại vào",

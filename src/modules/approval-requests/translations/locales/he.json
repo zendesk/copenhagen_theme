@@ -15,6 +15,7 @@
   "approval-requests.request.approval-request-details.header": "פרטי בקשת אישור",
   "approval-requests.request.approval-request-details.previous-decision": "החלטה קודמת",
   "approval-requests.request.approval-request-details.sent-by": "נשלחה על-ידי",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "זרימת פעולות",
   "approval-requests.request.approval-request-details.sent-on": "נשלחה ב-",
   "approval-requests.request.approval-request-details.status": "סטטוס",
   "approval-requests.request.approval-request-details.withdrawn-on": "נמשכה ב-",

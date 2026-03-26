@@ -15,6 +15,7 @@
   "approval-requests.request.approval-request-details.header": "Сведения о запросе на утверждение",
   "approval-requests.request.approval-request-details.previous-decision": "Предыдущее решение",
   "approval-requests.request.approval-request-details.sent-by": "Отправитель",
+  "approval-requests.request.approval-request-details.sent-by-action-flow": "Процесс действий",
   "approval-requests.request.approval-request-details.sent-on": "Дата отправки",
   "approval-requests.request.approval-request-details.status": "Статус",
   "approval-requests.request.approval-request-details.withdrawn-on": "Дата аннулирования",
