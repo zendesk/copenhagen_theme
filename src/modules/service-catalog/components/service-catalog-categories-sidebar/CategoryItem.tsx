@@ -194,7 +194,7 @@ export const CategoryItem: React.FC<CategoryItemProps> = ({
             )}
             <ItemContent>
               <SidebarItemName>{displayName}</SidebarItemName>
-              <ItemCount>{category.items_count}</ItemCount>
+              <ItemCount>{category.itemsCount}</ItemCount>
             </ItemContent>
           </CategoryItemContainer>
         </StyledSidebarItem>
