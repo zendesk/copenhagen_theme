@@ -1,3 +1,10 @@
+## [4.33.4](https://github.com/zendesk/copenhagen_theme/compare/v4.33.3...v4.33.4) (2026-03-26)
+
+
+### Bug Fixes
+
+* update wysywig to get latest translations ([0f43f52](https://github.com/zendesk/copenhagen_theme/commit/0f43f528f6e6056cecdbe6882bfd12afb14a3d98))
+
 ## [4.33.3](https://github.com/zendesk/copenhagen_theme/compare/v4.33.2...v4.33.3) (2026-03-26)
 
 
