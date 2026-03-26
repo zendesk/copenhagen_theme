@@ -1,3 +1,10 @@
+## [4.33.1](https://github.com/zendesk/copenhagen_theme/compare/v4.33.0...v4.33.1) (2026-03-26)
+
+
+### Bug Fixes
+
+* obsolete incorrect translation, add string ([35c30d5](https://github.com/zendesk/copenhagen_theme/commit/35c30d5bbe291d9adad1ef33ae3bc01225056807))
+
 # [4.33.0](https://github.com/zendesk/copenhagen_theme/compare/v4.32.3...v4.33.0) (2026-03-25)
 
 
