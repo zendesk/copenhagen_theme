@@ -5360,10 +5360,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendesk/help-center-wysiwyg@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@zendesk/help-center-wysiwyg@npm:1.1.0"
-  checksum: 10c0/792dd5a6c5d6e245846d29846e477a3caf1678ba11e56d8e6e4a710555c9b36509e84ed40e4595e7468524da7577734eee95723e949319e5771e8a625eeff247
+"@zendesk/help-center-wysiwyg@npm:1.1.1":
+  version: 1.1.1
+  resolution: "@zendesk/help-center-wysiwyg@npm:1.1.1"
+  checksum: 10c0/8a8306ff0974a5787338bbfcbc915c33d6129990141a1122ef0bc29671d3ba248127d9f3ac6301a6fa781492ef537700becf0e88291035da497ab91502b2c54a
   languageName: node
   linkType: hard
 
@@ -8204,7 +8204,7 @@ __metadata:
     "@types/styled-components": "npm:^5.1.26"
     "@typescript-eslint/eslint-plugin": "npm:^6.1.0"
     "@typescript-eslint/parser": "npm:^6.1.0"
-    "@zendesk/help-center-wysiwyg": "npm:1.1.0"
+    "@zendesk/help-center-wysiwyg": "npm:1.1.1"
     "@zendesk/zcli": "npm:1.0.0-beta.55"
     "@zendeskgarden/container-grid": "npm:^3.0.14"
     "@zendeskgarden/container-utilities": "npm:^2.0.2"
