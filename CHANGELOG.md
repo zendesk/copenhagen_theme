@@ -1,3 +1,10 @@
+## [4.33.2](https://github.com/zendesk/copenhagen_theme/compare/v4.33.1...v4.33.2) (2026-03-26)
+
+
+### Bug Fixes
+
+* change key field name to a proper one ([f2655ee](https://github.com/zendesk/copenhagen_theme/commit/f2655ee37402eea1467c315245c0aebcf03fdbb2))
+
 ## [4.33.1](https://github.com/zendesk/copenhagen_theme/compare/v4.33.0...v4.33.1) (2026-03-26)
 
 
