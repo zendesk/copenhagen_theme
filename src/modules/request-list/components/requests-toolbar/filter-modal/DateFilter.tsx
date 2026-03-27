@@ -1,10 +1,4 @@
-import {
-  Dropdown,
-  Field,
-  Item,
-  Label,
-  Select,
-} from "@zendeskgarden/react-dropdowns.legacy";
+import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import { useEffect, useState } from "react";
 import type { FilterValue } from "../../../data-types/FilterValue";
 import { useFilterTranslations } from "../i18n";
@@ -15,7 +9,7 @@ import type { CustomDateFieldKey, CustomDateValues } from "./CustomDateFilter";
 import { CustomDateFilter } from "./CustomDateFilter";
 import type { FormErrors, FormState } from "./FormState";
 import { FieldError } from "./FieldError";
-import { ModalMenu } from "../../modal-menu/ModalMenu";
+import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 
 type FormFieldKey = "dateFilterItem" | CustomDateFieldKey;
 
@@ -39,26 +33,13 @@ export function DateFilter({
   allowFutureDates,
 }: DateFilterProps): JSX.Element | null {
   const { t } = useTranslation();
+  const modalContainer = useModalContainer();
 
   const [selectedItem, setSelectedItem] = useState<ItemValue | null>(null);
 
   const { createDefaultDateRangeI18N } = useFilterTranslations();
   const dateRangeI18n = createDefaultDateRangeI18N();
   const customDatesInitialValues: [Date, Date] = [new Date(), new Date()];
-
-  const renderItemValue = (
-    value: ItemValue | null,
-    dateRangeI18n: Record<FilterValue, string>
-  ): string => {
-    switch (value) {
-      case null:
-        return "";
-      case "custom":
-        return t("guide-requests-app.custom", "Custom");
-      default:
-        return dateRangeI18n[value] || "";
-    }
-  };
 
   const validateCustomDates = ({
     values: [startDate, endDate],
@@ -167,23 +148,29 @@ export function DateFilter({
 
   return (
     <>
-      <Dropdown selectedItem={selectedItem} onSelect={handleItemSelected}>
-        <Field>
-          <Label>{label}</Label>
-          <Select validation={errors.dateFilterItem ? "error" : undefined}>
-            {renderItemValue(selectedItem, dateRangeI18n)}
-          </Select>
-          <FieldError errors={errors} field="dateFilterItem" />
-        </Field>
-        <ModalMenu>
+      <Field>
+        <Field.Label>{label}</Field.Label>
+        <Combobox
+          isEditable={false}
+          selectionValue={selectedItem}
+          onChange={(changes) => {
+            if (changes.selectionValue !== undefined) {
+              handleItemSelected(changes.selectionValue as ItemValue);
+            }
+          }}
+          validation={errors.dateFilterItem ? "error" : undefined}
+          listboxAppendToNode={modalContainer}
+        >
           {Object.entries(dateRangeI18n).map(([value, label]) => (
-            <Item key={value} value={value}>
-              {label}
-            </Item>
+            <Option key={value} label={label} value={value} />
           ))}
-          <Item value="custom">{t("guide-requests-app.custom", "Custom")}</Item>
-        </ModalMenu>
-      </Dropdown>
+          <Option
+            label={t("guide-requests-app.custom", "Custom")}
+            value="custom"
+          />
+        </Combobox>
+        <FieldError errors={errors} field="dateFilterItem" />
+      </Field>
       {selectedItem === "custom" && (
         <StyledCustomDateFilter
           initialValues={customDatesInitialValues}

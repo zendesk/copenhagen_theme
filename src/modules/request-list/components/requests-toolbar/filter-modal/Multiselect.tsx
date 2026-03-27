@@ -1,18 +1,10 @@
 import { useEffect, useState } from "react";
-import {
-  Item,
-  Label,
-  Field,
-  Dropdown,
-  Multiselect as GardenMultiselect,
-} from "@zendeskgarden/react-dropdowns.legacy";
-import { Tag } from "@zendeskgarden/react-tags";
-import { useDropdownFilter } from "../../../hooks/useDropdownFilter";
+import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import type { FilterValue } from "../../../data-types/FilterValue";
 import { FieldError } from "./FieldError";
 import type { FormErrors, FormState } from "./FormState";
 import { useTranslation } from "react-i18next";
-import { ModalMenu } from "../../modal-menu/ModalMenu";
+import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 
 export interface MultiSelectOption {
   value: FilterValue;
@@ -35,10 +27,13 @@ export function Multiselect({
   errors,
 }: MultiselectProps): JSX.Element {
   const { t } = useTranslation();
+  const modalContainer = useModalContainer();
 
-  const validateForm = (
-    selectedOptions: MultiSelectOption[]
-  ): FormState<FormFieldKey> => {
+  const validateForm = (selectedValues: string[]): FormState<FormFieldKey> => {
+    const selectedOptions = options.filter((option) =>
+      selectedValues.includes(option.value)
+    );
+
     if (selectedOptions.length > 0) {
       return {
         state: "valid",
@@ -57,50 +52,80 @@ export function Multiselect({
     }
   };
 
-  const [selectedOptions, setSelectedOptions] = useState<MultiSelectOption[]>(
-    []
-  );
-  const { dropdownProps, renderItems } = useDropdownFilter(options, "value");
+  const [selectedValues, setSelectedValues] = useState<string[]>(() => {
+    return [];
+  });
 
   useEffect(() => {
     onSelect(validateForm([]));
   }, []);
 
-  function handleSelect(items: MultiSelectOption[]) {
-    setSelectedOptions(items);
-    onSelect(validateForm(items));
-  }
+  const [inputValue, setInputValue] = useState("");
+
+  const filteredOptions =
+    inputValue === ""
+      ? options
+      : options.filter(
+          (option) =>
+            selectedValues.includes(option.value) ||
+            option.label
+              .trim()
+              .toLowerCase()
+              .includes(inputValue.trim().toLowerCase())
+        );
+
+  const handleChange = (changes: {
+    selectionValue?: string | string[] | null;
+    inputValue?: string;
+  }) => {
+    const { inputValue, selectionValue } = changes;
+
+    if (inputValue !== undefined) {
+      setInputValue(inputValue);
+    }
+
+    if (selectionValue !== undefined && selectionValue !== null) {
+      const selected = Array.isArray(selectionValue)
+        ? selectionValue
+        : [selectionValue];
+
+      setSelectedValues(selected);
+      onSelect(validateForm(selected));
+    }
+  };
 
   return (
-    <Dropdown
-      {...dropdownProps}
-      selectedItems={selectedOptions}
-      onSelect={handleSelect}
-      downshiftProps={{
-        defaultHighlightedIndex: 0,
-        itemToString: (option: MultiSelectOption) => option?.value,
-      }}
-    >
-      <Field>
-        <Label>{label}</Label>
-        <GardenMultiselect
-          renderItem={({ value, removeValue }) => (
-            <Tag>
-              <span>{(value as MultiSelectOption).label}</span>
-              <Tag.Close onClick={() => removeValue()} />
-            </Tag>
-          )}
-          validation={errors.selectedOptions ? "error" : undefined}
-        />
-        <FieldError errors={errors} field="selectedOptions" />
-      </Field>
-      <ModalMenu>
-        {renderItems((option) => (
-          <Item key={option.value} value={option}>
-            {option.label}
-          </Item>
-        ))}
-      </ModalMenu>
-    </Dropdown>
+    <Field>
+      <Field.Label>{label}</Field.Label>
+      <Combobox
+        isAutocomplete
+        isMultiselectable
+        selectionValue={selectedValues}
+        inputValue={inputValue}
+        onChange={handleChange}
+        validation={errors.selectedOptions ? "error" : undefined}
+        listboxAppendToNode={modalContainer}
+      >
+        {filteredOptions.length === 0 ? (
+          <Option
+            isDisabled
+            label={t(
+              "guide-requests-app.filters-modal.no-matches-found",
+              "No matches found"
+            )}
+            value=""
+          />
+        ) : (
+          filteredOptions.map((option) => (
+            <Option
+              key={option.value}
+              value={option.value}
+              label={option.label}
+            />
+          ))
+        )}
+      </Combobox>
+      <FieldError errors={errors} field="selectedOptions" />
+    </Field>
   );
 }
