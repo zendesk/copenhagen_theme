@@ -1,3 +1,11 @@
+## [4.33.5](https://github.com/zendesk/copenhagen_theme/compare/v4.33.4...v4.33.5) (2026-03-27)
+
+
+### Bug Fixes
+
+* add tooltip to modal menu ([0b51c0b](https://github.com/zendesk/copenhagen_theme/commit/0b51c0b00204b069b6bd4d71bf3802a905c33dd5))
+* multiselect must contain an array ([61d17c9](https://github.com/zendesk/copenhagen_theme/commit/61d17c94c01c5f5cb558c46ee8be9134deaf1e61))
+
 ## [4.33.4](https://github.com/zendesk/copenhagen_theme/compare/v4.33.3...v4.33.4) (2026-03-26)
 
 
