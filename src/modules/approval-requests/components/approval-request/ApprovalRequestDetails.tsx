@@ -7,12 +7,10 @@ import { Grid } from "@zendeskgarden/react-grid";
 import type { ApprovalRequest } from "../../types";
 import ApprovalStatusTag from "./ApprovalStatusTag";
 import { formatApprovalRequestDate } from "../../utils";
-import {
-  APPROVAL_REQUEST_STATES,
-  APPROVAL_DECISION_ORIGINATIONS,
-} from "../../constants";
+import { APPROVAL_REQUEST_STATES } from "../../constants";
 import ApprovalRequestPreviousDecision from "./ApprovalRequestPreviousDecision";
 import { getSentByLabel } from "../../getSentByLabel";
+import { getDecisionOriginLabel } from "../../getDecisionOriginLabel";
 
 const Container = styled(Grid)`
   padding: ${(props) => props.theme.space.base * 6}px; /* 24px */
@@ -83,8 +81,13 @@ function ApprovalRequestDetails({
     approvalRequest.decisions.length > 0;
 
   // The `origination_type` field on decisions is only present when arturo `approvals_slack_notifications` is enabled
-  const hasDecisionOriginationType =
-    approvalRequest.decisions[0]?.origination_type !== undefined;
+  const decisionOriginLabel =
+    approvalRequest.status !== APPROVAL_REQUEST_STATES.WITHDRAWN
+      ? getDecisionOriginLabel(
+          approvalRequest.decisions[0]?.origination_type,
+          t
+        )
+      : "";
 
   return (
     <Container>
@@ -189,22 +192,7 @@ function ApprovalRequestDetails({
                 approvalRequest.decided_at,
                 baseLocale
               )}
-              {hasDecisionOriginationType &&
-                approvalRequest.status !== APPROVAL_REQUEST_STATES.WITHDRAWN &&
-                approvalRequest.decisions[0]?.origination_type ===
-                  APPROVAL_DECISION_ORIGINATIONS.SLACK &&
-                ` ${t(
-                  "approval-requests.request.approval-request-details.via-slack",
-                  "via Slack"
-                )}`}
-              {hasDecisionOriginationType &&
-                approvalRequest.status !== APPROVAL_REQUEST_STATES.WITHDRAWN &&
-                approvalRequest.decisions[0]?.origination_type ===
-                  APPROVAL_DECISION_ORIGINATIONS.UI &&
-                ` ${t(
-                  "approval-requests.request.approval-request-details.via-zendesk",
-                  "via Zendesk"
-                )}`}
+              {decisionOriginLabel && ` ${decisionOriginLabel}`}
             </WrappedText>
           </Grid.Col>
         </DetailRow>
