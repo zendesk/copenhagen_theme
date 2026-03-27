@@ -77,6 +77,11 @@ function ApprovalRequestDetails({
   const shouldShowPreviousDecision =
     approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN &&
     approvalRequest.decisions.length > 0;
+
+  // The `origination_type` field on decisions is only present when arturo `approvals_slack_notifications` is enabled
+  const hasDecisionOriginationType =
+    approvalRequest.decisions[0]?.origination_type !== undefined;
+
   return (
     <Container>
       <ApprovalRequestHeader isBold>
@@ -182,12 +187,20 @@ function ApprovalRequestDetails({
             </FieldLabel>
           </Grid.Col>
           <Grid.Col size={8}>
-            <MD>
+            <WrappedText>
               {formatApprovalRequestDate(
                 approvalRequest.decided_at,
                 baseLocale
               )}
-            </MD>
+              {hasDecisionOriginationType &&
+                approvalRequest.status !== APPROVAL_REQUEST_STATES.WITHDRAWN &&
+                approvalRequest.decisions[0]?.origination_type === ORIGINATION_TYPES.SLACK &&
+                ` ${t("approval-requests.request.approval-request-details.via-slack", "via Slack")}`}
+              {hasDecisionOriginationType &&
+                approvalRequest.status !== APPROVAL_REQUEST_STATES.WITHDRAWN &&
+                approvalRequest.decisions[0]?.origination_type === ORIGINATION_TYPES.UI &&
+                ` ${t("approval-requests.request.approval-request-details.via-zendesk", "via Zendesk")}`}
+            </WrappedText>
           </Grid.Col>
         </DetailRow>
       )}

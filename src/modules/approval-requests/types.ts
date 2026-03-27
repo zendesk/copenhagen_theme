@@ -17,6 +17,7 @@ export interface ApprovalDecision {
   };
   decision_notes: string | null;
   status: ApprovalRequestStatus;
+  origination_type?: string;
 }
 
 export type ApprovalRequestStatus =
