@@ -8,12 +8,12 @@ Agentic coding skills for GitHub Copilot, maintained centrally by ARPA-H and dis
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│                      ARPA-H/skills (this repo)               │
+│  ARPA-H/skills (this repo)                                   │
 │  Source of truth. Changes here deploy immediately to all     │
 │  consumers — no review gate on the downstream push.          │
 └──────────────┬───────────────────────────────────────────────┘
-               │  git subtree push (GitHub Actions, on push to main)
-               ▼
+               │  git subtree push
+               ▼  (GitHub Actions, on push to main)
 ┌──────────────────────────────────────────────────────────────┐
 │  Consumer repo (e.g. ARPA-H/designator)                      │
 │  Skills live at a prefix — e.g. .github/skills/              │
