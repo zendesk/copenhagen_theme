@@ -38,5 +38,10 @@
         "repo": "ARPA-H/zendesk_devices",
         "prefix": ".github/skills",
         "branch": "main"
+    },
+    {
+        "repo": "ARPA-H/arpa-h-static-site-template",
+        "prefix": ".github/skills",
+        "branch": "main"
     }
 ]
