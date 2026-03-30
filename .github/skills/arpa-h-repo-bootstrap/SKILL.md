@@ -104,6 +104,46 @@ For every linter present in the consumer repo, add `.github/skills` to its ignor
 exclude = [".github/skills"]
 ```
 
+**Flake8 / Python** — add to `.flake8` or `[flake8]` in `setup.cfg`:
+```ini
+[flake8]
+exclude = .github/skills
+```
+
+**Go (staticcheck / golangci-lint)** — add to `.golangci.yml`:
+```yaml
+issues:
+  exclude-rules:
+    - path: \.github/skills
+      linters: ["*"]
+run:
+  skip-dirs:
+    - .github/skills
+```
+
+**Rust (Clippy)** — Clippy only lints crate source files and will not touch `.github/skills` by default. No ignore configuration is needed, but if a custom workspace linting script globs broadly, exclude the path explicitly there.
+
+**Terraform (tflint / terraform fmt)** — add to `.tflint.hcl`:
+```hcl
+config {
+  ignore_module = {}
+}
+# tflint does not recurse into .github/skills by default when run from repo root,
+# but if invoked with a broad glob, exclude explicitly:
+#   tflint --filter='**/*.tf' --exclude-path='.github/skills'
+```
+For `terraform fmt`, always invoke it with an explicit path (e.g. `terraform fmt infra/`) rather than a repo-wide glob so it never touches the skills directory.
+
+**Stylelint (CSS/SCSS)** — add to `.stylelintignore`:
+```
+.github/skills
+```
+
+**ShellCheck** — pass `--exclude-path` or wrap invocations to skip the directory:
+```bash
+find . -name '*.sh' -not -path './.github/skills/*' | xargs shellcheck
+```
+
 Apply all ignore rules that are relevant to the linters detected in the repo. If an ignore file does not yet exist, create it. If one already exists, append the entry rather than replacing the file.
 
 ### Language-Specific Extensions
