@@ -316,6 +316,22 @@ gh api repos/<owner>/<repo>/git/tags/<sha> --jq '.object.sha'
 - Replace unpinned tags with the resolved commit SHA + a `# vX.Y.Z` comment
 - This applies to all actions: `actions/*`, `github/*`, and any third-party actions
 
+### Exclude skill file updates from triggering workflow runs
+
+Commits that only update `.github/skills/*` (e.g. Copilot skill syncs) must not trigger CI workflows. Add a `paths-ignore` filter to every workflow's trigger so those updates are silently skipped:
+
+```yaml
+on:
+  push:
+    paths-ignore:
+      - '.github/skills/**'
+  pull_request:
+    paths-ignore:
+      - '.github/skills/**'
+```
+
+Apply this to all triggers that support path filtering (`push`, `pull_request`, `pull_request_target`). Triggers that do not support `paths-ignore` (e.g. `workflow_dispatch`, `schedule`) are unaffected — no change is needed for those.
+
 ### Keeping pins up to date
 
 [Dependabot](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot) can automate SHA updates. Add to `.github/dependabot.yml`:
