@@ -1,0 +1,26 @@
+{
+  "name": "ARPA-H Skills",
+
+  // Universal image — no specific language stack detected; provides Node, Python, Go, etc.
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // ARPA-H standard: GitHub & collaboration
+        "github.copilot-chat",
+        "github.vscode-pull-request-github",
+        "github.vscode-github-actions",
+        "github.github-vscode-theme",
+        "dracula-theme.theme-dracula",
+        // Markdown linting — *.md files present in repo
+        "davidanson.vscode-markdownlint"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "git.autofetch": true,
+        "git.autofetchPeriod": 180
+      }
+    }
+  }
+}

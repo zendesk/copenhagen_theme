@@ -1,0 +1,47 @@
+:root {
+  color-scheme: dark;
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+
+  /* ── Neutral scale ───────────────────────────────────────── */
+  --color-near-black:   #131314;
+  --color-bg-page:      #4A4D52;
+  --color-bg-card:      #6F747A;
+  --color-bg-elevated:  #959BA3;
+  --color-muted-3:      #BAC2CC;
+  --color-muted-2:      #CCD5E1;
+  --color-muted-1:      #D7DEE8;
+  --color-subtle:       #E5EAF0;
+  --color-faint:        #F3F5F8;
+  --color-white:        #FFFFFF;
+
+  /* ── Semantic accents ────────────────────────────────────── */
+  --color-status-warning:      #FD4497;  /* collision / duplicate / warning */
+  --color-status-warning-soft: #FCC1DC;  /* secondary warning text */
+  --color-active:              #ADECE5;  /* active record / active filter */
+  --color-inactive:            #B8B2E4;  /* inactive / departed record */
+
+  /* ── Header (intentionally inverted) ────────────────────── */
+  --color-header-bg: #FFFFFF;
+  --color-header-fg: #000334;
+
+  /* ── Spacing scale (4px base) ────────────────────────────── */
+  --space-xs:  4px;
+  --space-s:   8px;
+  --space-m:   12px;
+  --space-l:   16px;
+  --space-xl:  24px;
+  --space-xxl: 32px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-bg-page);
+  color: var(--color-white);
+}

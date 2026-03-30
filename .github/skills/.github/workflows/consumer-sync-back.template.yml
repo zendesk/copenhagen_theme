@@ -1,0 +1,91 @@
+# Template for consumer repos (e.g. ARPA-H/designator).
+# Copy this file to .github/workflows/ in the consumer repo and adjust the
+# `paths` filter and `PREFIX` to match where this repo was subtreed.
+#
+# When files under the subtree prefix change, this workflow extracts those
+# commits and opens a PR against ARPA-H/skills main for review. Changes are
+# never pushed directly to skills — a human must approve and merge the PR,
+# which then triggers skills → consumers sync and deploys to all consumers.
+#
+# Prerequisites:
+#   - SKILLS_SUBTREE_SYNC_APP_ID secret: the GitHub App's client ID (shown on the app's settings page)
+#   - SKILLS_SUBTREE_SYNC_PRIVATE_KEY secret: the GitHub App's private key (.pem file contents)
+#   The app must be installed on this repo and on ARPA-H/skills, with
+#   Contents: Read & write and Pull requests: Read & write permissions.
+#
+# Performance note: `git subtree push` must walk the full commit history to
+# re-synthesize upstream commits. On repos with long histories, add
+# `--rejoin` to cache the split point as a merge commit, which speeds up
+# future runs significantly.
+
+name: Propose subtree changes to skills
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/skills/**" # Update if your subtree prefix differs
+
+permissions:
+  contents: read
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Mint GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@5d869da34e18e7287c1daad50e0b8ea0f506ce69 # v1.11.0
+        with:
+          app-id: ${{ secrets.SKILLS_SUBTREE_SYNC_APP_ID }}
+          private-key: ${{ secrets.SKILLS_SUBTREE_SYNC_PRIVATE_KEY }}
+          owner: ARPA-H
+
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Push subtree to review branch in ARPA-H/skills
+        id: push
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PREFIX: .github/skills # Update if your subtree prefix differs
+          CONSUMER_REPO: ${{ github.repository }}
+          REVIEW_BRANCH: sync/${{ github.repository_owner }}/${{ github.event.repository.name }}-${{ github.run_id }}
+        run: |
+          set -e
+          git remote add skills \
+            "https://x-access-token:${GH_TOKEN}@github.com/ARPA-H/skills.git"
+
+          git subtree push --prefix="${PREFIX}" skills "${REVIEW_BRANCH}"
+          echo "review_branch=${REVIEW_BRANCH}" >> "$GITHUB_OUTPUT"
+
+      - name: Open PR against skills main
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          REVIEW_BRANCH: ${{ steps.push.outputs.review_branch }}
+          CONSUMER_REPO: ${{ github.repository }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          # Skip if a PR for this branch already exists
+          EXISTING=$(gh pr list \
+            --repo ARPA-H/skills \
+            --head "${REVIEW_BRANCH}" \
+            --json number \
+            --jq '.[0].number')
+
+          if [ -n "$EXISTING" ]; then
+            echo "PR #${EXISTING} already open for ${REVIEW_BRANCH}, skipping."
+            exit 0
+          fi
+
+          gh pr create \
+            --repo ARPA-H/skills \
+            --base main \
+            --head "${REVIEW_BRANCH}" \
+            --title "chore: sync skills changes from ${CONSUMER_REPO}" \
+            --body "$(printf 'Automated proposal from [%s](https://github.com/%s/commit/%s).\n\nMerging this PR will update the source of truth in **ARPA-H/skills** and trigger an immediate sync to all registered subtree consumers.' "${CONSUMER_REPO}" "${CONSUMER_REPO}" "${COMMIT_SHA}")"
