@@ -1,0 +1,1 @@
+export { ServiceCatalogCategoriesSidebar } from "./ServiceCatalogCategoriesSidebar";

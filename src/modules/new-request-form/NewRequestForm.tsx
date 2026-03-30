@@ -1,10 +1,9 @@
-import type { AnswerBot, Field, RequestForm } from "./data-types";
-import { useCallback, useState } from "react";
-import { Input } from "./fields/Input";
-import { TextArea } from "./fields/textarea/TextArea";
-import { DropDown } from "./fields/DropDown";
-import { Checkbox } from "./fields/Checkbox";
-import { MultiSelect } from "./fields/MultiSelect";
+import type {
+  AnswerBot,
+  AnswerBotGenerativeExperience,
+  RequestForm,
+} from "./data-types";
+import { Fragment, useCallback, useState } from "react";
 import { TicketFormField } from "./ticket-form-field/TicketFormField";
 import { ParentTicketField } from "./parent-ticket-field/ParentTicketField";
 import { Anchor, Button } from "@zendeskgarden/react-buttons";
@@ -12,18 +11,17 @@ import styled from "styled-components";
 import { Alert } from "@zendeskgarden/react-notifications";
 import { useFormSubmit } from "./useFormSubmit";
 import { usePrefilledTicketFields } from "./usePrefilledTicketFields";
-import { Attachments } from "./fields/attachments/Attachments";
-import { getVisibleFields } from "./getVisibleFields";
-import { DatePicker } from "./fields/DatePicker";
+import { Attachments } from "../ticket-fields/fields/attachments/Attachments";
+import { getVisibleFields } from "../ticket-fields/getVisibleFields";
 import { CcField } from "./fields/cc-field/CcField";
-import { CreditCard } from "./fields/CreditCard";
-import { Tagger } from "./fields/Tagger";
 import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
 import { AnswerBotModal } from "./answer-bot-modal/AnswerBotModal";
 import { useTranslation } from "react-i18next";
 import { Paragraph } from "@zendeskgarden/react-typography";
-import { LookupField } from "./fields/LookupField";
-import type { Organization } from "./data-types/Organization";
+import { DropDown, Input, TextArea, RequestFormField } from "../ticket-fields";
+import type { Organization } from "../ticket-fields/data-types/Organization";
+import type { TicketFieldObject } from "../ticket-fields/data-types/TicketFieldObject";
+import { GenerativeAnswerBotModal } from "./answer-bot-generative-modal/GenerativeAnswerBotModal";
 
 export interface NewRequestFormProps {
   requestForm: RequestForm;
@@ -39,7 +37,8 @@ export interface NewRequestFormProps {
   brandId: number;
   organizations: Array<Organization>;
   answerBotModal: {
-    answerBot: AnswerBot;
+    answerBot: AnswerBot | null;
+    answerBotGenerativeExperience: AnswerBotGenerativeExperience | null;
     hasRequestManagement: boolean;
     isSignedIn: boolean;
     helpCenterPath: string;
@@ -94,7 +93,7 @@ export function NewRequestForm({
     inline_attachments_fields,
     description_mimetype_field,
   } = requestForm;
-  const { answerBot } = answerBotModal;
+  const { answerBot, answerBotGenerativeExperience } = answerBotModal;
   const {
     ticketFields: prefilledTicketFields,
     emailField,
@@ -122,7 +121,7 @@ export function NewRequestForm({
       : null;
 
   const handleChange = useCallback(
-    (field: Field, value: Field["value"]) => {
+    (field: TicketFieldObject, value: TicketFieldObject["value"]) => {
       setTicketFields(
         ticketFields.map((ticketField) =>
           ticketField.name === field.name
@@ -152,6 +151,16 @@ export function NewRequestForm({
     },
     [dueDateField]
   );
+
+  const answerBotModalEnabled =
+    !!answerBot?.auth_token &&
+    !!answerBot?.interaction_access_token &&
+    !!answerBot?.articles?.length &&
+    !!answerBot?.request_id;
+
+  const answerBotGenerativeModalEnabled =
+    answerBotGenerativeExperience &&
+    Boolean(answerBotGenerativeExperience.request_id);
 
   return (
     <>
@@ -202,139 +211,61 @@ export function NewRequestForm({
           />
         )}
         {visibleFields.map((field) => {
-          switch (field.type) {
-            case "subject":
-              return (
-                <>
-                  <Input
-                    key={field.name}
-                    field={field}
-                    onChange={(value) => handleChange(field, value)}
-                  />
-                  <SuggestedArticles
-                    query={field.value as string | undefined}
-                    locale={locale}
-                  />
-                </>
-              );
-            case "text":
-            case "integer":
-            case "decimal":
-            case "regexp":
-              return (
+          if (field.type === "subject") {
+            return (
+              <Fragment key={field.name}>
                 <Input
-                  key={field.name}
                   field={field}
                   onChange={(value) => handleChange(field, value)}
                 />
-              );
-            case "partialcreditcard":
-              return (
-                <CreditCard
-                  field={field}
-                  onChange={(value) => handleChange(field, value)}
+                <SuggestedArticles
+                  query={field.value as string | undefined}
+                  locale={locale}
                 />
-              );
-            case "description":
-              return (
-                <>
-                  <TextArea
-                    key={field.name}
-                    field={field}
-                    hasWysiwyg={wysiwyg}
-                    baseLocale={baseLocale}
-                    hasAtMentions={hasAtMentions}
-                    userRole={userRole}
-                    brandId={brandId}
-                    onChange={(value) => handleChange(field, value)}
-                  />
-                  <input
-                    type="hidden"
-                    name={description_mimetype_field.name}
-                    value={wysiwyg ? "text/html" : "text/plain"}
-                  />
-                </>
-              );
-            case "textarea":
-              return (
+              </Fragment>
+            );
+          } else if (field.type === "description") {
+            return (
+              <Fragment key={field.name}>
                 <TextArea
-                  key={field.name}
                   field={field}
-                  hasWysiwyg={false}
+                  hasWysiwyg={wysiwyg}
                   baseLocale={baseLocale}
                   hasAtMentions={hasAtMentions}
                   userRole={userRole}
                   brandId={brandId}
                   onChange={(value) => handleChange(field, value)}
                 />
-              );
-            case "priority":
-            case "basic_priority":
-            case "tickettype":
-              return (
-                <>
-                  <DropDown
-                    key={field.name}
-                    field={field}
-                    onChange={(value) => handleChange(field, value)}
-                  />
-                  {field.value === "task" && (
-                    <DatePicker
-                      field={dueDateField}
-                      locale={baseLocale}
-                      valueFormat="dateTime"
-                      onChange={(value) => {
-                        handleDueDateChange(value);
-                      }}
-                    />
-                  )}
-                </>
-              );
-            case "checkbox":
-              return (
-                <Checkbox
-                  field={field}
-                  onChange={(value: boolean) => handleChange(field, value)}
+                <input
+                  type="hidden"
+                  name={description_mimetype_field.name}
+                  value={wysiwyg ? "text/html" : "text/plain"}
                 />
-              );
-            case "date":
-              return (
-                <DatePicker
-                  field={field}
-                  locale={baseLocale}
-                  valueFormat="date"
-                  onChange={(value) => handleChange(field, value)}
-                />
-              );
-            case "multiselect":
-              return <MultiSelect field={field} />;
-            case "tagger":
-              return (
-                <Tagger
-                  key={field.name}
-                  field={field}
-                  onChange={(value) => handleChange(field, value)}
-                />
-              );
-            case "lookup":
-              return (
-                <LookupField
-                  key={field.name}
-                  field={field}
-                  userId={userId}
-                  organizationId={
-                    organizationField !== null
-                      ? (organizationField.value as string)
-                      : defaultOrganizationId
-                  }
-                  onChange={(value) => handleChange(field, value)}
-                />
-              );
-            default:
-              return <></>;
+              </Fragment>
+            );
+          } else {
+            return (
+              <RequestFormField
+                key={field.name}
+                field={field}
+                baseLocale={baseLocale}
+                hasAtMentions={hasAtMentions}
+                userRole={userRole}
+                userId={userId}
+                brandId={brandId}
+                dueDateField={dueDateField}
+                handleDueDateChange={handleDueDateChange}
+                organizationField={organizationField}
+                defaultOrganizationId={defaultOrganizationId}
+                visibleFields={visibleFields}
+                handleChange={handleChange}
+              />
+            );
           }
         })}
-        {attachments_field && <Attachments field={attachments_field} />}
+        {attachments_field && (
+          <Attachments field={attachments_field} baseLocale={baseLocale} />
+        )}
         {inline_attachments_fields.map(({ type, name, value }, index) => (
           <input key={index} type={type} name={name} value={value} />
         ))}
@@ -347,18 +278,21 @@ export function NewRequestForm({
           )}
         </Footer>
       </Form>
-      {answerBot.auth_token &&
-        answerBot.interaction_access_token &&
-        answerBot.articles.length > 0 &&
-        answerBot.request_id && (
-          <AnswerBotModal
-            authToken={answerBot.auth_token}
-            interactionAccessToken={answerBot.interaction_access_token}
-            articles={answerBot.articles}
-            requestId={answerBot.request_id}
-            {...answerBotModal}
-          />
-        )}
+      {answerBotModalEnabled && (
+        <AnswerBotModal
+          authToken={answerBot.auth_token!}
+          interactionAccessToken={answerBot.interaction_access_token!}
+          articles={answerBot.articles!}
+          requestId={answerBot.request_id!}
+          {...answerBotModal}
+        />
+      )}
+      {answerBotGenerativeModalEnabled && (
+        <GenerativeAnswerBotModal
+          requestId={Number(answerBotGenerativeExperience.request_id)}
+          {...answerBotModal}
+        />
+      )}
     </>
   );
 }

@@ -1,7 +1,7 @@
 {
   "name": "ARPA-H Version B 1.3",
   "author": "Zendesk",
-  "version": "4.3.7",
+  "version": "4.33.5",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -254,6 +254,12 @@
           "type": "file",
           "description": "community_image_description",
           "label": "community_image_label"
+        },
+        {
+          "identifier": "service_catalog_hero_image",
+          "type": "file",
+          "description": "service_catalog_hero_image_description",
+          "label": "service_catalog_hero_image_label"
         }
       ]
     },
@@ -389,18 +395,6 @@
           "description": "follow_topic_description",
           "label": "follow_topic_label",
           "value": true
-        }
-      ]
-    },
-    {
-      "label": "request_list_group_label",
-      "variables": [
-        {
-          "identifier": "request_list_beta",
-          "type": "checkbox",
-          "description": "request_list_beta_description",
-          "label": "request_list_beta_label",
-          "value": false
         }
       ]
     },

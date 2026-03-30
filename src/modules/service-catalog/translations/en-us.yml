@@ -6,6 +6,7 @@
 # If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
 # your translations with a different method.
 #
+
 title: "Copenhagen Theme Service catalog"
 packages:
   - "service-catalog"
@@ -24,22 +25,23 @@ parts:
       key: "service-catalog.empty-state.no-services"
       title: "Empty state no services"
       screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
-      value: "No services in sight"    
+      value: "No services in sight"
   - translation:
       key: "service-catalog.empty-state.description"
       title: "Empty state description"
       screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
-      value: "Once services are added to catalog, you'll find them here."    
+      value: "Once services are added to catalog, you'll find them here."
   - translation:
       key: "service-catalog.empty-state.support-article-link"
       title: "Empty state support article link"
       screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
-      value: "Learn about the service catalog"    
+      value: "Learn about the service catalog"
+      obsolete: "2025-04-22"
   - translation:
       key: "service-catalog.empty-state.go-to-homepage"
       title: "Empty state go to homepage link"
       screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
-      value: "Go to the homepage"    
+      value: "Go to the homepage"
   - translation:
       key: "service-catalog.item.read-more"
       title: "Button to show whole description of the service catalog item"
@@ -49,12 +51,17 @@ parts:
       key: "service-catalog.item.read-less"
       title: "Button to hide part of the description of the service catalog item"
       screenshot: "https://drive.google.com/file/d/1BYDLuhii7aQs18TkKflGCpReb_UCKSeD/view?usp=drive_link"
-      value: "Read less"    
+      value: "Read less"
+  - translation:
+      key: "service-catalog.item.change-category"
+      title: "Dropdown trigger to change the category of a multi-placed service catalog item"
+      screenshot: "https://drive.google.com/file/d/1i-5SW5902PNqnPu73-IwxaeuWEAvxGVw/view?usp=sharing"
+      value: "Change category"
   - translation:
       key: "service-catalog.item.submit-button"
       title: "Button to submit a request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1kuv7v6Vtx787TdVz8AOmD6v0ow79Xd6c/view?usp=drive_link"
-      value: "Submit request"   
+      value: "Submit request"
   - translation:
       key: "service-catalog.item.service-request-submitted"
       title: "Success notification after submitting request for service catalog item"
@@ -64,25 +71,120 @@ parts:
       key: "service-catalog.item.service-request-error-title"
       title: "Error notification title after unsuccessful submitting request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1KlkSK4FQiAYn2ERUJwy1tSYfr1gtjW0E/view?usp=drive_link"
-      value: "Service couldn't be submitted"           
+      value: "Service couldn't be submitted"
   - translation:
       key: "service-catalog.item.service-request-error-message"
       title: "Error notification after unsuccessful submitting request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1KlkSK4FQiAYn2ERUJwy1tSYfr1gtjW0E/view?usp=drive_link"
-      value: "Give it a moment and try it again"  
+      value: "Give it a moment and try it again"
+  - translation:
+      key: "service-catalog.item.service-request-refresh-message"
+      title: "Error notification message instructing user to refresh the page after unsuccessful submitting request for service catalog item"
+      screenshot: "https://drive.google.com/file/d/1zo9CJBpN2F5J5qAjRM39Cr4ytheixdcn/view?usp=sharing"
+      value: "Refresh the page and try again in a few seconds."
+  - translation:
+      key: "service-catalog.item.service-request-refresh-link-text"
+      title: "Refresh page link"
+      screenshot: "https://drive.google.com/file/d/1zo9CJBpN2F5J5qAjRM39Cr4ytheixdcn/view?usp=sharing"
+      value: "Refresh the page"
   - translation:
       key: "service-catalog.item.service-request-error.close-label"
       title: "[A11Y] Hidden label for screen readers for close buttons (e.g. in modals and notifications)"
       screenshot: ""
       value: "Close"
+      obsolete: "2025-04-22"
   - translation:
       key: "service-catalog.service-list-error-title"
       title: "Error notification title when there is problem with loading the list of services"
       screenshot: "https://drive.google.com/file/d/1vIeLVSOOV9-vUj-Kh9-ZwyFSC9jN6AFs/view?usp=drive_link"
-      value: "Services couldn't be loaded"           
+      value: "Services couldn't be loaded"
   - translation:
       key: "service-catalog.service-list-error-message"
       title: "Error notification when there is problem with loading the list of services"
       screenshot: "https://drive.google.com/file/d/1vIeLVSOOV9-vUj-Kh9-ZwyFSC9jN6AFs/view?usp=drive_link"
       value: "Give it a moment and try it again"
-      
+  - translation:
+      key: "service-catalog.service-count.zero"
+      title: "Label indicating number of services currently being listed, when there are 0 requests."
+      screenshot: "https://drive.google.com/file/d/1uP3fyDR1vE2Z8lHXiNXaZD7LeTEgLCSw/view?usp=drive_link"
+      value: "{{count}} services"
+  - translation:
+      key: "service-catalog.service-count.one"
+      title: "Label indicating number of services currently being listed, when there is 1 request."
+      screenshot: "https://drive.google.com/file/d/1uP3fyDR1vE2Z8lHXiNXaZD7LeTEgLCSw/view?usp=drive_link"
+      value: "{{count}} service"
+  - translation:
+      key: "service-catalog.service-count.two"
+      title: "Label indicating number of services currently being listed, when there are 2 requests."
+      screenshot: "https://drive.google.com/file/d/1uP3fyDR1vE2Z8lHXiNXaZD7LeTEgLCSw/view?usp=drive_link"
+      value: "{{count}} services"
+  - translation:
+      key: "service-catalog.service-count.few"
+      title: "Label indicating number of services currently being listed, when the few plural form applies."
+      screenshot: "https://drive.google.com/file/d/1uP3fyDR1vE2Z8lHXiNXaZD7LeTEgLCSw/view?usp=drive_link"
+      value: "{{count}} services"
+  - translation:
+      key: "service-catalog.service-count.many"
+      title: "Label indicating number of services currently being listed, when the many plural form applies."
+      screenshot: "https://drive.google.com/file/d/1uP3fyDR1vE2Z8lHXiNXaZD7LeTEgLCSw/view?usp=drive_link"
+      value: "{{count}} services"
+  - translation:
+      key: "service-catalog.service-count.other"
+      title: "Label indicating number of services currently being listed, the default plural form."
+      screenshot: "https://drive.google.com/file/d/1uP3fyDR1vE2Z8lHXiNXaZD7LeTEgLCSw/view?usp=drive_link"
+      value: "{{count}} services"
+  - translation:
+      key: "service-catalog.search-services"
+      title: "Search for services in the Service List"
+      screenshot: "https://drive.google.com/file/d/1JHDB_jxDaL0ozmpUTYIhYMaCm4-4SN27/view?usp=drive_link"
+      value: "Search for services"
+  - translation:
+      key: "service-catalog.clear-search"
+      title: "Clear search button"
+      screenshot: "https://drive.google.com/file/d/11u8u7DOlPvAMZcFlsj_aPU1mPOSzjBxY/view?usp=drive_link"
+      value: "Clear search"
+  - translation:
+      key: "service-catalog.empty-state.search-description"
+      title: "Empty state with search description"
+      screenshot: "https://drive.google.com/file/d/10DiQB3DDf9x13owivlJs9QMNWVXCKdOd/view?usp=drive_link"
+      value: "Enter your keywords in the search field."
+  - translation:
+      key: "service-catalog.item.serial-number-label"
+      title: "Label prefix for serial number shown in lookup field options. Serial number (SN) abbreviation can be translated as per language"
+      screenshot: "https://drive.google.com/file/d/1H4Tsm7YHGdtFnSElJH6ZUIIU7VyySq2S/view?usp=sharing"
+      value: "SN: {{serialNumber}}"
+  - translation:
+      key: "service-catalog.attachments-required-error"
+      title: "Error message for attachments required field validation"
+      screenshot: "https://drive.google.com/file/d/1pzBRSy9JYwExx8v2HsMPbh-aLlKvod57/view?usp=sharing"
+      value: "Upload a file to continue"
+  - translation:
+      key: "service-catalog.asset-type-required-error"
+      title: "Error message for the required field validation of asset type"
+      screenshot: "https://drive.google.com/file/d/1ltxeEIUX0KXNzhjYcXuwXG-ZCG-MEC2z/view?usp=sharing"
+      value: "Select an asset type"
+  - translation:
+      key: "service-catalog.asset-required-error"
+      title: "Error message for the required field validation for asset"
+      screenshot: "https://drive.google.com/file/d/1ltxeEIUX0KXNzhjYcXuwXG-ZCG-MEC2z/view?usp=sharing"
+      value: "Select an asset"
+  - translation:
+      key: "service-catalog-sidebar.collapse-category"
+      title: "[A11Y] Hidden label for screen readers for the collapse category button in the service catalog sidebar"
+      screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=sharing"
+      value: "Collapse"
+  - translation:
+      key: "service-catalog-sidebar.expand-category"
+      title: "[A11Y] Hidden label for screen readers for the expand category button in the service catalog sidebar"
+      screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=sharing"
+      value: "Expand"
+  - translation:
+      key: "service-catalog-sidebar.all-services"
+      title: "Label for the navigation item in the service catalog sidebar that shows all services"
+      screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=share_link"
+      value: "All services"
+  - translation:
+      key: "service-catalog-sidebar.uncategorized"
+      title: "Label for the navigation item in the service catalog sidebar that shows uncategorized services"
+      screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=share_link"
+      value: "Uncategorized"

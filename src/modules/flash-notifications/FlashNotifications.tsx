@@ -1,36 +1,28 @@
-import {
-  Title,
-  Notification,
-  Close,
-  useToast,
-} from "@zendeskgarden/react-notifications";
 import type { ReactElement } from "react";
 import { useEffect } from "react";
-import type { ToastNotification } from "../shared/notifications/ToastNotification";
+import type { ToastNotification } from "../shared";
+import { notify, FLASH_NOTIFICATIONS_KEY } from "../shared";
 
-interface FlashNotificationsProps {
-  notifications: ToastNotification[];
-  closeLabel: string;
-}
-
-export function FlashNotifications({
-  notifications,
-  closeLabel,
-}: FlashNotificationsProps): ReactElement {
-  const { addToast } = useToast();
-
+export function FlashNotifications(): ReactElement {
   useEffect(() => {
-    for (const notification of notifications) {
-      const { type, title, message } = notification;
-      addToast(({ close }) => (
-        <Notification type={type}>
-          {title && <Title>{title}</Title>}
-          {message}
-          <Close aria-label={closeLabel} onClick={close} />
-        </Notification>
-      ));
+    const raw = window.sessionStorage.getItem(FLASH_NOTIFICATIONS_KEY);
+    if (!raw) {
+      return;
     }
-  }, [addToast, notifications, closeLabel]);
+
+    try {
+      const parsedNotifications = JSON.parse(
+        raw || "[]"
+      ) as ToastNotification[];
+      for (const notification of parsedNotifications) {
+        notify(notification);
+      }
+
+      window.sessionStorage.removeItem(FLASH_NOTIFICATIONS_KEY);
+    } catch (e) {
+      console.error("Cannot parse flash notifications", e);
+    }
+  }, []);
 
   return <></>;
 }

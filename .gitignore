@@ -4,3 +4,13 @@ node_modules/
 .a11yrc.json
 *.DS_Store
 coverage/
+.idea/
+
+# yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

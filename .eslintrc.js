@@ -2,6 +2,12 @@
 
 const PASCAL_CASE = "*([A-Z]*([a-z0-9]))";
 const CAMEL_CASE = "+([a-z])*([a-z0-9])*([A-Z]*([a-z0-9]))";
+const SHARED_MODULES = [
+  "./shared",
+  "./test",
+  "./ticket-fields",
+  "./flash-notifications",
+];
 
 module.exports = {
   extends: [
@@ -57,6 +63,33 @@ module.exports = {
             Trans: { allowStrings: true },
           },
         },
+      },
+    ],
+    "import/no-restricted-paths": [
+      "error",
+      {
+        zones: [
+          {
+            target: "./src/modules/approval-requests",
+            from: "./src/modules",
+            except: ["./approval-requests", ...SHARED_MODULES],
+          },
+          {
+            target: "./src/modules/new-request-form",
+            from: "./src/modules",
+            except: ["./new-request-form", ...SHARED_MODULES],
+          },
+          {
+            target: "./src/modules/service-catalog",
+            from: "./src/modules",
+            except: ["./service-catalog", ...SHARED_MODULES],
+          },
+          ...SHARED_MODULES.map((module) => ({
+            target: `./src/modules/${module.slice(2)}`,
+            from: "./src/modules",
+            except: SHARED_MODULES,
+          })),
+        ],
       },
     ],
   },

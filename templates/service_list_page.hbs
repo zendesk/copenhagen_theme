@@ -1,0 +1,23 @@
+<section class="section hero service-catalog-hero">
+</section>
+<div class="container">
+  <div class="sub-nav">
+    {{breadcrumbs}}
+  </div>
+
+  <h1>{{t 'services'}}</h1>
+
+  <div id="service-catalog-main-content" class="service-catalog-main-content"></div>
+</div>
+
+<script type="module">
+  import { renderServiceCatalogPage } from "service-catalog"; 
+
+  const settings = {{json settings}};
+  const helpCenterPath = {{json (page_path 'help_center')}};
+  const main = document.getElementById("service-catalog-main-content");
+
+  const baseLocale = {{json help_center.base_locale}};
+
+  renderServiceCatalogPage(main, settings, baseLocale, helpCenterPath);
+</script>

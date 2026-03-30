@@ -1,11 +1,7 @@
-import type { Field } from "../../data-types";
 import {
   FauxInput,
   Field as GardenField,
-  Hint,
   Input,
-  Label,
-  Message,
 } from "@zendeskgarden/react-forms";
 import styled from "styled-components";
 import { Tag } from "@zendeskgarden/react-tags";
@@ -16,9 +12,10 @@ import { Tooltip } from "@zendeskgarden/react-tooltips";
 import AlertWarningStroke from "@zendeskgarden/svg-icons/src/12/alert-warning-stroke.svg";
 import { useTranslation } from "react-i18next";
 import { Span } from "@zendeskgarden/react-typography";
+import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
 
 interface CcFieldProps {
-  field: Field;
+  field: TicketFieldObject;
 }
 
 const EMAIL_REGEX =
@@ -39,7 +36,7 @@ const Container = styled(FauxInput)`
 
 const GridCell = styled.span`
   display: inline-block;
-  margin-right: ${(props) => props.theme.space.sm};
+  margin-inline-end: ${(props) => props.theme.space.sm};
 `;
 
 const StyledTag = styled(Tag)`
@@ -141,8 +138,8 @@ export function CcField({ field }: CcFieldProps): JSX.Element {
 
   return (
     <GardenField>
-      <Label>{label}</Label>
-      {description && <Hint>{description}</Hint>}
+      <GardenField.Label>{label}</GardenField.Label>
+      {description && <GardenField.Hint>{description}</GardenField.Hint>}
       <Container {...getContainerProps()}>
         {tags.length > 0 && (
           <span
@@ -186,7 +183,9 @@ export function CcField({ field }: CcFieldProps): JSX.Element {
           <StyledInput ref={inputRef} isBare {...getInputProps()} />
         </InputWrapper>
       </Container>
-      {error && <Message validation="error">{error}</Message>}
+      {error && (
+        <GardenField.Message validation="error">{error}</GardenField.Message>
+      )}
       {tags.map((email) => (
         <input key={email} type="hidden" name={name} value={email} />
       ))}

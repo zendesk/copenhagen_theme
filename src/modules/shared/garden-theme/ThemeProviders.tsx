@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import type { IGardenTheme } from "@zendeskgarden/react-theming";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
-import { ToastProvider } from "@zendeskgarden/react-notifications";
 import { ModalContainerProvider } from "./modal-container/ModalContainerProvider";
 
 export function ThemeProviders({
@@ -13,10 +12,7 @@ export function ThemeProviders({
 }) {
   return (
     <ThemeProvider theme={theme}>
-      {/* ToastProvider z-index needs to be higher than the z-index of the admin navbar */}
-      <ToastProvider zIndex={2147483647}>
-        <ModalContainerProvider>{children}</ModalContainerProvider>
-      </ToastProvider>
+      <ModalContainerProvider>{children}</ModalContainerProvider>
     </ThemeProvider>
   );
 }

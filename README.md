@@ -76,6 +76,10 @@ List of templates in the theme:
 * Section page
 * Subscriptions page
 * User profile page
+* Service list page (optional, service catalog specific)
+* Service page (optional, service catalog specific)
+* Approval request list page (optional, approvals specific)
+* Approval request page (optional, approvals specific)
 
 You can add up to 10 optional templates for:
  * Article page
@@ -178,13 +182,14 @@ function MyComponent() {
 Providing the default English value in the code makes it possible to use it as a fallback value when strings are not yet translated and to extract the strings from the source code to the translations YAML file.
 
 #### Plurals 
-When using [plurals](https://www.i18next.com/translation-function/plurals), you need to provide default values for at least the `one` and `other` forms. You can also pass a default value for the `zero` form, if you want it to be different from the `other` form. This can be done by passing the default values in the [options](https://www.i18next.com/translation-function/essentials#overview-options) of the `t` function.
+When using [plurals](https://www.i18next.com/translation-function/plurals), you need to provide default values for the `zero`, `one`, `two`, `few`, `many` and `other` forms, as some languages have specific forms for all of these. These forms should be provided in the translations YAML file, such as [this one](./src/modules/shared/translations/en-us.yml). This can be done manually or by running the extract script after adding the string in the code (check [String extraction](#string-extraction) for more details).
+
+To use the plural forms in the code, you need to provide at least a default value for `one` and a generic value for the other plural forms. It is also possible to pass a default value for `zero`, if you want it to be different from the generic value. This can be done by passing the default values in the [options](https://www.i18next.com/translation-function/essentials#overview-options) of the `t` function.
 
 ```ts
-t("my-key", {
+t("my-key", "{{count}} items", {
   "defaultValue.zero": "No items",
   "defaultValue.one": "{{count}} item",
-  "defaultValue.other": "{{count}} items",
   count: ...
 })
 ```
@@ -223,7 +228,7 @@ The script wraps the `i18next-parser` tool and converts its output to the YAML f
 
 #### Updating translation files
 
-You can run `yarn i18n:update-translations` to download the latest translations files for all the modules. The script downloads all the locale files for each module, fetching the package name from the `src/modules/[MODULE]/translations/en-us.yml` file, and saves them in the `src/modules/[MODULE]/translations/locales` folder.
+You can run `yarn i18n:update-translations` to download the latest translations files for all the modules. The script downloads all the locale files for each module, fetching the package name from the `src/modules/[MODULE]/translations/en-us.yml` file, and saves them in the `src/modules/[MODULE]/translations/locales` folder. As for the extraction script, you can pass the `--module` flag to update translations for a specific module.
 
 All files are then bundled by the build process in a single `[MODULE]-translations-bundle.js` file.
 
