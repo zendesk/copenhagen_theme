@@ -110,10 +110,19 @@ Pin the Node.js version to match `engines.node` in `package.json`, or default to
 
 ---
 
-## Step 3 — Apply ARPA-H Standard Extensions
+## Step 3 — Apply ARPA-H Standard Extensions and Features
 
-These extensions are **always included** in every ARPA-H devcontainer, regardless of stack.
+These extensions and devcontainer features are **always included** in every ARPA-H devcontainer, regardless of stack.
 Merge them with any stack-specific extensions discovered in Step 1.
+
+### Always-on: devcontainer features
+```jsonc
+"features": {
+  "ghcr.io/devcontainers/features/github-cli:1": {}  // gh CLI — required for all ARPA-H repos
+}
+```
+
+The `gh` CLI must always be present. Every ARPA-H repo uses GitHub for issues, PRs, and Actions; `gh` is the standard tool for interacting with the GitHub API from the terminal and from scripts. Add any stack-specific features alongside this entry rather than replacing it.
 
 ### Always-on: GitHub & Collaboration
 ```
