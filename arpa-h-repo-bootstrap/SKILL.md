@@ -104,12 +104,6 @@ For every linter present in the consumer repo, add `.github/skills` to its ignor
 exclude = [".github/skills"]
 ```
 
-**Flake8 / Python** — add to `.flake8` or `[flake8]` in `setup.cfg`:
-```ini
-[flake8]
-exclude = .github/skills
-```
-
 **Go (staticcheck / golangci-lint)** — add to `.golangci.yml`:
 ```yaml
 issues:
@@ -120,8 +114,6 @@ run:
   skip-dirs:
     - .github/skills
 ```
-
-**Rust (Clippy)** — Clippy only lints crate source files and will not touch `.github/skills` by default. No ignore configuration is needed, but if a custom workspace linting script globs broadly, exclude the path explicitly there.
 
 **Terraform (tflint / terraform fmt)** — add to `.tflint.hcl`:
 ```hcl
