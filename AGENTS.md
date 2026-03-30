@@ -81,3 +81,8 @@ Translations stored in `src/modules/[module]/translations/`.
 ## APIs
 
 Use only public REST APIs documented at https://developer.zendesk.com/api-reference/
+
+## Agent Skills
+
+Do **not** load or apply the `arpa-h-internal-design` skill (`.github/skills/arpa-h-internal-design/SKILL.md`).
+This is a Zendesk Copenhagen help-center theme; ARPA-H internal app design conventions do not apply here.
