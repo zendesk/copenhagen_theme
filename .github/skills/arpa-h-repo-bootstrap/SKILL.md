@@ -77,6 +77,35 @@ Examine the repo before writing anything. Check for the following signals:
 | `.editorconfig` | `editorconfig.editorconfig` |
 | `.markdownlint*` / `markdownlint` in package.json / any `*.md` files present | `davidanson.vscode-markdownlint` |
 
+### Linter ignore rules — always exclude `.github/skills`
+
+The `.github/skills/` subtree is maintained exclusively in `ARPA-H/skills`. Consumer repos must not lint those files — doing so produces noise, generates spurious lint-fix commits, and can trigger unwanted PRs back to this repo.
+
+For every linter present in the consumer repo, add `.github/skills` to its ignore configuration:
+
+**Markdown** — add or create `.markdownlintignore`:
+```
+.github/skills
+```
+
+**ESLint** — add to `.eslintignore`, or to the `ignores` array in `eslint.config.*`:
+```
+.github/skills
+```
+
+**Prettier** — add to `.prettierignore`:
+```
+.github/skills
+```
+
+**Ruff / Python** — add to `[tool.ruff]` in `pyproject.toml`:
+```toml
+[tool.ruff]
+exclude = [".github/skills"]
+```
+
+Apply all ignore rules that are relevant to the linters detected in the repo. If an ignore file does not yet exist, create it. If one already exists, append the entry rather than replacing the file.
+
 ### Language-Specific Extensions
 | Language/Framework | Extensions |
 |-------------------|-----------|
