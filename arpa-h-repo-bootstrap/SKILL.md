@@ -1,6 +1,6 @@
 ---
 name: arpa-h-repo-bootstrap
-description: "ARPA-H repo bootstrap — devcontainer, .gitignore, GitHub Actions security, and environment file setup. Use when creating or updating any ARPA-H internal repo's foundational configuration. Examines the repo's language stack, frameworks, tooling, and services, then generates a complete devcontainer config with ARPA-H standard extensions, validates .gitignore coverage, enforces GitHub Actions SHA pinning, and wires up environment file conventions. Use for: new repo setup, adding Codespaces support, updating devcontainer to match current stack, adding missing extensions, auditing repo hygiene."
+description: "ARPA-H repo bootstrap — devcontainer, .gitignore, GitHub Actions security, environment file setup, PLAN.md, and AGENTS.md. Use when creating or updating any ARPA-H internal repo's foundational configuration. Examines the repo's language stack, frameworks, tooling, and services, then generates a complete devcontainer config with ARPA-H standard extensions, validates .gitignore coverage, enforces GitHub Actions SHA pinning, wires up environment file conventions, maintains a PLAN.md tracking stack decisions and work items, and produces an AGENTS.md with repo and developer-specific agent directives. Use for: new repo setup, adding Codespaces support, updating devcontainer to match current stack, adding missing extensions, auditing repo hygiene."
 ---
 
 # ARPA-H GitHub Repo Setup
@@ -16,14 +16,14 @@ combining two things:
 
 ## Step 1 — Discover the Stack
 
-Check for an existing `PLAN.md` at the repo root first — it may already capture stack decisions and open questions, use it to seed and refine discovery rather than starting from scratch.
+Check for an existing `PLAN.md` at the repo root first — it may already capture stack decisions and open questions (see [PLAN.md requirements](#planmd--living-project-record) below). Use it to seed and refine discovery rather than starting from scratch.
 
 Examine the repo before writing anything. Check for the following signals:
 
 ### Language / Runtime
 | Signal | Conclusion |
 |--------|-----------|
-| `package.json` at root | Node.js project — read `engines.node` for version, default to LTS (20) |
+| `package.json` at root | Node.js project — read `engines.node` for version, default to LTS (24) |
 | `requirements.txt` / `pyproject.toml` / `*.py` | Python project |
 | `go.mod` | Go project |
 | `Cargo.toml` | Rust project |
@@ -344,6 +344,148 @@ updates:
     schedule:
       interval: weekly
 ```
+
+---
+
+## PLAN.md — Living Project Record
+
+Every ARPA-H repo must have a `PLAN.md` at the root. It is the single source of truth for what the project is, what decisions have been made, and what work remains. It is not a one-time artifact — it must be updated throughout the full lifecycle of GitHub Copilot agent use: Ask, Plan, and Agent phases.
+
+### What belongs in PLAN.md
+
+**Stack & architecture** — Record confirmed decisions as they are made:
+- Language runtime and version
+- Frontend framework and build tool
+- Backend / API approach
+- Data stores and emulators
+- Azure services in use
+- Infrastructure approach (Bicep, Terraform, none)
+- Auth model
+
+**Core requirements** — A concise description of what the app must do, captured during the Ask phase and refined as understanding improves. Include constraints (performance targets, compliance requirements, user scale) and non-goals (what is explicitly out of scope).
+
+**Open questions** — Unresolved decisions or unknowns that block or shape the build. Each should be a checkbox item. Mark it checked when resolved and record the decision inline.
+
+**Work items** — Every meaningful task identified during planning or discovered during implementation must be tracked as a checkbox. Mark items checked immediately upon completion. Never delete items — checked items form the record of what was built and why.
+
+**Evolution notes** — When a decision changes (e.g. switching from REST to GraphQL, adopting a new library), record the change and the reason rather than silently overwriting the old entry. This preserves context for future agents and developers.
+
+### Checkbox discipline
+
+Use GitHub-flavored Markdown task lists throughout:
+
+```markdown
+- [x] Completed item
+- [ ] Outstanding item
+```
+
+Open questions, work items, and any other tracked items must all use this format. The checkbox state must reflect reality at all times — do not leave items unchecked after they are done, and do not pre-check items that have not been completed.
+
+### Minimal PLAN.md template
+
+When creating a new `PLAN.md`, use this structure as a starting point and fill in what is known:
+
+```markdown
+# Plan — <repo name>
+
+## What This Is
+<One-paragraph description of the app's purpose and users.>
+
+## Stack
+- **Runtime:** Node.js 20 / Python 3.12 / etc.
+- **Frontend:** SvelteKit + Vite
+- **API:** Azure Functions (TypeScript)
+- **Storage:** Azure Cosmos DB (NoSQL), Azurite locally
+- **Auth:** Azure AD (MSAL)
+- **Infra:** Bicep
+
+## Requirements
+- [ ] <Core requirement 1>
+- [ ] <Core requirement 2>
+
+## Open Questions
+- [ ] <Unresolved decision or unknown>
+
+## Work Items
+### Setup
+- [ ] Scaffold devcontainer
+- [ ] Configure .gitignore
+- [ ] Add environment file examples
+
+### <Feature area>
+- [ ] <Task>
+```
+
+Add sections and subsections as the project grows. Do not constrain structure — the template is a floor, not a ceiling.
+
+---
+
+## AGENTS.md — Repo and Developer Directives
+
+Every ARPA-H repo must have an `AGENTS.md` at the root. It gives GitHub Copilot (and any other agent) the repo-specific and developer-specific context it needs to act correctly without being re-explained each session.
+
+### What belongs in AGENTS.md
+
+**Repo identity** — One or two sentences on what this repo is, enough for an agent arriving cold to orient itself.
+
+**Coding conventions** — Rules the agent must follow when writing or editing code in this repo:
+- Naming conventions (file names, variable naming style, export patterns)
+- Module/folder structure and where new files go
+- Import ordering or aliasing rules
+- Any patterns that are explicitly banned (e.g. "never use `any` in TypeScript", "always use the repository pattern for data access")
+
+**Key files and entry points** — Enumeration of the most important files an agent should read before making changes: config files, shared utilities, type definitions, API route registrations, etc.
+
+**Testing conventions** — How tests are organized, what framework is used, where tests live relative to source, what the test run command is, and whether tests must pass before a PR can merge.
+
+**Agent behavior rules** — Directives that shape how the agent operates:
+- What the agent should always do before making changes (e.g. read `PLAN.md`, check for existing utilities)
+- What the agent must never do (e.g. generate mock data that resembles real PII, skip `PLAN.md` updates when completing work items)
+- When the agent should stop and ask rather than proceed (e.g. any change to auth flow, any schema migration)
+- PR and commit message format requirements
+
+**Developer-specific notes** — Any context that is specific to this team or codebase that would not be obvious from reading the code: known technical debt the agent should work around, third-party integrations with unusual behavior, deployment environment quirks.
+
+### AGENTS.md rules
+
+- Keep it terse. Agents read this every session — verbose prose wastes context. Use bullet points and short declarative sentences.
+- Update it whenever a new convention is established or an existing one changes. Stale directives mislead agents.
+- Do not duplicate content already in `PLAN.md`. Cross-reference instead: "See `PLAN.md` for current stack decisions."
+- `AGENTS.md` must **not** be gitignored — it is shared team configuration.
+
+### Minimal AGENTS.md template
+
+```markdown
+# Agent Directives — <repo name>
+
+## What This Repo Is
+<One to two sentences.>
+
+## Before Making Any Change
+- Read `PLAN.md` to understand current stack and open work items.
+- Check for existing utilities in `src/lib/` before creating new ones.
+
+## Coding Conventions
+- All new files use TypeScript with strict mode enabled.
+- Components go in `src/lib/components/`, named in PascalCase.
+- Server-only code goes in `src/lib/server/` and must never be imported from client modules.
+- No `any`. Use `unknown` and narrow explicitly.
+
+## Testing
+- Tests live alongside source in `__tests__/` directories.
+- Run with `npm test`. All tests must pass before opening a PR.
+
+## Never Do
+- Commit secrets or connection strings.
+- Skip updating `PLAN.md` checkboxes when completing a work item.
+- Modify the auth flow without explicit user confirmation.
+
+## Commit and PR Format
+- Commits: `<type>(<scope>): <subject>` (Conventional Commits)
+- PR titles follow the same format.
+```
+
+Expand each section to match the actual repo. Remove sections that do not apply.
 
 ---
 
