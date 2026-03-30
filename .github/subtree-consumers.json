@@ -1,0 +1,42 @@
+[
+    {
+        "repo": "ARPA-H/designator",
+        "prefix": ".github/skills",
+        "branch": "main"
+    },
+    {
+        "repo": "ARPA-H/zendesk_copenhagen",
+        "prefix": ".github/skills",
+        "branch": "main"
+    },
+    {
+        "repo": "ARPA-H/ledger",
+        "prefix": ".github/skills",
+        "branch": "main"
+    },
+    {
+        "repo": "ARPA-H/jira-copilot",
+        "prefix": ".github/skills",
+        "branch": "main"
+    },
+    {
+        "repo": "ARPA-H/perimeter",
+        "prefix": ".github/skills",
+        "branch": "main"
+    },
+    {
+        "repo": "ARPA-H/exempter",
+        "prefix": ".github/skills",
+        "branch": "main"
+    },
+    {
+        "repo": "ARPA-H/slack",
+        "prefix": ".github/skills",
+        "branch": "main"
+    },
+    {
+        "repo": "ARPA-H/zendesk_devices",
+        "prefix": ".github/skills",
+        "branch": "main"
+    }
+]

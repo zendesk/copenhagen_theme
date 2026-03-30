@@ -1,0 +1,13 @@
+# Local env files — never commit secrets or personal config
+.env
+.env.local
+.env.*.local
+
+# VS Code personal settings — devcontainer.json is shared; settings.json is not
+.vscode/settings.json
+.vscode/launch.json
+.vscode/*.code-workspace
+
+# OS noise
+.DS_Store
+Thumbs.db
