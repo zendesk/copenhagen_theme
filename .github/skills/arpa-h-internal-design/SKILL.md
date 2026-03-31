@@ -8,7 +8,7 @@ description: "ARPA-H Internal App Design System. Use when building, extending, o
 ## Design Philosophy
 
 - **Monochrome dark base.** The UI uses a single grayscale ramp as its foundation. Color is used only for semantic signaling — never for decoration.
-- **Inverted header.** The top navigation bar is intentionally white on a dark-page background, creating a crisp containment boundary.
+- **Inverted header.** The top title bar is intentionally white on a dark-page background, creating a crisp containment boundary. It uses the full window width. `assets/arpa-h.svg` is used as the logo within the size of the header.
 - **Sparse accent use.** Hot pink and teal/lavender are reserved for status meaning. Overusing them dilutes their signal.
 - **Accessibility first.** All interactive elements must meet WCAG AA contrast on their background. Disabled states use the muted foreground token.
 
