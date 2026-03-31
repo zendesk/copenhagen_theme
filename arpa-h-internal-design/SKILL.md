@@ -37,7 +37,7 @@ Define these as CSS custom properties (or equivalent) in every app. The starter 
 ### Semantic Accent Colors
 
 | Token name                    | Hex       | Meaning — use ONLY for this        |
-|-------------------------------|-----------|-------------------------------------|
+|-------------------------------|-----------|------------------------------------|
 | `--color-status-warning`      | `#FD4497` | Collision / duplicate / warning    |
 | `--color-status-warning-soft` | `#FCC1DC` | Secondary warning text             |
 | `--color-active`              | `#ADECE5` | Active record, active filter state |
@@ -58,8 +58,8 @@ Define these as CSS custom properties (or equivalent) in every app. The starter 
 
 ```
 ┌─────────────────────────────────────────────────┐
-│  HEADER — 48px tall, white bg (#FFFFFF)          │
-│  [Brand icon + "App Name"]     [User area]       │
+│  HEADER — 48px tall, white bg (#FFFFFF)         │
+│  [Brand icon + "App Name"]     [User area]      │
 ├─────────────────────────────────────────────────┤
 │                                                 │
 │  MAIN — flex: 1, max-width 1200px, centered     │
@@ -205,6 +205,6 @@ Described functionally — implement with whatever component primitives your fra
 |--------------|-------------------------------------------------------------|
 | Hover        | Lighten background one step up the neutral scale            |
 | Pressed      | Darken background one step down the neutral scale           |
-| Focus        | Visible focus ring — `2px solid #FFFFFF` with 2px offset   |
+| Focus        | Visible focus ring — `2px solid #FFFFFF` with 2px offset    |
 | Disabled     | Text: `--color-muted-3`; no hover or pressed response       |
 | Selected     | Border/stroke becomes `#FFFFFF`; text becomes white         |
