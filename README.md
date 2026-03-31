@@ -6,7 +6,7 @@ Agentic coding skills for GitHub Copilot, maintained centrally by ARPA-H and dis
 
 ## How It Works
 
-```
+```text
 ┌──────────────────────────────────────────────────────────────┐
 │  ARPA-H/skills (this repo)                                   │
 │  Source of truth. Changes here deploy immediately to all     │
@@ -33,9 +33,21 @@ When a developer edits skill files inside a consumer repo (under the subtree pre
 
 ---
 
-## Subscribing a Repo via `git subtree`
+## Subscribing a Repo
 
-### Initial setup (one time per consumer repo)
+### Path 1 — Using GitHub Copilot (recommended)
+
+Open GitHub Copilot in this repo and ask it to add your consumer repo. For example:
+
+> "Add `ARPA-H/your-repo` as a skills consumer with prefix `.github/skills` on branch `main`."
+
+Copilot will add the entry to [`.github/subtree-consumers.json`](.github/subtree-consumers.json), and walk you through the remaining steps (copying the sync-back workflow, adding the secret, and running the initial `git subtree add` in your consumer repo).
+
+---
+
+### Path 2 — By hand using `git subtree`
+
+#### Initial setup (one time per consumer repo)
 
 ```bash
 # From the root of the consumer repo
@@ -48,7 +60,7 @@ git subtree add \
 
 This copies the full contents of `skills` into `.github/skills/` and records the relationship in your commit history. Adjust the prefix to wherever you want the skills to live.
 
-### Register the consumer
+#### Register the consumer
 
 Add an entry to [`.github/subtree-consumers.json`](.github/subtree-consumers.json) in this repo:
 
@@ -62,11 +74,11 @@ Add an entry to [`.github/subtree-consumers.json`](.github/subtree-consumers.jso
 ]
 ```
 
-### Copy the sync-back workflow
+#### Copy the sync-back workflow
 
 Copy [`.github/workflows/consumer-sync-back.template.yml`](.github/workflows/consumer-sync-back.template.yml) into `.github/workflows/` of the consumer repo. Update the `paths` filter and `PREFIX` variable if your subtree prefix differs from `.github/skills`.
 
-### Add the secret
+#### Add the secret
 
 Add a secret named `SKILLS_SUBTREE_SYNC_TOKEN` to **both** repos — the ARPA-H GitHub App `insert name here` installation token with `contents: write` and `pull_requests: write` on all repos involved.
 
