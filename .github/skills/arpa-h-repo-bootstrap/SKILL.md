@@ -16,7 +16,7 @@ combining two things:
 
 ## Step 1 — Discover the Stack
 
-Check for an existing `PLAN.md` at the repo root first — it may already capture stack decisions and open questions (see [PLAN.md requirements](#planmd--living-project-record) below). Use it to seed and refine discovery rather than starting from scratch.
+Check for an existing `PLAN.md` at the repo root first — it may already capture stack decisions and open questions (see the PLAN.md requirements section below). Use it to seed and refine discovery rather than starting from scratch.
 
 Examine the repo before writing anything. Check for the following signals:
 
@@ -519,8 +519,9 @@ Every ARPA-H repo must have an `AGENTS.md` at the root. It gives GitHub Copilot 
 ### AGENTS.md rules
 
 - Keep it terse. Agents read this every session — verbose prose wastes context. Use bullet points and short declarative sentences.
+- **Only put things in AGENTS.md that an agent must internalize on every invocation** — non-negotiable guardrails, commit/PR format, and repo-specific standards with no better home.
+- **Do not duplicate content already in `README.md` or `PLAN.md`.** Replace any duplicated section with a precise pointer (e.g. "See `README.md` → 'Subscribing a Repo' for subscription steps."). Agents will follow the pointer when the topic is relevant rather than loading the detail on every session.
 - Update it whenever a new convention is established or an existing one changes. Stale directives mislead agents.
-- Do not duplicate content already in `PLAN.md`. Cross-reference instead: "See `PLAN.md` for current stack decisions."
 - `AGENTS.md` must **not** be gitignored — it is shared team configuration.
 
 ### Minimal AGENTS.md template
