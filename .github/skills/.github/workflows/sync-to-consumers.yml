@@ -85,21 +85,23 @@ jobs:
           BEFORE=$(git rev-parse HEAD)
 
           if [ -d "${PREFIX}" ]; then
-            # Prefix already exists — update the subtree
+            # Prefix already exists — update the subtree.
+            # --message is intentionally omitted: git subtree appends a git-subtree-split:
+            # trailer to the merge commit that it uses as the merge base on the next pull.
+            # Passing --message replaces the entire message and strips that trailer, causing
+            # spurious conflicts on every subsequent sync.
             git subtree pull \
               --prefix="${PREFIX}" \
               "${SKILLS_URL}" \
               main \
-              --squash \
-              --message "chore: sync skills from ${{ github.repository }}@${{ github.sha }}"
+              --squash
           else
-            # First time — add the subtree
+            # First time — add the subtree.
             git subtree add \
               --prefix="${PREFIX}" \
               "${SKILLS_URL}" \
               main \
-              --squash \
-              --message "chore: add skills subtree from ${{ github.repository }}@${{ github.sha }}"
+              --squash
           fi
 
           AFTER=$(git rev-parse HEAD)
