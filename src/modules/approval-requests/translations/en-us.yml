@@ -107,6 +107,16 @@ parts:
       screenshot: "https://drive.google.com/file/d/1xpM_3Rt3hCD8aE-U7mEbL0Sh5dsC0ScN/view?usp=drive_link"
       value: "Decided"
   - translation:
+      key: "approval-requests.request.approval-request-details.via-slack"
+      title: "Text indicating the decision was made via Slack. {{date}} is the formatted decision date (e.g. 'January 15, 2025')."
+      screenshot: "https://drive.google.com/file/d/1kccCR9hkZJ1XBWPieOmF7-D5IfdjnUuF/view?usp=sharing"
+      value: "{{date}} via Slack"
+  - translation:
+      key: "approval-requests.request.approval-request-details.via-zendesk"
+      title: "Text indicating the decision was made via Zendesk. {{date}} is the formatted decision date (e.g. 'January 15, 2025')."
+      screenshot: "https://drive.google.com/file/d/18QElSP6O0TQQeHrTSMSVmmWee-P8OScu/view?usp=sharing"
+      value: "{{date}} via Zendesk"
+  - translation:
       key: "approval-requests.request.approval-request-details.withdrawn-on"
       title: "Label for the withdrawn date on an approval request - Subject: 'approval request'"
       screenshot: "https://drive.google.com/file/d/1hkgy-71WFkLQnZ0PmEHFaWhfnuguiUmv/view?usp=drive_link"

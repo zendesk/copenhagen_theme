@@ -9,3 +9,8 @@ export const APPROVAL_REQUEST_STATES = {
   REJECTED: "rejected",
   WITHDRAWN: "withdrawn",
 } as const;
+
+export const APPROVAL_DECISION_ORIGINATIONS = {
+  SLACK: "SLACK_ORIGINATION",
+  UI: "UI_ORIGINATION",
+} as const;

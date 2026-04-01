@@ -1,3 +1,10 @@
+# [4.34.0](https://github.com/zendesk/copenhagen_theme/compare/v4.33.5...v4.34.0) (2026-03-30)
+
+
+### Features
+
+* help center change to display approval request decision origin ([58c3e15](https://github.com/zendesk/copenhagen_theme/commit/58c3e1501948231613142f562431db031c9d5c21))
+
 ## [4.33.5](https://github.com/zendesk/copenhagen_theme/compare/v4.33.4...v4.33.5) (2026-03-27)
 
 
