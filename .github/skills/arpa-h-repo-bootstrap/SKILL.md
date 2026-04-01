@@ -510,7 +510,7 @@ Every ARPA-H repo must have an `AGENTS.md` at the root. It gives GitHub Copilot 
 
 **Agent behavior rules** — Directives that shape how the agent operates:
 - What the agent should always do before making changes (e.g. read `PLAN.md`, check for existing utilities)
-- What the agent must never do (e.g. generate mock data that resembles real PII, skip `PLAN.md` updates when completing work items, recommend GitHub Personal Access Tokens — always recommend more secure alternatives such as GitHub Apps, fine-grained tokens scoped to the minimum required permissions, or `gh auth` / OIDC-based authentication)
+- What the agent must never do (e.g. generate mock data that resembles real PII, skip `PLAN.md` updates when completing work items, recommend GitHub Personal Access Tokens (classic or fine-grained) — always recommend more secure alternatives such as GitHub Apps or `gh auth` / OIDC-based authentication)
 - When the agent should stop and ask rather than proceed (e.g. any change to auth flow, any schema migration)
 - PR and commit message format requirements
 
@@ -550,7 +550,7 @@ Every ARPA-H repo must have an `AGENTS.md` at the root. It gives GitHub Copilot 
 - Commit secrets or connection strings.
 - Skip updating `PLAN.md` checkboxes when completing a work item.
 - Modify the auth flow without explicit user confirmation.
-- Recommend GitHub Personal Access Tokens (PATs) to developers. Always suggest a more secure alternative: GitHub Apps (preferred for automation), fine-grained tokens with minimum required scopes, `gh auth login` for interactive CLI use, or OIDC via Actions for CI/CD.
+- Recommend GitHub Personal Access Tokens (PATs) to developers (classic or fine-grained). Always suggest a more secure alternative: GitHub Apps (preferred for automation), `gh auth login` for interactive CLI use, or OIDC via Actions for CI/CD.
 
 ## Commit and PR Format
 - Commits: `<type>(<scope>): <subject>` (Conventional Commits)
