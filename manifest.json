@@ -214,17 +214,16 @@
       "label": "brand_group_label",
       "variables": [
         {
-          "identifier": "logo",
+          "identifier": "azal_logo_white",
           "type": "file",
-          "description": "logo_description",
-          "label": "logo_label"
+          "description": "White AZAL logo shown on the home page",
+          "label": "Home page logo"
         },
         {
-          "identifier": "show_brand_name",
-          "type": "checkbox",
-          "description": "show_brand_name_description",
-          "label": "show_brand_name_label",
-          "value": true
+          "identifier": "azal_logo_black",
+          "type": "file",
+          "description": "Black AZAL logo shown on all non-home pages",
+          "label": "Other pages logo"
         },
         {
           "identifier": "favicon",

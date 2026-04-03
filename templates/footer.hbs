@@ -1,25 +1,135 @@
 <footer class="footer">
   <div class="footer-inner">
-    {{#link 'help_center'}}{{help_center.name}}{{/link}}
+    <div class="footer-brand-strip" aria-label="Partner brands">
+      <a class="footer-brand footer-brand--commission" href="https://www.caa.gov.az/" rel="noreferrer noopener" target="_blank">
+        <span class="footer-brand-commission-mark">
+          <img src="{{asset 'partner-commission-mark.svg'}}" alt="" aria-hidden="true" />
+        </span>
+        <span class="footer-brand-commission-copy">
+          <img src="{{asset 'partner-commission-text.svg'}}" alt="Azerbaijan Republic State Agency for Civil Aviation" />
+          <img src="{{asset 'partner-commission-wordmark.svg'}}" alt="" aria-hidden="true" />
+        </span>
+      </a>
 
-    <div class="footer-language-selector">
-      {{#if alternative_locales}}
-        <div class="dropdown language-selector">
-          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-            {{current_locale.name}}
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-          </button>
-          <span class="dropdown-menu dropdown-menu-end" role="menu">
-            {{#each alternative_locales}}
-              <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
-                {{name}}
-              </a>
-            {{/each}}
+      <a class="footer-brand footer-brand--dxp" href="https://portal.azal.az/" rel="noreferrer noopener" target="_blank">
+        <img src="{{asset 'partner-dxp-logo.svg'}}" alt="Dovlet Xidmetleri Portali" />
+      </a>
+
+      <a class="footer-brand footer-brand--miles" href="https://www.azal.az/en/azal-miles/" rel="noreferrer noopener" target="_blank">
+        <span class="footer-brand-miles-copy">
+          <img src="{{asset 'partner-azal-miles-wordmark.svg'}}" alt="AZALMiles" />
+          <img src="{{asset 'partner-azal-miles-mark.svg'}}" alt="" aria-hidden="true" />
+        </span>
+      </a>
+
+      <a class="footer-brand footer-brand--azerbaijan" href="https://azerbaijan.travel/" rel="noreferrer noopener" target="_blank">
+        <img src="{{asset 'partner-azerbaijan-logo.svg'}}" alt="azerbaijan" />
+      </a>
+    </div>
+
+    <div class="footer-links-grid">
+      <section class="footer-column" aria-labelledby="footer-info-title">
+        <h2 class="footer-title" id="footer-info-title">Информация</h2>
+        <ul class="footer-links" role="list">
+          <li><a class="footer-link" href="https://www.azal.az/ru/information/baggage/" rel="noreferrer noopener" target="_blank">Информация по багажу на рейсах AZAL</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/information/fare-rules/" rel="noreferrer noopener" target="_blank">Правила тарифов</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/information/traveling-with-children-and-pregnant/" rel="noreferrer noopener" target="_blank">Путешествие с детьми и беременными</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/information/travelling-with-pets/" rel="noreferrer noopener" target="_blank">Путешествие с животными</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/information/unwanted-passengers/" rel="noreferrer noopener" target="_blank">Нежелательные пассажиры</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/information/overbooking/" rel="noreferrer noopener" target="_blank">Overbooking</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/information/prohibitions-and-restrictions/" rel="noreferrer noopener" target="_blank">Опасные предметы</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/information/carriage-rules/" rel="noreferrer noopener" target="_blank">Правила перевозок</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/information/pricing-policy/" rel="noreferrer noopener" target="_blank">Ценовая политика</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-column" aria-labelledby="footer-miles-title">
+        <h2 class="footer-title" id="footer-miles-title">AZAL Miles</h2>
+        <ul class="footer-links" role="list">
+          <li><a class="footer-link" href="https://www.azal.az/ru/azal-miles/" rel="noreferrer noopener" target="_blank">О мильной программе</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/azal-miles/" rel="noreferrer noopener" target="_blank">Как набрать и потратить баллы</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/azal-miles/become-a-member/" rel="noreferrer noopener" target="_blank">Стать участником</a></li>
+          <li><a class="footer-link" href="https://azalmiles.azal.az/ru/signin" rel="noreferrer noopener" target="_blank">Войти в профиль</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/azal-miles/rules-and-regulations/" rel="noreferrer noopener" target="_blank">Правила и условия</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/azal-miles/discovery/faq/" rel="noreferrer noopener" target="_blank">Частые вопросы</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-column" aria-labelledby="footer-airline-title">
+        <h2 class="footer-title" id="footer-airline-title">Авиакомпания AZAL</h2>
+        <ul class="footer-links" role="list">
+          <li><a class="footer-link" href="https://www.azal.az/ru/airline/about-us/" rel="noreferrer noopener" target="_blank">О нас</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/airline/supervisory-board/" rel="noreferrer noopener" target="_blank">Наблюдательный совет AZAL</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/news/" rel="noreferrer noopener" target="_blank">Последние новости</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/airline/fleet/" rel="noreferrer noopener" target="_blank">Наш флот</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/airline/career/" rel="noreferrer noopener" target="_blank">Карьера</a></li>
+          <li>{{#link 'help_center' class='footer-link'}}Справочный центр{{/link}}</li>
+          <li>{{#link 'new_request' class='footer-link'}}Напишите нам{{/link}}</li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/airline/mobile-applications/" rel="noreferrer noopener" target="_blank">Мобильное приложение</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-column" aria-labelledby="footer-corporate-title">
+        <h2 class="footer-title" id="footer-corporate-title">Корпоративная информация</h2>
+        <ul class="footer-links" role="list">
+          <li><a class="footer-link" href="https://www.azal.az/ru/corporate-information/group-transportations/" rel="noreferrer noopener" target="_blank">Групповые перевозки</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/corporate-information/sales-offices/" rel="noreferrer noopener" target="_blank">Офисы продаж</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/corporate-information/office-and-representation-offices/" rel="noreferrer noopener" target="_blank">Офисы и представительства</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/corporate-information/visiting-days/" rel="noreferrer noopener" target="_blank">Приемные дни</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/corporate-information/press-room/" rel="noreferrer noopener" target="_blank">Пресс-центр</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/corporate-information/subdivisions/" rel="noreferrer noopener" target="_blank">Подразделения</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/corporate-information/financial-reports/" rel="noreferrer noopener" target="_blank">Финансовая отчетность</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/corporate-information/information-for-agents/" rel="noreferrer noopener" target="_blank">Информация для агентов</a></li>
+          <li><a class="footer-link" href="https://www.azal.az/ru/corporate-information/against-human-trafficking/" rel="noreferrer noopener" target="_blank">Против торговли людьми</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="footer-meta">
+      <div class="footer-social" aria-label="AZAL social media">
+        <a class="footer-social-link" href="https://www.facebook.com/AzerbaijanAirlines/" rel="noreferrer noopener" target="_blank" aria-label="AZAL on Facebook">
+          <img src="{{asset 'social-facebook.svg'}}" alt="" aria-hidden="true" />
+        </a>
+        <a class="footer-social-link" href="https://x.com/azalairlines" rel="noreferrer noopener" target="_blank" aria-label="AZAL on X">
+          <img src="{{asset 'social-twitter.svg'}}" alt="" aria-hidden="true" />
+        </a>
+        <a class="footer-social-link" href="https://az.linkedin.com/company/azal-azerbaijan-airlines" rel="noreferrer noopener" target="_blank" aria-label="AZAL on LinkedIn">
+          <img src="{{asset 'social-linkedin.svg'}}" alt="" aria-hidden="true" />
+        </a>
+        <a class="footer-social-link" href="https://t.me/azerbaijanairlines" rel="noreferrer noopener" target="_blank" aria-label="AZAL on Telegram">
+          <img src="{{asset 'social-telegram.svg'}}" alt="" aria-hidden="true" />
+        </a>
+        <a class="footer-social-link" href="https://www.youtube.com/results?search_query=Azerbaijan+Airlines+AZAL" rel="noreferrer noopener" target="_blank" aria-label="AZAL on YouTube">
+          <img src="{{asset 'social-youtube.svg'}}" alt="" aria-hidden="true" />
+        </a>
+        <a class="footer-social-link" href="https://www.instagram.com/azerbaijanairlines/" rel="noreferrer noopener" target="_blank" aria-label="AZAL on Instagram">
+          <img src="{{asset 'social-instagram.svg'}}" alt="" aria-hidden="true" />
+        </a>
+        <a class="footer-social-link" href="https://www.tiktok.com/@azerbaijanairlines" rel="noreferrer noopener" target="_blank" aria-label="AZAL on TikTok">
+          <img src="{{asset 'social-tiktok.svg'}}" alt="" aria-hidden="true" />
+        </a>
+      </div>
+
+      <div class="footer-store-links" aria-label="Download the AZAL mobile app">
+        <a class="footer-store-link" href="https://www.azal.az/ru/airline/mobile-applications/" rel="noreferrer noopener" target="_blank" aria-label="Get it on Google Play">
+          <img src="{{asset 'google-play-badge.svg'}}" alt="Get it on Google Play" />
+        </a>
+        <a class="footer-store-link footer-store-link--app-store" href="https://www.azal.az/ru/airline/mobile-applications/" rel="noreferrer noopener" target="_blank" aria-label="Download on the App Store">
+          <img class="footer-app-store-outline" src="{{asset 'app-store-outline.svg'}}" alt="" aria-hidden="true" />
+          <span class="footer-app-store-content">
+            <img class="footer-app-store-apple" src="{{asset 'app-store-apple.svg'}}" alt="" aria-hidden="true" />
+            <span class="footer-app-store-copy">
+              <img class="footer-app-store-caption" src="{{asset 'app-store-caption.svg'}}" alt="" aria-hidden="true" />
+              <img class="footer-app-store-wordmark" src="{{asset 'app-store-wordmark.svg'}}" alt="" aria-hidden="true" />
+            </span>
           </span>
-        </div>
-      {{/if}}
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <span class="footer-legal-copy">© 2022 Azerbaijan Airlines - Все права защищены</span>
+      <a class="footer-link footer-link--legal" href="https://portal.azal.az/ru/privacy-policy/" rel="noreferrer noopener" target="_blank">Политика конфиденциальности</a>
     </div>
   </div>
 </footer>

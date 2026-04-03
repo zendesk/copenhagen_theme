@@ -1,28 +1,320 @@
 /***** Footer *****/
 .footer {
-  border-top: 1px solid $low-contrast-border-color;
-  margin-top: 60px;
-  padding: 30px 0;
+  $footer-muted-color: #afdae4;
 
-  a {
-    color: $secondary-text-color;
-  }
+  background: #01357e;
+  border-top: 0;
+  color: #fff;
+  margin-top: 72px;
+  padding: 6px 0 20px;
 
   &-inner {
     @include max-width-container;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
   }
 
-  &-language-selector button {
-    color: $secondary-text-color;
-    display: inline-block;
+  a,
+  a:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &-brand-strip {
+    border-bottom: 1px solid rgba(184, 194, 215, 0.2);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    min-height: 112px;
+  }
+
+  &-brand {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 112px;
+    padding: 18px 20px;
+    transition: transform 0.2s ease;
+
+    &:hover,
+    &:focus {
+      transform: translateY(-1px);
+    }
+
+    &:not(:first-child) {
+      border-left: 1px solid rgba(184, 194, 215, 0.2);
+    }
+
+    img {
+      display: block;
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
+  &-brand--commission {
+    justify-content: flex-start;
+    padding-left: 32px;
+  }
+
+  &-brand-commission-mark {
+    flex: 0 0 28px;
+    width: 28px;
+  }
+
+  &-brand-commission-copy {
+    display: flex;
+    flex: 0 1 191px;
+    margin-left: 16px;
+    min-width: 0;
+  }
+
+  &-brand-commission-copy img:first-child {
+    flex: 0 0 150px;
+    width: 150px;
+  }
+
+  &-brand-commission-copy img:last-child {
+    flex: 0 0 31px;
+    margin-left: 10px;
+    width: 31px;
+  }
+
+  &-brand--dxp img {
+    width: 106px;
+  }
+
+  &-brand-miles-copy {
+    align-items: flex-start;
+    display: flex;
+    width: 119px;
+  }
+
+  &-brand-miles-copy img:first-child {
+    width: 114px;
+  }
+
+  &-brand-miles-copy img:last-child {
+    margin-left: -22px;
+    margin-top: 1px;
+    width: 27px;
+  }
+
+  &-brand--azerbaijan img {
+    width: 182px;
+  }
+
+  &-links-grid {
+    display: grid;
+    gap: 72px;
+    grid-template-columns: 271px 212px 204px 252px;
+    justify-content: space-between;
+    padding: 40px 0 32px;
+  }
+
+  &-title {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 0 0 24px;
+  }
+
+  &-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &-link {
+    color: $footer-muted-color;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    transition: color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+
+  &-meta {
+    align-items: center;
+    border-bottom: 1px solid rgba(184, 194, 215, 0.2);
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 24px;
+  }
+
+  &-social {
+    display: flex;
+    gap: 8px;
+  }
+
+  &-social-link {
+    border-radius: 999px;
+    display: inline-flex;
+    flex: 0 0 40px;
+    height: 40px;
+    overflow: hidden;
+    width: 40px;
+
+    img {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &-store-links {
+    display: flex;
+    gap: 8px;
+  }
+
+  &-store-link {
+    display: inline-flex;
+
+    img {
+      display: block;
+      height: auto;
+      width: 135px;
+    }
+  }
+
+  &-store-link--app-store {
+    height: 40px;
+    position: relative;
+    width: 135px;
+  }
+
+  &-app-store-outline {
+    inset: 0;
+    position: absolute;
+  }
+
+  &-app-store-content {
+    align-items: center;
+    display: flex;
+    inset: 0;
+    padding: 8px 18px 8px 16px;
+    position: absolute;
+  }
+
+  &-app-store-apple {
+    flex: 0 0 18px;
+    width: 18px;
+  }
+
+  &-app-store-copy {
+    display: flex;
+    flex-direction: column;
+    margin-left: 11px;
+  }
+
+  &-app-store-caption {
+    width: 69px;
+  }
+
+  &-app-store-wordmark {
+    margin-top: 3px;
+    width: 75px;
+  }
+
+  &-legal {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
+  }
+
+  &-legal-copy {
+    color: $footer-muted-color;
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  &-link--legal {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+  }
+}
+
+.footer-column {
+  min-width: 0;
+}
+
+@include tablet {
+  .footer {
+    &-brand-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    &-brand:nth-child(3) {
+      border-left: 0;
+    }
+
+    &-links-grid {
+      gap: 36px 28px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      padding: 32px 0 28px;
+    }
+  }
+}
+
+@include mobile {
+  .footer {
+    margin-top: 56px;
+    padding: 0 0 20px;
+
+    &-brand-strip {
+      grid-template-columns: 1fr;
+    }
+
+    &-brand {
+      justify-content: flex-start;
+      min-height: auto;
+      padding: 22px 20px;
+
+      &:not(:first-child) {
+        border-left: 0;
+        border-top: 1px solid rgba(184, 194, 215, 0.2);
+      }
+    }
+
+    &-brand--commission {
+      padding-left: 20px;
+    }
+
+    &-links-grid {
+      gap: 32px;
+      grid-template-columns: 1fr;
+      padding: 28px 0 24px;
+    }
+
+    &-meta,
+    &-legal {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &-social {
+      flex-wrap: wrap;
+    }
+
+    &-store-links {
+      flex-direction: column;
+      width: 100%;
+    }
   }
 }
 
 .powered-by-zendesk {
   a,
   a:visited {
-    color: $secondary-text-color;
+    color: inherit;
   }
 }

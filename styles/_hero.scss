@@ -1,7 +1,8 @@
 /***** Hero component *****/
 .hero {
   background-image: url($homepage_background_image);
-  background-position: center;
+  background-position: center top;
+  background-repeat: no-repeat;
   background-size: cover;
   height: 300px;
   padding: 0 20px;
@@ -12,5 +13,31 @@
     @include vertical-align;
     max-width: 610px;
     margin: 0 auto;
+  }
+}
+
+.home-page-hero {
+  position: relative;
+  height: 400px;
+  background-position: center -224px;
+  background-size: calc(100% + 72px) auto;
+  margin-top: -$header-height;
+  padding-top: $header-height;
+
+  &::before {
+    background: #00000033;
+    content: "";
+    inset: 0;
+    position: absolute;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  @include mobile {
+    background-position: center top;
+    background-size: cover;
   }
 }
