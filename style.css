@@ -778,26 +778,26 @@ ul {
 
 .header-language-selector .dropdown-toggle {
   align-items: center;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid #d5e1ea;
-  border-radius: 999px;
-  box-shadow: 0 10px 24px rgba(8, 46, 106, 0.08);
-  color: $link_color;
+  background: transparent;
+  border: 1px solid #afdae4;
+  border-radius: 12px;
+  box-shadow: none;
+  color: #01357e;
   display: inline-flex;
+  font-size: 16px;
   gap: 8px;
-  min-height: 40px;
-  padding: 7px 14px 7px 10px;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  min-height: auto;
+  padding: 12px 16px 12px 12px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 .header-language-selector .dropdown-toggle:hover, .header-language-selector .dropdown-toggle:focus {
-  background: #fff;
-  border-color: #b9cfe0;
-  box-shadow: 0 12px 30px rgba(8, 46, 106, 0.14);
-  color: $hover_link_color;
+  background: rgba(175, 218, 228, 0.1);
+  color: #01357e;
   text-decoration: none;
 }
 .header-language-selector .language-selector-icon {
-  flex: 0 0 auto;
+  display: block;
+  flex: 0 0 24px;
 }
 .header-language-selector .language-selector-label {
   font-size: 14px;
@@ -825,6 +825,45 @@ ul {
   color: #2f3941;
 }
 
+.header-language-selector .language-selector-icon--light,
+.nav-wrapper-desktop .header-account-icon--light {
+  display: none;
+}
+
+.home-page-template .header-language-selector .language-selector-icon--light,
+.home-page-template .nav-wrapper-desktop .header-account-icon--light {
+  display: block;
+}
+.home-page-template .header-language-selector .language-selector-icon--dark,
+.home-page-template .nav-wrapper-desktop .header-account-icon--dark {
+  display: none;
+}
+
+.nav-wrapper-desktop .header-account-btn {
+  align-items: center;
+  background: transparent;
+  border: 1px solid #afdae4;
+  border-radius: 12px;
+  color: #01357e;
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: 8px;
+  padding: 12px 20px 12px 16px;
+  white-space: nowrap;
+}
+.nav-wrapper-desktop .header-account-btn:hover, .nav-wrapper-desktop .header-account-btn:focus {
+  background: rgba(175, 218, 228, 0.1);
+  color: #01357e;
+  text-decoration: none;
+}
+
+.header-account-icon {
+  display: block;
+  flex: 0 0 24px;
+  height: 24px;
+  width: 24px;
+}
+
 .home-page-template .nav-wrapper-desktop .dropdown-menu [role=menuitem] {
   color: #2f3941;
 }
@@ -835,17 +874,32 @@ ul {
 }
 
 .home-page-template .header-language-selector .dropdown-toggle {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(238, 238, 238, 0.05);
+  border: none;
+  border-radius: 12px;
   box-shadow: none;
-  color: #fff;
+  color: #eee;
+  font-size: 16px;
+  min-height: auto;
+  padding: 12px 16px 12px 12px;
 }
 
 .home-page-template .header-language-selector .dropdown-toggle:hover,
 .home-page-template .header-language-selector .dropdown-toggle:focus {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.36);
-  box-shadow: 0 14px 32px rgba(4, 33, 72, 0.22);
+  background: rgba(238, 238, 238, 0.1);
+  border: none;
+  box-shadow: none;
+  color: #fff;
+}
+
+.home-page-template .nav-wrapper-desktop .header-account-btn {
+  background: rgba(238, 238, 238, 0.05);
+  border: none;
+  color: #eee;
+}
+.home-page-template .nav-wrapper-desktop .header-account-btn:hover, .home-page-template .nav-wrapper-desktop .header-account-btn:focus {
+  background: rgba(238, 238, 238, 0.1);
+  color: #fff;
 }
 
 .nav-wrapper-mobile {
@@ -1333,13 +1387,14 @@ ul {
 }
 
 .search {
-  border-color: #848F99;
-  border-radius: 30px;
+  border-color: #C1C1C3;
+  border-radius: 8px;
   border-style: solid;
   border-width: 1px;
   display: flex;
   position: relative;
   transition: border 0.12s ease-in-out;
+  z-index: 0;
 }
 .search:focus-within {
   border-color: $brand_color;
@@ -1347,7 +1402,7 @@ ul {
 .search input[type=search],
 .search .clear-button {
   background-color: #fff;
-  border-radius: 30px;
+  border-radius: 8px;
   border: none;
 }
 .search-full input[type=search], .search-full .clear-button {
@@ -1473,6 +1528,7 @@ ul {
 
 .home-page-hero {
   position: relative;
+  z-index: 0;
   height: 400px;
   background-position: center -224px;
   background-size: calc(100% + 72px) auto;

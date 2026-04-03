@@ -22,22 +22,13 @@
         <li>{{link 'community'}}</li>
         <li>{{link 'service_catalog'}}</li>
         <li>{{link 'new_request' class='submit-a-request'}}</li>
-        {{#unless signed_in}}
-          <li>
-            {{#link "sign_in" class="sign-in" role="link"}}
-              {{t 'sign_in'}}
-            {{/link}}
-          </li>
-        {{/unless}}
       </ul>
     </nav>
     {{#if alternative_locales}}
       <div class="header-language-selector dropdown">
         <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="{{current_locale.name}}">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" focusable="false" viewBox="0 0 24 24" class="language-selector-icon" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M3 12h18M12 3a13 13 0 010 18M12 3a13 13 0 000 18"/>
-          </svg>
+          <img class="language-selector-icon language-selector-icon--dark" src="{{asset 'icon-globe-blue.svg'}}" alt="" aria-hidden="true" width="24" height="24" />
+          <img class="language-selector-icon language-selector-icon--light" src="{{asset 'icon-globe.svg'}}" alt="" aria-hidden="true" width="24" height="24" />
           <span class="language-selector-label">{{current_locale.name}}</span>
         </button>
         <span class="dropdown-menu dropdown-menu-end" role="menu">
@@ -49,6 +40,13 @@
         </span>
       </div>
     {{/if}}
+    {{#unless signed_in}}
+      {{#link "sign_in" class="sign-in header-account-btn" role="link"}}
+        <img class="header-account-icon header-account-icon--dark" src="{{asset 'icon-account-blue.svg'}}" alt="" aria-hidden="true" width="24" height="24" />
+        <img class="header-account-icon header-account-icon--light" src="{{asset 'icon-account.svg'}}" alt="" aria-hidden="true" width="24" height="24" />
+        <span>{{t 'sign_in'}}</span>
+      {{/link}}
+    {{/unless}}
     {{#if signed_in}}
       <div class="user-info dropdown">
         <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
@@ -78,10 +76,8 @@
     {{#if alternative_locales}}
       <div class="header-language-selector header-language-selector-mobile dropdown">
         <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="{{current_locale.name}}">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" focusable="false" viewBox="0 0 24 24" class="language-selector-icon" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M3 12h18M12 3a13 13 0 010 18M12 3a13 13 0 000 18"/>
-          </svg>
+          <img class="language-selector-icon language-selector-icon--dark" src="{{asset 'icon-globe-blue.svg'}}" alt="" aria-hidden="true" width="24" height="24" />
+          <img class="language-selector-icon language-selector-icon--light" src="{{asset 'icon-globe.svg'}}" alt="" aria-hidden="true" width="24" height="24" />
           <span class="language-selector-label">{{current_locale.name}}</span>
         </button>
         <span class="dropdown-menu dropdown-menu-end" role="menu">
