@@ -1126,51 +1126,31 @@ ul {
   transform: translateY(-1px);
 }
 .footer-brand:not(:first-child) {
-  border-left: 1px solid rgba(184, 194, 215, 0.2);
+  position: relative;
+}
+.footer-brand:not(:first-child)::before {
+  background: rgba(184, 194, 215, 0.2);
+  content: "";
+  height: 40px;
+  left: 0;
+  position: absolute;
+  top: 36px;
+  width: 1px;
 }
 .footer-brand img {
   display: block;
   height: auto;
   max-width: 100%;
+  opacity: 0.7;
 }
-.footer-brand--commission {
-  justify-content: flex-start;
-  padding-left: 32px;
-}
-.footer-brand-commission-mark {
-  flex: 0 0 28px;
-  width: 28px;
-}
-.footer-brand-commission-copy {
-  display: flex;
-  flex: 0 1 191px;
-  margin-left: 16px;
-  min-width: 0;
-}
-.footer-brand-commission-copy img:first-child {
-  flex: 0 0 150px;
-  width: 150px;
-}
-.footer-brand-commission-copy img:last-child {
-  flex: 0 0 31px;
-  margin-left: 10px;
-  width: 31px;
+.footer-brand--commission img {
+  width: 190px;
 }
 .footer-brand--dxp img {
   width: 106px;
 }
-.footer-brand-miles-copy {
-  align-items: flex-start;
-  display: flex;
+.footer-brand--miles img {
   width: 119px;
-}
-.footer-brand-miles-copy img:first-child {
-  width: 114px;
-}
-.footer-brand-miles-copy img:last-child {
-  margin-left: -22px;
-  margin-top: 1px;
-  width: 27px;
 }
 .footer-brand--azerbaijan img {
   width: 182px;
@@ -1197,7 +1177,7 @@ ul {
   padding: 0;
 }
 .footer-link {
-  color: #afdae4;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -1243,46 +1223,14 @@ ul {
   height: auto;
   width: 135px;
 }
-.footer-store-link--app-store {
-  height: 40px;
-  position: relative;
-  width: 135px;
-}
-.footer-app-store-outline {
-  inset: 0;
-  position: absolute;
-}
-.footer-app-store-content {
-  align-items: center;
-  display: flex;
-  inset: 0;
-  padding: 8px 18px 8px 16px;
-  position: absolute;
-}
-.footer-app-store-apple {
-  flex: 0 0 18px;
-  width: 18px;
-}
-.footer-app-store-copy {
-  display: flex;
-  flex-direction: column;
-  margin-left: 11px;
-}
-.footer-app-store-caption {
-  width: 69px;
-}
-.footer-app-store-wordmark {
-  margin-top: 3px;
-  width: 75px;
-}
 .footer-legal {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding-top: 16px;
+  padding-top: 24px;
 }
 .footer-legal-copy {
-  color: #afdae4;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 13px;
   line-height: 20px;
 }
@@ -1295,7 +1243,7 @@ ul {
   min-width: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .footer-brand-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1322,8 +1270,10 @@ ul {
     padding: 22px 20px;
   }
   .footer-brand:not(:first-child) {
-    border-left: 0;
     border-top: 1px solid rgba(184, 194, 215, 0.2);
+  }
+  .footer-brand:not(:first-child)::before {
+    display: none;
   }
   .footer-brand--commission {
     padding-left: 20px;

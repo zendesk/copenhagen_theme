@@ -1,101 +1,1710 @@
-import{r as e,u as t,j as s,b as n,M as r,a2 as a,s as i,g as o,h as l,O as u,B as c,X as d,y as h,v as p,C as j,A as m,E as f,N as b,n as g,a3 as x,a4 as v,a5 as q,a6 as S,a7 as y,I as w,a8 as _,a9 as C,aa as k,R as F,U as E,V as z,Q as $,W as I,q as T,S as D,ab as V,ac as O,ad as N,T as R,ae as L,af as M,ag as P,ah as A,ai as B,aj as H,ak as U,al as X,am as G,an as Y,Y as W,Z as Q,_ as Z,a0 as J,a1 as K,ao as ee}from"shared";function te(t,s,n){const[r,a]=e.useState(t);return e.useEffect((()=>{!function(){const e=new URLSearchParams(window.location.search),t=n(e);a((e=>({...e,...t})))}()}),[]),{params:r,push:function(e){const t={...r,...e},n=s(t);a((e=>({...e,...t}))),window.history.pushState({},"","?"+n.toString())}}}function se({query:i,onSearchSubmit:o}){const{t:l}=t(),u=e.useRef(null);return s.jsx("form",{onSubmit:e=>{e.preventDefault(),null!==u.current&&o(u.current.value)},children:s.jsxs(n,{children:[s.jsx(n.Label,{hidden:!0,children:l("guide-requests-app.searchField.Label","Search")}),s.jsx(r,{start:s.jsx(a,{"aria-hidden":"true"}),ref:u,type:"search",defaultValue:i})]})})}const ne=i(o)`
+import { r as reactExports, u as useTranslation, j as jsxRuntimeExports, b as Field, M as MediaInput, a2 as SvgSearchStroke, s as styled, g as Field$1, h as Combobox, O as Option, B as Paragraph, X as Alert, y as useModalContainer, v as Modal, C as Checkbox, A as Anchor, E as Button, N as Dots, n as notify, a3 as Ne, a4 as subDays, a5 as formatISO, a6 as subMonths, a7 as subYears, I as Input, a8 as DatePickerRange, a9 as Grid, aa as format, R as Header$1, U as Body$2, V as Footer$2, Q as FooterItem$2, W as Close$2, q as Tag, S as Span, ab as upperFirst, ac as isToday, ad as isYesterday, T as Tooltip, ae as Ellipsis, af as Table, ag as Item, ah as Menu, ai as ItemGroup, aj as Separator, ak as SvgChevronDownStroke, al as Tabs, am as Skeleton, an as CursorPagination, Y as initI18next, Z as loadTranslations, _ as reactDomExports, a0 as ThemeProviders, a1 as createTheme, ao as ErrorBoundary } from 'shared';
+
+function useParams(initialParams, serialize, deserialize) {
+    const [params, setParams] = reactExports.useState(initialParams);
+    function push(newParams) {
+        const mergedParams = { ...params, ...newParams };
+        const searchParams = serialize(mergedParams);
+        setParams((prevParams) => ({ ...prevParams, ...mergedParams }));
+        window.history.pushState({}, "", "?" + searchParams.toString());
+    }
+    function readParams() {
+        const searchParams = new URLSearchParams(window.location.search);
+        const newParams = deserialize(searchParams);
+        setParams((prevParams) => ({ ...prevParams, ...newParams }));
+    }
+    reactExports.useEffect(() => {
+        readParams();
+    }, []);
+    return {
+        params,
+        push,
+    };
+}
+
+function RequestsSearch({ query, onSearchSubmit, }) {
+    const { t } = useTranslation();
+    const searchInputRef = reactExports.useRef(null);
+    const onSearchChange = (event) => {
+        event.preventDefault();
+        if (searchInputRef.current !== null) {
+            onSearchSubmit(searchInputRef.current.value);
+        }
+    };
+    return (jsxRuntimeExports.jsx("form", { onSubmit: onSearchChange, children: jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Field.Label, { hidden: true, children: t("guide-requests-app.searchField.Label", "Search") }), jsxRuntimeExports.jsx(MediaInput, { start: jsxRuntimeExports.jsx(SvgSearchStroke, { "aria-hidden": "true" }), ref: searchInputRef, type: "search", defaultValue: query })] }) }));
+}
+
+const StyledField$1 = styled(Field$1) `
   width: 200px;
-`;function re({organizations:n,currentOrganizationId:r,onOrganizationSelected:a}){const{t:i}=t(),[c,d]=e.useState(n),[h,p]=e.useState((()=>{const e=n.find((e=>e.id===r));return e?.name??""})),j=e.useCallback((e=>{const{inputValue:t,selectionValue:s}=e;if(void 0!==t)if(p(t),""===t)d(n);else{const e=n.filter((e=>e.name.trim().toLowerCase().includes(t.trim().toLowerCase())));d(e)}if(null!=s){const e=Array.isArray(s)?s[0]:s;"string"==typeof e&&a(Number(e))}}),[n,a]);return s.jsxs(ne,{children:[s.jsx(o.Label,{children:i("guide-requests-app.organization","Organization")}),s.jsx(l,{isAutocomplete:!0,selectionValue:String(r),inputValue:h,"data-test-id":"organizations-menu",onChange:j,children:0===c.length?s.jsx(u,{isDisabled:!0,label:i("guide-requests-app.filters-modal.no-matches-found","No matches found"),value:""}):c.map((e=>s.jsx(u,{label:e.name,value:String(e.id),"data-test-id":`organization-${e.id}`},e.id)))})]})}const ae=20,ie=10,oe=i(n)`
-  padding-bottom: ${e=>e.theme.space.xs};
-`,le=i(c)`
-  padding-bottom: ${e=>e.theme.space.sm};
-`,ue=i(d)`
-  margin-bottom: ${e=>e.theme.space.sm};
-`;function ce(r){const{t:a}=t(),{organizations:i,user:o,onClose:l}=r,[u,c]=e.useState(ae),[x,v]=e.useState([]),[q,S]=e.useState(!1),y=h(),w=async()=>{const e=x.map((e=>({...e,isError:!1})));if(!e.some((e=>e.subscribed!==e.isChecked)))return void l();S(!0);const t=e.filter((e=>e.subscribed!==e.isChecked)).map((async e=>{let t;try{if(t=e.subscribed?await fetch(`/api/v2/organization_subscriptions/${e.subscriptionId}.json`,{method:"DELETE",headers:{"X-CSRF-Token":o.authenticity_token}}):await fetch("/api/v2/organization_subscriptions.json",{body:JSON.stringify({organization_subscription:{user_id:o.id,organization_id:e.organizationId}}),method:"POST",headers:{"X-CSRF-Token":o.authenticity_token,"Content-Type":"application/json"}}),!t.ok)throw Error(t.statusText);e.subscribed=!e.subscribed,e.isError=!1}catch(t){e.isError=!0}finally{e.isChecked=e.subscribed}}));await Promise.all(t),v(e),S(!1),e.some((e=>e.isError))||(g({type:"success",message:a("guide-requests-app.organizationSubscriptionUpdated","Organization subscription updated")}),l())};e.useEffect((()=>{(async(e,t)=>{let s=[],n=`/api/v2/users/${t}/organization_subscriptions.json?page[size]=100`,r=!0;for(;r;){const e=await fetch(n);if(!e.ok)throw new Error("Failed to fetch organization subscriptions");const{organization_subscriptions:t,meta:{has_more:a},links:{next:i}}=await e.json();r=a,n=i,s=s.concat(t)}const a={};s.forEach((e=>{a[`${e.organization_id}`]=e})),v(e.map((e=>({organizationId:e.id,name:e.name,subscriptionId:a[`${e.id}`]?.id,subscribed:void 0!==a[`${e.id}`],isError:!1,isChecked:void 0!==a[`${e.id}`]}))))})(i,o.id)}),[]);const _=()=>{v(x.map((e=>({...e,isError:!1}))))};return s.jsxs(p,{onClose:l,appendToNode:y,children:[s.jsx(p.Header,{children:a("guide-requests-app.followOrganization","Follow organization")}),s.jsxs(p.Body,{children:[s.jsx(le,{children:a("guide-requests-app.receiveEmailUpdatesOrganizationsTickets","Receive email updates about tickets within these organizations:")}),x.some((e=>e.isError))&&s.jsxs(ue,{type:"error",children:[s.jsx(d.Title,{children:a("guide-requests-app.organizationSubscriptionCouldNotBeSaved","Organization subscription could not be saved")}),a("guide-requests-app.giveItAMomentAndTryAgain","Give it a moment and try again"),s.jsx(p.Close,{"aria-label":"Close Alert",onClick:e=>{e.preventDefault(),_()}})]}),x.slice(0,u).map((e=>s.jsxs(oe,{children:[s.jsx(j,{"data-test-id":`checkbox_${e.organizationId}`,checked:e.isChecked,onChange:()=>{return t=e.organizationId,void v(x.map((e=>e.organizationId===t?{...e,isChecked:!e.isChecked}:e)));var t},children:s.jsx(n.Label,{children:e.name})}),e.isError&&s.jsx(n.Message,{validation:"error",children:a("guide-requests-app.organizationSubscriptionCouldNotBeSaved","Organization subscription could not be saved")})]},e.organizationId))),i.length>ae&&u<i.length&&s.jsx(m,{onClick:()=>{c(u+ie)},children:a("guide-requests-app.showMore","Show more")})]}),s.jsxs(p.Footer,{children:[s.jsx(p.FooterItem,{children:s.jsx(f,{onClick:l,isBasic:!0,children:a("guide-requests-app.cancel","Cancel")})}),s.jsx(p.FooterItem,{children:s.jsx(f,{isPrimary:!0,onClick:()=>{_(),w()},"data-test-id":"saveOrganizationButton",children:q?s.jsx(b,{size:20,delayMS:0}):a("guide-requests-app.save","Save")})})]}),s.jsx(p.Close,{"aria-label":a("guide-requests-app.closeModal","Close modal"),onClick:l})]})}function de({organizations:n,user:r}){const{t:a}=t(),[i,o]=e.useState(!1);return s.jsxs(s.Fragment,{children:[s.jsx(f,{onClick:()=>{o(!0)},"data-test-id":"followOrganizationButton",children:a("guide-requests-app.followOrganization","Follow organization")}),i&&s.jsx(ce,{organizations:n,user:r,onClose:()=>o(!1)})]})}const he=768,pe={mobile:`(max-width: ${he}px)`,desktop:`(min-width: ${he+1}px)`},je=e=>x`
-      @media screen and ${pe.mobile} {
-        ${x(e)}
+`;
+function OrganizationsDropdown({ organizations, currentOrganizationId, onOrganizationSelected, }) {
+    const { t } = useTranslation();
+    const [filteredOrganizations, setFilteredOrganizations] = reactExports.useState(organizations);
+    const [inputValue, setInputValue] = reactExports.useState(() => {
+        const selectedOrganization = organizations.find((organization) => organization.id === currentOrganizationId);
+        return selectedOrganization?.name ?? "";
+    });
+    const handleChange = reactExports.useCallback((changes) => {
+        const { inputValue, selectionValue } = changes;
+        if (inputValue !== undefined) {
+            setInputValue(inputValue);
+            if (inputValue === "") {
+                setFilteredOrganizations(organizations);
+            }
+            else {
+                const matchedOrganizations = organizations.filter((organization) => {
+                    return organization.name
+                        .trim()
+                        .toLowerCase()
+                        .includes(inputValue.trim().toLowerCase());
+                });
+                setFilteredOrganizations(matchedOrganizations);
+            }
+        }
+        if (selectionValue !== undefined && selectionValue !== null) {
+            // Handle both string and string[] types for selectionValue
+            const value = Array.isArray(selectionValue)
+                ? selectionValue[0]
+                : selectionValue;
+            if (typeof value === "string") {
+                onOrganizationSelected(Number(value));
+            }
+        }
+    }, [organizations, onOrganizationSelected]);
+    return (jsxRuntimeExports.jsxs(StyledField$1, { children: [jsxRuntimeExports.jsx(Field$1.Label, { children: t("guide-requests-app.organization", "Organization") }), jsxRuntimeExports.jsx(Combobox, { isAutocomplete: true, selectionValue: String(currentOrganizationId), inputValue: inputValue, "data-test-id": "organizations-menu", onChange: handleChange, children: filteredOrganizations.length === 0 ? (jsxRuntimeExports.jsx(Option, { isDisabled: true, label: t("guide-requests-app.filters-modal.no-matches-found", "No matches found"), value: "" })) : (filteredOrganizations.map((organization) => (jsxRuntimeExports.jsx(Option, { label: organization.name, value: String(organization.id), "data-test-id": `organization-${organization.id}` }, organization.id)))) })] }));
+}
+
+const DEFAULT_SHOWING_AMOUNT = 20;
+const SHOWING_AMOUNT_INCREMENT = 10;
+const StyledField = styled(Field) `
+  padding-bottom: ${(p) => p.theme.space.xs};
+`;
+const StyledParagraph = styled(Paragraph) `
+  padding-bottom: ${(p) => p.theme.space.sm};
+`;
+const StyledAlert = styled(Alert) `
+  margin-bottom: ${(p) => p.theme.space.sm};
+`;
+function FollowOrganizationsModal(props) {
+    const { t } = useTranslation();
+    const { organizations, user, onClose } = props;
+    const [amountShowing, setAmountShowing] = reactExports.useState(DEFAULT_SHOWING_AMOUNT);
+    const [subscriptions, setSubscriptions] = reactExports.useState([]);
+    const [isUpdating, setIsUpdating] = reactExports.useState(false);
+    const modalContainer = useModalContainer();
+    const onSave = () => {
+        resetFailedState();
+        updateSubscriptions();
+    };
+    const onShowMore = () => {
+        setAmountShowing(amountShowing + SHOWING_AMOUNT_INCREMENT);
+    };
+    const fetchSubscriptions = async (organizations, userId) => {
+        let totalSubscriptions = [];
+        let subscriptionUrl = `/api/v2/users/${userId}/organization_subscriptions.json?page[size]=100`;
+        let hasMore = true;
+        while (hasMore) {
+            const response = await fetch(subscriptionUrl);
+            if (!response.ok) {
+                throw new Error("Failed to fetch organization subscriptions");
+            }
+            const { organization_subscriptions, meta: { has_more }, links: { next }, } = await response.json();
+            hasMore = has_more;
+            subscriptionUrl = next;
+            totalSubscriptions = totalSubscriptions.concat(organization_subscriptions);
+        }
+        const lookUpMap = {};
+        totalSubscriptions.forEach((sub) => {
+            lookUpMap[`${sub.organization_id}`] = sub;
+        });
+        setSubscriptions(organizations.map((o) => ({
+            organizationId: o.id,
+            name: o.name,
+            subscriptionId: lookUpMap[`${o.id}`]?.id,
+            subscribed: lookUpMap[`${o.id}`] !== undefined,
+            isError: false,
+            isChecked: lookUpMap[`${o.id}`] !== undefined,
+        })));
+    };
+    const updateSubscriptions = async () => {
+        const updatedOrganizationSubscriptionState = subscriptions.map((subscription) => ({ ...subscription, isError: false }));
+        if (!updatedOrganizationSubscriptionState.some((oss) => oss.subscribed !== oss.isChecked)) {
+            onClose();
+            return;
+        }
+        setIsUpdating(true);
+        const requests = updatedOrganizationSubscriptionState
+            .filter((oss) => oss.subscribed !== oss.isChecked)
+            .map(async (oss) => {
+            let response;
+            try {
+                if (oss.subscribed) {
+                    response = await fetch(`/api/v2/organization_subscriptions/${oss.subscriptionId}.json`, {
+                        method: "DELETE",
+                        headers: {
+                            "X-CSRF-Token": user.authenticity_token,
+                        },
+                    });
+                }
+                else {
+                    response = await fetch(`/api/v2/organization_subscriptions.json`, {
+                        body: JSON.stringify({
+                            organization_subscription: {
+                                user_id: user.id,
+                                organization_id: oss.organizationId,
+                            },
+                        }),
+                        method: "POST",
+                        headers: {
+                            "X-CSRF-Token": user.authenticity_token,
+                            "Content-Type": "application/json",
+                        },
+                    });
+                }
+                if (response.ok) {
+                    oss.subscribed = !oss.subscribed;
+                    oss.isError = false;
+                }
+                else {
+                    throw Error(response.statusText);
+                }
+            }
+            catch (e) {
+                oss.isError = true;
+            }
+            finally {
+                oss.isChecked = oss.subscribed;
+            }
+        });
+        await Promise.all(requests);
+        setSubscriptions(updatedOrganizationSubscriptionState);
+        setIsUpdating(false);
+        if (!updatedOrganizationSubscriptionState.some((oss) => oss.isError)) {
+            notify({
+                type: "success",
+                message: t("guide-requests-app.organizationSubscriptionUpdated", "Organization subscription updated"),
+            });
+            onClose();
+        }
+    };
+    const subscriptionStateChange = (organizationId) => {
+        setSubscriptions(subscriptions.map((subscription) => subscription.organizationId === organizationId
+            ? { ...subscription, isChecked: !subscription.isChecked }
+            : subscription));
+    };
+    reactExports.useEffect(() => {
+        fetchSubscriptions(organizations, user.id);
+    }, []);
+    const onCloseAlert = (e) => {
+        e.preventDefault();
+        resetFailedState();
+    };
+    const resetFailedState = () => {
+        setSubscriptions(subscriptions.map((subscription) => ({
+            ...subscription,
+            isError: false,
+        })));
+    };
+    return (jsxRuntimeExports.jsxs(Modal, { onClose: onClose, appendToNode: modalContainer, children: [jsxRuntimeExports.jsx(Modal.Header, { children: t("guide-requests-app.followOrganization", "Follow organization") }), jsxRuntimeExports.jsxs(Modal.Body, { children: [jsxRuntimeExports.jsx(StyledParagraph, { children: t("guide-requests-app.receiveEmailUpdatesOrganizationsTickets", "Receive email updates about tickets within these organizations:") }), subscriptions.some((o) => o.isError) && (jsxRuntimeExports.jsxs(StyledAlert, { type: "error", children: [jsxRuntimeExports.jsx(Alert.Title, { children: t("guide-requests-app.organizationSubscriptionCouldNotBeSaved", "Organization subscription could not be saved") }), t("guide-requests-app.giveItAMomentAndTryAgain", "Give it a moment and try again"), jsxRuntimeExports.jsx(Modal.Close, { "aria-label": "Close Alert", onClick: onCloseAlert })] })), subscriptions.slice(0, amountShowing).map((o) => (jsxRuntimeExports.jsxs(StyledField, { children: [jsxRuntimeExports.jsx(Checkbox, { "data-test-id": `checkbox_${o.organizationId}`, checked: o.isChecked, onChange: () => subscriptionStateChange(o.organizationId), children: jsxRuntimeExports.jsx(Field.Label, { children: o.name }) }), o.isError && (jsxRuntimeExports.jsx(Field.Message, { validation: "error", children: t("guide-requests-app.organizationSubscriptionCouldNotBeSaved", "Organization subscription could not be saved") }))] }, o.organizationId))), organizations.length > DEFAULT_SHOWING_AMOUNT &&
+                        amountShowing < organizations.length && (jsxRuntimeExports.jsx(Anchor, { onClick: onShowMore, children: t("guide-requests-app.showMore", "Show more") }))] }), jsxRuntimeExports.jsxs(Modal.Footer, { children: [jsxRuntimeExports.jsx(Modal.FooterItem, { children: jsxRuntimeExports.jsx(Button, { onClick: onClose, isBasic: true, children: t("guide-requests-app.cancel", "Cancel") }) }), jsxRuntimeExports.jsx(Modal.FooterItem, { children: jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: onSave, "data-test-id": `saveOrganizationButton`, children: isUpdating ? (jsxRuntimeExports.jsx(Dots, { size: 20, delayMS: 0 })) : (t("guide-requests-app.save", "Save")) }) })] }), jsxRuntimeExports.jsx(Modal.Close, { "aria-label": t("guide-requests-app.closeModal", "Close modal"), onClick: onClose })] }));
+}
+
+function OrganizationsManagement({ organizations, user, }) {
+    const { t } = useTranslation();
+    const [isOpen, setIsOpen] = reactExports.useState(false);
+    const onClick = () => {
+        setIsOpen(true);
+    };
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Button, { onClick: onClick, "data-test-id": `followOrganizationButton`, children: t("guide-requests-app.followOrganization", "Follow organization") }), isOpen && (jsxRuntimeExports.jsx(FollowOrganizationsModal, { organizations: organizations, user: user, onClose: () => setIsOpen(false) }))] }));
+}
+
+const breakpoint = {
+    mobile: 768,
+    desktop: 1024,
+};
+const query = {
+    mobile: `(max-width: ${breakpoint.mobile}px)`,
+    desktop: `(min-width: ${breakpoint.mobile + 1}px)`,
+};
+const media = {
+    mobile: (template) => Ne `
+      @media screen and ${query.mobile} {
+        ${Ne(template)}
       }
-    `,me=e=>x`
-      @media screen and ${pe.desktop} {
-        ${x(e)}
+    `,
+    desktop: (template) => Ne `
+      @media screen and ${query.desktop} {
+        ${Ne(template)}
       }
-    `,fe=i.div`
-  ${me`display: none;`}
-`,be=i.div`
-  ${je`display: none;`}
-`,ge=()=>matchMedia(pe.mobile).matches,xe="my-requests",ve="ccd-requests",qe="org-requests";function Se(e,t){const s=v(e,t);return`>${q(s,{representation:"date"})}`}function ye(e,t){const s=S(e,t);return`>${q(s,{representation:"date"})}`}function we(e){const t=y(e,1);return`>${q(t,{representation:"date"})}`}function _e(){const{t:e}=t();return{filterTypeDropdownI18N:{anyValue:e("guide-requests-app.anyValue","Any value"),range:e("guide-requests-app.range-filter-type","Range"),exactMatch:e("guide-requests-app.exactMatch","Exact match")},statusFilterValuesI18N:{":open :new :hold":e("guide-requests-app.statusOpen","Open"),":pending":e("guide-requests-app.statusPending","Awaiting reply"),":solved :closed":e("guide-requests-app.statusSolved","Solved")},checkboxFilterValuesI18N:{":checked":e("guide-requests-app.checkbox-filter.selected","Selected"),":unchecked":e("guide-requests-app.checkbox-filter.not-selected","Not selected")},createDefaultDateRangeI18N:function(){const t=new Date;return{[Se(t,1)]:e("guide-requests-app.inThePastDay","In the past day"),[Se(t,7)]:e("guide-requests-app.inThePastWeek","In the past week"),[ye(t,1)]:e("guide-requests-app.inThePastMonth","In the past month"),[ye(t,3)]:e("guide-requests-app.inThePast3Months","In the past 3 months"),[ye(t,6)]:e("guide-requests-app.inThePast6Months","In the past 6 months"),[we(t)]:e("guide-requests-app.inThePastYear","In the past year")}}}}function Ce({errors:e,field:r}){const{t:a}=t();return e[r]?s.jsx(n.Message,{validation:"error",validationLabel:a("guide-requests-app.error-icon-label","Error"),children:e[r]}):null}function ke({label:n,onSelect:r,errors:a}){const{t:i}=t(),c=h(),d=e=>null===e?{state:"invalid",errors:{filterValue:i("guide-requests-app.filters-modal.select-value-error","Select a value")}}:{state:"valid",values:[e]},{checkboxFilterValuesI18N:p}=_e(),[j,m]=e.useState(null);e.useEffect((()=>{r(d(null))}),[]);return s.jsxs(o,{children:[s.jsx(o.Label,{children:i("guide-requests-app.filters-modal.select-field-value","Select {{field_name}}",{field_name:n})}),s.jsxs(l,{isEditable:!1,selectionValue:j,onChange:e=>{var t;void 0!==e.selectionValue&&(t=e.selectionValue,m(t),r(d(t)))},validation:a.filterValue?"error":void 0,listboxAppendToNode:c,children:[s.jsx(u,{label:p[":checked"],value:":checked"}),s.jsx(u,{label:p[":unchecked"],value:":unchecked"})]}),s.jsx(Ce,{errors:a,field:"filterValue"})]})}const Fe=i(l)`
-  margin-top: ${e=>e.theme.space.xs};
-`,Ee=e=>{const{t:n}=t(),{onFilterTypeSelect:r,selectedFilter:a,errors:i}=e,{filterTypeDropdownI18N:l}=_e(),c=h();return s.jsxs(o,{children:[s.jsx(o.Label,{children:n("guide-requests-app.filter-modal.filterTypeLabel","Filter type")}),s.jsxs(Fe,{isEditable:!1,selectionValue:a??null,onChange:e=>{void 0!==e.selectionValue&&r(e.selectionValue)},validation:i.filterType?"error":void 0,listboxAppendToNode:c,children:[s.jsx(u,{label:l.anyValue,value:"anyValue"}),s.jsx(u,{label:l.exactMatch,value:"exactMatch"})]}),s.jsx(Ce,{errors:i,field:"filterType"})]})},ze=/^\d{4}$/,$e=i.div`
+    `,
+};
+const Mobile = styled.div `
+  ${media.desktop `display: none;`}
+`;
+const Desktop = styled.div `
+  ${media.mobile `display: none;`}
+`;
+const isMobile = () => matchMedia(query.mobile).matches;
+
+const MY_REQUESTS_TAB_NAME = "my-requests";
+const CCD_REQUESTS_TAB_NAME = "ccd-requests";
+const ORG_REQUESTS_TAB_NAME = "org-requests";
+
+function daysAgo(currentDate, numberOfDays) {
+    const newDate = subDays(currentDate, numberOfDays);
+    const dateISOString = formatISO(newDate, { representation: "date" });
+    return `>${dateISOString}`;
+}
+function monthsAgo(currentDate, numberOfMoths) {
+    const newDate = subMonths(currentDate, numberOfMoths);
+    const dateISOString = formatISO(newDate, { representation: "date" });
+    return `>${dateISOString}`;
+}
+function yearAgo(currentDate) {
+    const newDate = subYears(currentDate, 1);
+    const dateISOString = formatISO(newDate, { representation: "date" });
+    return `>${dateISOString}`;
+}
+function useFilterTranslations() {
+    const { t } = useTranslation();
+    const filterTypeDropdownI18N = {
+        anyValue: t("guide-requests-app.anyValue", "Any value"),
+        range: t("guide-requests-app.range-filter-type", "Range"),
+        exactMatch: t("guide-requests-app.exactMatch", "Exact match"),
+    };
+    const statusFilterValuesI18N = {
+        ":open :new :hold": t("guide-requests-app.statusOpen", "Open"),
+        ":pending": t("guide-requests-app.statusPending", "Awaiting reply"),
+        ":solved :closed": t("guide-requests-app.statusSolved", "Solved"),
+    };
+    const checkboxFilterValuesI18N = {
+        ":checked": t("guide-requests-app.checkbox-filter.selected", "Selected"),
+        ":unchecked": t("guide-requests-app.checkbox-filter.not-selected", "Not selected"),
+    };
+    function createDefaultDateRangeI18N() {
+        const currentDate = new Date();
+        return {
+            [daysAgo(currentDate, 1)]: t("guide-requests-app.inThePastDay", "In the past day"),
+            [daysAgo(currentDate, 7)]: t("guide-requests-app.inThePastWeek", "In the past week"),
+            [monthsAgo(currentDate, 1)]: t("guide-requests-app.inThePastMonth", "In the past month"),
+            [monthsAgo(currentDate, 3)]: t("guide-requests-app.inThePast3Months", "In the past 3 months"),
+            [monthsAgo(currentDate, 6)]: t("guide-requests-app.inThePast6Months", "In the past 6 months"),
+            [yearAgo(currentDate)]: t("guide-requests-app.inThePastYear", "In the past year"),
+        };
+    }
+    return {
+        filterTypeDropdownI18N,
+        statusFilterValuesI18N,
+        checkboxFilterValuesI18N,
+        createDefaultDateRangeI18N,
+    };
+}
+
+function FieldError({ errors, field, }) {
+    const { t } = useTranslation();
+    return errors[field] ? (jsxRuntimeExports.jsx(Field.Message, { validation: "error", validationLabel: t("guide-requests-app.error-icon-label", "Error"), children: errors[field] })) : null;
+}
+
+function CheckboxFilter({ label, onSelect, errors, }) {
+    const { t } = useTranslation();
+    const modalContainer = useModalContainer();
+    const validateForm = (checkboxFilterValue) => {
+        if (checkboxFilterValue === null) {
+            return {
+                state: "invalid",
+                errors: {
+                    filterValue: t("guide-requests-app.filters-modal.select-value-error", "Select a value"),
+                },
+            };
+        }
+        return {
+            state: "valid",
+            values: [checkboxFilterValue],
+        };
+    };
+    const { checkboxFilterValuesI18N } = useFilterTranslations();
+    const [value, setValue] = reactExports.useState(null);
+    reactExports.useEffect(() => {
+        onSelect(validateForm(null));
+    }, []);
+    const handleSelect = (item) => {
+        setValue(item);
+        onSelect(validateForm(item));
+    };
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Field$1.Label, { children: t("guide-requests-app.filters-modal.select-field-value", "Select {{field_name}}", {
+                    field_name: label,
+                }) }), jsxRuntimeExports.jsxs(Combobox, { isEditable: false, selectionValue: value, onChange: (changes) => {
+                    if (changes.selectionValue !== undefined) {
+                        handleSelect(changes.selectionValue);
+                    }
+                }, validation: errors.filterValue ? "error" : undefined, listboxAppendToNode: modalContainer, children: [jsxRuntimeExports.jsx(Option, { label: checkboxFilterValuesI18N[":checked"], value: ":checked" }), jsxRuntimeExports.jsx(Option, { label: checkboxFilterValuesI18N[":unchecked"], value: ":unchecked" })] }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "filterValue" })] }));
+}
+
+const StyledCombobox = styled(Combobox) `
+  margin-top: ${(p) => p.theme.space.xs};
+`;
+const FilterTypeDropdown = (props) => {
+    const { t } = useTranslation();
+    const { onFilterTypeSelect, selectedFilter, errors } = props;
+    const { filterTypeDropdownI18N } = useFilterTranslations();
+    const modalContainer = useModalContainer();
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Field$1.Label, { children: t("guide-requests-app.filter-modal.filterTypeLabel", "Filter type") }), jsxRuntimeExports.jsxs(StyledCombobox, { isEditable: false, selectionValue: selectedFilter ?? null, onChange: (changes) => {
+                    if (changes.selectionValue !== undefined) {
+                        onFilterTypeSelect(changes.selectionValue);
+                    }
+                }, validation: errors["filterType"] ? "error" : undefined, listboxAppendToNode: modalContainer, children: [jsxRuntimeExports.jsx(Option, { label: filterTypeDropdownI18N.anyValue, value: "anyValue" }), jsxRuntimeExports.jsx(Option, { label: filterTypeDropdownI18N.exactMatch, value: "exactMatch" })] }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "filterType" })] }));
+};
+
+const CARD_NUMBER_REGEX = /^\d{4}$/;
+const Container$6 = styled.div `
   display: flex;
   flex-direction: column;
-  gap: ${e=>e.theme.space.md};
-`;function Ie({onSelect:r,errors:a}){const{t:i}=t(),[o,l]=e.useState(),[u,c]=e.useState(""),d=(e,t)=>{switch(e){case void 0:return{state:"invalid",errors:{filterType:i("guide-requests-app.filters-modal.select-value-error","Select a value")}};case"anyValue":return{state:"valid",values:[":*"]};case"exactMatch":return ze.test(t)?{state:"valid",values:[`:*${t}`]}:{state:"invalid",errors:{cardNumber:i("guide-requests-app.filter-modal.credit-card-digits-format-error","Enter the last four digits of the credit card, using only numbers")}}}};e.useEffect((()=>{r(d(void 0,""))}),[]);return s.jsxs($e,{children:[s.jsx(Ee,{selectedFilter:o,onFilterTypeSelect:e=>{l(e),r(d(e,u))},errors:a}),"exactMatch"===o&&s.jsxs(n,{children:[s.jsx(n.Label,{children:i("guide-requests-app.filter-modal.credit-card-digits-label","Enter the last four digits of the credit card")}),s.jsx(w,{type:"text",inputMode:"numeric",value:u,onChange:e=>{const t=e.target.value;c(t),r(d(o,t))},validation:a.cardNumber?"error":void 0,maxLength:4}),s.jsx(Ce,{errors:a,field:"cardNumber"})]})]})}const Te=i.div`
+  gap: ${(p) => p.theme.space.md};
+`;
+function CreditCardFilter({ onSelect, errors, }) {
+    const { t } = useTranslation();
+    const [filterType, setFilterType] = reactExports.useState();
+    const [cardNumber, setCardNumber] = reactExports.useState("");
+    const validateForm = (filterType, cardNumber) => {
+        switch (filterType) {
+            case undefined: {
+                return {
+                    state: "invalid",
+                    errors: {
+                        filterType: t("guide-requests-app.filters-modal.select-value-error", "Select a value"),
+                    },
+                };
+            }
+            case "anyValue": {
+                return { state: "valid", values: [`:*`] };
+            }
+            case "exactMatch": {
+                if (CARD_NUMBER_REGEX.test(cardNumber)) {
+                    return { state: "valid", values: [`:*${cardNumber}`] };
+                }
+                else {
+                    return {
+                        state: "invalid",
+                        errors: {
+                            cardNumber: t("guide-requests-app.filter-modal.credit-card-digits-format-error", "Enter the last four digits of the credit card, using only numbers"),
+                        },
+                    };
+                }
+            }
+        }
+    };
+    reactExports.useEffect(() => {
+        onSelect(validateForm(undefined, ""));
+    }, []);
+    const handleFilterTypeSelect = (value) => {
+        setFilterType(value);
+        onSelect(validateForm(value, cardNumber));
+    };
+    const handleCardNumberChanged = (e) => {
+        const value = e.target.value;
+        setCardNumber(value);
+        onSelect(validateForm(filterType, value));
+    };
+    return (jsxRuntimeExports.jsxs(Container$6, { children: [jsxRuntimeExports.jsx(FilterTypeDropdown, { selectedFilter: filterType, onFilterTypeSelect: handleFilterTypeSelect, errors: errors }), filterType === "exactMatch" && (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Field.Label, { children: t("guide-requests-app.filter-modal.credit-card-digits-label", "Enter the last four digits of the credit card") }), jsxRuntimeExports.jsx(Input, { type: "text", inputMode: "numeric", value: cardNumber, onChange: handleCardNumberChanged, validation: errors.cardNumber ? "error" : undefined, maxLength: 4 }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "cardNumber" })] }))] }));
+}
+
+const Container$5 = styled.div `
   display: flex;
   flex-direction: column;
-  gap: ${e=>e.theme.space.sm};
-`;const De=i((function({initialValues:[r,a],onChange:i,errors:o,allowFutureDates:l,className:u}){const{t:c,i18n:d}=t(),h=d.language,[p,j]=e.useState(r),[m,f]=e.useState(a);return s.jsx("div",{className:u,children:ge()?s.jsxs(Te,{children:[s.jsxs(n,{children:[s.jsx(n.Label,{children:c("guide-requests-app.startDate","Start")}),s.jsx(w,{type:"date",value:p?q(p,{representation:"date"}):"",max:l?void 0:q(new Date,{representation:"date"}),onChange:e=>{const t=e.target.value?new Date(e.target.value):void 0;j(t),i([t,m])},validation:o.startDate?"error":void 0,required:!0}),s.jsx(Ce,{errors:o,field:"startDate"})]}),s.jsxs(n,{children:[s.jsx(n.Label,{children:c("guide-requests-app.endDate","End")}),s.jsx(w,{type:"date",value:m?q(m,{representation:"date"}):"",max:l?void 0:q(new Date,{representation:"date"}),onChange:e=>{const t=e.target.value?new Date(e.target.value):void 0;f(t),i([p,t])},validation:o.endDate?"error":void 0,required:!0}),s.jsx(Ce,{errors:o,field:"endDate"})]})]}):s.jsx(_,{startValue:p,endValue:m,maxValue:l?void 0:new Date,onChange:e=>{e.startValue&&j(e.startValue),e.endValue&&f(e.endValue),i([e.startValue??p,e.endValue??m])},locale:h,isCompact:!0,children:s.jsxs(Te,{children:[s.jsxs(C.Row,{children:[s.jsx(C.Col,{children:s.jsxs(n,{children:[s.jsx(n.Label,{children:c("guide-requests-app.startDate","Start")}),s.jsx(_.Start,{children:s.jsx(w,{validation:o.startDate?"error":void 0})}),s.jsx(Ce,{errors:o,field:"startDate"})]})}),s.jsx(C.Col,{children:s.jsxs(n,{children:[s.jsx(n.Label,{children:c("guide-requests-app.endDate","End")}),s.jsx(_.End,{children:s.jsx(w,{validation:o.endDate?"error":void 0})}),s.jsx(Ce,{errors:o,field:"endDate"})]})})]}),s.jsx(C.Row,{children:s.jsx(C.Col,{children:s.jsx(_.Calendar,{})})})]})})})}))`
-  margin-top: ${e=>e.theme.space.md};
-`;function Ve({label:n,onSelect:r,errors:a,allowFutureDates:i}){const{t:c}=t(),d=h(),[p,j]=e.useState(null),{createDefaultDateRangeI18N:m}=_e(),f=m(),b=[new Date,new Date],g=(e,t,s=[void 0,void 0])=>null===e?{state:"invalid",errors:{dateFilterItem:c("guide-requests-app.filters-modal.select-value-error","Select a value")}}:"custom"!==e?{state:"valid",values:[e]}:(({values:[e,t],allowFutureDates:s})=>{if(void 0===e||void 0===t){const s={};return void 0===e&&(s.startDate=c("guide-requests-app.no-start-date-error","Select a start date")),void 0===t&&(s.endDate=c("guide-requests-app.no-end-date-error","Select an end date")),{state:"invalid",errors:s}}if(e>t)return{state:"invalid",errors:{endDate:c("guide-requests-app.endDateAfterStartDate","End date must occur after the start date")}};{const n={},r=new Date;return!s&&e>r&&(n.startDate=c("guide-requests-app.date-lte-today","Select a date earlier than or equal to today")),!s&&t>r&&(n.endDate=c("guide-requests-app.date-lte-today","Select a date earlier than or equal to today")),Object.keys(n).length>0?{state:"invalid",errors:n}:{state:"valid",values:[`>=${k(e,"yyyy-MM-dd")}`,`<=${k(t,"yyyy-MM-dd")}`]}}})({values:s,allowFutureDates:t});return e.useEffect((()=>{r(g(null,i,b))}),[]),s.jsxs(s.Fragment,{children:[s.jsxs(o,{children:[s.jsx(o.Label,{children:n}),s.jsxs(l,{isEditable:!1,selectionValue:p,onChange:e=>{var t;void 0!==e.selectionValue&&(t=e.selectionValue,j(t),r(g(t,i,b)))},validation:a.dateFilterItem?"error":void 0,listboxAppendToNode:d,children:[Object.entries(f).map((([e,t])=>s.jsx(u,{label:t,value:e},e))),s.jsx(u,{label:c("guide-requests-app.custom","Custom"),value:"custom"})]}),s.jsx(Ce,{errors:a,field:"dateFilterItem"})]}),"custom"===p&&s.jsx(De,{initialValues:b,onChange:function(e){r(g(p,i,e))},errors:a,allowFutureDates:i})]})}function Oe({label:n,options:r,onSelect:a,errors:i}){const{t:c}=t(),d=h(),p=e=>{const t=r.filter((t=>e.includes(t.value)));return t.length>0?{state:"valid",values:t.map((e=>e.value))}:{state:"invalid",errors:{selectedOptions:c("guide-requests-app.filters-modal.multiselect-no-value-error","Select at least one value")}}},[j,m]=e.useState((()=>[]));e.useEffect((()=>{a(p([]))}),[]);const[f,b]=e.useState(""),g=""===f?r:r.filter((e=>j.includes(e.value)||e.label.trim().toLowerCase().includes(f.trim().toLowerCase())));return s.jsxs(o,{children:[s.jsx(o.Label,{children:n}),s.jsx(l,{isAutocomplete:!0,isMultiselectable:!0,selectionValue:j,inputValue:f,onChange:e=>{const{inputValue:t,selectionValue:s}=e;if(void 0!==t&&b(t),null!=s){const e=Array.isArray(s)?s:[s];m(e),a(p(e))}},validation:i.selectedOptions?"error":void 0,listboxAppendToNode:d,children:0===g.length?s.jsx(u,{isDisabled:!0,label:c("guide-requests-app.filters-modal.no-matches-found","No matches found"),value:""}):g.map((e=>s.jsx(u,{value:e.value,label:e.label},e.value)))}),s.jsx(Ce,{errors:i,field:"selectedOptions"})]})}const Ne=i.div`
+  gap: ${(p) => p.theme.space.sm};
+`;
+function CustomDateFilter({ initialValues: [from, to], onChange, errors, allowFutureDates, className, }) {
+    const { t, i18n } = useTranslation();
+    const currentLocale = i18n.language;
+    const [startValue, setStartValue] = reactExports.useState(from);
+    const [endValue, setEndValue] = reactExports.useState(to);
+    const handleStartDateChange = (e) => {
+        const startDate = e.target.value ? new Date(e.target.value) : undefined;
+        setStartValue(startDate);
+        onChange([startDate, endValue]);
+    };
+    const handleEndDateChange = (e) => {
+        const endDate = e.target.value ? new Date(e.target.value) : undefined;
+        setEndValue(endDate);
+        onChange([startValue, endDate]);
+    };
+    const handleDatePickerChange = (changes) => {
+        changes.startValue && setStartValue(changes.startValue);
+        changes.endValue && setEndValue(changes.endValue);
+        onChange([changes.startValue ?? startValue, changes.endValue ?? endValue]);
+    };
+    return (jsxRuntimeExports.jsx("div", { className: className, children: isMobile() ? (jsxRuntimeExports.jsxs(Container$5, { children: [jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Field.Label, { children: t("guide-requests-app.startDate", "Start") }), jsxRuntimeExports.jsx(Input, { type: "date", value: startValue
+                                ? formatISO(startValue, { representation: "date" })
+                                : "", max: allowFutureDates
+                                ? undefined
+                                : formatISO(new Date(), { representation: "date" }), onChange: handleStartDateChange, validation: errors.startDate ? "error" : undefined, required: true }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "startDate" })] }), jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Field.Label, { children: t("guide-requests-app.endDate", "End") }), jsxRuntimeExports.jsx(Input, { type: "date", value: endValue ? formatISO(endValue, { representation: "date" }) : "", max: allowFutureDates
+                                ? undefined
+                                : formatISO(new Date(), { representation: "date" }), onChange: handleEndDateChange, validation: errors.endDate ? "error" : undefined, required: true }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "endDate" })] })] })) : (jsxRuntimeExports.jsx(DatePickerRange, { startValue: startValue, endValue: endValue, maxValue: allowFutureDates ? undefined : new Date(), onChange: handleDatePickerChange, locale: currentLocale, isCompact: true, children: jsxRuntimeExports.jsxs(Container$5, { children: [jsxRuntimeExports.jsxs(Grid.Row, { children: [jsxRuntimeExports.jsx(Grid.Col, { children: jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Field.Label, { children: t("guide-requests-app.startDate", "Start") }), jsxRuntimeExports.jsx(DatePickerRange.Start, { children: jsxRuntimeExports.jsx(Input, { validation: errors.startDate ? "error" : undefined }) }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "startDate" })] }) }), jsxRuntimeExports.jsx(Grid.Col, { children: jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Field.Label, { children: t("guide-requests-app.endDate", "End") }), jsxRuntimeExports.jsx(DatePickerRange.End, { children: jsxRuntimeExports.jsx(Input, { validation: errors.endDate ? "error" : undefined }) }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "endDate" })] }) })] }), jsxRuntimeExports.jsx(Grid.Row, { children: jsxRuntimeExports.jsx(Grid.Col, { children: jsxRuntimeExports.jsx(DatePickerRange.Calendar, {}) }) })] }) })) }));
+}
+
+const StyledCustomDateFilter = styled(CustomDateFilter) `
+  margin-top: ${(p) => p.theme.space.md};
+`;
+function DateFilter({ label, onSelect, errors, allowFutureDates, }) {
+    const { t } = useTranslation();
+    const modalContainer = useModalContainer();
+    const [selectedItem, setSelectedItem] = reactExports.useState(null);
+    const { createDefaultDateRangeI18N } = useFilterTranslations();
+    const dateRangeI18n = createDefaultDateRangeI18N();
+    const customDatesInitialValues = [new Date(), new Date()];
+    const validateCustomDates = ({ values: [startDate, endDate], allowFutureDates, }) => {
+        if (startDate === undefined || endDate === undefined) {
+            const errors = {};
+            if (startDate === undefined) {
+                errors.startDate = t("guide-requests-app.no-start-date-error", "Select a start date");
+            }
+            if (endDate === undefined) {
+                errors.endDate = t("guide-requests-app.no-end-date-error", "Select an end date");
+            }
+            return { state: "invalid", errors };
+        }
+        else if (startDate > endDate) {
+            return {
+                state: "invalid",
+                errors: {
+                    endDate: t("guide-requests-app.endDateAfterStartDate", "End date must occur after the start date"),
+                },
+            };
+        }
+        else {
+            const errors = {};
+            const today = new Date();
+            if (!allowFutureDates && startDate > today) {
+                errors.startDate = t("guide-requests-app.date-lte-today", "Select a date earlier than or equal to today");
+            }
+            if (!allowFutureDates && endDate > today) {
+                errors.endDate = t("guide-requests-app.date-lte-today", "Select a date earlier than or equal to today");
+            }
+            if (Object.keys(errors).length > 0) {
+                return { state: "invalid", errors };
+            }
+            else {
+                const values = [
+                    `>=${format(startDate, "yyyy-MM-dd")}`,
+                    `<=${format(endDate, "yyyy-MM-dd")}`,
+                ];
+                return { state: "valid", values };
+            }
+        }
+    };
+    const validateForm = (itemValue, allowFutureDates, customDateValues = [undefined, undefined]) => {
+        if (itemValue === null) {
+            return {
+                state: "invalid",
+                errors: {
+                    dateFilterItem: t("guide-requests-app.filters-modal.select-value-error", "Select a value"),
+                },
+            };
+        }
+        else if (itemValue !== "custom") {
+            return { state: "valid", values: [itemValue] };
+        }
+        else {
+            return validateCustomDates({
+                values: customDateValues,
+                allowFutureDates,
+            });
+        }
+    };
+    reactExports.useEffect(() => {
+        onSelect(validateForm(null, allowFutureDates, customDatesInitialValues));
+    }, []);
+    function handleItemSelected(item) {
+        setSelectedItem(item);
+        onSelect(validateForm(item, allowFutureDates, customDatesInitialValues));
+    }
+    function handleCustomDateSelected(values) {
+        onSelect(validateForm(selectedItem, allowFutureDates, values));
+    }
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Field$1.Label, { children: label }), jsxRuntimeExports.jsxs(Combobox, { isEditable: false, selectionValue: selectedItem, onChange: (changes) => {
+                            if (changes.selectionValue !== undefined) {
+                                handleItemSelected(changes.selectionValue);
+                            }
+                        }, validation: errors.dateFilterItem ? "error" : undefined, listboxAppendToNode: modalContainer, children: [Object.entries(dateRangeI18n).map(([value, label]) => (jsxRuntimeExports.jsx(Option, { label: label, value: value }, value))), jsxRuntimeExports.jsx(Option, { label: t("guide-requests-app.custom", "Custom"), value: "custom" })] }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "dateFilterItem" })] }), selectedItem === "custom" && (jsxRuntimeExports.jsx(StyledCustomDateFilter, { initialValues: customDatesInitialValues, onChange: handleCustomDateSelected, errors: errors, allowFutureDates: allowFutureDates }))] }));
+}
+
+function Multiselect$1({ label, options, onSelect, errors, }) {
+    const { t } = useTranslation();
+    const modalContainer = useModalContainer();
+    const validateForm = (selectedValues) => {
+        const selectedOptions = options.filter((option) => selectedValues.includes(option.value));
+        if (selectedOptions.length > 0) {
+            return {
+                state: "valid",
+                values: selectedOptions.map((option) => option.value),
+            };
+        }
+        else {
+            return {
+                state: "invalid",
+                errors: {
+                    selectedOptions: t("guide-requests-app.filters-modal.multiselect-no-value-error", "Select at least one value"),
+                },
+            };
+        }
+    };
+    const [selectedValues, setSelectedValues] = reactExports.useState(() => {
+        return [];
+    });
+    reactExports.useEffect(() => {
+        onSelect(validateForm([]));
+    }, []);
+    const [inputValue, setInputValue] = reactExports.useState("");
+    const filteredOptions = inputValue === ""
+        ? options
+        : options.filter((option) => selectedValues.includes(option.value) ||
+            option.label
+                .trim()
+                .toLowerCase()
+                .includes(inputValue.trim().toLowerCase()));
+    const handleChange = (changes) => {
+        const { inputValue, selectionValue } = changes;
+        if (inputValue !== undefined) {
+            setInputValue(inputValue);
+        }
+        if (selectionValue !== undefined && selectionValue !== null) {
+            const selected = Array.isArray(selectionValue)
+                ? selectionValue
+                : [selectionValue];
+            setSelectedValues(selected);
+            onSelect(validateForm(selected));
+        }
+    };
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Field$1.Label, { children: label }), jsxRuntimeExports.jsx(Combobox, { isAutocomplete: true, isMultiselectable: true, selectionValue: selectedValues, inputValue: inputValue, onChange: handleChange, validation: errors.selectedOptions ? "error" : undefined, listboxAppendToNode: modalContainer, children: filteredOptions.length === 0 ? (jsxRuntimeExports.jsx(Option, { isDisabled: true, label: t("guide-requests-app.filters-modal.no-matches-found", "No matches found"), value: "" })) : (filteredOptions.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.label }, option.value)))) }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "selectedOptions" })] }));
+}
+
+const Container$4 = styled.div `
   display: flex;
   flex-direction: column;
-  gap: ${e=>e.theme.space.sm};
-`;function Re({label:r,onSelect:a,errors:i,type:c}){const{t:d}=t(),p=h(),[j,m]=e.useState(null),f=(e,t)=>{if(null===e)return{state:"invalid",errors:{filterType:d("guide-requests-app.filters-modal.no-filter-type-error","Select a filter type")}};switch(e.type){case"anyValue":return{state:"valid",values:[":*"]};case"range":{const s=parseFloat(e.minValue),n=parseFloat(e.maxValue);return Number.isNaN(s)?{state:"invalid",errors:{minValue:d("guide-requests-app.filters-modal.no-text-value-error","Insert a value")}}:Number.isNaN(n)?{state:"invalid",errors:{maxValue:d("guide-requests-app.filters-modal.no-text-value-error","Insert a value")}}:"integer"!==t||Number.isInteger(s)?"integer"!==t||Number.isInteger(n)?s>=n?{state:"invalid",errors:{maxValue:d("guide-requests-app.filter-modal.minValue-greater-than-maxValue","Select a value greater than min value")}}:{state:"valid",values:[`>=${s}`,`<=${n}`]}:{state:"invalid",errors:{maxValue:d("guide-requests-app.filter-modal.integer-value-error","Insert an integer value")}}:{state:"invalid",errors:{minValue:d("guide-requests-app.filter-modal.integer-value-error","Insert an integer value")}}}case"exactMatch":{const{value:s}=e;return""===s?{state:"invalid",errors:{exactValue:d("guide-requests-app.filters-modal.no-text-value-error","Insert a value")}}:"integer"!==t||Number.isInteger(Number(s))?{state:"valid",values:[`:${s}`]}:{state:"invalid",errors:{exactValue:d("guide-requests-app.filter-modal.integer-value-error","Insert an integer value")}}}}};e.useEffect((()=>{a(f(null,c))}),[]);const{filterTypeDropdownI18N:b}=_e();return s.jsxs(Ne,{children:[s.jsxs(o,{children:[s.jsx(o.Label,{children:d("guide-requests-app.filter-modal.filterTypeLabel","Filter type")}),s.jsxs(l,{isEditable:!1,selectionValue:j?.type??null,onChange:e=>{void 0!==e.selectionValue&&(e=>{let t;switch(e){case"anyValue":t={type:"anyValue"};break;case"range":t={type:"range",minValue:"",maxValue:""};break;case"exactMatch":t={type:"exactMatch",value:""}}m(t),a(f(t,c))})(e.selectionValue)},validation:i.filterType?"error":void 0,listboxAppendToNode:p,children:[s.jsx(u,{label:b.anyValue,value:"anyValue"}),s.jsx(u,{label:b.range,value:"range"}),s.jsx(u,{label:b.exactMatch,value:"exactMatch"})]}),s.jsx(Ce,{errors:i,field:"filterType"})]}),"range"===j?.type&&s.jsxs(C.Row,{children:[s.jsx(C.Col,{children:s.jsxs(n,{children:[s.jsx(n.Label,{children:d("guide-requests-app.filter-modal.minValue","Min value")}),s.jsx(w,{type:"number",value:j.minValue,onChange:e=>{((e,t)=>{const s={...t,minValue:e};m(s),a(f(s,c))})(e.target.value,j)},validation:i.minValue?"error":void 0}),s.jsx(Ce,{errors:i,field:"minValue"})]})}),s.jsx(C.Col,{children:s.jsxs(n,{children:[s.jsx(n.Label,{children:d("guide-requests-app.filter-modal.maxValue","Max value")}),s.jsx(w,{type:"number",value:j.maxValue,onChange:e=>{((e,t)=>{const s={...t,maxValue:e};m(s),a(f(s,c))})(e.target.value,j)},validation:i.maxValue?"error":void 0}),s.jsx(Ce,{errors:i,field:"maxValue"})]})})]}),"exactMatch"===j?.type&&s.jsxs(n,{children:[s.jsx(n.Label,{children:d("guide-requests-app.filters-modal.enter-field-value","Enter {{field_name}}",{field_name:r})}),s.jsx(w,{type:"number",value:j.value,onChange:e=>{((e,t)=>{const s={...t,value:e};m(s),a(f(s,c))})(e.target.value,j)},validation:i.exactValue?"error":void 0}),s.jsx(Ce,{errors:i,field:"exactValue"})]})]})}const Le=i.div`
-  height: ${e=>e.theme.space.md};
-`,Me=({label:r,onSelect:a,errors:i})=>{const{t:o}=t(),[l,u]=e.useState(""),[c,d]=e.useState(),h=(e,t)=>{switch(e){case void 0:return{state:"invalid",errors:{filterType:o("guide-requests-app.filters-modal.no-filter-type-error","Select a filter type")}};case"anyValue":return{state:"valid",values:[":*"]};case"exactMatch":return""!==t?{state:"valid",values:[`:"${t}"`]}:{state:"invalid",errors:{textValue:o("guide-requests-app.filters-modal.no-text-value-error","Insert a value")}}}};e.useEffect((()=>{a(h(void 0,""))}),[]);return s.jsxs(s.Fragment,{children:[s.jsx(Ee,{onFilterTypeSelect:e=>{d(e),a(h(e,l))},selectedFilter:c,errors:i}),s.jsx(Le,{}),"exactMatch"===c&&s.jsxs(n,{children:[s.jsx(n.Label,{children:o("guide-requests-app.filters-modal.enter-field-value","Enter {{field_name}}",{field_name:r})}),s.jsx(w,{value:l,onChange:e=>{const t=e.target.value;u(t),a(h(c,t))},validation:i.textValue?"error":void 0}),s.jsx(Ce,{errors:i,field:"textValue"})]})]})};function Pe({selectedFilterProperty:e,ticketFields:n,organizations:r,customStatusOptions:a,onSelect:i,errors:o}){const{t:l}=t(),{statusFilterValuesI18N:u}=_e();if("created_at"===e.identifier||"updated_at"===e.identifier)return s.jsx(Ve,{label:e.label,onSelect:i,errors:o,allowFutureDates:!1});if("status"===e.identifier){const e=Object.entries(u).map((([e,t])=>({value:e,label:t})));return s.jsx(Oe,{label:l("guide-requests-app.status","Status"),onSelect:i,options:e,errors:o})}if("custom_status_id"===e.identifier)return s.jsx(Oe,{label:l("guide-requests-app.status","Status"),onSelect:i,options:a,errors:o});if("organization"===e.identifier){const e=r.map((e=>({label:e.name,value:`:${e.id}`})));return s.jsx(Oe,{label:l("guide-requests-app.organization","Organization"),onSelect:i,options:e,errors:o})}const c=n.find((t=>String(t.id)===e.identifier));if(null==c)return s.jsx(s.Fragment,{});const{type:d,title_in_portal:h}=c;switch(d){case"textarea":case"text":case"regexp":return s.jsx(Me,{label:h,onSelect:i,errors:o});case"tagger":case"multiselect":{const e=c.custom_field_options?.map((e=>({value:`:${e.value}`,label:e.name})))??[];return s.jsx(Oe,{label:h,onSelect:i,options:e,errors:o})}case"date":return s.jsx(Ve,{label:h,onSelect:i,errors:o,allowFutureDates:!0});case"integer":case"decimal":return s.jsx(Re,{label:h,onSelect:i,errors:o,type:d});case"checkbox":return s.jsx(ke,{label:h,onSelect:i,errors:o});case"partialcreditcard":return s.jsx(Ie,{onSelect:i,errors:o});default:return s.jsx(s.Fragment,{})}}const Ae=["description","group","assignee","custom_status","status","subject","priority","tickettype","lookup","requester"];function Be({ticketFields:n,organizations:r,selectedProperty:a,hasCustomStatuses:i,onSelect:c,errors:d}){const{t:p}=t(),j=h(),m=e.useMemo((()=>[{identifier:"created_at",label:p("guide-requests-app.createdDate","Created date")},{identifier:"updated_at",label:p("guide-requests-app.updatedDate","Updated date")},i?{identifier:"custom_status_id",label:p("guide-requests-app.status","Status")}:{identifier:"status",label:p("guide-requests-app.status","Status")},...r.length>1?[{identifier:"organization",label:p("guide-requests-app.organization","Organization")}]:[],...n.filter((e=>!Ae.includes(e.type))).map((({id:e,title_in_portal:t})=>({identifier:String(e),label:t})))]),[p,i,r,n]),[f,b]=e.useState([]);e.useEffect((()=>{b(m)}),[m]);const g=e.useCallback((e=>e.identifier),[]),x=e.useCallback((e=>{const{inputValue:t,selectionValue:s}=e;if(void 0!==t)if(""===t)b(m);else{const e=m.filter((e=>e.label.trim().toLowerCase().includes(t.trim().toLowerCase())));b(e)}if(s&&"string"==typeof s){const e=m.find((e=>e.identifier===s));e&&c(e)}}),[m,c]);return s.jsxs(o,{children:[s.jsx(o.Label,{children:p("guide-requests-app.filters-modal.select-filter","Select filter")}),s.jsx(l,{isAutocomplete:!0,onChange:x,selectionValue:a?g(a):null,validation:d.ticketField?"error":void 0,listboxAppendToNode:j,children:0===f.length?s.jsx(u,{isDisabled:!0,label:p("guide-requests-app.filters-modal.no-matches-found","No matches found"),value:""}):f.map((e=>s.jsx(u,{value:g(e),label:e.label},e.identifier)))}),s.jsx(Ce,{errors:d,field:"ticketField"})]})}const He=i.div`
-  height: ${e=>e.theme.space.md};
-`,Ue=["subject","description","status","custom_status","type","priority","basic_priority","assignee","group","tickettype","requester"];function Xe({onClose:n,ticketFields:r,organizations:a,filterValuesMap:i,onFiltersChanged:o,customStatusesEnabled:l,customStatusOptions:u}){const{t:c}=t(),[d,j]=e.useState(),[m,b]=e.useState(),[g,x]=e.useState({}),v=h();return s.jsx(p,{appendToNode:v,onClose:n,children:s.jsxs("form",{onSubmit:e=>{var t;if(e.preventDefault(),d)if("valid"===m?.state){const e=(t=d.identifier,Ue.includes(t)||"created_at"===d.identifier||"updated_at"===d.identifier||"organization"===d.identifier||"custom_status_id"===d.identifier?d.identifier:`custom_field_${d.identifier}`);o({...i,[e]:m.values}),n()}else"invalid"===m?.state&&x(m.errors);else x({ticketField:c("guide-requests-app.filters-modal.select-filter-required","Select a filter")})},noValidate:!0,children:[s.jsx(F,{children:c("guide-requests-app.filters-modal.title","Filters")}),s.jsxs(E,{children:[s.jsx(Be,{ticketFields:r,organizations:a,hasCustomStatuses:l,selectedProperty:d,onSelect:e=>{x({}),j(e),b(null)},errors:g}),s.jsx(He,{}),d&&s.jsx(Pe,{selectedFilterProperty:d,ticketFields:r,organizations:a,customStatusOptions:u,onSelect:b,errors:g},d.identifier)]}),s.jsxs(z,{children:[s.jsx($,{children:s.jsx(f,{type:"button",onClick:n,isBasic:!0,children:c("guide-requests-app.cancel","Cancel")})}),s.jsx($,{children:s.jsx(f,{type:"submit",isPrimary:!0,children:c("guide-requests-app.filters-modal.apply-filter-button","Apply filter")})})]}),s.jsx(I,{"aria-label":c("guide-requests-app.closeModal","Close modal")})]})})}function Ge({field:e,onFilterRemoved:t,children:n}){return s.jsxs(T,{size:"large",isRegular:!0,tabIndex:0,onKeyDown:e=>function(e){"Delete"!==e.code&&"Backspace"!==e.code||(e.preventDefault(),t())}(e),children:[n,s.jsx(T.Close,{onClick:()=>t()})]},e)}function Ye(e){const t=e[0]?.substring(1);return t&&"*"!==t?t.substring(1,t.length-1):""}function We(e){const[t,s]=e;if(1===e.length&&t){const e=t.substring(1);return e&&"*"!==e?e:""}return 2===e.length&&t&&s?`${t.substring(2)} - ${s.substring(2)}`:""}function Qe(e){const t=e[0]?.substring(2);return""===t?"":`XXXXXXXXXXXX${t}`}function Ze({identifier:e,ticketFields:n,organizations:r,values:a,customStatusOptions:i,onFilterRemoved:o}){const{t:l,i18n:u}=t(),c=u.language,{checkboxFilterValuesI18N:d,statusFilterValuesI18N:h,createDefaultDateRangeI18N:p}=_e(),j=e=>{const t=e[0];return 1===e.length&&void 0!==t?p()[t]||"":(([e,t])=>{const s=new Date(e.substring(2)),n=new Date(t.substring(2));return new Intl.DateTimeFormat(c,{dateStyle:"long"}).formatRange(s,n)})(e)};if("organization"===e){const t=r.find((e=>String(e.id)===a[0]?.substring(1)));return t?s.jsx(Ge,{field:e,values:a,onFilterRemoved:()=>{o(a)},children:s.jsxs("span",{children:[s.jsx(D,{isBold:!0,children:l("guide-requests-app.organization","Organization")})," ",t.name]})}):s.jsx(s.Fragment,{})}if("created_at"===e)return s.jsx(Ge,{field:e,values:a,onFilterRemoved:()=>{o(a)},children:s.jsxs("span",{children:[s.jsx(D,{isBold:!0,children:l("guide-requests-app.createdDate","Created date")})," ",j(a)]})});if("updated_at"===e)return s.jsx(Ge,{field:e,values:a,onFilterRemoved:()=>{o(a)},children:s.jsxs("span",{children:[s.jsx(D,{isBold:!0,children:l("guide-requests-app.updatedDate","Updated date")})," ",j(a)]})});if("status"===e)return s.jsx(s.Fragment,{children:a.map((t=>s.jsx(Ge,{field:e,values:a,onFilterRemoved:()=>{o([t])},children:s.jsxs("span",{children:[s.jsx(D,{isBold:!0,children:l("guide-requests-app.status","Status")})," ",h[t]]})},t)))});if("custom_status_id"===e)return s.jsx(s.Fragment,{children:a.map((t=>{const n=i.find((e=>e.value===t))?.label;return s.jsx(Ge,{field:e,values:a,onFilterRemoved:()=>{o([t])},children:s.jsxs("span",{children:[s.jsx(D,{isBold:!0,children:l("guide-requests-app.status","Status")})," ",n]})},t)}))});const m=e.startsWith("custom_field_")?n.find((t=>String(t.id)===e.replace("custom_field_",""))):n.find((t=>t.type===e));if(null==m)return s.jsx(s.Fragment,{});switch(m.type){case"date":return s.jsx(Ge,{field:e,values:a,onFilterRemoved:()=>{o(a)},children:s.jsxs("span",{children:[s.jsx(D,{isBold:!0,children:m.title_in_portal})," ",j(a)]})});case"tagger":case"multiselect":return s.jsx(s.Fragment,{children:a.map((t=>{const n=m.custom_field_options?.find((e=>e.value===t.substring(1)));return n&&s.jsx(Ge,{field:e,values:[t],onFilterRemoved:()=>{o([t])},children:s.jsxs("span",{children:[s.jsx(D,{isBold:!0,children:m.title_in_portal})," ",n.name]})},n.id)}))});case"text":case"textarea":case"regexp":return s.jsx(s.Fragment,{children:s.jsx(Ge,{field:e,values:a,onFilterRemoved:()=>{o(a)},children:s.jsxs("span",{children:[s.jsx(D,{isBold:!0,children:m.title_in_portal})," ",Ye(a)]})})});case"integer":case"decimal":return s.jsx(Ge,{field:e,values:a,onFilterRemoved:()=>{o(a)},children:s.jsxs("span",{children:[s.jsx(D,{isBold:!0,children:m.title_in_portal})," ",We(a)]})});case"checkbox":return s.jsx(Ge,{field:e,values:a,onFilterRemoved:()=>{o(a)},children:s.jsxs("span",{children:[s.jsx(D,{isBold:!0,children:m.title_in_portal})," ",d[a[0]]]})});case"partialcreditcard":return s.jsx(Ge,{field:e,values:a,onFilterRemoved:()=>{o(a)},children:s.jsxs("span",{children:[s.jsx(D,{isBold:!0,children:m.title_in_portal})," ",Qe(a)]})});default:return s.jsx(s.Fragment,{})}}const Je=i.div`
+  gap: ${(p) => p.theme.space.sm};
+`;
+function NumberFilter({ label, onSelect, errors, type, }) {
+    const { t } = useTranslation();
+    const modalContainer = useModalContainer();
+    const [filter, setFilter] = reactExports.useState(null);
+    const validateForm = (filter, type) => {
+        if (filter === null) {
+            return {
+                state: "invalid",
+                errors: {
+                    filterType: t("guide-requests-app.filters-modal.no-filter-type-error", "Select a filter type"),
+                },
+            };
+        }
+        switch (filter.type) {
+            case "anyValue": {
+                return {
+                    state: "valid",
+                    values: [":*"],
+                };
+            }
+            case "range": {
+                const minValue = parseFloat(filter.minValue);
+                const maxValue = parseFloat(filter.maxValue);
+                if (Number.isNaN(minValue)) {
+                    return {
+                        state: "invalid",
+                        errors: {
+                            minValue: t("guide-requests-app.filters-modal.no-text-value-error", "Insert a value"),
+                        },
+                    };
+                }
+                if (Number.isNaN(maxValue)) {
+                    return {
+                        state: "invalid",
+                        errors: {
+                            maxValue: t("guide-requests-app.filters-modal.no-text-value-error", "Insert a value"),
+                        },
+                    };
+                }
+                if (type === "integer" && !Number.isInteger(minValue)) {
+                    return {
+                        state: "invalid",
+                        errors: {
+                            minValue: t("guide-requests-app.filter-modal.integer-value-error", "Insert an integer value"),
+                        },
+                    };
+                }
+                if (type === "integer" && !Number.isInteger(maxValue)) {
+                    return {
+                        state: "invalid",
+                        errors: {
+                            maxValue: t("guide-requests-app.filter-modal.integer-value-error", "Insert an integer value"),
+                        },
+                    };
+                }
+                if (minValue >= maxValue) {
+                    return {
+                        state: "invalid",
+                        errors: {
+                            maxValue: t("guide-requests-app.filter-modal.minValue-greater-than-maxValue", "Select a value greater than min value"),
+                        },
+                    };
+                }
+                return { state: "valid", values: [`>=${minValue}`, `<=${maxValue}`] };
+            }
+            case "exactMatch": {
+                const { value } = filter;
+                if (value === "") {
+                    return {
+                        state: "invalid",
+                        errors: {
+                            exactValue: t("guide-requests-app.filters-modal.no-text-value-error", "Insert a value"),
+                        },
+                    };
+                }
+                else if (type === "integer" && !Number.isInteger(Number(value))) {
+                    return {
+                        state: "invalid",
+                        errors: {
+                            exactValue: t("guide-requests-app.filter-modal.integer-value-error", "Insert an integer value"),
+                        },
+                    };
+                }
+                else {
+                    return { state: "valid", values: [`:${value}`] };
+                }
+            }
+        }
+    };
+    reactExports.useEffect(() => {
+        onSelect(validateForm(null, type));
+    }, []);
+    const handleFilterTypeSelect = (value) => {
+        let newFilter;
+        switch (value) {
+            case "anyValue": {
+                newFilter = { type: "anyValue" };
+                break;
+            }
+            case "range": {
+                newFilter = { type: "range", minValue: "", maxValue: "" };
+                break;
+            }
+            case "exactMatch": {
+                newFilter = { type: "exactMatch", value: "" };
+                break;
+            }
+        }
+        setFilter(newFilter);
+        onSelect(validateForm(newFilter, type));
+    };
+    const handleMinValueChanged = (newValue, filter) => {
+        const newFilter = { ...filter, minValue: newValue };
+        setFilter(newFilter);
+        onSelect(validateForm(newFilter, type));
+    };
+    const handleMaxValueChanged = (newValue, filter) => {
+        const newFilter = { ...filter, maxValue: newValue };
+        setFilter(newFilter);
+        onSelect(validateForm(newFilter, type));
+    };
+    const handleExactValueChanged = (newValue, filter) => {
+        const newFilter = { ...filter, value: newValue };
+        setFilter(newFilter);
+        onSelect(validateForm(newFilter, type));
+    };
+    const { filterTypeDropdownI18N } = useFilterTranslations();
+    return (jsxRuntimeExports.jsxs(Container$4, { children: [jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Field$1.Label, { children: t("guide-requests-app.filter-modal.filterTypeLabel", "Filter type") }), jsxRuntimeExports.jsxs(Combobox, { isEditable: false, selectionValue: filter?.type ?? null, onChange: (changes) => {
+                            if (changes.selectionValue !== undefined) {
+                                handleFilterTypeSelect(changes.selectionValue);
+                            }
+                        }, validation: errors.filterType ? "error" : undefined, listboxAppendToNode: modalContainer, children: [jsxRuntimeExports.jsx(Option, { label: filterTypeDropdownI18N.anyValue, value: "anyValue" }), jsxRuntimeExports.jsx(Option, { label: filterTypeDropdownI18N.range, value: "range" }), jsxRuntimeExports.jsx(Option, { label: filterTypeDropdownI18N.exactMatch, value: "exactMatch" })] }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "filterType" })] }), filter?.type === "range" && (jsxRuntimeExports.jsxs(Grid.Row, { children: [jsxRuntimeExports.jsx(Grid.Col, { children: jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Field.Label, { children: t("guide-requests-app.filter-modal.minValue", "Min value") }), jsxRuntimeExports.jsx(Input, { type: "number", value: filter.minValue, onChange: (e) => {
+                                        handleMinValueChanged(e.target.value, filter);
+                                    }, validation: errors.minValue ? "error" : undefined }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "minValue" })] }) }), jsxRuntimeExports.jsx(Grid.Col, { children: jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Field.Label, { children: t("guide-requests-app.filter-modal.maxValue", "Max value") }), jsxRuntimeExports.jsx(Input, { type: "number", value: filter.maxValue, onChange: (e) => {
+                                        handleMaxValueChanged(e.target.value, filter);
+                                    }, validation: errors.maxValue ? "error" : undefined }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "maxValue" })] }) })] })), filter?.type === "exactMatch" && (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Field.Label, { children: t("guide-requests-app.filters-modal.enter-field-value", "Enter {{field_name}}", {
+                            field_name: label,
+                        }) }), jsxRuntimeExports.jsx(Input, { type: "number", value: filter.value, onChange: (e) => {
+                            handleExactValueChanged(e.target.value, filter);
+                        }, validation: errors.exactValue ? "error" : undefined }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "exactValue" })] }))] }));
+}
+
+const Gap$1 = styled.div `
+  height: ${(p) => p.theme.space.md};
+`;
+const TextField = ({ label, onSelect, errors, }) => {
+    const { t } = useTranslation();
+    const [value, setValue] = reactExports.useState("");
+    const [selectedFilter, setSelectedFilter] = reactExports.useState();
+    const validateForm = (filterType, value) => {
+        switch (filterType) {
+            case undefined: {
+                return {
+                    state: "invalid",
+                    errors: {
+                        filterType: t("guide-requests-app.filters-modal.no-filter-type-error", "Select a filter type"),
+                    },
+                };
+            }
+            case "anyValue": {
+                return { state: "valid", values: [":*"] };
+            }
+            case "exactMatch": {
+                if (value !== "") {
+                    return { state: "valid", values: [`:"${value}"`] };
+                }
+                else {
+                    return {
+                        state: "invalid",
+                        errors: {
+                            textValue: t("guide-requests-app.filters-modal.no-text-value-error", "Insert a value"),
+                        },
+                    };
+                }
+            }
+        }
+    };
+    reactExports.useEffect(() => {
+        onSelect(validateForm(undefined, ""));
+    }, []);
+    const handleFilterTypeSelect = (filterType) => {
+        setSelectedFilter(filterType);
+        onSelect(validateForm(filterType, value));
+    };
+    const handleChange = (event) => {
+        const inputValue = event.target.value;
+        setValue(inputValue);
+        onSelect(validateForm(selectedFilter, inputValue));
+    };
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(FilterTypeDropdown, { onFilterTypeSelect: handleFilterTypeSelect, selectedFilter: selectedFilter, errors: errors }), jsxRuntimeExports.jsx(Gap$1, {}), selectedFilter === "exactMatch" && (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Field.Label, { children: t("guide-requests-app.filters-modal.enter-field-value", "Enter {{field_name}}", {
+                            field_name: label,
+                        }) }), jsxRuntimeExports.jsx(Input, { value: value, onChange: handleChange, validation: errors["textValue"] ? "error" : undefined }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "textValue" })] }))] }));
+};
+
+function FilterValueField({ selectedFilterProperty, ticketFields, organizations, customStatusOptions, onSelect, errors, }) {
+    const { t } = useTranslation();
+    const { statusFilterValuesI18N } = useFilterTranslations();
+    if (selectedFilterProperty.identifier === "created_at" ||
+        selectedFilterProperty.identifier === "updated_at") {
+        return (jsxRuntimeExports.jsx(DateFilter, { label: selectedFilterProperty.label, onSelect: onSelect, errors: errors, allowFutureDates: false }));
+    }
+    if (selectedFilterProperty.identifier === "status") {
+        const options = Object.entries(statusFilterValuesI18N).map(([value, label]) => ({
+            value: value,
+            label,
+        }));
+        return (jsxRuntimeExports.jsx(Multiselect$1, { label: t("guide-requests-app.status", "Status"), onSelect: onSelect, options: options, errors: errors }));
+    }
+    if (selectedFilterProperty.identifier === "custom_status_id") {
+        return (jsxRuntimeExports.jsx(Multiselect$1, { label: t("guide-requests-app.status", "Status"), onSelect: onSelect, options: customStatusOptions, errors: errors }));
+    }
+    if (selectedFilterProperty.identifier === "organization") {
+        const options = organizations.map((organization) => ({
+            label: organization.name,
+            value: `:${organization.id}`,
+        }));
+        return (jsxRuntimeExports.jsx(Multiselect$1, { label: t("guide-requests-app.organization", "Organization"), onSelect: onSelect, options: options, errors: errors }));
+    }
+    const ticketField = ticketFields.find((field) => String(field.id) === selectedFilterProperty.identifier);
+    if (ticketField == null) {
+        return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
+    }
+    const { type, title_in_portal } = ticketField;
+    switch (type) {
+        case "textarea":
+        case "text":
+        case "regexp": {
+            return (jsxRuntimeExports.jsx(TextField, { label: title_in_portal, onSelect: onSelect, errors: errors }));
+        }
+        case "tagger":
+        case "multiselect": {
+            const options = ticketField.custom_field_options?.map((option) => ({
+                value: `:${option.value}`,
+                label: option.name,
+            })) ?? [];
+            return (jsxRuntimeExports.jsx(Multiselect$1, { label: title_in_portal, onSelect: onSelect, options: options, errors: errors }));
+        }
+        case "date": {
+            return (jsxRuntimeExports.jsx(DateFilter, { label: title_in_portal, onSelect: onSelect, errors: errors, allowFutureDates: true }));
+        }
+        case "integer":
+        case "decimal": {
+            return (jsxRuntimeExports.jsx(NumberFilter, { label: title_in_portal, onSelect: onSelect, errors: errors, type: type }));
+        }
+        case "checkbox": {
+            return (jsxRuntimeExports.jsx(CheckboxFilter, { label: title_in_portal, onSelect: onSelect, errors: errors }));
+        }
+        case "partialcreditcard": {
+            return jsxRuntimeExports.jsx(CreditCardFilter, { onSelect: onSelect, errors: errors });
+        }
+        default:
+            return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
+    }
+}
+
+const HIDDEN_FIELDS$1 = [
+    "description",
+    "group",
+    "assignee",
+    "custom_status",
+    "status",
+    "subject",
+    "priority",
+    "tickettype",
+    "lookup",
+    "requester",
+];
+function FilterPropertyDropdown({ ticketFields, organizations, selectedProperty, hasCustomStatuses, onSelect, errors, }) {
+    const { t } = useTranslation();
+    const modalContainer = useModalContainer();
+    const filterProperties = reactExports.useMemo(() => [
+        {
+            identifier: "created_at",
+            label: t("guide-requests-app.createdDate", "Created date"),
+        },
+        {
+            identifier: "updated_at",
+            label: t("guide-requests-app.updatedDate", "Updated date"),
+        },
+        hasCustomStatuses
+            ? {
+                identifier: "custom_status_id",
+                label: t("guide-requests-app.status", "Status"),
+            }
+            : {
+                identifier: "status",
+                label: t("guide-requests-app.status", "Status"),
+            },
+        ...(organizations.length > 1
+            ? [
+                {
+                    identifier: "organization",
+                    label: t("guide-requests-app.organization", "Organization"),
+                },
+            ]
+            : []),
+        ...ticketFields
+            .filter((field) => !HIDDEN_FIELDS$1.includes(field.type))
+            .map(({ id, title_in_portal }) => ({
+            identifier: String(id),
+            label: title_in_portal,
+        })),
+    ], [t, hasCustomStatuses, organizations, ticketFields]);
+    const [options, setOptions] = reactExports.useState([]);
+    reactExports.useEffect(() => {
+        setOptions(filterProperties);
+    }, [filterProperties]);
+    const getOptionValue = reactExports.useCallback((property) => property.identifier, []);
+    const handleChange = reactExports.useCallback((changes) => {
+        const { inputValue, selectionValue } = changes;
+        if (inputValue !== undefined) {
+            if (inputValue === "") {
+                setOptions(filterProperties);
+            }
+            else {
+                const matchedOptions = filterProperties.filter((option) => {
+                    return option.label
+                        .trim()
+                        .toLowerCase()
+                        .includes(inputValue.trim().toLowerCase());
+                });
+                setOptions(matchedOptions);
+            }
+        }
+        if (selectionValue && typeof selectionValue === "string") {
+            const selectedFilterProperty = filterProperties.find((property) => property.identifier === selectionValue);
+            if (selectedFilterProperty) {
+                onSelect(selectedFilterProperty);
+            }
+        }
+    }, [filterProperties, onSelect]);
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Field$1.Label, { children: t("guide-requests-app.filters-modal.select-filter", "Select filter") }), jsxRuntimeExports.jsx(Combobox, { isAutocomplete: true, onChange: handleChange, selectionValue: selectedProperty ? getOptionValue(selectedProperty) : null, validation: errors.ticketField ? "error" : undefined, listboxAppendToNode: modalContainer, children: options.length === 0 ? (jsxRuntimeExports.jsx(Option, { isDisabled: true, label: t("guide-requests-app.filters-modal.no-matches-found", "No matches found"), value: "" })) : (options.map((property) => (jsxRuntimeExports.jsx(Option, { value: getOptionValue(property), label: property.label }, property.identifier)))) }), jsxRuntimeExports.jsx(FieldError, { errors: errors, field: "ticketField" })] }));
+}
+
+const Gap = styled.div `
+  height: ${(p) => p.theme.space.md};
+`;
+const systemType = [
+    "subject",
+    "description",
+    "status",
+    "custom_status",
+    "type",
+    "priority",
+    "basic_priority",
+    "assignee",
+    "group",
+    "tickettype",
+    "requester",
+];
+function isSystemFieldType(type) {
+    return systemType.includes(type);
+}
+function FilterModal({ onClose, ticketFields, organizations, filterValuesMap, onFiltersChanged, customStatusesEnabled, customStatusOptions, }) {
+    const { t } = useTranslation();
+    const [selectedFilterProperty, setSelectedFilterProperty] = reactExports.useState();
+    const [formState, setFormState] = reactExports.useState();
+    const [errors, setErrors] = reactExports.useState({});
+    const modalContainer = useModalContainer();
+    const handleSelectFilterProperty = (property) => {
+        setErrors({});
+        setSelectedFilterProperty(property);
+        setFormState(null);
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!selectedFilterProperty) {
+            setErrors({
+                ticketField: t("guide-requests-app.filters-modal.select-filter-required", "Select a filter"),
+            });
+            return;
+        }
+        if (formState?.state === "valid") {
+            const filterKey = isSystemFieldType(selectedFilterProperty.identifier) ||
+                selectedFilterProperty.identifier === "created_at" ||
+                selectedFilterProperty.identifier === "updated_at" ||
+                selectedFilterProperty.identifier === "organization" ||
+                selectedFilterProperty.identifier === "custom_status_id"
+                ? selectedFilterProperty.identifier
+                : `custom_field_${selectedFilterProperty.identifier}`;
+            onFiltersChanged({
+                ...filterValuesMap,
+                [filterKey]: formState.values,
+            });
+            onClose();
+        }
+        else if (formState?.state === "invalid") {
+            setErrors(formState.errors);
+        }
+    };
+    return (jsxRuntimeExports.jsx(Modal, { appendToNode: modalContainer, onClose: onClose, children: jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit, noValidate: true, children: [jsxRuntimeExports.jsx(Header$1, { children: t("guide-requests-app.filters-modal.title", "Filters") }), jsxRuntimeExports.jsxs(Body$2, { children: [jsxRuntimeExports.jsx(FilterPropertyDropdown, { ticketFields: ticketFields, organizations: organizations, hasCustomStatuses: customStatusesEnabled, selectedProperty: selectedFilterProperty, onSelect: handleSelectFilterProperty, errors: errors }), jsxRuntimeExports.jsx(Gap, {}), selectedFilterProperty && (jsxRuntimeExports.jsx(FilterValueField, { selectedFilterProperty: selectedFilterProperty, ticketFields: ticketFields, organizations: organizations, customStatusOptions: customStatusOptions, onSelect: setFormState, errors: errors }, selectedFilterProperty.identifier))] }), jsxRuntimeExports.jsxs(Footer$2, { children: [jsxRuntimeExports.jsx(FooterItem$2, { children: jsxRuntimeExports.jsx(Button, { type: "button", onClick: onClose, isBasic: true, children: t("guide-requests-app.cancel", "Cancel") }) }), jsxRuntimeExports.jsx(FooterItem$2, { children: jsxRuntimeExports.jsx(Button, { type: "submit", isPrimary: true, children: t("guide-requests-app.filters-modal.apply-filter-button", "Apply filter") }) })] }), jsxRuntimeExports.jsx(Close$2, { "aria-label": t("guide-requests-app.closeModal", "Close modal") })] }) }));
+}
+
+function FilterTagWrapper({ field, onFilterRemoved, children, }) {
+    function handleFilterKeyDown(e) {
+        if (e.code === "Delete" || e.code === "Backspace") {
+            e.preventDefault();
+            onFilterRemoved();
+        }
+    }
+    return (jsxRuntimeExports.jsxs(Tag, { size: "large", isRegular: true, tabIndex: 0, onKeyDown: (e) => handleFilterKeyDown(e), children: [children, jsxRuntimeExports.jsx(Tag.Close, { onClick: () => onFilterRemoved() })] }, field));
+}
+
+function getTextLabel(values) {
+    const value = values[0]?.substring(1);
+    if (!value || value === "*") {
+        return "";
+    }
+    return value.substring(1, value.length - 1);
+}
+function getNumberLabel(values) {
+    const [first, second] = values;
+    if (values.length === 1 && first) {
+        const trimmed = first.substring(1);
+        if (!trimmed || trimmed === "*") {
+            return "";
+        }
+        return trimmed;
+    }
+    if (values.length === 2 && first && second) {
+        return `${first.substring(2)} - ${second.substring(2)}`;
+    }
+    return "";
+}
+function getCreditCardLabel(values) {
+    const value = values[0]?.substring(2);
+    return value === "" ? "" : `XXXXXXXXXXXX${value}`;
+}
+function FieldTags({ identifier, ticketFields, organizations, values, customStatusOptions, onFilterRemoved, }) {
+    const { t, i18n } = useTranslation();
+    const currentLocale = i18n.language;
+    const { checkboxFilterValuesI18N, statusFilterValuesI18N, createDefaultDateRangeI18N, } = useFilterTranslations();
+    const getDateRangeLabel = ([from, to]) => {
+        const startDate = new Date(from.substring(2));
+        const endDate = new Date(to.substring(2));
+        const longDate = new Intl.DateTimeFormat(currentLocale, {
+            dateStyle: "long",
+        });
+        return longDate.formatRange(startDate, endDate);
+    };
+    const getDateLabel = (values) => {
+        const firstValue = values[0];
+        if (values.length === 1 && firstValue !== undefined) {
+            return createDefaultDateRangeI18N()[firstValue] || "";
+        }
+        else {
+            return getDateRangeLabel(values);
+        }
+    };
+    if (identifier === "organization") {
+        const organization = organizations.find((o) => String(o.id) === values[0]?.substring(1));
+        return organization ? (jsxRuntimeExports.jsx(FilterTagWrapper, { field: identifier, values: values, onFilterRemoved: () => {
+                onFilterRemoved(values);
+            }, children: jsxRuntimeExports.jsxs("span", { children: [jsxRuntimeExports.jsx(Span, { isBold: true, children: t("guide-requests-app.organization", "Organization") }), " ", organization.name] }) })) : (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}));
+    }
+    if (identifier === "created_at") {
+        return (jsxRuntimeExports.jsx(FilterTagWrapper, { field: identifier, values: values, onFilterRemoved: () => {
+                onFilterRemoved(values);
+            }, children: jsxRuntimeExports.jsxs("span", { children: [jsxRuntimeExports.jsx(Span, { isBold: true, children: t("guide-requests-app.createdDate", "Created date") }), " ", getDateLabel(values)] }) }));
+    }
+    if (identifier === "updated_at") {
+        return (jsxRuntimeExports.jsx(FilterTagWrapper, { field: identifier, values: values, onFilterRemoved: () => {
+                onFilterRemoved(values);
+            }, children: jsxRuntimeExports.jsxs("span", { children: [jsxRuntimeExports.jsx(Span, { isBold: true, children: t("guide-requests-app.updatedDate", "Updated date") }), " ", getDateLabel(values)] }) }));
+    }
+    if (identifier === "status") {
+        return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: values.map((value) => (jsxRuntimeExports.jsx(FilterTagWrapper, { field: identifier, values: values, onFilterRemoved: () => {
+                    onFilterRemoved([value]);
+                }, children: jsxRuntimeExports.jsxs("span", { children: [jsxRuntimeExports.jsx(Span, { isBold: true, children: t("guide-requests-app.status", "Status") }), " ", statusFilterValuesI18N[value]] }) }, value))) }));
+    }
+    if (identifier === "custom_status_id") {
+        return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: values.map((value) => {
+                const label = customStatusOptions.find((option) => option.value === value)?.label;
+                return (jsxRuntimeExports.jsx(FilterTagWrapper, { field: identifier, values: values, onFilterRemoved: () => {
+                        onFilterRemoved([value]);
+                    }, children: jsxRuntimeExports.jsxs("span", { children: [jsxRuntimeExports.jsx(Span, { isBold: true, children: t("guide-requests-app.status", "Status") }), " ", label] }) }, value));
+            }) }));
+    }
+    const ticketField = identifier.startsWith("custom_field_")
+        ? ticketFields.find((f) => String(f.id) === identifier.replace("custom_field_", ""))
+        : ticketFields.find((f) => f.type === identifier);
+    if (ticketField == null) {
+        return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
+    }
+    switch (ticketField.type) {
+        case "date": {
+            return (jsxRuntimeExports.jsx(FilterTagWrapper, { field: identifier, values: values, onFilterRemoved: () => {
+                    onFilterRemoved(values);
+                }, children: jsxRuntimeExports.jsxs("span", { children: [jsxRuntimeExports.jsx(Span, { isBold: true, children: ticketField.title_in_portal }), " ", getDateLabel(values)] }) }));
+        }
+        case "tagger":
+        case "multiselect": {
+            return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: values.map((value) => {
+                    const item = ticketField.custom_field_options?.find((option) => option.value === value.substring(1));
+                    return (item && (jsxRuntimeExports.jsx(FilterTagWrapper, { field: identifier, values: [value], onFilterRemoved: () => {
+                            onFilterRemoved([value]);
+                        }, children: jsxRuntimeExports.jsxs("span", { children: [jsxRuntimeExports.jsx(Span, { isBold: true, children: ticketField.title_in_portal }), " ", item.name] }) }, item.id)));
+                }) }));
+        }
+        case "text":
+        case "textarea":
+        case "regexp": {
+            return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: jsxRuntimeExports.jsx(FilterTagWrapper, { field: identifier, values: values, onFilterRemoved: () => {
+                        onFilterRemoved(values);
+                    }, children: jsxRuntimeExports.jsxs("span", { children: [jsxRuntimeExports.jsx(Span, { isBold: true, children: ticketField.title_in_portal }), " ", getTextLabel(values)] }) }) }));
+        }
+        case "integer":
+        case "decimal": {
+            return (jsxRuntimeExports.jsx(FilterTagWrapper, { field: identifier, values: values, onFilterRemoved: () => {
+                    onFilterRemoved(values);
+                }, children: jsxRuntimeExports.jsxs("span", { children: [jsxRuntimeExports.jsx(Span, { isBold: true, children: ticketField.title_in_portal }), " ", getNumberLabel(values)] }) }));
+        }
+        case "checkbox": {
+            return (jsxRuntimeExports.jsx(FilterTagWrapper, { field: identifier, values: values, onFilterRemoved: () => {
+                    onFilterRemoved(values);
+                }, children: jsxRuntimeExports.jsxs("span", { children: [jsxRuntimeExports.jsx(Span, { isBold: true, children: ticketField.title_in_portal }), " ", checkboxFilterValuesI18N[values[0]]] }) }));
+        }
+        case "partialcreditcard": {
+            return (jsxRuntimeExports.jsx(FilterTagWrapper, { field: identifier, values: values, onFilterRemoved: () => {
+                    onFilterRemoved(values);
+                }, children: jsxRuntimeExports.jsxs("span", { children: [jsxRuntimeExports.jsx(Span, { isBold: true, children: ticketField.title_in_portal }), " ", getCreditCardLabel(values)] }) }));
+        }
+        default: {
+            return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
+        }
+    }
+}
+
+function removeFilterValuesFromMap(filterValuesMap, field, valuesToRemove) {
+    const prevValues = filterValuesMap[field];
+    if (prevValues == null) {
+        return filterValuesMap;
+    }
+    const newValues = prevValues.filter((v) => !valuesToRemove.includes(v));
+    if (newValues.length === 0) {
+        const res = { ...filterValuesMap };
+        delete res[field];
+        return res;
+    }
+    else {
+        return { ...filterValuesMap, [field]: newValues };
+    }
+}
+
+const Container$3 = styled.div `
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
   min-height: 32px;
   margin-bottom: 28px;
-`;function Ke({filters:e,ticketFields:n,organizations:r,customStatusOptions:a,onFiltersChanged:i}){const{t:o}=t();return s.jsxs(Je,{children:[Object.entries(e).map((([t,o])=>s.jsx(Ze,{ticketFields:n,organizations:r,customStatusOptions:a,values:o,identifier:t,onFilterRemoved:s=>function(t,s){i(function(e,t,s){const n=e[t];if(null==n)return e;const r=n.filter((e=>!s.includes(e)));if(0===r.length){const s={...e};return delete s[t],s}return{...e,[t]:r}}(e,t,s))}(t,s)},t))),Object.keys(e).length>0&&s.jsx(f,{isBasic:!0,size:"small",onClick:()=>i({}),children:o("guide-requests-app.clearFilters","Clear filters")})]})}const et=i.div`
+`;
+function FilterTags({ filters, ticketFields, organizations, customStatusOptions, onFiltersChanged, }) {
+    const { t } = useTranslation();
+    function removeFilter(field, values) {
+        onFiltersChanged(removeFilterValuesFromMap(filters, field, values));
+    }
+    return (jsxRuntimeExports.jsxs(Container$3, { children: [Object.entries(filters).map(([field, values]) => {
+                return (jsxRuntimeExports.jsx(FieldTags, { ticketFields: ticketFields, organizations: organizations, customStatusOptions: customStatusOptions, values: values, identifier: field, onFilterRemoved: (values) => removeFilter(field, values) }, field));
+            }), Object.keys(filters).length > 0 && (jsxRuntimeExports.jsx(Button, { isBasic: true, size: "small", onClick: () => onFiltersChanged({}), children: t("guide-requests-app.clearFilters", "Clear filters") }))] }));
+}
+
+const Container$2 = styled.div `
   align-items: flex-end;
   display: flex;
   gap: 12px;
-  margin: ${e=>e.theme.space.sm} 0 ${e=>e.theme.space.xs};
-  ${je`
+  margin: ${(p) => p.theme.space.sm} 0 ${(p) => p.theme.space.xs};
+  ${media.mobile `
     align-items: flex-start;
     flex-direction: column;
   `}
-`,tt=i.div`
+`;
+const Block = styled.div `
   display: flex;
   flex-direction: column;
-`,st=i(tt)`
+`;
+const SearchBlock = styled(Block) `
   width: 400px;
-  ${je`
+  ${media.mobile `
     flex-direction: column;
     width: 100%;
   `};
-`,nt=tt,rt=i(tt)`
-  ${je`
+`;
+const RequestsFilterMenuBlock = Block;
+const OrganizationBlock = styled(Block) `
+  ${media.mobile `
     align-items: flex-end;
     flex-direction: row;
     gap: 12px;
   `};
-`,at=i(tt)`
+`;
+const OrganizationsManagementBlock = styled(Block) `
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
   flex-grow: 1;
-`,it=i(D)`
-  margin-bottom: ${e=>e.theme.space.xs};
-`;function ot({hasPagination:n,page:r,requestsCount:a,requestsPerPage:i,query:o,onSearchSubmit:l,filters:u,onFiltersChanged:c,organizations:d,selectedTab:h,onOrganizationSelected:p,user:j,ticketFields:m,customStatuses:b,customStatusesEnabled:g}){const{t:x}=t(),[v,q]=e.useState(!1),S=e.useMemo((()=>function(e){const t=[];for(const s of e){const e=s.label??s.end_user_label,n=t.find((t=>t.label===e));n?n.value+=` :${s.id}`:t.push({label:e,value:`:${s.id}`})}return t}(b)),[b]),y=(r-1)*i+1;let w=y+i-1;w>a&&(w=a);const _=h.name===qe,C=d.length>0;return s.jsxs(s.Fragment,{children:[s.jsx(D,{role:"status",hidden:!0,children:n?x("guide-requests-app.requestCount.screenreader.range","{{from}} to {{to}} of {{total}} requests",{from:y,to:w,total:a}):x("guide-requests-app.requestCount","{{count}} requests",{count:a})}),s.jsxs(et,{children:[s.jsxs(st,{children:[s.jsx(it,{children:n?x("guide-requests-app.requestCount.range","{{from}} - {{to}} of {{total}} requests",{from:y,to:w,total:a}):x("guide-requests-app.requestCount","{{count}} requests",{count:a})}),s.jsx(se,{query:o,onSearchSubmit:l})]}),_&&s.jsxs(rt,{children:[s.jsx(re,{organizations:d,currentOrganizationId:h.organizationId,onOrganizationSelected:p}),C&&j&&s.jsx(fe,{children:s.jsx(de,{organizations:d,user:j})})]}),s.jsx(nt,{children:s.jsx(f,{onClick:()=>{q(!0)},children:x("guide-requests-app.filter","Filter")})}),s.jsx(at,{children:s.jsx(be,{children:_&&C&&j&&s.jsx(de,{organizations:d,user:j})})})]}),s.jsx(Ke,{filters:u,ticketFields:m,organizations:d,customStatusOptions:S,onFiltersChanged:c}),v&&s.jsx(Xe,{onClose:()=>q(!1),ticketFields:m,filterValuesMap:u,onFiltersChanged:c,organizations:_?[]:d,customStatusesEnabled:g,customStatusOptions:S})]})}var lt={assign:e=>window.location.assign(e)};const ut=6e4,ct=60*ut;function dt({date:t,locale:n}){const r=e.useMemo((()=>new Intl.RelativeTimeFormat(n,{numeric:"auto"})),[n]),a=e.useMemo((()=>new Intl.DateTimeFormat(n,{dateStyle:"medium",timeStyle:"short"})),[n]),i=e.useMemo((()=>new Intl.DateTimeFormat(n,{timeStyle:"short"})),[n]),[o,l]=e.useState("");return e.useEffect((()=>{const e=()=>{l(function(e,t,s,n){const r=(new Date).valueOf()-e.valueOf();if(r<0)return s.format(e);if(r<ct){const e=Math.floor(r/ut);return V(t.format(-e,"minutes"))}if(O(e)){const s=`${t.format(0,"day")}, ${n.format(e)}`;return V(s)}if(N(e)){const s=`${t.format(-1,"day")}, ${n.format(e)}`;return V(s)}return s.format(e)}(t,r,a,i))},s=setInterval((()=>{e()}),ut);return e(),()=>{clearInterval(s)}}),[t,r,a,i]),s.jsx(s.Fragment,{children:o})}function ht({children:e,tooltip:t}){return s.jsx(R,{content:t||e,size:"medium",children:s.jsx(L,{title:"",children:e})})}const pt=i(T)`
+`;
+const StyledSpan = styled(Span) `
+  margin-bottom: ${(p) => p.theme.space.xs};
+`;
+/**
+ * This function creates an array of `MultiSelectOption`, grouping options
+ * with the same label together.
+ *
+ * For example, from this array of custom statuses
+ * ```
+ * [
+ *  { id: 1, label: "Open", ...},
+ *  { id: 2, label: "Open", ... },
+ *  { id: 3, label: "Solved", ... },
+ *  { id: 4, label: "Closed", ... },
+ * ]
+ * ```
+ *
+ * It will return
+ * ```
+ * [
+ *  { label: "Open", value: ":1 :2" },
+ *  { label: "Solved", value: ":3" },
+ *  { label: "Open", value: ":4" },
+ * ]
+ * ```
+ * @param customStatuses Array of custom statuses
+ * @returns A array of multiselect option
+ */
+function createCustomStatusOptions(customStatuses) {
+    const res = [];
+    for (const customStatus of customStatuses) {
+        const label = (customStatus.label ?? customStatus.end_user_label);
+        const existingOption = res.find((option) => option.label === label);
+        if (existingOption) {
+            existingOption.value += ` :${customStatus.id}`;
+        }
+        else {
+            res.push({ label, value: `:${customStatus.id}` });
+        }
+    }
+    return res;
+}
+function RequestsToolbar({ hasPagination, page, requestsCount, requestsPerPage, query, onSearchSubmit, filters, onFiltersChanged, organizations, selectedTab, onOrganizationSelected, user, ticketFields, customStatuses, customStatusesEnabled, }) {
+    const { t } = useTranslation();
+    const [isFilterModalOpen, setIsFilterModalOpen] = reactExports.useState(false);
+    const customStatusOptions = reactExports.useMemo(() => createCustomStatusOptions(customStatuses), [customStatuses]);
+    const from = (page - 1) * requestsPerPage + 1;
+    let to = from + requestsPerPage - 1;
+    if (to > requestsCount)
+        to = requestsCount;
+    const isOrganizationTab = selectedTab.name === ORG_REQUESTS_TAB_NAME;
+    const hasOrganizations = organizations.length > 0;
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Span, { role: "status", hidden: true, children: hasPagination
+                    ? t("guide-requests-app.requestCount.screenreader.range", "{{from}} to {{to}} of {{total}} requests", {
+                        from,
+                        to,
+                        total: requestsCount,
+                    })
+                    : t("guide-requests-app.requestCount", "{{count}} requests", {
+                        count: requestsCount,
+                    }) }), jsxRuntimeExports.jsxs(Container$2, { children: [jsxRuntimeExports.jsxs(SearchBlock, { children: [jsxRuntimeExports.jsx(StyledSpan, { children: hasPagination
+                                    ? t("guide-requests-app.requestCount.range", "{{from}} - {{to}} of {{total}} requests", {
+                                        from,
+                                        to,
+                                        total: requestsCount,
+                                    })
+                                    : t("guide-requests-app.requestCount", "{{count}} requests", {
+                                        count: requestsCount,
+                                    }) }), jsxRuntimeExports.jsx(RequestsSearch, { query: query, onSearchSubmit: onSearchSubmit })] }), isOrganizationTab && (jsxRuntimeExports.jsxs(OrganizationBlock, { children: [jsxRuntimeExports.jsx(OrganizationsDropdown, { organizations: organizations, currentOrganizationId: selectedTab.organizationId, onOrganizationSelected: onOrganizationSelected }), hasOrganizations && user && (jsxRuntimeExports.jsx(Mobile, { children: jsxRuntimeExports.jsx(OrganizationsManagement, { organizations: organizations, user: user }) }))] })), jsxRuntimeExports.jsx(RequestsFilterMenuBlock, { children: jsxRuntimeExports.jsx(Button, { onClick: () => {
+                                setIsFilterModalOpen(true);
+                            }, children: t("guide-requests-app.filter", "Filter") }) }), jsxRuntimeExports.jsx(OrganizationsManagementBlock, { children: jsxRuntimeExports.jsx(Desktop, { children: isOrganizationTab && hasOrganizations && user && (jsxRuntimeExports.jsx(OrganizationsManagement, { organizations: organizations, user: user })) }) })] }), jsxRuntimeExports.jsx(FilterTags, { filters: filters, ticketFields: ticketFields, organizations: organizations, customStatusOptions: customStatusOptions, onFiltersChanged: onFiltersChanged }), isFilterModalOpen && (jsxRuntimeExports.jsx(FilterModal, { onClose: () => setIsFilterModalOpen(false), ticketFields: ticketFields, filterValuesMap: filters, onFiltersChanged: onFiltersChanged, organizations: isOrganizationTab ? [] : organizations, customStatusesEnabled: customStatusesEnabled, customStatusOptions: customStatusOptions }))] }));
+}
+
+var location = {
+    assign(url) {
+        return window.location.assign(url);
+    },
+};
+
+const ONE_MINUTE = 1000 * 60;
+const ONE_HOUR = ONE_MINUTE * 60;
+function RelativeTime({ date, locale, }) {
+    const relativeTimeFormat = reactExports.useMemo(() => new Intl.RelativeTimeFormat(locale, { numeric: "auto" }), [locale]);
+    const dateTimeFormat = reactExports.useMemo(() => new Intl.DateTimeFormat(locale, {
+        dateStyle: "medium",
+        timeStyle: "short",
+    }), [locale]);
+    const timeFormat = reactExports.useMemo(() => new Intl.DateTimeFormat(locale, {
+        timeStyle: "short",
+    }), [locale]);
+    const [value, setValue] = reactExports.useState("");
+    reactExports.useEffect(() => {
+        const update = () => {
+            setValue(getRelativeTime(date, relativeTimeFormat, dateTimeFormat, timeFormat));
+        };
+        const intervalId = setInterval(() => {
+            update();
+        }, ONE_MINUTE);
+        update();
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, [date, relativeTimeFormat, dateTimeFormat, timeFormat]);
+    return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: value });
+}
+function getRelativeTime(date, relativeTimeFormat, dateTimeFormat, timeFormat) {
+    const now = new Date();
+    const elapsed = now.valueOf() - date.valueOf();
+    if (elapsed < 0) {
+        return dateTimeFormat.format(date);
+    }
+    if (elapsed < ONE_HOUR) {
+        const minutes = Math.floor(elapsed / ONE_MINUTE);
+        return upperFirst(relativeTimeFormat.format(-minutes, "minutes"));
+    }
+    if (isToday(date)) {
+        const value = `${relativeTimeFormat.format(0, "day")}, ${timeFormat.format(date)}`;
+        return upperFirst(value);
+    }
+    if (isYesterday(date)) {
+        const value = `${relativeTimeFormat.format(-1, "day")}, ${timeFormat.format(date)}`;
+        return upperFirst(value);
+    }
+    return dateTimeFormat.format(date);
+}
+
+function TruncatedText({ children, tooltip, }) {
+    return (jsxRuntimeExports.jsx(Tooltip, { content: tooltip ? tooltip : children, size: "medium", children: jsxRuntimeExports.jsx(Ellipsis, { title: "", children: children }) }));
+}
+
+const StyledTag = styled(Tag) `
   margin: 2px;
-`,jt=i(m)`
+`;
+const SeeMore = styled(Anchor) `
   display: block;
   margin: 5px;
-`;function mt({tags:t}){const[n,r]=e.useState(!1),a=e=>s.jsx(pt,{isPill:!0,children:s.jsx(ht,{children:e})},e);return s.jsxs(s.Fragment,{children:[0===t.length&&"-",t.slice(0,3).map(a),t.length>3&&!n&&s.jsx(jt,{onClick:()=>r(!0),children:`+ ${t.length-3} more`}),n&&t.slice(3).map(a)]})}const ft=i(m)`
+`;
+function Multiselect({ tags }) {
+    const [isExpanded, setIsExpanded] = reactExports.useState(false);
+    const createTag = (tag) => (jsxRuntimeExports.jsx(StyledTag, { isPill: true, children: jsxRuntimeExports.jsx(TruncatedText, { children: tag }) }, tag));
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [tags.length === 0 && "-", tags.slice(0, 3).map(createTag), tags.length > 3 && !isExpanded && (jsxRuntimeExports.jsx(SeeMore, { onClick: () => setIsExpanded(true), children: `+ ${tags.length - 3} more` })), isExpanded && tags.slice(3).map(createTag)] }));
+}
+
+const Subject = styled(Anchor) `
   word-break: break-word;
-`,bt=({children:e,identifier:t})=>s.jsx(M.Cell,{"data-test-id":`table-cell-${t}`,children:e?s.jsx(ht,{children:e}):"-"});function gt({ticketFields:e,identifier:n,request:r,customStatuses:a,customStatusesEnabled:i,user:o}){const{id:l,created_at:u,updated_at:c,subject:d,description:h,status:p,priority:j,type:m}=r,{t:f,i18n:b}=t(),g=b.language,x=new Intl.DateTimeFormat(g,{dateStyle:"medium"}),v={color:"red",label:f("guide-requests-app.statusOpen","Open")},q={color:"#038153",label:f("guide-requests-app.statusPending","Awaiting reply")},S={color:"#68737d",label:f("guide-requests-app.statusSolved","Solved")},y={new:v,open:v,hold:v,pending:q,solved:S,closed:S},w=e=>r.custom_fields.find((t=>t.id.toString()===e))?.value,_=e=>{switch(w(e)){case!0:return f("guide-requests-app.checkbox-filter.selected","Selected");case!1:return f("guide-requests-app.checkbox-filter.not-selected","Not selected");default:return}};if("id"===n)return s.jsx(bt,{identifier:n,children:`#${l}`});if("created_at"===n)return s.jsx(bt,{identifier:n,children:x.format(new Date(u))});if("updated_at"===n)return s.jsx(bt,{identifier:n,children:s.jsx(dt,{date:new Date(c),locale:g})});if("status"===n){const{label:e,tooltip:t}=(()=>{if(!i)return{label:y[p].label,tooltip:void 0};const e=a.find((e=>e.id===r.custom_status_id)),t=e?.label||e?.end_user_label||y[p].label,s=e?.description||e?.end_user_description;return{label:t,tooltip:s?`${t} - ${s}`:t}})();return s.jsx(M.Cell,{"data-test-id":`table-cell-${n}`,children:s.jsx(T,{hue:y[p].color,children:s.jsx(ht,{tooltip:t,children:e||""})})})}if("requester"===n){const e=o?.alias||o?.name;return s.jsx(bt,{identifier:n,children:e})}if("subject"===n){const e=`/hc/requests/${l}`,t=t=>{t.preventDefault(),lt.assign(e)};return s.jsx(M.Cell,{role:"rowheader","data-test-id":`table-cell-${n}`,children:s.jsx(ft,{href:e,onClick:t,children:s.jsx(ht,{children:d||h})})})}const C=e.find((e=>String(e.id)===n||e.type===n));if(void 0===C)return null;switch(C.type){case"priority":return s.jsx(bt,{identifier:n,children:j});case"tickettype":return s.jsx(bt,{identifier:n,children:m});case"checkbox":return s.jsx(bt,{identifier:n,children:_(n)});case"regexp":case"partialcreditcard":case"text":case"textarea":case"integer":case"decimal":{const e=w(n);return s.jsx(bt,{identifier:n,children:e?e.toString():void 0})}case"date":{const e=w(n);return s.jsx(bt,{identifier:n,children:e?s.jsx(dt,{date:new Date(e),locale:g}):s.jsx("span",{children:"-"})})}case"tagger":{const e=w(n),t=C.custom_field_options?.find((t=>t.value===e))?.name;return s.jsx(bt,{identifier:n,children:t})}case"multiselect":{const e=(w(n)||[]).map((e=>C.custom_field_options?.find((t=>t.value===e))?.name));return s.jsx(M.Cell,{"data-test-id":`table-cell-${n}`,children:s.jsx(mt,{tags:e})})}default:return s.jsx(M.Cell,{})}}function xt({request:e,ticketFields:t,selectedAttributes:n,customStatuses:r,customStatusesEnabled:a,user:i}){return s.jsxs(M.Row,{children:[n.map((({identifier:n})=>s.jsx(gt,{request:e,ticketFields:t,identifier:n,customStatuses:r,customStatusesEnabled:a,user:i},`request-${e.id}-field-${n}`))),s.jsx(M.Cell,{})]},e.id)}const vt=i(p.Body)`
+`;
+const TruncatedTableCell = ({ children, identifier, }) => (jsxRuntimeExports.jsx(Table.Cell, { "data-test-id": `table-cell-${identifier}`, children: children ? jsxRuntimeExports.jsx(TruncatedText, { children: children }) : "-" }));
+function RequestsTableCell({ ticketFields, identifier, request, customStatuses, customStatusesEnabled, user, }) {
+    const { id, created_at, updated_at, subject, description, status, priority, type, } = request;
+    const { t, i18n } = useTranslation();
+    const currentLocale = i18n.language;
+    const mediumDate = new Intl.DateTimeFormat(currentLocale, {
+        dateStyle: "medium",
+    });
+    const open = {
+        color: "red",
+        label: t("guide-requests-app.statusOpen", "Open"),
+    };
+    const pending = {
+        color: "#038153",
+        label: t("guide-requests-app.statusPending", "Awaiting reply"),
+    };
+    const solved = {
+        color: "#68737d",
+        label: t("guide-requests-app.statusSolved", "Solved"),
+    };
+    const STATUS_MAPPING = {
+        new: open,
+        open: open,
+        hold: open,
+        pending: pending,
+        solved: solved,
+        closed: solved,
+    };
+    const getCustomFieldValue = (identifier) => request.custom_fields.find((field) => field.id.toString() === identifier)
+        ?.value;
+    const getCheckboxLabel = (identifier) => {
+        const value = getCustomFieldValue(identifier);
+        switch (value) {
+            case true:
+                return t("guide-requests-app.checkbox-filter.selected", "Selected");
+            case false:
+                return t("guide-requests-app.checkbox-filter.not-selected", "Not selected");
+            default:
+                return undefined;
+        }
+    };
+    const getStatusLabel = () => {
+        if (!customStatusesEnabled) {
+            return {
+                label: STATUS_MAPPING[status].label,
+                tooltip: undefined,
+            };
+        }
+        const customStatus = customStatuses.find((customStatus) => customStatus.id === request.custom_status_id);
+        /* We want to always show the end-user label.
+    This is exposed in the API as `label` for end-users and `end_user_label` for agents/admins.
+    The same applies for the description. */
+        const label = customStatus?.label ||
+            customStatus?.end_user_label ||
+            STATUS_MAPPING[status].label;
+        const description = customStatus?.description || customStatus?.end_user_description;
+        return {
+            label,
+            tooltip: description ? `${label} - ${description}` : label,
+        };
+    };
+    if (identifier === "id") {
+        return (jsxRuntimeExports.jsx(TruncatedTableCell, { identifier: identifier, children: `#${id}` }));
+    }
+    if (identifier === "created_at") {
+        return (jsxRuntimeExports.jsx(TruncatedTableCell, { identifier: identifier, children: mediumDate.format(new Date(created_at)) }));
+    }
+    if (identifier === "updated_at") {
+        return (jsxRuntimeExports.jsx(TruncatedTableCell, { identifier: identifier, children: jsxRuntimeExports.jsx(RelativeTime, { date: new Date(updated_at), locale: currentLocale }) }));
+    }
+    if (identifier === "status") {
+        const { label, tooltip } = getStatusLabel();
+        return (jsxRuntimeExports.jsx(Table.Cell, { "data-test-id": `table-cell-${identifier}`, children: jsxRuntimeExports.jsx(Tag, { hue: STATUS_MAPPING[status].color, children: jsxRuntimeExports.jsx(TruncatedText, { tooltip: tooltip, children: label || "" }) }) }));
+    }
+    if (identifier === "requester") {
+        const nameOrAlias = user?.alias || user?.name;
+        return (jsxRuntimeExports.jsx(TruncatedTableCell, { identifier: identifier, children: nameOrAlias }));
+    }
+    if (identifier === "subject") {
+        const requestUrl = `/hc/requests/${id}`;
+        const navigateToRequestPage = (e) => {
+            e.preventDefault();
+            location.assign(requestUrl);
+        };
+        return (jsxRuntimeExports.jsx(Table.Cell, { role: "rowheader", "data-test-id": `table-cell-${identifier}`, children: jsxRuntimeExports.jsx(Subject, { href: requestUrl, onClick: navigateToRequestPage, children: jsxRuntimeExports.jsx(TruncatedText, { children: subject || description }) }) }));
+    }
+    const ticketField = ticketFields.find((field) => String(field.id) === identifier || field.type === identifier);
+    if (ticketField === undefined) {
+        return null;
+    }
+    switch (ticketField.type) {
+        case "priority":
+            return (jsxRuntimeExports.jsx(TruncatedTableCell, { identifier: identifier, children: priority }));
+        case "tickettype":
+            return (jsxRuntimeExports.jsx(TruncatedTableCell, { identifier: identifier, children: type }));
+        case "checkbox": {
+            return (jsxRuntimeExports.jsx(TruncatedTableCell, { identifier: identifier, children: getCheckboxLabel(identifier) }));
+        }
+        case "regexp":
+        case "partialcreditcard":
+        case "text":
+        case "textarea":
+        case "integer":
+        case "decimal": {
+            const value = getCustomFieldValue(identifier);
+            return (jsxRuntimeExports.jsx(TruncatedTableCell, { identifier: identifier, children: value ? value.toString() : undefined }));
+        }
+        case "date": {
+            const value = getCustomFieldValue(identifier);
+            return (jsxRuntimeExports.jsx(TruncatedTableCell, { identifier: identifier, children: value ? (jsxRuntimeExports.jsx(RelativeTime, { date: new Date(value), locale: currentLocale })) : (jsxRuntimeExports.jsx("span", { children: "-" })) }));
+        }
+        case "tagger": {
+            const value = getCustomFieldValue(identifier);
+            const name = ticketField.custom_field_options?.find((field) => field.value === value)?.name;
+            return (jsxRuntimeExports.jsx(TruncatedTableCell, { identifier: identifier, children: name }));
+        }
+        case "multiselect": {
+            const value = getCustomFieldValue(identifier) || [];
+            const tags = value.map((value) => ticketField.custom_field_options?.find((field) => field.value === value)?.name);
+            return (jsxRuntimeExports.jsx(Table.Cell, { "data-test-id": `table-cell-${identifier}`, children: jsxRuntimeExports.jsx(Multiselect, { tags: tags }) }));
+        }
+        default:
+            return jsxRuntimeExports.jsx(Table.Cell, {});
+    }
+}
+
+function RequestsTableRow({ request, ticketFields, selectedAttributes, customStatuses, customStatusesEnabled, user, }) {
+    return (jsxRuntimeExports.jsxs(Table.Row, { children: [selectedAttributes.map(({ identifier }) => {
+                return (jsxRuntimeExports.jsx(RequestsTableCell, { request: request, ticketFields: ticketFields, identifier: identifier, customStatuses: customStatuses, customStatusesEnabled: customStatusesEnabled, user: user }, `request-${request.id}-field-${identifier}`));
+            }), jsxRuntimeExports.jsx(Table.Cell, {})] }, request.id));
+}
+
+const StyledBody = styled(Modal.Body) `
   display: flex;
   flex-direction: column;
-  gap: ${e=>e.theme.space.md};
-`;function qt({onClose:i,selectedColumns:o,onSelectedColumnsChanged:l,requestAttributes:u}){const{t:c}=t(),[d,m]=e.useState(o),[b,g]=e.useState(""),x=h(),v=b?u.filter((e=>e.label.trim().toLocaleLowerCase().includes(b.trim().toLocaleLowerCase()))):u,q=v.every((e=>d.includes(e.identifier))),S=v.some((e=>d.includes(e.identifier)));return s.jsxs(p,{appendToNode:x,onClose:i,children:[s.jsx(p.Header,{children:c("guide-requests-app.column-selection.show-hide-columns","Show and hide columns")}),s.jsxs(vt,{children:[s.jsxs(n,{children:[s.jsx(n.Label,{hidden:!0,children:c("guide-requests-app.column-selection.search-columns","Search for columns")}),s.jsx(r,{start:s.jsx(a,{}),type:"search",value:b,onChange:e=>{g(e.target.value)}})]}),s.jsxs(M,{"aria-live":"polite",children:[s.jsx(M.Head,{children:s.jsxs(M.HeaderRow,{children:[s.jsx(M.HeaderCell,{isMinimum:!0,children:s.jsx(n,{children:s.jsx(j,{checked:q,indeterminate:!q&&S,onChange:e=>{if(e.target.checked){const e=new Set([...o,...v.map((e=>e.identifier))]);m([...e])}else m(d.filter((e=>void 0===v.find((t=>t.identifier===e)))))},children:s.jsx(n.Label,{hidden:!0,children:q?c("guide-requests-app.column-selection.hide-all","Hide all columns"):c("guide-requests-app.column-selection.show-all","Show all columns")})})})}),s.jsx(M.HeaderCell,{children:c("guide-requests-app.column-selection.column","Column")})]})}),s.jsx(M.Body,{children:v.map((({identifier:e,label:t})=>{const r=d.includes(e);return s.jsxs(M.Row,{isSelected:r,children:[s.jsx(M.Cell,{isMinimum:!0,children:s.jsx(n,{children:s.jsx(j,{checked:r,onChange:t=>{const s=t.target.checked;m(s?t=>[...t,e]:t=>t.filter((t=>t!==e)))},children:s.jsx(n.Label,{hidden:!0,children:r?c("guide-requests-app.column-selection.hide-column","Hide {{column_name}} column",{column_name:t}):c("guide-requests-app.column-selection.show-column","Show {{column_name}} column",{column_name:t})})})})}),s.jsx(M.Cell,{children:t})]},e)}))})]})]}),s.jsxs(p.Footer,{children:[s.jsx(p.FooterItem,{children:s.jsx(f,{onClick:i,isBasic:!0,children:c("guide-requests-app.cancel","Cancel")})}),s.jsx(p.FooterItem,{children:s.jsx(f,{onClick:()=>{l(d),i()},isPrimary:!0,children:c("guide-requests-app.save","Save")})})]}),s.jsx(p.Close,{"aria-label":c("guide-requests-app.closeModal","Close modal")})]})}const St="__openModal__",yt=i(P)`
-  color: ${e=>e.theme.colors.variables.light.background.primaryEmphasis};
-`;function wt({onSelectedColumnsChanged:n,selectedColumns:r,requestAttributes:a,defaultDesktopColumns:i}){const{t:o}=t(),[l,u]=e.useState(!1),[c,d]=e.useState(!1),[h,p]=e.useState(r),j=a.length>i.length,m=e.useMemo((()=>r.map((e=>({value:e})))),[r]),f=o("guide-requests-app.column-selection.show-hide-columns","Show and hide columns");return s.jsxs(s.Fragment,{children:[s.jsxs(A,{isExpanded:l,selectedItems:m,onChange:e=>{if(!0===e.isExpanded&&p(r),e.value===St)return u(!1),void d(!0);if(e.selectedItems){const t=e.selectedItems.map((e=>e.value)).filter((e=>e!==St));n(t)}else void 0!==e.isExpanded&&u(e.isExpanded)},placement:"bottom-end",restoreFocus:!1,button:e=>s.jsx(R,{content:f,placement:"start",children:s.jsx(M.OverflowButton,{...e,"aria-label":f})}),children:[s.jsx(B,{legend:f,type:"checkbox",children:a.map((({identifier:e,label:t})=>i.includes(e)||h.includes(e)?s.jsx(P,{value:e,"data-test-id":`column-filter-menu-${e}`,children:t},e):null))}),j&&s.jsxs(s.Fragment,{children:[s.jsx(H,{}),s.jsx(yt,{value:St,children:o("guide-requests-app.column-selection.see-more-columns","See more columns")})]})]}),c&&s.jsx(qt,{onClose:()=>{d(!1)},selectedColumns:r,onSelectedColumnsChanged:n,requestAttributes:a})]})}var _t={setItem:(e,t)=>window.localStorage.setItem(e,t),getItem:e=>window.localStorage.getItem(e),removeItem(e){window.localStorage.removeItem(e)},clear(){window.localStorage.clear()}};const Ct=i.div`
+  gap: ${(p) => p.theme.space.md};
+`;
+function RequestsColumnModal({ onClose, selectedColumns, onSelectedColumnsChanged, requestAttributes, }) {
+    const { t } = useTranslation();
+    const [selectedIdentifiers, setSelectedIdentifiers] = reactExports.useState(selectedColumns);
+    const [searchValue, setSearchValue] = reactExports.useState("");
+    const modalContainer = useModalContainer();
+    const filteredAttributes = searchValue
+        ? requestAttributes.filter((attribute) => attribute.label
+            .trim()
+            .toLocaleLowerCase()
+            .includes(searchValue.trim().toLocaleLowerCase()))
+        : requestAttributes;
+    const handleToggleAllChanged = (e) => {
+        const checked = e.target.checked;
+        if (checked) {
+            const res = new Set([
+                ...selectedColumns,
+                ...filteredAttributes.map((f) => f.identifier),
+            ]);
+            setSelectedIdentifiers([...res]);
+        }
+        else {
+            setSelectedIdentifiers(selectedIdentifiers.filter((identifier) => filteredAttributes.find((f) => f.identifier === identifier) ===
+                undefined));
+        }
+    };
+    const handleSave = () => {
+        onSelectedColumnsChanged(selectedIdentifiers);
+        onClose();
+    };
+    const areAllSelected = filteredAttributes.every((f) => selectedIdentifiers.includes(f.identifier));
+    const isSomeSelected = filteredAttributes.some((f) => selectedIdentifiers.includes(f.identifier));
+    return (jsxRuntimeExports.jsxs(Modal, { appendToNode: modalContainer, onClose: onClose, children: [jsxRuntimeExports.jsx(Modal.Header, { children: t("guide-requests-app.column-selection.show-hide-columns", "Show and hide columns") }), jsxRuntimeExports.jsxs(StyledBody, { children: [jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Field.Label, { hidden: true, children: t("guide-requests-app.column-selection.search-columns", "Search for columns") }), jsxRuntimeExports.jsx(MediaInput, { start: jsxRuntimeExports.jsx(SvgSearchStroke, {}), type: "search", value: searchValue, onChange: (e) => {
+                                    setSearchValue(e.target.value);
+                                } })] }), jsxRuntimeExports.jsxs(Table, { "aria-live": "polite", children: [jsxRuntimeExports.jsx(Table.Head, { children: jsxRuntimeExports.jsxs(Table.HeaderRow, { children: [jsxRuntimeExports.jsx(Table.HeaderCell, { isMinimum: true, children: jsxRuntimeExports.jsx(Field, { children: jsxRuntimeExports.jsx(Checkbox, { checked: areAllSelected, indeterminate: !areAllSelected && isSomeSelected, onChange: handleToggleAllChanged, children: jsxRuntimeExports.jsx(Field.Label, { hidden: true, children: areAllSelected
+                                                            ? t("guide-requests-app.column-selection.hide-all", "Hide all columns")
+                                                            : t("guide-requests-app.column-selection.show-all", "Show all columns") }) }) }) }), jsxRuntimeExports.jsx(Table.HeaderCell, { children: t("guide-requests-app.column-selection.column", "Column") })] }) }), jsxRuntimeExports.jsx(Table.Body, { children: filteredAttributes.map(({ identifier, label }) => {
+                                    const isSelected = selectedIdentifiers.includes(identifier);
+                                    return (jsxRuntimeExports.jsxs(Table.Row, { isSelected: isSelected, children: [jsxRuntimeExports.jsx(Table.Cell, { isMinimum: true, children: jsxRuntimeExports.jsx(Field, { children: jsxRuntimeExports.jsx(Checkbox, { checked: isSelected, onChange: (e) => {
+                                                            const checked = e.target.checked;
+                                                            if (checked) {
+                                                                setSelectedIdentifiers((current) => [
+                                                                    ...current,
+                                                                    identifier,
+                                                                ]);
+                                                            }
+                                                            else {
+                                                                setSelectedIdentifiers((current) => current.filter((c) => c !== identifier));
+                                                            }
+                                                        }, children: jsxRuntimeExports.jsx(Field.Label, { hidden: true, children: isSelected
+                                                                ? t("guide-requests-app.column-selection.hide-column", "Hide {{column_name}} column", { column_name: label })
+                                                                : t("guide-requests-app.column-selection.show-column", "Show {{column_name}} column", { column_name: label }) }) }) }) }), jsxRuntimeExports.jsx(Table.Cell, { children: label })] }, identifier));
+                                }) })] })] }), jsxRuntimeExports.jsxs(Modal.Footer, { children: [jsxRuntimeExports.jsx(Modal.FooterItem, { children: jsxRuntimeExports.jsx(Button, { onClick: onClose, isBasic: true, children: t("guide-requests-app.cancel", "Cancel") }) }), jsxRuntimeExports.jsx(Modal.FooterItem, { children: jsxRuntimeExports.jsx(Button, { onClick: handleSave, isPrimary: true, children: t("guide-requests-app.save", "Save") }) })] }), jsxRuntimeExports.jsx(Modal.Close, { "aria-label": t("guide-requests-app.closeModal", "Close modal") })] }));
+}
+
+const OPEN_MODAL_VALUE = "__openModal__";
+// primaryEmphasis is the color used for links https://garden.zendesk.com/design/color#hierarchy
+const SeeMoreColumnsItem = styled(Item) `
+  color: ${(p) => p.theme.colors.variables.light.background.primaryEmphasis};
+`;
+function RequestsColumnFilter({ onSelectedColumnsChanged, selectedColumns, requestAttributes, defaultDesktopColumns, }) {
+    const { t } = useTranslation();
+    const [isDropdownOpen, setIsDropdownOpen] = reactExports.useState(false);
+    const [isModalOpen, setIsModalOpen] = reactExports.useState(false);
+    const [lastSelectedColumns, setLastSelectedColumns] = reactExports.useState(selectedColumns);
+    const hasSeeMoreColumns = requestAttributes.length > defaultDesktopColumns.length;
+    const controlledSelectedItems = reactExports.useMemo(() => selectedColumns.map((col) => ({ value: col })), [selectedColumns]);
+    const handleChange = (changes) => {
+        if (changes.isExpanded === true) {
+            // Cache the last selected columns when dropdown is opened
+            setLastSelectedColumns(selectedColumns);
+        }
+        if (changes.value === OPEN_MODAL_VALUE) {
+            setIsDropdownOpen(false);
+            setIsModalOpen(true);
+            return;
+        }
+        // Handle checkbox item
+        if (changes.selectedItems) {
+            const selectedValues = changes.selectedItems
+                .map((item) => item.value)
+                .filter((v) => v !== OPEN_MODAL_VALUE);
+            onSelectedColumnsChanged(selectedValues);
+            return;
+        }
+        if (changes.isExpanded !== undefined) {
+            setIsDropdownOpen(changes.isExpanded);
+        }
+    };
+    const showAndHideColumnsLabel = t("guide-requests-app.column-selection.show-hide-columns", "Show and hide columns");
+    /*
+      There is a bug in garden v9 which makes the menu close after each selection.
+      The current fix is setting restoreFocus={false}, then managing focus manually
+    */
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Menu, { isExpanded: isDropdownOpen, selectedItems: controlledSelectedItems, onChange: handleChange, placement: "bottom-end", restoreFocus: false, button: (props) => (jsxRuntimeExports.jsx(Tooltip, { content: showAndHideColumnsLabel, placement: "start", children: jsxRuntimeExports.jsx(Table.OverflowButton, { ...props, "aria-label": showAndHideColumnsLabel }) })), children: [jsxRuntimeExports.jsx(ItemGroup, { legend: showAndHideColumnsLabel, type: "checkbox", children: requestAttributes.map(({ identifier, label }) => {
+                            if (!defaultDesktopColumns.includes(identifier) &&
+                                !lastSelectedColumns.includes(identifier)) {
+                                return null;
+                            }
+                            return (jsxRuntimeExports.jsx(Item, { value: identifier, "data-test-id": `column-filter-menu-${identifier}`, children: label }, identifier));
+                        }) }), hasSeeMoreColumns && (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Separator, {}), jsxRuntimeExports.jsx(SeeMoreColumnsItem, { value: OPEN_MODAL_VALUE, children: t("guide-requests-app.column-selection.see-more-columns", "See more columns") })] }))] }), isModalOpen && (jsxRuntimeExports.jsx(RequestsColumnModal, { onClose: () => {
+                    setIsModalOpen(false);
+                }, selectedColumns: selectedColumns, onSelectedColumnsChanged: onSelectedColumnsChanged, requestAttributes: requestAttributes }))] }));
+}
+
+var localStorage = {
+    setItem(key, value) {
+        return window.localStorage.setItem(key, value);
+    },
+    getItem(key) {
+        return window.localStorage.getItem(key);
+    },
+    removeItem(key) {
+        window.localStorage.removeItem(key);
+    },
+    clear() {
+        window.localStorage.clear();
+    },
+};
+
+function useLocalStorage(key, initialValue, version = "v1") {
+    const readValue = reactExports.useCallback(() => {
+        try {
+            const item = localStorage.getItem(key);
+            if (!item)
+                return initialValue;
+            const data = JSON.parse(item);
+            return data[0] === version ? data[1] : initialValue;
+        }
+        catch (error) {
+            return initialValue;
+        }
+    }, [initialValue, key]);
+    const [storedValue, setStoredValue] = reactExports.useState(readValue);
+    const setValue = (value) => {
+        try {
+            setStoredValue(value);
+            localStorage.setItem(key, JSON.stringify([version, value]));
+        }
+        catch (error) {
+            // ignore
+        }
+    };
+    return [storedValue, setValue];
+}
+
+const Container$1 = styled.div `
   margin-bottom: 24px;
-`,kt=i(M.SortableCell)`
+`;
+const StyledSortableCell = styled(Table.SortableCell) `
   display: grid; // Without it Ellipsis won't work
-`,Ft=["created_at","updated_at","status"],Et=["description","group","assignee","custom_status","lookup"],zt=["subject"],$t=["subject","id","created_at","updated_at","status"],It=["subject","updated_at","status"],Tt="GUIDE_REQUESTS_APP_COLUMN_CONFIG";function Dt({onSort:n,sort:r,requests:a,users:i,ticketFields:o,customStatuses:l,customStatusesEnabled:u}){const{t:c}=t(),d={id:c("guide-requests-app.id","ID"),created_at:c("guide-requests-app.createdDate","Created date"),updated_at:c("guide-requests-app.updatedDate","Updated date"),status:c("guide-requests-app.status","Status"),requester:c("guide-requests-app.requester","Requester")},h=ge()?It:$t,[p,j]=function(t,s,n="v1"){const r=e.useCallback((()=>{try{const e=_t.getItem(t);if(!e)return s;const r=JSON.parse(e);return r[0]===n?r[1]:s}catch(e){return s}}),[s,t]),[a,i]=e.useState(r);return[a,e=>{try{i(e),_t.setItem(t,JSON.stringify([n,e]))}catch(e){}}]}(Tt,h,"v4"),m=[...$t,"requester"],f=e.useMemo((()=>0===o.length?[]:[...m.map((e=>{const t=d[e]??o.find((t=>t.type===e))?.title_in_portal??e;return{identifier:e,label:t}})),...o.filter((e=>!m.includes(e.type))).filter((e=>!Et.includes(e.type))).map((({id:e,title_in_portal:t})=>({identifier:String(e),label:t})))]),[o]),b=f.filter((e=>p.includes(e.identifier))),g=p.filter((e=>!zt.includes(e))),x=f.filter((({identifier:e})=>!zt.includes(e)));function v(e){const t=p.length;return ge()?"auto":"subject"===e?1===t?"auto":t<=2?"80%":t<=3?"60%":t<=6?"40%":t<=8?"30%":"20%":"auto"}return s.jsx(Ct,{"aria-live":"polite",children:0===a.length?c("guide-requests-app.requests-empty-state","No requests found"):s.jsxs(M,{isReadOnly:!0,children:[s.jsx(M.Head,{children:s.jsxs(M.HeaderRow,{children:[b.map((({identifier:e,label:t})=>Ft.includes(e)?s.jsx(kt,{"data-test-id":`sortable-cell-${e}`,sort:r?.by===e?r?.order:void 0,onClick:()=>n(e),width:ge()?"auto":"",children:s.jsx(ht,{children:t})},e):s.jsx(M.HeaderCell,{"data-test-id":`header-cell-${e}`,width:v(e),children:s.jsx(ht,{children:t})},e))),s.jsx(M.HeaderCell,{hasOverflow:!0,children:s.jsx(wt,{selectedColumns:g,onSelectedColumnsChanged:function(e){j([...zt,...e])},requestAttributes:x,defaultDesktopColumns:$t})})]})}),s.jsx(M.Body,{children:a.map((e=>{return s.jsx(xt,{request:e,ticketFields:o,selectedAttributes:b,customStatuses:l,customStatusesEnabled:u,user:(t=e.requester_id,i.find((e=>e.id===t)))},e.id);var t}))})]})})}const Vt=i.div`
-  margin-bottom: ${e=>e.theme.space.xxs};
+`;
+const SORTABLE_FIELDS = ["created_at", "updated_at", "status"];
+const HIDDEN_FIELDS = [
+    "description",
+    "group",
+    "assignee",
+    "custom_status",
+    "lookup",
+];
+const NON_REMOVABLE_FIELDS = ["subject"];
+const DEFAULT_DESKTOP_COLUMNS = [
+    "subject",
+    "id",
+    "created_at",
+    "updated_at",
+    "status",
+];
+const DEFAULT_MOBILE_COLUMNS = ["subject", "updated_at", "status"];
+const LOCAL_STORAGE_KEY = "GUIDE_REQUESTS_APP_COLUMN_CONFIG";
+function RequestsTable({ onSort, sort, requests, users, ticketFields, customStatuses, customStatusesEnabled, }) {
+    const { t } = useTranslation();
+    const requestAttributesLabels = {
+        id: t("guide-requests-app.id", "ID"),
+        created_at: t("guide-requests-app.createdDate", "Created date"),
+        updated_at: t("guide-requests-app.updatedDate", "Updated date"),
+        status: t("guide-requests-app.status", "Status"),
+        requester: t("guide-requests-app.requester", "Requester"),
+    };
+    const defaultColumns = isMobile()
+        ? DEFAULT_MOBILE_COLUMNS
+        : DEFAULT_DESKTOP_COLUMNS;
+    const [selectedColumns, setSelectedColumns] = useLocalStorage(LOCAL_STORAGE_KEY, defaultColumns, "v4");
+    const SELECTABLE_COLUMNS = [...DEFAULT_DESKTOP_COLUMNS, "requester"];
+    const requestAttributes = reactExports.useMemo(() => {
+        if (ticketFields.length === 0) {
+            return [];
+        }
+        return [
+            ...SELECTABLE_COLUMNS.map((identifier) => {
+                const label = requestAttributesLabels[identifier] ??
+                    ticketFields.find((field) => field.type === identifier)
+                        ?.title_in_portal ??
+                    identifier;
+                return { identifier, label };
+            }),
+            ...ticketFields
+                .filter((field) => !SELECTABLE_COLUMNS.includes(field.type))
+                .filter((field) => !HIDDEN_FIELDS.includes(field.type))
+                .map(({ id, title_in_portal }) => ({
+                identifier: String(id),
+                label: title_in_portal,
+            })),
+        ];
+    }, [ticketFields]);
+    const selectedAttributes = requestAttributes.filter((attribute) => selectedColumns.includes(attribute.identifier));
+    const selectedRemovableColumns = selectedColumns.filter((identifier) => !NON_REMOVABLE_FIELDS.includes(identifier));
+    const selectableAttributes = requestAttributes.filter(({ identifier }) => !NON_REMOVABLE_FIELDS.includes(identifier));
+    function handleSelectedColumnsChanged(columns) {
+        setSelectedColumns([...NON_REMOVABLE_FIELDS, ...columns]);
+    }
+    function getHeaderCellWidth(identifier) {
+        const columns = selectedColumns.length;
+        if (isMobile())
+            return "auto";
+        if (identifier === "subject") {
+            if (columns === 1)
+                return "auto";
+            if (columns <= 2)
+                return "80%";
+            if (columns <= 3)
+                return "60%";
+            if (columns <= 6)
+                return "40%";
+            if (columns <= 8)
+                return "30%";
+            return "20%";
+        }
+        else
+            return "auto";
+    }
+    const requestUser = (userId) => {
+        return users.find((user) => user.id === userId);
+    };
+    return (jsxRuntimeExports.jsx(Container$1, { "aria-live": "polite", children: requests.length === 0 ? (t("guide-requests-app.requests-empty-state", "No requests found")) : (jsxRuntimeExports.jsxs(Table, { isReadOnly: true, children: [jsxRuntimeExports.jsx(Table.Head, { children: jsxRuntimeExports.jsxs(Table.HeaderRow, { children: [selectedAttributes.map(({ identifier, label }) => {
+                                return SORTABLE_FIELDS.includes(identifier) ? (jsxRuntimeExports.jsx(StyledSortableCell, { "data-test-id": `sortable-cell-${identifier}`, sort: sort?.by === identifier ? sort?.order : undefined, onClick: () => onSort(identifier), width: isMobile() ? "auto" : "", children: jsxRuntimeExports.jsx(TruncatedText, { children: label }) }, identifier)) : (jsxRuntimeExports.jsx(Table.HeaderCell, { "data-test-id": `header-cell-${identifier}`, width: getHeaderCellWidth(identifier), children: jsxRuntimeExports.jsx(TruncatedText, { children: label }) }, identifier));
+                            }), jsxRuntimeExports.jsx(Table.HeaderCell, { hasOverflow: true, children: jsxRuntimeExports.jsx(RequestsColumnFilter, { selectedColumns: selectedRemovableColumns, onSelectedColumnsChanged: handleSelectedColumnsChanged, requestAttributes: selectableAttributes, defaultDesktopColumns: DEFAULT_DESKTOP_COLUMNS }) })] }) }), jsxRuntimeExports.jsx(Table.Body, { children: requests.map((request) => (jsxRuntimeExports.jsx(RequestsTableRow, { request: request, ticketFields: ticketFields, selectedAttributes: selectedAttributes, customStatuses: customStatuses, customStatusesEnabled: customStatusesEnabled, user: requestUser(request.requester_id) }, request.id))) })] })) }));
+}
+
+const Container = styled.div `
+  margin-bottom: ${(p) => p.theme.space.xxs};
   position: relative;
-`,Ot=i(f)`
+`;
+const StyledButton = styled(Button) `
   background: none !important;
   border: 0;
   border-bottom: 3px solid;
@@ -104,8 +1713,767 @@ import{r as e,u as t,j as s,b as n,M as r,a2 as a,s as i,g as o,h as l,O as u,B 
   line-height: 40px;
   margin-bottom: 20px;
   &:hover {
-    color: ${e=>e.theme.colors.primaryHue};
+    color: ${(p) => p.theme.colors.primaryHue};
   }
-`;function Nt({selectedTab:n,organizations:r,onTabSelected:a}){const{t:i}=t(),[o,l]=e.useState(!1),u=e=>{switch(e){case qe:return i("guide-requests-app.organizationalRequests","Organizational requests");case xe:return i("guide-requests-app.myRequests","My requests");case ve:return i("guide-requests-app.ccdRequests","Requests I am CC'd on")}},c=[xe,ve];function d(e){if(e===qe){const e=function(e){return e.find((e=>e.default))||e[0]}(r);e&&a({name:qe,organizationId:e.id})}else a({name:e})}return r.length>0&&c.push(qe),s.jsxs(Vt,{children:[s.jsx(fe,{children:s.jsx(A,{button:e=>s.jsxs(Ot,{...e,isBasic:!0,isStretched:!0,children:[u(n.name),s.jsx(f.EndIcon,{isRotated:o,children:s.jsx(U,{})})]}),onChange:e=>{e.value&&d(e.value),void 0!==e.isExpanded&&l(e.isExpanded)},children:c.map((e=>s.jsx(P,{value:e,children:u(e)},e)))})}),s.jsx(be,{children:s.jsx(X,{onChange:d,selectedItem:n.name,children:s.jsx(X.TabList,{children:c.map((e=>s.jsx(X.Tab,{"data-test-id":`tab-${e}`,item:e,children:u(e)},e)))})})})]})}const Rt="filter_",Lt={QUERY:"query",PAGE:"page",SORT_BY:"sort_by",SORT_ORDER:"sort_order",SELECTED_TAB_NAME:"selected_tab_name",ORGANIZATION_ID:"organization_id"};function Mt({query:e,page:t,sort:s,selectedTab:n,filters:r}){const a=new URLSearchParams;a.append(Lt.QUERY,e),a.append(Lt.PAGE,t.toString()),s&&(a.append(Lt.SORT_BY,s.by),a.append(Lt.SORT_ORDER,s.order)),a.append(Lt.SELECTED_TAB_NAME,n.name),n.name===qe&&a.append(Lt.ORGANIZATION_ID,n.organizationId.toString());for(const[e,t]of Object.entries(r))for(const s of t)a.append(`${Rt}${e}`,s);return a}const Pt="filter_",At={QUERY:"query",PAGE:"page",SORT_BY:"sort_by",SORT_ORDER:"sort_order",SELECTED_TAB_NAME:"selected_tab_name",ORGANIZATION_ID:"organization_id"},Bt="asc",Ht="desc";function Ut(e){const t={},s=e.get(At.QUERY),n=e.get(At.PAGE),r=e.get(At.SORT_BY),a=e.get(At.SORT_ORDER),i=e.get(At.SELECTED_TAB_NAME),o=e.get(At.ORGANIZATION_ID);null!=s&&(t.query=s),null!=n&&(t.page=parseInt(n,10)),null==r||null==a||a!==Bt&&a!==Ht||(t.sort={by:r,order:a}),null!==i&&(i===qe&&null!=o?t.selectedTab={name:qe,organizationId:parseInt(o,10)}:i!==xe&&i!==ve||(t.selectedTab={name:i}));const l=function(e){const t={};for(const[s]of e){if(!s.startsWith(Pt))continue;const n=s.replace(Pt,"");if(null!=t[n])continue;const r=e.getAll(s).filter(Xt);t[n]=r}return t}(e);return Object.keys(l).length>0&&(t.filters=l),t}function Xt(e){return e.startsWith(":")||e.startsWith("<")||e.startsWith(">")}function Gt(){const[t,s]=e.useState(),[n,r]=e.useState(),[a,i]=e.useState(!0);return e.useEffect((()=>{!async function(){try{i(!0);const e=await fetch("/api/v2/users/me");if(!e.ok)throw Error(e.statusText);const{user:t}=await e.json();s(t)}catch(e){r(e)}finally{i(!1)}}()}),[]),{user:t,error:n,isLoading:a}}async function Yt(e,t,s){const n=await e();let r=[...n[t]],a=n.meta.has_more,i=n.links.next;for(;a;){const e=await fetch(i,s);if(!e.ok)throw new Error(e.statusText);const n=await e.json();r=r.concat(n[t]),a=n.meta.has_more,i=n.links.next}return r}function Wt(t){const[s,n]=e.useState([]),[r,a]=e.useState();async function i(){const e=await fetch(`/api/v2/users/${t?.id}/organization_memberships?page[size]=100`);if(!e.ok)throw new Error(e.statusText);return await e.json()}return e.useEffect((()=>{t&&async function(){try{const e=(await Yt(i,"organization_memberships")).filter((e=>e.view_tickets));n(e.map((e=>({id:e.organization_id,name:e.organization_name,default:e.default}))))}catch(e){a(e)}}()}),[t]),{organizations:s,error:r}}function Qt(e){const t=new AbortController;return e(t.signal),()=>t.abort()}function Zt(e){return Object.entries(e).map((([e,t])=>function(e,t){return"status"===e||"custom_status_id"===e?t.map((t=>t.split(" ").map((t=>`${e}${t}`)))).flat():t.map((t=>`${e}${function(e){const t=/^:".*"$/.test(e);return t?`:"${e.substring(2,e.length-1).replace(/"/g,"")}"`:e}(t)}`)).flat()}(e,t))).flat()}const Jt=15,Kt=1e3;function es(t){const[s,n]=e.useState([]),[r,a]=e.useState(),[i,o]=e.useState(!0);async function l(){try{const e=await Yt((()=>async function(e,t=100){const s=await fetch(`/api/v2/ticket_fields.json?locale=${e}&page[size]=${t}`);if(!s.ok)throw new Error(s.statusText);return await s.json()}(t)),"ticket_fields");n(e.filter((e=>e.active))),o(!1)}catch(e){a(e)}}return e.useEffect((()=>{l()}),[]),{ticketFields:s,error:r,isLoading:i}}function ts(t,s){const[n,r]=e.useState([]),[a,i]=e.useState();return e.useEffect((()=>{!async function(){if(t)try{const e=await fetch(`/api/v2/custom_statuses?active=true&locale=${s}`);if(!e.ok)throw new Error(e.statusText);const{custom_statuses:t}=await e.json();r(t)}catch(e){i(e)}}()}),[]),{customStatuses:n,error:a}}const ss=()=>s.jsxs(M.Row,{children:[s.jsx(M.Cell,{children:s.jsx(G,{})}),s.jsx(M.Cell,{children:s.jsx(G,{})}),s.jsx(M.Cell,{children:s.jsx(G,{})})]}),ns=i(C.Col)`
+`;
+function getDefaultOrganization(organizations) {
+    const defaultOrganization = organizations.find((organization) => organization.default);
+    return defaultOrganization || organizations[0];
+}
+function RequestsTabs({ selectedTab, organizations, onTabSelected, }) {
+    const { t } = useTranslation();
+    const [iconIsRotated, setIconIsRotated] = reactExports.useState(false);
+    const getTabLabel = (tab) => {
+        switch (tab) {
+            case ORG_REQUESTS_TAB_NAME:
+                return t("guide-requests-app.organizationalRequests", "Organizational requests");
+            case MY_REQUESTS_TAB_NAME:
+                return t("guide-requests-app.myRequests", "My requests");
+            case CCD_REQUESTS_TAB_NAME:
+                return t("guide-requests-app.ccdRequests", "Requests I am CC'd on");
+        }
+    };
+    const availableTabs = [
+        MY_REQUESTS_TAB_NAME,
+        CCD_REQUESTS_TAB_NAME,
+    ];
+    if (organizations.length > 0) {
+        availableTabs.push(ORG_REQUESTS_TAB_NAME);
+    }
+    function handleTabSelect(name) {
+        if (name === ORG_REQUESTS_TAB_NAME) {
+            const defaultOrg = getDefaultOrganization(organizations);
+            if (defaultOrg) {
+                onTabSelected({
+                    name: ORG_REQUESTS_TAB_NAME,
+                    organizationId: defaultOrg.id,
+                });
+            }
+        }
+        else {
+            onTabSelected({ name });
+        }
+    }
+    return (jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsx(Mobile, { children: jsxRuntimeExports.jsx(Menu, { button: (props) => (jsxRuntimeExports.jsxs(StyledButton, { ...props, isBasic: true, isStretched: true, children: [getTabLabel(selectedTab.name), jsxRuntimeExports.jsx(Button.EndIcon, { isRotated: iconIsRotated, children: jsxRuntimeExports.jsx(SvgChevronDownStroke, {}) })] })), onChange: (changes) => {
+                        if (changes.value) {
+                            handleTabSelect(changes.value);
+                        }
+                        if (changes.isExpanded !== undefined) {
+                            setIconIsRotated(changes.isExpanded);
+                        }
+                    }, children: availableTabs.map((tabName) => (jsxRuntimeExports.jsx(Item, { value: tabName, children: getTabLabel(tabName) }, tabName))) }) }), jsxRuntimeExports.jsx(Desktop, { children: jsxRuntimeExports.jsx(Tabs, { onChange: handleTabSelect, selectedItem: selectedTab.name, children: jsxRuntimeExports.jsx(Tabs.TabList, { children: availableTabs.map((tabName) => (jsxRuntimeExports.jsx(Tabs.Tab, { "data-test-id": `tab-${tabName}`, item: tabName, children: getTabLabel(tabName) }, tabName))) }) }) })] }));
+}
+
+const FILTER_PREFIX$1 = "filter_";
+const SERIALIZED_KEYS$1 = {
+    QUERY: "query",
+    PAGE: "page",
+    SORT_BY: "sort_by",
+    SORT_ORDER: "sort_order",
+    SELECTED_TAB_NAME: "selected_tab_name",
+    ORGANIZATION_ID: "organization_id",
+};
+function serializeRequestListParams({ query, page, sort, selectedTab, filters, }) {
+    const res = new URLSearchParams();
+    res.append(SERIALIZED_KEYS$1.QUERY, query);
+    res.append(SERIALIZED_KEYS$1.PAGE, page.toString());
+    if (sort) {
+        res.append(SERIALIZED_KEYS$1.SORT_BY, sort.by);
+        res.append(SERIALIZED_KEYS$1.SORT_ORDER, sort.order);
+    }
+    res.append(SERIALIZED_KEYS$1.SELECTED_TAB_NAME, selectedTab.name);
+    if (selectedTab.name === ORG_REQUESTS_TAB_NAME) {
+        res.append(SERIALIZED_KEYS$1.ORGANIZATION_ID, selectedTab.organizationId.toString());
+    }
+    for (const [field, values] of Object.entries(filters)) {
+        for (const value of values) {
+            res.append(`${FILTER_PREFIX$1}${field}`, value);
+        }
+    }
+    return res;
+}
+
+const FILTER_PREFIX = "filter_";
+const SERIALIZED_KEYS = {
+    QUERY: "query",
+    PAGE: "page",
+    SORT_BY: "sort_by",
+    SORT_ORDER: "sort_order",
+    SELECTED_TAB_NAME: "selected_tab_name",
+    ORGANIZATION_ID: "organization_id",
+};
+const SORT_ORDER_ASC = "asc";
+const SORT_ORDER_DESC = "desc";
+function deserializeRequestListParams(searchParams) {
+    const res = {};
+    const queryParam = searchParams.get(SERIALIZED_KEYS.QUERY);
+    const pageParam = searchParams.get(SERIALIZED_KEYS.PAGE);
+    const sortBy = searchParams.get(SERIALIZED_KEYS.SORT_BY);
+    const sortOrder = searchParams.get(SERIALIZED_KEYS.SORT_ORDER);
+    const selectedTabName = searchParams.get(SERIALIZED_KEYS.SELECTED_TAB_NAME);
+    const organizationId = searchParams.get(SERIALIZED_KEYS.ORGANIZATION_ID);
+    if (queryParam != null) {
+        res.query = queryParam;
+    }
+    if (pageParam != null) {
+        res.page = parseInt(pageParam, 10);
+    }
+    if (sortBy != null &&
+        sortOrder != null &&
+        (sortOrder === SORT_ORDER_ASC || sortOrder === SORT_ORDER_DESC)) {
+        res.sort = { by: sortBy, order: sortOrder };
+    }
+    if (selectedTabName !== null) {
+        if (selectedTabName === ORG_REQUESTS_TAB_NAME && organizationId != null) {
+            res.selectedTab = {
+                name: ORG_REQUESTS_TAB_NAME,
+                organizationId: parseInt(organizationId, 10),
+            };
+        }
+        else if (selectedTabName === MY_REQUESTS_TAB_NAME ||
+            selectedTabName === CCD_REQUESTS_TAB_NAME) {
+            res.selectedTab = { name: selectedTabName };
+        }
+    }
+    const filters = getFiltersFromSearchParams(searchParams);
+    if (Object.keys(filters).length > 0) {
+        res.filters = filters;
+    }
+    return res;
+}
+function getFiltersFromSearchParams(searchParams) {
+    const res = {};
+    for (const [key] of searchParams) {
+        if (!key.startsWith(FILTER_PREFIX)) {
+            continue;
+        }
+        const field = key.replace(FILTER_PREFIX, "");
+        if (res[field] != null) {
+            continue;
+        }
+        const values = searchParams.getAll(key).filter(isFilterValue);
+        res[field] = values;
+    }
+    return res;
+}
+function isFilterValue(value) {
+    return (value.startsWith(":") || value.startsWith("<") || value.startsWith(">"));
+}
+
+function useUser() {
+    const [user, setUser] = reactExports.useState();
+    const [error, setError] = reactExports.useState();
+    const [isLoading, setIsLoading] = reactExports.useState(true);
+    async function fetchUser() {
+        try {
+            setIsLoading(true);
+            const response = await fetch("/api/v2/users/me");
+            if (!response.ok)
+                throw Error(response.statusText);
+            const { user } = await response.json();
+            setUser(user);
+        }
+        catch (error) {
+            setError(error);
+        }
+        finally {
+            setIsLoading(false);
+        }
+    }
+    reactExports.useEffect(() => {
+        fetchUser();
+    }, []);
+    return { user, error, isLoading };
+}
+
+async function fetchAllCursorPages(firstPagePromise, field, init) {
+    const firstPageResponse = await firstPagePromise();
+    let res = [...firstPageResponse[field]];
+    let hasMore = firstPageResponse.meta.has_more;
+    let nextPageUrl = firstPageResponse.links.next;
+    while (hasMore) {
+        const response = await fetch(nextPageUrl, init);
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        const decodedResponse = (await response.json());
+        res = res.concat(decodedResponse[field]);
+        hasMore = decodedResponse.meta.has_more;
+        nextPageUrl = decodedResponse.links.next;
+    }
+    return res;
+}
+
+function useOrganizations(user) {
+    const [organizations, setOrganizations] = reactExports.useState([]);
+    const [error, setError] = reactExports.useState();
+    async function fetchOrganizationsPage() {
+        const response = await fetch(`/api/v2/users/${user?.id}/organization_memberships?page[size]=100`);
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        return await response.json();
+    }
+    async function fetchOrganizations() {
+        try {
+            const memberships = await fetchAllCursorPages(fetchOrganizationsPage, "organization_memberships");
+            const membershipsWithTicketPermissions = memberships.filter((organization) => organization.view_tickets);
+            setOrganizations(membershipsWithTicketPermissions.map((organization) => ({
+                id: organization.organization_id,
+                name: organization.organization_name,
+                default: organization.default,
+            })));
+        }
+        catch (error) {
+            setError(error);
+        }
+    }
+    reactExports.useEffect(() => {
+        if (user) {
+            fetchOrganizations();
+        }
+    }, [user]);
+    return { organizations, error };
+}
+
+// Returns method used to abort the request inside the wrapped function
+function withAbort(wrappedFn) {
+    const requestController = new AbortController();
+    const signal = requestController.signal;
+    wrappedFn(signal);
+    return () => requestController.abort();
+}
+
+/**
+ * Map each field with an array of filter values.
+ *
+ * For example:
+ * {
+ *   created_at: [">=2021-08-08", "<=2022-08-08"],
+ *   organization: [":1", ":2"],
+ * }
+ *
+ * Represents two filters set on the created_at field (that should be greater than 2021-08-08 and less than 2022-08-08)
+ * and two filters on the organization field (that should be equal 1 or equal 2)
+ */
+function filterValuesMapToQueryFilters(filterValuesMap) {
+    return Object.entries(filterValuesMap)
+        .map(([field, values]) => fieldValuesToQueryFilters(field, values))
+        .flat();
+}
+function fieldValuesToQueryFilters(field, values) {
+    if (field === "status" || field === "custom_status_id") {
+        /* Handling special case for status, where for example
+           status: [":open :new :hold"] should be mapped to
+           "status:open", "status:new", "status:hold"
+         */
+        return values
+            .map((value) => value.split(" ").map((v) => `${field}${v}`))
+            .flat();
+    }
+    else {
+        return values.map((value) => `${field}${sanitizeValue(value)}`).flat();
+    }
+}
+function sanitizeValue(value) {
+    const isPhraseValue = /^:".*"$/.test(value);
+    if (isPhraseValue) {
+        return `:"${value.substring(2, value.length - 1).replace(/"/g, "")}"`;
+    }
+    else {
+        return value;
+    }
+}
+
+const PER_PAGE = 15;
+const MAX_RESULTS = 1000;
+function useRequests(params, push) {
+    const { t } = useTranslation();
+    const { query, page, sort, selectedTab, filters } = params;
+    const [error, setError] = reactExports.useState();
+    const [{ requests, users, hasNextPage, hasPreviousPage, count: requestsCount, isLoading, }, setRequestState,] = reactExports.useState({
+        count: 0,
+        hasNextPage: false,
+        hasPreviousPage: false,
+        requests: [],
+        users: [],
+        isLoading: true,
+    });
+    async function fetchRequests(signal) {
+        const searchParams = new URLSearchParams();
+        const searchQuery = query.length ? query : "*";
+        const queryFilters = filterValuesMapToQueryFilters(filters);
+        searchParams.set("include", "users");
+        if (sort) {
+            queryFilters.push(`order_by:${sort.by}`, `sort:${sort.order}`);
+        }
+        if (selectedTab.name === MY_REQUESTS_TAB_NAME) {
+            queryFilters.push("requester:me");
+        }
+        else if (selectedTab.name === CCD_REQUESTS_TAB_NAME) {
+            searchParams.set("cc_id", "true");
+        }
+        else if (selectedTab.name === ORG_REQUESTS_TAB_NAME) {
+            searchParams.set("organization_id", selectedTab.organizationId.toString());
+        }
+        if (PER_PAGE * page > MAX_RESULTS) {
+            searchParams.set("page", Math.floor(MAX_RESULTS / PER_PAGE).toString());
+        }
+        else {
+            searchParams.set("page", page.toString());
+        }
+        searchParams.set("per_page", PER_PAGE.toString());
+        searchParams.set("query", `${searchQuery} ${queryFilters.join(" ")}`);
+        try {
+            const response = await fetch(`/api/v2/requests/search.json?${searchParams.toString()}`, {
+                signal: signal,
+            });
+            if (response.status === 406) {
+                const { error } = await response.json();
+                if (error.includes("Number of search words exceeds the limit")) {
+                    notify({
+                        type: "error",
+                        message: t("guide-requests-app.SearchPhraseIsTooLong", "Search phrase is too long. Try something shorter."),
+                    });
+                    push({ page: 1, query: "" });
+                }
+            }
+            else {
+                const { requests, users, next_page, previous_page, count, } = await response.json();
+                setRequestState({
+                    count: Math.min(count ?? 0, MAX_RESULTS),
+                    hasNextPage: !!next_page && !(PER_PAGE * page >= MAX_RESULTS),
+                    hasPreviousPage: !!previous_page,
+                    requests: requests ?? [],
+                    users: users ?? [],
+                    isLoading: false,
+                });
+            }
+        }
+        catch (error) {
+            if (error instanceof Error && error.name === "AbortError") {
+                // Do nothing, request was cancelled, because another one was started;
+                return;
+            }
+            else
+                setError(error);
+        }
+    }
+    reactExports.useEffect(() => {
+        return withAbort(fetchRequests);
+    }, [params]);
+    return {
+        requests,
+        users,
+        hasNextPage,
+        hasPreviousPage,
+        requestsCount,
+        requestsPerPage: PER_PAGE,
+        error,
+        isLoading,
+    };
+}
+
+async function listTicketFields(locale, pageSize = 100) {
+    const response = await fetch(`/api/v2/ticket_fields.json?locale=${locale}&page[size]=${pageSize}`);
+    if (!response.ok) {
+        throw new Error(response.statusText);
+    }
+    return await response.json();
+}
+function useTicketFields(locale) {
+    const [ticketFields, setTicketFields] = reactExports.useState([]);
+    const [error, setError] = reactExports.useState();
+    const [isLoading, setIsLoading] = reactExports.useState(true);
+    async function fetchTicketFields() {
+        try {
+            const response = await fetchAllCursorPages(() => listTicketFields(locale), "ticket_fields");
+            setTicketFields(response.filter((ticketField) => ticketField.active));
+            setIsLoading(false);
+        }
+        catch (error) {
+            setError(error);
+        }
+    }
+    reactExports.useEffect(() => {
+        fetchTicketFields();
+    }, []);
+    return { ticketFields, error, isLoading };
+}
+
+function useCustomStatuses(customStatusesEnabled, locale) {
+    const [customStatuses, setCustomStatuses] = reactExports.useState([]);
+    const [error, setError] = reactExports.useState();
+    async function fetchCustomStatuses() {
+        if (!customStatusesEnabled) {
+            return;
+        }
+        try {
+            const response = await fetch(`/api/v2/custom_statuses?active=true&locale=${locale}`);
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+            const { custom_statuses } = await response.json();
+            setCustomStatuses(custom_statuses);
+        }
+        catch (error) {
+            setError(error);
+        }
+    }
+    reactExports.useEffect(() => {
+        fetchCustomStatuses();
+    }, []);
+    return { customStatuses, error };
+}
+
+const SkeletonCells = () => (jsxRuntimeExports.jsxs(Table.Row, { children: [jsxRuntimeExports.jsx(Table.Cell, { children: jsxRuntimeExports.jsx(Skeleton, {}) }), jsxRuntimeExports.jsx(Table.Cell, { children: jsxRuntimeExports.jsx(Skeleton, {}) }), jsxRuntimeExports.jsx(Table.Cell, { children: jsxRuntimeExports.jsx(Skeleton, {}) })] }));
+const NoLeftPaddingCol = styled(Grid.Col) `
   padding-left: 0;
-`,rs=()=>s.jsxs(s.Fragment,{children:[s.jsxs(C,{children:[s.jsx(ns,{children:s.jsx(G,{width:"50%"})}),s.jsx(ns,{children:s.jsx(G,{width:"30%"})}),s.jsx(ns,{children:s.jsx(G,{width:"40%"})}),s.jsx(ns,{children:s.jsx(G,{width:"50%"})})]}),s.jsxs(M,{style:{minWidth:400},children:[s.jsx(M.Head,{children:s.jsxs(M.HeaderRow,{children:[s.jsx(M.HeaderCell,{children:s.jsx(G,{width:"40%"})}),s.jsx(M.HeaderCell,{children:s.jsx(G,{width:"40%"})}),s.jsx(M.HeaderCell,{children:s.jsx(G,{width:"40%"})})]})}),s.jsxs(M.Body,{children:[s.jsx(ss,{}),s.jsx(ss,{}),s.jsx(ss,{})]})]})]});function as({locale:n,customStatusesEnabled:r}){const{t:a}=t(),{params:i,push:o}=te({query:"",page:1,sort:{order:"desc",by:"updated_at"},selectedTab:{name:xe},filters:{}},Mt,Ut),{query:l,page:u,sort:c,selectedTab:d,filters:h}=i,{user:p,isLoading:j,error:m}=Gt(),{organizations:f}=Wt(p),{requests:b,users:x,hasNextPage:v,hasPreviousPage:q,requestsCount:S,requestsPerPage:y,isLoading:w,error:_}=function(s,n){const{t:r}=t(),{query:a,page:i,sort:o,selectedTab:l,filters:u}=s,[c,d]=e.useState(),[{requests:h,users:p,hasNextPage:j,hasPreviousPage:m,count:f,isLoading:b},x]=e.useState({count:0,hasNextPage:!1,hasPreviousPage:!1,requests:[],users:[],isLoading:!0});async function v(e){const t=new URLSearchParams,s=a.length?a:"*",c=Zt(u);t.set("include","users"),o&&c.push(`order_by:${o.by}`,`sort:${o.order}`),l.name===xe?c.push("requester:me"):l.name===ve?t.set("cc_id","true"):l.name===qe&&t.set("organization_id",l.organizationId.toString()),Jt*i>Kt?t.set("page",Math.floor(Kt/Jt).toString()):t.set("page",i.toString()),t.set("per_page",Jt.toString()),t.set("query",`${s} ${c.join(" ")}`);try{const s=await fetch(`/api/v2/requests/search.json?${t.toString()}`,{signal:e});if(406===s.status){const{error:e}=await s.json();e.includes("Number of search words exceeds the limit")&&(g({type:"error",message:r("guide-requests-app.SearchPhraseIsTooLong","Search phrase is too long. Try something shorter.")}),n({page:1,query:""}))}else{const{requests:e,users:t,next_page:n,previous_page:r,count:a}=await s.json();x({count:Math.min(a??0,Kt),hasNextPage:!(!n||Jt*i>=Kt),hasPreviousPage:!!r,requests:e??[],users:t??[],isLoading:!1})}}catch(e){if(e instanceof Error&&"AbortError"===e.name)return;d(e)}}return e.useEffect((()=>Qt(v)),[s]),{requests:h,users:p,hasNextPage:j,hasPreviousPage:m,requestsCount:f,requestsPerPage:Jt,error:c,isLoading:b}}(i,o),{ticketFields:C,isLoading:k,error:F}=es(n),E=_||F||m,z=w||!j&&"end-user"===p?.role?[]:b.map((e=>e.requester_id)),{users:$,isLoading:I}=function(t){const[s,n]=e.useState(),[{users:r,isLoading:a},i]=e.useState({users:[],isLoading:!0}),o=t.join(",");async function l(e){try{const t=await fetch(`/api/v2/users/show_many.json?ids=${o}`,{signal:e}),{users:s}=await t.json();i({users:s,isLoading:!1})}catch(e){if(e instanceof Error&&"AbortError"===e.name)return;n(e)}}return e.useEffect((()=>Qt(l)),[o]),{users:r,error:s,isLoading:a}}(z),T=w||k||j||I;if(E)throw E;const{customStatuses:D}=ts(r,n);return s.jsxs(s.Fragment,{children:[T?s.jsx(rs,{}):s.jsxs(s.Fragment,{children:[s.jsx(Nt,{organizations:f,selectedTab:d,onTabSelected:e=>{o({page:1,selectedTab:e,filters:{}})}}),s.jsx(ot,{hasPagination:v||q,page:u,requestsCount:S,requestsPerPage:y,query:l,onSearchSubmit:e=>o({page:1,query:e}),filters:h,ticketFields:C,onFiltersChanged:e=>{o({page:1,filters:e})},organizations:f,selectedTab:d,onOrganizationSelected:e=>{d.name===qe&&o({page:1,selectedTab:{name:qe,organizationId:e}})},user:p,customStatusesEnabled:r,customStatuses:D}),s.jsx(Dt,{onSort:e=>{c?.by===e?"asc"===c.order?o({page:1,sort:{by:c.by,order:"desc"}}):o({page:1,sort:null}):o({page:1,sort:{by:e,order:"asc"}})},requests:b,users:$||x,sort:c,ticketFields:C,customStatuses:D,customStatusesEnabled:r})]}),!T&&(q||v)&&s.jsxs(Y,{children:[s.jsx(Y.Previous,{onClick:()=>o({page:u-1}),disabled:!q,children:a("guide-requests-app.previous","Previous")}),s.jsx(Y.Next,{onClick:()=>o({page:u+1}),disabled:!v,children:a("guide-requests-app.next","Next")})]})]})}async function is(e,t,n){const{locale:r}=t,{customStatusesEnabled:a}=t;W(r),await Q(r,[()=>function(e){switch(e){case"./translations/locales/af.json":return import("request-list-translations").then((function(e){return e.a}));case"./translations/locales/ar-x-pseudo.json":return import("request-list-translations").then((function(e){return e.b}));case"./translations/locales/ar.json":return import("request-list-translations").then((function(e){return e.c}));case"./translations/locales/az.json":return import("request-list-translations").then((function(e){return e.d}));case"./translations/locales/be.json":return import("request-list-translations").then((function(e){return e.e}));case"./translations/locales/bg.json":return import("request-list-translations").then((function(e){return e.f}));case"./translations/locales/bn.json":return import("request-list-translations").then((function(e){return e.g}));case"./translations/locales/bs.json":return import("request-list-translations").then((function(e){return e.h}));case"./translations/locales/ca.json":return import("request-list-translations").then((function(e){return e.i}));case"./translations/locales/cs.json":return import("request-list-translations").then((function(e){return e.j}));case"./translations/locales/cy.json":return import("request-list-translations").then((function(e){return e.k}));case"./translations/locales/da.json":return import("request-list-translations").then((function(e){return e.l}));case"./translations/locales/de-de.json":return import("request-list-translations").then((function(e){return e.m}));case"./translations/locales/de-x-informal.json":return import("request-list-translations").then((function(e){return e.n}));case"./translations/locales/de.json":return import("request-list-translations").then((function(e){return e.o}));case"./translations/locales/el.json":return import("request-list-translations").then((function(e){return e.p}));case"./translations/locales/en-001.json":return import("request-list-translations").then((function(e){return e.q}));case"./translations/locales/en-150.json":return import("request-list-translations").then((function(e){return e.r}));case"./translations/locales/en-au.json":return import("request-list-translations").then((function(e){return e.s}));case"./translations/locales/en-ca.json":return import("request-list-translations").then((function(e){return e.t}));case"./translations/locales/en-gb.json":return import("request-list-translations").then((function(e){return e.u}));case"./translations/locales/en-my.json":return import("request-list-translations").then((function(e){return e.v}));case"./translations/locales/en-ph.json":return import("request-list-translations").then((function(e){return e.w}));case"./translations/locales/en-se.json":return import("request-list-translations").then((function(e){return e.x}));case"./translations/locales/en-us.json":return import("request-list-translations").then((function(e){return e.y}));case"./translations/locales/en-x-dev.json":return import("request-list-translations").then((function(e){return e.z}));case"./translations/locales/en-x-keys.json":return import("request-list-translations").then((function(e){return e.A}));case"./translations/locales/en-x-obsolete.json":return import("request-list-translations").then((function(e){return e.B}));case"./translations/locales/en-x-pseudo.json":return import("request-list-translations").then((function(e){return e.C}));case"./translations/locales/en-x-test.json":return import("request-list-translations").then((function(e){return e.D}));case"./translations/locales/es-419.json":return import("request-list-translations").then((function(e){return e.E}));case"./translations/locales/es-ar.json":return import("request-list-translations").then((function(e){return e.F}));case"./translations/locales/es-cl.json":return import("request-list-translations").then((function(e){return e.G}));case"./translations/locales/es-es.json":return import("request-list-translations").then((function(e){return e.H}));case"./translations/locales/es-mx.json":return import("request-list-translations").then((function(e){return e.I}));case"./translations/locales/es-pe.json":return import("request-list-translations").then((function(e){return e.J}));case"./translations/locales/es.json":return import("request-list-translations").then((function(e){return e.K}));case"./translations/locales/et.json":return import("request-list-translations").then((function(e){return e.L}));case"./translations/locales/eu.json":return import("request-list-translations").then((function(e){return e.M}));case"./translations/locales/fa-af.json":return import("request-list-translations").then((function(e){return e.N}));case"./translations/locales/fa.json":return import("request-list-translations").then((function(e){return e.O}));case"./translations/locales/fi.json":return import("request-list-translations").then((function(e){return e.P}));case"./translations/locales/fil.json":return import("request-list-translations").then((function(e){return e.Q}));case"./translations/locales/fo.json":return import("request-list-translations").then((function(e){return e.R}));case"./translations/locales/fr-ca.json":return import("request-list-translations").then((function(e){return e.S}));case"./translations/locales/fr-dz.json":return import("request-list-translations").then((function(e){return e.T}));case"./translations/locales/fr-mu.json":return import("request-list-translations").then((function(e){return e.U}));case"./translations/locales/fr.json":return import("request-list-translations").then((function(e){return e.V}));case"./translations/locales/ga.json":return import("request-list-translations").then((function(e){return e.W}));case"./translations/locales/he.json":return import("request-list-translations").then((function(e){return e.X}));case"./translations/locales/hi.json":return import("request-list-translations").then((function(e){return e.Y}));case"./translations/locales/hr.json":return import("request-list-translations").then((function(e){return e.Z}));case"./translations/locales/hu.json":return import("request-list-translations").then((function(e){return e._}));case"./translations/locales/hy.json":return import("request-list-translations").then((function(e){return e.$}));case"./translations/locales/id.json":return import("request-list-translations").then((function(e){return e.a0}));case"./translations/locales/is.json":return import("request-list-translations").then((function(e){return e.a1}));case"./translations/locales/it-ch.json":return import("request-list-translations").then((function(e){return e.a2}));case"./translations/locales/it.json":return import("request-list-translations").then((function(e){return e.a3}));case"./translations/locales/ja.json":return import("request-list-translations").then((function(e){return e.a4}));case"./translations/locales/ka.json":return import("request-list-translations").then((function(e){return e.a5}));case"./translations/locales/kk.json":return import("request-list-translations").then((function(e){return e.a6}));case"./translations/locales/kl-dk.json":return import("request-list-translations").then((function(e){return e.a7}));case"./translations/locales/km.json":return import("request-list-translations").then((function(e){return e.a8}));case"./translations/locales/ko.json":return import("request-list-translations").then((function(e){return e.a9}));case"./translations/locales/ku.json":return import("request-list-translations").then((function(e){return e.aa}));case"./translations/locales/ky.json":return import("request-list-translations").then((function(e){return e.ab}));case"./translations/locales/lt.json":return import("request-list-translations").then((function(e){return e.ac}));case"./translations/locales/lv.json":return import("request-list-translations").then((function(e){return e.ad}));case"./translations/locales/mk.json":return import("request-list-translations").then((function(e){return e.ae}));case"./translations/locales/mn.json":return import("request-list-translations").then((function(e){return e.af}));case"./translations/locales/ms.json":return import("request-list-translations").then((function(e){return e.ag}));case"./translations/locales/mt.json":return import("request-list-translations").then((function(e){return e.ah}));case"./translations/locales/my.json":return import("request-list-translations").then((function(e){return e.ai}));case"./translations/locales/ne.json":return import("request-list-translations").then((function(e){return e.aj}));case"./translations/locales/nl-be.json":return import("request-list-translations").then((function(e){return e.ak}));case"./translations/locales/nl.json":return import("request-list-translations").then((function(e){return e.al}));case"./translations/locales/no.json":return import("request-list-translations").then((function(e){return e.am}));case"./translations/locales/pl.json":return import("request-list-translations").then((function(e){return e.an}));case"./translations/locales/pt-br.json":return import("request-list-translations").then((function(e){return e.ao}));case"./translations/locales/pt.json":return import("request-list-translations").then((function(e){return e.ap}));case"./translations/locales/ro-md.json":return import("request-list-translations").then((function(e){return e.aq}));case"./translations/locales/ro.json":return import("request-list-translations").then((function(e){return e.ar}));case"./translations/locales/ru.json":return import("request-list-translations").then((function(e){return e.as}));case"./translations/locales/si.json":return import("request-list-translations").then((function(e){return e.at}));case"./translations/locales/sk.json":return import("request-list-translations").then((function(e){return e.au}));case"./translations/locales/sl.json":return import("request-list-translations").then((function(e){return e.av}));case"./translations/locales/sq.json":return import("request-list-translations").then((function(e){return e.aw}));case"./translations/locales/sr-me.json":return import("request-list-translations").then((function(e){return e.ax}));case"./translations/locales/sr.json":return import("request-list-translations").then((function(e){return e.ay}));case"./translations/locales/sv.json":return import("request-list-translations").then((function(e){return e.az}));case"./translations/locales/sw-ke.json":return import("request-list-translations").then((function(e){return e.aA}));case"./translations/locales/ta.json":return import("request-list-translations").then((function(e){return e.aB}));case"./translations/locales/th.json":return import("request-list-translations").then((function(e){return e.aC}));case"./translations/locales/tr.json":return import("request-list-translations").then((function(e){return e.aD}));case"./translations/locales/uk.json":return import("request-list-translations").then((function(e){return e.aE}));case"./translations/locales/ur-pk.json":return import("request-list-translations").then((function(e){return e.aF}));case"./translations/locales/ur.json":return import("request-list-translations").then((function(e){return e.aG}));case"./translations/locales/uz.json":return import("request-list-translations").then((function(e){return e.aH}));case"./translations/locales/vi.json":return import("request-list-translations").then((function(e){return e.aI}));case"./translations/locales/zh-cn.json":return import("request-list-translations").then((function(e){return e.aJ}));case"./translations/locales/zh-tw.json":return import("request-list-translations").then((function(e){return e.aK}));default:return new Promise((function(t,s){("function"==typeof queueMicrotask?queueMicrotask:setTimeout)(s.bind(null,new Error("Unknown variable dynamic import: "+e)))}))}}(`./translations/locales/${r}.json`),()=>function(e){switch(e){case"../shared/translations/locales/af.json":return import("shared").then((function(e){return e.aU}));case"../shared/translations/locales/ar-x-pseudo.json":return import("shared").then((function(e){return e.aV}));case"../shared/translations/locales/ar.json":return import("shared").then((function(e){return e.aW}));case"../shared/translations/locales/az.json":return import("shared").then((function(e){return e.aX}));case"../shared/translations/locales/be.json":return import("shared").then((function(e){return e.aY}));case"../shared/translations/locales/bg.json":return import("shared").then((function(e){return e.aZ}));case"../shared/translations/locales/bn.json":return import("shared").then((function(e){return e.a_}));case"../shared/translations/locales/bs.json":return import("shared").then((function(e){return e.a$}));case"../shared/translations/locales/ca.json":return import("shared").then((function(e){return e.b0}));case"../shared/translations/locales/cs.json":return import("shared").then((function(e){return e.b1}));case"../shared/translations/locales/cy.json":return import("shared").then((function(e){return e.b2}));case"../shared/translations/locales/da.json":return import("shared").then((function(e){return e.b3}));case"../shared/translations/locales/de-de.json":return import("shared").then((function(e){return e.b4}));case"../shared/translations/locales/de-x-informal.json":return import("shared").then((function(e){return e.b5}));case"../shared/translations/locales/de.json":return import("shared").then((function(e){return e.b6}));case"../shared/translations/locales/el.json":return import("shared").then((function(e){return e.b7}));case"../shared/translations/locales/en-001.json":return import("shared").then((function(e){return e.b8}));case"../shared/translations/locales/en-150.json":return import("shared").then((function(e){return e.b9}));case"../shared/translations/locales/en-au.json":return import("shared").then((function(e){return e.ba}));case"../shared/translations/locales/en-ca.json":return import("shared").then((function(e){return e.bb}));case"../shared/translations/locales/en-gb.json":return import("shared").then((function(e){return e.bc}));case"../shared/translations/locales/en-my.json":return import("shared").then((function(e){return e.bd}));case"../shared/translations/locales/en-ph.json":return import("shared").then((function(e){return e.be}));case"../shared/translations/locales/en-se.json":return import("shared").then((function(e){return e.bf}));case"../shared/translations/locales/en-us.json":return import("shared").then((function(e){return e.bg}));case"../shared/translations/locales/en-x-dev.json":return import("shared").then((function(e){return e.bh}));case"../shared/translations/locales/en-x-keys.json":return import("shared").then((function(e){return e.bi}));case"../shared/translations/locales/en-x-obsolete.json":return import("shared").then((function(e){return e.bj}));case"../shared/translations/locales/en-x-pseudo.json":return import("shared").then((function(e){return e.bk}));case"../shared/translations/locales/en-x-test.json":return import("shared").then((function(e){return e.bl}));case"../shared/translations/locales/es-419.json":return import("shared").then((function(e){return e.bm}));case"../shared/translations/locales/es-ar.json":return import("shared").then((function(e){return e.bn}));case"../shared/translations/locales/es-cl.json":return import("shared").then((function(e){return e.bo}));case"../shared/translations/locales/es-es.json":return import("shared").then((function(e){return e.bp}));case"../shared/translations/locales/es-mx.json":return import("shared").then((function(e){return e.bq}));case"../shared/translations/locales/es-pe.json":return import("shared").then((function(e){return e.br}));case"../shared/translations/locales/es.json":return import("shared").then((function(e){return e.bs}));case"../shared/translations/locales/et.json":return import("shared").then((function(e){return e.bt}));case"../shared/translations/locales/eu.json":return import("shared").then((function(e){return e.bu}));case"../shared/translations/locales/fa-af.json":return import("shared").then((function(e){return e.bv}));case"../shared/translations/locales/fa.json":return import("shared").then((function(e){return e.bw}));case"../shared/translations/locales/fi.json":return import("shared").then((function(e){return e.bx}));case"../shared/translations/locales/fil.json":return import("shared").then((function(e){return e.by}));case"../shared/translations/locales/fo.json":return import("shared").then((function(e){return e.bz}));case"../shared/translations/locales/fr-ca.json":return import("shared").then((function(e){return e.bA}));case"../shared/translations/locales/fr-dz.json":return import("shared").then((function(e){return e.bB}));case"../shared/translations/locales/fr-mu.json":return import("shared").then((function(e){return e.bC}));case"../shared/translations/locales/fr.json":return import("shared").then((function(e){return e.bD}));case"../shared/translations/locales/ga.json":return import("shared").then((function(e){return e.bE}));case"../shared/translations/locales/he.json":return import("shared").then((function(e){return e.bF}));case"../shared/translations/locales/hi.json":return import("shared").then((function(e){return e.bG}));case"../shared/translations/locales/hr.json":return import("shared").then((function(e){return e.bH}));case"../shared/translations/locales/hu.json":return import("shared").then((function(e){return e.bI}));case"../shared/translations/locales/hy.json":return import("shared").then((function(e){return e.bJ}));case"../shared/translations/locales/id.json":return import("shared").then((function(e){return e.bK}));case"../shared/translations/locales/is.json":return import("shared").then((function(e){return e.bL}));case"../shared/translations/locales/it-ch.json":return import("shared").then((function(e){return e.bM}));case"../shared/translations/locales/it.json":return import("shared").then((function(e){return e.bN}));case"../shared/translations/locales/ja.json":return import("shared").then((function(e){return e.bO}));case"../shared/translations/locales/ka.json":return import("shared").then((function(e){return e.bP}));case"../shared/translations/locales/kk.json":return import("shared").then((function(e){return e.bQ}));case"../shared/translations/locales/kl-dk.json":return import("shared").then((function(e){return e.bR}));case"../shared/translations/locales/km.json":return import("shared").then((function(e){return e.bS}));case"../shared/translations/locales/ko.json":return import("shared").then((function(e){return e.bT}));case"../shared/translations/locales/ku.json":return import("shared").then((function(e){return e.bU}));case"../shared/translations/locales/ky.json":return import("shared").then((function(e){return e.bV}));case"../shared/translations/locales/lt.json":return import("shared").then((function(e){return e.bW}));case"../shared/translations/locales/lv.json":return import("shared").then((function(e){return e.bX}));case"../shared/translations/locales/mk.json":return import("shared").then((function(e){return e.bY}));case"../shared/translations/locales/mn.json":return import("shared").then((function(e){return e.bZ}));case"../shared/translations/locales/ms.json":return import("shared").then((function(e){return e.b_}));case"../shared/translations/locales/mt.json":return import("shared").then((function(e){return e.b$}));case"../shared/translations/locales/my.json":return import("shared").then((function(e){return e.c0}));case"../shared/translations/locales/ne.json":return import("shared").then((function(e){return e.c1}));case"../shared/translations/locales/nl-be.json":return import("shared").then((function(e){return e.c2}));case"../shared/translations/locales/nl.json":return import("shared").then((function(e){return e.c3}));case"../shared/translations/locales/no.json":return import("shared").then((function(e){return e.c4}));case"../shared/translations/locales/pl.json":return import("shared").then((function(e){return e.c5}));case"../shared/translations/locales/pt-br.json":return import("shared").then((function(e){return e.c6}));case"../shared/translations/locales/pt.json":return import("shared").then((function(e){return e.c7}));case"../shared/translations/locales/ro-md.json":return import("shared").then((function(e){return e.c8}));case"../shared/translations/locales/ro.json":return import("shared").then((function(e){return e.c9}));case"../shared/translations/locales/ru.json":return import("shared").then((function(e){return e.ca}));case"../shared/translations/locales/si.json":return import("shared").then((function(e){return e.cb}));case"../shared/translations/locales/sk.json":return import("shared").then((function(e){return e.cc}));case"../shared/translations/locales/sl.json":return import("shared").then((function(e){return e.cd}));case"../shared/translations/locales/sq.json":return import("shared").then((function(e){return e.ce}));case"../shared/translations/locales/sr-me.json":return import("shared").then((function(e){return e.cf}));case"../shared/translations/locales/sr.json":return import("shared").then((function(e){return e.cg}));case"../shared/translations/locales/sv.json":return import("shared").then((function(e){return e.ch}));case"../shared/translations/locales/sw-ke.json":return import("shared").then((function(e){return e.ci}));case"../shared/translations/locales/ta.json":return import("shared").then((function(e){return e.cj}));case"../shared/translations/locales/th.json":return import("shared").then((function(e){return e.ck}));case"../shared/translations/locales/tr.json":return import("shared").then((function(e){return e.cl}));case"../shared/translations/locales/uk.json":return import("shared").then((function(e){return e.cm}));case"../shared/translations/locales/ur-pk.json":return import("shared").then((function(e){return e.cn}));case"../shared/translations/locales/ur.json":return import("shared").then((function(e){return e.co}));case"../shared/translations/locales/uz.json":return import("shared").then((function(e){return e.cp}));case"../shared/translations/locales/vi.json":return import("shared").then((function(e){return e.cq}));case"../shared/translations/locales/zh-cn.json":return import("shared").then((function(e){return e.cr}));case"../shared/translations/locales/zh-tw.json":return import("shared").then((function(e){return e.cs}));default:return new Promise((function(t,s){("function"==typeof queueMicrotask?queueMicrotask:setTimeout)(s.bind(null,new Error("Unknown variable dynamic import: "+e)))}))}}(`../shared/translations/locales/${r}.json`)]);const i=`/hc/${r}`;Z.render(s.jsx(J,{theme:K(e),children:s.jsx(ee,{helpCenterPath:i,children:s.jsx(as,{locale:r,customStatusesEnabled:a})})}),n)}export{is as renderRequestList};
+`;
+const RequestLoadingState = () => {
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Grid, { children: [jsxRuntimeExports.jsx(NoLeftPaddingCol, { children: jsxRuntimeExports.jsx(Skeleton, { width: "50%" }) }), jsxRuntimeExports.jsx(NoLeftPaddingCol, { children: jsxRuntimeExports.jsx(Skeleton, { width: "30%" }) }), jsxRuntimeExports.jsx(NoLeftPaddingCol, { children: jsxRuntimeExports.jsx(Skeleton, { width: "40%" }) }), jsxRuntimeExports.jsx(NoLeftPaddingCol, { children: jsxRuntimeExports.jsx(Skeleton, { width: "50%" }) })] }), jsxRuntimeExports.jsxs(Table, { style: { minWidth: 400 }, children: [jsxRuntimeExports.jsx(Table.Head, { children: jsxRuntimeExports.jsxs(Table.HeaderRow, { children: [jsxRuntimeExports.jsx(Table.HeaderCell, { children: jsxRuntimeExports.jsx(Skeleton, { width: "40%" }) }), jsxRuntimeExports.jsx(Table.HeaderCell, { children: jsxRuntimeExports.jsx(Skeleton, { width: "40%" }) }), jsxRuntimeExports.jsx(Table.HeaderCell, { children: jsxRuntimeExports.jsx(Skeleton, { width: "40%" }) })] }) }), jsxRuntimeExports.jsxs(Table.Body, { children: [jsxRuntimeExports.jsx(SkeletonCells, {}), jsxRuntimeExports.jsx(SkeletonCells, {}), jsxRuntimeExports.jsx(SkeletonCells, {})] })] })] }));
+};
+
+function useShowManyUsers(ids) {
+    const [error, setError] = reactExports.useState();
+    const [{ users, isLoading }, setRequestState] = reactExports.useState({
+        users: [],
+        isLoading: true,
+    });
+    const userIds = ids.join(",");
+    async function fetchUsers(signal) {
+        try {
+            const response = await fetch(`/api/v2/users/show_many.json?ids=${userIds}`, { signal });
+            const { users } = await response.json();
+            setRequestState({ users, isLoading: false });
+        }
+        catch (error) {
+            if (error instanceof Error && error.name === "AbortError") {
+                // Do nothing, request was cancelled, because another one was started;
+                return;
+            }
+            else
+                setError(error);
+        }
+    }
+    reactExports.useEffect(() => {
+        return withAbort(fetchUsers);
+    }, [userIds]);
+    return {
+        users,
+        error,
+        isLoading,
+    };
+}
+
+function RequestsList({ locale, customStatusesEnabled, }) {
+    const { t } = useTranslation();
+    const { params, push } = useParams({
+        query: "",
+        page: 1,
+        sort: { order: "desc", by: "updated_at" },
+        selectedTab: { name: MY_REQUESTS_TAB_NAME },
+        filters: {},
+    }, serializeRequestListParams, deserializeRequestListParams);
+    const { query, page, sort, selectedTab, filters } = params;
+    const { user, isLoading: isLoadingUser, error: userError } = useUser();
+    const { organizations } = useOrganizations(user);
+    const { requests, users, hasNextPage, hasPreviousPage, requestsCount, requestsPerPage, isLoading: isLoadingRequests, error: requestsError, } = useRequests(params, push);
+    const { ticketFields, isLoading: isLoadingTicketFields, error: ticketFieldsError, } = useTicketFields(locale);
+    const loadingError = requestsError || ticketFieldsError || userError;
+    const isEndUser = !isLoadingUser && user?.role === "end-user";
+    const userIds = !isLoadingRequests && !isEndUser
+        ? requests.map((request) => request.requester_id)
+        : [];
+    const { users: usersWithAliases, isLoading: usersLoading } = useShowManyUsers(userIds);
+    const isLoading = isLoadingRequests || isLoadingTicketFields || isLoadingUser || usersLoading;
+    if (loadingError) {
+        throw loadingError;
+    }
+    const { customStatuses } = useCustomStatuses(customStatusesEnabled, locale);
+    const handleTabSelected = (newSelectedTab) => {
+        push({
+            page: 1,
+            selectedTab: newSelectedTab,
+            filters: {},
+        });
+    };
+    const handleOrganizationSelected = (selectedOrgId) => {
+        if (selectedTab.name === ORG_REQUESTS_TAB_NAME) {
+            push({
+                page: 1,
+                selectedTab: {
+                    name: ORG_REQUESTS_TAB_NAME,
+                    organizationId: selectedOrgId,
+                },
+            });
+        }
+    };
+    const handleFiltersChanged = (newFilters) => {
+        push({ page: 1, filters: newFilters });
+    };
+    const onSort = (name) => {
+        if (sort?.by === name) {
+            if (sort.order === "asc") {
+                push({
+                    page: 1,
+                    sort: {
+                        by: sort.by,
+                        order: "desc",
+                    },
+                });
+            }
+            else {
+                push({
+                    page: 1,
+                    sort: null,
+                });
+            }
+        }
+        else {
+            push({
+                page: 1,
+                sort: {
+                    by: name,
+                    order: "asc",
+                },
+            });
+        }
+    };
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [isLoading ? (jsxRuntimeExports.jsx(RequestLoadingState, {})) : (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(RequestsTabs, { organizations: organizations, selectedTab: selectedTab, onTabSelected: handleTabSelected }), jsxRuntimeExports.jsx(RequestsToolbar, { hasPagination: hasNextPage || hasPreviousPage, page: page, requestsCount: requestsCount, requestsPerPage: requestsPerPage, query: query, onSearchSubmit: (value) => push({ page: 1, query: value }), filters: filters, ticketFields: ticketFields, onFiltersChanged: handleFiltersChanged, organizations: organizations, selectedTab: selectedTab, onOrganizationSelected: handleOrganizationSelected, user: user, customStatusesEnabled: customStatusesEnabled, customStatuses: customStatuses }), jsxRuntimeExports.jsx(RequestsTable, { onSort: onSort, requests: requests, users: usersWithAliases || users, sort: sort, ticketFields: ticketFields, customStatuses: customStatuses, customStatusesEnabled: customStatusesEnabled })] })), !isLoading && (hasPreviousPage || hasNextPage) && (jsxRuntimeExports.jsxs(CursorPagination, { children: [jsxRuntimeExports.jsx(CursorPagination.Previous, { onClick: () => push({ page: page - 1 }), disabled: !hasPreviousPage, children: t("guide-requests-app.previous", "Previous") }), jsxRuntimeExports.jsx(CursorPagination.Next, { onClick: () => push({ page: page + 1 }), disabled: !hasNextPage, children: t("guide-requests-app.next", "Next") })] }))] }));
+}
+
+function __variableDynamicImportRuntime1__(path) {
+  switch (path) {
+    case '../shared/translations/locales/af.json': return import('shared').then(function (n) { return n.aU; });
+    case '../shared/translations/locales/ar-x-pseudo.json': return import('shared').then(function (n) { return n.aV; });
+    case '../shared/translations/locales/ar.json': return import('shared').then(function (n) { return n.aW; });
+    case '../shared/translations/locales/az.json': return import('shared').then(function (n) { return n.aX; });
+    case '../shared/translations/locales/be.json': return import('shared').then(function (n) { return n.aY; });
+    case '../shared/translations/locales/bg.json': return import('shared').then(function (n) { return n.aZ; });
+    case '../shared/translations/locales/bn.json': return import('shared').then(function (n) { return n.a_; });
+    case '../shared/translations/locales/bs.json': return import('shared').then(function (n) { return n.a$; });
+    case '../shared/translations/locales/ca.json': return import('shared').then(function (n) { return n.b0; });
+    case '../shared/translations/locales/cs.json': return import('shared').then(function (n) { return n.b1; });
+    case '../shared/translations/locales/cy.json': return import('shared').then(function (n) { return n.b2; });
+    case '../shared/translations/locales/da.json': return import('shared').then(function (n) { return n.b3; });
+    case '../shared/translations/locales/de-de.json': return import('shared').then(function (n) { return n.b4; });
+    case '../shared/translations/locales/de-x-informal.json': return import('shared').then(function (n) { return n.b5; });
+    case '../shared/translations/locales/de.json': return import('shared').then(function (n) { return n.b6; });
+    case '../shared/translations/locales/el.json': return import('shared').then(function (n) { return n.b7; });
+    case '../shared/translations/locales/en-001.json': return import('shared').then(function (n) { return n.b8; });
+    case '../shared/translations/locales/en-150.json': return import('shared').then(function (n) { return n.b9; });
+    case '../shared/translations/locales/en-au.json': return import('shared').then(function (n) { return n.ba; });
+    case '../shared/translations/locales/en-ca.json': return import('shared').then(function (n) { return n.bb; });
+    case '../shared/translations/locales/en-gb.json': return import('shared').then(function (n) { return n.bc; });
+    case '../shared/translations/locales/en-my.json': return import('shared').then(function (n) { return n.bd; });
+    case '../shared/translations/locales/en-ph.json': return import('shared').then(function (n) { return n.be; });
+    case '../shared/translations/locales/en-se.json': return import('shared').then(function (n) { return n.bf; });
+    case '../shared/translations/locales/en-us.json': return import('shared').then(function (n) { return n.bg; });
+    case '../shared/translations/locales/en-x-dev.json': return import('shared').then(function (n) { return n.bh; });
+    case '../shared/translations/locales/en-x-keys.json': return import('shared').then(function (n) { return n.bi; });
+    case '../shared/translations/locales/en-x-obsolete.json': return import('shared').then(function (n) { return n.bj; });
+    case '../shared/translations/locales/en-x-pseudo.json': return import('shared').then(function (n) { return n.bk; });
+    case '../shared/translations/locales/en-x-test.json': return import('shared').then(function (n) { return n.bl; });
+    case '../shared/translations/locales/es-419.json': return import('shared').then(function (n) { return n.bm; });
+    case '../shared/translations/locales/es-ar.json': return import('shared').then(function (n) { return n.bn; });
+    case '../shared/translations/locales/es-cl.json': return import('shared').then(function (n) { return n.bo; });
+    case '../shared/translations/locales/es-es.json': return import('shared').then(function (n) { return n.bp; });
+    case '../shared/translations/locales/es-mx.json': return import('shared').then(function (n) { return n.bq; });
+    case '../shared/translations/locales/es-pe.json': return import('shared').then(function (n) { return n.br; });
+    case '../shared/translations/locales/es.json': return import('shared').then(function (n) { return n.bs; });
+    case '../shared/translations/locales/et.json': return import('shared').then(function (n) { return n.bt; });
+    case '../shared/translations/locales/eu.json': return import('shared').then(function (n) { return n.bu; });
+    case '../shared/translations/locales/fa-af.json': return import('shared').then(function (n) { return n.bv; });
+    case '../shared/translations/locales/fa.json': return import('shared').then(function (n) { return n.bw; });
+    case '../shared/translations/locales/fi.json': return import('shared').then(function (n) { return n.bx; });
+    case '../shared/translations/locales/fil.json': return import('shared').then(function (n) { return n.by; });
+    case '../shared/translations/locales/fo.json': return import('shared').then(function (n) { return n.bz; });
+    case '../shared/translations/locales/fr-ca.json': return import('shared').then(function (n) { return n.bA; });
+    case '../shared/translations/locales/fr-dz.json': return import('shared').then(function (n) { return n.bB; });
+    case '../shared/translations/locales/fr-mu.json': return import('shared').then(function (n) { return n.bC; });
+    case '../shared/translations/locales/fr.json': return import('shared').then(function (n) { return n.bD; });
+    case '../shared/translations/locales/ga.json': return import('shared').then(function (n) { return n.bE; });
+    case '../shared/translations/locales/he.json': return import('shared').then(function (n) { return n.bF; });
+    case '../shared/translations/locales/hi.json': return import('shared').then(function (n) { return n.bG; });
+    case '../shared/translations/locales/hr.json': return import('shared').then(function (n) { return n.bH; });
+    case '../shared/translations/locales/hu.json': return import('shared').then(function (n) { return n.bI; });
+    case '../shared/translations/locales/hy.json': return import('shared').then(function (n) { return n.bJ; });
+    case '../shared/translations/locales/id.json': return import('shared').then(function (n) { return n.bK; });
+    case '../shared/translations/locales/is.json': return import('shared').then(function (n) { return n.bL; });
+    case '../shared/translations/locales/it-ch.json': return import('shared').then(function (n) { return n.bM; });
+    case '../shared/translations/locales/it.json': return import('shared').then(function (n) { return n.bN; });
+    case '../shared/translations/locales/ja.json': return import('shared').then(function (n) { return n.bO; });
+    case '../shared/translations/locales/ka.json': return import('shared').then(function (n) { return n.bP; });
+    case '../shared/translations/locales/kk.json': return import('shared').then(function (n) { return n.bQ; });
+    case '../shared/translations/locales/kl-dk.json': return import('shared').then(function (n) { return n.bR; });
+    case '../shared/translations/locales/km.json': return import('shared').then(function (n) { return n.bS; });
+    case '../shared/translations/locales/ko.json': return import('shared').then(function (n) { return n.bT; });
+    case '../shared/translations/locales/ku.json': return import('shared').then(function (n) { return n.bU; });
+    case '../shared/translations/locales/ky.json': return import('shared').then(function (n) { return n.bV; });
+    case '../shared/translations/locales/lt.json': return import('shared').then(function (n) { return n.bW; });
+    case '../shared/translations/locales/lv.json': return import('shared').then(function (n) { return n.bX; });
+    case '../shared/translations/locales/mk.json': return import('shared').then(function (n) { return n.bY; });
+    case '../shared/translations/locales/mn.json': return import('shared').then(function (n) { return n.bZ; });
+    case '../shared/translations/locales/ms.json': return import('shared').then(function (n) { return n.b_; });
+    case '../shared/translations/locales/mt.json': return import('shared').then(function (n) { return n.b$; });
+    case '../shared/translations/locales/my.json': return import('shared').then(function (n) { return n.c0; });
+    case '../shared/translations/locales/ne.json': return import('shared').then(function (n) { return n.c1; });
+    case '../shared/translations/locales/nl-be.json': return import('shared').then(function (n) { return n.c2; });
+    case '../shared/translations/locales/nl.json': return import('shared').then(function (n) { return n.c3; });
+    case '../shared/translations/locales/no.json': return import('shared').then(function (n) { return n.c4; });
+    case '../shared/translations/locales/pl.json': return import('shared').then(function (n) { return n.c5; });
+    case '../shared/translations/locales/pt-br.json': return import('shared').then(function (n) { return n.c6; });
+    case '../shared/translations/locales/pt.json': return import('shared').then(function (n) { return n.c7; });
+    case '../shared/translations/locales/ro-md.json': return import('shared').then(function (n) { return n.c8; });
+    case '../shared/translations/locales/ro.json': return import('shared').then(function (n) { return n.c9; });
+    case '../shared/translations/locales/ru.json': return import('shared').then(function (n) { return n.ca; });
+    case '../shared/translations/locales/si.json': return import('shared').then(function (n) { return n.cb; });
+    case '../shared/translations/locales/sk.json': return import('shared').then(function (n) { return n.cc; });
+    case '../shared/translations/locales/sl.json': return import('shared').then(function (n) { return n.cd; });
+    case '../shared/translations/locales/sq.json': return import('shared').then(function (n) { return n.ce; });
+    case '../shared/translations/locales/sr-me.json': return import('shared').then(function (n) { return n.cf; });
+    case '../shared/translations/locales/sr.json': return import('shared').then(function (n) { return n.cg; });
+    case '../shared/translations/locales/sv.json': return import('shared').then(function (n) { return n.ch; });
+    case '../shared/translations/locales/sw-ke.json': return import('shared').then(function (n) { return n.ci; });
+    case '../shared/translations/locales/ta.json': return import('shared').then(function (n) { return n.cj; });
+    case '../shared/translations/locales/th.json': return import('shared').then(function (n) { return n.ck; });
+    case '../shared/translations/locales/tr.json': return import('shared').then(function (n) { return n.cl; });
+    case '../shared/translations/locales/uk.json': return import('shared').then(function (n) { return n.cm; });
+    case '../shared/translations/locales/ur-pk.json': return import('shared').then(function (n) { return n.cn; });
+    case '../shared/translations/locales/ur.json': return import('shared').then(function (n) { return n.co; });
+    case '../shared/translations/locales/uz.json': return import('shared').then(function (n) { return n.cp; });
+    case '../shared/translations/locales/vi.json': return import('shared').then(function (n) { return n.cq; });
+    case '../shared/translations/locales/zh-cn.json': return import('shared').then(function (n) { return n.cr; });
+    case '../shared/translations/locales/zh-tw.json': return import('shared').then(function (n) { return n.cs; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+
+function __variableDynamicImportRuntime0__(path) {
+  switch (path) {
+    case './translations/locales/af.json': return import('request-list-translations').then(function (n) { return n.a; });
+    case './translations/locales/ar-x-pseudo.json': return import('request-list-translations').then(function (n) { return n.b; });
+    case './translations/locales/ar.json': return import('request-list-translations').then(function (n) { return n.c; });
+    case './translations/locales/az.json': return import('request-list-translations').then(function (n) { return n.d; });
+    case './translations/locales/be.json': return import('request-list-translations').then(function (n) { return n.e; });
+    case './translations/locales/bg.json': return import('request-list-translations').then(function (n) { return n.f; });
+    case './translations/locales/bn.json': return import('request-list-translations').then(function (n) { return n.g; });
+    case './translations/locales/bs.json': return import('request-list-translations').then(function (n) { return n.h; });
+    case './translations/locales/ca.json': return import('request-list-translations').then(function (n) { return n.i; });
+    case './translations/locales/cs.json': return import('request-list-translations').then(function (n) { return n.j; });
+    case './translations/locales/cy.json': return import('request-list-translations').then(function (n) { return n.k; });
+    case './translations/locales/da.json': return import('request-list-translations').then(function (n) { return n.l; });
+    case './translations/locales/de-de.json': return import('request-list-translations').then(function (n) { return n.m; });
+    case './translations/locales/de-x-informal.json': return import('request-list-translations').then(function (n) { return n.n; });
+    case './translations/locales/de.json': return import('request-list-translations').then(function (n) { return n.o; });
+    case './translations/locales/el.json': return import('request-list-translations').then(function (n) { return n.p; });
+    case './translations/locales/en-001.json': return import('request-list-translations').then(function (n) { return n.q; });
+    case './translations/locales/en-150.json': return import('request-list-translations').then(function (n) { return n.r; });
+    case './translations/locales/en-au.json': return import('request-list-translations').then(function (n) { return n.s; });
+    case './translations/locales/en-ca.json': return import('request-list-translations').then(function (n) { return n.t; });
+    case './translations/locales/en-gb.json': return import('request-list-translations').then(function (n) { return n.u; });
+    case './translations/locales/en-my.json': return import('request-list-translations').then(function (n) { return n.v; });
+    case './translations/locales/en-ph.json': return import('request-list-translations').then(function (n) { return n.w; });
+    case './translations/locales/en-se.json': return import('request-list-translations').then(function (n) { return n.x; });
+    case './translations/locales/en-us.json': return import('request-list-translations').then(function (n) { return n.y; });
+    case './translations/locales/en-x-dev.json': return import('request-list-translations').then(function (n) { return n.z; });
+    case './translations/locales/en-x-keys.json': return import('request-list-translations').then(function (n) { return n.A; });
+    case './translations/locales/en-x-obsolete.json': return import('request-list-translations').then(function (n) { return n.B; });
+    case './translations/locales/en-x-pseudo.json': return import('request-list-translations').then(function (n) { return n.C; });
+    case './translations/locales/en-x-test.json': return import('request-list-translations').then(function (n) { return n.D; });
+    case './translations/locales/es-419.json': return import('request-list-translations').then(function (n) { return n.E; });
+    case './translations/locales/es-ar.json': return import('request-list-translations').then(function (n) { return n.F; });
+    case './translations/locales/es-cl.json': return import('request-list-translations').then(function (n) { return n.G; });
+    case './translations/locales/es-es.json': return import('request-list-translations').then(function (n) { return n.H; });
+    case './translations/locales/es-mx.json': return import('request-list-translations').then(function (n) { return n.I; });
+    case './translations/locales/es-pe.json': return import('request-list-translations').then(function (n) { return n.J; });
+    case './translations/locales/es.json': return import('request-list-translations').then(function (n) { return n.K; });
+    case './translations/locales/et.json': return import('request-list-translations').then(function (n) { return n.L; });
+    case './translations/locales/eu.json': return import('request-list-translations').then(function (n) { return n.M; });
+    case './translations/locales/fa-af.json': return import('request-list-translations').then(function (n) { return n.N; });
+    case './translations/locales/fa.json': return import('request-list-translations').then(function (n) { return n.O; });
+    case './translations/locales/fi.json': return import('request-list-translations').then(function (n) { return n.P; });
+    case './translations/locales/fil.json': return import('request-list-translations').then(function (n) { return n.Q; });
+    case './translations/locales/fo.json': return import('request-list-translations').then(function (n) { return n.R; });
+    case './translations/locales/fr-ca.json': return import('request-list-translations').then(function (n) { return n.S; });
+    case './translations/locales/fr-dz.json': return import('request-list-translations').then(function (n) { return n.T; });
+    case './translations/locales/fr-mu.json': return import('request-list-translations').then(function (n) { return n.U; });
+    case './translations/locales/fr.json': return import('request-list-translations').then(function (n) { return n.V; });
+    case './translations/locales/ga.json': return import('request-list-translations').then(function (n) { return n.W; });
+    case './translations/locales/he.json': return import('request-list-translations').then(function (n) { return n.X; });
+    case './translations/locales/hi.json': return import('request-list-translations').then(function (n) { return n.Y; });
+    case './translations/locales/hr.json': return import('request-list-translations').then(function (n) { return n.Z; });
+    case './translations/locales/hu.json': return import('request-list-translations').then(function (n) { return n._; });
+    case './translations/locales/hy.json': return import('request-list-translations').then(function (n) { return n.$; });
+    case './translations/locales/id.json': return import('request-list-translations').then(function (n) { return n.a0; });
+    case './translations/locales/is.json': return import('request-list-translations').then(function (n) { return n.a1; });
+    case './translations/locales/it-ch.json': return import('request-list-translations').then(function (n) { return n.a2; });
+    case './translations/locales/it.json': return import('request-list-translations').then(function (n) { return n.a3; });
+    case './translations/locales/ja.json': return import('request-list-translations').then(function (n) { return n.a4; });
+    case './translations/locales/ka.json': return import('request-list-translations').then(function (n) { return n.a5; });
+    case './translations/locales/kk.json': return import('request-list-translations').then(function (n) { return n.a6; });
+    case './translations/locales/kl-dk.json': return import('request-list-translations').then(function (n) { return n.a7; });
+    case './translations/locales/km.json': return import('request-list-translations').then(function (n) { return n.a8; });
+    case './translations/locales/ko.json': return import('request-list-translations').then(function (n) { return n.a9; });
+    case './translations/locales/ku.json': return import('request-list-translations').then(function (n) { return n.aa; });
+    case './translations/locales/ky.json': return import('request-list-translations').then(function (n) { return n.ab; });
+    case './translations/locales/lt.json': return import('request-list-translations').then(function (n) { return n.ac; });
+    case './translations/locales/lv.json': return import('request-list-translations').then(function (n) { return n.ad; });
+    case './translations/locales/mk.json': return import('request-list-translations').then(function (n) { return n.ae; });
+    case './translations/locales/mn.json': return import('request-list-translations').then(function (n) { return n.af; });
+    case './translations/locales/ms.json': return import('request-list-translations').then(function (n) { return n.ag; });
+    case './translations/locales/mt.json': return import('request-list-translations').then(function (n) { return n.ah; });
+    case './translations/locales/my.json': return import('request-list-translations').then(function (n) { return n.ai; });
+    case './translations/locales/ne.json': return import('request-list-translations').then(function (n) { return n.aj; });
+    case './translations/locales/nl-be.json': return import('request-list-translations').then(function (n) { return n.ak; });
+    case './translations/locales/nl.json': return import('request-list-translations').then(function (n) { return n.al; });
+    case './translations/locales/no.json': return import('request-list-translations').then(function (n) { return n.am; });
+    case './translations/locales/pl.json': return import('request-list-translations').then(function (n) { return n.an; });
+    case './translations/locales/pt-br.json': return import('request-list-translations').then(function (n) { return n.ao; });
+    case './translations/locales/pt.json': return import('request-list-translations').then(function (n) { return n.ap; });
+    case './translations/locales/ro-md.json': return import('request-list-translations').then(function (n) { return n.aq; });
+    case './translations/locales/ro.json': return import('request-list-translations').then(function (n) { return n.ar; });
+    case './translations/locales/ru.json': return import('request-list-translations').then(function (n) { return n.as; });
+    case './translations/locales/si.json': return import('request-list-translations').then(function (n) { return n.at; });
+    case './translations/locales/sk.json': return import('request-list-translations').then(function (n) { return n.au; });
+    case './translations/locales/sl.json': return import('request-list-translations').then(function (n) { return n.av; });
+    case './translations/locales/sq.json': return import('request-list-translations').then(function (n) { return n.aw; });
+    case './translations/locales/sr-me.json': return import('request-list-translations').then(function (n) { return n.ax; });
+    case './translations/locales/sr.json': return import('request-list-translations').then(function (n) { return n.ay; });
+    case './translations/locales/sv.json': return import('request-list-translations').then(function (n) { return n.az; });
+    case './translations/locales/sw-ke.json': return import('request-list-translations').then(function (n) { return n.aA; });
+    case './translations/locales/ta.json': return import('request-list-translations').then(function (n) { return n.aB; });
+    case './translations/locales/th.json': return import('request-list-translations').then(function (n) { return n.aC; });
+    case './translations/locales/tr.json': return import('request-list-translations').then(function (n) { return n.aD; });
+    case './translations/locales/uk.json': return import('request-list-translations').then(function (n) { return n.aE; });
+    case './translations/locales/ur-pk.json': return import('request-list-translations').then(function (n) { return n.aF; });
+    case './translations/locales/ur.json': return import('request-list-translations').then(function (n) { return n.aG; });
+    case './translations/locales/uz.json': return import('request-list-translations').then(function (n) { return n.aH; });
+    case './translations/locales/vi.json': return import('request-list-translations').then(function (n) { return n.aI; });
+    case './translations/locales/zh-cn.json': return import('request-list-translations').then(function (n) { return n.aJ; });
+    case './translations/locales/zh-tw.json': return import('request-list-translations').then(function (n) { return n.aK; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+async function renderRequestList(themeSettings, props, container) {
+    const { locale } = props;
+    const { customStatusesEnabled } = props;
+    initI18next(locale);
+    await loadTranslations(locale, [
+        () => __variableDynamicImportRuntime0__(`./translations/locales/${locale}.json`),
+        () => __variableDynamicImportRuntime1__(`../shared/translations/locales/${locale}.json`),
+    ]);
+    const helpCenterPath = `/hc/${locale}`;
+    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(themeSettings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(RequestsList, { locale: locale, customStatusesEnabled: customStatusesEnabled }) }) }), container);
+}
+
+export { renderRequestList };

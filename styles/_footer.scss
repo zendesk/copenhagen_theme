@@ -1,6 +1,6 @@
 /***** Footer *****/
 .footer {
-  $footer-muted-color: #afdae4;
+  $footer-muted-color: rgba(255, 255, 255, 0.7);
 
   background: #01357e;
   border-top: 0;
@@ -41,62 +41,37 @@
     }
 
     &:not(:first-child) {
-      border-left: 1px solid rgba(184, 194, 215, 0.2);
+      position: relative;
+
+      &::before {
+        background: rgba(184, 194, 215, 0.2);
+        content: '';
+        height: 40px;
+        left: 0;
+        position: absolute;
+        top: 36px;
+        width: 1px;
+      }
     }
 
     img {
       display: block;
       height: auto;
       max-width: 100%;
+      opacity: 0.7;
     }
   }
 
-  &-brand--commission {
-    justify-content: flex-start;
-    padding-left: 32px;
-  }
-
-  &-brand-commission-mark {
-    flex: 0 0 28px;
-    width: 28px;
-  }
-
-  &-brand-commission-copy {
-    display: flex;
-    flex: 0 1 191px;
-    margin-left: 16px;
-    min-width: 0;
-  }
-
-  &-brand-commission-copy img:first-child {
-    flex: 0 0 150px;
-    width: 150px;
-  }
-
-  &-brand-commission-copy img:last-child {
-    flex: 0 0 31px;
-    margin-left: 10px;
-    width: 31px;
+  &-brand--commission img {
+    width: 190px;
   }
 
   &-brand--dxp img {
     width: 106px;
   }
 
-  &-brand-miles-copy {
-    align-items: flex-start;
-    display: flex;
+  &-brand--miles img {
     width: 119px;
-  }
-
-  &-brand-miles-copy img:first-child {
-    width: 114px;
-  }
-
-  &-brand-miles-copy img:last-child {
-    margin-left: -22px;
-    margin-top: 1px;
-    width: 27px;
   }
 
   &-brand--azerbaijan img {
@@ -184,50 +159,12 @@
     }
   }
 
-  &-store-link--app-store {
-    height: 40px;
-    position: relative;
-    width: 135px;
-  }
 
-  &-app-store-outline {
-    inset: 0;
-    position: absolute;
-  }
-
-  &-app-store-content {
-    align-items: center;
-    display: flex;
-    inset: 0;
-    padding: 8px 18px 8px 16px;
-    position: absolute;
-  }
-
-  &-app-store-apple {
-    flex: 0 0 18px;
-    width: 18px;
-  }
-
-  &-app-store-copy {
-    display: flex;
-    flex-direction: column;
-    margin-left: 11px;
-  }
-
-  &-app-store-caption {
-    width: 69px;
-  }
-
-  &-app-store-wordmark {
-    margin-top: 3px;
-    width: 75px;
-  }
-
-  &-legal {
+&-legal {
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding-top: 16px;
+    padding-top: 24px;
   }
 
   &-legal-copy {
@@ -246,7 +183,7 @@
   min-width: 0;
 }
 
-@include tablet {
+@media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width}) {
   .footer {
     &-brand-strip {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -279,8 +216,11 @@
       padding: 22px 20px;
 
       &:not(:first-child) {
-        border-left: 0;
         border-top: 1px solid rgba(184, 194, 215, 0.2);
+
+        &::before {
+          display: none;
+        }
       }
     }
 
