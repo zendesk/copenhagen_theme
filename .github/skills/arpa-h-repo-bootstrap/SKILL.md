@@ -561,6 +561,54 @@ Expand each section to match the actual repo. Remove sections that do not apply.
 
 ---
 
+## CODEOWNERS — Review Authority
+
+Every ARPA-H repo should have a `.github/CODEOWNERS` file that declares who must approve pull requests for each part of the codebase.
+
+### How to determine owners
+
+Before writing the file, ask the user:
+
+> "Who should be required to review and approve pull requests for this repo? I can also look at recent commit and PR history to suggest frequent contributors who may have the authority to approve changes — would you like me to do that?"
+
+If the user wants history-based suggestions, run:
+```bash
+# Top committers by commit count (last 6 months)
+git log --since="6 months ago" --format="%ae" | sort | uniq -c | sort -rn | head -10
+
+# Authors who have merged PRs (requires gh CLI)
+gh pr list --state merged --limit 50 --json author --jq '[.[].author.login] | group_by(.) | map({login: .[0], count: length}) | sort_by(-.count) | .[:10]'
+```
+
+Present the results and ask which contributors have the authority to approve PRs (i.e. are maintainers, leads, or named reviewers for this project). Only add people who explicitly confirm they have that authority — do not auto-assign based on commit count alone.
+
+### File location and format
+
+Create `.github/CODEOWNERS`:
+
+```
+# CODEOWNERS — <repo name>
+#
+# Each line is a file pattern followed by one or more owners.
+# The last matching pattern takes precedence.
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global owner — all files in the repo
+* @<github-username>
+
+# Optional: area-specific owners (more specific patterns override * above)
+# infra/ @<infra-owner>
+# src/api/ @<api-owner>
+```
+
+### Key rules
+- Use `@username` (GitHub handle), not email addresses
+- Only list people with **Triage** role or above in the repo — GitHub silently ignores CODEOWNERS entries for users without write access
+- Add `.github/CODEOWNERS` to PLAN.md work items if it was not present at bootstrap time
+- `CODEOWNERS` must **not** be gitignored
+
+---
+
 ## Output Format
 
 Produce a single `.devcontainer/devcontainer.json` file with:
