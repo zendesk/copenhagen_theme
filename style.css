@@ -1203,6 +1203,10 @@ ul {
 .footer-brand--dxp img {
   width: 106px;
 }
+.footer-brand--miles {
+  padding-top: 5px;
+  padding-bottom: 31px;
+}
 .footer-brand--miles img {
   width: 119px;
 }
@@ -1228,17 +1232,15 @@ ul {
   gap: 8px;
   list-style: none;
   margin: 0;
+  opacity: 0.7;
   padding: 0;
 }
 .footer-link {
-  color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  transition: color 0.2s ease;
 }
 .footer-link:hover, .footer-link:focus {
-  color: #fff;
   text-decoration: underline;
 }
 .footer-meta {
@@ -1562,6 +1564,12 @@ ul {
     width: 90%;
   }
 }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .home-page-hero {
+    background-position: center top;
+    background-size: cover;
+  }
+}
 @media (max-width: 768px) {
   .home-page-hero {
     background-position: center top;
@@ -1799,6 +1807,10 @@ ul {
 }
 
 /***** Homepage *****/
+.home-page-template a:visited {
+  color: inherit;
+}
+
 .home-knowledge-base {
   margin-bottom: 72px;
 }
@@ -1817,8 +1829,66 @@ ul {
   line-height: 40px;
   margin: 0 0 24px;
 }
-.home-category-title--urgent {
+
+/***** Important Updates callout *****/
+.updates-callout {
+  background: #fff8f8;
+  border: 1px solid rgba(206, 58, 67, 0.25);
+  border-left: 4px solid #ce3a43;
+  border-radius: 8px;
+  margin-bottom: 48px;
+  padding: 20px 24px;
+}
+.updates-callout-header {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.updates-callout-icon {
+  align-items: center;
   color: #ce3a43;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.updates-callout-title {
+  color: #ce3a43;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.updates-callout-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.updates-callout-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.updates-callout-item::before {
+  background: #ce3a43;
+  border-radius: 50%;
+  content: "";
+  flex-shrink: 0;
+  height: 5px;
+  margin-top: 1px;
+  width: 5px;
+}
+.updates-callout-link {
+  color: #2e3034;
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.updates-callout-link:hover, .updates-callout-link:focus {
+  color: #ce3a43;
+  text-decoration: underline;
 }
 
 .home-category-grid {
@@ -1960,6 +2030,179 @@ ul {
 .activity {
   border-top: 1px solid #ddd;
   padding: 30px 0;
+}
+
+/***** Still Can't Find What You Need section *****/
+.contact-options {
+  border-top: 1px solid #ddd;
+  padding: 72px 0;
+}
+
+.contact-options-title {
+  color: #2e3034;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 40px;
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+.contact-options-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 1023px) {
+  .contact-options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+}
+.contact-card-top {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+.contact-card-icon {
+  align-items: center;
+  background: #eaf4fa;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  margin-bottom: 4px;
+  padding: 12px;
+  position: relative;
+}
+.contact-card-icon--chat {
+  gap: 0;
+}
+.contact-card-icon-dot {
+  height: 8px;
+  position: absolute;
+  right: 3px;
+  top: 2px;
+  width: 8px;
+}
+.contact-card-name {
+  color: #2e3034;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.34;
+  margin: 0;
+}
+.contact-card-desc {
+  color: #6d6f71;
+  font-size: 12px;
+  line-height: 1.56;
+  margin: 0;
+}
+.contact-card-btn {
+  background: transparent;
+  border: 2px solid #2c8dc7;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #2c8dc7;
+  cursor: pointer;
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  height: 48px;
+  line-height: 44px;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+  width: 100%;
+}
+.contact-card-btn:hover, .contact-card-btn:focus {
+  background: #2c8dc7;
+  color: #fff;
+  text-decoration: none;
+}
+
+/***** Need Help or Manage Your Trip section *****/
+.trip-help {
+  padding-top: 48px;
+}
+.trip-help h2 {
+  text-align: left;
+}
+
+.trip-help-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1023px) {
+  .trip-help-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .trip-help-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trip-help-card {
+  border: 1px solid #dbe0e4;
+  border-radius: 12px;
+  color: #2e3034;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease;
+}
+.trip-help-card:hover, .trip-help-card:focus {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  color: #2e3034;
+  text-decoration: none;
+}
+.trip-help-card-image {
+  display: block;
+  flex-shrink: 0;
+  height: 172px;
+  object-fit: cover;
+  width: 100%;
+}
+.trip-help-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 12px;
+  padding: 24px;
+}
+.trip-help-card-title {
+  color: #2e3034;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.33;
+  margin: 0;
+}
+.trip-help-card-desc {
+  color: #6e7583;
+  flex: 1;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+.trip-help-card-more {
+  color: #2c8dc7;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
 }
 
 /***** Recent activity *****/

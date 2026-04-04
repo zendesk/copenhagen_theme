@@ -46,6 +46,11 @@
     gap: 16px;
   }
 
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1}) {
+    background-position: center top;
+    background-size: cover;
+  }
+
   @include mobile {
     background-position: center top;
     background-size: cover;
