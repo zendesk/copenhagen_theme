@@ -18,6 +18,10 @@
   font-weight: 400;
   line-height: 40px;
   margin: 0 0 24px;
+
+  &--urgent {
+    color: #ce3a43;
+  }
 }
 
 .home-category-grid {

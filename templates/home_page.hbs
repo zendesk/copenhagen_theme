@@ -6,17 +6,54 @@
 
 <section id="main-content" class="section hero home-page-hero">
   <div class="hero-inner">
+    <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+      <a href="https://www.azal.az/" class="hero-breadcrumb-link">Home page</a>
+      <span class="hero-breadcrumb-dot" aria-hidden="true"></span>
+      <span class="hero-breadcrumb-current">Help Center</span>
+    </nav>
+    <p class="hero-title">Your Journey, Simplified</p>
     <h2 class="visibility-hidden">{{ t 'search' }}</h2>
-    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-    </svg>
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
+    <div class="hero-search-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+      </svg>
+      {{search submit=false instant=settings.instant_search class='search search-full'}}
+    </div>
+    <div class="hero-search-tags" aria-label="Popular topics">
+      <button type="button" class="hero-search-tag" data-query="refund">Refunds</button>
+      <button type="button" class="hero-search-tag" data-query="registration">Registration</button>
+      <button type="button" class="hero-search-tag" data-query="contact AZAL">Contact AZAL</button>
+    </div>
   </div>
 </section>
 
 <div class="container">
   <section class="home-knowledge-base">
+    {{#if promoted_articles}}
+      <div class="home-category">
+        <h2 class="home-category-title home-category-title--urgent">Important Updates</h2>
+        <div class="home-category-grid">
+          {{#each promoted_articles}}
+            <a href="{{url}}" class="home-category-card">
+              <span class="home-category-card-name">
+                {{title}}
+                {{#if internal}}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
+                    <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
+                    <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
+                  </svg>
+                {{/if}}
+              </span>
+              <span class="home-category-card-arrow" aria-hidden="true">
+                <img src="{{asset 'icon-arrow-right.svg'}}" alt="" width="18" height="16" />
+              </span>
+            </a>
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
+
     {{#each categories}}
       <div class="home-category">
         <h2 class="home-category-title">{{name}}</h2>
@@ -33,28 +70,6 @@
       </div>
     {{/each}}
     {{pagination}}
-
-    {{#if promoted_articles}}
-      <section class="articles">
-        <h2>{{t 'promoted_articles'}}</h2>
-        <ul class="article-list promoted-articles">
-          {{#each promoted_articles}}
-            <li class="promoted-articles-item">
-                <a href="{{url}}">
-                  {{title}}
-
-                  {{#if internal}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
-                      <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
-                      <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
-                    </svg>
-                  {{/if}}
-                </a>
-            </li>
-          {{/each}}
-        </ul>
-      </section>
-    {{/if}}
   </section>
 
   {{#if help_center.community_enabled}}

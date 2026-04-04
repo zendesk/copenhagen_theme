@@ -19,11 +19,13 @@
 .home-page-hero {
   position: relative;
   z-index: 0;
-  height: 400px;
+  height: 480px;
   background-position: center -224px;
   background-size: calc(100% + 72px) auto;
   margin-top: -$header-height;
   padding-top: $header-height;
+  display: flex;
+  align-items: center;
 
   &::before {
     background: #00000033;
@@ -35,10 +37,95 @@
   .hero-inner {
     position: relative;
     z-index: 1;
+    top: auto;
+    transform: none;
+    @include max-width-container;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   @include mobile {
     background-position: center top;
     background-size: cover;
+    height: 400px;
+  }
+}
+
+.hero-search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.hero-search-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.hero-search-tag {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+  padding: 8px 16px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    background: rgba(255, 255, 255, 0.28);
+    border-color: rgba(255, 255, 255, 0.7);
+    outline: none;
+  }
+}
+
+.hero-breadcrumb {
+  align-items: center;
+  display: flex;
+  font-size: 13px;
+  gap: 12px;
+  line-height: 20px;
+
+  &-link {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+  }
+
+  &-dot {
+    background: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+    height: 3px;
+    width: 3px;
+  }
+
+  &-current {
+    color: #fff;
+    opacity: 0.8;
+  }
+}
+
+.hero-title {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+  max-width: 964px;
+
+  @include mobile {
+    font-size: 28px;
   }
 }

@@ -487,6 +487,23 @@
       input.addEventListener("keyup", clearSearchInputOnKeypress);
       input.addEventListener("keyup", toggleClearSearchButtonAvailability);
     });
+
+    // Search tags: prefill the nearest search input on click
+    document.querySelectorAll(".hero-search-tag").forEach((tag) => {
+      tag.addEventListener("click", () => {
+        const query = tag.dataset.query;
+        const wrapper = tag.closest(".hero-search-wrapper, .hero-inner");
+        const input =
+          (wrapper && wrapper.querySelector("input[type='search']")) ||
+          document.querySelector("input[type='search']");
+        if (!input) return;
+        input.value = query;
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("keyup", { bubbles: true }));
+        input.closest(searchFormSelector).classList.add(searchFormFilledClassName);
+        input.focus();
+      });
+    });
   });
 
   const key = "returnFocusTo";

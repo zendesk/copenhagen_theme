@@ -1529,11 +1529,13 @@ ul {
 .home-page-hero {
   position: relative;
   z-index: 0;
-  height: 400px;
+  height: 480px;
   background-position: center -224px;
   background-size: calc(100% + 72px) auto;
   margin-top: -71px;
   padding-top: 71px;
+  display: flex;
+  align-items: center;
 }
 .home-page-hero::before {
   background: rgba(0, 0, 0, 0.2);
@@ -1544,11 +1546,99 @@ ul {
 .home-page-hero .hero-inner {
   position: relative;
   z-index: 1;
+  top: auto;
+  transform: none;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 5%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (min-width: 1160px) {
+  .home-page-hero .hero-inner {
+    padding: 0;
+    width: 90%;
+  }
 }
 @media (max-width: 768px) {
   .home-page-hero {
     background-position: center top;
     background-size: cover;
+    height: 400px;
+  }
+}
+
+.hero-search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.hero-search-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.hero-search-tag {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+  padding: 8px 16px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+.hero-search-tag:hover, .hero-search-tag:focus {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.7);
+  outline: none;
+}
+
+.hero-breadcrumb {
+  align-items: center;
+  display: flex;
+  font-size: 13px;
+  gap: 12px;
+  line-height: 20px;
+}
+.hero-breadcrumb-link {
+  color: #fff;
+  text-decoration: none;
+}
+.hero-breadcrumb-link:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+.hero-breadcrumb-dot {
+  background: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  height: 3px;
+  width: 3px;
+}
+.hero-breadcrumb-current {
+  color: #fff;
+  opacity: 0.8;
+}
+
+.hero-title {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+  max-width: 964px;
+}
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 28px;
   }
 }
 
@@ -1726,6 +1816,9 @@ ul {
   font-weight: 400;
   line-height: 40px;
   margin: 0 0 24px;
+}
+.home-category-title--urgent {
+  color: #ce3a43;
 }
 
 .home-category-grid {
