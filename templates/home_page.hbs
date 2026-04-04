@@ -16,34 +16,23 @@
 </section>
 
 <div class="container">
-  <section class="section knowledge-base">
-    <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
-    <section class="categories blocks">
-      <ul class="blocks-list">
-        {{#each categories}}
-          {{#if ../has_multiple_categories}}
-            <li class="blocks-item">
-              <a href='{{url}}' class="blocks-item-link">
-                <span class="blocks-item-title">{{name}}</span>
-                <span class="blocks-item-description">{{excerpt description}}</span>
-              </a>
-            </li>
-          {{else}}
-            {{#each sections}}
-              <li class="blocks-item">
-                <a href='{{url}}' class="blocks-item-link">
-                  <span class="blocks-item-title">
-                    {{name}}
-                  </span>
-                  <span class="blocks-item-description">{{excerpt description}}</span>
-                </a>
-              </li>
-            {{/each}}
-          {{/if}}
-        {{/each}}
-      </ul>
-      {{pagination}}
-    </section>
+  <section class="home-knowledge-base">
+    {{#each categories}}
+      <div class="home-category">
+        <h2 class="home-category-title">{{name}}</h2>
+        <div class="home-category-grid">
+          {{#each sections}}
+            <a href="{{url}}" class="home-category-card">
+              <span class="home-category-card-name">{{name}}</span>
+              <span class="home-category-card-arrow" aria-hidden="true">
+                <img src="{{asset 'icon-arrow-right.svg'}}" alt="" width="18" height="16" />
+              </span>
+            </a>
+          {{/each}}
+        </div>
+      </div>
+    {{/each}}
+    {{pagination}}
 
     {{#if promoted_articles}}
       <section class="articles">
