@@ -670,6 +670,10 @@ ul {
 .home-page-template .nav-wrapper-mobile .menu-button-mobile[aria-expanded=true] .icon-menu {
   background: rgba(255, 255, 255, 0.24);
 }
+.home-page-template .menu-list-mobile a,
+.home-page-template .menu-list-mobile button {
+  color: $text_color;
+}
 
 .logo img {
   max-height: 37px;
@@ -1862,6 +1866,13 @@ ul {
   line-height: 40px;
   margin: 0 0 24px;
 }
+.home-category-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+.home-category-title-link:hover {
+  color: #01357e;
+}
 
 /***** Important Updates callout *****/
 .updates-callout {
@@ -2345,16 +2356,10 @@ ul {
 /***** Category pages *****/
 .category-container {
   display: flex;
-  justify-content: flex-end;
 }
 .category-content {
   flex: 1;
   max-width: 100%;
-}
-@media (min-width: 1024px) {
-  .category-content {
-    flex: 0 0 80%;
-  }
 }
 
 .section-tree {

@@ -62,7 +62,7 @@
 
     {{#each categories}}
       <div class="home-category">
-        <h2 class="home-category-title">{{name}}</h2>
+        <h2 class="home-category-title"><a href="{{url}}" class="home-category-title-link">{{name}}</a></h2>
         <div class="home-category-grid">
           {{#each sections}}
             <a href="{{url}}" class="home-category-card">
@@ -81,7 +81,7 @@
   <section class="section home-section trip-help">
     <h2 class="home-category-title">{{dc 'hc_home_trip_help_title'}}</h2>
     <div class="trip-help-grid">
-      <a href="#" class="trip-help-card">
+      <a href="https://azal.zendesk.com/hc/requests/new?ticket_form_id=16126683914001" class="trip-help-card">
         <img class="trip-help-card-image" src="{{asset 'trip-help-card-1.png'}}" alt="" aria-hidden="true" />
         <div class="trip-help-card-body">
           <h3 class="trip-help-card-title">{{dc 'hc_home_trip_help_lost_baggage_title'}}</h3>
@@ -89,15 +89,15 @@
           <span class="trip-help-card-more">{{dc 'hc_home_trip_help_more'}}</span>
         </div>
       </a>
-      <a href="#" class="trip-help-card">
+      {{#link 'new_request' class='trip-help-card'}}
         <img class="trip-help-card-image" src="{{asset 'trip-help-card-2.png'}}" alt="" aria-hidden="true" />
         <div class="trip-help-card-body">
           <h3 class="trip-help-card-title">{{dc 'hc_home_trip_help_complaints_title'}}</h3>
           <p class="trip-help-card-desc">{{dc 'hc_home_trip_help_complaints_desc'}}</p>
           <span class="trip-help-card-more">{{dc 'hc_home_trip_help_more'}}</span>
         </div>
-      </a>
-      <a href="#" class="trip-help-card">
+      {{/link}}
+      <a href="{{#is help_center.locale 'ru'}}https://www.azal.az/ru/azal-miles/{{/is}}{{#is help_center.locale 'az'}}https://www.azal.az/az/azal-miles/{{/is}}{{#is help_center.locale 'en-us'}}https://www.azal.az/en/azal-miles/{{/is}}" class="trip-help-card">
         <img class="trip-help-card-image" src="{{asset 'trip-help-card-1.png'}}" alt="" aria-hidden="true" />
         <div class="trip-help-card-body">
           <h3 class="trip-help-card-title">{{dc 'hc_home_trip_help_miles_title'}}</h3>
@@ -113,7 +113,7 @@
           <span class="trip-help-card-more">{{dc 'hc_home_trip_help_more'}}</span>
         </div>
       </a>
-      <a href="#" class="trip-help-card">
+      <a href="{{#is help_center.locale 'ru'}}https://www.azal.az/ru/#booking{{/is}}{{#is help_center.locale 'az'}}https://www.azal.az/az/#booking{{/is}}{{#is help_center.locale 'en-us'}}https://www.azal.az/en/#booking{{/is}}" class="trip-help-card">
         <img class="trip-help-card-image" src="{{asset 'trip-help-card-2.png'}}" alt="" aria-hidden="true" />
         <div class="trip-help-card-body">
           <h3 class="trip-help-card-title">{{dc 'hc_home_trip_help_manage_title'}}</h3>

@@ -50,6 +50,12 @@ $header-height: 71px;
   .nav-wrapper-mobile .menu-button-mobile[aria-expanded="true"] .icon-menu {
     background: rgba(255, 255, 255, 0.24);
   }
+
+  // Dropdown menu is white-background — reset inherited white text
+  .menu-list-mobile a,
+  .menu-list-mobile button {
+    color: $text_color;
+  }
 }
 
 .logo img {
