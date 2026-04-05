@@ -13,7 +13,8 @@
     "test-a11y": "node bin/lighthouse/index.js",
     "i18n:extract": "node bin/extract-strings.mjs",
     "i18n:update-translations": "node bin/update-modules-translations.mjs",
-    "zcli": "zcli"
+    "zcli": "zcli",
+    "upload-dc": "node scripts/upload-dynamic-content.mjs"
   },
   "dependencies": {
     "@zendesk/help-center-wysiwyg": "1.1.1",

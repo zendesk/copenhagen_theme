@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -i '' 's/{{dc\\\\.hc_/{{dc '\"'\"'hc_/g; s/}}\\\\\\(.*\\\\\\){{dc '\"'\"'hc_/}}\\\\1{{dc '\"'\"'hc_/g' /Users/mintsev/code/Themes/AZAL/templates/home_page.hbs)",
+      "Bash(echo \"exit: $?\")"
+    ]
+  }
+}
