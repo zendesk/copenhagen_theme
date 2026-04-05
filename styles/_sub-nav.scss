@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   gap: 15px 30px;
   justify-content: space-between;
-  margin-bottom: 55px;
+  margin-bottom: 16px;
 
   @include tablet {
     flex-direction: row;
@@ -14,6 +14,41 @@
   // Inner pages breadcrumbs
   .breadcrumbs {
     margin: 0;
+
+    li {
+      color: #2e3034;
+      font-size: 13px;
+
+      a {
+        color: #2e3034;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &:visited {
+          color: #2e3034;
+        }
+      }
+
+      // Dot separator
+      + li::before {
+        background: #2e3034;
+        border-radius: 50%;
+        content: "";
+        display: inline-block;
+        height: 3px;
+        margin: 0 8px 1px;
+        vertical-align: middle;
+        width: 3px;
+      }
+
+      // Dim the current page (last item, no link)
+      &:last-child:not(:has(a)) {
+        opacity: 0.5;
+      }
+    }
   }
 
   // Inner pages search field

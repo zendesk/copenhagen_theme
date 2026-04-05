@@ -11,10 +11,17 @@
     </div>
   </div>
 
-  <div class="section-container">
+  <h1 class="section-category-title" id="section-category-title"></h1>
+
+  <div class="section-container" data-section-id="{{section.id}}">
+
+    <aside class="section-sidebar" id="section-sidebar" aria-label="{{t 'articles_in_section_label'}}">
+    </aside>
+
     <section id="main-content" class="section-content">
-      <header class="page-header">
-        <h1>{{section.name}}</h1>
+
+      <header class="section-page-header">
+        <h2 class="section-page-title">{{section.name}}</h2>
         {{#if settings.show_follow_section}}
           <div class="section-subscribe">{{subscribe}}</div>
         {{/if}}

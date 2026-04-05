@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(sed -i '' 's/{{dc\\\\.hc_/{{dc '\"'\"'hc_/g; s/}}\\\\\\(.*\\\\\\){{dc '\"'\"'hc_/}}\\\\1{{dc '\"'\"'hc_/g' /Users/mintsev/code/Themes/AZAL/templates/home_page.hbs)",
-      "Bash(echo \"exit: $?\")"
+      "Bash(echo \"exit: $?\")",
+      "Bash(grep -n \"breadcrumb\\\\|sub-nav\\\\|page-header\" /Users/mintsev/code/Themes/AZAL/styles/*.scss)",
+      "Bash(ls /Users/mintsev/code/Themes/AZAL/src/*.js)"
     ]
   }
 }

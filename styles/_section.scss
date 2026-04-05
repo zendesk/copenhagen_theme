@@ -1,16 +1,119 @@
 /***** Section pages *****/
-.section {
-  &-container {
+
+// Category name — full width above both columns
+.section-category-title {
+  border-bottom: 1px solid $low-contrast-border-color;
+  color: #01357e;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 48px;
+  margin: 0 0 40px;
+  min-height: 48px; // reserve space while JS populates it
+  padding-bottom: 24px;
+
+  @include mobile {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 24px;
+    min-height: 36px;
+    padding-bottom: 16px;
+  }
+}
+
+// Section name — above articles in the right column
+.section-page-header {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: space-between;
+  margin-bottom: 16px;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.section-page-title {
+  color: #2e3034;
+  flex: 1;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  margin: 0;
+}
+
+// Two-column layout: sidebar + content
+.section-container {
+  align-items: flex-start;
+  display: flex;
+  gap: 48px;
+}
+
+// Left sidebar — sibling sections nav
+.section-sidebar {
+  display: none;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 376px;
+
+  @include desktop {
     display: flex;
-    justify-content: flex-end;
+  }
+}
+
+.section-nav-item {
+  color: #01357e;
+  display: block;
+  font-size: 17px;
+  line-height: 24px;
+  padding: 16px 20px;
+  position: relative;
+  text-decoration: none;
+
+  // Divider below each inactive item
+  &::after {
+    background: $low-contrast-border-color;
+    bottom: 0;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
   }
 
-  &-content {
-    @include desktop {
-      flex: 0 0 80%;
+  &:last-child::after {
+    display: none;
+  }
+
+  &:hover {
+    color: #40b7de;
+    text-decoration: none;
+  }
+
+  // Active (current) section — coloured pill
+  &--active {
+    background: #40b7de;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    padding: 16px 20px;
+
+    &::after {
+      display: none;
     }
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+// Main content area
+.section {
+  &-content {
     flex: 1;
-    max-width: 100%
+    min-width: 0;
   }
 
   &-subscribe button {
@@ -39,6 +142,57 @@
     color: $text_color;
     display: flex;
     justify-content: space-between;
+  }
+}
+
+// Article list cards — section page style
+.section-content {
+  .article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .article-list-item {
+    background: #eaf4fa;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    list-style: none;
+    overflow: visible;
+    padding: 0;
+
+    &:before { display: none; }
+
+    .article-list-link {
+      align-items: center;
+      color: #000;
+      display: flex;
+      gap: 24px;
+      justify-content: space-between;
+      padding: 20px;
+      text-decoration: none;
+
+      &:hover {
+        color: #01357e;
+      }
+
+      &::after {
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 16 16' fill='none'%3E%3Cpath stroke='%23000' stroke-linecap='round' stroke-width='2' d='M5 14.5l6.1-6.1c.2-.2.2-.5 0-.7L5 1.5'/%3E%3C/svg%3E") center / contain no-repeat;
+        content: "";
+        flex-shrink: 0;
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+
+  // Keep lock/star icons inline
+  .icon-lock,
+  .icon-star {
+    flex-shrink: 0;
   }
 }
 
