@@ -341,12 +341,31 @@
     white-space: nowrap;
     width: 100%;
 
+    &:link,
+    &:visited {
+      color: #2c8dc7;
+    }
+
     &:hover,
     &:focus {
       background: #2c8dc7;
       color: #fff;
       text-decoration: none;
     }
+  }
+}
+
+// Ensure anchor-based contact buttons override global a[color] rules
+a.contact-card-btn {
+  &,
+  &:link,
+  &:visited {
+    color: #2c8dc7;
+  }
+
+  &:hover,
+  &:focus {
+    color: #fff;
   }
 }
 

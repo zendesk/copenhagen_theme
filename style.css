@@ -670,8 +670,8 @@ ul {
 .home-page-template .nav-wrapper-mobile .menu-button-mobile[aria-expanded=true] .icon-menu {
   background: rgba(255, 255, 255, 0.24);
 }
-.home-page-template .menu-list-mobile a,
-.home-page-template .menu-list-mobile button {
+.home-page-template .header .menu-list-mobile a,
+.home-page-template .header .menu-list-mobile button {
   color: $text_color;
 }
 
@@ -1230,6 +1230,9 @@ ul {
   line-height: 24px;
   margin: 0 0 24px;
 }
+.footer-title::after {
+  display: none;
+}
 .footer-links {
   display: flex;
   flex-direction: column;
@@ -1339,11 +1342,17 @@ ul {
     padding-left: 20px;
   }
   .footer-links-grid {
-    gap: 32px;
+    gap: 0;
     grid-template-columns: 1fr;
-    padding: 28px 0 24px;
+    padding: 0;
   }
-  .footer-meta, .footer-legal {
+  .footer-meta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 24px;
+  }
+  .footer-legal {
     align-items: flex-start;
     flex-direction: column;
     gap: 16px;
@@ -1352,8 +1361,42 @@ ul {
     flex-wrap: wrap;
   }
   .footer-store-links {
-    flex-direction: column;
     width: 100%;
+  }
+  .footer-column {
+    border-bottom: 1px solid rgba(184, 194, 215, 0.2);
+  }
+  .footer-column:first-child {
+    border-top: 1px solid rgba(184, 194, 215, 0.2);
+  }
+  .footer-title {
+    align-items: center;
+    display: flex;
+    font-size: 16px;
+    font-weight: 400;
+    justify-content: space-between;
+    line-height: 24px;
+    margin: 0;
+    padding: 16px 0;
+    width: 100%;
+  }
+  .footer-title::after {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath stroke='%23ffffff' stroke-opacity='0.5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;
+    content: "";
+    flex-shrink: 0;
+    height: 24px;
+    transition: transform 0.2s ease;
+    width: 24px;
+  }
+  .footer-title[aria-expanded=true]::after {
+    transform: rotate(180deg);
+  }
+  .footer-links {
+    display: none;
+    padding-bottom: 16px;
+  }
+  .footer-links.is-open {
+    display: flex;
   }
 }
 .powered-by-zendesk a,
@@ -2169,10 +2212,20 @@ ul {
   white-space: nowrap;
   width: 100%;
 }
+.contact-card-btn:link, .contact-card-btn:visited {
+  color: #2c8dc7;
+}
 .contact-card-btn:hover, .contact-card-btn:focus {
   background: #2c8dc7;
   color: #fff;
   text-decoration: none;
+}
+
+a.contact-card-btn, a.contact-card-btn:link, a.contact-card-btn:visited {
+  color: #2c8dc7;
+}
+a.contact-card-btn:hover, a.contact-card-btn:focus {
+  color: #fff;
 }
 
 /***** Need Help or Manage Your Trip section *****/

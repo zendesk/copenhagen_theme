@@ -96,6 +96,11 @@
     font-weight: 400;
     line-height: 24px;
     margin: 0 0 24px;
+
+    // No chevron on desktop
+    &::after {
+      display: none;
+    }
   }
 
   &-links {
@@ -232,12 +237,18 @@
     }
 
     &-links-grid {
-      gap: 32px;
+      gap: 0;
       grid-template-columns: 1fr;
-      padding: 28px 0 24px;
+      padding: 0;
     }
 
-    &-meta,
+    &-meta {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 24px;
+    }
+
     &-legal {
       align-items: flex-start;
       flex-direction: column;
@@ -249,8 +260,51 @@
     }
 
     &-store-links {
-      flex-direction: column;
       width: 100%;
+    }
+  }
+
+  // Accordion columns
+  .footer-column {
+    border-bottom: 1px solid rgba(184, 194, 215, 0.2);
+
+    &:first-child {
+      border-top: 1px solid rgba(184, 194, 215, 0.2);
+    }
+  }
+
+  .footer-title {
+    align-items: center;
+    display: flex;
+    font-size: 16px;
+    font-weight: 400;
+    justify-content: space-between;
+    line-height: 24px;
+    margin: 0;
+    padding: 16px 0;
+    width: 100%;
+
+    &::after {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath stroke='%23ffffff' stroke-opacity='0.5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+      content: '';
+      flex-shrink: 0;
+      height: 24px;
+      transition: transform 0.2s ease;
+      width: 24px;
+    }
+
+    &[aria-expanded="true"]::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  .footer-links {
+    // Collapsed by default on mobile
+    display: none;
+    padding-bottom: 16px;
+
+    &.is-open {
+      display: flex;
     }
   }
 }

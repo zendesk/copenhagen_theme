@@ -52,8 +52,9 @@ $header-height: 71px;
   }
 
   // Dropdown menu is white-background — reset inherited white text
-  .menu-list-mobile a,
-  .menu-list-mobile button {
+  // Must include .header to beat the .home-page-template .header { color:#fff } rule
+  .header .menu-list-mobile a,
+  .header .menu-list-mobile button {
     color: $text_color;
   }
 }
