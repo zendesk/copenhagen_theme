@@ -1564,15 +1564,21 @@ ul {
     width: 90%;
   }
 }
+@media (min-width: 1600px) {
+  .home-page-hero {
+    background-position: center 50%;
+    background-size: cover;
+  }
+}
 @media (min-width: 768px) and (max-width: 1023px) {
   .home-page-hero {
-    background-position: center top;
+    background-position: center 50%;
     background-size: cover;
   }
 }
 @media (max-width: 768px) {
   .home-page-hero {
-    background-position: center top;
+    background-position: center 50%;
     background-size: cover;
     height: 400px;
   }
