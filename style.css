@@ -664,11 +664,21 @@ ul {
 .home-page-template .user-info > button:focus {
   color: #fff;
 }
-.home-page-template .nav-wrapper-mobile .menu-button-mobile .icon-menu {
-  background: rgba(255, 255, 255, 0.12);
+.home-page-template .nav-wrapper-mobile .menu-button-mobile {
+  background: rgba(238, 238, 238, 0.05);
+  border: none;
 }
-.home-page-template .nav-wrapper-mobile .menu-button-mobile[aria-expanded=true] .icon-menu {
-  background: rgba(255, 255, 255, 0.24);
+.home-page-template .nav-wrapper-mobile .menu-button-mobile:has(.user-avatar) {
+  gap: 6px;
+  height: auto;
+  padding: 7px 10px;
+  width: auto;
+}
+.home-page-template .nav-wrapper-mobile .menu-button-mobile:hover, .home-page-template .nav-wrapper-mobile .menu-button-mobile:focus {
+  background: rgba(238, 238, 238, 0.1);
+}
+.home-page-template .nav-wrapper-mobile .menu-button-mobile[aria-expanded=true] {
+  background: rgba(238, 238, 238, 0.15);
 }
 .home-page-template .header .menu-list-mobile a,
 .home-page-template .header .menu-list-mobile button {
@@ -917,26 +927,39 @@ ul {
   }
 }
 .nav-wrapper-mobile .menu-button-mobile {
-  background: none;
-  border: 0;
-  width: auto;
-  min-width: 71px;
+  align-items: center;
+  background: transparent;
+  border: 1px solid #afdae4;
+  border-radius: 999px;
+  box-shadow: none;
   cursor: pointer;
+  display: inline-flex;
+  height: 38px;
+  justify-content: center;
   margin-right: -12px;
+  padding: 0;
+  transition: background-color 0.2s ease;
+  width: 38px;
 }
 [dir=rtl] .nav-wrapper-mobile .menu-button-mobile {
   margin-left: -12px;
   margin-right: 0;
 }
-.nav-wrapper-mobile .menu-button-mobile .icon-menu {
-  padding: 7px;
-  vertical-align: middle;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+.nav-wrapper-mobile .menu-button-mobile:has(.user-avatar) {
+  gap: 6px;
+  height: auto;
+  padding: 7px 10px;
+  width: auto;
 }
-.nav-wrapper-mobile .menu-button-mobile[aria-expanded=true] .icon-menu {
-  background: #f3f3f3;
+.nav-wrapper-mobile .menu-button-mobile:hover, .nav-wrapper-mobile .menu-button-mobile:focus {
+  background: rgba(175, 218, 228, 0.1);
+}
+.nav-wrapper-mobile .menu-button-mobile[aria-expanded=true] {
+  background: rgba(175, 218, 228, 0.15);
+}
+.nav-wrapper-mobile .menu-button-mobile .icon-menu {
+  display: block;
+  flex: 0 0 16px;
 }
 .nav-wrapper-mobile .header-language-selector-mobile .dropdown-toggle {
   min-height: 38px;

@@ -43,12 +43,25 @@ $header-height: 71px;
     color: #fff;
   }
 
-  .nav-wrapper-mobile .menu-button-mobile .icon-menu {
-    background: rgba(255, 255, 255, 0.12);
-  }
+  .nav-wrapper-mobile .menu-button-mobile {
+    background: rgba(238, 238, 238, 0.05);
+    border: none;
 
-  .nav-wrapper-mobile .menu-button-mobile[aria-expanded="true"] .icon-menu {
-    background: rgba(255, 255, 255, 0.24);
+    &:has(.user-avatar) {
+      gap: 6px;
+      height: auto;
+      padding: 7px 10px;
+      width: auto;
+    }
+
+    &:hover,
+    &:focus {
+      background: rgba(238, 238, 238, 0.1);
+    }
+
+    &[aria-expanded="true"] {
+      background: rgba(238, 238, 238, 0.15);
+    }
   }
 
   // Dropdown menu is white-background — reset inherited white text
@@ -314,30 +327,45 @@ $header-height: 71px;
   gap: 10px;
 
   .menu-button-mobile {
-    background: none;
-    border: 0;
-    width: auto;
-    min-width: 71px;
+    align-items: center;
+    background: transparent;
+    border: 1px solid #afdae4;
+    border-radius: 999px;
+    box-shadow: none;
     cursor: pointer;
+    display: inline-flex;
+    height: 38px;
+    justify-content: center;
     margin-right: -12px;
+    padding: 0;
+    transition: background-color 0.2s ease;
+    width: 38px;
 
     [dir="rtl"] & {
       margin-left: -12px;
       margin-right: 0;
     }
 
-    .icon-menu {
-      padding: 7px;
-      vertical-align: middle;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
+    // Signed-in: avatar + icon, expand to fit
+    &:has(.user-avatar) {
+      gap: 6px;
+      height: auto;
+      padding: 7px 10px;
+      width: auto;
+    }
+
+    &:hover,
+    &:focus {
+      background: rgba(175, 218, 228, 0.1);
     }
 
     &[aria-expanded="true"] {
-      .icon-menu {
-        background: #f3f3f3;
-      }
+      background: rgba(175, 218, 228, 0.15);
+    }
+
+    .icon-menu {
+      display: block;
+      flex: 0 0 16px;
     }
   }
 
