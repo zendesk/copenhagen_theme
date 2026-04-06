@@ -3,11 +3,19 @@
 <header class="header">
   <div class="logo">
     {{#link 'help_center'}}
-      <img
-        class="logo-image logo-image--white"
-        src="{{settings.azal_logo_white}}"
-        alt="{{t 'home_page' name=help_center.name}}"
-      />
+      {{#is help_center.locale 'az'}}
+        <img
+          class="logo-image logo-image--white"
+          src="{{settings.azal_logo_white_az}}"
+          alt="{{t 'home_page' name=help_center.name}}"
+        />
+      {{else}}
+        <img
+          class="logo-image logo-image--white"
+          src="{{settings.azal_logo_white_en}}"
+          alt="{{t 'home_page' name=help_center.name}}"
+        />
+      {{/is}}
       <img
         class="logo-image logo-image--black"
         src="{{settings.azal_logo_black}}"

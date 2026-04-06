@@ -214,10 +214,16 @@
       "label": "brand_group_label",
       "variables": [
         {
-          "identifier": "azal_logo_white",
+          "identifier": "azal_logo_white_en",
           "type": "file",
-          "description": "White AZAL logo shown on the home page",
-          "label": "Home page logo"
+          "description": "White AZAL logo shown on the home page (EN/RU locales)",
+          "label": "Home page logo (EN/RU)"
+        },
+        {
+          "identifier": "azal_logo_white_az",
+          "type": "file",
+          "description": "White AZAL logo shown on the home page (AZ locale)",
+          "label": "Home page logo (AZ)"
         },
         {
           "identifier": "azal_logo_black",
