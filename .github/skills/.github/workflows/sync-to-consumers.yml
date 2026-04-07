@@ -34,8 +34,9 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - id: read
+        env:
+          FILTER: ${{ inputs.consumer }}
         run: |
-          FILTER="${{ inputs.consumer }}"
           if [ -n "$FILTER" ]; then
             echo "matrix=$(jq -c --arg r "$FILTER" '{consumer: [.[] | select(.repo == $r)]}' .github/subtree-consumers.json)" >> "$GITHUB_OUTPUT"
           else

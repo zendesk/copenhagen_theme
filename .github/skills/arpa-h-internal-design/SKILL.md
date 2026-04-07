@@ -56,7 +56,7 @@ Define these as CSS custom properties (or equivalent) in every app. The starter 
 
 ### Shell Structure
 
-```
+```text
 ┌─────────────────────────────────────────────────┐
 │  HEADER — 48px tall, white bg (#FFFFFF)         │
 │  [Brand icon + "App Name"]     [User area]      │
@@ -113,26 +113,31 @@ Map to a 4px base unit:
 These rules are non-negotiable — they define the visual language of ARPA-H internal apps.
 
 ### Active vs. Inactive Records
+
 - **Active** record title and status badge: `--color-active` (`#ADECE5`, muted teal)
 - **Inactive / departed** record title and status badge: `--color-inactive` (`#B8B2E4`, soft lavender)
 - Badge text color (on both): `--color-near-black` (`#131314`) for legibility
 
 ### Collisions / Warnings
+
 - Any detected duplicate, collision, or data integrity warning uses `--color-status-warning` (`#FD4497`) — hot pink
 - Warning icon and primary warning text: `#FD4497`
 - Secondary / descriptive warning text: `#FCC1DC`
 - Warning is shown inline above the affected content with a ⚠ prefix
 
 ### Table Links
+
 - Name/identifier links within data tables: `--color-active` (`#ADECE5`) default
 - On hover: `--color-status-warning-soft` (`#FCC1DC`)
 - No underline at rest; underline on focus for accessibility
 
 ### Active Filter Indicators
+
 - A column filter icon that has an active (non-empty) filter is colored `--color-active` (`#ADECE5`)
 - Inactive filter icon uses the default muted foreground
 
 ### Dev Mode Badge
+
 - Background: `#252729` (near-black surface)
 - Text: `#FD4497` (hot pink)
 - Border: `1px solid #FD4497`
