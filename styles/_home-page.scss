@@ -4,6 +4,10 @@
   color: inherit;
 }
 
+.home-page-template a.hero-breadcrumb-link:visited {
+  color: #fff;
+}
+
 .home-knowledge-base {
   margin-bottom: 72px;
 }
@@ -247,6 +251,46 @@
 .contact-options {
   border-top: 1px solid $low-contrast-border-color;
   padding: 72px 0;
+
+  &--compact {
+    border-top: none;
+    padding: 16px 0 0;
+
+    .contact-options-title {
+      font-size: 20px;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .contact-options-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .contact-card {
+      gap: 8px;
+      padding: 16px;
+
+      @include mobile {
+        padding: 12px 8px;
+      }
+    }
+
+    .contact-card-icon {
+      padding: 8px;
+
+      @include mobile {
+        padding: 6px;
+        flex-shrink: 0;
+      }
+    }
+
+    .contact-card-desc {
+      @include mobile {
+        display: none;
+      }
+    }
+  }
 }
 
 .contact-options-title {
@@ -352,6 +396,45 @@
       color: #fff;
       text-decoration: none;
     }
+  }
+}
+
+// Clickable card (compact variant — entire card is the action)
+.contact-card--clickable {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+  text-decoration: none;
+
+  &,
+  &:link,
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover,
+  &:focus,
+  &:hover *,
+  &:focus * {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: #2c8dc7;
+
+    .contact-card-name {
+      color: #2c8dc7;
+    }
+  }
+
+  .contact-card-name,
+  .contact-card-desc {
+    text-decoration: none;
+    transition: color 0.15s ease;
   }
 }
 

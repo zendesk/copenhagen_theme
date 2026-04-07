@@ -177,6 +177,11 @@
     margin: 10px 0 20px;
     text-align: center;
     @include standalone-link;
+
+    a.contact-card--clickable,
+    a.contact-card--clickable * {
+      text-decoration: none;
+    }
   }
 
   &-return-to-top {

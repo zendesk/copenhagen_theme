@@ -57,3 +57,46 @@
     </div>
   </div>
 </div>
+
+<section class="contact-options">
+  <div class="container">
+    <h2 class="contact-options-title">{{dc 'hc_home_contact_title'}}</h2>
+    <div class="contact-options-grid">
+
+      <div class="contact-card">
+        <div class="contact-card-top">
+          <span class="contact-card-icon">
+            <img src="{{asset 'icon-help.svg'}}" alt="" aria-hidden="true" width="24" height="24" />
+          </span>
+          <h3 class="contact-card-name">{{dc 'hc_home_contact_submit_name'}}</h3>
+          <p class="contact-card-desc">{{dc 'hc_home_contact_submit_desc'}}</p>
+        </div>
+        {{#link 'new_request' class='contact-card-btn'}}{{dc 'hc_home_contact_submit_btn'}}{{/link}}
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-top">
+          <span class="contact-card-icon contact-card-icon--chat">
+            <img src="{{asset 'icon-chat.svg'}}" alt="" aria-hidden="true" width="24" height="24" />
+            <img src="{{asset 'icon-chat-dot.svg'}}" alt="" aria-hidden="true" class="contact-card-icon-dot" />
+          </span>
+          <h3 class="contact-card-name">{{dc 'hc_home_contact_chat_name'}}</h3>
+          <p class="contact-card-desc">{{dc 'hc_home_contact_chat_desc'}}</p>
+        </div>
+        <button type="button" class="contact-card-btn" onclick="zE('messenger', 'open')">{{dc 'hc_home_contact_chat_btn'}}</button>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-top">
+          <span class="contact-card-icon">
+            <img src="{{asset 'icon-whatsapp.svg'}}" alt="" aria-hidden="true" width="24" height="24" />
+          </span>
+          <h3 class="contact-card-name">{{dc 'hc_home_contact_whatsapp_name'}}</h3>
+          <p class="contact-card-desc">{{dc 'hc_home_contact_whatsapp_desc'}}</p>
+        </div>
+        <a href="https://wa.me/994704374082" class="contact-card-btn" target="_blank" rel="noopener">{{dc 'hc_home_contact_whatsapp_btn'}}</a>
+      </div>
+
+    </div>
+  </div>
+</section>

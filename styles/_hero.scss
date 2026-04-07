@@ -106,6 +106,12 @@
     color: #fff;
     text-decoration: none;
 
+    &,
+    &:link,
+    &:visited {
+      color: #fff;
+    }
+
     &:hover {
       text-decoration: underline;
       color: #fff;
@@ -125,6 +131,12 @@
     color: #fff;
     opacity: 0.8;
   }
+}
+
+a.hero-breadcrumb-link,
+a.hero-breadcrumb-link:link,
+a.hero-breadcrumb-link:visited {
+  color: #fff;
 }
 
 .hero-title {
