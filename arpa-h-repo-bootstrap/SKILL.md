@@ -9,6 +9,7 @@ description: "ARPA-H repo bootstrap — devcontainer, .gitignore, GitHub Actions
 
 This skill produces a complete `.devcontainer/devcontainer.json` for any ARPA-H repo by
 combining two things:
+
 1. **Stack discovery** — what the repo actually needs (language runtime, tools, services)
 2. **ARPA-H standard layer** — extensions and settings that are always included regardless of stack
 
@@ -21,8 +22,9 @@ Check for an existing `PLAN.md` at the repo root first — it may already captur
 Examine the repo before writing anything. Check for the following signals:
 
 ### Language / Runtime
+
 | Signal | Conclusion |
-|--------|-----------|
+| ------ | ---------- |
 | `package.json` at root | Node.js project — read `engines.node` for version, default to LTS (24) |
 | `requirements.txt` / `pyproject.toml` / `*.py` | Python project |
 | `go.mod` | Go project |
@@ -31,8 +33,9 @@ Examine the repo before writing anything. Check for the following signals:
 | Multiple present | Multi-language — use a base image and add features for each |
 
 ### Frontend Framework
+
 | Signal | Framework |
-|--------|-----------|
+| ------ | --------- |
 | `vite.config.*` | Vite — port 5173 |
 | `next.config.*` | Next.js — port 3000 |
 | `nuxt.config.*` | Nuxt — port 3000 |
@@ -40,16 +43,18 @@ Examine the repo before writing anything. Check for the following signals:
 | `angular.json` | Angular — port 4200 |
 
 ### Backend / API
+
 | Signal | Service |
-|--------|---------|
+| ------ | ------- |
 | `api/` folder with `host.json` | Azure Functions — port 7071, needs `azure-functions-core-tools@4` |
 | `server/` or `src/server` with Express/Fastify | Node API — port 8080 or as configured |
 | `*.py` with FastAPI/Flask | Python API — port 8000 |
 | `Dockerfile` or `docker-compose.yml` | Container-based — use `docker-outside-of-docker` feature |
 
 ### Local Storage / Emulators
+
 | Signal | Service | Ports |
-|--------|---------|-------|
+| ------ | ------- | ----- |
 | `@azure/storage-*` or `azurite` in package.json | Azurite emulator — install globally, store at `/tmp/azurite` | 10000, 10001, 10002 |
 | `@azure/cosmos*` in package.json | CosmosDB — may need Azurite or emulator | — |
 | `mongoose` / `mongodb` in package.json | MongoDB — add `ghcr.io/devcontainers/features/mongo:1` | 27017 |
@@ -57,20 +62,23 @@ Examine the repo before writing anything. Check for the following signals:
 | `redis` in package.json | Redis — add `ghcr.io/devcontainers/features/redis:1` | 6379 |
 
 ### Azure Integration
+
 | Signal | Action |
-|--------|--------|
+| ------ | ------ |
 | `@azure/identity` or `DefaultAzureCredential` in any source file | Add `ghcr.io/devcontainers/features/azure-cli:1` feature |
 | `infra/` folder with `*.tf` files | Add Terraform — `ghcr.io/devcontainers/features/terraform:1` |
 | `.bicep` files | Azure CLI is sufficient |
 
 ### Environment Files
+
 - Look for any `*.example`, `*.sample`, or `*.template` env files (`.env.example`, `local.settings.json.example`, etc.)
 - For each pair found, add a `cp -n <example> <real>` to `onCreateCommand`
 - Env files used by Vite (`VITE_*` prefix) must default to dev/mock mode — never production credentials
 
 ### Linting / Formatting
+
 | Signal | Extension to add |
-|--------|-----------------|
+| ------ | ---------------- |
 | `.eslintrc*` / `eslint.config.*` | `dbaeumer.vscode-eslint` |
 | `.prettierrc*` / `prettier` in package.json | `esbenp.prettier-vscode` |
 | `pyproject.toml` with ruff/black | `charliermarsh.ruff` |
@@ -84,27 +92,32 @@ The `.github/skills/` subtree is maintained exclusively in `ARPA-H/skills`. Cons
 For every linter present in the consumer repo, add `.github/skills` to its ignore configuration:
 
 **Markdown** — add or create `.markdownlintignore`:
-```
+
+```text
 .github/skills
 ```
 
 **ESLint** — add to `.eslintignore`, or to the `ignores` array in `eslint.config.*`:
-```
+
+```text
 .github/skills
 ```
 
 **Prettier** — add to `.prettierignore`:
-```
+
+```text
 .github/skills
 ```
 
 **Ruff / Python** — add to `[tool.ruff]` in `pyproject.toml`:
+
 ```toml
 [tool.ruff]
 exclude = [".github/skills"]
 ```
 
 **Go (staticcheck / golangci-lint)** — add to `.golangci.yml`:
+
 ```yaml
 issues:
   exclude-rules:
@@ -116,6 +129,7 @@ run:
 ```
 
 **Terraform (tflint / terraform fmt)** — add to `.tflint.hcl`:
+
 ```hcl
 config {
   ignore_module = {}
@@ -124,14 +138,17 @@ config {
 # but if invoked with a broad glob, exclude explicitly:
 #   tflint --filter='**/*.tf' --exclude-path='.github/skills'
 ```
+
 For `terraform fmt`, always invoke it with an explicit path (e.g. `terraform fmt infra/`) rather than a repo-wide glob so it never touches the skills directory.
 
 **Stylelint (CSS/SCSS)** — add to `.stylelintignore`:
-```
+
+```text
 .github/skills
 ```
 
 **ShellCheck** — pass `--exclude-path` or wrap invocations to skip the directory:
+
 ```bash
 find . -name '*.sh' -not -path './.github/skills/*' | xargs shellcheck
 ```
@@ -139,9 +156,10 @@ find . -name '*.sh' -not -path './.github/skills/*' | xargs shellcheck
 Apply all ignore rules that are relevant to the linters detected in the repo. If an ignore file does not yet exist, create it. If one already exists, append the entry rather than replacing the file.
 
 ### Language-Specific Extensions
+
 | Language/Framework | Extensions |
-|-------------------|-----------|
-| TypeScript / JavaScript |  No dedicated extension needed — covered by TypeScript and ESLint extensions |
+| ------------------- | ---------- |
+| TypeScript / JavaScript | No dedicated extension needed — covered by TypeScript and ESLint extensions |
 | Python | `ms-python.python`, `ms-python.vscode-pylance` |
 | Go | `golang.go` |
 | Rust | `rust-lang.rust-analyzer` — provides IntelliSense, inline errors, and `clippy` lint integration |
@@ -161,7 +179,7 @@ Apply all ignore rules that are relevant to the linters detected in the repo. If
 Use Microsoft's devcontainers images and pin to a specific major version:
 
 | Stack | Image |
-|-------|-------|
+| ----- | ----- |
 | Node.js only | `mcr.microsoft.com/devcontainers/javascript-node:1-<version>` |
 | Python only | `mcr.microsoft.com/devcontainers/python:1-<version>` |
 | Go | `mcr.microsoft.com/devcontainers/go:1-<version>` |
@@ -177,6 +195,7 @@ These extensions and devcontainer features are **always included** in every ARPA
 Merge them with any stack-specific extensions discovered in Step 1.
 
 ### Always-on: devcontainer features
+
 ```jsonc
 "features": {
   "ghcr.io/devcontainers/features/github-cli:1": {}  // gh CLI — required for all ARPA-H repos
@@ -186,7 +205,8 @@ Merge them with any stack-specific extensions discovered in Step 1.
 The `gh` CLI must always be present. Every ARPA-H repo uses GitHub for issues, PRs, and Actions; `gh` is the standard tool for interacting with the GitHub API from the terminal and from scripts. Add any stack-specific features alongside this entry rather than replacing it.
 
 ### Always-on: GitHub & Collaboration
-```
+
+```text
 github.copilot-chat
 github.vscode-pull-request-github
 github.vscode-github-actions
@@ -195,13 +215,15 @@ dracula-theme.theme-dracula
 ```
 
 ### Always-on: Azure (if any Azure signal detected)
-```
+
+```text
 ms-azuretools.vscode-azureresourcegroups
 ms-vscode.azurecli
 ```
 
 ### Conditional: Azure services (add when signal detected)
-```
+
+```text
 ms-azuretools.vscode-azurefunctions   ← Azure Functions signal
 ms-azuretools.vscode-cosmosdb         ← CosmosDB signal
 Azurite.azurite                       ← Azurite signal
@@ -225,6 +247,7 @@ Always include these VS Code settings:
 ```
 
 Azure Functions specific settings (add when Functions signal detected):
+
 ```jsonc
 "azureFunctions.deploySubpath": "<api folder path>",
 "azureFunctions.projectLanguage": "TypeScript",        // or as appropriate
@@ -236,14 +259,18 @@ Azure Functions specific settings (add when Functions signal detected):
 ## Step 5 — Build postCreateCommand and onCreateCommand
 
 ### onCreateCommand
+
 Copy env example files (runs once at container creation, never overwrites):
+
 ```bash
 cp -n .env.local.example .env.local ; cp -n api/local.settings.json.example api/local.settings.json ; true
 ```
+
 Adapt to whatever example files were found in Step 1. Always end with `; true` to prevent
 failure from blocking container creation if files already exist.
 
 ### postCreateCommand
+
 Install all dependencies. Chain with `&&` in dependency order:
 
 ```bash
@@ -252,6 +279,7 @@ npm install -g <global-tool-1> <global-tool-2> --unsafe-perm true && npm install
 ```
 
 Common global tools:
+
 - `azure-functions-core-tools@4` — for Azure Functions repos
 - `azurite` — for local Azure Storage emulation (install globally, not as a project dep)
 
@@ -281,6 +309,7 @@ Use `"notify"` for primary dev server and API ports. Use `"silent"` for emulator
 Check for a `.gitignore` at the repo root. Create one if absent. Ensure the following entries are present:
 
 ### Always required
+
 ```gitignore
 # Local env files — never commit secrets or personal config
 .env
@@ -298,12 +327,14 @@ Thumbs.db
 ```
 
 ### Add when Azure Functions detected
+
 ```gitignore
 # Azure Functions local config (contains connection strings)
 api/local.settings.json
 ```
 
 ### Add when Node.js detected
+
 ```gitignore
 node_modules/
 dist/
@@ -312,6 +343,7 @@ build/
 ```
 
 ### Add when Terraform detected
+
 ```gitignore
 **/.terraform/
 *.tfstate
@@ -321,6 +353,7 @@ build/
 ```
 
 ### Add when Python detected
+
 ```gitignore
 __pycache__/
 *.py[cod]
@@ -331,22 +364,26 @@ dist/
 ```
 
 ### Add when SvelteKit detected
+
 ```gitignore
 .svelte-kit/
 ```
 
 ### Add when Astro detected
+
 ```gitignore
 .astro/
 ```
 
 ### Add when Rust detected
+
 ```gitignore
 target/
 Cargo.lock   # omit this line for libraries; keep for binaries/applications
 ```
 
 ### Key rules
+
 - `.vscode/extensions.json` and `.devcontainer/` **must not** be gitignored — they are shared team config
 - `*.example` / `*.sample` env files **must not** be gitignored — they are the committed documentation of required variables
 - When adding new entries, append to the existing `.gitignore` rather than replacing it
@@ -358,6 +395,7 @@ Cargo.lock   # omit this line for libraries; keep for binaries/applications
 Any `.github/workflows/` files in the repo must pin third-party and GitHub-owned actions to a full commit SHA rather than a mutable tag. Tags like `@v4` can be silently moved by the action maintainer, enabling supply chain attacks.
 
 **Required pattern:**
+
 ```yaml
 # ✅ Pinned to immutable commit SHA, tag noted in comment for human readability
 - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -424,6 +462,7 @@ Every ARPA-H repo must have a `PLAN.md` at the root. It is the single source of 
 ### What belongs in PLAN.md
 
 **Stack & architecture** — Record confirmed decisions as they are made:
+
 - Language runtime and version
 - Frontend framework and build tool
 - Backend / API approach
@@ -499,6 +538,7 @@ Every ARPA-H repo must have an `AGENTS.md` at the root. It gives GitHub Copilot 
 **Repo identity** — One or two sentences on what this repo is, enough for an agent arriving cold to orient itself.
 
 **Coding conventions** — Rules the agent must follow when writing or editing code in this repo:
+
 - Naming conventions (file names, variable naming style, export patterns)
 - Module/folder structure and where new files go
 - Import ordering or aliasing rules
@@ -509,6 +549,7 @@ Every ARPA-H repo must have an `AGENTS.md` at the root. It gives GitHub Copilot 
 **Testing conventions** — How tests are organized, what framework is used, where tests live relative to source, what the test run command is, and whether tests must pass before a PR can merge.
 
 **Agent behavior rules** — Directives that shape how the agent operates:
+
 - What the agent should always do before making changes (e.g. read `PLAN.md`, check for existing utilities)
 - What the agent must never do (e.g. generate mock data that resembles real PII, skip `PLAN.md` updates when completing work items, recommend GitHub Personal Access Tokens (classic or fine-grained) — always recommend more secure alternatives such as GitHub Apps or `gh auth` / OIDC-based authentication)
 - When the agent should stop and ask rather than proceed (e.g. any change to auth flow, any schema migration)
@@ -572,6 +613,7 @@ Before writing the file, ask the user:
 > "Who should be required to review and approve pull requests for this repo? I can also look at recent commit and PR history to suggest frequent contributors who may have the authority to approve changes — would you like me to do that?"
 
 If the user wants history-based suggestions, run:
+
 ```bash
 # Top committers by commit count (last 6 months)
 git log --since="6 months ago" --format="%ae" | sort | uniq -c | sort -rn | head -10
@@ -586,7 +628,7 @@ Present the results and ask which contributors have the authority to approve PRs
 
 Create `.github/CODEOWNERS`:
 
-```
+```properties
 # CODEOWNERS — <repo name>
 #
 # Each line is a file pattern followed by one or more owners.
@@ -601,7 +643,8 @@ Create `.github/CODEOWNERS`:
 # src/api/ @<api-owner>
 ```
 
-### Key rules
+### CODEOWNERS rules
+
 - Use `@username` (GitHub handle), not email addresses
 - Only list people with **Triage** role or above in the repo — GitHub silently ignores CODEOWNERS entries for users without write access
 - Add `.github/CODEOWNERS` to PLAN.md work items if it was not present at bootstrap time
@@ -612,6 +655,7 @@ Create `.github/CODEOWNERS`:
 ## Output Format
 
 Produce a single `.devcontainer/devcontainer.json` file with:
+
 - Inline comments (`//`) explaining non-obvious choices
 - Sections in this order: `name`, `image`, `features`, `postCreateCommand`, `onCreateCommand`, `forwardPorts`, `portsAttributes`, `customizations`
 - Extension IDs in lowercase exactly as published on the VS Code Marketplace
@@ -621,6 +665,7 @@ Produce a single `.devcontainer/devcontainer.json` file with:
 ## Environment File Convention
 
 Every ARPA-H repo must follow this pattern:
+
 - Sensitive/local config goes in gitignored files (`.env.local`, `local.settings.json`)
 - A committed `*.example` counterpart documents all variables with safe defaults
 - Example files must default to **dev/mock mode** — never production credentials or `false` for mock flags
