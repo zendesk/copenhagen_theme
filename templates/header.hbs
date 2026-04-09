@@ -1,53 +1,65 @@
 <a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
 
 <header class="header">
-  <div class="logo">
-    {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" />
-      {{#if settings.show_brand_name}}
-        <span aria-hidden="true">{{help_center.name}}</span>
-      {{/if}}
-    {{/link}}
-  </div>
+  <div class="header-inner">
+    <div class="logo">
+      {{#link 'help_center'}}
+        <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" />
+        {{#if settings.show_brand_name}}
+          <span aria-hidden="true">{{help_center.name}}</span>
+        {{/if}}
+      {{/link}}
+    </div>
 
-  <div class="nav-wrapper-desktop">
-    <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
-      <ul class="user-nav-list">
-        <li>{{link 'community'}}</li>
-        <li>{{link 'service_catalog'}}</li>
-        <li>{{link 'new_request' class='submit-a-request'}}</li>
-        {{#unless signed_in}}
-          <li>
-            {{#link "sign_in" class="sign-in" role="link"}}
-              {{t 'sign_in'}}
-            {{/link}}
-          </li>
-        {{/unless}}
-      </ul>
-    </nav>
-    {{#if signed_in}}
-      <div class="user-info dropdown">
-        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-          {{user_avatar class="user-avatar"}}
-          <span>
-            {{user_name}}
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-          </span>
-        </button>
-        <div class="dropdown-menu" role="menu">
-          {{#my_profile role="menuitem"}}{{t 'profile'}}{{/my_profile}}
-          {{link "requests" role="menuitem"}}
-          {{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}
-          {{link "approval_requests" role="menuitem"}}
-          {{contact_details role="menuitem"}}
-          {{change_password role="menuitem"}}
-          <div class="separator" role="separator"></div>
-          {{link "sign_out" role="menuitem"}}
+    <div class="nav-wrapper-desktop">
+      <!-- Visy Main Navigation -->
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="main-nav-list">
+          <li><a href="https://www.visy.com/about">About</a></li>
+          <li><a href="https://www.visy.com/solutions">Solutions</a></li>
+          <li><a href="https://www.visy.com/contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Zendesk Support Navigation -->
+      <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
+        <ul class="user-nav-list">
+          <li>{{link 'community'}}</li>
+          <li>{{link 'service_catalog'}}</li>
+          <li>{{link 'new_request' class='submit-a-request button-primary'}}</li>
+          {{#unless signed_in}}
+            <li>
+              {{#link "sign_in" class="sign-in" role="link"}}
+                {{t 'sign_in'}}
+              {{/link}}
+            </li>
+          {{/unless}}
+        </ul>
+      </nav>
+      {{#if signed_in}}
+        <div class="user-info dropdown">
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            {{user_avatar class="user-avatar"}}
+            <span>
+              {{user_name}}
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+              </svg>
+            </span>
+          </button>
+          <div class="dropdown-menu" role="menu">
+            {{#my_profile role="menuitem"}}{{t 'profile'}}{{/my_profile}}
+            {{link "requests" role="menuitem"}}
+            {{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}
+            {{link "approval_requests" role="menuitem"}}
+            {{contact_details role="menuitem"}}
+            {{change_password role="menuitem"}}
+            <div class="separator" role="separator"></div>
+            {{link "sign_out" role="menuitem"}}
+          </div>
         </div>
-      </div>
-    {{/if}}
+      {{/if}}
+    </div>
   </div>
 
   <div class="nav-wrapper-mobile">
@@ -88,6 +100,10 @@
         <li class="item">{{link 'community'}}</li>
         <li class="item">{{link 'new_request' class='submit-a-request'}}</li>
         <li class="item">{{link 'service_catalog'}}</li>
+        <li class="nav-divider"></li>
+        <li class="item"><a href="https://www.visy.com/about">About</a></li>
+        <li class="item"><a href="https://www.visy.com/solutions">Solutions</a></li>
+        <li class="item"><a href="https://www.visy.com/contact">Contact</a></li>
         <li class="nav-divider"></li>
         {{#if signed_in}}
           <li class="item">

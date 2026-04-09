@@ -6,67 +6,67 @@
   "default_locale": "en-us",
   "settings": [
     {
-      "label": "colors_group_label",
+      "label": "Colors",
       "variables": [
         {
           "identifier": "brand_color",
           "type": "color",
-          "description": "brand_color_description",
-          "label": "brand_color_label",
-          "value": "#17494D"
+          "description": "Brand color for links, buttons and accents.",
+          "label": "Brand color",
+          "value": "#004aad"
         },
         {
           "identifier": "brand_text_color",
           "type": "color",
-          "description": "brand_text_color_description",
-          "label": "brand_text_color_label",
+          "description": "Text color on brand color backgrounds.",
+          "label": "Brand text color",
           "value": "#FFFFFF"
         },
         {
           "identifier": "text_color",
           "type": "color",
-          "description": "text_color_description",
-          "label": "text_color_label",
-          "value": "#2F3941"
+          "description": "Main text color.",
+          "label": "Text color",
+          "value": "#131929"
         },
         {
           "identifier": "link_color",
           "type": "color",
-          "description": "link_color_description",
-          "label": "link_color_label",
-          "value": "#1F73B7"
+          "description": "Link and interactive element color.",
+          "label": "Link color",
+          "value": "#004aad"
         },
         {
           "identifier": "hover_link_color",
           "type": "color",
-          "description": "hover_link_color_description",
-          "label": "hover_link_color_label",
-          "value": "#0F3554"
+          "description": "Link hover color.",
+          "label": "Link hover color",
+          "value": "#0060d6"
         },
         {
           "identifier": "visited_link_color",
           "type": "color",
-          "description": "visited_link_color_description",
-          "label": "visited_link_color_label",
-          "value": "#9358B0"
+          "description": "Visited link color.",
+          "label": "Visited link color",
+          "value": "#004aad"
         },
         {
           "identifier": "background_color",
           "type": "color",
-          "description": "background_color_description",
-          "label": "background_color_label",
-          "value": "#FFFFFF"
+          "description": "Background color.",
+          "label": "Background color",
+          "value": "#ffffff"
         }
       ]
     },
     {
-      "label": "fonts_group_label",
+      "label": "Fonts",
       "variables": [
         {
           "identifier": "heading_font",
           "type": "list",
-          "description": "heading_font_description",
-          "label": "heading_font_label",
+          "description": "Font for headings.",
+          "label": "Heading font",
           "options": [
             {
               "label": "System",
@@ -77,60 +77,12 @@
               "value": "Arial, 'Helvetica Neue', Helvetica, sans-serif"
             },
             {
-              "label": "Arial Black",
-              "value": "'Arial Black', Arial, 'Helvetica Neue', Helvetica, sans-serif"
-            },
-            {
-              "label": "Baskerville",
-              "value": "Baskerville, 'Times New Roman', Times, serif"
-            },
-            {
-              "label": "Century Gothic",
-              "value": "'Century Gothic', sans-serif"
-            },
-            {
-              "label": "Copperplate Light",
-              "value": "'Copperplate Light', 'Copperplate Gothic Light', serif"
-            },
-            {
-              "label": "Courier New",
-              "value": "'Courier New', Courier, monospace"
-            },
-            {
-              "label": "Futura",
-              "value": "Futura, 'Century Gothic', sans-serif"
-            },
-            {
-              "label": "Garamond",
-              "value": "Garamond, 'Hoefler Text', 'Times New Roman', Times, serif"
-            },
-            {
-              "label": "Geneva",
-              "value": "Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif"
-            },
-            {
               "label": "Georgia",
               "value": "Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif"
             },
             {
               "label": "Helvetica",
               "value": "Helvetica, Arial, sans-serif"
-            },
-            {
-              "label": "Helvetica Neue",
-              "value": "'Helvetica Neue', Arial, Helvetica, sans-serif"
-            },
-            {
-              "label": "Impact",
-              "value": "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif"
-            },
-            {
-              "label": "Lucida Grande",
-              "value": "'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif"
-            },
-            {
-              "label": "Trebuchet MS",
-              "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
             }
           ],
           "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
@@ -138,8 +90,8 @@
         {
           "identifier": "text_font",
           "type": "list",
-          "description": "text_font_description",
-          "label": "text_font_label",
+          "description": "Font for body text.",
+          "label": "Text font",
           "options": [
             {
               "label": "System",
@@ -150,60 +102,12 @@
               "value": "Arial, 'Helvetica Neue', Helvetica, sans-serif"
             },
             {
-              "label": "Arial Black",
-              "value": "'Arial Black', Arial, 'Helvetica Neue', Helvetica, sans-serif"
-            },
-            {
-              "label": "Baskerville",
-              "value": "Baskerville, 'Times New Roman', Times, serif"
-            },
-            {
-              "label": "Century Gothic",
-              "value": "'Century Gothic', sans-serif"
-            },
-            {
-              "label": "Copperplate Light",
-              "value": "'Copperplate Light', 'Copperplate Gothic Light', serif"
-            },
-            {
-              "label": "Courier New",
-              "value": "'Courier New', Courier, monospace"
-            },
-            {
-              "label": "Futura",
-              "value": "Futura, 'Century Gothic', sans-serif"
-            },
-            {
-              "label": "Garamond",
-              "value": "Garamond, 'Hoefler Text', 'Times New Roman', Times, serif"
-            },
-            {
-              "label": "Geneva",
-              "value": "Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif"
-            },
-            {
               "label": "Georgia",
               "value": "Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif"
             },
             {
               "label": "Helvetica",
               "value": "Helvetica, Arial, sans-serif"
-            },
-            {
-              "label": "Helvetica Neue",
-              "value": "'Helvetica Neue', Arial, Helvetica, sans-serif"
-            },
-            {
-              "label": "Impact",
-              "value": "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif"
-            },
-            {
-              "label": "Lucida Grande",
-              "value": "'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif"
-            },
-            {
-              "label": "Trebuchet MS",
-              "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
             }
           ],
           "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
@@ -211,190 +115,243 @@
       ]
     },
     {
-      "label": "brand_group_label",
+      "label": "Header",
       "variables": [
         {
           "identifier": "logo",
           "type": "file",
-          "description": "logo_description",
-          "label": "logo_label"
+          "description": "Logo image displayed in the header.",
+          "label": "Logo"
         },
         {
           "identifier": "show_brand_name",
           "type": "checkbox",
-          "description": "show_brand_name_description",
-          "label": "show_brand_name_label",
+          "description": "Show the brand name next to the logo.",
+          "label": "Show brand name",
           "value": true
         },
         {
           "identifier": "favicon",
           "type": "file",
-          "description": "favicon_description",
-          "label": "favicon_label"
+          "description": "Favicon displayed in browser tabs.",
+          "label": "Favicon"
+        },
+        {
+          "identifier": "header_background_color",
+          "type": "color",
+          "description": "Background color for the header/nav bar.",
+          "label": "Header background color",
+          "value": "#eef1f8"
+        },
+        {
+          "identifier": "header_link_color",
+          "type": "color",
+          "description": "Color of nav links inside the header.",
+          "label": "Header link color",
+          "value": "#0d1f5c"
         }
       ]
     },
     {
-      "label": "images_group_label",
+      "label": "Images",
       "variables": [
         {
           "identifier": "homepage_background_image",
           "type": "file",
-          "description": "homepage_background_image_description",
-          "label": "homepage_background_image_label"
+          "description": "Background image for the home page hero.",
+          "label": "Homepage background image"
         },
         {
           "identifier": "community_background_image",
           "type": "file",
-          "description": "community_background_image_description",
-          "label": "community_background_image_label"
+          "description": "Background image for community pages.",
+          "label": "Community background image"
         },
         {
           "identifier": "community_image",
           "type": "file",
-          "description": "community_image_description",
-          "label": "community_image_label"
+          "description": "Image for community section.",
+          "label": "Community image"
         },
         {
           "identifier": "service_catalog_hero_image",
           "type": "file",
-          "description": "service_catalog_hero_image_description",
-          "label": "service_catalog_hero_image_label"
+          "description": "Hero image for service catalog.",
+          "label": "Service catalog hero image"
         }
       ]
     },
     {
-      "label": "search_group_label",
+      "label": "Hero section",
       "variables": [
+        {
+          "identifier": "hero_background_image",
+          "type": "file",
+          "description": "Background image for the hero section (recommended: 1920x600px or larger).",
+          "label": "Hero background image"
+        },
+        {
+          "identifier": "hero_background_color",
+          "type": "color",
+          "description": "Background color of the home page hero area (shows behind image).",
+          "label": "Hero background color",
+          "value": "#0a1628"
+        },
+        {
+          "identifier": "hero_text_color",
+          "type": "color",
+          "description": "Text color inside the hero area.",
+          "label": "Hero text color",
+          "value": "#ffffff"
+        },
         {
           "identifier": "instant_search",
           "type": "checkbox",
-          "description": "instant_search_description",
-          "label": "instant_search_label",
+          "description": "Show instant search results as the user types.",
+          "label": "Instant search",
           "value": true
-        },
+        }
+      ]
+    },
+    {
+      "label": "Search",
+      "variables": [
         {
           "identifier": "scoped_kb_search",
           "type": "checkbox",
-          "description": "scoped_knowledge_base_search_description",
-          "label": "scoped_knowledge_base_search_label_v2",
-          "value": true
+          "description": "Restrict search to knowledge base articles only.",
+          "label": "Scoped knowledge base search",
+          "value": false
         },
         {
           "identifier": "scoped_community_search",
           "type": "checkbox",
-          "description": "scoped_community_search_description",
-          "label": "scoped_community_search_label",
-          "value": true
+          "description": "Restrict search to community posts only.",
+          "label": "Scoped community search",
+          "value": false
         }
       ]
     },
     {
-      "label": "home_page_group_label",
+      "label": "Articles",
       "variables": [
-        {
-          "identifier": "show_recent_activity",
-          "type": "checkbox",
-          "description": "recent_activity_description",
-          "label": "recent_activity_label",
-          "value": true
-        }
-      ]
-    },
-    {
-      "label": "article_page_group_label",
-      "variables": [
-        {
-          "identifier": "show_articles_in_section",
-          "type": "checkbox",
-          "description": "articles_in_section_description",
-          "label": "articles_in_section_label",
-          "value": true
-        },
         {
           "identifier": "show_article_author",
           "type": "checkbox",
-          "description": "article_author_description",
-          "label": "article_author_label",
+          "description": "Show the author name on article pages.",
+          "label": "Show article author",
           "value": true
         },
         {
-          "identifier": "show_article_comments",
+          "identifier": "show_articles_in_section",
           "type": "checkbox",
-          "description": "article_comments_description",
-          "label": "article_comments_label",
+          "description": "Show article list within the section on the article page.",
+          "label": "Show articles in section",
           "value": true
         },
         {
           "identifier": "show_follow_article",
           "type": "checkbox",
-          "description": "follow_article_description",
-          "label": "follow_article_label",
-          "value": true
-        },
-        {
-          "identifier": "show_recently_viewed_articles",
-          "type": "checkbox",
-          "description": "recently_viewed_articles_description",
-          "label": "recently_viewed_articles_label",
-          "value": true
-        },
-        {
-          "identifier": "show_related_articles",
-          "type": "checkbox",
-          "description": "related_articles_description",
-          "label": "related_articles_label",
+          "description": "Show the follow button on article pages.",
+          "label": "Show follow article button",
           "value": true
         },
         {
           "identifier": "show_article_sharing",
           "type": "checkbox",
-          "description": "article_sharing_description",
-          "label": "article_sharing_label",
+          "description": "Show social sharing options on article pages.",
+          "label": "Show article sharing",
+          "value": true
+        },
+        {
+          "identifier": "show_article_comments",
+          "type": "checkbox",
+          "description": "Show the comments section on article pages.",
+          "label": "Show article comments",
+          "value": true
+        },
+        {
+          "identifier": "show_recently_viewed_articles",
+          "type": "checkbox",
+          "description": "Show recently viewed articles on the article page.",
+          "label": "Show recently viewed articles",
+          "value": true
+        },
+        {
+          "identifier": "show_related_articles",
+          "type": "checkbox",
+          "description": "Show related articles on the article page.",
+          "label": "Show related articles",
           "value": true
         }
       ]
     },
     {
-      "label": "section_page_group_label",
+      "label": "Community",
       "variables": [
         {
-          "identifier": "show_follow_section",
+          "identifier": "show_follow_topic",
           "type": "checkbox",
-          "description": "follow_section_description",
-          "label": "follow_section_label",
+          "description": "Show the follow button on community topic pages.",
+          "label": "Show follow topic button",
           "value": true
-        }
-      ]
-    },
-    {
-      "label": "community_post_group_label",
-      "variables": [
+        },
         {
           "identifier": "show_follow_post",
           "type": "checkbox",
-          "description": "follow_post_description",
-          "label": "follow_post_label",
+          "description": "Show the follow button on community post pages.",
+          "label": "Show follow post button",
           "value": true
         },
         {
           "identifier": "show_post_sharing",
           "type": "checkbox",
-          "description": "post_sharing_description",
-          "label": "post_sharing_label",
+          "description": "Show social sharing options on community post pages.",
+          "label": "Show post sharing",
           "value": true
         }
       ]
     },
     {
-      "label": "community_topic_group_label",
+      "label": "Sections",
       "variables": [
         {
-          "identifier": "show_follow_topic",
+          "identifier": "show_follow_section",
           "type": "checkbox",
-          "description": "follow_topic_description",
-          "label": "follow_topic_label",
+          "description": "Show the follow button on section pages.",
+          "label": "Show follow section button",
           "value": true
+        }
+      ]
+    },
+    {
+      "label": "Home page",
+      "variables": [
+        {
+          "identifier": "show_recent_activity",
+          "type": "checkbox",
+          "description": "Show recent activity feed on the home page.",
+          "label": "Show recent activity",
+          "value": true
+        }
+      ]
+    },
+    {
+      "label": "Footer",
+      "variables": [
+        {
+          "identifier": "footer_background_color",
+          "type": "color",
+          "description": "Background color of the footer.",
+          "label": "Footer background color",
+          "value": "#131929"
+        },
+        {
+          "identifier": "footer_link_color",
+          "type": "color",
+          "description": "Color of links in the footer.",
+          "label": "Footer link color",
+          "value": "#3b8be8"
         }
       ]
     }
