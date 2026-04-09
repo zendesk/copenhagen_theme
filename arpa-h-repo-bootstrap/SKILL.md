@@ -176,16 +176,18 @@ Apply all ignore rules that are relevant to the linters detected in the repo. If
 
 ## Step 2 — Select the Base Image
 
-Use Microsoft's devcontainers images and pin to a specific major version:
+Use Microsoft's devcontainers images. Use the **bare runtime-version tag** (e.g., `:24`) — Microsoft maintains this as a floating alias to the latest image-major for that runtime version, so it stays valid as the image series advances.
+
+> **Why not `1-24` or `4-24`?** The `1-` image series tops out at Node.js 22 (confirmed on MCR — there is no `1-24` tag). Node.js 24 lives under both `:24` and `:4-24`, which resolve to the same digest. The bare `:24` tag is simpler and will continue to resolve correctly when a future image-major increment occurs.
 
 | Stack | Image |
 | ----- | ----- |
-| Node.js only | `mcr.microsoft.com/devcontainers/javascript-node:1-<version>` |
-| Python only | `mcr.microsoft.com/devcontainers/python:1-<version>` |
-| Go | `mcr.microsoft.com/devcontainers/go:1-<version>` |
+| Node.js only | `mcr.microsoft.com/devcontainers/javascript-node:<version>` |
+| Python only | `mcr.microsoft.com/devcontainers/python:<version>` |
+| Go | `mcr.microsoft.com/devcontainers/go:<version>` |
 | Universal (multi-language) | `mcr.microsoft.com/devcontainers/universal:2` |
 
-Pin the Node.js version to match `engines.node` in `package.json`, or default to `20` (current LTS).
+Pin the Node.js version to match `engines.node` in `package.json`, or default to the current LTS (24 as of this writing — verify at [nodejs.org/en/about/previous-releases](https://nodejs.org/en/about/previous-releases)).
 
 ---
 
@@ -198,11 +200,18 @@ Merge them with any stack-specific extensions discovered in Step 1.
 
 ```jsonc
 "features": {
-  "ghcr.io/devcontainers/features/github-cli:1": {}  // gh CLI — required for all ARPA-H repos
+  "ghcr.io/devcontainers/features/github-cli:1": {},  // gh CLI — required for all ARPA-H repos
+  "ghcr.io/devcontainers/features/node:1": {
+    "version": "none",
+    "installJupyterlab": false,
+    "bunVersion": "latest"          // installs bun — preferred package manager for all ARPA-H repos
+  }
 }
 ```
 
-The `gh` CLI must always be present. Every ARPA-H repo uses GitHub for issues, PRs, and Actions; `gh` is the standard tool for interacting with the GitHub API from the terminal and from scripts. Add any stack-specific features alongside this entry rather than replacing it.
+The `gh` CLI must always be present. Every ARPA-H repo uses GitHub for issues, PRs, and Actions; `gh` is the standard tool for interacting with the GitHub API from the terminal and from scripts.
+
+`bun` must always be present. It is the preferred package manager for all ARPA-H Node.js repos (see Step 5 — package manager security). The `node` feature with `version: "none"` installs bun without overriding the Node.js runtime already provided by the base image. Add any stack-specific features alongside these entries rather than replacing them.
 
 ### Always-on: GitHub & Collaboration
 
@@ -275,13 +284,39 @@ Install all dependencies. Chain with `&&` in dependency order:
 
 ```bash
 # Pattern: global tools first, then root deps, then sub-package deps
-npm install -g <global-tool-1> <global-tool-2> --unsafe-perm true && npm install && cd <subpackage> && npm install
+bun add --global <global-tool-1> <global-tool-2> && bun install && cd <subpackage> && bun install
 ```
 
 Common global tools:
 
 - `azure-functions-core-tools@4` — for Azure Functions repos
 - `azurite` — for local Azure Storage emulation (install globally, not as a project dep)
+
+### Package manager security — prefer `bun`, restrict `npm`
+
+Use `bun` over `npm` everywhere in devcontainer scripts:
+
+| Old form | Replacement |
+| -------- | ----------- |
+| `npm install` | `bun install` |
+| `npm install -g <pkg>` | `bun add --global <pkg>` |
+| `npx <pkg>` | `bunx <pkg>` |
+| `npm run <script>` | `bun run <script>` |
+
+**If `npm install` is unavoidable** (e.g. a tool explicitly invokes it internally, or an upstream flow you cannot change requires it), always pass `--ignore-scripts`:
+
+```bash
+npm install --ignore-scripts
+```
+
+`npm install` without `--ignore-scripts` executes arbitrary `preinstall`, `install`, and `postinstall` scripts supplied by every package in the dependency graph — a well-documented and actively exploited supply chain attack vector.
+
+Omit `--ignore-scripts` only when **all** of the following are true:
+1. A specific `postinstall` script is known to be functionally required (e.g. native bindings compilation via `node-gyp`).
+2. The package and its install script have been explicitly audited or come from a trusted, internally controlled source.
+3. The decision is documented in a comment in `devcontainer.json` or `PLAN.md`.
+
+Never use `npm install` without `--ignore-scripts` for packages pulled from the public registry without explicit vetting.
 
 ---
 
