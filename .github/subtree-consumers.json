@@ -43,5 +43,10 @@
         "repo": "ARPA-H/arpa-h-static-site-template",
         "prefix": ".github/skills",
         "branch": "main"
+    },
+    {
+        "repo": "ARPA-H/arpah-web-infra",
+        "prefix": ".github/skills",
+        "branch": "main"
     }
 ]
