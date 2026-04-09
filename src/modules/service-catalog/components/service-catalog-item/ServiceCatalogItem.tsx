@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useItemFormFields } from "../../hooks/useItemFormFields";
 import { ItemRequestForm } from "./ItemRequestForm";
+import { CategorySelector } from "./CategorySelector";
 import type { Organization } from "../../../ticket-fields/data-types/Organization";
 import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
 import { submitServiceItemRequest } from "./submitServiceItemRequest";
@@ -48,6 +50,11 @@ export interface ServiceCatalogItemProps {
   helpCenterPath: string;
 }
 
+function getCategoryIdFromUrl(): string | null {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("category_id");
+}
+
 export function ServiceCatalogItem({
   serviceCatalogItemId,
   baseLocale,
@@ -63,6 +70,7 @@ export function ServiceCatalogItem({
   const {
     requestFields,
     associatedLookupField,
+    categoryLookupField,
     error,
     setRequestFields,
     handleChange,
@@ -73,6 +81,34 @@ export function ServiceCatalogItem({
     assetIds,
   } = useItemFormFields(serviceCatalogItem, baseLocale);
   const { t } = useTranslation();
+
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
+    null
+  );
+
+  useEffect(() => {
+    if (!serviceCatalogItem?.categories?.length) return;
+
+    const urlCategoryId = getCategoryIdFromUrl();
+    const matchesUrl = serviceCatalogItem.categories.find(
+      (c) => c.id === urlCategoryId
+    );
+
+    setSelectedCategoryId(
+      matchesUrl ? matchesUrl.id : serviceCatalogItem.categories[0]?.id ?? null
+    );
+  }, [serviceCatalogItem]);
+
+  const handleCategoryChange = useCallback((categoryId: string) => {
+    setSelectedCategoryId(categoryId);
+    const params = new URLSearchParams(window.location.search);
+    params.set("category_id", categoryId);
+    window.history.replaceState(
+      {},
+      "",
+      `${window.location.pathname}?${params.toString()}`
+    );
+  }, []);
 
   const attachmentsOptionId =
     serviceCatalogItem?.custom_object_fields?.["standard::attachment_option"];
@@ -89,6 +125,18 @@ export function ServiceCatalogItem({
     useState<AttachmentsError>(null);
   const [assetTypeError, setAssetTypeError] = useState<string | null>(null);
   const [assetError, setAssetError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const handlePageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) {
+        setIsSubmitting(false);
+      }
+    };
+
+    window.addEventListener("pageshow", handlePageShow);
+    return () => window.removeEventListener("pageshow", handlePageShow);
+  }, []);
 
   const handleFieldChange = (
     field: TicketFieldObject,
@@ -135,6 +183,72 @@ export function ServiceCatalogItem({
     return hasError;
   }
 
+  function notifySubmitError(message?: React.ReactNode) {
+    notify({
+      type: "error",
+      title: t(
+        "service-catalog.item.service-request-error-title",
+        "Service couldn't be submitted"
+      ),
+      message:
+        message ??
+        t(
+          "service-catalog.item.service-request-error-message",
+          "Give it a moment and try it again"
+        ),
+    });
+  }
+
+  async function handleValidationErrors(response: Response) {
+    const errorData: ServiceRequestResponse = await response.json();
+    const invalidFieldErrors = errorData?.details?.base ?? [];
+    const missingErrorFields = invalidFieldErrors.filter(
+      (errorField) =>
+        !requestFields.some((field) => field.id === errorField.field_key)
+    );
+
+    if (missingErrorFields.length > 0) {
+      notifySubmitError(
+        <>
+          {t(
+            "service-catalog.item.service-request-refresh-message",
+            "Refresh the page and try again in a few seconds."
+          )}{" "}
+          <StyledNotificationLink
+            href={`${helpCenterPath}/services/${serviceCatalogItem!.id}`}
+          >
+            {t(
+              "service-catalog.item.service-request-refresh-link-text",
+              "Refresh the page"
+            )}
+          </StyledNotificationLink>
+        </>
+      );
+    } else if (invalidFieldErrors.length > 0) {
+      notifySubmitError();
+    }
+
+    const updatedFields = requestFields.map((field) => {
+      const errorField = invalidFieldErrors.find(
+        (errorField) => errorField.field_key === field.id
+      );
+      return { ...field, error: errorField?.description || null };
+    });
+    setRequestFields(updatedFields);
+  }
+
+  async function handleSubmitError(response: Response | undefined) {
+    if (response?.status === 422) {
+      try {
+        await handleValidationErrors(response);
+      } catch {
+        notifySubmitError();
+      }
+    } else {
+      notifySubmitError();
+    }
+  }
+
   const handleRequestSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -160,108 +274,39 @@ export function ServiceCatalogItem({
       return;
     }
 
-    const response = await submitServiceItemRequest(
-      serviceCatalogItem,
-      requestFieldsWithFormData,
-      associatedLookupField,
-      baseLocale,
-      attachments,
-      helpCenterPath
-    );
+    setIsSubmitting(true);
 
-    if (!response?.ok) {
-      if (response?.status === 422) {
-        try {
-          const errorData: ServiceRequestResponse = await response.json();
-          const invalidFieldErrors = errorData?.details?.base ?? [];
-          const missingErrorFields = invalidFieldErrors.filter(
-            (errorField) =>
-              !requestFields.some((field) => field.id === errorField.field_key)
-          );
+    try {
+      const response = await submitServiceItemRequest(
+        serviceCatalogItem,
+        requestFieldsWithFormData,
+        associatedLookupField,
+        baseLocale,
+        attachments,
+        helpCenterPath,
+        categoryLookupField,
+        selectedCategoryId
+      );
 
-          if (missingErrorFields.length > 0) {
-            notify({
-              type: "error",
-              title: t(
-                "service-catalog.item.service-request-error-title",
-                "Service couldn't be submitted"
-              ),
-              message: (
-                <>
-                  {t(
-                    "service-catalog.item.service-request-refresh-message",
-                    "Refresh the page and try again in a few seconds."
-                  )}{" "}
-                  <StyledNotificationLink
-                    href={`${helpCenterPath}/services/${serviceCatalogItem.id}`}
-                  >
-                    {t(
-                      "service-catalog.item.service-request-refresh-link-text",
-                      "Refresh the page"
-                    )}
-                  </StyledNotificationLink>
-                </>
-              ),
-            });
-          } else if (invalidFieldErrors.length > 0) {
-            // Show generic error if there are field errors but all fields are in the form
-            notify({
-              type: "error",
-              title: t(
-                "service-catalog.item.service-request-error-title",
-                "Service couldn't be submitted"
-              ),
-              message: t(
-                "service-catalog.item.service-request-error-message",
-                "Give it a moment and try it again"
-              ),
-            });
-          }
-
-          const updatedFields = requestFields.map((field) => {
-            const errorField = invalidFieldErrors.find(
-              (errorField) => errorField.field_key === field.id
-            );
-            return { ...field, error: errorField?.description || null };
-          });
-          setRequestFields(updatedFields);
-        } catch {
-          notify({
-            type: "error",
-            title: t(
-              "service-catalog.item.service-request-error-title",
-              "Service couldn't be submitted"
-            ),
-            message: t(
-              "service-catalog.item.service-request-error-message",
-              "Give it a moment and try it again"
-            ),
-          });
-        }
-      } else {
-        notify({
-          title: t(
-            "service-catalog.item.service-request-error-title",
-            "Service couldn't be submitted"
-          ),
+      if (response?.ok) {
+        addFlashNotification({
+          type: "success",
           message: t(
-            "service-catalog.item.service-request-error-message",
-            "Give it a moment and try it again"
+            "service-catalog.item.service-request-submitted",
+            "Service request submitted"
           ),
-          type: "error",
         });
+        const data = await response.json();
+        window.location.href = `${helpCenterPath}/requests/${data.request.id}`;
+        return;
       }
-    } else if (response && response.ok) {
-      addFlashNotification({
-        type: "success",
-        message: t(
-          "service-catalog.item.service-request-submitted",
-          "Service request submitted"
-        ),
-      });
-      const data = await response?.json();
-      window.location.href = `${helpCenterPath}/requests/${data.request.id}`;
+
+      await handleSubmitError(response);
+    } catch {
+      // caught by handleSubmitError in most cases, this handles unexpected errors
     }
+
+    setIsSubmitting(false);
   };
 
   const defaultOrganizationId =
@@ -269,8 +314,26 @@ export function ServiceCatalogItem({
       ? organizations[0]?.id?.toString()
       : null;
 
+  const [categorySelectorContainer, setCategorySelectorContainer] =
+    useState<HTMLElement | null>(null);
+  useEffect(() => {
+    setCategorySelectorContainer(document.getElementById("category-selector"));
+  }, []);
+
   return (
     <Container>
+      {categorySelectorContainer &&
+        serviceCatalogItem &&
+        selectedCategoryId &&
+        serviceCatalogItem.categories.length > 0 &&
+        createPortal(
+          <CategorySelector
+            categories={serviceCatalogItem.categories}
+            selectedCategoryId={selectedCategoryId}
+            onCategoryChange={handleCategoryChange}
+          />,
+          categorySelectorContainer
+        )}
       {serviceCatalogItem && (
         <ItemRequestForm
           requestFields={requestFields}
@@ -294,6 +357,7 @@ export function ServiceCatalogItem({
           isAssetTypeHidden={isAssetTypeHidden}
           assetTypeIds={assetTypeIds}
           assetIds={assetIds}
+          isSubmitting={isSubmitting}
         />
       )}
     </Container>

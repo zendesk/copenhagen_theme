@@ -1,6 +1,70 @@
 import type { LookupRelationshipFieldFilter } from "../data-types/BaseTicketField";
 import type { TicketFieldObject } from "../data-types/TicketFieldObject";
-import { buildAdvancedDynamicFilterParams } from "./LookupField";
+import { act, fireEvent, screen } from "@testing-library/react";
+import { buildAdvancedDynamicFilterParams, LookupField } from "./LookupField";
+import { render } from "../../test/render";
+
+const defaultField: TicketFieldObject = {
+  id: 123,
+  name: "test_lookup",
+  value: "",
+  error: null,
+  label: "Test Lookup",
+  required: false,
+  description: "",
+  type: "lookup",
+  options: [],
+  relationship_target_type: "zen:custom_object:testco",
+  relationship_filter: undefined,
+};
+
+const defaultProps = {
+  field: defaultField,
+  userId: 1,
+  onChange: jest.fn(),
+  visibleFields: [],
+};
+
+describe("LookupField organization_id in autocomplete URL", () => {
+  beforeEach(() => {
+    (globalThis.fetch as jest.Mock) = jest.fn(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ custom_object_records: [] }),
+      })
+    );
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test("omits organization_id when organizationId is null", async () => {
+    render(<LookupField {...defaultProps} organizationId={null} />);
+
+    const combobox = screen.getByLabelText("Test Lookup");
+    await act(async () => {
+      fireEvent.focus(combobox);
+    });
+
+    expect(fetch).toHaveBeenCalled();
+    const url = (fetch as jest.Mock).mock.calls[0][0];
+    expect(url).not.toContain("organization_id");
+  });
+
+  test("includes organization_id when organizationId is a valid string", async () => {
+    render(<LookupField {...defaultProps} organizationId={"456"} />);
+
+    const combobox = screen.getByLabelText("Test Lookup");
+    await act(async () => {
+      fireEvent.focus(combobox);
+    });
+
+    expect(fetch).toHaveBeenCalledWith(
+      expect.stringContaining("organization_id=456")
+    );
+  });
+});
 
 describe("buildAdvancedDynamicFilterParams", () => {
   it('returns correct dynamic filter array for operator "matches"', () => {

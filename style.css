@@ -4842,12 +4842,6 @@ zd-summary-block {
   font-style: italic;
   padding: 0 15px;
 }
-
-/*===========================================================
-  VISY × COPENHAGEN THEME — Custom Stylesheet Override
-  Matches Visy.com brand identity applied to Zendesk Guide
-  Keep this file after the default Copenhagen style.css
-===========================================================*/
 /* ---- GOOGLE FONTS ---- */
 /* ---- VISY BRAND TOKENS ---- */
 :root {
@@ -4873,7 +4867,6 @@ zd-summary-block {
 
 /* ============================================================
    BASE TYPOGRAPHY
-============================================================ */
 body {
   font-family: "Inter", sans-serif;
   font-size: 16px;
@@ -4903,7 +4896,6 @@ a:hover {
 
 /* ============================================================
    TOP ANNOUNCEMENT BANNER  (keep as-is — just ensure spacing)
-============================================================ */
 .announcement-bar,
 [data-announcement-bar],
 .notification-banner {
@@ -4913,7 +4905,6 @@ a:hover {
 /* ============================================================
    HEADER / NAV  — matches Visy.com design
    Light blue-grey background, deep navy text, combined navigation
-============================================================ */
 .header {
   background-color: #eef1f8;
   border-bottom: 1px solid #d0d7e8;
@@ -5114,7 +5105,6 @@ a:hover {
 }
 /* ============================================================
    HERO / HOME PAGE BANNER - with background image support
-============================================================ */
 .hero {
   background-color: $hero_background_color;
   background-image: linear-gradient(135deg, rgba(10, 22, 40, 0.75) 0%, rgba(13, 42, 79, 0.8) 60%), url($hero_background_image);
@@ -5222,7 +5212,6 @@ a:hover {
 
 /* ============================================================
    PROMOTED / FEATURED ARTICLES SECTION
-============================================================ */
 .promoted-articles,
 .home-promoted-articles {
   max-width: 1280px;
@@ -5304,7 +5293,6 @@ a:hover {
 
 /* ============================================================
    CATEGORY PAGE
-============================================================ */
 .category-page .page-header,
 .section-page .page-header {
   background: linear-gradient(120deg, var(--visy-navy) 0%, var(--visy-blue-dark) 100%);
@@ -5352,7 +5340,6 @@ a:hover {
 
 /* ============================================================
    ARTICLE PAGE
-============================================================ */
 .article-header {
   border-bottom: 2px solid var(--visy-border);
   padding-bottom: 24px;
@@ -5512,7 +5499,6 @@ a:hover {
 
 /* ============================================================
    BUTTONS
-============================================================ */
 .button, .split-button button, .section-subscribe button, .article-subscribe button, .community-follow button, .requests-table-toolbar .organization-subscribe button, .subscriptions-subscribe button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link,
 button,
 input[type=submit],
@@ -5587,7 +5573,6 @@ input[type=submit]:hover,
 
 /* ============================================================
    FORMS
-============================================================ */
 input[type=text],
 input[type=email],
 input[type=password],
@@ -5624,7 +5609,6 @@ label {
 
 /* ============================================================
    SEARCH RESULTS PAGE
-============================================================ */
 .search-results-page .page-header {
   background: linear-gradient(120deg, var(--visy-navy) 0%, var(--visy-blue-dark) 100%);
   padding: 40px 32px;
@@ -5686,7 +5670,6 @@ mark {
 
 /* ============================================================
    SIDEBAR NAVIGATION
-============================================================ */
 .sidenav-item a,
 .section-nav a {
   color: var(--visy-mid-grey);
@@ -5716,7 +5699,6 @@ mark {
 
 /* ============================================================
    COMMUNITY / FORUMS
-============================================================ */
 .community-topic,
 .post-list-item {
   border-bottom: 1px solid var(--visy-border);
@@ -5762,7 +5744,6 @@ mark {
 
 /* ============================================================
    REQUEST / TICKET FORM
-============================================================ */
 .request-container h1,
 .new-request-form h1 {
   font-family: "Inter", sans-serif;
@@ -5829,7 +5810,6 @@ mark {
 
 /* ============================================================
    USER PROFILE PAGE
-============================================================ */
 .user-profile-header {
   background: var(--visy-light-grey);
   border-bottom: 1px solid var(--visy-border);
@@ -5856,7 +5836,6 @@ mark {
 
 /* ============================================================
    PAGINATION
-============================================================ */
 .pagination {
   display: flex;
   gap: 6px;
@@ -5896,7 +5875,6 @@ mark {
 
 /* ============================================================
    FOOTER
-============================================================ */
 .footer {
   background: var(--visy-dark);
   color: rgba(255, 255, 255, 0.7);
@@ -5957,7 +5935,6 @@ mark {
 
 /* ============================================================
    NOTIFICATION / ALERTS
-============================================================ */
 .notice,
 .alert-info {
   background: var(--visy-blue-pale);
@@ -5985,7 +5962,6 @@ mark {
 
 /* ============================================================
    TAG / LABEL CHIPS
-============================================================ */
 .label,
 .tag {
   display: inline-block;
@@ -6007,7 +5983,6 @@ mark {
 
 /* ============================================================
    LOADING / SPINNER
-============================================================ */
 .loading-spinner,
 .spinner {
   border: 3px solid var(--visy-border);
@@ -6023,7 +5998,6 @@ mark {
 }
 /* ============================================================
    FOCUS / ACCESSIBILITY
-============================================================ */
 :focus-visible {
   outline: 2px solid var(--visy-blue-light);
   outline-offset: 3px;
@@ -6032,7 +6006,6 @@ mark {
 
 /* ============================================================
    RESPONSIVE ADJUSTMENTS
-============================================================ */
 @media (max-width: 900px) {
   .hero {
     padding: 40px 20px;
@@ -6072,7 +6045,6 @@ mark {
 }
 /* ============================================================
    PRINT
-============================================================ */
 @media print {
   .header,
   .footer,
@@ -6087,4 +6059,15 @@ mark {
     line-height: 1.5;
     color: #000;
   }
+.service-catalog-main-content {
+  display: flex;
+  gap: 32px;
+}
+.service-catalog-list {
+  width: 100%;
+}
+.service-catalog-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }

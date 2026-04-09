@@ -2,6 +2,9 @@ import { render } from "../../../test/render";
 import { screen } from "@testing-library/react";
 import type { ApprovalRequest } from "../../types";
 import ApprovalRequestDetails from "./ApprovalRequestDetails";
+import { getSentByLabel } from "../../getSentByLabel";
+
+jest.mock("../../getSentByLabel");
 
 const mockApprovalRequest: ApprovalRequest = {
   id: "123",
@@ -41,7 +44,13 @@ const mockApprovalRequest: ApprovalRequest = {
 };
 
 describe("ApprovalRequestDetails", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("renders the basic approval request details without the decision notes and decided date", () => {
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
+
     render(
       <ApprovalRequestDetails
         approvalRequest={mockApprovalRequest}
@@ -78,6 +87,8 @@ describe("ApprovalRequestDetails", () => {
       ],
     };
 
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
+
     render(
       <ApprovalRequestDetails
         approvalRequest={approvalRequestWithNotesAndDecision}
@@ -88,7 +99,102 @@ describe("ApprovalRequestDetails", () => {
     expect(screen.getByText("Reason")).toBeInTheDocument();
     expect(screen.getByText(/this looks good to me/i)).toBeInTheDocument();
     expect(screen.getByText("Decided")).toBeInTheDocument();
-    expect(screen.getByText(/this looks good to me/i)).toBeInTheDocument();
+    expect(screen.queryByText(/via Slack/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/via Zendesk/)).not.toBeInTheDocument();
+  });
+
+  it("shows 'via Slack' next to decided date when decision origination_type is SLACK_ORIGINATION", () => {
+    const slackDecisionRequest: ApprovalRequest = {
+      ...mockApprovalRequest,
+      status: "approved",
+      decided_at: "2024-02-21T15:45:00Z",
+      decisions: [
+        {
+          decision_notes: "Looks good to me",
+          decided_at: "2024-02-21T15:45:00Z",
+          decided_by_user: {
+            id: 456,
+            name: "Jane Approver",
+            photo: { content_url: null },
+          },
+          status: "approved",
+          origination_type: "SLACK_ORIGINATION",
+        },
+      ],
+    };
+
+    render(
+      <ApprovalRequestDetails
+        approvalRequest={slackDecisionRequest}
+        baseLocale="en-US"
+      />
+    );
+
+    expect(screen.getByText(/via Slack/)).toBeInTheDocument();
+    expect(screen.queryByText(/via Zendesk/)).not.toBeInTheDocument();
+  });
+
+  it("shows 'via Zendesk' next to decided date when decision origination_type is UI_ORIGINATION", () => {
+    const uiDecisionRequest: ApprovalRequest = {
+      ...mockApprovalRequest,
+      status: "approved",
+      decided_at: "2024-02-21T15:45:00Z",
+      decisions: [
+        {
+          decision_notes: "Approved via UI",
+          decided_at: "2024-02-21T15:45:00Z",
+          decided_by_user: {
+            id: 456,
+            name: "Jane Approver",
+            photo: { content_url: null },
+          },
+          status: "approved",
+          origination_type: "UI_ORIGINATION",
+        },
+      ],
+    };
+
+    render(
+      <ApprovalRequestDetails
+        approvalRequest={uiDecisionRequest}
+        baseLocale="en-US"
+      />
+    );
+
+    expect(screen.getByText(/via Zendesk/)).toBeInTheDocument();
+    expect(screen.queryByText(/via Slack/)).not.toBeInTheDocument();
+  });
+
+  it("does not show 'via' labels for withdrawn requests even when decision has origination_type", () => {
+    const withdrawnWithOriginationType: ApprovalRequest = {
+      ...mockApprovalRequest,
+      status: "withdrawn",
+      withdrawn_reason: "No longer needed",
+      decided_at: "2024-02-21T15:45:00Z",
+      decisions: [
+        {
+          decision_notes: "Was approved",
+          decided_at: "2024-02-21T15:45:00Z",
+          decided_by_user: {
+            id: 456,
+            name: "Jane Approver",
+            photo: { content_url: null },
+          },
+          status: "approved",
+          origination_type: "SLACK_ORIGINATION",
+        },
+      ],
+    };
+
+    render(
+      <ApprovalRequestDetails
+        approvalRequest={withdrawnWithOriginationType}
+        baseLocale="en-US"
+      />
+    );
+
+    expect(screen.queryByText(/via Slack/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/via Zendesk/)).not.toBeInTheDocument();
   });
 
   it("renders a withdrawn approval request with the withdrawal reason", () => {
@@ -98,6 +204,8 @@ describe("ApprovalRequestDetails", () => {
       withdrawn_reason: "No longer needed",
       decided_at: "2024-02-21T15:45:00Z",
     };
+
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
 
     render(
       <ApprovalRequestDetails
@@ -132,6 +240,8 @@ describe("ApprovalRequestDetails", () => {
       ],
     };
 
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
+
     render(
       <ApprovalRequestDetails
         approvalRequest={withdrawnWithPriorApproval}
@@ -142,6 +252,77 @@ describe("ApprovalRequestDetails", () => {
     expect(screen.getByText("Previous decision")).toBeInTheDocument();
     expect(screen.getByText(/approved/i)).toBeInTheDocument();
     expect(screen.getByText(/"Originally stamped"/)).toBeInTheDocument();
+  });
+
+  it("displays 'Action flow' when origination_type is ACTION_FLOW_ORIGINATION", () => {
+    const actionFlowRequest: ApprovalRequest = {
+      ...mockApprovalRequest,
+      origination_type: "ACTION_FLOW_ORIGINATION",
+    };
+
+    (getSentByLabel as jest.Mock).mockReturnValue("Action flow");
+
+    render(
+      <ApprovalRequestDetails
+        approvalRequest={actionFlowRequest}
+        baseLocale="en-US"
+      />
+    );
+
+    expect(screen.getByText("Action flow")).toBeInTheDocument();
+    expect(screen.queryByText("John Sender")).not.toBeInTheDocument();
+  });
+
+  it("displays 'API' when origination_type is API_ORIGINATION", () => {
+    const apiOriginationRequest: ApprovalRequest = {
+      ...mockApprovalRequest,
+      origination_type: "API_ORIGINATION",
+    };
+
+    (getSentByLabel as jest.Mock).mockReturnValue("API");
+
+    render(
+      <ApprovalRequestDetails
+        approvalRequest={apiOriginationRequest}
+        baseLocale="en-US"
+      />
+    );
+
+    expect(screen.getByText("API")).toBeInTheDocument();
+    expect(screen.queryByText("John Sender")).not.toBeInTheDocument();
+  });
+
+  it("displays the creator's name when origination_type is UI_ORIGINATION", () => {
+    const uiOriginationRequest: ApprovalRequest = {
+      ...mockApprovalRequest,
+      origination_type: "UI_ORIGINATION",
+    };
+
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
+
+    render(
+      <ApprovalRequestDetails
+        approvalRequest={uiOriginationRequest}
+        baseLocale="en-US"
+      />
+    );
+
+    expect(screen.getByText("John Sender")).toBeInTheDocument();
+    expect(screen.queryByText("Action flow")).not.toBeInTheDocument();
+  });
+
+  it("displays the creator's name when origination_type is absent", () => {
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
+
+    render(
+      <ApprovalRequestDetails
+        approvalRequest={mockApprovalRequest}
+        baseLocale="en-US"
+      />
+    );
+
+    expect(screen.getByText("John Sender")).toBeInTheDocument();
+    expect(screen.queryByText("Action flow")).not.toBeInTheDocument();
   });
 
   it("does not show the previous decision for non-withdrawn requests", () => {
@@ -164,6 +345,8 @@ describe("ApprovalRequestDetails", () => {
         },
       ],
     };
+
+    (getSentByLabel as jest.Mock).mockReturnValue("John Sender");
 
     render(
       <ApprovalRequestDetails

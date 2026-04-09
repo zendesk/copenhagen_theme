@@ -1,2 +1,2 @@
-export { renderServiceCatalogList } from "./renderServiceCatalogList";
 export { renderServiceCatalogItem } from "./renderServiceCatalogItem";
+export { renderServiceCatalogPage } from "./renderServiceCatalogPage";

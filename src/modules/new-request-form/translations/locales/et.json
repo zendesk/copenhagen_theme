@@ -52,7 +52,7 @@
   "new-request-form.lookup-field.placeholder": "Search {{label}}",
   "new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
   "new-request-form.required-fields-info": "Tärniga (*) märgitud väljad on kohustuslikud.",
-  "new-request-form.submit": "Submit",
+  "new-request-form.submit": "Saada",
   "new-request-form.suggested-articles": "Suggested articles",
   "new-request-form.suggested-articles-external-link-label": "(Opens in a new tab)"
 }

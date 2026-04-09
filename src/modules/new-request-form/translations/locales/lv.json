@@ -26,7 +26,7 @@
   "new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
   "new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
   "new-request-form.answer-bot-modal.view-article": "View article",
-  "new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+  "new-request-form.attachments.choose-file-label": "Izvēlieties failu vai velciet to šeit",
   "new-request-form.attachments.drop-files-label": "Drop files here",
   "new-request-form.attachments.error-separator": "; ",
   "new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
@@ -51,8 +51,8 @@
   "new-request-form.lookup-field.no-matches-found": "No matches found",
   "new-request-form.lookup-field.placeholder": "Search {{label}}",
   "new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
-  "new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
-  "new-request-form.submit": "Submit",
+  "new-request-form.required-fields-info": "Lauki, kas atzīmēti ar zvaigznīti (*), ir obligāti.",
+  "new-request-form.submit": "Iesniegt",
   "new-request-form.suggested-articles": "Suggested articles",
   "new-request-form.suggested-articles-external-link-label": "(Opens in a new tab)"
 }

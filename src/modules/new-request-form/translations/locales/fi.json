@@ -14,7 +14,7 @@
   "new-request-form.answer-bot-generative-modal.generated_by_ai": "Tekoälyn luoma",
   "new-request-form.answer-bot-generative-modal.loading.finished": "Löysin jotain, joka saattaa auttaa...",
   "new-request-form.answer-bot-generative-modal.loading.start": "Mietitään",
-  "new-request-form.answer-bot-generative-modal.loading.subtitle": "Odotellessasi tekoälytukihenkilö yrittää löytää vastauksen pyyntöösi. Jos suljet tämän ikkunan, saat sähköpostilla seuranta-ilmoituksen.",
+  "new-request-form.answer-bot-generative-modal.loading.subtitle": "Odotellessasi tekoälytukihenkilö yrittää löytää vastauksen pyyntöösi. Jos suljet tämän ikkunan, saat sähköpostilla seurantailmoituksen.",
   "new-request-form.answer-bot-generative-modal.request-closed": "Pyyntösi on ratkaistu.",
   "new-request-form.answer-bot-generative-modal.request-submitted": "Pyyntösi on lähetetty.",
   "new-request-form.answer-bot-generative-modal.sources_description": "Tämä viesti luotiin automaattisesti käyttämällä tekoälyä ja seuraavia artikkelilähteitä:",

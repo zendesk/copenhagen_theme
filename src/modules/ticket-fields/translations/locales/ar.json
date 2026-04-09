@@ -16,5 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "جارٍ تحميل العناصر...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "لم يتم العثور على نتائج مطابقة",
   "cph-theme-ticket-fields.lookup-field.placeholder": "بحث في {{label}}",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "لم يتم العثور على نتائج مطابقة",
+  "cph-theme-ticket-fields.search-field.placeholder": "بحث في {{label}}",
   "cph-theme-ticket-fields.upload-failed-title": "فشل تحميل {{fileName}}"
 }

@@ -109,6 +109,13 @@ const isAssociatedLookupField = (field: TicketField) => {
   return customObjectKey === "standard::service_catalog_item";
 };
 
+const isCategoryLookupField = (field: TicketField) => {
+  const customObjectKey = getCustomObjectKey(
+    field.relationship_target_type as string
+  );
+  return customObjectKey === "standard::service_catalog_category";
+};
+
 const isHiddenServiceCatalogLookup = (field: TicketField) => {
   const customObjectKey = getCustomObjectKey(
     field.relationship_target_type as string
@@ -144,6 +151,7 @@ const enrichFieldsWithAssetConfig = (
 interface FetchTicketFieldsResult {
   requestFields: TicketFieldObject[];
   associatedLookupField: TicketFieldObject | null;
+  categoryLookupField: TicketFieldObject | null;
   endUserConditions: EndUserCondition[];
 }
 
@@ -176,6 +184,7 @@ const fetchTicketFields = async (
 
   const ticketFieldsData = fieldsData.ticket_fields;
   let associatedLookupField: TicketFieldObject | null = null;
+  let categoryLookupField: TicketFieldObject | null = null;
 
   const requestFields = ids
     .map((id: number) => {
@@ -196,6 +205,8 @@ const fetchTicketFields = async (
         ) {
           if (isAssociatedLookupField(ticketField)) {
             associatedLookupField = ticketField;
+          } else if (isCategoryLookupField(ticketField)) {
+            categoryLookupField = ticketField;
           }
           return null;
         }
@@ -209,7 +220,12 @@ const fetchTicketFields = async (
     throw new Error("Associated lookup field not found");
   }
 
-  return { requestFields, associatedLookupField, endUserConditions };
+  return {
+    requestFields,
+    associatedLookupField,
+    categoryLookupField,
+    endUserConditions,
+  };
 };
 
 export function useItemFormFields(
@@ -224,6 +240,8 @@ export function useItemFormFields(
   >([]);
   const [associatedLookupField, setAssociatedLookupField] =
     useState<TicketFieldObject | null>();
+  const [categoryLookupField, setCategoryLookupField] =
+    useState<TicketFieldObject | null>(null);
   const [error, setError] = useState<unknown>(null);
   const [isRequestFieldsLoading, setIsRequestFieldsLoading] = useState(false);
   const [assetConfig, setAssetConfig] = useState<AssetConfig>({
@@ -264,8 +282,12 @@ export function useItemFormFields(
 
         if (!alive) return;
 
-        const { requestFields, associatedLookupField, endUserConditions } =
-          ticketFieldsResult;
+        const {
+          requestFields,
+          associatedLookupField,
+          categoryLookupField,
+          endUserConditions,
+        } = ticketFieldsResult;
 
         const processedAssetConfig = processAssetConfig(
           assetTypeData,
@@ -273,6 +295,7 @@ export function useItemFormFields(
         );
         setAssetConfig(processedAssetConfig);
         setAssociatedLookupField(associatedLookupField);
+        setCategoryLookupField(categoryLookupField);
         setEndUserConditions(endUserConditions);
 
         const enrichedFields = enrichFieldsWithAssetConfig(
@@ -316,6 +339,7 @@ export function useItemFormFields(
   return {
     requestFields,
     associatedLookupField,
+    categoryLookupField,
     error,
     setRequestFields: setAllRequestFields,
     handleChange,

@@ -16,5 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "Đang tải các mục...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Không tìm thấy kết quả phù hợp",
   "cph-theme-ticket-fields.lookup-field.placeholder": "Tìm kiếm {{label}}",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "Không tìm thấy kết quả trùng khớp",
+  "cph-theme-ticket-fields.search-field.placeholder": "Tìm kiếm {{label}}",
   "cph-theme-ticket-fields.upload-failed-title": "Tải lên {{fileName}} không thành công"
 }

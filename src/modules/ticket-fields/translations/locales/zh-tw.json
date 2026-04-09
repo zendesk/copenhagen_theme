@@ -16,5 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "項目載入中...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "找不到符合項目",
   "cph-theme-ticket-fields.lookup-field.placeholder": "搜尋「{{label}}」",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "找不到符合項目",
+  "cph-theme-ticket-fields.search-field.placeholder": "搜尋{{label}}",
   "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} 上傳失敗"
 }

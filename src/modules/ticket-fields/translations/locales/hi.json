@@ -16,5 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "आइटम लोड हो रहे हैं...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "कोई मिलान नहीं मिले",
   "cph-theme-ticket-fields.lookup-field.placeholder": "खोज {{label}}",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "कोई मिलान नहीं मिले",
+  "cph-theme-ticket-fields.search-field.placeholder": "{{label}} खोजें",
   "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} को अपलोड करना विफ़ल रहा"
 }

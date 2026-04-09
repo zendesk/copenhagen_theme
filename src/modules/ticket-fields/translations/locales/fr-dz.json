@@ -16,5 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "Chargement des éléments...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Aucun résultat",
   "cph-theme-ticket-fields.lookup-field.placeholder": "Rechercher {{label}}",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "Aucune correspondance trouvée",
+  "cph-theme-ticket-fields.search-field.placeholder": "Rechercher {{label}}",
   "cph-theme-ticket-fields.upload-failed-title": "Échec du chargement de {{fileName}}"
 }

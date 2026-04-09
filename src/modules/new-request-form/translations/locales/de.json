@@ -14,7 +14,7 @@
   "new-request-form.answer-bot-generative-modal.generated_by_ai": "Von KI generiert",
   "new-request-form.answer-bot-generative-modal.loading.finished": "Ich habe etwas gefunden, das vielleicht helfen könnte …",
   "new-request-form.answer-bot-generative-modal.loading.start": "Denkvorgang läuft",
-  "new-request-form.answer-bot-generative-modal.loading.subtitle": "Während Sie warten, versucht ein AI Agent, eine Antwort auf Ihre Anfrage zu finden. Wenn Sie dieses Fenster schließen, erhalten Sie eine Folgeanfrage per E-Mail.",
+  "new-request-form.answer-bot-generative-modal.loading.subtitle": "Während Sie warten, versucht ein AI Agent, eine Antwort auf Ihre Anfrage zu finden. Wenn Sie dieses Fenster schließen, erhalten Sie eine Rückmeldung per E-Mail.",
   "new-request-form.answer-bot-generative-modal.request-closed": "Ihre Anfrage wurde gelöst.",
   "new-request-form.answer-bot-generative-modal.request-submitted": "Ihre Anfrage wurde eingereicht",
   "new-request-form.answer-bot-generative-modal.sources_description": "Diese Nachricht wurde automatisch mit KI und den folgenden Beitragsquellen generiert:",

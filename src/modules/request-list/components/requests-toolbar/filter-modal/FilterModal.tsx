@@ -73,6 +73,7 @@ export function FilterModal({
   const handleSelectFilterProperty = (property: FilterProperty) => {
     setErrors({});
     setSelectedFilterProperty(property);
+    setFormState(null);
   };
 
   const handleSubmit: FormEventHandler = (e) => {

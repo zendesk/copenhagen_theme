@@ -324,7 +324,7 @@ describe("Filter tabs", () => {
       selectedTab: { name: ORG_REQUESTS_TAB_NAME, organizationId: 1 },
     });
 
-    fireEvent.click(screen.getByRole("combobox", { name: "Organization" }));
+    fireEvent.click(screen.getByLabelText("Organization"));
     fireEvent.click(
       screen.getByRole("option", { name: "Another Organization" })
     );

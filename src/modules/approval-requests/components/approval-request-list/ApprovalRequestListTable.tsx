@@ -8,6 +8,7 @@ import ApprovalStatusTag from "../approval-request/ApprovalStatusTag";
 import { formatApprovalRequestDate } from "../../utils";
 import type { SearchApprovalRequest } from "../../types";
 import NoApprovalRequestsText from "./NoApprovalRequestsText";
+import { getSentByLabel } from "../../getSentByLabel";
 
 const ApprovalRequestAnchor = styled(Anchor)`
   &:visited {
@@ -99,7 +100,7 @@ function ApprovalRequestListTable({
                 {approvalRequest.requester_name}
               </Table.Cell>
               <Table.Cell isTruncated>
-                {approvalRequest.created_by_name}
+                {getSentByLabel(approvalRequest, t)}
               </Table.Cell>
               <Table.Cell isTruncated>
                 {formatApprovalRequestDate(

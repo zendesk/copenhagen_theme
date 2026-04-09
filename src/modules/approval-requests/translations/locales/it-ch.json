@@ -1,7 +1,7 @@
 {
-  "approval-requests.list.header": "Richieste approvazione",
-  "approval-requests.list.no-requests": "Nessuna richiesta approvazione trovata.",
-  "approval-requests.list.search-placeholder": "Cerca richieste approvazione",
+  "approval-requests.list.header": "Richieste di approvazione",
+  "approval-requests.list.no-requests": "Nessuna richiesta di approvazione trovata.",
+  "approval-requests.list.search-placeholder": "Cerca richieste di approvazione",
   "approval-requests.list.status-dropdown.any": "Qualsiasi",
   "approval-requests.list.status-dropdown.label_v2": "Stato",
   "approval-requests.list.table.approval-status": "Stato approvazione",
