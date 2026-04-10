@@ -46,8 +46,16 @@ async function updateTheme(themeId, replaceSettings) {
             }),
         });
 
+        const safeData = {
+            job: {
+                id: data.job.id,
+                status: data.job.status,
+                upload_url: data.job.data.upload.url,
+                upload_parameters: '[REDACTED]'
+            }
+        };
         console.log('::group::Update Theme Response');
-        const prettyResponse = JSON.stringify(data, null, 2);
+        const prettyResponse = JSON.stringify(safeData, null, 2);
         console.log(prettyResponse);
         console.log('::endgroup::');
         fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## Update Theme Response\n\`\`\`json\n${prettyResponse}\n\`\`\``);
