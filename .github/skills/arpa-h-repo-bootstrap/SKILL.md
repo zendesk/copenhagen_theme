@@ -425,6 +425,47 @@ Cargo.lock   # omit this line for libraries; keep for binaries/applications
 
 ---
 
+## Step 8 — Remove Stale Git LFS Hooks
+
+The standard `mcr.microsoft.com/devcontainers/javascript-node` image does not include `git-lfs`. If a repo was ever cloned on a machine where `git lfs install` was run globally, all four LFS hooks (`pre-push`, `post-commit`, `post-checkout`, `post-merge`) are written into `.git/hooks/`. Inside the devcontainer every `git commit` and `git push` then fails or emits blocking errors — even when no files are LFS-tracked.
+
+### Condition
+
+Run this check when **either** of the following is true:
+
+- There is no `.gitattributes` file in the repo root, **or**
+- `.gitattributes` exists but contains no line with `filter=lfs`
+
+If LFS is genuinely in use (at least one `filter=lfs` entry in `.gitattributes`), skip this step entirely.
+
+### Check and clean
+
+```bash
+# List any LFS hooks that are actually present
+ls .git/hooks/pre-push .git/hooks/post-commit .git/hooks/post-checkout .git/hooks/post-merge 2>/dev/null \
+  | xargs grep -l 'git-lfs' 2>/dev/null
+```
+
+If the command above lists any files and LFS is not in use per the condition above, remove them:
+
+```bash
+rm -f .git/hooks/pre-push .git/hooks/post-commit .git/hooks/post-checkout .git/hooks/post-merge
+```
+
+### postCreateCommand hook (recommended)
+
+To keep the devcontainer clean on every rebuild, add a guard to `postCreateCommand` that removes the hooks when LFS is not in use. Append this fragment **after** any dependency-install commands:
+
+```bash
+# Remove stale LFS hooks — image has no git-lfs and no LFS attributes are declared
+grep -qr 'filter=lfs' .gitattributes 2>/dev/null || \
+  rm -f .git/hooks/pre-push .git/hooks/post-commit .git/hooks/post-checkout .git/hooks/post-merge
+```
+
+This is a no-op when LFS is not in use and self-healing — future `git lfs install` runs in other environments will not leave behind broken hooks inside the devcontainer.
+
+---
+
 ## GitHub Actions Security — Pin to Commit SHAs
 
 Any `.github/workflows/` files in the repo must pin third-party and GitHub-owned actions to a full commit SHA rather than a mutable tag. Tags like `@v4` can be silently moved by the action maintainer, enabling supply chain attacks.
