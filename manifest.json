@@ -1,7 +1,7 @@
 {
   "name": "AZAL theme based on Copenhagen",
   "author": "OAPPS LLC (https://oapps.io/)",
-  "version": "4.34.2",
+  "version": "4.34.3",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -265,6 +265,36 @@
           "type": "file",
           "description": "service_catalog_hero_image_description",
           "label": "service_catalog_hero_image_label"
+        },
+        {
+          "identifier": "trip_help_card_1_image",
+          "type": "file",
+          "description": "Image for the Lost Baggage trip-help card",
+          "label": "Trip Help: Lost Baggage image"
+        },
+        {
+          "identifier": "trip_help_card_2_image",
+          "type": "file",
+          "description": "Image for the Complaints trip-help card",
+          "label": "Trip Help: Complaints image"
+        },
+        {
+          "identifier": "trip_help_card_3_image",
+          "type": "file",
+          "description": "Image for the AZAL Miles trip-help card",
+          "label": "Trip Help: AZAL Miles image"
+        },
+        {
+          "identifier": "trip_help_card_4_image",
+          "type": "file",
+          "description": "Image for the Certificate trip-help card",
+          "label": "Trip Help: Certificate image"
+        },
+        {
+          "identifier": "trip_help_card_5_image",
+          "type": "file",
+          "description": "Image for the Manage Booking trip-help card",
+          "label": "Trip Help: Manage Booking image"
         }
       ]
     },
