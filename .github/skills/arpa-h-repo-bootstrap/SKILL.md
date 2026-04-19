@@ -176,6 +176,24 @@ Apply all ignore rules that are relevant to the linters detected in the repo. If
 
 ## Step 2 — Select the Base Image
 
+### Approved container image registries
+
+Only pull devcontainer base images and features from these sources. Any other registry is unapproved and must not be used.
+
+| Registry | What it provides | Trust basis |
+| -------- | ---------------- | ----------- |
+| `mcr.microsoft.com/devcontainers/*` | Base images (Node.js, Python, Go, Universal, etc.) | Microsoft-owned registry, SLA-backed, source at [github.com/devcontainers/images](https://github.com/devcontainers/images) |
+| `ghcr.io/devcontainers/features/*` | Official devcontainer features (gh CLI, Node, Azure CLI, Terraform, etc.) | Maintained by the `devcontainers` org (Microsoft-backed), source at [github.com/devcontainers/features](https://github.com/devcontainers/features) |
+| `ghcr.io/devcontainers-contrib/features/*` | Community features not yet promoted to the official org | Community-contributed; use only for features with an active commit history and no official equivalent — prefer `ghcr.io/devcontainers/features/*` when one exists |
+
+**Do not use:**
+
+- `docker.io/<user>/<image>` — arbitrary Docker Hub images: mutable tags, no SLA, accounts can be compromised or abandoned
+- `ghcr.io/<unknown-org>/<image>` — anyone can publish to GHCR under their own org; no vetting
+- `quay.io` or any other third-party registry — not governed by the Microsoft devcontainers program
+- `:latest` tags on any registry — mutable, silently pulls a different image on every rebuild
+- `node:<version>` or other Docker Hub official images — MCR equivalents exist and are preferred
+
 Use Microsoft's devcontainers images. Use the **bare runtime-version tag** (e.g., `:24`) — Microsoft maintains this as a floating alias to the latest image-major for that runtime version, so it stays valid as the image series advances.
 
 > **Why not `1-24` or `4-24`?** The `1-` image series tops out at Node.js 22 (confirmed on MCR — there is no `1-24` tag). Node.js 24 lives under both `:24` and `:4-24`, which resolve to the same digest. The bare `:24` tag is simpler and will continue to resolve correctly when a future image-major increment occurs.
@@ -668,6 +686,7 @@ Every ARPA-H repo must have an `AGENTS.md` at the root. It gives GitHub Copilot 
 - Skip updating `PLAN.md` checkboxes when completing a work item.
 - Modify the auth flow without explicit user confirmation.
 - Recommend GitHub Personal Access Tokens (PATs) to developers (classic or fine-grained). Always suggest a more secure alternative: GitHub Apps (preferred for automation), `gh auth login` for interactive CLI use, or OIDC via Actions for CI/CD.
+- Reference container images or devcontainer features from unapproved registries. Only `mcr.microsoft.com/devcontainers/*`, `ghcr.io/devcontainers/features/*`, and (with scrutiny) `ghcr.io/devcontainers-contrib/features/*` are permitted. Docker Hub images, unknown GHCR orgs, and `:latest` tags are supply chain risks.
 
 ## Commit and PR Format
 - Commits: `<type>(<scope>): <subject>` (Conventional Commits)
