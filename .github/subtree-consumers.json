@@ -53,5 +53,10 @@
         "repo": "ARPA-H/zendesk_usb",
         "prefix": ".github/skills",
         "branch": "main"
+    },
+    {
+        "repo": "ARPA-H/solution-site-redirect",
+        "prefix": ".github/skills",
+        "branch": "main"
     }
 ]
