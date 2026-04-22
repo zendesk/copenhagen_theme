@@ -210,6 +210,6 @@ Described functionally — implement with whatever component primitives your fra
 |--------------|-------------------------------------------------------------|
 | Hover        | Lighten background one step up the neutral scale            |
 | Pressed      | Darken background one step down the neutral scale           |
-| Focus        | Visible focus ring — `2px solid #FFFFFF` with 2px offset    |
+| Focus        | Visible focus ring — `2px solid #FFFFFF` with 2px offset  |
 | Disabled     | Text: `--color-muted-3`; no hover or pressed response       |
 | Selected     | Border/stroke becomes `#FFFFFF`; text becomes white         |
