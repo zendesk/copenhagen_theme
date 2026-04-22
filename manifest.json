@@ -1,5 +1,5 @@
 {
-  "name": "Copenhagen",
+  "name": "{{> copenhagen}}",
   "author": "Zendesk",
   "version": "4.36.1",
   "api_version": 4,
