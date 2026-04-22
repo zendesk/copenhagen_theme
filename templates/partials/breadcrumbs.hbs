@@ -1,0 +1,19 @@
+<nav aria-label="{{t 'current_location'}}">
+  <ol class="breadcrumbs">
+    {{#each path_steps}}
+      <li>
+        {{#is url "#"}}
+          {{#is name "..."}}
+            ...
+          {{else}}
+            <a href="{{url}}" aria-current="page">{{name}}</a>
+          {{/is}}
+        {{else}}
+          <a href="{{url}}">{{name}}</a>
+        {{/is}}
+      </li>
+    {{/each}}
+  </ol>
+</nav>
+
+{{help_center.url}}
