@@ -119,7 +119,8 @@ export function ServiceCatalogItem({
   const attachmentsOptionId =
     serviceCatalogItem?.custom_object_fields?.["standard::attachment_option"];
 
-  const requestOnBehalfEnabled = serviceCatalogItem?.allow_request_on_behalf;
+  const requestOnBehalfEnabled = true;
+  // const requestOnBehalfEnabled = serviceCatalogItem?.allow_request_on_behalf;
 
   const {
     attachmentsOption,
