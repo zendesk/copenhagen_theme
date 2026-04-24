@@ -38,6 +38,14 @@
     margin-top: 20px;
   }
 
+  .go-back {
+    align-items: center;
+    display: inline-flex;
+    flex-shrink: 0;
+    gap: 0.35em;
+    margin-bottom: 12px;
+  }
+
   &-avatar {
     margin-right: 10px;
   }
@@ -47,18 +55,34 @@
   }
 
   &-title {
+    color: #1f73b7 !important;
+    /* Hit-test layer: keeps cursor=pointer; plain text in h1 would otherwise get I-beam and feel like “flicker”. */
+    isolation: isolate;
     overflow: hidden;
+    position: relative;
     text-overflow: ellipsis;
+    -webkit-user-select: none;
+    user-select: none;
+    z-index: 0;
     max-width: 100%;
 
     @include tablet {
       flex-basis: 100%; /* Take entire row */
     }
 
+    &::after {
+      content: "";
+      cursor: pointer;
+      inset: 0;
+      position: absolute;
+      z-index: 1;
+    }
+
     .icon-lock {
       position: relative;
       left: -5px;
       vertical-align: baseline;
+      z-index: 0;
     }
   }
 

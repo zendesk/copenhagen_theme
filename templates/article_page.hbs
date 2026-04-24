@@ -48,6 +48,12 @@
 
     <article id="main-content" class="article">
       <header class="article-header">
+
+        <a href="{{section.url}}" class="go-back" aria-label="Back to {{section.name}}">
+         &larr;
+         Back
+        </a>
+
         <h1 title="{{article.title}}" class="article-title">
           {{article.title}}
           {{#if article.internal}}

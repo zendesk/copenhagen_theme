@@ -5,6 +5,8 @@ node_modules/
 *.DS_Store
 coverage/
 .idea/
+.env
+.env.*.local
 
 # yarn
 .yarn/*

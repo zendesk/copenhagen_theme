@@ -4,10 +4,12 @@
  *
  * Usage:
  *   node scripts/upload-dynamic-content.mjs \
+ *     --subdomain your-subdomain \
  *     --email your@email.com \
  *     --token your_api_token
  *
- * The subdomain is read from ~/.zcli (azal).
+ * --subdomain defaults to "azal". You can also set ZENDESK_SUBDOMAIN.
+ * If --email / --token are omitted, ZENDESK_EMAIL and ZENDESK_API_TOKEN are used.
  * Locale IDs are fetched from the API at runtime.
  *
  * Each key becomes a DC item named  hc_<key>
@@ -22,9 +24,7 @@ import { fileURLToPath } from "url";
 // Config
 // ---------------------------------------------------------------------------
 
-const SUBDOMAIN = "azal";
 const DC_PREFIX = "hc_";
-const BASE_URL = `https://${SUBDOMAIN}.zendesk.com/api/v2`;
 
 // Keys from our translation files that should become Dynamic Content items.
 // These are the custom keys we added — NOT the Zendesk settings strings.
@@ -146,15 +146,18 @@ function parseArgs() {
     const i = args.indexOf(flag);
     return i !== -1 ? args[i + 1] : null;
   };
-  const email = get("--email");
-  const token = get("--token");
+  const email = get("--email") || process.env.ZENDESK_EMAIL;
+  const token = get("--token") || process.env.ZENDESK_API_TOKEN;
+  let subdomain = get("--subdomain") || process.env.ZENDESK_SUBDOMAIN || "azal";
+  subdomain = String(subdomain).replace(/@$/u, "").trim();
   if (!email || !token) {
     console.error(
-      "Usage: node scripts/upload-dynamic-content.mjs --email <email> --token <api_token>"
+      "Usage: node scripts/upload-dynamic-content.mjs --subdomain <subdomain> --email <email> --token <api_token>\n" +
+        "Or set ZENDESK_EMAIL, ZENDESK_API_TOKEN, and optional ZENDESK_SUBDOMAIN."
     );
     process.exit(1);
   }
-  return { email, token };
+  return { email, token, subdomain };
 }
 
 // ---------------------------------------------------------------------------
@@ -165,8 +168,8 @@ function makeAuth(email, token) {
   return Buffer.from(`${email}/token:${token}`).toString("base64");
 }
 
-async function apiFetch(path, auth, options = {}) {
-  const url = `${BASE_URL}${path}`;
+async function apiFetch(baseUrl, path, auth, options = {}) {
+  const url = `${baseUrl}${path}`;
   const res = await fetch(url, {
     ...options,
     headers: {
@@ -186,8 +189,8 @@ async function apiFetch(path, auth, options = {}) {
 // Fetch locale IDs for en-us, ru, az
 // ---------------------------------------------------------------------------
 
-async function getLocaleIds(auth) {
-  const data = await apiFetch("/locales/public", auth);
+async function getLocaleIds(baseUrl, auth) {
+  const data = await apiFetch(baseUrl, "/locales/public", auth);
   const locales = data.locales;
   const map = {};
   for (const l of locales) {
@@ -215,16 +218,16 @@ async function getLocaleIds(auth) {
 // Fetch existing DC items to allow upsert behaviour
 // ---------------------------------------------------------------------------
 
-async function getExistingItems(auth) {
+async function getExistingItems(baseUrl, auth) {
   const existing = {};
   let url = "/dynamic_content/items?per_page=100";
   while (url) {
-    const data = await apiFetch(url, auth);
+    const data = await apiFetch(baseUrl, url, auth);
     for (const item of data.items) {
       existing[item.name] = item;
     }
     // Handle pagination
-    url = data.next_page ? data.next_page.replace(BASE_URL, "") : null;
+    url = data.next_page ? data.next_page.replace(baseUrl, "") : null;
   }
   console.log(`Found ${Object.keys(existing).length} existing DC items`);
   return existing;
@@ -248,7 +251,14 @@ function loadTranslations() {
 // Create or update a single DC item
 // ---------------------------------------------------------------------------
 
-async function upsertItem(auth, localeIds, translations, key, existingItems) {
+async function upsertItem(
+  baseUrl,
+  auth,
+  localeIds,
+  translations,
+  key,
+  existingItems
+) {
   const dcName = `${DC_PREFIX}${key}`;
   const existing = existingItems[dcName];
 
@@ -279,6 +289,7 @@ async function upsertItem(auth, localeIds, translations, key, existingItems) {
       const newVariant = variants.find((v) => v.locale_id === variant.locale_id);
       if (!newVariant) continue;
       await apiFetch(
+        baseUrl,
         `/dynamic_content/items/${existing.id}/variants/${variant.id}`,
         auth,
         {
@@ -292,6 +303,7 @@ async function upsertItem(auth, localeIds, translations, key, existingItems) {
     for (const variant of variants) {
       if (!existingLocaleIds.has(variant.locale_id)) {
         await apiFetch(
+          baseUrl,
           `/dynamic_content/items/${existing.id}/variants`,
           auth,
           {
@@ -310,7 +322,7 @@ async function upsertItem(auth, localeIds, translations, key, existingItems) {
       console.warn(`  ✗  Skipping ${dcName} — no en-us default variant`);
       return null;
     }
-    const data = await apiFetch("/dynamic_content/items", auth, {
+    const data = await apiFetch(baseUrl, "/dynamic_content/items", auth, {
       method: "POST",
       body: JSON.stringify({
         item: {
@@ -330,14 +342,15 @@ async function upsertItem(auth, localeIds, translations, key, existingItems) {
 // ---------------------------------------------------------------------------
 
 async function main() {
-  const { email, token } = parseArgs();
+  const { email, token, subdomain } = parseArgs();
   const auth = makeAuth(email, token);
+  const baseUrl = `https://${subdomain}.zendesk.com/api/v2`;
 
-  console.log(`\n🌐  Connecting to ${BASE_URL}\n`);
+  console.log(`\n🌐  Connecting to ${baseUrl}\n`);
 
   const [localeIds, existingItems, translations] = await Promise.all([
-    getLocaleIds(auth),
-    getExistingItems(auth),
+    getLocaleIds(baseUrl, auth),
+    getExistingItems(baseUrl, auth),
     Promise.resolve(loadTranslations()),
   ]);
 
@@ -348,7 +361,14 @@ async function main() {
   for (const key of CUSTOM_KEYS) {
     const dcName = `${DC_PREFIX}${key}`;
     const wasExisting = !!existingItems[dcName];
-    const result = await upsertItem(auth, localeIds, translations, key, existingItems);
+    const result = await upsertItem(
+      baseUrl,
+      auth,
+      localeIds,
+      translations,
+      key,
+      existingItems
+    );
     if (result) {
       wasExisting ? results.updated++ : results.created++;
     } else {

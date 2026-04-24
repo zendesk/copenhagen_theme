@@ -2780,6 +2780,13 @@ a.contact-card-btn:hover, a.contact-card-btn:focus {
     margin-top: 0;
   }
 }
+.article .go-back {
+  align-items: center;
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: 0.35em;
+  margin-bottom: 12px;
+}
 .article-avatar {
   margin-right: 10px;
 }
@@ -2787,8 +2794,15 @@ a.contact-card-btn:hover, a.contact-card-btn:focus {
   margin-bottom: 10px;
 }
 .article-title {
+  color: #1f73b7 !important;
+  /* Hit-test layer: keeps cursor=pointer; plain text in h1 would otherwise get I-beam and feel like “flicker”. */
+  isolation: isolate;
   overflow: hidden;
+  position: relative;
   text-overflow: ellipsis;
+  -webkit-user-select: none;
+  user-select: none;
+  z-index: 0;
   max-width: 100%;
 }
 @media (min-width: 768px) {
@@ -2796,10 +2810,18 @@ a.contact-card-btn:hover, a.contact-card-btn:focus {
     flex-basis: 100%; /* Take entire row */
   }
 }
+.article-title::after {
+  content: "";
+  cursor: pointer;
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
 .article-title .icon-lock {
   position: relative;
   left: -5px;
   vertical-align: baseline;
+  z-index: 0;
 }
 .article [role=button] {
   flex-shrink: 0; /*Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored)*/
