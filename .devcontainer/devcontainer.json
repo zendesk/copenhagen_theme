@@ -1,9 +1,7 @@
 {
   "name": "ARPA-H Skills",
-
   // Universal image — no specific language stack detected; provides Node, Python, Go, etc.
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-
   "customizations": {
     "vscode": {
       "extensions": [
