@@ -58,5 +58,10 @@
         "repo": "ARPA-H/solution-site-redirect",
         "prefix": ".github/skills",
         "branch": "main"
+    },
+    {
+        "repo": "ARPA-H/web-design-example",
+        "prefix": ".github/skills",
+        "branch": "main"
     }
 ]
