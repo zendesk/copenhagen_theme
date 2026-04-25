@@ -24,6 +24,10 @@ See `README.md` → "Registering New Skills" for conventions and the required `S
 - Remove or rename a skill directory without checking `.github/subtree-consumers.json` — consumers that reference the old prefix will break.
 - Use mutable Action tags in workflow files — always pin to a full commit SHA with the tag noted in a comment.
 
+## MCP Servers
+
+- **Figma MCP** (`https://mcp.figma.com/mcp`) is configured in `.vscode/mcp.json` and uses **browser OAuth** — never API tokens or `Authorization` headers. Do not add token-based auth to the Figma server config. To activate: Command Palette → **MCP: List Servers** → start `figma` → complete the browser OAuth flow.
+
 ## Commit and PR Format
 
 - Commits: `<type>(<scope>): <subject>` (Conventional Commits)
