@@ -7,7 +7,7 @@
  * All tokens are defined as CSS custom properties on :root.
  *
  * Self-hosted fonts (no CDN required):
- *   @import './fonts/fonts.css';   ← add this BEFORE this file
+ *   @import '../fonts/fonts.css';   ← add this BEFORE this file
  *   @import './globals.css';
  *
  * Or use Google Fonts CDN (requires internet):

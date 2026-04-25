@@ -22,19 +22,37 @@ All assets are included for offline reference. **When building on a native stack
 
 | File | Purpose |
 |------|---------|
-| [assets/globals.css](./assets/globals.css) | All NEXUS design tokens as CSS custom properties. Not part of USWDS — covers NEXUS brand colors (indigo/cyan/navy), Poppins typography scale, alias tokens, spacing, corner radius, and elevation shadows. Import first in every app. |
-| [assets/arpa-h-logomark.svg](./assets/arpa-h-logomark.svg) | ARPA-H hexagon "H" logomark (Navy `#001b5e`, Blue `#1176d6`, Cyan `#52daf2`). viewBox `0 0 287.8 314.39`. |
-| [assets/components.css](./assets/components.css) | Reference CSS for NEXUS components (Button, Alert, Text Input, Tag, Card, Nav Header, Pagination, Spinner). NEXUS-specific styles layered on USWDS. Requires `globals.css`. |
+| [assets/styles/globals.css](./assets/styles/globals.css) | All NEXUS design tokens as CSS custom properties. Not part of USWDS — covers NEXUS brand colors (indigo/cyan/navy), Poppins typography scale, alias tokens, spacing, corner radius, and elevation shadows. Import first in every app. |
+| [assets/images/arpa-h-logomark.svg](./assets/images/arpa-h-logomark.svg) | ARPA-H hexagon "H" logomark — full color (Navy `#001b5e`, Blue `#1176d6`, Cyan `#52daf2`). viewBox `0 0 287.8 314.39`. Light backgrounds. |
+| [assets/images/arpa-h-logomark-navy.svg](./assets/images/arpa-h-logomark-navy.svg) | Logomark — flat Navy `#001b5e`. viewBox `0 0 287.79 314.39`. Single-color, light/white backgrounds. |
+| [assets/images/arpa-h-logomark-black.svg](./assets/images/arpa-h-logomark-black.svg) | Logomark — flat black (inherits `currentColor`). viewBox `0 0 287.79 314.39`. Print / greyscale. |
+| [assets/images/arpa-h-logomark-white.svg](./assets/images/arpa-h-logomark-white.svg) | Logomark — flat white `#fff`. viewBox `0 0 287.79 314.39`. Dark or colored backgrounds. |
+| [assets/images/arpa-h-logomark-reverse.svg](./assets/images/arpa-h-logomark-reverse.svg) | Logomark — reverse colorway (body `#09349d`, white H, Blue/Cyan accents). viewBox `0 0 287.8 314.39`. Dark/navy/indigo backgrounds. |
+| [assets/images/arpa-h-logo.svg](./assets/images/arpa-h-logo.svg) | Full horizontal logo lockup (mark + "ARPA-H" wordmark) — full color. viewBox `0 0 1132.84 314.39`. Light backgrounds. |
+| [assets/images/arpa-h-logo-navy.svg](./assets/images/arpa-h-logo-navy.svg) | Full logo lockup — flat Navy `#001b5e`. viewBox `0 0 1132.81 314.39`. Single-color, light/white backgrounds. |
+| [assets/images/arpa-h-logo-black.svg](./assets/images/arpa-h-logo-black.svg) | Full logo lockup — flat black (inherits `currentColor`). viewBox `0 0 1132.81 314.39`. Print / greyscale. |
+| [assets/images/arpa-h-logo-white.svg](./assets/images/arpa-h-logo-white.svg) | Full logo lockup — flat white `#fff`. viewBox `0 0 1132.81 314.39`. Dark or colored backgrounds. |
+| [assets/images/arpa-h-logo-reverse.svg](./assets/images/arpa-h-logo-reverse.svg) | Full logo lockup — reverse colorway (white wordmark, reverse mark). viewBox `0 0 1132.84 314.39`. Dark/navy/indigo backgrounds. |
+| [assets/styles/components.css](./assets/styles/components.css) | Reference CSS for NEXUS components (Button, Alert, Text Input, Tag, Card, Nav Header, Pagination, Spinner). NEXUS-specific styles layered on USWDS. Requires `globals.css`. |
 | [assets/tokens.json](./assets/tokens.json) | All NEXUS tokens in W3C Design Token format. Use with Style Dictionary, Theo, or any token pipeline. |
 | [assets/fonts/poppins-*.woff2](./assets/fonts/) | Poppins 300–700 (latin + latin-ext). **Not bundled with USWDS** — must be added separately. Used for all display text, h1, and h2. |
 
-> **Horizontal logo lockup** (mark + "ARPA-H" wordmark): not included here — requires text-to-path conversion from Figma. Export from node `83:10578` (Web Elements, file `ZbjllSrYpVdkdyioGVuNx2`) as SVG with "Outline text" enabled.
+**Logo selection guide:**
+
+| Context | Recommended file |
+|---------|-----------------|
+| Light / white background (default) | `arpa-h-logo.svg` (full color horizontal lockup) |
+| Light / white, single-color constraint | `arpa-h-logo-navy.svg` |
+| Dark / navy / indigo background | `arpa-h-logo-reverse.svg` |
+| Dark background, flat white only | `arpa-h-logo-white.svg` |
+| Print / greyscale | `arpa-h-logo-black.svg` |
+| Icon / favicon / tight space (mark only) | `arpa-h-logomark.svg` → `-navy`, `-white`, `-reverse`, `-black` variants as above |
 
 ### Also available offline (prefer upstream in live stacks)
 
 | File | Upstream source | Notes |
 |------|----------------|-------|
-| [assets/sprite.svg](./assets/sprite.svg) | `@uswds/uswds` npm package — `dist/img/sprite.svg` | Drupal USWDS theme, Astro/Svelte/Next apps using `@uswds/uswds` already have this. Use the copy here for offline reference or environments without npm. |
+| [assets/images/sprite.svg](./assets/images/sprite.svg) | `@uswds/uswds` npm package — `dist/img/sprite.svg` | Drupal USWDS theme, Astro/Svelte/Next apps using `@uswds/uswds` already have this. Use the copy here for offline reference or environments without npm. |
 | [assets/fonts/public-sans-*.woff2](./assets/fonts/) | `@uswds/uswds` npm package — `dist/fonts/` | Bundled with USWDS. Use the copy here for fully air-gapped environments only. |
 | [assets/fonts/roboto-mono-*.woff2](./assets/fonts/) | `@uswds/uswds` npm package — `dist/fonts/` | Bundled with USWDS. Same guidance as Public Sans. |
 | [assets/fonts/fonts.css](./assets/fonts/fonts.css) | Google Fonts CDN (online) or the WOFF2 files above (offline) | `@font-face` declarations for all three families. Only needed when not using USWDS's own font loading. |
@@ -42,7 +60,7 @@ All assets are included for offline reference. **When building on a native stack
 **Icon usage (all stacks):**
 ```html
 <svg class="icon" aria-hidden="true" focusable="false" width="24" height="24">
-  <use href="path/to/sprite.svg#close"></use>
+  <use href="assets/images/sprite.svg#close"></use>
 </svg>
 ```
 ```css
@@ -55,31 +73,31 @@ All assets are included for offline reference. **When building on a native stack
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <!-- NEXUS tokens -->
-<link rel="stylesheet" href="assets/globals.css">
-<link rel="stylesheet" href="assets/components.css">
+<link rel="stylesheet" href="assets/styles/globals.css">
+<link rel="stylesheet" href="assets/styles/components.css">
 <!-- sprite.svg and Public Sans/Roboto Mono come from your USWDS installation -->
 ```
 
 **Setup — fully offline / air-gapped:**
 ```html
 <link rel="stylesheet" href="assets/fonts/fonts.css">
-<link rel="stylesheet" href="assets/globals.css">
-<link rel="stylesheet" href="assets/components.css">
+<link rel="stylesheet" href="assets/styles/globals.css">
+<link rel="stylesheet" href="assets/styles/components.css">
 ```
 
 ```tsx
 // React / Next.js (offline)
 import './assets/fonts/fonts.css';
-import './assets/globals.css';
-import './assets/components.css';
+import './assets/styles/globals.css';
+import './assets/styles/components.css';
 ```
 
 **Setup — Google Fonts CDN (requires internet):**
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Public+Sans:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/globals.css">
-<link rel="stylesheet" href="assets/components.css">
+<link rel="stylesheet" href="assets/styles/globals.css">
+<link rel="stylesheet" href="assets/styles/components.css">
 ```
 
 ---
