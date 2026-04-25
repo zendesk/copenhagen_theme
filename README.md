@@ -135,3 +135,138 @@ Defines the ARPA-H internal application design system — a stack-agnostic visua
 - **Interaction states** — consistent hover (lighten one step), pressed (darken one step), focus ring (2px white with offset), disabled, and selected states for all interactive elements.
 
 **Why it matters:** Internal tooling that looks and behaves consistently reduces cognitive load for ARPA-H staff who use multiple apps. Centralizing these rules in a skill means GitHub Copilot applies them automatically when building new UI — preventing drift, accessibility regressions, and the ad-hoc color choices that accumulate over time.
+
+---
+
+### `arpa-h-web-design`
+
+**File:** [arpa-h-web-design/SKILL.md](arpa-h-web-design/SKILL.md)  
+**Assets:** [arpa-h-web-design/assets/](arpa-h-web-design/assets/)
+
+Full reference implementation of the **NEXUS Design System** — the ARPA-H public-facing web design system built on USWDS. Extracted from Figma file `ZbjllSrYpVdkdyioGVuNx2`. Applies to any ARPA-H public web property regardless of stack (Drupal, Astro, Svelte, Next.js, static HTML).
+
+**What it covers:**
+
+- **Design tokens** — all NEXUS tokens as CSS custom properties (`globals.css`) and W3C Design Token JSON (`tokens.json`). Covers 11 color primitive palettes, brand/feedback/accent alias tokens, 8px-grid spacing scale, corner radius scale, typography scale, and elevation shadows. Not duplicated by USWDS — these are NEXUS-specific values.
+- **Typography** — three-family system: Poppins (display, h1–h2), Public Sans (h3–body–action), Roboto Mono (code). Full size/weight/line-height/letter-spacing scale. Public Sans and Roboto Mono come from USWDS; Poppins WOFF2 files are included as they are NEXUS-only.
+- **Component reference CSS** — `components.css` provides framework-agnostic styles for Button (4 variants, 2 sizes), Alert (5 states), Text Input, Tag/Badge, Card, Site Alert banner, Nav Header, Pagination, and Loading Spinner.
+- **Logo** — ARPA-H hexagon "H" mark as a clean SVG (`arpa-h.svg`). Horizontal lockup with wordmark must be exported from Figma (node `83:10578`) with "Outline text" enabled.
+- **Icon sprite** — full `@uswds/uswds` `sprite.svg` (245 icons) included for offline reference. Native-stack apps should use the copy from their USWDS installation.
+- **Self-hosted fonts** — 24 WOFF2 files for air-gapped environments. Native-stack apps using `@uswds/uswds` already have Public Sans and Roboto Mono; only Poppins must be added separately.
+- **Component inventory** — 27 documented components across 37 Figma pages, with variant/prop tables and token references.
+- **Layout conventions** — 12-column responsive grid, 8-breakpoint system (320px–1400px), container widths, and section spacing rules.
+
+**What it does not replace:** USWDS itself. NEXUS is a branded layer on top of USWDS — apps still depend on `@uswds/uswds` for base styles, utilities, and the icon sprite. This skill provides the NEXUS-specific delta.
+
+**Why it matters:** ARPA-H public web properties span multiple stacks and teams. Without a central reference, NEXUS tokens, Poppins usage, and brand color application diverge rapidly. This skill ensures GitHub Copilot applies correct NEXUS values — not raw USWDS defaults — when generating or reviewing any ARPA-H public UI.
+
+---
+
+## Updating Skills from Figma
+
+The `arpa-h-web-design` skill was extracted directly from the NEXUS Design System Figma file using the **Figma MCP server** — a Model Context Protocol integration that lets GitHub Copilot query Figma design data in real time. Follow these steps to re-run or extend that extraction.
+
+### Prerequisites
+
+- VS Code with the **GitHub Copilot Chat** extension
+- The **Figma for VS Code** extension (`figma.figma-vscode-extension`) — already listed in `.devcontainer/devcontainer.json`
+- A Figma account with access to the NEXUS file (`ZbjllSrYpVdkdyioGVuNx2`)
+- This repo open in a devcontainer or locally
+
+### 1. Configure the MCP server
+
+The Figma MCP server is already configured in [`.vscode/mcp.json`](.vscode/mcp.json):
+
+```json
+{
+    "inputs": [],
+    "servers": {
+        "figma": {
+            "type": "http",
+            "url": "https://mcp.figma.com/mcp"
+        }
+    }
+}
+```
+
+**Critical:** `mcp.figma.com` uses **OAuth browser sign-in only** — it does not accept Figma Personal Access Tokens (PATs) or `Authorization: Bearer` headers. Do not add auth headers to this config. Leave it exactly as shown.
+
+### 2. Authenticate via OAuth
+
+The MCP server requires a one-time browser sign-in per session:
+
+1. Open the VS Code Command Palette (`Cmd/Ctrl+Shift+P`)
+2. Run **"MCP: List Servers"**
+3. Find `figma` in the list — if its status shows as stopped or unauthorized, click **Start**
+4. A browser window opens to `figma.com` — sign in with your Figma account
+5. Authorize the VS Code MCP connection when prompted
+6. Return to VS Code — the server status should now show as running
+
+Alternatively, simply open GitHub Copilot Chat and ask a Figma-related question; VS Code will prompt you to start the server automatically if it isn't running.
+
+> **Session scope:** Authentication persists for the VS Code session but does not survive a full devcontainer rebuild. Re-authenticate after rebuilds using the steps above.
+
+### 3. Query the design file
+
+With the server running, use GitHub Copilot Chat in **Agent mode** with natural language queries against the NEXUS file key `ZbjllSrYpVdkdyioGVuNx2`. Examples:
+
+```text
+Extract all color styles from Figma file ZbjllSrYpVdkdyioGVuNx2
+```
+
+```text
+Get the design variables and token collections from ZbjllSrYpVdkdyioGVuNx2
+```
+
+```text
+Search the NEXUS design system for the Button component
+```
+
+```text
+Get the full design context for node 3556:18705 in file ZbjllSrYpVdkdyioGVuNx2
+```
+
+Copilot uses the following MCP tools internally — you don't call these directly, but they're useful to know for troubleshooting:
+
+| Tool | Purpose |
+| ---- | ------- |
+| `mcp_figma_get_metadata` | File structure, page list, component counts |
+| `mcp_figma_get_variable_defs` | Design token/variable collections |
+| `mcp_figma_search_design_system` | Search components by name |
+| `mcp_figma_get_design_context` | Full design spec for a specific node ID |
+| `mcp_figma_get_code_connect_suggestions` | Code Connect mappings (needed before `get_design_context` on some nodes) |
+| `mcp_figma_send_code_connect_mappings` | Send empty mappings `[]` to proceed past the Code Connect prompt |
+
+### 4. Code Connect prompt workaround
+
+Some nodes return a scripted prompt asking whether you want to set up Code Connect before showing design context. When this happens:
+
+1. Copilot will ask: *"Do you want to set up Code Connect for this component?"*
+2. Answer **"Yes"** (this triggers `get_code_connect_suggestions`)
+3. Since there are no codebase components to map, Copilot will call `send_code_connect_mappings` with `mappings: []`
+4. The full design context is then returned
+
+This is normal behavior — it does not require any codebase changes.
+
+### 5. Re-extracting specific sections
+
+When updating the skill after Figma changes, target only what changed:
+
+- **Color/token changes** → ask Copilot to re-extract variable collections, then update `assets/globals.css` and `assets/tokens.json`
+- **New or changed components** → get design context for the affected node IDs, update the Components section of `SKILL.md` and `assets/components.css`
+- **Typography changes** → re-extract text styles, update the Typography section of `SKILL.md` and `--font-*` vars in `globals.css`
+
+Node IDs for key components (from the current extraction):
+
+| Component | Node ID |
+| --------- | ------- |
+| Button | `3556:18705` |
+| Alert | `6365:11047` |
+| Web Elements (Logo) | `83:10580` |
+| Text Input | `6365:6428` |
+| Site Alert | `6365:6366` |
+| Tag | `6365:6576` |
+| Pagination | `3404:13833` |
+| Loading Spinner | `6724:860` |
+| Card | `6820:150` |
+| Navigation | `6713:1644` |

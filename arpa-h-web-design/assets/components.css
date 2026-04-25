@@ -1,0 +1,672 @@
+/*
+ * NEXUS Design System — Component Reference Styles
+ * Source: Figma file ZbjllSrYpVdkdyioGVuNx2 ("📍 NEXUS Design System")
+ * Generated: April 25, 2026
+ *
+ * Requires: globals.css (must be imported first for CSS custom properties)
+ *
+ * This file defines reference implementations for all NEXUS components
+ * as plain CSS classes. Adapt class names and structure to your framework.
+ */
+
+/* ═══════════════════════════════════════════════════════════════
+ * FOCUS — applied globally for WCAG 2.4.7 compliance
+ * ═══════════════════════════════════════════════════════════════ */
+
+:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+    /* 0 0 0 1px #0957be, 0 0 3px 1px #0957be */
+    border-radius: var(--radius-xs);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * BUTTON
+ *
+ * Variants:  .btn-primary (default), .btn-secondary, .btn-outline,
+ *            .btn-unstyled
+ * Sizes:     default (44px tall), .btn-lg (56px tall)
+ * States:    :hover, :focus-visible, :disabled
+ *
+ * From Figma node 3556:18705:
+ *   - Primary:  bg cyan-neutral (#52daf2), text indigo-neutral (#000334)
+ *   - Padding:  16px top/bottom (default), 20px left/right
+ *   - Radius:   1000px (pill)
+ *   - Font:     Public Sans Regular 18px / line-height 20px (default)
+ *               Public Sans Regular 20px / line-height 24px (large)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    /* 8px */
+    padding: var(--space-105) var(--space-205);
+    /* 12px 20px — default */
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-sm);
+    /* 18px */
+    font-weight: var(--font-weight-regular);
+    line-height: 20px;
+    letter-spacing: var(--letter-spacing-auto);
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: var(--radius-round);
+    cursor: pointer;
+    transition: background-color 120ms ease, color 120ms ease, box-shadow 120ms ease;
+    white-space: nowrap;
+}
+
+.btn:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Primary button */
+.btn-primary {
+    background-color: var(--color-brand-secondary);
+    /* #52daf2 cyan */
+    color: var(--color-brand-primary);
+    /* #000334 indigo */
+    border-color: transparent;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-cyan-600);
+    /* #44b6ca */
+}
+
+/* Secondary button */
+.btn-secondary {
+    background-color: var(--color-brand-primary);
+    /* #000334 indigo */
+    color: var(--color-brand-white);
+    /* #ffffff */
+    border-color: transparent;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-brand-primary-light);
+    /* #2a2d56 */
+}
+
+/* Outline button */
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-hover-light-5);
+}
+
+/* Unstyled button */
+.btn-unstyled {
+    background-color: transparent;
+    color: var(--color-link);
+    border-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    text-decoration: underline;
+}
+
+.btn-unstyled:hover {
+    color: var(--color-blue-800);
+}
+
+/* Large size modifier */
+.btn-lg {
+    padding: var(--space-2) var(--space-205);
+    /* 16px 20px */
+    font-size: var(--font-size-md);
+    /* 20px */
+    line-height: 24px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * ALERT
+ *
+ * Variants:  .alert-info (default), .alert-neutral, .alert-success,
+ *            .alert-warning, .alert-error
+ * Modifiers: .alert-simple (no heading, single line)
+ *
+ * From Figma node 6365:11047:
+ *   - Padding:       24px
+ *   - Border radius: 16px (--radius-lg)
+ *   - Gap:           16px between icon and text
+ *   - Heading:       Public Sans Bold 16px / 24px
+ *   - Body text:     Public Sans Regular 14px / 21px
+ *   - Close icon:    20×20px, top-right at 16px inset
+ * ═══════════════════════════════════════════════════════════════ */
+
+.alert {
+    display: flex;
+    gap: var(--space-2);
+    /* 16px */
+    align-items: flex-start;
+    position: relative;
+    padding: var(--space-3);
+    /* 24px */
+    border-radius: var(--radius-lg);
+    /* 16px */
+    min-width: 320px;
+}
+
+.alert-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.alert-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.alert-heading {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-xs);
+    /* 16px */
+    font-weight: var(--font-weight-bold);
+    line-height: 24px;
+    padding-right: var(--space-2);
+    margin: 0;
+}
+
+.alert-body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-2xs);
+    /* 14px */
+    font-weight: var(--font-weight-regular);
+    line-height: 21px;
+    margin: 0;
+}
+
+.alert-cta {
+    display: flex;
+    align-items: flex-start;
+    padding-top: var(--space-1);
+    /* 8px */
+    overflow: hidden;
+}
+
+.alert-close {
+    position: absolute;
+    top: var(--space-2);
+    /* 16px */
+    right: var(--space-2);
+    width: 20px;
+    height: 20px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Info (default) */
+.alert-info {
+    background-color: var(--color-info-light);
+    /* #cdeafa */
+    color: var(--color-info);
+    /* #0957be */
+}
+
+/* Neutral */
+.alert-neutral {
+    background-color: var(--color-ui-10);
+    /* #e5eaf0 */
+    color: var(--color-ui-90);
+    /* #131314 */
+}
+
+/* Success */
+.alert-success {
+    background-color: var(--color-success-light);
+    /* #dee6d7 */
+    color: var(--color-success);
+    /* #3c690e */
+}
+
+/* Warning */
+.alert-warning {
+    background-color: var(--color-warning-light);
+    /* #fdf3df */
+    color: var(--color-warning-dark);
+    /* #7a5d20 */
+}
+
+/* Error */
+.alert-error {
+    background-color: var(--color-error-light);
+    /* #f4dcd9 */
+    color: var(--color-error);
+    /* #bf2d1d */
+}
+
+/* Simple variant (no heading, compact single-line) */
+.alert-simple {
+    padding: var(--space-1) var(--space-3);
+    /* 8px 24px */
+    align-items: center;
+}
+
+.alert-simple .alert-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * TEXT INPUT
+ *
+ * From Figma page ↳ Text Input (6365:6428)
+ *   - Border:    1px solid --color-ui-40 (#bac2cc)
+ *   - Radius:    --radius-md (8px)
+ *   - Padding:   8px 12px
+ *   - Font:      Public Sans Regular 16px / 24px
+ *   - Focus:     --shadow-focus border ring
+ *   - Error:     border-color --color-error
+ * ═══════════════════════════════════════════════════════════════ */
+
+.input {
+    display: block;
+    width: 100%;
+    padding: var(--space-1) var(--space-105);
+    /* 8px 12px */
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-xs);
+    /* 16px */
+    font-weight: var(--font-weight-regular);
+    line-height: 24px;
+    color: var(--color-brand-primary);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-ui-40);
+    /* #bac2cc */
+    border-radius: var(--radius-md);
+    /* 8px */
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+    appearance: none;
+}
+
+.input::placeholder {
+    color: var(--color-ui-50);
+    /* #959ba3 */
+}
+
+.input:focus-visible {
+    outline: none;
+    border-color: var(--color-info);
+    /* #0957be */
+    box-shadow: var(--shadow-focus);
+}
+
+.input-error {
+    border-color: var(--color-error);
+    /* #bf2d1d */
+}
+
+.input-error:focus-visible {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 1px var(--color-error), 0 0 3px 1px var(--color-error);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * FORM LABEL & VALIDATION
+ * ═══════════════════════════════════════════════════════════════ */
+
+.label {
+    display: block;
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-xs);
+    /* 16px */
+    font-weight: var(--font-weight-bold);
+    line-height: 24px;
+    color: var(--color-brand-primary);
+    margin-bottom: var(--space-05);
+    /* 4px */
+}
+
+.hint {
+    display: block;
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-2xs);
+    /* 14px */
+    font-weight: var(--font-weight-regular);
+    line-height: 21px;
+    color: var(--color-ui-60);
+    /* #6f747a */
+    margin-bottom: var(--space-05);
+}
+
+.validation-error {
+    display: flex;
+    align-items: center;
+    gap: var(--space-05);
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-2xs);
+    /* 14px */
+    font-weight: var(--font-weight-regular);
+    line-height: 21px;
+    color: var(--color-error);
+    /* #bf2d1d */
+    margin-top: var(--space-05);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * TAG / BADGE
+ *
+ * From Figma page ↳ Tag (6365:6576)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-05);
+    /* 4px */
+    padding: 2px var(--space-1);
+    /* 2px 8px */
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-2xs);
+    /* 14px */
+    font-weight: var(--font-weight-medium);
+    line-height: 21px;
+    border-radius: var(--radius-round);
+    white-space: nowrap;
+}
+
+.tag-default {
+    background-color: var(--color-ui-10);
+    color: var(--color-ui-90);
+}
+
+.tag-primary {
+    background-color: var(--color-brand-primary);
+    color: var(--color-white);
+}
+
+.tag-info {
+    background-color: var(--color-info-light);
+    color: var(--color-info);
+}
+
+.tag-success {
+    background-color: var(--color-success-light);
+    color: var(--color-success);
+}
+
+.tag-warning {
+    background-color: var(--color-warning-light);
+    color: var(--color-warning-dark);
+}
+
+.tag-error {
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * CARD
+ *
+ * From Figma page ↳ Card (6820:150)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-ui-20);
+    /* #d7dee8 */
+    border-radius: var(--radius-lg);
+    /* 16px */
+    padding: var(--space-4);
+    /* 32px */
+    box-shadow: var(--shadow-1);
+}
+
+.card-elevated {
+    border-color: transparent;
+    box-shadow: var(--shadow-2);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * SITE ALERT (Full-width banner)
+ *
+ * From Figma page ↳ Site Alert (6365:6366)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.site-alert {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    /* 16px 24px */
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-regular);
+    line-height: 24px;
+}
+
+.site-alert-info {
+    background-color: var(--color-info-light);
+    color: var(--color-info);
+}
+
+.site-alert-warning {
+    background-color: var(--color-warning-light);
+    color: var(--color-warning-dark);
+}
+
+.site-alert-error {
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * NAVIGATION HEADER
+ *
+ * From Figma page ↳ Navigation (6713:1644)
+ * Standard ARPA-H header: white bg, indigo text, 80px tall on desktop.
+ * ═══════════════════════════════════════════════════════════════ */
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    padding: 0 var(--space-4);
+    /* 0 32px */
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-ui-10);
+    /* #e5eaf0 */
+    box-shadow: var(--shadow-1);
+}
+
+.site-header-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    /* 16px */
+    text-decoration: none;
+    color: var(--color-brand-primary);
+}
+
+.site-header-logo {
+    height: 40px;
+    width: auto;
+}
+
+.site-header-name {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    /* 18px */
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-brand-primary);
+    white-space: nowrap;
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    /* 24px */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav a {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-xs);
+    /* 16px */
+    font-weight: var(--font-weight-medium);
+    color: var(--color-brand-primary);
+    text-decoration: none;
+}
+
+.site-nav a:hover {
+    color: var(--color-info);
+    /* #0957be */
+}
+
+.site-nav a[aria-current="page"] {
+    color: var(--color-info);
+    text-decoration: underline;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * PAGINATION
+ *
+ * From Figma page ↳ Pagination ✅ (3404:13833)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: var(--space-05);
+    /* 4px */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pagination-item a,
+.pagination-item button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: var(--space-05) var(--space-1);
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-link);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    background: transparent;
+    cursor: pointer;
+}
+
+.pagination-item a:hover,
+.pagination-item button:hover {
+    background-color: var(--color-ui-5);
+}
+
+.pagination-item[aria-current="page"] a,
+.pagination-item[aria-current="page"] button {
+    background-color: var(--color-brand-primary);
+    color: var(--color-white);
+    font-weight: var(--font-weight-bold);
+    border-color: var(--color-brand-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * LOADING SPINNER
+ *
+ * From Figma page ↳ Loading Spinner (6724:860)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-ui-20);
+    border-top-color: var(--color-brand-primary);
+    border-radius: 50%;
+    animation: nexus-spin 0.8s linear infinite;
+}
+
+.spinner-sm {
+    width: 24px;
+    height: 24px;
+    border-width: 2px;
+}
+
+.spinner-lg {
+    width: 56px;
+    height: 56px;
+    border-width: 4px;
+}
+
+@keyframes nexus-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * LAYOUT UTILITIES
+ *
+ * Thin utility layer over the spacing/grid system.
+ * ═══════════════════════════════════════════════════════════════ */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    /* desktop-lg breakpoint */
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+    /* 32px */
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding-inline: var(--space-2);
+        /* 16px on mobile */
+    }
+}
+
+/* Section spacing */
+.section-gap {
+    margin-bottom: var(--space-10);
+}
+
+/* 80px */
+.section-gap-sm {
+    margin-bottom: var(--space-6);
+}
+
+/* 48px */
+
+/* Stack (vertical rhythm) */
+.stack>*+* {
+    margin-top: var(--space-3);
+}
+
+/* 24px */
+.stack-sm>*+* {
+    margin-top: var(--space-2);
+}
+
+/* 16px */
