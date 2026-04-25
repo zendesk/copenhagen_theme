@@ -14,7 +14,9 @@
         "github.github-vscode-theme",
         "dracula-theme.theme-dracula",
         // Markdown linting — *.md files present in repo
-        "davidanson.vscode-markdownlint"
+        "davidanson.vscode-markdownlint",
+        // Figma design integration
+        "figma.figma-vscode-extension"
       ],
       "settings": {
         "editor.formatOnSave": true,
