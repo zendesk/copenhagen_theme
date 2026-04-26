@@ -10,7 +10,7 @@ applyTo: "**/*.{ts,tsx,js,jsx,css,scss,html}"
 # NEXUS Design System — Full Reference
 
 Extracted from Figma file **ZbjllSrYpVdkdyioGVuNx2** ("📍 NEXUS Design System")  
-Last extracted: April 25, 2026
+Last extracted: April 26, 2026
 
 ---
 
@@ -28,11 +28,11 @@ All assets are included for offline reference. **When building on a native stack
 | [assets/images/arpa-h-logomark-black.svg](./assets/images/arpa-h-logomark-black.svg) | Logomark — flat black (inherits `currentColor`). viewBox `0 0 287.79 314.39`. Print / greyscale. |
 | [assets/images/arpa-h-logomark-white.svg](./assets/images/arpa-h-logomark-white.svg) | Logomark — flat white `#fff`. viewBox `0 0 287.79 314.39`. Dark or colored backgrounds. |
 | [assets/images/arpa-h-logomark-reverse.svg](./assets/images/arpa-h-logomark-reverse.svg) | Logomark — reverse colorway (body `#09349d`, white H, Blue/Cyan accents). viewBox `0 0 287.8 314.39`. Dark/navy/indigo backgrounds. |
-| [assets/images/arpa-h-logo.svg](./assets/images/arpa-h-logo.svg) | Full horizontal logo lockup (mark + "ARPA-H" wordmark) — full color. viewBox `0 0 1132.84 314.39`. Light backgrounds. |
-| [assets/images/arpa-h-logo-navy.svg](./assets/images/arpa-h-logo-navy.svg) | Full logo lockup — flat Navy `#001b5e`. viewBox `0 0 1132.81 314.39`. Single-color, light/white backgrounds. |
-| [assets/images/arpa-h-logo-black.svg](./assets/images/arpa-h-logo-black.svg) | Full logo lockup — flat black (inherits `currentColor`). viewBox `0 0 1132.81 314.39`. Print / greyscale. |
-| [assets/images/arpa-h-logo-white.svg](./assets/images/arpa-h-logo-white.svg) | Full logo lockup — flat white `#fff`. viewBox `0 0 1132.81 314.39`. Dark or colored backgrounds. |
-| [assets/images/arpa-h-logo-reverse.svg](./assets/images/arpa-h-logo-reverse.svg) | Full logo lockup — reverse colorway (white wordmark, reverse mark). viewBox `0 0 1132.84 314.39`. Dark/navy/indigo backgrounds. |
+| [assets/images/arpa-h-logo.svg](./assets/images/arpa-h-logo.svg) | Full horizontal logo lockup (mark + "ARPA-H" wordmark) — full color. Figma: `Logo=full-color` (also `Logo=thematic` — identical asset). viewBox `0 0 1132.84 314.39`. Light backgrounds. |
+| [assets/images/arpa-h-logo-navy.svg](./assets/images/arpa-h-logo-navy.svg) | Full logo lockup — flat Navy `#001b5e`. Figma: `Logo=one-color-navy`. viewBox `0 0 1132.81 314.39`. Single-color, light/white backgrounds. |
+| [assets/images/arpa-h-logo-black.svg](./assets/images/arpa-h-logo-black.svg) | Full logo lockup — flat black (inherits `currentColor`). Figma: `Logo=black`. viewBox `0 0 1132.81 314.39`. Print / greyscale. |
+| [assets/images/arpa-h-logo-white.svg](./assets/images/arpa-h-logo-white.svg) | Full logo lockup — flat white `#fff`. Figma: `Logo=white`. viewBox `0 0 1132.81 314.39`. Dark or colored backgrounds. |
+| [assets/images/arpa-h-logo-reverse.svg](./assets/images/arpa-h-logo-reverse.svg) | Full logo lockup — reverse colorway (white wordmark, reverse mark). Figma: `Logo=full-color-reverse`. viewBox `0 0 1132.84 314.39`. Dark/navy/indigo backgrounds. |
 | [assets/styles/components.css](./assets/styles/components.css) | Reference CSS for NEXUS components (Button, Alert, Text Input, Tag, Card, Nav Header, Pagination, Spinner). NEXUS-specific styles layered on USWDS. Requires `globals.css`. |
 | [assets/tokens.json](./assets/tokens.json) | All NEXUS tokens in W3C Design Token format. Use with Style Dictionary, Theo, or any token pipeline. |
 | [assets/fonts/poppins-*.woff2](./assets/fonts/) | Poppins 300–700 (latin + latin-ext). **Not bundled with USWDS** — must be added separately. Used for all display text, h1, and h2. |
@@ -47,6 +47,24 @@ All assets are included for offline reference. **When building on a native stack
 | Dark background, flat white only | `arpa-h-logo-white.svg` |
 | Print / greyscale | `arpa-h-logo-black.svg` |
 | Icon / favicon / tight space (mark only) | `arpa-h-logomark.svg` → `-navy`, `-white`, `-reverse`, `-black` variants as above |
+
+**Logo usage rules (verbatim from Figma Foundations — Logo Usage, node `73:25169`):**
+- **Full color** — primary variation; use wherever possible, ideally on white or very light backgrounds.
+- **Full color reverse** — use on black or very dark backgrounds.
+- **Black** — use when full color is not an option, on a light background, or over an image.
+- **White** — use when the full color logo is not legible, on a dark background, or over an image.
+- **Navy** — use as an alternative to the black logo.
+- **Dynamic / Thematic** — follows the full color logo; adapts to Figma's light and dark mode. Figma component variant name is `Logo=thematic`. In production code use `arpa-h-logo.svg` (same visual as full color).
+
+**Clear space & minimum size (Figma Foundations — Clear Space & Sizing, node `73:25186`):**
+- Clear space: a minimum equal to **50% of the logo's height** must be maintained on all sides.
+- Minimum width: **100 px** for digital communications.
+
+**ARPA-H Hexagon shape (Figma Foundations — Shape, node `73:25218`):**
+- Standalone decorative element (`Shape=Default`, component key `535:2675`) — may be scaled freely.
+- Use whenever the ARPA-H hexagon motif is needed without the full logotype.
+- When used for signature image thumbnails, **stroke width must remain at 6**.
+- Not included as a standalone SVG asset; pull directly from the NEXUS Figma file or extract the hexagon path from `arpa-h-logomark.svg`.
 
 ### Also available offline (prefer upstream in live stacks)
 
@@ -108,15 +126,16 @@ import './assets/styles/components.css';
 2. [Color Styles (Paint Styles)](#color-styles-paint-styles)
 3. [Typography / Text Styles](#typography--text-styles)
 4. [Effect Styles (Shadows)](#effect-styles-shadows)
-5. [Design Variables & Tokens](#design-variables--tokens)
+5. [Transparency & Blur](#transparency--blur)
+6. [Design Variables & Tokens](#design-variables--tokens)
    - [Primitive Colors](#primitive-colors)
    - [Alias Tokens](#alias-tokens)
    - [Spacing Primitives](#spacing-primitives)
    - [Breakpoints](#breakpoints)
    - [Corner Radius](#corner-radius)
    - [Typography Variables](#typography-variables)
-6. [Components](#components)
-7. [Layout & Grid Conventions](#layout--grid-conventions)
+7. [Components](#components)
+8. [Layout & Grid Conventions](#layout--grid-conventions)
 
 ---
 
@@ -127,7 +146,16 @@ import './assets/styles/components.css';
 | Table of Contents | Navigation overview |
 | Getting Started | Onboarding documentation |
 | Release Notes | Changelog |
-| Foundations | Color, typography, spacing foundations |
+| Foundations | Foundations canvas (`73:20609`) — nine sub-pages |
+| ↳ Logo | Logo variants, usage rules, clear space & sizing, ARPA-H hexagon shape |
+| ↳ Color | Brand, accent, and semantic color ramps |
+| ↳ Typography | Type families, scale tokens, responsive line heights |
+| ↳ System Type Styles | Visual reference for all NEXUS text styles (Display, Heading, Body, Action) |
+| ↳ Elevation | Drop shadow scale (`elevation/shadow-1` – `shadow-5`) and focus ring |
+| ↳ Corner Radius | Corner radius tokens |
+| ↳ Spacing | USWDS spacing scale and breakpoint tokens |
+| ↳ Icons | System icon set (USWDS sprite) |
+| ↳ Transparency & Blur 🆕 | Transparent surface token and 5 px blur — WIP |
 | Components | Main component index |
 | ↳ Accordion | Accordion component |
 | ↳ Alert | Alert/notification component |
@@ -259,6 +287,36 @@ All elevation shadows use `rgba(0,0,0,0.10)` (10% black).
 | Style Name | Type | Color | X | Y | Blur | Spread | Use |
 |-----------|------|-------|---|---|------|--------|-----|
 | `state/focused` | Drop Shadow | `rgba(9,87,190,1.0)` (#0957be) | 0 | 0 | 3px | 1px | Focus ring (accessibility) |
+
+---
+
+## Transparency & Blur
+
+> **Status:** Work In Progress in Figma (Foundations › Transparency & Blur, node `6501:7240`). Token value and blur radius are confirmed.
+
+Used to create depth, hierarchy, and visual focus — especially in overlays, modals, cards, and navigation surfaces. Blur is paired with transparency to reduce visual noise while maintaining legibility.
+
+### Transparent Surface Token
+
+| Token | CSS variable | Value |
+|-------|-------------|-------|
+| `surface/card-transparent` | `--surface/card-transparent` | `rgba(243, 245, 248, 0.70)` |
+
+> cool-grey-50 (`#f3f5f8`) at 70% opacity.
+
+### Standard Backdrop Blur
+
+The standard blur radius for transparent surfaces is **5 px**:
+
+```css
+.nexus-transparent-surface {
+  background: var(--surface/card-transparent, rgba(243, 245, 248, 0.70));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px); /* Safari */
+}
+```
+
+Apply to: tags, cards, and background overlay surfaces.
 
 ---
 
