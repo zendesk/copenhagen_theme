@@ -65,7 +65,7 @@
         "branch": "main"
     },
     {
-        "repo": "ARPA-H/mcp_registry",
+        "repo": "ARPA-H/api-center",
         "prefix": ".github/skills",
         "branch": "main"
     }
