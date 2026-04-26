@@ -63,5 +63,10 @@
         "repo": "ARPA-H/web-design-example",
         "prefix": ".github/skills",
         "branch": "main"
+    },
+    {
+        "repo": "ARPA-H/mcp_registry",
+        "prefix": ".github/skills",
+        "branch": "main"
     }
 ]
