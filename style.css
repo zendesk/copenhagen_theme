@@ -1450,11 +1450,13 @@ ul {
   }
 }
 .breadcrumbs li {
+  display: inline-block;
   color: lighten($text_color, 20%);
   font-size: 13px;
   max-width: 450px;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .breadcrumbs li + li::before {
   content: ">";

@@ -27,6 +27,7 @@
 
   const settings = {{json settings}};
 
+  const showSuggestedArticles = settings.show_suggested_articles ?? true;
   const props = {
     requestForm: {{json new_request_form}},
     newRequestPath: {{json (page_path 'new_request')}},
@@ -40,6 +41,7 @@
     brandId: {{json brand.id}},
     organizations: {{json user.organizations}},
     wysiwyg: true,
+    showSuggestedArticles: showSuggestedArticles,
     answerBotModal: {
       answerBot: {{#if answer_bot}}{{json answer_bot}}{{else}}null{{/if}},
       answerBotGenerativeExperience: {{#if answer_bot_generative_experience}}{{json answer_bot_generative_experience}}{{else}}null{{/if}},

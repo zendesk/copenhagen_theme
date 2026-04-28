@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Fragment, useCallback, useState } from "react";
+import { Fragment, useCallback } from "react";
 import { RequestFormField } from "../../../ticket-fields";
-import { Button } from "@zendeskgarden/react-buttons";
+import { Button, Anchor } from "@zendeskgarden/react-buttons";
 import { getColor } from "@zendeskgarden/react-theming";
 import { useTranslation } from "react-i18next";
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
@@ -21,6 +21,7 @@ import type {
   AttachmentsError,
   AttachmentsOption,
 } from "../../data-types/Attachments";
+import { Skeleton } from "@zendeskgarden/react-loaders";
 
 const Form = styled.form`
   display: flex;
@@ -47,7 +48,6 @@ const FieldsContainer = styled.div`
 
 const ButtonWrapper = styled.div`
   flex: 1;
-  margin-inline-start: ${(props) => props.theme.space.xl};
   padding: ${(props) => props.theme.space.lg};
   border: ${(props) => props.theme.borders.sm}
     ${({ theme }) => getColor({ theme, hue: "grey", shade: 300 })};
@@ -95,6 +95,25 @@ const LeftColumn = styled.div`
   }
 `;
 
+const ButtonSkeleton = styled(Skeleton)`
+  width: 100%;
+  height: 48px;
+  display: block;
+`;
+
+const UserNameWrapper = styled.div`
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.theme.space.xxs};
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 const isAssetField = (f: TicketFieldObject) =>
   f.relationship_target_type === ASSET_KEY;
 const isAssetTypeField = (f: TicketFieldObject) =>
@@ -107,6 +126,8 @@ interface ItemRequestFormProps {
   hasAtMentions: boolean;
   userRole: string;
   userId: number;
+  requestOnBehalfEnabled: boolean | undefined;
+  userName: string;
   brandId: number;
   defaultOrganizationId: string | null;
   handleChange: (
@@ -125,7 +146,8 @@ interface ItemRequestFormProps {
   isAssetTypeHidden: boolean;
   assetTypeIds: string[];
   assetIds: string[];
-  isSubmitting: boolean;
+  onAttachmentUploadingChange: (isUploading: boolean) => void;
+  isFormInitializing: boolean;
 }
 
 export function ItemRequestForm({
@@ -135,6 +157,8 @@ export function ItemRequestForm({
   hasAtMentions,
   userRole,
   userId,
+  requestOnBehalfEnabled,
+  userName,
   brandId,
   defaultOrganizationId,
   handleChange,
@@ -150,11 +174,10 @@ export function ItemRequestForm({
   isAssetTypeHidden,
   assetTypeIds,
   assetIds,
-  isSubmitting,
+  onAttachmentUploadingChange,
+  isFormInitializing,
 }: ItemRequestFormProps) {
   const { t } = useTranslation();
-
-  const [isUploadingAttachments, setIsUploadingAttachments] = useState(false);
 
   const buildLookupFieldOptions = async (
     records: CustomObjectRecord[],
@@ -228,9 +251,9 @@ export function ItemRequestForm({
   const handleAttachmentsOnUpload = useCallback(
     (status: boolean) => {
       setAttachmentsRequiredError(null);
-      setIsUploadingAttachments(status);
+      onAttachmentUploadingChange(status);
     },
-    [setAttachmentsRequiredError, setIsUploadingAttachments]
+    [setAttachmentsRequiredError, onAttachmentUploadingChange]
   );
 
   const renderRequestFields = () => {
@@ -335,15 +358,30 @@ export function ItemRequestForm({
       </LeftColumn>
       <RightColumn>
         <ButtonWrapper>
-          <Button
-            disabled={isUploadingAttachments || isSubmitting}
-            isPrimary
-            size="large"
-            isStretched
-            type="submit"
-          >
-            {t("service-catalog.item.submit-button", "Submit request")}
-          </Button>
+          <ButtonContainer>
+            <UserNameWrapper>
+              <Span isBold>{t("service-catalog.item.user", "User")}</Span>
+              <Span>{userName}</Span>
+            </UserNameWrapper>
+            {requestOnBehalfEnabled && (
+              <>
+                <Anchor isUnderlined={false}>
+                  {t(
+                    "service-catalog.item.change-user-requesting-on-behalf",
+                    "Change"
+                  )}
+                </Anchor>
+              </>
+            )}
+          </ButtonContainer>
+
+          {isFormInitializing ? (
+            <ButtonSkeleton />
+          ) : (
+            <Button isPrimary size="large" isStretched type="submit">
+              {t("service-catalog.item.submit-button", "Submit request")}
+            </Button>
+          )}
         </ButtonWrapper>
       </RightColumn>
     </Form>

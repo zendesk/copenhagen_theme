@@ -48,6 +48,7 @@ export interface ServiceCatalogItemProps {
   brandId: number;
   organizations: Array<Organization>;
   helpCenterPath: string;
+  userName: string;
 }
 
 function getCategoryIdFromUrl(): string | null {
@@ -63,6 +64,7 @@ export function ServiceCatalogItem({
   organizations,
   userId,
   brandId,
+  userName,
   helpCenterPath,
 }: ServiceCatalogItemProps) {
   const { serviceCatalogItem, errorFetchingItem } =
@@ -113,6 +115,8 @@ export function ServiceCatalogItem({
   const attachmentsOptionId =
     serviceCatalogItem?.custom_object_fields?.["standard::attachment_option"];
 
+  const requestOnBehalfEnabled = serviceCatalogItem?.allow_request_on_behalf;
+
   const {
     attachmentsOption,
     errorAttachmentsOption,
@@ -126,6 +130,7 @@ export function ServiceCatalogItem({
   const [assetTypeError, setAssetTypeError] = useState<string | null>(null);
   const [assetError, setAssetError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isUploadingAttachments, setIsUploadingAttachments] = useState(false);
 
   useEffect(() => {
     const handlePageShow = (e: PageTransitionEvent) => {
@@ -137,6 +142,23 @@ export function ServiceCatalogItem({
     window.addEventListener("pageshow", handlePageShow);
     return () => window.removeEventListener("pageshow", handlePageShow);
   }, []);
+
+  const hasCategories = (serviceCatalogItem?.categories?.length ?? 0) > 0;
+
+  const hasResolvedCategory = !hasCategories || !!selectedCategoryId;
+
+  const isFormInitializing =
+    !serviceCatalogItem ||
+    isRequestFieldsLoading ||
+    isLoadingAttachmentsOption ||
+    !hasResolvedCategory;
+
+  const canSubmit =
+    !isFormInitializing &&
+    !isSubmitting &&
+    !isUploadingAttachments &&
+    !!serviceCatalogItem &&
+    !!associatedLookupField;
 
   const handleFieldChange = (
     field: TicketFieldObject,
@@ -251,6 +273,12 @@ export function ServiceCatalogItem({
 
   const handleRequestSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!canSubmit) {
+      notifySubmitError();
+      return;
+    }
+
     const form = e.currentTarget;
     const formData = new FormData(form);
     const isAssetTypeFieldHidden = formData.get("isAssetTypeHidden") === "true";
@@ -344,6 +372,8 @@ export function ServiceCatalogItem({
           hasAtMentions={hasAtMentions}
           userRole={userRole}
           userId={userId}
+          requestOnBehalfEnabled={requestOnBehalfEnabled}
+          userName={userName}
           brandId={brandId}
           defaultOrganizationId={defaultOrganizationId}
           handleChange={handleFieldChange}
@@ -357,7 +387,8 @@ export function ServiceCatalogItem({
           isAssetTypeHidden={isAssetTypeHidden}
           assetTypeIds={assetTypeIds}
           assetIds={assetIds}
-          isSubmitting={isSubmitting}
+          onAttachmentUploadingChange={setIsUploadingAttachments}
+          isFormInitializing={isFormInitializing}
         />
       )}
     </Container>

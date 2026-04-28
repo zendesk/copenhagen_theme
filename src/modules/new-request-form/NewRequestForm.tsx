@@ -35,6 +35,7 @@ export interface NewRequestFormProps {
   userRole: string;
   userId: number;
   brandId: number;
+  showSuggestedArticles: boolean;
   organizations: Array<Organization>;
   answerBotModal: {
     answerBot: AnswerBot | null;
@@ -73,6 +74,7 @@ export function NewRequestForm({
   userRole,
   userId,
   brandId,
+  showSuggestedArticles,
   organizations,
   answerBotModal,
 }: NewRequestFormProps) {
@@ -218,10 +220,12 @@ export function NewRequestForm({
                   field={field}
                   onChange={(value) => handleChange(field, value)}
                 />
-                <SuggestedArticles
-                  query={field.value as string | undefined}
-                  locale={locale}
-                />
+                {showSuggestedArticles && (
+                  <SuggestedArticles
+                    query={field.value as string | undefined}
+                    locale={locale}
+                  />
+                )}
               </Fragment>
             );
           } else if (field.type === "description") {

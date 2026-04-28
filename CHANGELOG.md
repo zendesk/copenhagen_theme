@@ -1,3 +1,24 @@
+# [4.36.0](https://github.com/zendesk/copenhagen_theme/compare/v4.35.1...v4.36.0) (2026-04-17)
+
+
+### Features
+
+* add current user name as a default requester ([7932b15](https://github.com/zendesk/copenhagen_theme/commit/7932b15f42e99cfc42a36b2272e4f8031b3d23a2))
+
+## [4.35.1](https://github.com/zendesk/copenhagen_theme/compare/v4.35.0...v4.35.1) (2026-04-10)
+
+
+### Bug Fixes
+
+* trim category name in dropdown ([b87ef36](https://github.com/zendesk/copenhagen_theme/commit/b87ef369800740d3e239a22d7532d2dafad1ce39))
+
+# [4.35.0](https://github.com/zendesk/copenhagen_theme/compare/v4.34.0...v4.35.0) (2026-04-10)
+
+
+### Features
+
+* add setting to enable and disable suggested articles ([833bb34](https://github.com/zendesk/copenhagen_theme/commit/833bb349a8661bd0b3aa15205bde533a76ed7c2e))
+
 # [4.34.0](https://github.com/zendesk/copenhagen_theme/compare/v4.33.5...v4.34.0) (2026-03-30)
 
 

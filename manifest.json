@@ -1,7 +1,9 @@
 {
   "name": "AZAL theme based on Copenhagen",
   "author": "OAPPS LLC (https://oapps.io/)",
-  "version": "4.34.3.2",
+  "name": "Copenhagen",
+  "author": "Zendesk",
+  "version": "4.36.0.1",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -429,6 +431,18 @@
           "type": "checkbox",
           "description": "follow_topic_description",
           "label": "follow_topic_label",
+          "value": true
+        }
+      ]
+    },
+    {
+      "label": "show_suggested_articles_label",
+      "variables": [
+        {
+          "identifier": "show_suggested_articles",
+          "type": "checkbox",
+          "description": "show_suggested_articles_in_new_request_form_description",
+          "label": "show_suggested_articles_label",
           "value": true
         }
       ]

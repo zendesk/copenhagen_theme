@@ -86,6 +86,7 @@ describe("ServiceCatalogItem", () => {
     userRole: "end_user",
     userId: 123,
     brandId: 456,
+    userName: "Test User",
     organizations: [],
     helpCenterPath: "/hc/en-us",
   };
@@ -97,6 +98,7 @@ describe("ServiceCatalogItem", () => {
     form_id: 100,
     thumbnail_url: "",
     categories: [],
+    allow_request_on_behalf: false,
     custom_object_fields: {
       "standard::asset_option": "",
       "standard::asset_type_option": "",

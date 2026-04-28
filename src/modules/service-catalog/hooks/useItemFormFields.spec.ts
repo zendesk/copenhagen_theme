@@ -10,6 +10,7 @@ describe("useItemFormFields", () => {
     form_id: 1,
     thumbnail_url: "",
     categories: [],
+    allow_request_on_behalf: false,
     custom_object_fields: {
       "standard::asset_option": "",
       "standard::asset_type_option": "",
