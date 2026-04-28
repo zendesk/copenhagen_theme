@@ -14,7 +14,8 @@
     "i18n:extract": "node bin/extract-strings.mjs",
     "i18n:update-translations": "node bin/update-modules-translations.mjs",
     "zcli": "zcli",
-    "upload-dc": "node scripts/upload-dynamic-content.mjs"
+    "upload-dc": "node scripts/upload-dynamic-content.mjs",
+    "pack": "bash scripts/pack-theme.sh"
   },
   "dependencies": {
     "@zendesk/help-center-wysiwyg": "1.1.1",

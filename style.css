@@ -1241,11 +1241,14 @@ ul {
   width: 182px;
 }
 .footer-links-grid {
-  display: grid;
-  gap: 72px;
-  grid-template-columns: 271px 212px 204px 252px;
-  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 28px;
   padding: 40px 0 32px;
+}
+.footer-links-grid .footer-column {
+  flex: 1 1 204px;
+  max-width: 271px;
 }
 .footer-title {
   font-size: 18px;
@@ -1337,9 +1340,12 @@ ul {
     border-left: 0;
   }
   .footer-links-grid {
-    gap: 36px 28px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px 24px;
     padding: 32px 0 28px;
+  }
+  .footer-links-grid .footer-column {
+    flex: 1 1 calc(50% - 12px);
+    max-width: none;
   }
 }
 @media (max-width: 768px) {
@@ -1366,8 +1372,13 @@ ul {
   }
   .footer-links-grid {
     gap: 0;
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    flex-wrap: nowrap;
     padding: 0;
+  }
+  .footer-links-grid .footer-column {
+    flex: 1 1 auto;
+    max-width: none;
   }
   .footer-meta {
     align-items: flex-start;
@@ -2610,6 +2621,7 @@ a.contact-card-btn:hover, a.contact-card-btn:focus {
   align-items: flex-start;
   display: flex;
   gap: 48px;
+  margin-bottom: 24px;
 }
 
 .section-sidebar {
@@ -2695,14 +2707,21 @@ a.contact-card-btn:hover, a.contact-card-btn:focus {
 }
 .section-content .article-list-item {
   background: #eaf4fa;
+  padding: 20px;
   border-radius: 12px;
   font-size: 16px;
   font-weight: 500;
   list-style: none;
   overflow: visible;
-  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
 }
 .section-content .article-list-item:before {
+  display: none;
+}
+.section-content .article-list-item .icon-star {
   display: none;
 }
 .section-content .article-list-item .article-list-link {
@@ -2711,8 +2730,8 @@ a.contact-card-btn:hover, a.contact-card-btn:focus {
   display: flex;
   gap: 24px;
   justify-content: space-between;
-  padding: 20px;
   text-decoration: none;
+  flex: 1 1 auto;
 }
 .section-content .article-list-item .article-list-link:hover {
   color: #01357e;
@@ -2724,9 +2743,9 @@ a.contact-card-btn:hover, a.contact-card-btn:focus {
   height: 20px;
   width: 20px;
 }
-.section-content .icon-lock,
-.section-content .icon-star {
+.section-content .icon-lock {
   flex-shrink: 0;
+  margin-right: 8px;
 }
 
 .see-all-sections-trigger {

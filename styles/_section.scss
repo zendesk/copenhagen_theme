@@ -48,6 +48,7 @@
   align-items: flex-start;
   display: flex;
   gap: 48px;
+  margin-bottom: 24px;
 }
 
 // Left sidebar — sibling sections nav
@@ -157,14 +158,22 @@
 
   .article-list-item {
     background: #eaf4fa;
+    padding: 20px;
     border-radius: 12px;
     font-size: 16px;
     font-weight: 500;
     list-style: none;
     overflow: visible;
-    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
 
     &:before { display: none; }
+
+    .icon-star {
+      display: none;
+    }
 
     .article-list-link {
       align-items: center;
@@ -172,8 +181,8 @@
       display: flex;
       gap: 24px;
       justify-content: space-between;
-      padding: 20px;
       text-decoration: none;
+      flex: 1 1 auto;
 
       &:hover {
         color: #01357e;
@@ -190,9 +199,9 @@
   }
 
   // Keep lock/star icons inline
-  .icon-lock,
-  .icon-star {
+  .icon-lock {
     flex-shrink: 0;
+    margin-right: 8px;
   }
 }
 

@@ -84,11 +84,15 @@
   }
 
   &-links-grid {
-    display: grid;
-    gap: 72px;
-    grid-template-columns: 271px 212px 204px 252px;
-    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 28px;
     padding: 40px 0 32px;
+
+    .footer-column {
+      flex: 1 1 204px;
+      max-width: 271px;
+    }
   }
 
   &-title {
@@ -202,9 +206,13 @@
     }
 
     &-links-grid {
-      gap: 36px 28px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 36px 24px;
       padding: 32px 0 28px;
+
+      .footer-column {
+        flex: 1 1 calc(50% - 12px);
+        max-width: none;
+      }
     }
   }
 }
@@ -238,8 +246,14 @@
 
     &-links-grid {
       gap: 0;
-      grid-template-columns: 1fr;
+      flex-direction: column;
+      flex-wrap: nowrap;
       padding: 0;
+
+      .footer-column {
+        flex: 1 1 auto;
+        max-width: none;
+      }
     }
 
     &-meta {
