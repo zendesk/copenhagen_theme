@@ -2,8 +2,10 @@
 name: arpa-h-web-design
 description: >
   Design system reference for the NEXUS Design System (Figma file ZbjllSrYpVdkdyioGVuNx2).
-  Use when building, reviewing, or discussing ARPA-H web UI — covers colors, typography,
-  spacing, components, variables, and layout conventions extracted directly from Figma.
+  NEXUS layers on top of USWDS — every project must install @uswds/uswds for grid, reset,
+  utilities, and the .gov banner. Use when building, reviewing, or discussing ARPA-H web UI —
+  covers colors, typography, spacing, components, variables, and layout conventions extracted
+  directly from Figma.
 applyTo: "**/*.{ts,tsx,js,jsx,css,scss,html}"
 ---
 
@@ -117,6 +119,86 @@ import './assets/styles/components.css';
 <link rel="stylesheet" href="assets/styles/globals.css">
 <link rel="stylesheet" href="assets/styles/components.css">
 ```
+
+---
+
+## Prerequisites — USWDS
+
+NEXUS is a **layer on top of USWDS (US Web Design System)**, not a replacement. Every ARPA-H web project must install USWDS core for grid, reset/normalize, utilities, and the required `.gov` banner. NEXUS provides the brand tokens, typography, and component-level overrides.
+
+### Required: `@uswds/uswds` npm package
+
+```bash
+npm install @uswds/uswds @uswds/compile
+```
+
+### What USWDS provides (do not skip)
+
+| Concern | USWDS source | Why it's required |
+|---------|-------------|-------------------|
+| CSS reset / normalize | `uswds-core` | Consistent cross-browser baseline |
+| Grid system | `uswds-core` (`usa-grid`, `usa-layout-grid`) | NEXUS does not define its own grid; breakpoints align with USWDS |
+| `.gov` banner | `usa-banner` partial | Legally required on all `.gov` sites |
+| Utility classes | `uswds-core` (`usa-sr-only`, `usa-prose`, layout helpers) | Accessibility and layout primitives |
+| Icon sprite | `dist/img/sprite.svg` | System icon set (offline copy in `assets/images/sprite.svg`) |
+| Public Sans + Roboto Mono fonts | `dist/fonts/` | Body and monospace type (offline copies in `assets/fonts/`) |
+
+### What NEXUS adds on top
+
+| Concern | NEXUS source | Notes |
+|---------|-------------|-------|
+| Brand colors, alias tokens, spacing, radius, elevation | `globals.css` | CSS custom properties — import after USWDS core |
+| Poppins font | `assets/fonts/` or Google Fonts CDN | Display + h1/h2 — **not bundled with USWDS** |
+| Component styles (Button, Alert, Card, etc.) | `components.css` | Overrides USWDS component visuals to match NEXUS brand |
+
+### Sass integration (Drupal / build-step stacks)
+
+Include USWDS core but **exclude USWDS component partials** that NEXUS overrides:
+
+```scss
+// theme.scss — load order matters
+
+// 1. USWDS core (reset, grid, utilities, fonts)
+@forward "uswds-core";
+
+// 2. USWDS components you still need as-is
+@forward "usa-banner";          // required .gov banner
+
+// 3. Do NOT forward these — NEXUS components.css replaces them:
+//    usa-button, usa-alert, usa-card, usa-tag, usa-pagination, etc.
+
+// 4. NEXUS layers (loaded as plain CSS or @import)
+//    globals.css → components.css
+```
+
+### No-build stacks (static HTML, Twig without Sass)
+
+```html
+<!-- 1. USWDS compiled CSS (core + banner only) -->
+<link rel="stylesheet" href="/path/to/uswds-core.css">
+
+<!-- 2. Fonts — Poppins is not in USWDS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- 3. NEXUS tokens + components (after USWDS so overrides win) -->
+<link rel="stylesheet" href="assets/styles/globals.css">
+<link rel="stylesheet" href="assets/styles/components.css">
+```
+
+### Load order summary
+
+```
+USWDS core (reset + grid + utilities + banner)
+  ↓
+globals.css (NEXUS design tokens as CSS custom properties)
+  ↓
+components.css (NEXUS component overrides)
+  ↓
+Poppins font (Google Fonts CDN or self-hosted woff2)
+```
+
+If the load order is wrong — especially if `globals.css` loads before USWDS core — custom properties may resolve correctly but USWDS utility classes and grid will be missing.
 
 ---
 
