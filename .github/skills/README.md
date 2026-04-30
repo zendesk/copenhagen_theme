@@ -173,34 +173,29 @@ The `arpa-h-web-design` skill was extracted directly from the NEXUS Design Syste
 - A Figma account with access to the NEXUS file (`ZbjllSrYpVdkdyioGVuNx2`)
 - This repo open in a devcontainer or locally
 
-### 1. Configure the MCP server
+### 1. Start the Figma MCP server
 
-The Figma MCP server is already configured in [`.vscode/mcp.json`](.vscode/mcp.json):
+**ARPA-H MCP policy:** The ARPA-H GitHub organization enforces **"Registry only"** MCP access. VS Code fetches the list of approved MCP servers from the ARPA-H registry at `https://apis.arpa-h.gov` — only servers in that registry are permitted to run. No repo configuration is needed.
 
-```json
-{
-    "inputs": [],
-    "servers": {
-        "figma": {
-            "type": "http",
-            "url": "https://mcp.figma.com/mcp"
-        }
-    }
-}
-```
+To start the Figma MCP server:
 
-**Critical:** `mcp.figma.com` uses **OAuth browser sign-in only** — it does not accept Figma Personal Access Tokens (PATs) or `Authorization: Bearer` headers. Do not add auth headers to this config. Leave it exactly as shown.
+1. Open the Command Palette (`Cmd/Ctrl+Shift+P`) → **"MCP: List Servers"**
+2. VS Code loads the approved server list from the ARPA-H registry
+3. Find `figma-mcp` in the list and click **Start**
+4. Complete the browser OAuth flow (see step 2 below)
+
+**Do not create a `.vscode/mcp.json` file.** A workspace `mcp.json` intercepts VS Code's registry discovery and can suppress the server list entirely. The registry list in VS Code is the correct mechanism.
+
+**Critical:** `mcp.figma.com` uses **OAuth browser sign-in only** — it does not accept Figma Personal Access Tokens (PATs) or `Authorization: Bearer` headers.
 
 ### 2. Authenticate via OAuth
 
-The MCP server requires a one-time browser sign-in per session:
+The Figma MCP server requires a one-time browser sign-in per session:
 
-1. Open the VS Code Command Palette (`Cmd/Ctrl+Shift+P`)
-2. Run **"MCP: List Servers"**
-3. Find `figma` in the list — if its status shows as stopped or unauthorized, click **Start**
-4. A browser window opens to `figma.com` — sign in with your Figma account
-5. Authorize the VS Code MCP connection when prompted
-6. Return to VS Code — the server status should now show as running
+1. Click **Start** on `figma-mcp` in the MCP: List Servers panel (from step 1)
+2. A browser window opens to `figma.com` — sign in with your Figma account
+3. Authorize the VS Code MCP connection when prompted
+4. Return to VS Code — the server status should now show as running
 
 Alternatively, simply open GitHub Copilot Chat and ask a Figma-related question; VS Code will prompt you to start the server automatically if it isn't running.
 

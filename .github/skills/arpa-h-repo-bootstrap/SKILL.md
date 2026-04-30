@@ -549,6 +549,60 @@ updates:
 
 ---
 
+## ARPA-H MCP Registry — Policy and Configuration
+
+### Policy
+
+The ARPA-H GitHub organization enforces a **"Registry only"** MCP policy (`chat.mcp.access = registry`). This means:
+
+- GitHub Copilot in VS Code / Codespaces will **only** run MCP servers whose server ID exactly matches an entry in the ARPA-H registry.
+- Any `mcp.json` entry whose name does not match a registry ID is blocked with: *"This MCP Server is disabled because it is configured to be disabled in the Editor."*
+- Do **not** attempt to work around this by setting `chat.mcp.access = all` — the policy is intentional and enforced org-wide to prevent use of unapproved MCP servers (MCP servers can execute arbitrary code and access sensitive data).
+- If a new MCP server is needed for a project, it must first be **added to the ARPA-H registry** by an org admin, then referenced in `mcp.json` with the matching ID.
+
+### Registry
+
+| Registry URL | `https://apis.arpa-h.gov` |
+|---|---|
+| Discovery endpoint | `GET https://apis.arpa-h.gov/v0.1/servers` |
+
+### Approved servers
+
+These are the servers currently in the registry. Only these IDs are valid in `mcp.json`:
+
+| Registry ID | Title | URL |
+|---|---|---|
+| `figma-mcp` | Figma MCP Server | `https://mcp.figma.com/mcp` |
+| `github-mcp` | GitHub MCP Server | `https://api.githubcopilot.com/mcp/` |
+| `azure-mcp` | Azure MCP Server | `https://management.azure.com/mcp` |
+| `microsoft-docs-mcp` | Microsoft Learn Docs MCP Server | `https://learn.microsoft.com/api/mcp` |
+| `atlassian-rovo-mcp` | Atlassian Rovo MCP Server | `https://mcp.atlassian.com/v1/mcp` |
+
+### Discovering and starting MCP servers
+
+Developers discover and start approved MCP servers directly from VS Code — no repo configuration is required:
+
+1. Open the Command Palette (`Cmd/Ctrl+Shift+P`) → **"MCP: List Servers"**
+2. VS Code fetches the approved server list from the ARPA-H registry at `https://apis.arpa-h.gov`
+3. Find the server to start (e.g. `figma-mcp`) and click **Start**
+4. Complete any OAuth flow the server requires (see Authentication table below)
+
+**Do not create `.vscode/mcp.json` in repos.** A workspace `mcp.json` intercepts VS Code's registry discovery flow — when the file exists, VS Code validates each listed server against the registry before showing the list, and any validation hiccup suppresses the entire list. With "Registry only" policy, the registry list in VS Code IS the correct and only mechanism for starting MCP servers. Do not prompt developers to create `mcp.json` files.
+
+### Authentication
+
+All approved servers handle auth automatically:
+
+| Server | Auth method |
+|---|---|
+| `figma-mcp` | Browser OAuth (sign into figma.com) — VS Code opens a browser tab automatically on first use |
+| `github-mcp` | GitHub session token — uses the developer's existing `gh auth` session, no additional steps |
+| `azure-mcp` | Azure CLI credential — uses `az login` session |
+| `microsoft-docs-mcp` | Anonymous — no auth required |
+| `atlassian-rovo-mcp` | Browser OAuth (sign into Atlassian) — requires an Atlassian account with Rovo access |
+
+---
+
 ## PLAN.md — Living Project Record
 
 Every ARPA-H repo must have a `PLAN.md` at the root. It is the single source of truth for what the project is, what decisions have been made, and what work remains. It is not a one-time artifact — it must be updated throughout the full lifecycle of GitHub Copilot agent use: Ask, Plan, and Agent phases.

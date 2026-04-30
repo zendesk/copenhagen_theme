@@ -7,7 +7,7 @@ Central source of truth for GitHub Copilot agentic skills distributed to all ARP
 ## Before Making Any Change
 
 - Read `README.md` first.
-- Check existing skills (`arpa-h-repo-bootstrap/`, `arpa-h-internal-design/`) before creating new ones.
+- Check existing skills (`arpa-h-repo-bootstrap/`, `arpa-h-internal-design/`, `arpa-h-web-design/`) before creating new ones.
 
 ## Adding a New Consumer Repo
 
@@ -26,7 +26,7 @@ See `README.md` → "Registering New Skills" for conventions and the required `S
 
 ## MCP Servers
 
-- **Figma MCP** (`https://mcp.figma.com/mcp`) is configured in `.vscode/mcp.json` and uses **browser OAuth** — never API tokens or `Authorization` headers. Do not add token-based auth to the Figma server config. To activate: Command Palette → **MCP: List Servers** → start `figma` → complete the browser OAuth flow.
+- **Figma MCP** (`https://mcp.figma.com/mcp`) is available via the ARPA-H MCP registry and uses **browser OAuth** — never API tokens or `Authorization` headers. To activate: Command Palette → **MCP: List Servers** → start `figma-mcp` → complete the browser OAuth flow. Do not create `.vscode/mcp.json` — it suppresses the registry list in VS Code.
 
 ## Commit and PR Format
 

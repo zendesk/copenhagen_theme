@@ -2,6 +2,16 @@
   "name": "ARPA-H Skills",
   // Universal image — no specific language stack detected; provides Node, Python, Go, etc.
   "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    // gh CLI — required for all ARPA-H repos
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    // bun — preferred package manager for all ARPA-H repos; version: none avoids overriding the universal image's Node.js
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "none",
+      "installJupyterlab": false,
+      "bunVersion": "latest"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -22,5 +32,7 @@
         "git.autofetchPeriod": 180
       }
     }
-  }
+  },
+  // Remove stale LFS hooks — universal image has no git-lfs and no LFS attributes are declared
+  "postCreateCommand": "grep -qr 'filter=lfs' .gitattributes 2>/dev/null || rm -f .git/hooks/pre-push .git/hooks/post-commit .git/hooks/post-checkout .git/hooks/post-merge"
 }
