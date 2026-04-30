@@ -222,7 +222,7 @@ parts:
       key: "service-catalog.change-user-modal.add-user"
       title: "Link text to add a new user in Change User modal dropdown footer"
       screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
-      value: "Add User"
+      value: "Add user"
   - translation:
       key: "service-catalog.validation.error.aria.label"
       title: "[A11Y] Hidden label for screen readers for validation error messages"
@@ -257,7 +257,7 @@ parts:
       key: "service-catalog.change-user-modal.new-user-email"
       title: "Label for email input field in Add User form"
       screenshot: "https://drive.google.com/file/d/1Br5FvhlHzgUPl4FQlQnZcDA83pXKmHea/view?usp=share_link"
-      value: "E-mail"
+      value: "Email"
   - translation:
       key: "service-catalog.change-user-modal.new-user-name-required"
       title: "Error message when name field is empty in Add User form"
@@ -267,4 +267,4 @@ parts:
       key: "service-catalog.change-user-modal.new-user-email-exists"
       title: "Error message when email already exists in Add User form"
       screenshot: "https://drive.google.com/file/d/1Br5FvhlHzgUPl4FQlQnZcDA83pXKmHea/view?usp=share_link"
-      value: "This email is already being used by an user."
+      value: "This email is already being used by a user."
