@@ -21,118 +21,6 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
- * BUTTON
- *
- * Variants:  .btn-primary (default), .btn-secondary, .btn-outline,
- *            .btn-unstyled
- * Sizes:     default (44px tall), .btn-lg (56px tall)
- * States:    :hover, :focus-visible, :disabled
- *
- * From Figma node 3556:18705:
- *   - Primary:  bg cyan-neutral (#52daf2), text indigo-neutral (#000334)
- *   - Padding:  16px top/bottom (default), 20px left/right
- *   - Radius:   1000px (pill)
- *   - Font:     Public Sans Regular 18px / line-height 20px (default)
- *               Public Sans Regular 20px / line-height 24px (large)
- * ═══════════════════════════════════════════════════════════════ */
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-1);
-    /* 8px */
-    padding: var(--space-105) var(--space-205);
-    /* 12px 20px — default */
-    font-family: var(--font-secondary);
-    font-size: var(--font-size-sm);
-    /* 18px */
-    font-weight: var(--font-weight-regular);
-    line-height: 20px;
-    letter-spacing: var(--letter-spacing-auto);
-    text-decoration: none;
-    border: 2px solid transparent;
-    border-radius: var(--radius-round);
-    cursor: pointer;
-    transition: background-color 120ms ease, color 120ms ease, box-shadow 120ms ease;
-    white-space: nowrap;
-}
-
-.btn:focus-visible {
-    outline: none;
-    box-shadow: var(--shadow-focus);
-}
-
-.btn:disabled,
-.btn[aria-disabled="true"] {
-    opacity: 0.4;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
-/* Primary button */
-.btn-primary {
-    background-color: var(--color-brand-secondary);
-    /* #52daf2 cyan */
-    color: var(--color-brand-primary);
-    /* #000334 indigo */
-    border-color: transparent;
-}
-
-.btn-primary:hover {
-    background-color: var(--color-cyan-600);
-    /* #44b6ca */
-}
-
-/* Secondary button */
-.btn-secondary {
-    background-color: var(--color-brand-primary);
-    /* #000334 indigo */
-    color: var(--color-brand-white);
-    /* #ffffff */
-    border-color: transparent;
-}
-
-.btn-secondary:hover {
-    background-color: var(--color-brand-primary-light);
-    /* #2a2d56 */
-}
-
-/* Outline button */
-.btn-outline {
-    background-color: transparent;
-    color: var(--color-brand-primary);
-    border-color: var(--color-brand-primary);
-}
-
-.btn-outline:hover {
-    background-color: var(--color-hover-light-5);
-}
-
-/* Unstyled button */
-.btn-unstyled {
-    background-color: transparent;
-    color: var(--color-link);
-    border-color: transparent;
-    padding: 0;
-    border-radius: 0;
-    text-decoration: underline;
-}
-
-.btn-unstyled:hover {
-    color: var(--color-blue-800);
-}
-
-/* Large size modifier */
-.btn-lg {
-    padding: var(--space-2) var(--space-205);
-    /* 16px 20px */
-    font-size: var(--font-size-md);
-    /* 20px */
-    line-height: 24px;
-}
-
-/* ═══════════════════════════════════════════════════════════════
  * ALERT
  *
  * Variants:  .alert-info (default), .alert-neutral, .alert-success,
@@ -415,25 +303,446 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
+ * BUTTON
+ *
+ * Published NEXUS library component (key: 47e5ad4d...)
+ * Figma node: 3416:19608
+ * Overrides USWDS usa-button with pill shape + NEXUS colors.
+ *
+ * Variants: Kind (Primary|Secondary|Outline|Unstyled)
+ *           Size (Default|Large)
+ *           Type (Text Only|With Icon)
+ *           State (Default|Hover|Focused)
+ *           Disabled (True|False)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.usa-button,
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: var(--space-105) var(--space-205);
+    /* 12px 20px */
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-sm);
+    /* 18px */
+    font-weight: var(--font-weight-regular);
+    line-height: 20px;
+    letter-spacing: var(--letter-spacing-auto);
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: var(--radius-round);
+    /* 1000px — pill */
+    cursor: pointer;
+    overflow: clip;
+    white-space: nowrap;
+    box-sizing: border-box;
+    transition: background-color 120ms ease, color 120ms ease, box-shadow 120ms ease;
+}
+
+/* --- Kind: Primary --- */
+.usa-button,
+.btn-primary {
+    background-color: var(--color-brand-secondary);
+    /* #52daf2 */
+    color: var(--color-brand-primary);
+    /* #000334 */
+    border-color: transparent;
+}
+
+.usa-button:hover,
+.btn-primary:hover {
+    background-color: var(--color-cyan-600);
+    /* darkened cyan */
+}
+
+/* --- Kind: Secondary --- */
+.usa-button--secondary,
+.btn-secondary {
+    background-color: var(--color-brand-primary);
+    /* #000334 */
+    color: var(--color-white);
+    border-color: transparent;
+}
+
+.usa-button--secondary:hover,
+.btn-secondary:hover {
+    background-color: var(--color-brand-primary-light);
+}
+
+/* --- Kind: Outline --- */
+.usa-button--outline,
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+}
+
+.usa-button--outline:hover,
+.btn-outline:hover {
+    background-color: rgba(0, 3, 52, 0.05);
+}
+
+/* --- Kind: Unstyled --- */
+.usa-button--unstyled,
+.btn-unstyled {
+    background-color: transparent;
+    color: var(--color-link);
+    /* #0957be */
+    border-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    text-decoration: underline;
+}
+
+.usa-button--unstyled:hover,
+.btn-unstyled:hover {
+    color: var(--color-blue-800);
+}
+
+/* --- Size: Large --- */
+.usa-button--big,
+.btn-lg {
+    padding: var(--space-2) var(--space-205);
+    /* 16px 20px */
+    font-size: var(--font-size-md);
+    /* 20px */
+    line-height: 24px;
+}
+
+/* --- State: Focused --- */
+.usa-button:focus-visible,
+.btn:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+    /* 0 0 0 1px #0957be, 0 0 3px 1px #0957be */
+}
+
+/* --- State: Disabled --- */
+.usa-button:disabled,
+.usa-button[aria-disabled="true"],
+.btn:disabled,
+.btn[aria-disabled="true"] {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* --- Type: With Icon --- */
+.btn-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.btn-lg .btn-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * ICON BUTTON (Drop Shadow)
+ *
+ * Published NEXUS library component (key: b3935913...)
+ * Circular icon-only button with elevation.
+ * Used for floating actions (scroll-to-top, close modals).
+ * ═══════════════════════════════════════════════════════════════ */
+
+.btn-icon-only {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-2);
+    cursor: pointer;
+    transition: box-shadow 120ms ease;
+}
+
+.btn-icon-only:hover {
+    box-shadow: var(--shadow-3);
+}
+
+.btn-icon-only:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus), var(--shadow-2);
+}
+
+.btn-icon-only .icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-brand-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * BUTTON GROUP
+ *
+ * Published NEXUS library component (key: 5bb79a9e...)
+ * Horizontal group of buttons.
+ * ═══════════════════════════════════════════════════════════════ */
+
+.usa-button-group,
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    /* 8px */
+    align-items: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════
  * CARD
  *
  * From Figma page ↳ Card (6820:150)
+ * Variants: Kind (News|Impact Story|Blog Post|Video Message)
+ *           Size (Default 320px | Text Only | Large 660px)
+ *           State (Default | Hover)
  * ═══════════════════════════════════════════════════════════════ */
 
 .card {
     background-color: var(--color-white);
-    border: 1px solid var(--color-ui-20);
+    border: 0.5px solid var(--color-ui-20);
     /* #d7dee8 */
     border-radius: var(--radius-lg);
     /* 16px */
-    padding: var(--space-4);
-    /* 32px */
     box-shadow: var(--shadow-1);
+    overflow: clip;
+    min-width: 320px;
+    max-width: 453px;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-elevated {
     border-color: transparent;
     box-shadow: var(--shadow-2);
+}
+
+.card:hover,
+.card-hover {
+    box-shadow: var(--shadow-2);
+}
+
+/* Size: Large */
+.card-lg {
+    min-width: 660px;
+    max-width: 660px;
+}
+
+/* Size: Text Only — no image container */
+.card-text-only {
+    max-width: 320px;
+}
+
+/* Image Container */
+.card-image {
+    background-color: var(--color-brand-primary);
+    /* #000334 */
+    aspect-ratio: 344 / 228;
+    min-height: 212px;
+    max-height: 300px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    overflow: clip;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Content Container */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    /* 16px */
+    padding: var(--space-2) var(--space-3) var(--space-3);
+    /* 16px 24px 24px */
+}
+
+/* Metadata row (category + type tags) */
+.card-metadata {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: var(--space-2);
+    border-bottom: 0.5px solid var(--color-ui-20);
+}
+
+/* Card title */
+.card-title {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-md);
+    /* 20px */
+    font-weight: var(--font-weight-medium);
+    line-height: 27px;
+    letter-spacing: -0.5px;
+    color: var(--color-brand-primary);
+}
+
+/* --- Card Tags: Content Type (pill on image) --- */
+.card-tag-content-type {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background-color: var(--color-cyan-50);
+    border: 0.5px solid rgba(41, 109, 121, 0.25);
+    border-radius: var(--radius-round);
+    /* pill */
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-3xs);
+    /* 12px */
+    color: var(--color-cyan-800);
+    line-height: var(--line-height-body-xs);
+}
+
+.card-tag-content-type .icon {
+    width: 10px;
+    height: 10px;
+}
+
+/* --- Card Tags: Category (dot + uppercase label) --- */
+.card-tag-category {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 0;
+}
+
+.card-tag-category::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-brand-secondary);
+    /* #52daf2 */
+    flex-shrink: 0;
+}
+
+.card-tag-category span {
+    font-family: var(--font-secondary);
+    font-size: 10px;
+    font-weight: var(--font-weight-semibold);
+    line-height: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--color-ui-80);
+    /* #4a4d52 */
+}
+
+/* --- Card Tags: Metadata Type (glass pill, asymmetric radius) --- */
+.card-tag-metadata-type {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px 4px 10px;
+    background-color: var(--surface-card-transparent);
+    /* rgba(243,245,248,0.70) */
+    border: 0.5px solid var(--color-ui-20);
+    border-radius: var(--radius-lg) var(--radius-sm) var(--radius-lg) var(--radius-sm);
+    /* 16px 4px 16px 4px — asymmetric */
+}
+
+.card-tag-metadata-type .icon {
+    width: 12px;
+    height: 12px;
+    opacity: 0.8;
+}
+
+.card-tag-metadata-type span {
+    font-family: var(--font-secondary);
+    font-size: 10px;
+    font-weight: var(--font-weight-semibold);
+    line-height: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--color-ui-80);
+}
+
+/* --- Card Tags: Program Status --- */
+.card-tag-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: var(--radius-round);
+    font-family: var(--font-secondary);
+    font-size: 10px;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* --- Date and Author --- */
+.card-date-author {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-3xs);
+    /* 12px */
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body-xs);
+    color: var(--color-ui-80);
+    /* #4a4d52 */
+}
+
+.card-date-author .icon {
+    width: 12px;
+    height: 12px;
+    opacity: 0.6;
+}
+
+/* Size: Medium for Date/Author */
+.card-date-author-md {
+    font-size: var(--font-size-2xs);
+    /* 14px */
+    line-height: 24px;
+}
+
+.card-date-author-md .icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* --- News Navigation (filter tabs) --- */
+.card-nav {
+    display: flex;
+    gap: 0;
+}
+
+.card-nav-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 16px;
+    border-radius: var(--radius-round);
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-3xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-ui-80);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.card-nav-item[aria-selected="true"],
+.card-nav-item-active {
+    background-color: var(--color-brand-primary);
+    color: var(--color-white);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -667,6 +976,238 @@
 /* 24px */
 .stack-sm>*+* {
     margin-top: var(--space-2);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * FOOTER
+ *
+ * Published NEXUS library components:
+ *   Footer / Public Site (key: f0043000...)
+ *   Footer / Solutions Portal (key: 2407256a...)
+ *   Footer Link (key: b9de8cd5...)
+ * Figma page node: 6472:10311
+ *
+ * Variants: Component (Footer | Vitals Sign Up)
+ *           Mobile (True | False)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.nexus-footer {
+    background-color: var(--color-brand-primary);
+    /* #000334 */
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: clip;
+    padding: 120px 148px 64px;
+    width: 100%;
+}
+
+/* Top section: left (logo/mission/social) + right (nav columns) */
+.nexus-footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Left column: logo, mission text, social */
+.nexus-footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    width: 480px;
+    backdrop-filter: blur(7.5px);
+}
+
+.nexus-footer-brand-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    /* 24px */
+    border-radius: var(--radius-lg);
+}
+
+.nexus-footer-logo {
+    width: 240px;
+    height: 67px;
+    overflow: clip;
+}
+
+.nexus-footer-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.nexus-footer-mission {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-sm);
+    /* 18px */
+    font-weight: var(--font-weight-regular);
+    line-height: 27px;
+    color: var(--color-white);
+    max-width: 700px;
+}
+
+/* Social links block */
+.nexus-footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    /* 24px */
+}
+
+.nexus-footer-social-heading {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-md);
+    /* 20px */
+    font-weight: var(--font-weight-medium);
+    line-height: 27px;
+    letter-spacing: -0.5px;
+    color: var(--color-brand-secondary);
+    /* #52daf2 */
+}
+
+.nexus-footer-social-icons {
+    display: flex;
+    gap: var(--space-105);
+    /* 12px */
+}
+
+.nexus-footer-social-icons a,
+.nexus-footer-social-icons img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: clip;
+}
+
+/* Right section: navigation columns */
+.nexus-footer-nav {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    min-width: 500px;
+    width: 500px;
+}
+
+.nexus-footer-nav-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    min-width: 200px;
+    align-self: stretch;
+}
+
+.nexus-footer-nav-column-right {
+    gap: 32px;
+}
+
+/* Nav section (group of heading + links) */
+.nexus-footer-nav-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    /* 8px */
+    align-items: flex-start;
+    width: 100%;
+}
+
+.nexus-footer-nav-heading {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-md);
+    /* 20px */
+    font-weight: var(--font-weight-medium);
+    line-height: 27px;
+    letter-spacing: -0.5px;
+    color: var(--color-brand-secondary);
+    /* #52daf2 */
+}
+
+/* --- Footer Link sub-component --- */
+.nexus-footer-link {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-2xs);
+    /* 14px */
+    font-weight: var(--font-weight-regular);
+    line-height: 21px;
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+.nexus-footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Bottom bar: auxiliary nav + copyright */
+.nexus-footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    /* 16px */
+    align-items: center;
+    width: 100%;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-ui-40);
+    /* #2a4179 mapped to --surface/stroke */
+}
+
+.nexus-footer-aux-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.nexus-footer-copyright {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-2xs);
+    /* 14px */
+    font-weight: var(--font-weight-regular);
+    line-height: 21px;
+    color: var(--color-ui-20);
+    /* #ccd5e1 / --type/subheading */
+    opacity: 0.6;
+    text-align: center;
+}
+
+/* --- Mobile responsive (375px) --- */
+@media (max-width: 767px) {
+    .nexus-footer {
+        padding: 64px var(--space-3) 48px;
+        gap: 48px;
+    }
+
+    .nexus-footer-top {
+        flex-direction: column;
+        gap: 48px;
+        align-items: flex-start;
+    }
+
+    .nexus-footer-brand {
+        width: 100%;
+        gap: 48px;
+    }
+
+    .nexus-footer-nav {
+        flex-direction: column;
+        width: 100%;
+        min-width: unset;
+        gap: 32px;
+    }
+
+    .nexus-footer-nav-column {
+        min-width: unset;
+        width: 100%;
+        gap: 32px;
+    }
 }
 
 /* 16px */

@@ -89,3 +89,83 @@ We diagnosed why the Figma MCP server was showing `This MCP Server is disabled b
 - [x] **Logo SVG** (`arpa-h-web-design/assets/images/arpa-h-logo.svg`) — full horizontal lockup confirmed present. viewBox `0 0 1132.84 314.39`. SKILL.md Assets table already references it correctly.
 - [ ] **Re-extraction cadence** — decide how often the skill is refreshed against Figma (e.g., on each NEXUS design system release) and whether to automate it via a GitHub Action or keep it a manual process.
 - [ ] **Consumer repo adoption** — once the skill is on `main`, it will sync to all consumer repos listed in `.github/subtree-consumers.json`. Verify that repos building public-facing ARPA-H web properties (e.g., `arpa-h-static-site-template`, `arpah-web-infra`) are in the consumer list and that their build tooling can consume `globals.css` and `tokens.json`.
+
+---
+
+### Session: April 30, 2026 — Deep component documentation from Figma MCP
+
+#### Context
+
+The SKILL.md was rewritten with a USWDS-first architecture and accurate published component inventory (16 sets from Figma MCP). However, detailed per-component documentation (variant specs, sub-components, styling details, CSS) was missing. Started deep-diving into individual Figma pages via the MCP to create full specs.
+
+#### Completed
+
+- [x] **Button** — Full `### Button` section in SKILL.md (variant matrix, styling per Kind, sizing, states, icon type, related components). Full CSS in `components.css` (`.usa-button`/`.btn` overrides, 4 kinds, large size, focus/disabled, icon sizing, `.btn-icon-only`, `.btn-group`).
+- [x] **Card** — Full `### Card` section in SKILL.md (4 kinds × 3 sizes × 2 states, structural anatomy, 11 sub-components with category variants). Full CSS in `components.css` (`.card` variants, `.card-image`, `.card-content`, `.card-metadata`, `.card-title`, `.card-tag-*` sub-components, `.card-date-author`, `.card-nav`).
+- [x] **Footer** — Full `### Footer` section in SKILL.md (Public + Solutions variants, structural diagram, typography, sub-components, nav columns, mobile adaptations). Full CSS in `components.css` (`.nexus-footer-*` classes, responsive mobile breakpoint).
+
+#### In Progress — Component Deep-Dive Plan
+
+For each remaining component page: get metadata → get design context → get code connect → write `### Section` in SKILL.md + CSS in `components.css`.
+
+**Batch 1 — Published + complex (high priority):**
+- [ ] Alert (node `6365:10906`) — 5 states × Simple × Nested, close/icon toggles
+- [ ] Site Alert (node `6365:6366`) — Standard/Expanded/Slim × Nested
+- [ ] Navigation (need node ID) — Public Site + Solutions Portal mega menu
+
+**Batch 2 — Published + simpler (medium priority):**
+- [ ] Pagination (need node ID) — Steps/controls
+- [ ] Quote Block (need node ID) — Styled blockquote
+- [ ] Radio Button (need node ID) — Radio input + Radio Label
+- [ ] Loading Spinner (need node ID) — Animated indicator
+
+**Batch 3 — Page-only, form cluster (medium priority):**
+- [ ] Text Input (node `6365:6428`) — Already has basic CSS
+- [ ] Checkbox (need node ID) — Single/group
+- [ ] Toggle (need node ID) — On/off switch
+- [ ] File Input (need node ID) — Upload control
+- [ ] Validation (need node ID) — Error/hint messages
+- [ ] Form Elements (need node ID) — General wrapper/fieldset
+
+**Batch 4 — Page-only, navigation/content (medium priority):**
+- [ ] Accordion (need node ID) — Expand/collapse
+- [ ] Breadcrumb (need node ID) — Navigation trail
+- [ ] Links (need node ID) — Inline/standalone link styles
+- [ ] Search (need node ID) — Search input/bar
+- [ ] Tag (node `6365:6576`) — Already has basic CSS
+- [ ] Prose (need node ID) — Rich text content
+
+**Batch 5 — Page-only, remaining (lower priority):**
+- [ ] Multiselect (need node ID) — Multi-option dropdown
+- [ ] Process List (need node ID) — Numbered step list
+- [ ] Progress Indicator (need node ID) — Progress bar/stepper
+
+#### Known Page Node IDs
+
+| Page | Node ID | Source |
+|------|---------|--------|
+| Button | `3416:19608` (component instance) | Figma MCP |
+| Card | `6820:150` | Figma MCP |
+| Footer | `6472:10311` | User provided |
+| Alert | `6365:10906` (component instance) | Figma MCP |
+| Site Alert | `6365:6366` | Figma MCP |
+| Tag | `6365:6576` | Figma MCP |
+| Text Input | `6365:6428` | Figma MCP |
+
+#### Node IDs still needed
+
+Navigation, Pagination, Quote Block, Radio Button, Loading Spinner, Checkbox, Toggle, File Input, Validation, Form Elements, Accordion, Breadcrumb, Links, Search, Prose, Multiselect, Process List, Progress Indicator
+
+#### Approach per component
+
+1. `get_metadata` on the page node → discover component frames and variant symbols
+2. `get_design_context` on primary variant → get full rendered code with styles
+3. `get_context_for_code_connect` → get variant properties, descendants, slot structure
+4. Write `### ComponentName` section in SKILL.md with:
+   - Variant matrix table
+   - ASCII structural diagram
+   - Styling specs table
+   - Sub-component table (if applicable)
+   - State behavior
+5. Write CSS classes in `components.css` covering all variants and sub-components
+6. Update component inventory table entry to reference the new section

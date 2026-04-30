@@ -827,16 +827,16 @@ Components exist in three tiers:
 
 | Component | USWDS base | NEXUS status | NEXUS library key | Notes |
 |-----------|-----------|-------------|-------------------|-------|
-| **Button** | `usa-button` | ✅ Published | `47e5ad4d…` | Variants: Primary, Secondary, Outline, Unstyled. Sizes: Default, Large. States: Default, Hover, Focused, Disabled. Types: Text Only, With Icon. Pill shape (`radius-round`), cyan primary bg. |
+| **Button** | `usa-button` | ✅ Published | `47e5ad4d…` | Full button system with 4 kinds, 2 sizes, icon support. See [Button Details](#button) below. |
 | **Button Group** | `usa-button-group` | ✅ Published | `5bb79a9e…` | Grouped button sets |
-| **Icon Button** | `usa-button` (icon variant) | ✅ Published | `b3935913…` | Button with icon only + drop shadow |
+| **Icon Button** | `usa-button` (icon variant) | ✅ Published | `b3935913…` | Icon-only circular button with drop shadow. See [Button Details](#button) below. |
 | **Search Button** | `usa-search` (button) | ✅ Published | `105b3155…` | Search input submit button |
 | **Alert** | `usa-alert` | ✅ Published | `fc007075…` | Variants: Info, Neutral, Success, Warning, Error. Options: Simple/Full, Show/Hide Icon, Show/Hide Close, Nested. Rounded corners (`radius-lg`), NEXUS feedback colors. |
 | **Site Alert** | `usa-site-alert` | ✅ Published | `de75ab14…` | Full-width site-level banner variant |
 | **Navigation (Public)** | `usa-nav` | ✅ Published | `b3cebf62…` | Public site header navigation with mega menu |
 | **Navigation (Solutions)** | `usa-nav` | ✅ Published | `a2b94ebb…` | Solutions Portal variant |
-| **Footer (Public)** | `usa-footer` | ✅ Published | `f0043000…` | Public site footer |
-| **Footer (Solutions)** | `usa-footer` | ✅ Published | `2407256a…` | Solutions Portal footer variant |
+| **Footer (Public)** | `usa-footer` | ✅ Published | `f0043000…` | Public site footer. See [Footer Details](#footer) below. |
+| **Footer (Solutions)** | `usa-footer` | ✅ Published | `2407256a…` | Solutions Portal footer variant. See [Footer Details](#footer) below. |
 | **Pagination** | `usa-pagination` | ✅ Published | `d9080a9a…` | Pagination steps/controls |
 | **Quote Block** | `usa-blockquote` | ✅ Published | `b7bed23a…` | Styled blockquote |
 | **Loading Spinner** | — (no USWDS equivalent) | ✅ Published | `1ce752e0…` | NEXUS-specific animated loading indicator |
@@ -845,7 +845,7 @@ Components exist in three tiers:
 | **Icon** | USWDS sprite system | ✅ Published | `c1223e88…` | NEXUS icon component wrapping USWDS sprite |
 | **Accordion** | `usa-accordion` | 📄 Page only | — | Expand/collapse panels. Use USWDS accordion + NEXUS tokens. |
 | **Breadcrumb** | `usa-breadcrumb` | 📄 Page only (✅ spec complete) | — | Navigation trail. Page spec is complete. |
-| **Card** | `usa-card` | 📄 Page only | — | Content card container. Apply NEXUS radius + elevation tokens. |
+| **Card** | `usa-card` | 📄 Page only | — | Content card system with multiple sub-components. See [Card Details](#card) below. |
 | **Checkbox** | `usa-checkbox` | 📄 Page only | — | Single/group checkbox inputs |
 | **File Input** | `usa-file-input` | 📄 Page only | — | File upload control |
 | **Form Elements** | `usa-form`, `usa-fieldset` | 📄 Page only (⚠️ needs review) | — | General form wrapper/fieldset |
@@ -907,6 +907,287 @@ Full list of UI component sets published to the 📍 NEXUS Design System library
 | Focus ring | USWDS outline | Box shadow (`0 0 0 1px #0957be, 0 0 3px 1px #0957be`) |
 | Typography | Source Sans Pro | Poppins (display/h1-h2) + Public Sans (h3-h6/body) |
 | Spacing | USWDS spacing scale | Same scale, same values — NEXUS aligns exactly |
+
+---
+
+### Button
+
+The Button is a published NEXUS library component (key `47e5ad4d7adb07908bffb23f642a8f0693d30988`, Figma node `3416:19608`). It overrides the USWDS `usa-button` with a pill shape and cyan primary color.
+
+**Button — variant matrix:**
+
+| Property | Type | Options |
+|----------|------|---------|
+| Kind | Variant | Primary, Secondary, Outline, Unstyled |
+| Size | Variant | Default, Large |
+| Type | Variant | Text Only, With Icon |
+| Disabled | Boolean | True / False |
+| State | Variant | Default, Hover, Focused |
+
+Total: 4 kinds × 2 sizes × 2 types × 2 disabled × 3 states = 96 visual permutations.
+
+**Button structure:**
+
+```
+┌──────────────────────────────────────┐
+│  [Icon slot]  Label text             │  ← inline-flex, centered
+└──────────────────────────────────────┘
+     ↑ pill shape (border-radius: 1000px)
+```
+
+**Button styling per Kind:**
+
+| Kind | Background | Text Color | Border |
+|------|-----------|-----------|--------|
+| **Primary** | `--color-brand-secondary` (#52daf2) | `--color-brand-primary` (#000334) | transparent |
+| **Secondary** | `--color-brand-primary` (#000334) | white (#ffffff) | transparent |
+| **Outline** | transparent | `--color-brand-primary` (#000334) | 2px solid `--color-brand-primary` |
+| **Unstyled** | transparent | `--color-link` (#0957be) | none (underline text-decoration) |
+
+**Button sizing:**
+
+| Size | Padding | Font Size | Line Height |
+|------|---------|-----------|-------------|
+| Default | 12px (`--space-105`) vertical, 20px (`--space-205`) horizontal | 18px (`--font-size-sm`) | 20px |
+| Large | 16px (`--space-2`) vertical, 20px (`--space-205`) horizontal | 20px (`--font-size-md`) | 24px (`--line-height/action/action-1`) |
+
+**Common button properties:**
+
+| Property | Value |
+|----------|-------|
+| Border radius | `--corner-radius/round` (1000px) — pill shape |
+| Font family | `--font-family/secondary` (Public Sans) |
+| Font weight | Regular (400) |
+| Letter spacing | `--letter-spacing/auto` (0px) |
+| Overflow | clip |
+| Alignment | inline-flex, center items, center justify |
+| Gap (icon + text) | 10px |
+
+**States:**
+
+| State | Effect |
+|-------|--------|
+| Default | As specified above |
+| Hover (Primary) | Background darkens — `rgba(0, 3, 52, 0.1)` overlay tint |
+| Hover (Secondary) | Background lightens slightly |
+| Hover (Outline) | Light background fill `rgba(0, 3, 52, 0.05)` |
+| Hover (Unstyled) | Text color darkens to `--color-blue-800` |
+| Focused | `--shadow-focus`: `0 0 0 1px #0957be, 0 0 3px 1px #0957be` |
+| Disabled | `opacity: 0.4`, `pointer-events: none` |
+
+**With Icon type:**
+- Icon placed before label (leading position)
+- Icon size: 20px (Large) / 16px (Default)
+- Gap between icon and label: 10px
+- Uses NEXUS Icon component from the sprite system
+
+**Related button components:**
+
+| Component | Key | Description |
+|-----------|-----|-------------|
+| **Button Group** | `5bb79a9e…` | Horizontal group of buttons (primary + secondary pairs, etc.) |
+| **Icon Button Drop Shadow** | `b3935913…` | Circular icon-only button with elevated shadow. Used for floating actions (scroll-to-top, close modals). |
+| **Search Button** | `105b3155…` | Specialized button for search input submit — attached to text input, no pill shape. |
+
+**Icon Button Drop Shadow styling:**
+- Shape: circle (equal width/height + `border-radius: 50%`)
+- Background: white
+- Shadow: `--shadow-2` (elevated)
+- Icon: centered, 20px, `--color-brand-primary`
+- Hover: `--shadow-3` (more elevation)
+
+---
+
+### Card
+
+The Card is a complex component system (Figma page node `6820:150`) with multiple sub-components that compose together. Not yet published as a library component set — implement from the page-level spec.
+
+**Card Update (main component) — variants:**
+
+| Property | Type | Options |
+|----------|------|---------|
+| Kind | Variant | News, Impact Story, Blog Post, Video Message |
+| Size | Variant | Default (320px), Text Only (no image), Large (660px) |
+| State | Variant | Default, Hover |
+| Show Metadata | Boolean | Show/hide metadata type tag |
+| Title | Text | Card heading (max ~3 lines) |
+
+**Card structure (Default size):**
+
+```
+┌─────────────────────────────────────┐
+│  Image Container                     │  ← bg: --color-brand-primary (#000334)
+│  ┌─────────────┐                    │     aspect-ratio: ~344/228
+│  │ Content Type│  (pill tag, top-left)    min-h: 212px, max-h: 300px
+│  └─────────────┘                    │
+├─────────────────────────────────────┤
+│  Content Container                   │  ← padding: 16px top, 24px sides/bottom
+│  ┌──────────────────────────────┐   │
+│  │ Metadata row                  │   │  ← border-bottom: 0.5px --surface/stroke
+│  │ [Category tag] [Metadata tag] │   │     padding-bottom: 16px
+│  └──────────────────────────────┘   │
+│  Title heading (title-sm: 20px/27px) │  ← font-weight: medium, max 3 lines
+│  Date and Author                     │  ← 12px, color: --type/subheading (#4a4d52)
+└─────────────────────────────────────┘
+```
+
+**Card styling:**
+
+| Property | Value |
+|----------|-------|
+| Background | `--surface/background` (white) |
+| Border | 0.5px solid `--surface/stroke` (`#d7dee8`) |
+| Border radius | `--corner-radius/lg` (16px) |
+| Shadow | `elevation/shadow-1` (0 1px 4px rgba(0,0,0,0.1)) |
+| Min width | 320px |
+| Max width | 453px |
+| Overflow | clip |
+| Title font | `font-family/secondary` Medium 20px / 27px, letter-spacing: −0.5px |
+| Hover state | Elevation increases (shadow-2), subtle lift |
+
+**Sub-components (all local, not published to library):**
+
+| Sub-component | Variants | Purpose |
+|---------------|----------|---------|
+| **Card Tags / Content Type** | News, Impact Story, Blog Post, Video, Podcast | Pill badge on image — cyan-50 bg, icon + label, `border-radius: round` |
+| **Card Tags / News Category** | Funding Opportunity, Awarded Effort, Agency Update, Research Update | Cyan dot + uppercase 10px semibold label |
+| **Card Tags / Impact Story Category** | Inside the Research, In Real Life, Case Studies, New Tag | Same dot + label pattern |
+| **Card Tags / Blog Category** | ARPA-H 101, Behind the Science, Leadership's Voice | Same pattern |
+| **Card Tags / Video Category** | On the Ground, From the Director, ARPA-H Milestones | Same pattern |
+| **Card Tags / Podcast Category** | Podcast Category | Same pattern |
+| **Card Tags / Metadata Type** | Press Release, Public Announcement | Pill with icon, glass bg (`--surface/card-transparent`), asymmetric radius (lg/sm) |
+| **Card Tags / Program Status** | Accepting Submissions, Upcoming Opportunity, Awarded, Applications Under Review | Status indicators |
+| **Card Tags / Program Status** (lifecycle) | Active, Not Yet Started, Complete, Canceled | Lifecycle status |
+| **Date and Author** | Size: Medium/Small, Kind: Date/Author/Location | Icon + text, 12px/14px, color: `--type/subheading` (#4a4d52) |
+| **News Navigation** | All Insights, Impact Story, Blog Post, Video, Podcast × Active: True/False | Filter tabs for card listings |
+
+**Content Type tag styling:**
+- Background: `#e2f9fd` (cyan-50)
+- Border: 0.5px solid `rgba(41, 109, 121, 0.25)` (translucent teal)
+- Border radius: `--corner-radius/round` (pill)
+- Padding: 4px 10px
+- Font: 12px regular, color `#296d79` (cyan-800)
+- Icon: 10px, from NEXUS Icon set
+
+**News Category tag styling:**
+- Cyan dot: 6px circle, `--brand/secondary` (#52daf2)
+- Text: 10px semibold uppercase, letter-spacing: 0.5px
+- Color: `--type/subheading` (#4a4d52)
+
+**Metadata Type tag styling (glass pill):**
+- Background: `--surface/card-transparent` (rgba(243,245,248,0.70))
+- Border: 0.5px solid `--surface/stroke`
+- Border radius: asymmetric — `lg` (16px) top-left + bottom-right, `sm` (4px) top-right + bottom-left
+- Icon: 12px, opacity 0.8
+- Text: 10px semibold uppercase, letter-spacing: 0.5px
+
+---
+
+### Footer
+
+The Footer is a published NEXUS library component with two site variants (Figma page node `6472:10311`). Each variant has desktop and mobile responsive layouts, plus a "Vitals Sign Up" sub-component for the public site.
+
+**Footer — variant matrix:**
+
+| Property | Type | Options |
+|----------|------|---------|
+| Component | Variant | Footer, Vitals Sign Up |
+| Mobile | Variant | False (desktop), True (mobile) |
+
+**Published component sets:**
+
+| Component | Key | Description |
+|-----------|-----|-------------|
+| **Footer / Public Site** | `f0043000ec93d6ca5174b4415b3335b1a5b19af9` | Full public site footer (5-column nav, social, legal) |
+| **Footer / Solutions Portal** | `2407256a9043a76075015a56bb5ab39cabc09514` | Simplified footer for Solutions Portal (2-column) |
+| **Footer Link** | `b9de8cd51f2faa139870667157474758f71bf14f` | Individual link sub-component (State: Default/Hover) |
+
+**Footer / Public Site structure (desktop — 1512px):**
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  bg: --color-brand-primary (#000334)                             │
+│  padding: 120px top, 64px bottom, 148px horizontal               │
+│                                                                   │
+│  ┌─── Top ────────────────────────────────────────────────────┐  │
+│  │  Left (480px)              │  Right (500px, 2 columns)      │  │
+│  │  ┌─────────────────────┐   │  ┌──────────┐ ┌──────────┐   │  │
+│  │  │ Logo (240×67)        │   │  │ About     │ │ Engage &  │   │  │
+│  │  │ Mission text (18px)  │   │  │ Explore   │ │ News &    │   │  │
+│  │  │ "Connect with ARPA-H"│   │  │ Funding   │ │ Careers   │   │  │
+│  │  │ Social Icons (48px)  │   │  │           │ │           │   │  │
+│  │  └─────────────────────┘   │  └──────────┘ └──────────┘   │  │
+│  └────────────────────────────────────────────────────────────┘  │
+│                                                                   │
+│  ┌─── Bottom (border-top) ────────────────────────────────────┐  │
+│  │  Auxiliary nav (flex-wrap, centered)                         │  │
+│  │  © 2026 ARPA-H All Rights Reserved. (opacity: 0.6)          │  │
+│  └─────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Footer styling:**
+
+| Property | Value |
+|----------|-------|
+| Background | `--surface/background` = `--color-brand-primary` (#000334) |
+| Padding (desktop) | 120px top, 64px bottom, 148px horizontal |
+| Overflow | clip |
+| Gap between Top and Bottom | 80px |
+| Width | 1512px (desktop), 375px (mobile) |
+| Bottom border-top | solid `--surface/stroke` (#2a4179) |
+| Bottom padding-top | 24px |
+
+**Typography in footer:**
+
+| Element | Style |
+|---------|-------|
+| Section headings (About, Careers…) | `--font-family/secondary` Medium, 20px, line-height 27px, letter-spacing −0.5px, color: `--surface/accent` (#52daf2) |
+| Footer links | `--font-family/secondary` Regular, 14px, line-height 21px, color: `--type/body` (white) |
+| Mission description | `--font-family/secondary` Regular, 18px, line-height 27px, color: `--type/body` (white), max-width 700px |
+| Copyright notice | 14px, opacity 0.6, color: `--type/subheading` (#ccd5e1), centered |
+| "Connect with ARPA-H" | Same as section heading — 20px medium cyan |
+
+**Sub-components:**
+
+| Sub-component | Variants | Description |
+|---------------|----------|-------------|
+| **Footer Link** | State: Default, Hover | 14px white text, hover adds underline. Text property: Link. |
+| **Social Icons** | Kind: Circle, Size: Large (48px) | 4 icons: Twitter/X, LinkedIn, YouTube, Instagram. Gap: 12px. Hover variant per icon. |
+| **Logo** | Logo: thematic | ARPA-H logo in light/thematic variant (240×67px) |
+| **Vitals Sign Up** | Mobile: True/False | Newsletter signup CTA block (Public Site only) |
+
+**Footer Link styling:**
+
+| State | Style |
+|-------|-------|
+| Default | color: white, no text-decoration, 14px regular |
+| Hover | text-decoration: underline |
+
+**Navigation columns (Public Site):**
+
+| Column | Section Headings |
+|--------|------------------|
+| Left | About, Explore Funding |
+| Right | Engage & Connect, News & Events, Careers |
+
+Column minimum width: 200px. Columns are `flex`, `items-start`, `justify-between` (left) or `gap: 32px` (right).
+
+**Auxiliary navigation (bottom bar):**
+- Layout: flex-wrap, centered, gap 16px horizontal / 8px vertical
+- Links: Accessibility, Privacy Policy, Freedom of Information, Linking Policy, Vulnerability Disclosure Policy, No FEAR Act, Inspector General, Logo Guidance, Download Adobe Plugin
+- Same 14px white styling as main footer links
+
+**Footer / Solutions Portal differences:**
+- Simpler structure: single "Navigation" column + single "Policies & Information" column
+- Same styling tokens (background, typography, social icons, copyright)
+- No "Vitals Sign Up" component
+
+**Mobile (375px) adaptations:**
+- Single column layout, full-width
+- Padding reduces to standard mobile margins
+- Navigation columns stack vertically
+- Social icons and logo remain same size
 
 ---
 
