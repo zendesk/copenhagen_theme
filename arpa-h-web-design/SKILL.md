@@ -12,7 +12,9 @@ applyTo: "**/*.{ts,tsx,js,jsx,css,scss,html}"
 # NEXUS Design System — Full Reference
 
 Extracted from Figma file **ZbjllSrYpVdkdyioGVuNx2** ("📍 NEXUS Design System")  
-Last extracted: April 26, 2026
+Last extracted: April 30, 2026
+
+**Architecture:** USWDS provides the foundation (grid, reset, utilities, `.gov` banner, base component HTML + accessibility). NEXUS layers brand tokens and visual overrides on top — colors, typography, corner radius, elevation, and component-level styling. Every NEXUS component maps to a USWDS base component. When building, start with USWDS HTML structure and apply NEXUS tokens/classes on top.
 
 ---
 
@@ -35,7 +37,7 @@ All assets are included for offline reference. **When building on a native stack
 | [assets/images/arpa-h-logo-black.svg](./assets/images/arpa-h-logo-black.svg) | Full logo lockup — flat black (inherits `currentColor`). Figma: `Logo=black`. viewBox `0 0 1132.81 314.39`. Print / greyscale. |
 | [assets/images/arpa-h-logo-white.svg](./assets/images/arpa-h-logo-white.svg) | Full logo lockup — flat white `#fff`. Figma: `Logo=white`. viewBox `0 0 1132.81 314.39`. Dark or colored backgrounds. |
 | [assets/images/arpa-h-logo-reverse.svg](./assets/images/arpa-h-logo-reverse.svg) | Full logo lockup — reverse colorway (white wordmark, reverse mark). Figma: `Logo=full-color-reverse`. viewBox `0 0 1132.84 314.39`. Dark/navy/indigo backgrounds. |
-| [assets/styles/components.css](./assets/styles/components.css) | Reference CSS for NEXUS components (Button, Alert, Text Input, Tag, Card, Nav Header, Pagination, Spinner). NEXUS-specific styles layered on USWDS. Requires `globals.css`. |
+| [assets/styles/components.css](./assets/styles/components.css) | NEXUS visual overrides for USWDS components (Button, Alert, Text Input, Tag, Card, Nav Header, Pagination, Spinner). Layered on top of USWDS base styles — requires both USWDS core CSS and `globals.css` loaded first. |
 | [assets/tokens.json](./assets/tokens.json) | All NEXUS tokens in W3C Design Token format. Use with Style Dictionary, Theo, or any token pipeline. |
 | [assets/fonts/poppins-*.woff2](./assets/fonts/) | Poppins 300–700 (latin + latin-ext). **Not bundled with USWDS** — must be added separately. Used for all display text, h1, and h2. |
 
@@ -813,48 +815,98 @@ Breakpoints are encoded as spacing values (also used as layout width references)
 
 ## Components
 
-The design system is built on top of **USWDS (US Web Design System)** conventions. Components are documented per-page in the Figma file.
+NEXUS components are styled on top of **USWDS (US Web Design System)** base components. Every NEXUS component has a corresponding USWDS component underneath — USWDS provides the structural HTML, accessibility, and behavior; NEXUS overrides the visual appearance (colors, typography, radius, spacing) to match the ARPA-H brand.
 
-### Component Inventory
+Components exist in three tiers:
 
-| Component | Page | Status | Notes |
-|-----------|------|--------|-------|
-| Accordion | ↳ Accordion | In progress | Expand/collapse panels |
-| Alert | ↳ Alert | In progress | Info, success, warning, error variants |
-| Breadcrumb | ↳ Breadcrumb ✅ | Complete | Navigation trail |
-| Button | ↳ Button ✅ | Complete | Primary, secondary, outline, unstyled, big/small |
-| Button Group | ↳ Button Group | In progress | Grouped button sets |
-| Card | ↳ Card | In progress | Content card container |
-| Checkbox | ↳ Checkbox | In progress | Single/group checkbox inputs |
-| File Input | ↳ File Input | In progress | File upload control |
-| Footer | ↳ Footer | In progress | Site footer layout |
-| Form Elements | ↳ Form Elements ⚠️ | Needs review | General form wrapper |
-| Links | ↳ Links | In progress | Inline and standalone link styles |
-| Loading Spinner | ↳ Loading Spinner | In progress | Animated loading state |
-| Multiselect | ↳ Multiselect | In progress | Multi-option dropdown |
-| Navigation | ↳ Navigation | In progress | Site header nav, mega menu |
-| Pagination | ↳ Pagination ✅ | Complete | Page navigation controls |
-| Process List | ↳ Process List | In progress | Numbered step list |
-| Progress Indicator | ↳ Progress Indicator | In progress | Progress bar/stepper |
-| Prose | ↳ Prose ✅ | Complete | Rich text content styles |
-| Quote Block | ↳ Quote Block | In progress | Styled blockquote |
-| Radio Button | ↳ Radio Button | In progress | Single-select radio inputs |
-| Search | ↳ Search | In progress | Search bar with button |
-| Site Alert | ↳ Site Alert | In progress | Full-width site-level banner |
-| Tag | ↳ Tag | In progress | Label/badge chips |
-| Text Input | ↳ Text Input | In progress | Single-line text field |
-| Toggle | ↳ Toggle | In progress | On/off toggle switch |
-| Validation | ↳ Validation | In progress | Inline form error/hint messages |
-| USWDS Banner | ↳ USWDS Banner | In progress | Official .gov banner |
+1. **Published library component** — fully designed in Figma and published to the NEXUS shared library. These have complete variant definitions and are ready for production use.
+2. **Page-level spec** — a Figma page exists with specs and annotations, but the component is not yet published to the library. Use the USWDS base component and apply NEXUS tokens from `globals.css` and `components.css`.
+3. **USWDS only** — no NEXUS customization exists yet. Use stock USWDS.
 
-### Library-Published Component Sets
+### Component Inventory — USWDS → NEXUS Mapping
 
-The following are the component sets published to the Figma design system library:
+| Component | USWDS base | NEXUS status | NEXUS library key | Notes |
+|-----------|-----------|-------------|-------------------|-------|
+| **Button** | `usa-button` | ✅ Published | `47e5ad4d…` | Variants: Primary, Secondary, Outline, Unstyled. Sizes: Default, Large. States: Default, Hover, Focused, Disabled. Types: Text Only, With Icon. Pill shape (`radius-round`), cyan primary bg. |
+| **Button Group** | `usa-button-group` | ✅ Published | `5bb79a9e…` | Grouped button sets |
+| **Icon Button** | `usa-button` (icon variant) | ✅ Published | `b3935913…` | Button with icon only + drop shadow |
+| **Search Button** | `usa-search` (button) | ✅ Published | `105b3155…` | Search input submit button |
+| **Alert** | `usa-alert` | ✅ Published | `fc007075…` | Variants: Info, Neutral, Success, Warning, Error. Options: Simple/Full, Show/Hide Icon, Show/Hide Close, Nested. Rounded corners (`radius-lg`), NEXUS feedback colors. |
+| **Site Alert** | `usa-site-alert` | ✅ Published | `de75ab14…` | Full-width site-level banner variant |
+| **Navigation (Public)** | `usa-nav` | ✅ Published | `b3cebf62…` | Public site header navigation with mega menu |
+| **Navigation (Solutions)** | `usa-nav` | ✅ Published | `a2b94ebb…` | Solutions Portal variant |
+| **Footer (Public)** | `usa-footer` | ✅ Published | `f0043000…` | Public site footer |
+| **Footer (Solutions)** | `usa-footer` | ✅ Published | `2407256a…` | Solutions Portal footer variant |
+| **Pagination** | `usa-pagination` | ✅ Published | `d9080a9a…` | Pagination steps/controls |
+| **Quote Block** | `usa-blockquote` | ✅ Published | `b7bed23a…` | Styled blockquote |
+| **Loading Spinner** | — (no USWDS equivalent) | ✅ Published | `1ce752e0…` | NEXUS-specific animated loading indicator |
+| **Radio Button** | `usa-radio` | ✅ Published | `aac0ee24…` | Single-select radio inputs |
+| **Radio Label** | `usa-radio__label` | ✅ Published | `6183d9a3…` | Radio input label styling |
+| **Icon** | USWDS sprite system | ✅ Published | `c1223e88…` | NEXUS icon component wrapping USWDS sprite |
+| **Accordion** | `usa-accordion` | 📄 Page only | — | Expand/collapse panels. Use USWDS accordion + NEXUS tokens. |
+| **Breadcrumb** | `usa-breadcrumb` | 📄 Page only (✅ spec complete) | — | Navigation trail. Page spec is complete. |
+| **Card** | `usa-card` | 📄 Page only | — | Content card container. Apply NEXUS radius + elevation tokens. |
+| **Checkbox** | `usa-checkbox` | 📄 Page only | — | Single/group checkbox inputs |
+| **File Input** | `usa-file-input` | 📄 Page only | — | File upload control |
+| **Form Elements** | `usa-form`, `usa-fieldset` | 📄 Page only (⚠️ needs review) | — | General form wrapper/fieldset |
+| **Links** | `usa-link` | 📄 Page only | — | Inline and standalone link styles. NEXUS uses `--color-link` (#0957be) with underline animation. |
+| **Multiselect** | `usa-combo-box` | 📄 Page only | — | Multi-option dropdown |
+| **Process List** | `usa-process-list` | 📄 Page only | — | Numbered step list |
+| **Progress Indicator** | `usa-step-indicator` | 📄 Page only | — | Progress bar/stepper |
+| **Prose** | `usa-prose` | 📄 Page only (✅ spec complete) | — | Rich text content styles |
+| **Search** | `usa-search` | 📄 Page only | — | Search input/bar. Search Button is published separately. |
+| **Tag** | `usa-tag` | 📄 Page only | — | Label/badge chips. Apply NEXUS transparent surface for glass effect. |
+| **Text Input** | `usa-input` | 📄 Page only | — | Border: 1px `--color-ui-40`. Radius: `--radius-md` (8px). Focus: `--shadow-focus`. |
+| **Toggle** | `usa-toggle` | 📄 Page only | — | On/off toggle switch |
+| **Validation** | `usa-error-message`, `usa-hint` | 📄 Page only | — | Inline form error/hint messages |
+| **USWDS Banner** | `usa-banner` | 🏛️ USWDS only | — | Required `.gov` banner. **Do not override** — use stock USWDS. |
 
-| Component Set | Library | Key |
-|--------------|---------|-----|
-| Table of Contents Item | 📍 NEXUS Design System | `041b55083ff660293bcfa5dd7460b711634d820b` |
-| Alert | External/USWDS | `461d349170ba2ab5476ecdd1d64538f01fb3a80b` |
+### Published Library Component Sets (Figma)
+
+Full list of UI component sets published to the 📍 NEXUS Design System library:
+
+| Component Set | Component Key | Variants / Notes |
+|--------------|--------------|-----------------|
+| Button | `47e5ad4d7adb07908bffb23f642a8f0693d30988` | Kind × Size × Type × Disabled × State |
+| Button Group | `5bb79a9e6c8b308214e11b4eb550ad391e1344cc` | Grouped actions |
+| Icon Button Drop Shadow | `b3935913d9e2e67be521e7d258abb595d114ac16` | Icon-only with elevation |
+| Search Button | `105b31557acc94ec60528372bb38a05e67c166da` | Search submit |
+| Alert | `fc007075e4ad11d810733ecb6ed9fd9b6b637ab1` | State × Simple × Nested, close/icon toggles |
+| Site Alert | `de75ab148ace0d9dd6e968db39cc3474606180ca` | Full-width banner variant |
+| Navigation / Public Site | `b3cebf6293410901f1f76be61a914dbd6fedf94b` | Header nav + mega menu |
+| Navigation / Solutions Portal | `a2b94ebbe86de6bd014a1f4e7467af4c148fd96b` | Solutions variant |
+| Footer / Public Site | `f0043000ec93d6ca5174b4415b3335b1a5b19af9` | Public site footer |
+| Footer / Solutions Portal | `2407256a9043a76075015a56bb5ab39cabc09514` | Solutions footer variant |
+| Pagination Steps | `d9080a9a1cd65dd1f66a1333758cd05bfb5e07a3` | Page navigation |
+| Quote Block | `b7bed23a97f692401c3163ddf71de16b7449ef09` | Styled blockquote |
+| Loading Spinner 2 | `1ce752e08894f72aeafc8a2eff0319844ec684b5` | Animated spinner |
+| Radio Button | `aac0ee24fa809f9f1f407394b5f0abf7f42e6225` | Radio input |
+| Radio Label | `6183d9a36e5cefc5ac18a9bc3f4d9c134e3c9694` | Radio label styling |
+| Icon | `c1223e8821eb78ca7b2d95d4fa007df78d4c598e` | Icon wrapper |
+
+### Component Implementation Guide
+
+**For published components (✅):** The USWDS structural HTML is the base. Apply NEXUS classes from `components.css` or reference the Figma component directly via the MCP (`get_design_context` with the component key).
+
+**For page-only components (📄):** Start with the stock USWDS component HTML. Then:
+1. Load `globals.css` for token overrides (colors, spacing, radius)
+2. Load `components.css` for any NEXUS-specific class overrides
+3. Reference the Figma page for visual details not captured in CSS (layout, specific spacing, responsive behavior)
+
+**For USWDS-only components (🏛️):** Use stock USWDS. The `.gov` banner (`usa-banner`) must never be visually modified.
+
+### Key NEXUS Visual Departures from Stock USWDS
+
+| Property | Stock USWDS | NEXUS Override |
+|----------|------------|----------------|
+| Button shape | Rectangle with small radius | Pill (`border-radius: 1000px`) |
+| Button primary color | Blue (`#0050d8`) | Cyan (`#52daf2`) with indigo text (`#000334`) |
+| Alert corners | Square | Rounded (`border-radius: 16px`) |
+| Alert colors | USWDS blue/green/gold/red | NEXUS feedback tokens (info `#0957be`, success `#3c690e`, warning `#7a5d20`, error `#bf2d1d`) |
+| Input corners | Square | Rounded (`border-radius: 8px`) |
+| Focus ring | USWDS outline | Box shadow (`0 0 0 1px #0957be, 0 0 3px 1px #0957be`) |
+| Typography | Source Sans Pro | Poppins (display/h1-h2) + Public Sans (h3-h6/body) |
+| Spacing | USWDS spacing scale | Same scale, same values — NEXUS aligns exactly |
 
 ---
 
