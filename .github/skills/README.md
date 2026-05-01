@@ -143,22 +143,26 @@ Defines the ARPA-H internal application design system — a stack-agnostic visua
 **File:** [arpa-h-web-design/SKILL.md](arpa-h-web-design/SKILL.md)  
 **Assets:** [arpa-h-web-design/assets/](arpa-h-web-design/assets/)
 
-Full reference implementation of the **NEXUS Design System** — the ARPA-H public-facing web design system built on USWDS. Extracted from Figma file `ZbjllSrYpVdkdyioGVuNx2`. Applies to any ARPA-H public web property regardless of stack (Drupal, Astro, Svelte, Next.js, static HTML).
+Full reference implementation of the **NEXUS Design System** — the ARPA-H public-facing web design system that layers branded visual overrides on top of **USWDS (US Web Design System)**. Extracted from Figma file `ZbjllSrYpVdkdyioGVuNx2` via the Figma MCP server. Applies to any ARPA-H public web property regardless of stack (Drupal, Astro, Svelte, Next.js, static HTML).
+
+**Architecture:** USWDS provides the foundation — grid, CSS reset, utilities, base component HTML + accessibility, fonts, icon sprite, and the legally required `.gov` banner. NEXUS layers brand tokens and visual overrides on top. Every NEXUS component maps to a USWDS base component (`usa-button` → NEXUS Button, `usa-alert` → NEXUS Alert, etc.).
 
 **What it covers:**
 
+- **Prerequisites & USWDS integration** — documents `@uswds/uswds` as a required dependency, what USWDS provides vs. what NEXUS adds, Sass integration guidance, no-build stack guidance, and the required load order (USWDS core → `globals.css` → `components.css` → Poppins).
 - **Design tokens** — all NEXUS tokens as CSS custom properties (`globals.css`) and W3C Design Token JSON (`tokens.json`). Covers 11 color primitive palettes, brand/feedback/accent alias tokens, 8px-grid spacing scale, corner radius scale, typography scale, and elevation shadows. Not duplicated by USWDS — these are NEXUS-specific values.
-- **Typography** — three-family system: Poppins (display, h1–h2), Public Sans (h3–body–action), Roboto Mono (code). Full size/weight/line-height/letter-spacing scale. Public Sans and Roboto Mono come from USWDS; Poppins WOFF2 files are included as they are NEXUS-only.
-- **Component reference CSS** — `components.css` provides framework-agnostic styles for Button (4 variants, 2 sizes), Alert (5 states), Text Input, Tag/Badge, Card, Site Alert banner, Nav Header, Pagination, and Loading Spinner.
-- **Logo** — ARPA-H hexagon "H" mark as a clean SVG (`arpa-h.svg`). Horizontal lockup with wordmark must be exported from Figma (node `83:10578`) with "Outline text" enabled.
+- **Typography** — three-family system: Poppins (display, h1–h2), Public Sans (h3–body–action), Roboto Mono (code). Full size/weight/line-height/letter-spacing scale with responsive mobile overrides. Public Sans and Roboto Mono come from USWDS; Poppins WOFF2 files are included as they are NEXUS-only.
+- **Component reference CSS** — `components.css` provides visual overrides for USWDS components: Button (4 variants, 2 sizes), Alert (5 states), Text Input, Tag/Badge, Card, Site Alert banner, Nav Header, Pagination, and Loading Spinner.
+- **Component inventory with USWDS mapping** — 27 components categorized in three tiers: ✅ Published (16 Figma library component sets with full variant definitions), 📄 Page-only (Figma specs exist, use USWDS base + NEXUS tokens), 🏛️ USWDS-only (use stock, don't override — e.g. `.gov` banner).
+- **Key visual departures** — documents exactly where NEXUS diverges from stock USWDS: pill-shaped buttons, cyan primary color, rounded alert corners, `border-radius: 8px` inputs, box-shadow focus ring, Poppins display typography.
+- **Logo** — full set of ARPA-H logomark and lockup SVGs in 5 color variants each, with usage rules, clear space requirements, and minimum sizing.
 - **Icon sprite** — full `@uswds/uswds` `sprite.svg` (245 icons) included for offline reference. Native-stack apps should use the copy from their USWDS installation.
 - **Self-hosted fonts** — 24 WOFF2 files for air-gapped environments. Native-stack apps using `@uswds/uswds` already have Public Sans and Roboto Mono; only Poppins must be added separately.
-- **Component inventory** — 27 documented components across 37 Figma pages, with variant/prop tables and token references.
-- **Layout conventions** — 12-column responsive grid, 8-breakpoint system (320px–1400px), container widths, and section spacing rules.
+- **Layout conventions** — USWDS-aligned breakpoint system (320px–1400px), 8px spacing grid, container widths, and section spacing rules.
 
-**What it does not replace:** USWDS itself. NEXUS is a branded layer on top of USWDS — apps still depend on `@uswds/uswds` for base styles, utilities, and the icon sprite. This skill provides the NEXUS-specific delta.
+**What it does not replace:** USWDS itself. NEXUS is a branded layer on top of USWDS — apps still depend on `@uswds/uswds` for grid, reset, utilities, base component structure, accessibility, and the icon sprite. This skill provides the NEXUS-specific delta and teaches Copilot to always start with USWDS HTML, then apply NEXUS overrides.
 
-**Why it matters:** ARPA-H public web properties span multiple stacks and teams. Without a central reference, NEXUS tokens, Poppins usage, and brand color application diverge rapidly. This skill ensures GitHub Copilot applies correct NEXUS values — not raw USWDS defaults — when generating or reviewing any ARPA-H public UI.
+**Why it matters:** ARPA-H public web properties span multiple stacks and teams. Without a central reference, NEXUS tokens, Poppins usage, and brand color application diverge rapidly. This skill ensures GitHub Copilot applies correct NEXUS values — not raw USWDS defaults — when generating or reviewing any ARPA-H public UI, and that it always installs USWDS as the required foundation.
 
 ---
 
@@ -248,20 +252,31 @@ This is normal behavior — it does not require any codebase changes.
 When updating the skill after Figma changes, target only what changed:
 
 - **Color/token changes** → ask Copilot to re-extract variable collections, then update `assets/globals.css` and `assets/tokens.json`
-- **New or changed components** → get design context for the affected node IDs, update the Components section of `SKILL.md` and `assets/components.css`
+- **New or changed components** → search the NEXUS library for the component, get design context for the affected node IDs, update the Components section of `SKILL.md` and `assets/components.css`
 - **Typography changes** → re-extract text styles, update the Typography section of `SKILL.md` and `--font-*` vars in `globals.css`
+- **New published components** → search the library (`mcp_figma_search_design_system` with the NEXUS library key), add to the Published Library Component Sets table, and move from 📄 Page-only to ✅ Published in the inventory
+
+NEXUS library key (for `includeLibraryKeys` filter):
+
+```
+lk-db0b80242252e76656cbbc09f7fa00abc5eed62900182e42fdeb55c81fbd40620fbf377eb05aa53faadf15eccc2e91216f3a2c5a71ddef9026fa00c35f3ebc25
+```
 
 Node IDs for key components (from the current extraction):
 
-| Component | Node ID |
-| --------- | ------- |
-| Button | `3556:18705` |
-| Alert | `6365:11047` |
-| Web Elements (Logo) | `83:10580` |
-| Text Input | `6365:6428` |
-| Site Alert | `6365:6366` |
-| Tag | `6365:6576` |
-| Pagination | `3404:13833` |
-| Loading Spinner | `6724:860` |
-| Card | `6820:150` |
-| Navigation | `6713:1644` |
+| Component | Node ID | Component Key (if published) |
+| --------- | ------- | ---------------------------- |
+| Button | `3556:18705` | `47e5ad4d7adb07908bffb23f642a8f0693d30988` |
+| Alert | `6365:11047` | `fc007075e4ad11d810733ecb6ed9fd9b6b637ab1` |
+| Site Alert | `6365:6366` | `de75ab148ace0d9dd6e968db39cc3474606180ca` |
+| Navigation (Public) | `6713:1644` | `b3cebf6293410901f1f76be61a914dbd6fedf94b` |
+| Footer (Public) | — | `f0043000ec93d6ca5174b4415b3335b1a5b19af9` |
+| Pagination | `3404:13833` | `d9080a9a1cd65dd1f66a1333758cd05bfb5e07a3` |
+| Quote Block | — | `b7bed23a97f692401c3163ddf71de16b7449ef09` |
+| Loading Spinner | `6724:860` | `1ce752e08894f72aeafc8a2eff0319844ec684b5` |
+| Radio Button | — | `aac0ee24fa809f9f1f407394b5f0abf7f42e6225` |
+| Icon | — | `c1223e8821eb78ca7b2d95d4fa007df78d4c598e` |
+| Web Elements (Logo) | `83:10580` | — (page only) |
+| Text Input | `6365:6428` | — (page only) |
+| Tag | `6365:6576` | — (page only) |
+| Card | `6820:150` | — (page only) |
