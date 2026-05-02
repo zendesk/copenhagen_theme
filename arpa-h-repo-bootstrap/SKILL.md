@@ -23,51 +23,51 @@ Examine the repo before writing anything. Check for the following signals:
 
 ### Language / Runtime
 
-| Signal | Conclusion |
-| ------ | ---------- |
-| `package.json` at root | Node.js project — read `engines.node` for version, default to LTS (24) |
-| `requirements.txt` / `pyproject.toml` / `*.py` | Python project |
-| `go.mod` | Go project |
-| `Cargo.toml` | Rust project |
-| `pom.xml` / `build.gradle` | Java project |
-| Multiple present | Multi-language — use a base image and add features for each |
+| Signal                                         | Conclusion                                                             |
+| ---------------------------------------------- | ---------------------------------------------------------------------- |
+| `package.json` at root                         | Node.js project — read `engines.node` for version, default to LTS (24) |
+| `requirements.txt` / `pyproject.toml` / `*.py` | Python project                                                         |
+| `go.mod`                                       | Go project                                                             |
+| `Cargo.toml`                                   | Rust project                                                           |
+| `pom.xml` / `build.gradle`                     | Java project                                                           |
+| Multiple present                               | Multi-language — use a base image and add features for each            |
 
 ### Frontend Framework
 
-| Signal | Framework |
-| ------ | --------- |
-| `vite.config.*` | Vite — port 5173 |
-| `next.config.*` | Next.js — port 3000 |
-| `nuxt.config.*` | Nuxt — port 3000 |
+| Signal            | Framework             |
+| ----------------- | --------------------- |
+| `vite.config.*`   | Vite — port 5173      |
+| `next.config.*`   | Next.js — port 3000   |
+| `nuxt.config.*`   | Nuxt — port 3000      |
 | `svelte.config.*` | SvelteKit — port 5173 |
-| `angular.json` | Angular — port 4200 |
+| `angular.json`    | Angular — port 4200   |
 
 ### Backend / API
 
-| Signal | Service |
-| ------ | ------- |
-| `api/` folder with `host.json` | Azure Functions — port 7071, needs `azure-functions-core-tools@4` |
-| `server/` or `src/server` with Express/Fastify | Node API — port 8080 or as configured |
-| `*.py` with FastAPI/Flask | Python API — port 8000 |
-| `Dockerfile` or `docker-compose.yml` | Container-based — use `docker-outside-of-docker` feature |
+| Signal                                         | Service                                                           |
+| ---------------------------------------------- | ----------------------------------------------------------------- |
+| `api/` folder with `host.json`                 | Azure Functions — port 7071, needs `azure-functions-core-tools@4` |
+| `server/` or `src/server` with Express/Fastify | Node API — port 8080 or as configured                             |
+| `*.py` with FastAPI/Flask                      | Python API — port 8000                                            |
+| `Dockerfile` or `docker-compose.yml`           | Container-based — use `docker-outside-of-docker` feature          |
 
 ### Local Storage / Emulators
 
-| Signal | Service | Ports |
-| ------ | ------- | ----- |
+| Signal                                          | Service                                                      | Ports               |
+| ----------------------------------------------- | ------------------------------------------------------------ | ------------------- |
 | `@azure/storage-*` or `azurite` in package.json | Azurite emulator — install globally, store at `/tmp/azurite` | 10000, 10001, 10002 |
-| `@azure/cosmos*` in package.json | CosmosDB — may need Azurite or emulator | — |
-| `mongoose` / `mongodb` in package.json | MongoDB — add `ghcr.io/devcontainers/features/mongo:1` | 27017 |
-| `pg` / `prisma` with postgres provider | PostgreSQL — add `ghcr.io/devcontainers/features/postgres:1` | 5432 |
-| `redis` in package.json | Redis — add `ghcr.io/devcontainers/features/redis:1` | 6379 |
+| `@azure/cosmos*` in package.json                | CosmosDB — may need Azurite or emulator                      | —                   |
+| `mongoose` / `mongodb` in package.json          | MongoDB — add `ghcr.io/devcontainers/features/mongo:1`       | 27017               |
+| `pg` / `prisma` with postgres provider          | PostgreSQL — add `ghcr.io/devcontainers/features/postgres:1` | 5432                |
+| `redis` in package.json                         | Redis — add `ghcr.io/devcontainers/features/redis:1`         | 6379                |
 
 ### Azure Integration
 
-| Signal | Action |
-| ------ | ------ |
-| `@azure/identity` or `DefaultAzureCredential` in any source file | Add `ghcr.io/devcontainers/features/azure-cli:1` feature |
-| `infra/` folder with `*.tf` files | Add Terraform — `ghcr.io/devcontainers/features/terraform:1` |
-| `.bicep` files | Azure CLI is sufficient |
+| Signal                                                           | Action                                                       |
+| ---------------------------------------------------------------- | ------------------------------------------------------------ |
+| `@azure/identity` or `DefaultAzureCredential` in any source file | Add `ghcr.io/devcontainers/features/azure-cli:1` feature     |
+| `infra/` folder with `*.tf` files                                | Add Terraform — `ghcr.io/devcontainers/features/terraform:1` |
+| `.bicep` files                                                   | Azure CLI is sufficient                                      |
 
 ### Environment Files
 
@@ -77,12 +77,12 @@ Examine the repo before writing anything. Check for the following signals:
 
 ### Linting / Formatting
 
-| Signal | Extension to add |
-| ------ | ---------------- |
-| `.eslintrc*` / `eslint.config.*` | `dbaeumer.vscode-eslint` |
-| `.prettierrc*` / `prettier` in package.json | `esbenp.prettier-vscode` |
-| `pyproject.toml` with ruff/black | `charliermarsh.ruff` |
-| `.editorconfig` | `editorconfig.editorconfig` |
+| Signal                                                                       | Extension to add                 |
+| ---------------------------------------------------------------------------- | -------------------------------- |
+| `.eslintrc*` / `eslint.config.*`                                             | `dbaeumer.vscode-eslint`         |
+| `.prettierrc*` / `prettier` in package.json                                  | `esbenp.prettier-vscode`         |
+| `pyproject.toml` with ruff/black                                             | `charliermarsh.ruff`             |
+| `.editorconfig`                                                              | `editorconfig.editorconfig`      |
 | `.markdownlint*` / `markdownlint` in package.json / any `*.md` files present | `davidanson.vscode-markdownlint` |
 
 ### Linter ignore rules — always exclude `.github/skills`
@@ -157,18 +157,18 @@ Apply all ignore rules that are relevant to the linters detected in the repo. If
 
 ### Language-Specific Extensions
 
-| Language/Framework | Extensions |
-| ------------------- | ---------- |
-| TypeScript / JavaScript | No dedicated extension needed — covered by TypeScript and ESLint extensions |
-| Python | `ms-python.python`, `ms-python.vscode-pylance` |
-| Go | `golang.go` |
-| Rust | `rust-lang.rust-analyzer` — provides IntelliSense, inline errors, and `clippy` lint integration |
-| Terraform | `hashicorp.terraform` |
-| Docker | `ms-azuretools.vscode-docker` |
-| Svelte | `svelte.svelte-vscode` |
-| Astro | `astro-build.astro-vscode` |
-| Vue | `vue.volar` |
-| React (TSX/JSX) | No dedicated extension needed — covered by TypeScript and ESLint extensions |
+| Language/Framework      | Extensions                                                                                      |
+| ----------------------- | ----------------------------------------------------------------------------------------------- |
+| TypeScript / JavaScript | No dedicated extension needed — covered by TypeScript and ESLint extensions                     |
+| Python                  | `ms-python.python`, `ms-python.vscode-pylance`                                                  |
+| Go                      | `golang.go`                                                                                     |
+| Rust                    | `rust-lang.rust-analyzer` — provides IntelliSense, inline errors, and `clippy` lint integration |
+| Terraform               | `hashicorp.terraform`                                                                           |
+| Docker                  | `ms-azuretools.vscode-docker`                                                                   |
+| Svelte                  | `svelte.svelte-vscode`                                                                          |
+| Astro                   | `astro-build.astro-vscode`                                                                      |
+| Vue                     | `vue.volar`                                                                                     |
+| React (TSX/JSX)         | No dedicated extension needed — covered by TypeScript and ESLint extensions                     |
 
 > **Every extension identified in the tables above MUST be written to `customizations.vscode.extensions` in `devcontainer.json`.** This is the only guarantee that extensions are available after a rebuild or in a new Codespace. Do not rely on a developer installing them manually.
 
@@ -180,11 +180,11 @@ Apply all ignore rules that are relevant to the linters detected in the repo. If
 
 Only pull devcontainer base images and features from these sources. Any other registry is unapproved and must not be used.
 
-| Registry | What it provides | Trust basis |
-| -------- | ---------------- | ----------- |
-| `mcr.microsoft.com/devcontainers/*` | Base images (Node.js, Python, Go, Universal, etc.) | Microsoft-owned registry, SLA-backed, source at [github.com/devcontainers/images](https://github.com/devcontainers/images) |
-| `ghcr.io/devcontainers/features/*` | Official devcontainer features (gh CLI, Node, Azure CLI, Terraform, etc.) | Maintained by the `devcontainers` org (Microsoft-backed), source at [github.com/devcontainers/features](https://github.com/devcontainers/features) |
-| `ghcr.io/devcontainers-contrib/features/*` | Community features not yet promoted to the official org | Community-contributed; use only for features with an active commit history and no official equivalent — prefer `ghcr.io/devcontainers/features/*` when one exists |
+| Registry                                   | What it provides                                                          | Trust basis                                                                                                                                                       |
+| ------------------------------------------ | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mcr.microsoft.com/devcontainers/*`        | Base images (Node.js, Python, Go, Universal, etc.)                        | Microsoft-owned registry, SLA-backed, source at [github.com/devcontainers/images](https://github.com/devcontainers/images)                                        |
+| `ghcr.io/devcontainers/features/*`         | Official devcontainer features (gh CLI, Node, Azure CLI, Terraform, etc.) | Maintained by the `devcontainers` org (Microsoft-backed), source at [github.com/devcontainers/features](https://github.com/devcontainers/features)                |
+| `ghcr.io/devcontainers-contrib/features/*` | Community features not yet promoted to the official org                   | Community-contributed; use only for features with an active commit history and no official equivalent — prefer `ghcr.io/devcontainers/features/*` when one exists |
 
 **Do not use:**
 
@@ -198,12 +198,12 @@ Use Microsoft's devcontainers images. Use the **bare runtime-version tag** (e.g.
 
 > **Why not `1-24` or `4-24`?** The `1-` image series tops out at Node.js 22 (confirmed on MCR — there is no `1-24` tag). Node.js 24 lives under both `:24` and `:4-24`, which resolve to the same digest. The bare `:24` tag is simpler and will continue to resolve correctly when a future image-major increment occurs.
 
-| Stack | Image |
-| ----- | ----- |
-| Node.js only | `mcr.microsoft.com/devcontainers/javascript-node:<version>` |
-| Python only | `mcr.microsoft.com/devcontainers/python:<version>` |
-| Go | `mcr.microsoft.com/devcontainers/go:<version>` |
-| Universal (multi-language) | `mcr.microsoft.com/devcontainers/universal:2` |
+| Stack                      | Image                                                       |
+| -------------------------- | ----------------------------------------------------------- |
+| Node.js only               | `mcr.microsoft.com/devcontainers/javascript-node:<version>` |
+| Python only                | `mcr.microsoft.com/devcontainers/python:<version>`          |
+| Go                         | `mcr.microsoft.com/devcontainers/go:<version>`              |
+| Universal (multi-language) | `mcr.microsoft.com/devcontainers/universal:2`               |
 
 Pin the Node.js version to match `engines.node` in `package.json`, or default to the current LTS (24 as of this writing — verify at [nodejs.org/en/about/previous-releases](https://nodejs.org/en/about/previous-releases)).
 
@@ -255,6 +255,30 @@ ms-azuretools.vscode-azurefunctions   ← Azure Functions signal
 ms-azuretools.vscode-cosmosdb         ← CosmosDB signal
 Azurite.azurite                       ← Azurite signal
 ```
+
+### Always: suppress the Dev Container extension recommendation
+
+Repos that include a `.devcontainer/devcontainer.json` trigger VS Code to recommend the
+**Dev Containers** extension (`ms-vscode-remote.remote-containers`). Inside GitHub Codespaces
+that extension is irrelevant — Codespaces handles containerisation natively without it.
+
+Add or update `.vscode/extensions.json` to silence the nag:
+
+```jsonc
+{
+  "unwantedRecommendations": [
+    // Not needed inside Codespaces — only relevant for local Docker workflows
+    "ms-vscode-remote.remote-containers",
+  ],
+}
+```
+
+**Rules:**
+
+- If `.vscode/extensions.json` does not exist, create it with the content above.
+- If it already exists and has a `recommendations` array, preserve it and merge in the
+  `unwantedRecommendations` key.
+- `.vscode/extensions.json` must **not** be gitignored (see Step 7).
 
 ---
 
@@ -314,12 +338,12 @@ Common global tools:
 
 Use `bun` over `npm` everywhere in devcontainer scripts:
 
-| Old form | Replacement |
-| -------- | ----------- |
-| `npm install` | `bun install` |
+| Old form               | Replacement              |
+| ---------------------- | ------------------------ |
+| `npm install`          | `bun install`            |
 | `npm install -g <pkg>` | `bun add --global <pkg>` |
-| `npx <pkg>` | `bunx <pkg>` |
-| `npm run <script>` | `bun run <script>` |
+| `npx <pkg>`            | `bunx <pkg>`             |
+| `npm run <script>`     | `bun run <script>`       |
 
 **If `npm install` is unavoidable** (e.g. a tool explicitly invokes it internally, or an upstream flow you cannot change requires it), always pass `--ignore-scripts`:
 
@@ -330,6 +354,7 @@ npm install --ignore-scripts
 `npm install` without `--ignore-scripts` executes arbitrary `preinstall`, `install`, and `postinstall` scripts supplied by every package in the dependency graph — a well-documented and actively exploited supply chain attack vector.
 
 Omit `--ignore-scripts` only when **all** of the following are true:
+
 1. A specific `postinstall` script is known to be functionally required (e.g. native bindings compilation via `node-gyp`).
 2. The package and its install script have been explicitly audited or come from a trusted, internally controlled source.
 3. The decision is documented in a comment in `devcontainer.json` or `PLAN.md`.
@@ -526,10 +551,10 @@ Commits that only update `.github/skills/*` (e.g. Copilot skill syncs) must not 
 on:
   push:
     paths-ignore:
-      - '.github/skills/**'
+      - ".github/skills/**"
   pull_request:
     paths-ignore:
-      - '.github/skills/**'
+      - ".github/skills/**"
 ```
 
 Apply this to all triggers that support path filtering (`push`, `pull_request`, `pull_request_target`). Triggers that do not support `paths-ignore` (e.g. `workflow_dispatch`, `schedule`) are unaffected — no change is needed for those.
@@ -556,14 +581,14 @@ updates:
 The ARPA-H GitHub organization enforces a **"Registry only"** MCP policy (`chat.mcp.access = registry`). This means:
 
 - GitHub Copilot in VS Code / Codespaces will **only** run MCP servers whose server ID exactly matches an entry in the ARPA-H registry.
-- Any `mcp.json` entry whose name does not match a registry ID is blocked with: *"This MCP Server is disabled because it is configured to be disabled in the Editor."*
+- Any `mcp.json` entry whose name does not match a registry ID is blocked with: _"This MCP Server is disabled because it is configured to be disabled in the Editor."_
 - Do **not** attempt to work around this by setting `chat.mcp.access = all` — the policy is intentional and enforced org-wide to prevent use of unapproved MCP servers (MCP servers can execute arbitrary code and access sensitive data).
 - If a new MCP server is needed for a project, it must first be **added to the ARPA-H registry** by an org admin, then referenced in `mcp.json` with the matching ID.
 
 ### Registry
 
-| Registry URL | `https://apis.arpa-h.gov` |
-|---|---|
+| Registry URL       | `https://apis.arpa-h.gov`                  |
+| ------------------ | ------------------------------------------ |
 | Discovery endpoint | `GET https://apis.arpa-h.gov/v0.1/servers` |
 
 ### Approved servers
@@ -636,9 +661,11 @@ When creating a new `PLAN.md`, use this structure as a starting point and fill i
 # Plan — <repo name>
 
 ## What This Is
+
 <One-paragraph description of the app's purpose and users.>
 
 ## Stack
+
 - **Runtime:** Node.js 20 / Python 3.12 / etc.
 - **Frontend:** SvelteKit + Vite
 - **API:** Azure Functions (TypeScript)
@@ -647,19 +674,24 @@ When creating a new `PLAN.md`, use this structure as a starting point and fill i
 - **Infra:** Bicep
 
 ## Requirements
+
 - [ ] <Core requirement 1>
 - [ ] <Core requirement 2>
 
 ## Open Questions
+
 - [ ] <Unresolved decision or unknown>
 
 ## Work Items
+
 ### Setup
+
 - [ ] Scaffold devcontainer
 - [ ] Configure .gitignore
 - [ ] Add environment file examples
 
 ### <Feature area>
+
 - [ ] <Task>
 ```
 
@@ -709,23 +741,28 @@ Every ARPA-H repo must have an `AGENTS.md` at the root. It gives GitHub Copilot 
 # Agent Directives — <repo name>
 
 ## What This Repo Is
+
 <One to two sentences.>
 
 ## Before Making Any Change
+
 - Read `PLAN.md` to understand current stack and open work items.
 - Check for existing utilities in `src/lib/` before creating new ones.
 
 ## Coding Conventions
+
 - All new files use TypeScript with strict mode enabled.
 - Components go in `src/lib/components/`, named in PascalCase.
 - Server-only code goes in `src/lib/server/` and must never be imported from client modules.
 - No `any`. Use `unknown` and narrow explicitly.
 
 ## Testing
+
 - Tests live alongside source in `__tests__/` directories.
 - Run with `npm test`. All tests must pass before opening a PR.
 
 ## Never Do
+
 - Commit secrets or connection strings.
 - Skip updating `PLAN.md` checkboxes when completing a work item.
 - Modify the auth flow without explicit user confirmation.
@@ -733,6 +770,7 @@ Every ARPA-H repo must have an `AGENTS.md` at the root. It gives GitHub Copilot 
 - Reference container images or devcontainer features from unapproved registries. Only `mcr.microsoft.com/devcontainers/*`, `ghcr.io/devcontainers/features/*`, and (with scrutiny) `ghcr.io/devcontainers-contrib/features/*` are permitted. Docker Hub images, unknown GHCR orgs, and `:latest` tags are supply chain risks.
 
 ## Commit and PR Format
+
 - Commits: `<type>(<scope>): <subject>` (Conventional Commits)
 - PR titles follow the same format.
 ```
