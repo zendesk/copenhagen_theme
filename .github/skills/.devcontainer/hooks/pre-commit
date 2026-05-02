@@ -1,16 +1,25 @@
 #!/usr/bin/env bash
-# pre-commit: lint staged markdown files with markdownlint-cli2
+# pre-commit: lint staged files
 # Uses bunx per ARPA-H toolchain standard (npx is not used in ARPA-H repos)
 
 set -euo pipefail
 
-# Collect staged .md files
-staged=$(git diff --cached --name-only --diff-filter=ACM | grep '\.md$' || true)
+failed=0
 
-if [[ -z "$staged" ]]; then
-  exit 0
+# Markdown — markdownlint-cli2
+md_files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.md$' || true)
+if [[ -n "$md_files" ]]; then
+  echo "markdownlint: checking staged markdown files..."
+  # shellcheck disable=SC2086
+  bunx markdownlint-cli2 $md_files || failed=1
 fi
 
-echo "markdownlint: checking staged markdown files..."
-# shellcheck disable=SC2086
-bunx markdownlint-cli2 $staged
+# JSON / CSS / YAML — prettier
+prettier_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(json|css|yml|yaml)$' || true)
+if [[ -n "$prettier_files" ]]; then
+  echo "prettier: checking staged files..."
+  # shellcheck disable=SC2086
+  bunx prettier --check $prettier_files || failed=1
+fi
+
+exit $failed
