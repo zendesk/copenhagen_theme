@@ -1,72 +1,72 @@
 [
-    {
-        "repo": "ARPA-H/designator",
-        "prefix": ".github/skills",
-        "branch": "main"
-    },
-    {
-        "repo": "ARPA-H/zendesk_copenhagen",
-        "prefix": ".github/skills",
-        "branch": "main"
-    },
-    {
-        "repo": "ARPA-H/ledger",
-        "prefix": ".github/skills",
-        "branch": "main"
-    },
-    {
-        "repo": "ARPA-H/jira-copilot",
-        "prefix": ".github/skills",
-        "branch": "main"
-    },
-    {
-        "repo": "ARPA-H/perimeter",
-        "prefix": ".github/skills",
-        "branch": "main"
-    },
-    {
-        "repo": "ARPA-H/exempter",
-        "prefix": ".github/skills",
-        "branch": "main"
-    },
-    {
-        "repo": "ARPA-H/slack",
-        "prefix": ".github/skills",
-        "branch": "main"
-    },
-    {
-        "repo": "ARPA-H/zendesk_devices",
-        "prefix": ".github/skills",
-        "branch": "main"
-    },
-    {
-        "repo": "ARPA-H/arpa-h-static-site-template",
-        "prefix": ".github/skills",
-        "branch": "main"
-    },
-    {
-        "repo": "ARPA-H/arpah-web-infra",
-        "prefix": ".github/skills",
-        "branch": "main"
-    },
-    {
-        "repo": "ARPA-H/zendesk_usb",
-        "prefix": ".github/skills",
-        "branch": "main"
-    },
-    {
-        "repo": "ARPA-H/solution-site-redirect",
-        "prefix": ".github/skills",
-        "branch": "main"
-    },
-    {
-        "repo": "ARPA-H/web-design-example",
-        "prefix": ".github/skills",
-        "branch": "main"
-    },
-    {
-        "repo": "ARPA-H/api-center",
-        "prefix": ".github/skills",
-        "branch": "main"
-    }
+  {
+    "repo": "ARPA-H/designator",
+    "prefix": ".github/skills",
+    "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/zendesk_copenhagen",
+    "prefix": ".github/skills",
+    "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/ledger",
+    "prefix": ".github/skills",
+    "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/jira-copilot",
+    "prefix": ".github/skills",
+    "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/perimeter",
+    "prefix": ".github/skills",
+    "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/exempter",
+    "prefix": ".github/skills",
+    "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/slack",
+    "prefix": ".github/skills",
+    "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/zendesk_devices",
+    "prefix": ".github/skills",
+    "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/arpa-h-static-site-template",
+    "prefix": ".github/skills",
+    "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/arpah-web-infra",
+    "prefix": ".github/skills",
+    "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/zendesk_usb",
+    "prefix": ".github/skills",
+    "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/solution-site-redirect",
+    "prefix": ".github/skills",
+    "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/web-design-example",
+    "prefix": ".github/skills",
+    "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/api-center",
+    "prefix": ".github/skills",
+    "branch": "main"
+  }
 ]

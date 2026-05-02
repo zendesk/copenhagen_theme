@@ -19,9 +19,9 @@ on:
   workflow_dispatch:
     inputs:
       consumer:
-        description: 'Specific consumer repo to sync (e.g. ARPA-H/designator). Leave blank to sync all.'
+        description: "Specific consumer repo to sync (e.g. ARPA-H/designator). Leave blank to sync all."
         required: false
-        default: ''
+        default: ""
 
 permissions:
   contents: read
