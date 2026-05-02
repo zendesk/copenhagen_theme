@@ -33,6 +33,6 @@
       }
     }
   },
-  // Remove stale LFS hooks — universal image has no git-lfs and no LFS attributes are declared
-  "postCreateCommand": "grep -qr 'filter=lfs' .gitattributes 2>/dev/null || rm -f .git/hooks/pre-push .git/hooks/post-commit .git/hooks/post-checkout .git/hooks/post-merge"
+  // Remove stale LFS hooks; wire versioned hooks via core.hooksPath (uses bunx per ARPA-H toolchain standard)
+  "postCreateCommand": "(grep -qr 'filter=lfs' .gitattributes 2>/dev/null || rm -f .git/hooks/pre-push .git/hooks/post-commit .git/hooks/post-checkout .git/hooks/post-merge) && git config core.hooksPath .devcontainer/hooks && chmod +x .devcontainer/hooks/*"
 }
