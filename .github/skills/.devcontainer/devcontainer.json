@@ -1,7 +1,7 @@
 {
   "name": "ARPA-H Skills",
-  // Alpine base — minimal image; Node.js + bun installed via feature below
-  "image": "mcr.microsoft.com/devcontainers/base:alpine",
+  // Debian base — ~500 MB; smaller than universal:2 (~10 GB) and fully compatible with all devcontainer features
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
   "features": {
     // gh CLI — required for all ARPA-H repos
     "ghcr.io/devcontainers/features/github-cli:1": {},
