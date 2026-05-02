@@ -1,13 +1,13 @@
 {
   "name": "ARPA-H Skills",
-  // Universal image — no specific language stack detected; provides Node, Python, Go, etc.
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  // Alpine base — minimal image; Node.js + bun installed via feature below
+  "image": "mcr.microsoft.com/devcontainers/base:alpine",
   "features": {
     // gh CLI — required for all ARPA-H repos
     "ghcr.io/devcontainers/features/github-cli:1": {},
-    // bun — preferred package manager for all ARPA-H repos; version: none avoids overriding the universal image's Node.js
+    // bun — preferred package manager for all ARPA-H repos; lts installs Node.js on the alpine base image
     "ghcr.io/devcontainers/features/node:1": {
-      "version": "none",
+      "version": "lts",
       "installJupyterlab": false,
       "bunVersion": "latest"
     }
