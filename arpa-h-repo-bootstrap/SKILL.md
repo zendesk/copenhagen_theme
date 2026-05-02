@@ -568,38 +568,28 @@ The ARPA-H GitHub organization enforces a **"Registry only"** MCP policy (`chat.
 
 ### Approved servers
 
-These are the servers currently in the registry. Only these IDs are valid in `mcp.json`:
+The registry is the authoritative source of approved servers. Query it for the current list rather than relying on any static copy here:
 
-| Registry ID | Title | URL |
-|---|---|---|
-| `figma-mcp` | Figma MCP Server | `https://mcp.figma.com/mcp` |
-| `github-mcp` | GitHub MCP Server | `https://api.githubcopilot.com/mcp/` |
-| `azure-mcp` | Azure MCP Server | `https://management.azure.com/mcp` |
-| `microsoft-docs-mcp` | Microsoft Learn Docs MCP Server | `https://learn.microsoft.com/api/mcp` |
-| `atlassian-rovo-mcp` | Atlassian Rovo MCP Server | `https://mcp.atlassian.com/v1/mcp` |
+```bash
+curl -s https://apis.arpa-h.gov/v0.1/servers | jq '.[] | {id, title, url}'
+```
+
+Only server IDs returned by this endpoint are valid. If a server ID you need is missing, an org admin must add it to the registry before it can be used.
 
 ### Discovering and starting MCP servers
 
 Developers discover and start approved MCP servers directly from VS Code — no repo configuration is required:
 
-1. Open the Command Palette (`Cmd/Ctrl+Shift+P`) → **"MCP: List Servers"**
-2. VS Code fetches the approved server list from the ARPA-H registry at `https://apis.arpa-h.gov`
-3. Find the server to start (e.g. `figma-mcp`) and click **Start**
-4. Complete any OAuth flow the server requires (see Authentication table below)
+1. Open the Command Palette (`Cmd/Ctrl+Shift+P`) → **"MCP: List Servers"**.
+2. VS Code fetches the approved server list from the ARPA-H registry at `https://apis.arpa-h.gov`.
+3. Find the server to start (e.g. `figma-mcp`) and click **Start**.
+4. Complete any authentication flow in VS Code prompts.
 
 **Do not create `.vscode/mcp.json` in repos.** A workspace `mcp.json` intercepts VS Code's registry discovery flow — when the file exists, VS Code validates each listed server against the registry before showing the list, and any validation hiccup suppresses the entire list. With "Registry only" policy, the registry list in VS Code IS the correct and only mechanism for starting MCP servers. Do not prompt developers to create `mcp.json` files.
 
 ### Authentication
 
-All approved servers handle auth automatically:
-
-| Server | Auth method |
-|---|---|
-| `figma-mcp` | Browser OAuth (sign into figma.com) — VS Code opens a browser tab automatically on first use |
-| `github-mcp` | GitHub session token — uses the developer's existing `gh auth` session, no additional steps |
-| `azure-mcp` | Azure CLI credential — uses `az login` session |
-| `microsoft-docs-mcp` | Anonymous — no auth required |
-| `atlassian-rovo-mcp` | Browser OAuth (sign into Atlassian) — requires an Atlassian account with Rovo access |
+VS Code prompts for authentication automatically when a server is started — no pre-configuration required. Follow the on-screen instructions for each server.
 
 ---
 

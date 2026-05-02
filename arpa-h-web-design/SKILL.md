@@ -1166,16 +1166,30 @@ The Footer is a published NEXUS library component with two site variants (Figma 
 
 **Navigation columns (Public Site):**
 
-| Column | Section Headings |
-|--------|------------------|
-| Left | About, Explore Funding |
-| Right | Engage & Connect, News & Events, Careers |
+| Column | Section Heading | Links |
+|--------|-----------------|-------|
+| Left | About | [About Us](https://arpa-h.gov/about), [Our People](https://arpa-h.gov/about/people), [Partnering with ARPA-H](https://arpa-h.gov/about/partnering), [Budget & Appropriations](https://arpa-h.gov/about/budget), [FAQs](https://arpa-h.gov/about/faqs), [Contact](https://arpa-h.gov/about/contact) |
+| Left | Explore Funding | [Open Funding Opportunities](https://arpa-h.gov/explore-funding/open-funding-opportunities), [Submission Resources and FAQs](https://arpa-h.gov/explore-funding/submission-resources-and-FAQs), [Program Portfolio](https://arpa-h.gov/explore-funding/programs), [Initiatives & Sprints](https://arpa-h.gov/explore-funding/initiatives-and-sprints), [For Small Businesses](https://arpa-h.gov/explore-funding/sbir), [Award Directory](https://arpa-h.gov/explore-funding/awards) |
+| Right | Engage & Connect | [Commercialization Services](https://arpa-h.gov/engage-and-connect/commercialization), [ARPANET-H Innovation Network](https://arpa-h.gov/engage-and-connect/arpanet-h), [International Affairs](https://arpa-h.gov/engage-and-connect/international), [Other Transaction Community](https://arpa-h.gov/engage-and-connect/other-transaction-community) |
+| Right | News & Events | [News](https://arpa-h.gov/news-and-events), [Events](https://arpa-h.gov/news-and-events/events), [Posters](https://arpa-h.gov/news-and-events/posters) |
+| Right | Careers | [Career Opportunities](https://arpa-h.gov/careers), [What is a Program Manager?](https://arpa-h.gov/careers/what-is-a-program-manager), [Program Manager Application](https://arpa-h.gov/careers/program-managers) |
 
 Column minimum width: 200px. Columns are `flex`, `items-start`, `justify-between` (left) or `gap: 32px` (right).
 
 **Auxiliary navigation (bottom bar):**
 - Layout: flex-wrap, centered, gap 16px horizontal / 8px vertical
-- Links: Accessibility, Privacy Policy, Freedom of Information, Linking Policy, Vulnerability Disclosure Policy, No FEAR Act, Inspector General, Logo Guidance, Download Adobe Plugin
+- Links (in order):
+  | Label | URL |
+  |-------|-----|
+  | Accessibility | https://www.hhs.gov/web/section-508/index.html |
+  | Privacy Policy | https://arpa-h.gov/privacy-policy |
+  | Freedom of Information Act | https://arpa-h.gov/freedom-of-information-act |
+  | Linking Policy | https://www.hhs.gov/web/policies-and-standards/hhs-web-policies/disclaimer/index.html |
+  | Vulnerability Disclosure Policy | https://www.hhs.gov/vulnerability-disclosure-policy/index.html |
+  | No FEAR Act | https://www.hhs.gov/about/agencies/asa/eeo/no-fear-act/index.html |
+  | Inspector General | https://oig.hhs.gov/ |
+  | Logo Guidance | https://arpa-h.gov/logo |
+  | Download Adobe Plugin | https://get.adobe.com/reader/ |
 - Same 14px white styling as main footer links
 
 **Footer / Solutions Portal differences:**
