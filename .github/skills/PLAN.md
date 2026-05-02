@@ -109,17 +109,20 @@ The SKILL.md was rewritten with a USWDS-first architecture and accurate publishe
 For each remaining component page: get metadata → get design context → get code connect → write `### Section` in SKILL.md + CSS in `components.css`.
 
 **Batch 1 — Published + complex (high priority):**
+
 - [ ] Alert (node `6365:10906`) — 5 states × Simple × Nested, close/icon toggles
 - [ ] Site Alert (node `6365:6366`) — Standard/Expanded/Slim × Nested
 - [ ] Navigation (need node ID) — Public Site + Solutions Portal mega menu
 
 **Batch 2 — Published + simpler (medium priority):**
+
 - [ ] Pagination (need node ID) — Steps/controls
 - [ ] Quote Block (need node ID) — Styled blockquote
 - [ ] Radio Button (need node ID) — Radio input + Radio Label
 - [ ] Loading Spinner (need node ID) — Animated indicator
 
 **Batch 3 — Page-only, form cluster (medium priority):**
+
 - [ ] Text Input (node `6365:6428`) — Already has basic CSS
 - [ ] Checkbox (need node ID) — Single/group
 - [ ] Toggle (need node ID) — On/off switch
@@ -128,6 +131,7 @@ For each remaining component page: get metadata → get design context → get c
 - [ ] Form Elements (need node ID) — General wrapper/fieldset
 
 **Batch 4 — Page-only, navigation/content (medium priority):**
+
 - [ ] Accordion (need node ID) — Expand/collapse
 - [ ] Breadcrumb (need node ID) — Navigation trail
 - [ ] Links (need node ID) — Inline/standalone link styles
@@ -136,6 +140,7 @@ For each remaining component page: get metadata → get design context → get c
 - [ ] Prose (need node ID) — Rich text content
 
 **Batch 5 — Page-only, remaining (lower priority):**
+
 - [ ] Multiselect (need node ID) — Multi-option dropdown
 - [ ] Process List (need node ID) — Numbered step list
 - [ ] Progress Indicator (need node ID) — Progress bar/stepper
@@ -143,7 +148,7 @@ For each remaining component page: get metadata → get design context → get c
 #### Known Page Node IDs
 
 | Page | Node ID | Source |
-|------|---------|--------|
+| ------ | --------- | -------- |
 | Button | `3416:19608` (component instance) | Figma MCP |
 | Card | `6820:150` | Figma MCP |
 | Footer | `6472:10311` | User provided |
