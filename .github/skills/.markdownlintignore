@@ -1,0 +1,4 @@
+# The .github/skills/ subtree is maintained in ARPA-H/skills.
+# Consumer repos must not lint those files — doing so produces noise
+# and can trigger spurious fix commits back to the source repo.
+.github/skills

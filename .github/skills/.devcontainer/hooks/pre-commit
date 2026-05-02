@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# pre-commit: lint staged markdown files with markdownlint-cli2
+# Uses bunx per ARPA-H toolchain standard (npx is not used in ARPA-H repos)
+
+set -euo pipefail
+
+# Collect staged .md files
+staged=$(git diff --cached --name-only --diff-filter=ACM | grep '\.md$' || true)
+
+if [[ -z "$staged" ]]; then
+  exit 0
+fi
+
+echo "markdownlint: checking staged markdown files..."
+# shellcheck disable=SC2086
+bunx markdownlint-cli2 $staged
