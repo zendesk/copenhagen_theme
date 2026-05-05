@@ -58,6 +58,21 @@ parts:
       screenshot: "https://drive.google.com/file/d/1i-5SW5902PNqnPu73-IwxaeuWEAvxGVw/view?usp=sharing"
       value: "Change category"
   - translation:
+      key: "service-catalog.item.preview-mode.title"
+      title: "Title of the preview mode alert banner shown when an admin or manager previews a draft service catalog item"
+      screenshot: "https://drive.google.com/file/d/1g_V7_2FwGUnhkrXypzymlq8aBUuCgaWy/view?usp=sharing"
+      value: "Preview mode"
+  - translation:
+      key: "service-catalog.item.preview-mode.message"
+      title: "Message body of the preview mode alert banner explaining how to exit preview mode"
+      screenshot: "https://drive.google.com/file/d/1g_V7_2FwGUnhkrXypzymlq8aBUuCgaWy/view?usp=sharing"
+      value: "If you navigate away from this page or click on anything outside of this preview, you'll exit the preview mode."
+  - translation:
+      key: "service-catalog.item.preview-mode.submit-disabled-tooltip"
+      title: "Tooltip explaining why the submit request button is disabled while previewing a draft service catalog item"
+      screenshot: "https://drive.google.com/file/d/1g_V7_2FwGUnhkrXypzymlq8aBUuCgaWy/view?usp=sharing"
+      value: "Submitting requests is disabled while previewing a draft"
+  - translation:
       key: "service-catalog.item.submit-button"
       title: "Button to submit a request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1kuv7v6Vtx787TdVz8AOmD6v0ow79Xd6c/view?usp=drive_link"
