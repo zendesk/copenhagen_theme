@@ -24,10 +24,11 @@ async function listTicketFields(
 }
 
 async function listTicketForms(
-  locale: string
-): Promise<{ ticket_forms: TicketForm[] }> {
+  locale: string,
+  pageSize = 100
+): Promise<CursorPaginatedResponse<"ticket_forms", TicketForm>> {
   const response = await fetch(
-    `/api/v2/ticket_forms?locale=${locale}&associated_to_brand=true`
+    `/api/v2/ticket_forms?locale=${locale}&associated_to_brand=true&active=true&form_type=all&page[size]=${pageSize}`
   );
 
   if (!response.ok) {
@@ -43,19 +44,17 @@ export function useTicketFields(locale: string): UseTicketFields {
 
   async function fetchTicketFields() {
     try {
-      const [response, tfResponse] = await Promise.all([
+      const [ticketFields, ticketForms] = await Promise.all([
         fetchAllCursorPages(() => listTicketFields(locale), "ticket_fields"),
-        listTicketForms(locale),
+        fetchAllCursorPages(() => listTicketForms(locale), "ticket_forms"),
       ]);
 
       const activeTicketFieldIds = new Set<number>(
-        tfResponse.ticket_forms
-          .filter((ticketForm) => ticketForm.active)
-          .flatMap((ticketForm) => ticketForm.ticket_field_ids ?? [])
+        ticketForms.flatMap((ticketForm) => ticketForm.ticket_field_ids ?? [])
       );
 
       setTicketFields(
-        response.filter(
+        ticketFields.filter(
           (ticketField) =>
             ticketField.active && activeTicketFieldIds.has(ticketField.id)
         )
@@ -71,7 +70,7 @@ export function useTicketFields(locale: string): UseTicketFields {
 
   useEffect(() => {
     fetchTicketFields();
-  }, [locale]);
+  }, []);
 
   return { ticketFields, error, isLoading };
 }

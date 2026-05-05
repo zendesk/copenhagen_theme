@@ -29,7 +29,6 @@ const inactiveTicketField: TicketField = {
 
 beforeEach(() => {
   jest.resetAllMocks();
-  global.fetch = jest.fn();
 });
 
 afterEach(() => {
@@ -37,28 +36,22 @@ afterEach(() => {
 });
 
 test("fetches all ticket fields via ticket_fields api call and returns the active ones", async () => {
-  fetchAllCursorPages.mockResolvedValueOnce([
-    activeTicketField,
-    inactiveTicketField,
-  ]);
-
-  (global.fetch as jest.Mock).mockResolvedValueOnce({
-    ok: true,
-    json: async () => ({
-      ticket_forms: [
-        {
-          active: true,
-          ticket_field_ids: [10],
-        },
-      ],
-    }),
-  });
+  fetchAllCursorPages
+    .mockResolvedValueOnce([activeTicketField, inactiveTicketField])
+    .mockResolvedValueOnce([
+      {
+        id: 1,
+        active: true,
+        ticket_field_ids: [10],
+      },
+    ]);
 
   const { result, waitForNextUpdate } = renderHook(() => useTicketFields("dk"));
 
   await waitForNextUpdate();
 
   expect(fetchAllCursorPages.mock.calls[0][1]).toEqual("ticket_fields");
+  expect(fetchAllCursorPages.mock.calls[1][1]).toEqual("ticket_forms");
 
   expect(result.current).toEqual({
     ticketFields: [activeTicketField],
@@ -90,22 +83,15 @@ test("filters out inactive subject field", async () => {
     custom_field_options: [],
   };
 
-  fetchAllCursorPages.mockResolvedValueOnce([
-    activeTicketField,
-    inactiveSubjectField,
-  ]);
-
-  (global.fetch as jest.Mock).mockResolvedValueOnce({
-    ok: true,
-    json: async () => ({
-      ticket_forms: [
-        {
-          active: true,
-          ticket_field_ids: [10, 30],
-        },
-      ],
-    }),
-  });
+  fetchAllCursorPages
+    .mockResolvedValueOnce([activeTicketField, inactiveSubjectField])
+    .mockResolvedValueOnce([
+      {
+        id: 1,
+        active: true,
+        ticket_field_ids: [10, 30],
+      },
+    ]);
 
   const { result, waitForNextUpdate } = renderHook(() => useTicketFields("dk"));
 
@@ -127,21 +113,15 @@ test("only returns ticket fields present in active ticket forms", async () => {
     title_in_portal: "Active field 40",
   };
 
-  fetchAllCursorPages.mockResolvedValueOnce([
-    activeTicketField,
-    { ...inactiveTicketField, id: 30, active: true },
-    activeCustomField40,
-  ]);
-
-  (global.fetch as jest.Mock).mockResolvedValueOnce({
-    ok: true,
-    json: async () => ({
-      ticket_forms: [
-        { active: true, ticket_field_ids: [10, 40] },
-        { active: false, ticket_field_ids: [30] },
-      ],
-    }),
-  });
+  fetchAllCursorPages
+    .mockResolvedValueOnce([
+      activeTicketField,
+      { ...inactiveTicketField, id: 30, active: true },
+      activeCustomField40,
+    ])
+    .mockResolvedValueOnce([
+      { id: 1, active: true, ticket_field_ids: [10, 40] },
+    ]);
 
   const { result, waitForNextUpdate } = renderHook(() => useTicketFields("dk"));
 
