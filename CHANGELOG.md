@@ -1,3 +1,15 @@
+# [4.37.0](https://github.com/zendesk/copenhagen_theme/compare/v4.36.1...v4.37.0) (2026-05-05)
+
+
+### Bug Fixes
+
+* translations according to the comments ([b6e7f5d](https://github.com/zendesk/copenhagen_theme/commit/b6e7f5d51c9dc6ec88986783163934e905867f58))
+
+
+### Features
+
+* add translations for RoB ([bb4eb69](https://github.com/zendesk/copenhagen_theme/commit/bb4eb69be247e3b275171043bc78b32c34648e07))
+
 ## [4.36.1](https://github.com/zendesk/copenhagen_theme/compare/v4.36.0...v4.36.1) (2026-04-29)
 
 
