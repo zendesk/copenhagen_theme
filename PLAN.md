@@ -1,5 +1,14 @@
 # ARPA-H/skills — Development Plan
 
+## Session: May 6, 2026 — devcontainer Azure CLI
+
+### Completed
+
+- [x] Add `ghcr.io/devcontainers/features/azure-cli:1` to `.devcontainer/devcontainer.json` — required for `az login` and interacting with Azure API Center (ARPA-H MCP registry at `arpah-api-center.data.eastus.azure-apicenter.ms`) and Azure portal admin tasks documented in PLAN.md
+- [x] Add `ms-azuretools.vscode-azureresourcegroups` and `ms-vscode.azurecli` extensions — always-on Azure companion extensions per `arpa-h-repo-bootstrap` skill when any Azure signal is present
+
+---
+
 ## Session: April 25, 2026 — `arpa-h-web-design` skill
 
 ### Completed
@@ -147,15 +156,15 @@ For each remaining component page: get metadata → get design context → get c
 
 #### Known Page Node IDs
 
-| Page | Node ID | Source |
-| ------ | --------- | -------- |
-| Button | `3416:19608` (component instance) | Figma MCP |
-| Card | `6820:150` | Figma MCP |
-| Footer | `6472:10311` | User provided |
-| Alert | `6365:10906` (component instance) | Figma MCP |
-| Site Alert | `6365:6366` | Figma MCP |
-| Tag | `6365:6576` | Figma MCP |
-| Text Input | `6365:6428` | Figma MCP |
+| Page       | Node ID                           | Source        |
+| ---------- | --------------------------------- | ------------- |
+| Button     | `3416:19608` (component instance) | Figma MCP     |
+| Card       | `6820:150`                        | Figma MCP     |
+| Footer     | `6472:10311`                      | User provided |
+| Alert      | `6365:10906` (component instance) | Figma MCP     |
+| Site Alert | `6365:6366`                       | Figma MCP     |
+| Tag        | `6365:6576`                       | Figma MCP     |
+| Text Input | `6365:6428`                       | Figma MCP     |
 
 #### Node IDs still needed
 
