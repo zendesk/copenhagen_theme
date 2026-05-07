@@ -10,7 +10,9 @@
       "version": "lts",
       "installJupyterlab": false,
       "bunVersion": "latest"
-    }
+    },
+    // Azure CLI — required for interacting with Azure API Center (ARPA-H MCP registry) and Azure portal
+    "ghcr.io/devcontainers/features/azure-cli:1": {}
   },
   "customizations": {
     "vscode": {
