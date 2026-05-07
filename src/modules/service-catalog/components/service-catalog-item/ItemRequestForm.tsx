@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Fragment, useCallback } from "react";
+import { Fragment, useCallback, useState } from "react";
 import { RequestFormField } from "../../../ticket-fields";
 import { Button, Anchor } from "@zendeskgarden/react-buttons";
 import { getColor } from "@zendeskgarden/react-theming";
@@ -22,6 +22,7 @@ import type {
   AttachmentsOption,
 } from "../../data-types/Attachments";
 import { Skeleton } from "@zendeskgarden/react-loaders";
+import { ChangeUserModal } from "../change-user-modal/index";
 
 const Form = styled.form`
   display: flex;
@@ -178,6 +179,20 @@ export function ItemRequestForm({
   isFormInitializing,
 }: ItemRequestFormProps) {
   const { t } = useTranslation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleChangeUser = async () => {
+    // TODO: Implement user change logic
+    handleCloseModal();
+  };
 
   const buildLookupFieldOptions = async (
     records: CustomObjectRecord[],
@@ -347,43 +362,52 @@ export function ItemRequestForm({
   };
 
   return (
-    <Form onSubmit={onSubmit} noValidate>
-      <LeftColumn>
-        <CollapsibleDescription
-          title={serviceCatalogItem.name}
-          description={serviceCatalogItem.description}
-          thumbnailUrl={serviceCatalogItem.thumbnail_url}
-        />
-        <FieldsContainer>{renderRequestFields()}</FieldsContainer>
-      </LeftColumn>
-      <RightColumn>
-        <ButtonWrapper>
-          <ButtonContainer>
-            <UserNameWrapper>
-              <Span isBold>{t("service-catalog.item.user", "User")}</Span>
-              <Span>{userName}</Span>
-            </UserNameWrapper>
-            {requestOnBehalfEnabled && (
-              <>
-                <Anchor isUnderlined={false}>
-                  {t(
-                    "service-catalog.item.change-user-requesting-on-behalf",
-                    "Change"
-                  )}
-                </Anchor>
-              </>
-            )}
-          </ButtonContainer>
+    <>
+      <Form onSubmit={onSubmit} noValidate>
+        <LeftColumn>
+          <CollapsibleDescription
+            title={serviceCatalogItem.name}
+            description={serviceCatalogItem.description}
+            thumbnailUrl={serviceCatalogItem.thumbnail_url}
+          />
+          <FieldsContainer>{renderRequestFields()}</FieldsContainer>
+        </LeftColumn>
+        <RightColumn>
+          <ButtonWrapper>
+            <ButtonContainer>
+              <UserNameWrapper>
+                <Span isBold>{t("service-catalog.item.user", "User")}</Span>
+                <Span>{userName}</Span>
+              </UserNameWrapper>
+              {requestOnBehalfEnabled && (
+                <>
+                  <Anchor isUnderlined={false} onClick={handleOpenModal}>
+                    {t(
+                      "service-catalog.item.change-user-requesting-on-behalf",
+                      "Change"
+                    )}
+                  </Anchor>
+                </>
+              )}
+            </ButtonContainer>
 
-          {isFormInitializing ? (
-            <ButtonSkeleton />
-          ) : (
-            <Button isPrimary size="large" isStretched type="submit">
-              {t("service-catalog.item.submit-button", "Submit request")}
-            </Button>
-          )}
-        </ButtonWrapper>
-      </RightColumn>
-    </Form>
+            {isFormInitializing ? (
+              <ButtonSkeleton />
+            ) : (
+              <Button isPrimary size="large" isStretched type="submit">
+                {t("service-catalog.item.submit-button", "Submit request")}
+              </Button>
+            )}
+          </ButtonWrapper>
+        </RightColumn>
+      </Form>
+      {isModalOpen && (
+        <ChangeUserModal
+          userId={userId.toString()}
+          onClose={handleCloseModal}
+          onCreate={handleChangeUser}
+        />
+      )}
+    </>
   );
 }
