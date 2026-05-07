@@ -1,3 +1,10 @@
+## [4.37.2](https://github.com/zendesk/copenhagen_theme/compare/v4.37.1...v4.37.2) (2026-05-07)
+
+
+### Bug Fixes
+
+* add ask button only ([81571f1](https://github.com/zendesk/copenhagen_theme/commit/81571f18fa909646e6c0d1f2363169b7eaa2c37c))
+
 ## [4.37.1](https://github.com/zendesk/copenhagen_theme/compare/v4.37.0...v4.37.1) (2026-05-06)
 
 
