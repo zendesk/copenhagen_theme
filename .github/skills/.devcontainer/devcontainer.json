@@ -1,16 +1,9 @@
 {
   "name": "ARPA-H Skills",
-  // Debian base — ~500 MB; smaller than universal:2 (~10 GB) and fully compatible with all devcontainer features
-  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
   "features": {
     // gh CLI — required for all ARPA-H repos
     "ghcr.io/devcontainers/features/github-cli:1": {},
-    // bun — preferred package manager for all ARPA-H repos; lts installs Node.js on the alpine base image
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "lts",
-      "installJupyterlab": false,
-      "bunVersion": "latest"
-    },
     // Azure CLI — required for interacting with Azure API Center (ARPA-H MCP registry) and Azure portal
     "ghcr.io/devcontainers/features/azure-cli:1": {}
   },
@@ -34,10 +27,13 @@
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "git.autofetch": true,
-        "git.autofetchPeriod": 180
+        "git.autofetchPeriod": 180,
+        // SKILL.md files use #anchor links extensively; the built-in validator
+        // misreports them as missing files.
+        "markdown.validate.fragmentLinks.enabled": "ignore"
       }
     }
   },
-  // Remove stale LFS hooks; wire versioned hooks via core.hooksPath (uses bunx per ARPA-H toolchain standard)
-  "postCreateCommand": "(grep -qr 'filter=lfs' .gitattributes 2>/dev/null || rm -f .git/hooks/pre-push .git/hooks/post-commit .git/hooks/post-checkout .git/hooks/post-merge) && git config core.hooksPath .devcontainer/hooks && chmod +x .devcontainer/hooks/*"
+  // Installs bun, cleans stale LFS hooks, and wires versioned git hooks. See setup.sh for details.
+  "postCreateCommand": "bash .devcontainer/setup.sh"
 }
