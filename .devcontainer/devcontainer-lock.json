@@ -1,0 +1,14 @@
+{
+  "features": {
+    "ghcr.io/devcontainers/features/azure-cli:1": {
+      "version": "1.2.9",
+      "resolved": "ghcr.io/devcontainers/features/azure-cli@sha256:4549175fbfd3475d1d62e82f6e5425d03954a6ae06027b2515b0ba41a8206417",
+      "integrity": "sha256:4549175fbfd3475d1d62e82f6e5425d03954a6ae06027b2515b0ba41a8206417"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "1.1.0",
+      "resolved": "ghcr.io/devcontainers/features/github-cli@sha256:d22f50b70ed75339b4eed1ba9ecde3a1791f90e88d37936517e3bace0bbad671",
+      "integrity": "sha256:d22f50b70ed75339b4eed1ba9ecde3a1791f90e88d37936517e3bace0bbad671"
+    }
+  }
+}
