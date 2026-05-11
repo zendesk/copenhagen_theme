@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import { useItemFormFields } from "../../hooks/useItemFormFields";
 import { ItemRequestForm } from "./ItemRequestForm";
 import { CategorySelector } from "./CategorySelector";
+import { PreviewModeBanner } from "./PreviewModeBanner";
 import type { Organization } from "../../../ticket-fields/data-types/Organization";
 import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
 import { submitServiceItemRequest } from "./submitServiceItemRequest";
@@ -16,6 +17,9 @@ import {
   AttachmentsInputName,
   ASSET_TYPE_KEY,
   ASSET_KEY,
+  PREVIEW_MODE_HTML_CLASS,
+  PREVIEW_MODE_QUERY_PARAM,
+  PREVIEW_MODE_QUERY_PARAM_VALUE,
 } from "../../constants";
 import type { Attachment } from "../../../ticket-fields/data-types/AttachmentsField";
 import { useAttachmentsOption } from "../../hooks/useAttachmentsOption";
@@ -153,7 +157,56 @@ export function ServiceCatalogItem({
     isLoadingAttachmentsOption ||
     !hasResolvedCategory;
 
+  const hasPreviewQueryParam =
+    typeof window !== "undefined" &&
+    new URLSearchParams(window.location.search).get(
+      PREVIEW_MODE_QUERY_PARAM
+    ) === PREVIEW_MODE_QUERY_PARAM_VALUE;
+
+  // Before the API resolves we trust the URL param to avoid a flicker; once
+  // the item is known, draft state is authoritative — published items never
+  // show preview UI even if the URL accidentally carries the param.
+  const isPreviewMode = serviceCatalogItem
+    ? serviceCatalogItem.published_at === null
+    : hasPreviewQueryParam;
+
+  useEffect(() => {
+    if (typeof document === "undefined" || !isPreviewMode) {
+      return undefined;
+    }
+
+    document.documentElement.classList.add(PREVIEW_MODE_HTML_CLASS);
+
+    return () => {
+      document.documentElement.classList.remove(PREVIEW_MODE_HTML_CLASS);
+    };
+  }, [isPreviewMode]);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !serviceCatalogItem) {
+      return;
+    }
+
+    const url = new URL(window.location.href);
+    const isDraft = serviceCatalogItem.published_at === null;
+    const urlHasParam =
+      url.searchParams.get(PREVIEW_MODE_QUERY_PARAM) ===
+      PREVIEW_MODE_QUERY_PARAM_VALUE;
+
+    if (isDraft && !urlHasParam) {
+      url.searchParams.set(
+        PREVIEW_MODE_QUERY_PARAM,
+        PREVIEW_MODE_QUERY_PARAM_VALUE
+      );
+      window.history.replaceState(null, "", url.toString());
+    } else if (!isDraft && urlHasParam) {
+      url.searchParams.delete(PREVIEW_MODE_QUERY_PARAM);
+      window.history.replaceState(null, "", url.toString());
+    }
+  }, [serviceCatalogItem]);
+
   const canSubmit =
+    !isPreviewMode &&
     !isFormInitializing &&
     !isSubmitting &&
     !isUploadingAttachments &&
@@ -274,6 +327,12 @@ export function ServiceCatalogItem({
   const handleRequestSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // Submitting requests is not allowed while previewing a draft. Bail out
+    // silently so the admin doesn't see a misleading error toast.
+    if (isPreviewMode) {
+      return;
+    }
+
     if (!canSubmit) {
       notifySubmitError();
       return;
@@ -350,6 +409,7 @@ export function ServiceCatalogItem({
 
   return (
     <Container>
+      {isPreviewMode && <PreviewModeBanner />}
       {categorySelectorContainer &&
         serviceCatalogItem &&
         selectedCategoryId &&
@@ -389,6 +449,7 @@ export function ServiceCatalogItem({
           assetIds={assetIds}
           onAttachmentUploadingChange={setIsUploadingAttachments}
           isFormInitializing={isFormInitializing}
+          isPreviewMode={isPreviewMode}
         />
       )}
     </Container>
