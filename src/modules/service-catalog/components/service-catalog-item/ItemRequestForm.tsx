@@ -148,6 +148,7 @@ interface ItemRequestFormProps {
   assetIds: string[];
   onAttachmentUploadingChange: (isUploading: boolean) => void;
   isFormInitializing: boolean;
+  isPreviewMode?: boolean;
 }
 
 export function ItemRequestForm({
@@ -176,6 +177,7 @@ export function ItemRequestForm({
   assetIds,
   onAttachmentUploadingChange,
   isFormInitializing,
+  isPreviewMode = false,
 }: ItemRequestFormProps) {
   const { t } = useTranslation();
 
@@ -378,7 +380,21 @@ export function ItemRequestForm({
           {isFormInitializing ? (
             <ButtonSkeleton />
           ) : (
-            <Button isPrimary size="large" isStretched type="submit">
+            <Button
+              isPrimary
+              size="large"
+              isStretched
+              type="submit"
+              disabled={isPreviewMode}
+              title={
+                isPreviewMode
+                  ? t(
+                      "service-catalog.item.preview-mode.submit-disabled-tooltip",
+                      "Submitting requests is disabled while previewing a draft"
+                    )
+                  : undefined
+              }
+            >
               {t("service-catalog.item.submit-button", "Submit request")}
             </Button>
           )}

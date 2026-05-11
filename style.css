@@ -4905,3 +4905,10 @@ zd-summary-block {
   align-items: center;
   gap: 20px;
 }
+
+.is-service-catalog-preview #navbar-container,
+.is-service-catalog-preview .navbar-container,
+.is-service-catalog-preview .assembly-bar,
+.is-service-catalog-preview [data-garden-id="chrome.subnav"] {
+  display: none !important;
+}
