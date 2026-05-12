@@ -1,6 +1,6 @@
 import { Grid } from "@zendeskgarden/react-grid";
-import { Skeleton } from "@zendeskgarden/react-loaders";
 import styled from "styled-components";
+import { ServiceCatalogListItemSkeleton } from "./ServiceCatalogListItemSkeleton";
 
 const StyledGrid = styled(Grid)`
   padding: 0;
@@ -12,20 +12,25 @@ const StyledCol = styled(Grid.Col)`
   }
 `;
 
-const SkeletonCol = () => (
-  <StyledCol xs={12} sm={6} md={4} lg={3}>
-    <Skeleton width="100%" height="140px" />
-  </StyledCol>
-);
+const DEFAULT_SKELETON_COUNT = 8;
 
-export const LoadingState = () => {
+interface LoadingStateProps {
+  count?: number;
+}
+
+export const LoadingState = ({
+  count = DEFAULT_SKELETON_COUNT,
+}: LoadingStateProps) => {
+  const safeCount = Math.max(1, count);
+
   return (
     <StyledGrid>
       <Grid.Row wrap="wrap">
-        <SkeletonCol />
-        <SkeletonCol />
-        <SkeletonCol />
-        <SkeletonCol />
+        {Array.from({ length: safeCount }, (_, index) => (
+          <StyledCol key={index} xs={12} sm={6} md={4} lg={3}>
+            <ServiceCatalogListItemSkeleton />
+          </StyledCol>
+        ))}
       </Grid.Row>
     </StyledGrid>
   );

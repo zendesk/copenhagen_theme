@@ -16,6 +16,14 @@ import {
   ALL_SERVICES_ID,
   UNCATEGORIZED_ID,
 } from "../service-catalog-categories-sidebar/constants";
+import {
+  SortMenu,
+  DEFAULT_SORT_OPTION,
+  SORT_URL_PARAM,
+  getSortFromUrl,
+  getSortParams,
+  type SortOption,
+} from "./SortMenu";
 
 const StyledCol = styled(Grid.Col)`
   margin-bottom: ${(props) => props.theme.space.md};
@@ -39,10 +47,32 @@ const CategoryHeading = styled(XL).attrs({ tag: "h2", isBold: true })`
   max-width: 600px;
 `;
 
+const CountAndSortRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: ${(props) => props.theme.space.sm};
+  flex-wrap: wrap;
+`;
+
 function getApiCategoryId(selectedCategoryId: string | null): string | null {
   if (!selectedCategoryId) return null;
   if (selectedCategoryId === ALL_SERVICES_ID) return null;
   return selectedCategoryId;
+}
+
+function updateSortUrlParam(sortOption: SortOption) {
+  const params = new URLSearchParams(window.location.search);
+  if (sortOption === DEFAULT_SORT_OPTION) {
+    params.delete(SORT_URL_PARAM);
+  } else {
+    params.set(SORT_URL_PARAM, sortOption);
+  }
+  const query = params.toString();
+  const newUrl = query
+    ? `${window.location.pathname}?${query}`
+    : window.location.pathname;
+  window.history.pushState({}, "", newUrl);
 }
 
 export function ServiceCatalogList({
@@ -57,6 +87,21 @@ export function ServiceCatalogList({
   const [searchInputValue, setSearchInputValue] = useState("");
   const searchInputValueRef = useRef(searchInputValue);
   searchInputValueRef.current = searchInputValue;
+
+  const [sortOption, setSortOption] = useState<SortOption>(getSortFromUrl);
+  const sortOptionRef = useRef(sortOption);
+  sortOptionRef.current = sortOption;
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const nextSort = getSortFromUrl();
+      if (nextSort !== sortOptionRef.current) {
+        setSortOption(nextSort);
+      }
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   const { t } = useTranslation();
 
@@ -91,8 +136,18 @@ export function ServiceCatalogList({
   const debouncedUpdateServiceCatalogItems = useMemo(
     () =>
       debounce(
-        (value: string, cursor: string | null, categoryId: string | null) =>
-          fetchServiceCatalogItems(value, cursor, categoryId),
+        (
+          value: string,
+          cursor: string | null,
+          categoryId: string | null,
+          sort: SortOption
+        ) =>
+          fetchServiceCatalogItems(
+            value,
+            cursor,
+            categoryId,
+            getSortParams(sort)
+          ),
         300
       ),
     [fetchServiceCatalogItems]
@@ -102,10 +157,29 @@ export function ServiceCatalogList({
   const fetchedCategoryRef = useRef(apiCategoryId);
   const isCategoryChanging = fetchedCategoryRef.current !== apiCategoryId;
 
+  const previousItemsCountRef = useRef(0);
+  if (!isLoading) {
+    previousItemsCountRef.current = serviceCatalogItems.length;
+  }
+  const skeletonCount = isCategoryChanging
+    ? undefined
+    : previousItemsCountRef.current || undefined;
+
   useEffect(() => {
+    debouncedUpdateServiceCatalogItems.cancel();
     fetchedCategoryRef.current = apiCategoryId;
-    fetchServiceCatalogItems(searchInputValueRef.current, null, apiCategoryId);
-  }, [fetchServiceCatalogItems, apiCategoryId]);
+    fetchServiceCatalogItems(
+      searchInputValueRef.current,
+      null,
+      apiCategoryId,
+      getSortParams(sortOption)
+    );
+  }, [
+    fetchServiceCatalogItems,
+    apiCategoryId,
+    sortOption,
+    debouncedUpdateServiceCatalogItems,
+  ]);
 
   useEffect(() => {
     return () => debouncedUpdateServiceCatalogItems.cancel();
@@ -116,7 +190,8 @@ export function ServiceCatalogList({
       fetchServiceCatalogItems(
         searchInputValue,
         "page[after]=" + meta.after_cursor,
-        apiCategoryId
+        apiCategoryId,
+        getSortParams(sortOption)
       );
     }
   };
@@ -126,14 +201,21 @@ export function ServiceCatalogList({
       fetchServiceCatalogItems(
         searchInputValue,
         "page[before]=" + meta.before_cursor,
-        apiCategoryId
+        apiCategoryId,
+        getSortParams(sortOption)
       );
     }
   };
 
   const handleInputChange = (value: string) => {
     setSearchInputValue(value);
-    debouncedUpdateServiceCatalogItems(value, null, apiCategoryId);
+    debouncedUpdateServiceCatalogItems(value, null, apiCategoryId, sortOption);
+  };
+
+  const handleSortChange = (option: SortOption) => {
+    if (option === sortOption) return;
+    updateSortUrlParam(option);
+    setSortOption(option);
   };
 
   const categoryHeading =
@@ -152,15 +234,18 @@ export function ServiceCatalogList({
         onChange={handleInputChange}
       />
       {!isCategoryChanging && (
-        <span>
-          {t("service-catalog.service-count", "{{count}} services", {
-            "defaultValue.one": "{{count}} service",
-            count,
-          })}
-        </span>
+        <CountAndSortRow>
+          <span>
+            {t("service-catalog.service-count", "{{count}} services", {
+              "defaultValue.one": "{{count}} service",
+              count,
+            })}
+          </span>
+          <SortMenu selectedOption={sortOption} onChange={handleSortChange} />
+        </CountAndSortRow>
       )}
       {isLoading || isCategoryChanging ? (
-        <LoadingState />
+        <LoadingState count={skeletonCount} />
       ) : (
         <>
           <StyledGrid>

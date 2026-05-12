@@ -283,3 +283,23 @@ parts:
       title: "Error message when email already exists in Add User form"
       screenshot: "https://drive.google.com/file/d/1Br5FvhlHzgUPl4FQlQnZcDA83pXKmHea/view?usp=share_link"
       value: "This email is already being used by a user."
+  - translation:
+      key: "service-catalog.sort.name-asc"
+      title: "Sort option in the service catalog list that orders services alphabetically from A to Z"
+      screenshot: ""
+      value: "A-Z"
+  - translation:
+      key: "service-catalog.sort.name-desc"
+      title: "Sort option in the service catalog list that orders services alphabetically from Z to A"
+      screenshot: ""
+      value: "Z-A"
+  - translation:
+      key: "service-catalog.sort.newest"
+      title: "Sort option in the service catalog list that orders services from newest to oldest"
+      screenshot: ""
+      value: "Newest"
+  - translation:
+      key: "service-catalog.sort.aria-label"
+      title: "[A11Y] Hidden label for screen readers describing the sort options group in the service catalog list"
+      screenshot: ""
+      value: "Sort services"
