@@ -13,11 +13,31 @@ import type { Settings } from "../shared";
 import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
 import { ErrorScreen } from "../shared/error-boundary/ErrorScreen";
 import type { Category } from "./data-types/Categories";
+import {
+  PREVIEW_MODE_QUERY_PARAM,
+  PREVIEW_MODE_QUERY_PARAM_VALUE,
+} from "./constants";
 
-async function fetchCategoryTree(): Promise<Category[]> {
+function isPreviewMode(): boolean {
+  if (typeof window === "undefined") return false;
+  return (
+    new URLSearchParams(window.location.search).get(
+      PREVIEW_MODE_QUERY_PARAM
+    ) === PREVIEW_MODE_QUERY_PARAM_VALUE
+  );
+}
+
+async function fetchCategoryTree({
+  publishedOnly,
+}: {
+  publishedOnly: boolean;
+}): Promise<Category[]> {
   try {
+    const params = new URLSearchParams({
+      published_only: String(publishedOnly),
+    });
     const response = await fetch(
-      "/api/v2/help_center/service_catalog/categories"
+      `/api/v2/help_center/service_catalog/categories?${params.toString()}`
     );
     if (response.ok) {
       const data = await response.json();
@@ -55,7 +75,7 @@ export async function renderServiceCatalogPage(
     ]).catch((error) => {
       console.error("Failed to load translations:", error);
     }),
-    fetchCategoryTree(),
+    fetchCategoryTree({ publishedOnly: !isPreviewMode() }),
   ]);
 
   render(
