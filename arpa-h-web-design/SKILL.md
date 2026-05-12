@@ -51,62 +51,6 @@ When converting an existing site to the ARPA-H / NEXUS brand, complete **every**
 
 - Use a **light** background for image containers (`--color-bg-secondary` or white). Do not use `--color-brand-primary` (dark indigo) as a panel background behind photos or illustrations.
 
-### Border radius — all containers and cards
-
-NEXUS uses rounded corners on all surfaces. When restyling any existing site, **every** visual container that lacks a `border-radius` must get one:
-
-| Element type                                                      | Token to use                            |
-| ----------------------------------------------------------------- | --------------------------------------- |
-| Cards, stat boxes, callout boxes, highlight boxes                 | `var(--radius-lg)` (16 px)              |
-| Smaller containers (diagram panels, image frames, table wrappers) | `var(--radius-md)` (8 px)               |
-| Inline/accent items (left-border callouts, list items)            | `0 var(--radius-sm) var(--radius-sm) 0` |
-| Pill buttons / active nav indicators                              | `var(--radius-round)` (1000 px)         |
-
-**Gotcha — sharp-cornered source designs (e.g., Neo-Memphis):** These designs frequently set `border-radius: 0` explicitly, or simply omit `border-radius` entirely so every element defaults to `0px`. Token remapping alone will not fix this — each component rule needs an explicit `border-radius` property added. After restyling, run `getComputedStyle(el).borderRadius` in the browser console on a representative card to confirm it is not `0px`.
-
-### Legacy "grid-line" border pattern — must convert
-
-Some design systems (Neo-Memphis, brutalist, editorial) build grid separators by combining `gap: 0` on a grid/flex container with a thick outer border, relying on inner-item borders to create the visual grid lines. When restyled to NEXUS:
-
-- The thick outer border becomes a **gray box framing the entire group** (looks broken).
-- With `gap: 0`, items are **smashed together** with no breathing room.
-
-**Detection:** Search for `gap: 0` paired with `border:` on the same grid/flex rule. Also search for `border-width-thick` on any grid container.
-
-**Fix every instance:**
-
-```css
-/* ❌ Old Neo-Memphis / brutalist pattern */
-.stat-grid {
-  display: grid;
-  gap: 0;
-  border: var(--border-width-thick) solid var(--color-border-primary);
-}
-.stat-item {
-  border: var(--border-width) solid var(--color-border-primary);
-}
-
-/* ✅ NEXUS replacement */
-.stat-grid {
-  display: grid;
-  gap: var(--space-4); /* separates items */
-}
-.stat-item {
-  border: none; /* or transparent — items have their own bg */
-  border-radius: var(--radius-lg);
-}
-```
-
-### Section dividers
-
-When remapping tokens, `--border-width-thick` (originally a bold 3–4 px Neo-Memphis stroke) will resolve to `2px` — still too heavy for NEXUS light-mode section separators. Replace all `border-width-thick` dividers on section wrappers with:
-
-```css
-border-top: var(--border-width) solid var(--color-border-secondary);
-/* or */
-border-bottom: var(--border-width) solid var(--color-border-secondary);
-```
-
 ### Footer auxiliary nav — centering
 
 The auxiliary footer nav list must be **centered**. Add `justify-content: center` to the flex container holding the auxiliary links:
@@ -124,15 +68,6 @@ The auxiliary footer nav list must be **centered**. Add `justify-content: center
 
 - Copy all needed logo variants from the skill's `assets/images/` into the project's public image directory. At minimum: `arpa-h-logo.svg` (light bg), `arpa-h-logo-reverse.svg` (dark bg), `arpa-h-logo-white.svg` (dark bg flat white).
 
-### Layout file safety check (template replacement)
-
-When replacing a root layout file (e.g., `Base.astro`, `_layout.svelte`, `_app.tsx`) that previously contained a full HTML document:
-
-1. After writing the new file, grep for `</html>` — there must be **exactly one match**.
-2. Grep for `<body` — there must be **exactly one match**.
-3. Grep for `<style` — verify no orphaned `<style is:global>` or `<style>` blocks remain below the new closing `</html>`.
-
-Orphaned blocks are invisible to the eye in most editors but are processed by the framework and will silently override new styles or cause content to render twice. This is the most common cause of "white header" or "wrong font" regressions immediately after a layout rewrite.
 
 ### Final validation
 
@@ -140,7 +75,6 @@ Orphaned blocks are invisible to the eye in most editors but are processed by th
 - Open the site in a browser and visually scroll every page. Confirm:
   - [ ] No element has visually sharp (0 px) corners where a card or container is expected.
   - [ ] No grid or flex group is wrapped in a gray outer box with items touching (legacy grid-line pattern).
-  - [ ] Section dividers are thin and light, not bold.
   - [ ] Footer auxiliary links are centered.
 
 ---
