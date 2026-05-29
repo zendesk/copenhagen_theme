@@ -1,5 +1,5 @@
 ---
-name: sentinel-custom-connectors
+name: arpa-h-sentinel-custom-connector
 description: "Build, scaffold, and validate Microsoft Sentinel custom data connectors. USE FOR: create custom connector, build Sentinel data connector, ingest custom logs, DCR data collection rule, DCE data collection endpoint, Log Ingestion API, Azure Function connector, custom table Sentinel, KQL schema design, codeless connector platform CCP, SaaS API to Sentinel, REST API polling connector, transform KQL, managed identity connector auth, connector testing, Bicep connector, ARM template connector, connector manifest, data connector definition, cross-RG role assignment, Salesforce connector, ServiceNow connector, custom SaaS connector, ingest third-party data, VNet integrate Function App, configure AMPLS for DCE, private endpoint for DCE, private endpoint for Key Vault, private endpoint for Storage, VNet subnet delegation, DNS private zone, restrict public access, Flex Consumption VNet integration, amplsScopedResource, secure connector network, private link scope, create metric alert, create log search alert, create activity log alert, configure action group, alert on Function App errors, alert on ingestion failures, alert on connector health, alert on missing heartbeat, Azure Monitor alert rule Bicep, alert on DCR ingestion, alert on Key Vault access failures, Terraform connector, Terraform IaC connector, Terraform DCR, Terraform DCE, Terraform Function App, deploy connector with Terraform, azurerm provider connector. DO NOT USE FOR: built-in Sentinel content hub connectors, Syslog/CEF agent setup, diagnostic settings connectors, general Azure Functions (use azure-prepare)."
 argument-hint: "Describe the data source (e.g. Salesforce audit events, ServiceNow incidents) and the target Sentinel table name"
 ---
@@ -24,12 +24,12 @@ argument-hint: "Describe the data source (e.g. Salesforce audit events, ServiceN
 
 See [Architecture Patterns](./references/architecture.md) for full decision guidance.
 
-| Pattern | When to Use |
-|---------|-------------|
-| **Azure Function + Log Ingestion API** | Custom pull from SaaS REST APIs; full code control |
-| **Codeless Connector Platform (CCP)** | No-code/low-code REST polling; declarative JSON config |
-| **Logic App connector** | Low-volume, event-driven; orchestration-heavy |
-| **Azure Data Factory** | High-volume batch ingestion from structured sources |
+| Pattern                                | When to Use                                            |
+| -------------------------------------- | ------------------------------------------------------ |
+| **Azure Function + Log Ingestion API** | Custom pull from SaaS REST APIs; full code control     |
+| **Codeless Connector Platform (CCP)**  | No-code/low-code REST polling; declarative JSON config |
+| **Logic App connector**                | Low-volume, event-driven; orchestration-heavy          |
+| **Azure Data Factory**                 | High-volume batch ingestion from structured sources    |
 
 For SaaS APIs with REST endpoints, prefer **Azure Function + Log Ingestion API**.
 
@@ -100,6 +100,7 @@ az role assignment create \
 - See [Connector Architecture](./references/architecture.md) for a full function pattern
 
 **Python example (core ingestion call):**
+
 ```python
 from azure.monitor.ingestion import LogsIngestionClient
 from azure.identity import DefaultAzureCredential
@@ -114,15 +115,16 @@ client.upload(rule_id=DCR_RULE_ID, stream_name=DCR_STREAM_NAME, logs=records)
 
 **Prefer Bicep or Terraform** for new connector infrastructure. ARM JSON should only be used when required by external tooling (e.g. Azure Marketplace publishing). Both Bicep and Terraform avoid critical ARM JSON pitfalls:
 
-| Scenario | ARM JSON | Bicep | Terraform |
-|---|---|---|---|
+| Scenario                 | ARM JSON                                                                       | Bicep                                                         | Terraform                                                                  |
+| ------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | Cross-RG role assignment | Requires nested deployment + `expressionEvaluationPolicy: inner` — error-prone | `module` with `scope: resourceGroup(otherRg)` — works cleanly | `data` source + `azurerm_role_assignment` — trivial, no nested deployments |
-| DCR transform KQL | `coalesce()` unsupported — use `iif(isnotempty(...), ..., ...)` | Same restriction, but easier to read/debug | Same restriction — use `iif(isnotempty(...), ..., ...)` in `transform_kql` |
-| Resource references | `reference(resourceId(...))` verbose syntax | Direct `resource.property` access | Attribute references: `resource_type.name.attribute` |
-| Dependency management | Manual `dependsOn` arrays | Automatically inferred from resource references | Automatically inferred from resource references |
-| State management | No persistent state | No persistent state | Requires state backend (e.g., Azure Blob Storage) |
+| DCR transform KQL        | `coalesce()` unsupported — use `iif(isnotempty(...), ..., ...)`                | Same restriction, but easier to read/debug                    | Same restriction — use `iif(isnotempty(...), ..., ...)` in `transform_kql` |
+| Resource references      | `reference(resourceId(...))` verbose syntax                                    | Direct `resource.property` access                             | Attribute references: `resource_type.name.attribute`                       |
+| Dependency management    | Manual `dependsOn` arrays                                                      | Automatically inferred from resource references               | Automatically inferred from resource references                            |
+| State management         | No persistent state                                                            | No persistent state                                           | Requires state backend (e.g., Azure Blob Storage)                          |
 
 **Required resources:**
+
 - `Microsoft.Storage/storageAccounts` (+ blobServices/containers)
 - `Microsoft.Web/serverfarms` (Flex Consumption: sku FC1)
 - `Microsoft.Insights/components`
@@ -133,6 +135,7 @@ client.upload(rule_id=DCR_RULE_ID, stream_name=DCR_STREAM_NAME, logs=records)
 - Parameterize: workspace name, workspace RG, DCE name, table name, Function App name, Key Vault name, Key Vault RG
 
 **Cross-RG Key Vault role assignment pattern (Bicep module):**
+
 ```bicep
 // deployment.bicep — calls a module scoped to the KV resource group
 module kvRoleAssignment 'kvRoleAssignment.bicep' = if (deployRoleAssignments) {
@@ -161,6 +164,7 @@ resource kvSecretsUserRole 'Microsoft.Authorization/roleAssignments@2022-04-01' 
 ```
 
 **Deploy with:**
+
 ```bash
 az deployment group create \
   --resource-group <connector-rg> \
@@ -202,7 +206,7 @@ When the connector must not traverse the public internet, integrate the Function
 
 ### Architecture
 
-```
+```text
 Function App (Flex Consumption)
   └─ VNet Integration (delegated subnet) → outbound traffic via VNet
        ├─ Private Endpoint → Data Collection Endpoint (DCE)
@@ -289,15 +293,15 @@ module amplsScope 'amplsScopedResource.bicep' = if (!empty(privateLinkScopeName)
 
 ### Required Private DNS Zones
 
-| Resource | DNS Zone |
-|----------|----------|
-| DCE / Azure Monitor | `privatelink.monitor.azure.com` |
-| Log Analytics | `privatelink.ods.opinsights.azure.com` |
+| Resource              | DNS Zone                               |
+| --------------------- | -------------------------------------- |
+| DCE / Azure Monitor   | `privatelink.monitor.azure.com`        |
+| Log Analytics         | `privatelink.ods.opinsights.azure.com` |
 | Log Analytics (Agent) | `privatelink.oms.opinsights.azure.com` |
-| Key Vault | `privatelink.vaultcore.azure.net` |
-| Storage (Blob) | `privatelink.blob.core.windows.net` |
-| Storage (Queue) | `privatelink.queue.core.windows.net` |
-| Storage (Table) | `privatelink.table.core.windows.net` |
+| Key Vault             | `privatelink.vaultcore.azure.net`      |
+| Storage (Blob)        | `privatelink.blob.core.windows.net`    |
+| Storage (Queue)       | `privatelink.queue.core.windows.net`   |
+| Storage (Table)       | `privatelink.table.core.windows.net`   |
 
 All zones must be **linked to the VNet** used by the Function App.
 
@@ -331,11 +335,13 @@ All zones must be **linked to the VNet** used by the Function App.
 2. **Schema validation**: Run a test ingest with a single record and verify the row appears in LA within 5 minutes
 3. **KQL transform validation**: Use the Azure portal DCR editor to test transform queries before saving
 4. **End-to-end smoke test**:
+
    ```kql
    Product<ConnectorName><LogType>_CL
    | where TimeGenerated > ago(1h)
    | summarize Count = count()
    ```
+
 5. **Common failures**:
    - `403` on upload → managed identity not assigned `Monitoring Metrics Publisher` on DCR
    - Table not found → DCR stream name (`Custom-Product<ConnectorName><LogType>_CL`) doesn't match table
@@ -354,8 +360,8 @@ Define resource group and function app name as top-level `env` vars to avoid rep
 
 ```yaml
 env:
-  RESOURCE_GROUP: 'rg-operations-sentinel-<connector>-usc'
-  FUNCTION_APP_NAME: 'func-operations-sentinel-<connector>-usc'
+  RESOURCE_GROUP: "rg-operations-sentinel-<connector>-usc"
+  FUNCTION_APP_NAME: "func-operations-sentinel-<connector>-usc"
 ```
 
 ### Deploy Function App Step (PowerShell — zip + config-zip)
@@ -429,7 +435,7 @@ from HubSpotAuditCollector import app  # noqa: F401
 
 ### Correct layout
 
-```
+```text
 function-code/
   function_app.py              ← runtime entry point (required)
   host.json
@@ -448,11 +454,11 @@ Alert on connector health, ingestion gaps, and Function App errors.
 
 ### Alert Rule Types
 
-| Type | Signal | Best For |
-|------|--------|----------|
-| **Log search alert** | KQL on Log Analytics | Ingestion gaps, error patterns, custom table row count |
-| **Metric alert** | Azure resource metrics | Function execution failures, CPU, availability |
-| **Activity log alert** | Azure control-plane events | Resource deletion, config changes |
+| Type                   | Signal                     | Best For                                               |
+| ---------------------- | -------------------------- | ------------------------------------------------------ |
+| **Log search alert**   | KQL on Log Analytics       | Ingestion gaps, error patterns, custom table row count |
+| **Metric alert**       | Azure resource metrics     | Function execution failures, CPU, availability         |
+| **Activity log alert** | Azure control-plane events | Resource deletion, config changes                      |
 
 ### Bicep: Action Group
 
@@ -539,12 +545,12 @@ resource functionErrorAlert 'Microsoft.Insights/metricAlerts@2018-03-01' = {
 
 ### Recommended Alerts for This Connector
 
-| Alert | Type | Severity | Frequency |
-|-------|------|----------|-----------|
-| No logs ingested in 1h | Log search | 1 (Error) | PT15M |
-| Function execution failures > 5 | Metric | 2 (Warning) | PT5M |
-| Key Vault access denied | Log search | 1 (Error) | PT5M |
-| Function App stopped (runs = 0) | Metric | 0 (Critical) | PT5M |
+| Alert                           | Type       | Severity     | Frequency |
+| ------------------------------- | ---------- | ------------ | --------- |
+| No logs ingested in 1h          | Log search | 1 (Error)    | PT15M     |
+| Function execution failures > 5 | Metric     | 2 (Warning)  | PT5M      |
+| Key Vault access denied         | Log search | 1 (Error)    | PT5M      |
+| Function App stopped (runs = 0) | Metric     | 0 (Critical) | PT5M      |
 
 ### Common KQL Alert Queries
 
@@ -589,6 +595,7 @@ AzureDiagnostics
 ### When to Use Terraform
 
 Choose Terraform when:
+
 - Your organization already uses Terraform/OpenTofu as the standard IaC across workloads
 - You need multi-cloud portability or centralized Terraform state management
 - Cross-RG and cross-subscription role assignments are common — Terraform `data` sources handle these without nested deployments
@@ -606,7 +613,7 @@ See [Terraform Connector Reference](./references/terraform.md) for a full `main.
 
 ### Bicep File Structure for a Connector
 
-```
+```text
 hubspot/infrastructure/
   deployment.bicep          # Main template — all resources in connector RG
   kvRoleAssignment.bicep    # Module — KV Secrets User role assignment in KV RG
@@ -616,7 +623,7 @@ hubspot/infrastructure/
 
 ### Terraform File Structure for a Connector
 
-```
+```text
 hubspot/infrastructure/
   main.tf           # All resources (DCE, DCR, Storage, Function App, role assignments)
   variables.tf      # Input variable declarations

@@ -1,11 +1,6 @@
-[SKILL.md](https://github.com/user-attachments/files/27769556/SKILL.md)
 ---
-name: arpa-h-staffer
+name: arpa-h-staff-persona
 description: Context for ARPA-H staff questions about agency-issued technology, day-to-day tools, and self-service paths. Use when an ARPA-H user asks how to do something with their device, identity, platforms and applications, conference room AV, data handling, or security posture — including questions phrased without context like "How do I Figma?", "Where's my password reset?", or "Can I use this AI tool?". If possible, provide actual how-to steps unfurled from links and always link to the Zendesk knowledge base and Atlassian Rovo for procedure detail. Disambiguates ARPA-H-specific terms (GRACE, OFS, ITDI, GFE) and routes the agent to the right downstream source.
-license: Internal use — ARPA-H ITDI
-metadata:
-  owner: ARPA-H ITDI Enterprise team
-  version: "1.0"
 ---
 
 # ARPA-H Staffer
@@ -30,38 +25,39 @@ ARPA-H's technology is structured around a Zero Trust architecture. The ITDI org
 
 ## Service Desk: escalation when self-service isn't enough
 
-| Channel | Details |
-|---|---|
-| Web | `https://help.arpa-h.gov` (preferred) |
-| Slack | `/zendesk` or the Zendesk app |
-| Email | `it@arpa-h.gov` |
-| Phone | 1-855-ARPA-H-IT |
-| Security concerns | `cybersecurity@arpa-h.gov` |
-| Phishing | Outlook "Report Phishing" button |
+| Channel           | Details                               |
+| ----------------- | ------------------------------------- |
+| Web               | `https://help.arpa-h.gov` (preferred) |
+| Slack             | `/zendesk` or the Zendesk app         |
+| Email             | `it@arpa-h.gov`                       |
+| Phone             | 1-855-ARPA-H-IT                       |
+| Security concerns | `cybersecurity@arpa-h.gov`            |
+| Phishing          | Outlook "Report Phishing" button      |
 
 ## Communities of Practice
 
 Each Slack channel has a pinned Welcome/Overview Canvas; the first stop for product questions before the Service Desk.
 
-| Channel | Community |
-|---|---|
-| `#atlassian` | Jira, Confluence, Trello |
-| `#aurora` | AURORA (Palantir Foundry) |
-| `#biorender` | BioRender |
-| `#figma` | Figma |
-| `#github` | GitHub Enterprise, Codespaces, Copilot, Actions |
-| `#grace-support-feedback` | GRACE chatbot support and feedback |
-| `#ios` | iOS devices and mobile |
-| `#macos` | macOS devices and Jamf |
-| `#m365` | Microsoft 365 (Outlook, Teams, SharePoint, OneDrive, etc.) |
-| `#powerbi` | Power BI |
-| `#windows` | Windows devices and Intune |
+| Channel                   | Community                                                  |
+| ------------------------- | ---------------------------------------------------------- |
+| `#atlassian`              | Jira, Confluence, Trello                                   |
+| `#aurora`                 | AURORA (Palantir Foundry)                                  |
+| `#biorender`              | BioRender                                                  |
+| `#figma`                  | Figma                                                      |
+| `#github`                 | GitHub Enterprise, Codespaces, Copilot, Actions            |
+| `#grace-support-feedback` | GRACE chatbot support and feedback                         |
+| `#ios`                    | iOS devices and mobile                                     |
+| `#macos`                  | macOS devices and Jamf                                     |
+| `#m365`                   | Microsoft 365 (Outlook, Teams, SharePoint, OneDrive, etc.) |
+| `#powerbi`                | Power BI                                                   |
+| `#windows`                | Windows devices and Intune                                 |
 
 ## Devices (Enterprise Team)
 
 ARPA-H is cloud-native: Autopilot/Intune for Windows and iOS, Jamf Pro for macOS, MAM for personal iOS/Android. No on-prem AD, no domain join. Recovery is wipe-and-re-enroll; data lives in OneDrive (Known Folder Move) and apps reinstall from Company Portal or Jamf Self Service.
 
 **Hardware (GFE):**
+
 - **Windows:** Dell 14 Pro Plus or Dell 16 Pro Plus, Windows 11 25H2.
 - **macOS:** M4 MacBook Air (13" or 15") for most; M4 Pro MacBook Pro (14" or 16") for data scientists, designers, and developers. VIPs can typically request their preference. Running macOS 26 Tahoe.
 - **Mobile:** iPhone or iPad on iOS 26, AT&T cellular. Personal Hotspot enabled on all issued iPhones with cellular. Cellular for Dells available on request; MiFi available on approval.
@@ -84,6 +80,7 @@ ARPA-H is cloud-native: Autopilot/Intune for Windows and iOS, Jamf Pro for macOS
 **No local admin** for any user, including developers. Developers use GitHub Codespaces to avoid the need for local toolchains and the supply chain risk they bring. BeyondTrust Endpoint Privilege Management (EPM) is rolling out to allow users to perform basic tasks without admin rights, such as changing time zone, Wi-Fi settings, and uninstalling printers.
 
 **Gotchas:**
+
 - **Recovery is wipe-and-re-enroll.** Local file recovery is not supported; data should live in OneDrive.
 - **Personal laptops are never enrolled.** BYOD is phones/tablets only via MAM.
 - **Azure is Commercial; M365 is GCC.** ARPA-H does not use Azure Government directly.
@@ -95,6 +92,7 @@ ARPA-H uses an Entra ID GCC tenant for Windows, iOS, and M365. **Okta** is the c
 Staff usernames follow the format `first.last@arpa-h.gov`.
 
 **Authentication is passwordless on the Entra ID side.** MFA is enforced for everyone. Daily drivers by OS:
+
 - **Windows:** Windows Hello for Business.
 - **macOS:** Okta-based device sign-in (NIH password + Okta Verify push or OTP); Touch ID for screen unlock; Microsoft Authenticator for ARPA-H web apps and Office.
 - **All users:** FIDO2 passkeys or security keys, Microsoft Authenticator (phishing-resistant), and PIV/CAC also available.
@@ -106,6 +104,7 @@ Staff usernames follow the format `first.last@arpa-h.gov`.
 **External access (MTO):** ARPA-H is part of the HHS Multi-Tenant Organization (MTO) via Entra cross-tenant sync. Staff at NIH, CDC, and other HHS OpDivs appear as native users in Teams, Outlook, and SharePoint; no guest invite needed. Individual external guests (grantees, partners) are invited case-by-case with sponsor audit. HHS OpDiv systems are increasingly only available via Entra ID.
 
 **Gotchas:**
+
 - **macOS sign-in is Okta, not Entra.** "Sign in with your ARPA-H account" on a Mac means NIH password + Okta Verify. Office and web apps still hit Entra after that.
 - **No on-prem AD.** Any "domain credentials" question is a misframing or specific to NIH legacy systems.
 - **Account state changes are HR-driven.** The Service Desk cannot disable or delete accounts.
@@ -117,15 +116,18 @@ Staff usernames follow the format `first.last@arpa-h.gov`.
 **M365 G5 GCC also includes** the full Purview Suite: DLP, Information Protection, Audit Premium (1-year retention), eDiscovery Premium, Insider Risk, and Communication Compliance.
 
 **General AI Tools:**
+
 - **GRACE** (`https://grace.arpa-h.gov`): ARPA-H's primary internal chatbot. Start here.
 - **ChatGPT Enterprise** (`https://go.hhs.gov/chatgpt`), **Claude Enterprise** (`https://claude.hhs.gov`), **Gemini Enterprise** (`https://gemini.hhs.gov`): all provided by HHS.
 
 **Dev / collaboration:**
+
 - **Atlassian:** Jira (project management), Confluence (wiki/KB; the only internal KB platform), Trello.
 - **GitHub Enterprise Cloud** (`ARPA-H` org): Codespaces (ephemeral cloud dev environment), Copilot (AI coding), Actions (CI/CD and agentic automation). Codespaces runs in an isolated container, eliminating the need for local toolchains and the supply chain risk they bring. Enterprise Cloud and Advanced Security licenses available on demand; request via Service Desk or `#github`. The `ARPA-H/tap` Homebrew tap distributes ARPA-H CLI tools.
 - **Project management:** Jira (primary), Trello and GitHub Projects for external-facing projects.
 
 **Design / creative:**
+
 - **Adobe Creative Cloud:** All Apps for design roles; single-app by request (Service Desk); Acrobat for everyone.
 - **Figma:** Collab (anyone); Design for design roles; Dev for roles that warrant it. Request via Service Desk or `#figma`. Figma Make is gaining traction for quick mockups.
 - **Canva:** available to anyone; being superseded by Figma Make.
@@ -133,11 +135,13 @@ Staff usernames follow the format `first.last@arpa-h.gov`.
 - **Campfire 3D:** 3D model collaboration; on demand via Service Desk.
 
 **Analytics / automation:**
+
 - **Power BI:** standard BI for all staff.
 - **Power Automate**, **Copilot Studio:** available to all staff.
 - **Power Apps**, **Power Pages:** ITDI-only for building agency apps.
 
 **Other tools:**
+
 - **DocuSign:** e-signature.
 - **Microsoft Forms:** surveys and simple forms; Power Apps for complex forms.
 - **Articulate Reach 360:** ARPA-H LMS; HHS also provides an LMS.
@@ -147,28 +151,31 @@ Staff usernames follow the format `first.last@arpa-h.gov`.
 - Research journals available via NIH network (AVD or NIH VPN); PubMed is public.
 
 **Cloud platform:**
+
 - **Azure Commercial on Azure Mission Landing Zone (MLZ):** SCCA-compliant, mostly inheritable FISMA Moderate ATO.
 - **Google Cloud Platform (GCP)** with Assured Workloads and Stellar Engine: FISMA Moderate ATO.
 - Staff wanting to build in the cloud should engage the ITDI Enterprise Team before requesting any cloud resources.
 
 **Key URLs:**
 
-| URL | Purpose |
-|---|---|
-| `https://arpa-h.gov` | Public site |
-| `https://start.arpa-h.gov` | ARPA-H Intranet |
-| `https://help.arpa-h.gov` | Service Desk (Zendesk) |
-| `https://grace.arpa-h.gov` | GRACE chatbot |
-| `https://solutions.arpa-h.gov` | Solutions intake |
-| `https://login.arpa-h.gov` | Okta / macOS auth |
+| URL                            | Purpose                |
+| ------------------------------ | ---------------------- |
+| `https://arpa-h.gov`           | Public site            |
+| `https://start.arpa-h.gov`     | ARPA-H Intranet        |
+| `https://help.arpa-h.gov`      | Service Desk (Zendesk) |
+| `https://grace.arpa-h.gov`     | GRACE chatbot          |
+| `https://solutions.arpa-h.gov` | Solutions intake       |
+| `https://login.arpa-h.gov`     | Okta / macOS auth      |
 
 **Working with people outside ARPA-H:**
+
 - **HHS OpDiv colleagues:** appear as native users via MTO; no invite needed.
 - **Teams chat:** open to any tenant; many government tenants restrict inbound chat from their side.
 - **Calendar sharing:** status-only via Exchange or external HTML/ICS.
 - **External SharePoint sites:** for sharing with grantees, partners, or vendors. Request via Service Desk; ITDI builds from a custom template and provides training.
 
 **Gotchas:**
+
 - **Direct AI questions to GRACE.** Unsanctioned AI tools are blocked by MDCA; not all personal-tier accounts can be blocked at the endpoint. Always lead with `https://grace.arpa-h.gov`.
 
 ## Network & Environments (Enterprise Team)
@@ -180,6 +187,7 @@ Staff usernames follow the format `first.last@arpa-h.gov`.
 **Leadership offices:** Logitech Rally Bar Mini, smaller TV, Tap IP, Tap Scheduler.
 
 **Wi-Fi at OFS** (via Essensys):
+
 - `Wi-Fi Staff`: staff devices
 - `Wi-Fi Guest`: visitors
 - `Wi-Fi Devices`: IoT / non-laptop
@@ -189,6 +197,7 @@ Staff usernames follow the format `first.last@arpa-h.gov`.
 ## Data
 
 **Primary applications:**
+
 - **AURORA** (`#aurora`): built on Palantir Foundry. Provides ontology-based data integration, pipeline building, collaborative analysis, and data product tooling. Used for analytics, program management, and agency-wide data workflows. Access by request. External reviewers authenticate via Login.gov; this is the only ARPA-H platform where Login.gov is used.
 - **GRACE** (`https://grace.arpa-h.gov`): first stop for AI-assisted data questions before escalating to AURORA or a data specialist.
 
@@ -205,6 +214,7 @@ Staff usernames follow the format `first.last@arpa-h.gov`.
 **CUI / sensitive data:** Handled within the ARPA-H system boundary; additional Purview protections are being built out as the classification program matures.
 
 **Gotchas:**
+
 - **Do not guess sensitivity label names.** Defer to the KB or ask the user.
 
 ## Cybersecurity (CISO)
@@ -222,22 +232,23 @@ ARPA-H's posture is grounded in the **Microsoft Cybersecurity Reference Architec
 **VDP:** Inherited from HHS. No separate ARPA-H program.
 
 **Gotchas:**
+
 - **Incident response belongs to the CISO.** Security concerns go to `cybersecurity@arpa-h.gov`.
 - **Use Outlook Report Phishing, not Cofense.** ARPA-H users are not wired into Cofense reporting.
 
 ## Disambiguating common terms
 
-| Term | Meaning |
-|---|---|
-| ITDI | IT & Digital Innovation; the ARPA-H technology org |
-| Enterprise team | ITDI team owning Devices, Identity, Platforms, Network |
-| GFE | Government-Furnished Equipment; ARPA-H-issued laptop or phone |
-| OFS | One Franklin Square; HQ at 1301 K Street NW, DC |
-| GRACE | Internal AI chatbot; `https://grace.arpa-h.gov` |
-| Intranet | Staff intranet; `https://start.arpa-h.gov` |
-| MTO | Multi-Tenant Organization; HHS OpDiv cross-tenant sync |
-| Company Portal | Intune self-service app catalog (Windows, iOS) |
-| Self Service | Jamf self-service app catalog (macOS) |
-| AURORA | Palantir Foundry-based data and program management platform |
-| AVD | Azure Virtual Desktop on the NIH network |
-| Akamai | Public DNS provider for arpa-h.gov |
+| Term            | Meaning                                                       |
+| --------------- | ------------------------------------------------------------- |
+| ITDI            | IT & Digital Innovation; the ARPA-H technology org            |
+| Enterprise team | ITDI team owning Devices, Identity, Platforms, Network        |
+| GFE             | Government-Furnished Equipment; ARPA-H-issued laptop or phone |
+| OFS             | One Franklin Square; HQ at 1301 K Street NW, DC               |
+| GRACE           | Internal AI chatbot; `https://grace.arpa-h.gov`               |
+| Intranet        | Staff intranet; `https://start.arpa-h.gov`                    |
+| MTO             | Multi-Tenant Organization; HHS OpDiv cross-tenant sync        |
+| Company Portal  | Intune self-service app catalog (Windows, iOS)                |
+| Self Service    | Jamf self-service app catalog (macOS)                         |
+| AURORA          | Palantir Foundry-based data and program management platform   |
+| AVD             | Azure Virtual Desktop on the NIH network                      |
+| Akamai          | Public DNS provider for arpa-h.gov                            |

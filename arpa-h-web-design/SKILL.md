@@ -6,7 +6,6 @@ description: >
   utilities, and the .gov banner. Use when building, reviewing, or discussing ARPA-H web UI —
   covers colors, typography, spacing, components, variables, and layout conventions extracted
   directly from Figma.
-applyTo: "**/*.{ts,tsx,js,jsx,css,scss,html}"
 ---
 
 # NEXUS Design System — Full Reference
@@ -67,7 +66,6 @@ The auxiliary footer nav list must be **centered**. Add `justify-content: center
 ### Logo assets
 
 - Copy all needed logo variants from the skill's `assets/images/` into the project's public image directory. At minimum: `arpa-h-logo.svg` (light bg), `arpa-h-logo-reverse.svg` (dark bg), `arpa-h-logo-white.svg` (dark bg flat white).
-
 
 ### Final validation
 
