@@ -30,6 +30,7 @@ The CCP lets you build a Sentinel data connector using a declarative JSON defini
 ## Auth Block Options
 
 ### API Key (header)
+
 ```json
 "auth": {
   "type": "APIKey",
@@ -40,6 +41,7 @@ The CCP lets you build a Sentinel data connector using a declarative JSON defini
 ```
 
 ### OAuth 2.0 Client Credentials
+
 ```json
 "auth": {
   "type": "OAuth2",
@@ -52,6 +54,7 @@ The CCP lets you build a Sentinel data connector using a declarative JSON defini
 ```
 
 ### Basic Auth
+
 ```json
 "auth": {
   "type": "Basic",
@@ -85,7 +88,7 @@ The CCP lets you build a Sentinel data connector using a declarative JSON defini
 ### Built-in Template Variables
 
 | Variable | Resolves To |
-|----------|------------|
+| ---------- | ------------ |
 | `{{_QueryWindowStartTime}}` | Start of the current polling window (ISO 8601) |
 | `{{_QueryWindowEndTime}}` | End of the current polling window (ISO 8601) |
 | `{{_CurrentWorkspaceId}}` | Log Analytics workspace ID |
@@ -95,6 +98,7 @@ The CCP lets you build a Sentinel data connector using a declarative JSON defini
 ## Paging Block Options
 
 ### NextLink (RFC 8288 / JSON body field)
+
 ```json
 "paging": {
   "pagingType": "NextPageToken",
@@ -106,6 +110,7 @@ The CCP lets you build a Sentinel data connector using a declarative JSON defini
 ```
 
 ### Offset
+
 ```json
 "paging": {
   "pagingType": "Offset",
@@ -116,6 +121,7 @@ The CCP lets you build a Sentinel data connector using a declarative JSON defini
 ```
 
 ### Link Header
+
 ```json
 "paging": {
   "pagingType": "LinkHeader"
@@ -198,7 +204,7 @@ The CCP lets you build a Sentinel data connector using a declarative JSON defini
 ## CCP Limitations
 
 | Limitation | Notes |
-|-----------|-------|
+| ----------- | ------- |
 | No custom code | Complex transforms require Azure Function instead |
 | HTTP/REST only | No GraphQL, gRPC, or WebSocket sources |
 | Max response size per poll | ~100 MB — use smaller `queryWindowInMin` for high-volume sources |
@@ -210,7 +216,7 @@ The CCP lets you build a Sentinel data connector using a declarative JSON defini
 ## Choosing Between CCP and Azure Function
 
 | Factor | CCP | Azure Function |
-|--------|-----|---------------|
+| -------- | ----- | --------------- |
 | Dev effort | Low (JSON config) | Medium (code) |
 | Secret rotation | Manual parameter update | Key Vault (automated) |
 | Custom transform logic | ❌ | ✅ |

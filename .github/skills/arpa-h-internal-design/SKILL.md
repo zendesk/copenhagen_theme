@@ -206,10 +206,10 @@ Described functionally — implement with whatever component primitives your fra
 
 ## Interaction States (all interactive elements)
 
-| State        | Treatment                                                   |
-|--------------|-------------------------------------------------------------|
-| Hover        | Lighten background one step up the neutral scale            |
-| Pressed      | Darken background one step down the neutral scale           |
-| Focus        | Visible focus ring — `2px solid #FFFFFF` with 2px offset  |
-| Disabled     | Text: `--color-muted-3`; no hover or pressed response       |
-| Selected     | Border/stroke becomes `#FFFFFF`; text becomes white         |
+| State | Treatment |
+| --- | --- |
+| Hover | Lighten background one step up the neutral scale |
+| Pressed | Darken background one step down the neutral scale |
+| Focus | Visible focus ring — `2px solid #FFFFFF` with 2px offset |
+| Disabled | Text: `--color-muted-3`; no hover or pressed response |
+| Selected | Border/stroke becomes `#FFFFFF`; text becomes white |

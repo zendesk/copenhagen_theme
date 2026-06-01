@@ -2,7 +2,7 @@
 
 ## Pattern 1: Azure Function + Log Ingestion API (Recommended for SaaS APIs)
 
-```
+```text
 Source API (SaaS / REST / custom)
     │
     ▼
@@ -99,7 +99,7 @@ def chunk(lst, size):
 ### Required App Settings
 
 | Setting | Value |
-|---------|-------|
+| --------- | ------- |
 | `DCE_ENDPOINT` | `https://<dce-name>.<region>.ingest.monitor.azure.com` |
 | `DCR_RULE_ID` | DCR immutable ID (`dcr-xxxxxxxxxxxxxxxx`) |
 | `DCR_STREAM_NAME` | `Custom-Product<ConnectorName><LogType>_CL` |
@@ -135,6 +135,7 @@ No Azure Function required. Connector runs inside Sentinel's infrastructure.
 See [CCP Reference](./ccp.md) for full details.
 
 **Use when:**
+
 - The SaaS API is publicly accessible with predictable pagination
 - No complex transformation logic is needed
 - You want a connector that appears natively in the Sentinel Data Connectors gallery
@@ -144,11 +145,13 @@ See [CCP Reference](./ccp.md) for full details.
 ## Pattern 3: Logic App
 
 **Use when:**
+
 - Low event volume (< 1000 events/hour)
 - You need to orchestrate multi-step enrichment before ingestion
 - Non-developer team members will maintain the workflow
 
 **NOT recommended for:**
+
 - High-frequency polling (use Azure Function instead — Logic Apps have per-action pricing)
 - Complex stateful pagination
 
@@ -157,7 +160,7 @@ See [CCP Reference](./ccp.md) for full details.
 ## Choosing a Pattern
 
 | Criteria | Azure Function | CCP | Logic App |
-|----------|---------------|-----|-----------|
+| ---------- | --------------- | ----- | ----------- |
 | SaaS REST API | ✅ Best | ✅ Good | ⚠️ OK |
 | High volume (>10k events/hr) | ✅ | ⚠️ | ❌ |
 | Complex transform logic | ✅ | ❌ | ⚠️ |

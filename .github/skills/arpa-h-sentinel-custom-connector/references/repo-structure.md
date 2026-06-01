@@ -2,7 +2,7 @@
 
 Model new connector repos on this layout. Replace `<source>` with the lowercase name of your data source (e.g. `hubspot`, `salesforce`, `okta`).
 
-```
+```text
 sentinel-connectors-<source>/
 ├── .github/
 │   ├── skills/
@@ -89,7 +89,7 @@ Standard configuration — the same structure applies to all supported languages
 
 Exclude files that should not be packaged for deployment. Adjust language-specific entries as needed.
 
-```
+```gitignore
 .git*
 .vscode
 local.settings.json
@@ -107,7 +107,7 @@ obj/
 
 ### `.gitignore` (connector-relevant entries)
 
-```
+```gitignore
 # Azure Functions
 local.settings.json
 
@@ -380,7 +380,7 @@ az role assignment create \
 In the repository or environment settings, add these as **Variables** (not Secrets):
 
 | Variable | Value |
-|---|---|
+| --- | --- |
 | `AZURE_CLIENT_ID` | App Registration Application (client) ID |
 | `AZURE_TENANT_ID` | Azure AD tenant ID |
 | `AZURE_SUBSCRIPTION_ID` | Target subscription ID |
@@ -393,7 +393,7 @@ In the repository or environment settings, add these as **Variables** (not Secre
 ## Naming Conventions Summary
 
 | Resource | Pattern | Example |
-|---|---|---|
+| --- | --- | --- |
 | Resource Group | `rg-<env>-sentinel-<source>-<region>` | `rg-operations-sentinel-hubspot-usc` |
 | Function App | `func-<env>-sentinel-<source>-<region>` | `func-operations-sentinel-hubspot-usc` |
 | Storage Account | `st<source><env><region>` | `sthubspotopsusc` |
@@ -406,7 +406,7 @@ In the repository or environment settings, add these as **Variables** (not Secre
 ## Language-Specific Notes
 
 | Language | `FUNCTIONS_WORKER_RUNTIME` | Dependency manifest | Entry point |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Python | `python` | `requirements.txt` | `__init__.py` (v1) or decorated function (v2) |
 | Node.js | `node` | `package.json` | `index.js` / `index.ts` |
 | .NET isolated | `dotnet-isolated` | `*.csproj` | `*.cs` with `[Function]` attribute |

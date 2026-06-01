@@ -3,7 +3,7 @@
 ## Naming Conventions
 
 | Element | Convention | Example |
-|---------|-----------|---------|
+| --------- | ----------- | --------- |
 | Table name | `Product<ConnectorName><LogType>_CL` | `ProductSalesforceLogins_CL` |
 | Column names | PascalCase, no spaces | `EventType`, `CreatedDate` |
 | Prefix | Always start with `Product` | `ProductHubSpotAuditLogs_CL` |
@@ -16,7 +16,7 @@
 ### Common Source → Log Analytics Type Mapping
 
 | Source Type | Log Analytics Type | Notes |
-|-------------|-------------------|-------|
+| ------------- | ------------------- | ------- |
 | `string` / `text` | `string` | Default for most fields |
 | `number` / `float` | `real` | Use for decimals |
 | `number` (integer) | `int` or `long` | Use `long` for large IDs |
@@ -38,7 +38,7 @@ Product<ConnectorName>Events_CL
 ```
 
 | Column | Type | Description |
-|--------|------|-------------|
+| -------- | ------ | ------------- |
 | `TimeGenerated` | `datetime` | Required by LA; set to ingestion time or source event time |
 | `EventId` | `string` | Unique event ID from the source system |
 | `EventType` | `string` | Type or category of the event |
@@ -54,7 +54,7 @@ Product<ConnectorName>Events_CL
 ### `Product<ConnectorName>Users_CL` — User/identity records table
 
 | Column | Type | Description |
-|--------|------|-------------|
+| -------- | ------ | ------------- |
 | `TimeGenerated` | `datetime` | |
 | `UserId` | `string` | Unique user ID in the source system |
 | `Email` | `string` | Primary email (PII) |
@@ -90,6 +90,7 @@ source
 ```
 
 Common cast helpers:
+
 ```kql
 // Parse nested JSON string
 | extend ParsedFields = parse_json(nested_json_column)
@@ -143,16 +144,19 @@ Product<ConnectorName>Events_CL
 
 - **Email, Phone, FirstName, LastName** are PII — ensure your Log Analytics workspace has appropriate **data retention policies** and **RBAC table-level access** configured
 - For high-security deployments, hash PII at ingestion:
+
   ```kql
   | extend EmailHash = hash_sha256(Email)
   | project-away Email
   ```
+
 - Use Log Analytics **dedicated cluster** with CMK (Customer-Managed Keys) if contractually required
 - Apply LA workspace **table-level RBAC** to restrict who can query `_CL` tables with sensitive data
 
 ## Schema Evolution
 
 When adding new columns to an existing `_CL` table:
+
 1. Add the column to the LA table definition (portal or ARM)
 2. Add the column to the DCR `streamDeclarations`
 3. Add the cast in the DCR transform KQL

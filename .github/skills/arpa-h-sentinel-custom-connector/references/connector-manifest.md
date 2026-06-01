@@ -4,7 +4,7 @@ A full ARM deployment template that provisions all resources for the Sentinel cu
 
 ## Deployment Template Structure
 
-```
+```text
 azuredeploy.json
 ├── parameters
 │   ├── workspaceName

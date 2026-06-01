@@ -258,7 +258,7 @@ When updating the skill after Figma changes, target only what changed:
 
 NEXUS library key (for `includeLibraryKeys` filter):
 
-```
+```text
 lk-db0b80242252e76656cbbc09f7fa00abc5eed62900182e42fdeb55c81fbd40620fbf377eb05aa53faadf15eccc2e91216f3a2c5a71ddef9026fa00c35f3ebc25
 ```
 

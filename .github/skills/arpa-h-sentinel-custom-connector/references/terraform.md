@@ -8,7 +8,7 @@ Full Terraform configuration for provisioning all Sentinel custom connector infr
 
 ## File Structure
 
-```
+```text
 <connector>/infrastructure/
   main.tf           # All resources (DCE, DCR, Storage, Function App, role assignments)
   variables.tf      # Input variable declarations
@@ -289,7 +289,7 @@ When the connector must not traverse the public internet, set `subnet_resource_i
 
 ### Architecture
 
-```
+```text
 Function App (Flex Consumption)
   └─ VNet Integration (delegated subnet) → outbound traffic via VNet
        ├─ Private Endpoint → Data Collection Endpoint (DCE)
@@ -405,7 +405,7 @@ resource "azurerm_monitor_private_link_scoped_service" "dce" {
 All zones must be linked to the VNet used by the Function App before deploying private endpoints.
 
 | Resource | DNS Zone |
-|----------|----------|
+| ---------- | ---------- |
 | DCE / Azure Monitor | `privatelink.monitor.azure.com` |
 | Log Analytics | `privatelink.ods.opinsights.azure.com` |
 | Log Analytics (Agent) | `privatelink.oms.opinsights.azure.com` |
