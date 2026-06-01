@@ -88,7 +88,7 @@ Full ARM template for a DCR that targets a custom `_CL` table via the Log Ingest
 ## DCR Key Concepts
 
 | Property | Notes |
-|----------|-------|
+| ---------- | ------- |
 | `streamDeclarations` | Defines the input schema the client sends. Name must be `Custom-<TableName>`. |
 | `transformKql` | KQL applied at ingestion time. Use to rename fields, filter, or cast types. Use `source` to reference the incoming stream. |
 | `outputStream` | Must match the target table (`Custom-<TableName>`). |
@@ -122,7 +122,7 @@ source
 ## Common DCR Errors
 
 | Error | Cause | Fix |
-|-------|-------|-----|
+| ------- | ------- | ----- |
 | `403 Forbidden` on upload | Identity missing `Monitoring Metrics Publisher` on DCR | Run `az role assignment create` with the DCR scope |
 | `404` on DCE endpoint URL | Endpoint URL copied incorrectly or DCE in wrong region | Re-fetch from `az monitor data-collection endpoint show` |
 | Rows missing in table | `TimeGenerated` outside ±48h window or null | Ensure transform sets `TimeGenerated = now()` or validates source timestamp |
