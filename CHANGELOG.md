@@ -1,3 +1,10 @@
+## [4.41.1](https://github.com/zendesk/copenhagen_theme/compare/v4.41.0...v4.41.1) (2026-06-02)
+
+
+### Bug Fixes
+
+* **ticket-fields:** show selected label for nested dropdown values ([12c23f0](https://github.com/zendesk/copenhagen_theme/commit/12c23f010b46366c31fbbccce29646623f9e954c))
+
 # [4.41.0](https://github.com/zendesk/copenhagen_theme/compare/v4.40.0...v4.41.0) (2026-05-14)
 
 
