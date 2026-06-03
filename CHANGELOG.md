@@ -1,3 +1,15 @@
+## [4.41.2](https://github.com/zendesk/copenhagen_theme/compare/v4.41.1...v4.41.2) (2026-06-03)
+
+
+### Bug Fixes
+
+* fix lodash transitive dependency ([5f5779e](https://github.com/zendesk/copenhagen_theme/commit/5f5779e0690fa3736bef270b2c99b6999824400f))
+* fix transitive dependency for handlebars ([72fc29d](https://github.com/zendesk/copenhagen_theme/commit/72fc29d23a89183c75b276ed791fc58868a8d792))
+* fix transitive dependency for picomatch and tar ([19c2b59](https://github.com/zendesk/copenhagen_theme/commit/19c2b597cb499fc5cff82384aaf601c180d22ca1))
+* update commitlint version ([fc2945a](https://github.com/zendesk/copenhagen_theme/commit/fc2945ad2240928db5f99545470430a613961316))
+* update dompurify version ([19bdc3b](https://github.com/zendesk/copenhagen_theme/commit/19bdc3b1603661702575878462b1a7aa94dfb94a))
+* use yarn set resolutions for dependency issues ([b40fe40](https://github.com/zendesk/copenhagen_theme/commit/b40fe4000ff6385a4c9d89c3401e5884cd92db5c))
+
 ## [4.41.1](https://github.com/zendesk/copenhagen_theme/compare/v4.41.0...v4.41.1) (2026-06-02)
 
 
