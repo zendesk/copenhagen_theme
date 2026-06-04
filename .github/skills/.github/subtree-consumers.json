@@ -83,5 +83,10 @@
     "repo": "ARPA-H/entra-tap-html-function",
     "prefix": ".github/skills",
     "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/vigil",
+    "prefix": ".github/skills",
+    "branch": "main"
   }
 ]
