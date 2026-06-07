@@ -9,11 +9,13 @@
   display: flex;
 
   li {
+    display: inline-block;
     color: $secondary-text-color;
     font-size: $font-size-small;
     max-width: 450px;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 
     + li::before {
       content: ">";

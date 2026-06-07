@@ -1,0 +1,211 @@
+import { memo } from "react";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { MD } from "@zendeskgarden/react-typography";
+import { getColor } from "@zendeskgarden/react-theming";
+import { Grid } from "@zendeskgarden/react-grid";
+import type { ApprovalRequest } from "../../types";
+import ApprovalStatusTag from "./ApprovalStatusTag";
+import { formatApprovalRequestDate } from "../../utils";
+import { APPROVAL_REQUEST_STATES } from "../../constants";
+import ApprovalRequestPreviousDecision from "./ApprovalRequestPreviousDecision";
+import { getSentByLabel } from "../../getSentByLabel";
+import { getDecisionOriginLabel } from "../../getDecisionOriginLabel";
+
+const Container = styled(Grid)`
+  padding: ${(props) => props.theme.space.base * 6}px; /* 24px */
+  margin-left: 0;
+  background: ${({ theme }) =>
+    getColor({ theme, variable: "background.default" })};
+  border-radius: ${(props) => props.theme.borderRadii.md}; /* 4px */
+  max-width: 296px;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    max-width: 100%;
+  }
+`;
+
+const ApprovalRequestHeader = styled(MD)`
+  margin-bottom: ${(props) => props.theme.space.base * 4}px; /* 16px */
+`;
+
+const WrappedText = styled(MD)`
+  white-space: normal;
+  overflow-wrap: break-word;
+`;
+
+const FieldLabel = styled(MD)`
+  color: ${({ theme }) => getColor({ theme, hue: "grey", shade: 600 })};
+`;
+
+const DetailRow = styled(Grid.Row)`
+  margin-bottom: ${(props) => props.theme.space.sm}; /* 12px */
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.sm}) {
+    flex-direction: column; /* stack columns vertically */
+
+    > div {
+      width: 100% !important; /* full width for each Col */
+      max-width: 100% !important;
+      flex: none !important;
+      margin-bottom: ${(props) => props.theme.space.xxs}; /* 4px */
+    }
+
+    > div:last-child {
+      margin-bottom: 0;
+    }
+  }
+`;
+
+interface ApprovalRequestDetailsProps {
+  approvalRequest: ApprovalRequest;
+  baseLocale: string;
+}
+
+function ApprovalRequestDetails({
+  approvalRequest,
+  baseLocale,
+}: ApprovalRequestDetailsProps) {
+  const { t } = useTranslation();
+
+  const shouldShowApprovalRequestComment =
+    approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
+      ? Boolean(approvalRequest.withdrawn_reason)
+      : approvalRequest.decisions.length > 0;
+  const shouldShowPreviousDecision =
+    approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN &&
+    approvalRequest.decisions.length > 0;
+
+  const formattedDecidedAt = approvalRequest.decided_at
+    ? formatApprovalRequestDate(approvalRequest.decided_at, baseLocale)
+    : "";
+
+  // The `origination_type` field on decisions is only present when arturo `approvals_slack_notifications` is enabled
+  const decisionOriginLabel =
+    approvalRequest.status !== APPROVAL_REQUEST_STATES.WITHDRAWN
+      ? getDecisionOriginLabel(
+          approvalRequest.decisions[0]?.origination_type,
+          formattedDecidedAt,
+          t
+        )
+      : "";
+
+  return (
+    <Container>
+      <ApprovalRequestHeader isBold>
+        {t(
+          "approval-requests.request.approval-request-details.header",
+          "Approval request details"
+        )}
+      </ApprovalRequestHeader>
+      <DetailRow>
+        <Grid.Col size={4}>
+          <FieldLabel>
+            {t(
+              "approval-requests.request.approval-request-details.sent-by",
+              "Sent by"
+            )}
+          </FieldLabel>
+        </Grid.Col>
+        <Grid.Col size={8}>
+          <WrappedText>{getSentByLabel(approvalRequest, t)}</WrappedText>
+        </Grid.Col>
+      </DetailRow>
+      <DetailRow>
+        <Grid.Col size={4}>
+          <FieldLabel>
+            {t(
+              "approval-requests.request.approval-request-details.sent-on",
+              "Sent on"
+            )}
+          </FieldLabel>
+        </Grid.Col>
+        <Grid.Col size={8}>
+          <MD>
+            {formatApprovalRequestDate(approvalRequest.created_at, baseLocale)}
+          </MD>
+        </Grid.Col>
+      </DetailRow>
+      <DetailRow>
+        <Grid.Col size={4}>
+          <FieldLabel>
+            {t(
+              "approval-requests.request.approval-request-details.approver",
+              "Approver"
+            )}
+          </FieldLabel>
+        </Grid.Col>
+        <Grid.Col size={8}>
+          <WrappedText>{approvalRequest.assignee_user.name}</WrappedText>
+        </Grid.Col>
+      </DetailRow>
+      <DetailRow>
+        <Grid.Col size={4}>
+          <FieldLabel>
+            {t(
+              "approval-requests.request.approval-request-details.status",
+              "Status"
+            )}
+          </FieldLabel>
+        </Grid.Col>
+        <Grid.Col size={8}>
+          <MD>
+            <ApprovalStatusTag status={approvalRequest.status} />
+          </MD>
+        </Grid.Col>
+      </DetailRow>
+      {shouldShowApprovalRequestComment && (
+        <DetailRow>
+          <Grid.Col size={4}>
+            <FieldLabel>
+              {t(
+                "approval-requests.request.approval-request-details.comment_v2",
+                "Reason"
+              )}
+            </FieldLabel>
+          </Grid.Col>
+          <Grid.Col size={8}>
+            <WrappedText>
+              {approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
+                ? approvalRequest.withdrawn_reason
+                : approvalRequest.decisions[0]?.decision_notes ?? "-"}
+            </WrappedText>
+          </Grid.Col>
+        </DetailRow>
+      )}
+      {approvalRequest.decided_at && (
+        <DetailRow>
+          <Grid.Col size={4}>
+            <FieldLabel>
+              {t(
+                approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
+                  ? "approval-requests.request.approval-request-details.withdrawn-on"
+                  : "approval-requests.request.approval-request-details.decided",
+                approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
+                  ? "Withdrawn on"
+                  : "Decided"
+              )}
+            </FieldLabel>
+          </Grid.Col>
+          <Grid.Col size={8}>
+            <WrappedText>
+              {decisionOriginLabel || formattedDecidedAt}
+            </WrappedText>
+          </Grid.Col>
+        </DetailRow>
+      )}
+      {shouldShowPreviousDecision && approvalRequest.decisions[0] && (
+        <ApprovalRequestPreviousDecision
+          decision={approvalRequest.decisions[0]}
+          baseLocale={baseLocale}
+        />
+      )}
+    </Container>
+  );
+}
+
+export default memo(ApprovalRequestDetails);

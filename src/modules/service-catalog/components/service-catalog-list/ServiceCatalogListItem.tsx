@@ -1,0 +1,101 @@
+import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
+import styled from "styled-components";
+import { getColor } from "@zendeskgarden/react-theming";
+import { ItemThumbnail } from "../item-thumbnail/ItemThumbnail";
+import { useMemo } from "react";
+
+const ItemContainer = styled.div`
+  height: 100%;
+`;
+
+const ItemLink = styled.a`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: ${(props) => props.theme.borderRadii.md};
+  padding: ${(props) => props.theme.space.md};
+  border: ${(props) => props.theme.borders.sm}
+    ${({ theme }) => getColor({ theme, hue: "grey", shade: 300 })};
+  color: ${({ theme }) => getColor({ theme, variable: "foreground.default" })};
+
+  &:hover {
+    border-color: ${(props) => props.theme.colors.primaryHue};
+  }
+
+  &:hover,
+  &:visited {
+    text-decoration: none;
+  }
+`;
+
+const ItemTitle = styled.div`
+  font-size: ${(props) => props.theme.fontSizes.md};
+  font-weight: ${(props) => props.theme.fontWeights.semibold};
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-break: break-word;
+`;
+
+const ItemDescription = styled.div`
+  font-size: ${(props) => props.theme.fontSizes.sm};
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  word-break: break-word;
+`;
+
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: ${(props) => props.theme.space.xxs};
+  color: ${({ theme }) => getColor({ theme, variable: "foreground.default" })};
+  margin-top: ${(props) => props.theme.space.sm};
+`;
+
+const ServiceCatalogListItem = ({
+  serviceItem,
+  helpCenterPath,
+  selectedCategoryId,
+}: {
+  serviceItem: ServiceCatalogItem;
+  helpCenterPath: string;
+  selectedCategoryId?: string | null;
+}) => {
+  const itemUrl = selectedCategoryId
+    ? `${helpCenterPath}/services/${serviceItem.id}?category_id=${selectedCategoryId}`
+    : `${helpCenterPath}/services/${serviceItem.id}`;
+
+  const decodeToText = (htmlString: string) => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = htmlString;
+    return tempDiv.textContent || tempDiv.innerText || "";
+  };
+
+  const titleText = useMemo(
+    () => decodeToText(serviceItem.name || ""),
+    [serviceItem.name]
+  );
+
+  const cleanText = useMemo(
+    () => decodeToText(serviceItem.description || ""),
+    [serviceItem.description]
+  );
+
+  return (
+    <ItemContainer data-testid="service-catalog-list-item-container">
+      <ItemLink href={itemUrl}>
+        <ItemThumbnail size="medium" url={serviceItem.thumbnail_url} />
+        <TextContainer>
+          <ItemTitle>{titleText}</ItemTitle>
+          <ItemDescription>{cleanText}</ItemDescription>
+        </TextContainer>
+      </ItemLink>
+    </ItemContainer>
+  );
+};
+
+export default ServiceCatalogListItem;

@@ -1,0 +1,3 @@
+# Markdown formatting is enforced by markdownlint-cli2, not Prettier.
+# Prettier's table-column alignment conflicts with markdownlint MD060.
+**/*.md

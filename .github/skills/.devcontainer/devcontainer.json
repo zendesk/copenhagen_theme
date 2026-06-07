@@ -1,0 +1,39 @@
+{
+  "name": "ARPA-H Skills",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+  "features": {
+    // gh CLI — required for all ARPA-H repos
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    // Azure CLI — required for interacting with Azure API Center (ARPA-H MCP registry) and Azure portal
+    "ghcr.io/devcontainers/features/azure-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // ARPA-H standard: GitHub & collaboration
+        "github.copilot-chat",
+        "github.vscode-pull-request-github",
+        "github.vscode-github-actions",
+        "github.github-vscode-theme",
+        "dracula-theme.theme-dracula",
+        // Markdown linting — *.md files present in repo
+        "davidanson.vscode-markdownlint",
+        // Prettier — formats JSON, CSS, YAML on save
+        "esbenp.prettier-vscode",
+        // Figma design integration
+        "figma.figma-vscode-extension"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "git.autofetch": true,
+        "git.autofetchPeriod": 180,
+        // SKILL.md files use #anchor links extensively; the built-in validator
+        // misreports them as missing files.
+        "markdown.validate.fragmentLinks.enabled": "ignore"
+      }
+    }
+  },
+  // Installs bun, cleans stale LFS hooks, and wires versioned git hooks. See setup.sh for details.
+  "postCreateCommand": "bash .devcontainer/setup.sh"
+}

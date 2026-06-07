@@ -1,0 +1,6 @@
+{
+  "unwantedRecommendations": [
+    // Not needed inside Codespaces — only relevant for local Docker workflows
+    "ms-vscode-remote.remote-containers"
+  ]
+}

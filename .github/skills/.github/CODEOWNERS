@@ -1,0 +1,8 @@
+# CODEOWNERS — ARPA-H/skills
+#
+# Each line is a file pattern followed by one or more owners.
+# The last matching pattern takes precedence.
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global owner — all files in the repo
+* @petersonjdNIH
