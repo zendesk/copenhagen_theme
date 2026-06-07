@@ -5,6 +5,7 @@ node_modules/
 *.DS_Store
 coverage/
 .idea/
+.vscode/settings.json
 
 # yarn
 .yarn/*
