@@ -134,12 +134,9 @@
 
       <footer>
         <div class="article-footer">
-          {{!--
-{{#if settings.show_article_sharing}}
-  <div class="article-share">{{share}}</div>
-{{/if}}
---}}
-
+          {{#if settings.show_article_sharing}}
+            <div class="article-share">{{share}}</div>
+          {{/if}}
           {{#if settings.show_article_comments}}
             {{#if comments}}
               <a href="#article-comments" class="article-comment-count">

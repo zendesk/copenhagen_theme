@@ -15,15 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
-        
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14.x
+        uses: actions/checkout@v6
 
-      - name: Install dependencies
-        run: npm ci --prefix ./.github/workflows/scripts/
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.x
 
       - name: Zip theme files
         run: |
@@ -39,7 +36,7 @@ jobs:
           THEME_ID: ${{ (github.ref_name == 'sandbox' || github.base_ref == 'sandbox') && secrets.SANDBOX_THEME_ID || secrets.THEME_ID }}
 
       - name: Upload theme file
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: theme-file
           path: ./.github/workflows/scripts/theme.zip
