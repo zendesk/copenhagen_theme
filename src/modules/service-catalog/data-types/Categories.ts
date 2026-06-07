@@ -1,7 +1,7 @@
 export interface Category {
   id: string;
   name: string;
-  itemsCount: number;
+  items_count: number;
   updated_at: string;
   children?: Category[];
 }

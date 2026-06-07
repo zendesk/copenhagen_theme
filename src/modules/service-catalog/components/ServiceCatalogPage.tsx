@@ -9,6 +9,10 @@ import {
   UNCATEGORIZED_ID,
 } from "./service-catalog-categories-sidebar/constants";
 
+function filterUncategorized(categories: Category[]): Category[] {
+  return categories.filter((cat) => cat.id !== UNCATEGORIZED_ID);
+}
+
 function getCategoryIdFromUrl(): string | null {
   const params = new URLSearchParams(window.location.search);
   return params.get("category_id");
@@ -53,7 +57,7 @@ export const ServiceCatalogPage: React.FC<ServiceCatalogPageProps> = ({
       {hasCategories && (
         <aside className="service-catalog-sidebar">
           <ServiceCatalogCategoriesSidebar
-            categories={categoryTree}
+            categories={filterUncategorized(categoryTree)}
             selectedCategoryId={selectedCategoryId}
             onSelect={handleCategorySelect}
           />

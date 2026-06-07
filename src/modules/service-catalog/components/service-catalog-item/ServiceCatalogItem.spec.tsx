@@ -6,6 +6,7 @@ import { submitServiceItemRequest } from "./submitServiceItemRequest";
 import * as notifications from "../../../shared/notifications";
 import type { ServiceCatalogItem as ServiceCatalogItemType } from "../../data-types/ServiceCatalogItem";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
+import { PREVIEW_MODE_HTML_CLASS } from "../../constants";
 
 // Mock react-i18next
 jest.mock("react-i18next", () => ({
@@ -43,15 +44,29 @@ jest.mock("../../hooks/useAttachmentsOption", () => ({
 jest.mock("./ItemRequestForm", () => ({
   ItemRequestForm: ({
     onSubmit,
+    isPreviewMode,
   }: {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+    isPreviewMode?: boolean;
   }) => (
-    <form data-testid="item-request-form" onSubmit={onSubmit}>
-      <button type="submit">Submit</button>
+    <form
+      data-testid="item-request-form"
+      data-preview-mode={isPreviewMode ? "true" : "false"}
+      onSubmit={onSubmit}
+    >
+      <button type="submit" disabled={isPreviewMode}>
+        Submit
+      </button>
     </form>
   ),
   ASSET_TYPE_KEY: "zen:custom_object:standard::itam_asset_type",
   ASSET_KEY: "zen:custom_object:standard::itam_asset",
+}));
+
+// Mock PreviewModeBanner so we can assert it renders without testing portal
+// behaviour here (it has its own dedicated specs).
+jest.mock("./PreviewModeBanner", () => ({
+  PreviewModeBanner: () => <div data-testid="preview-mode-banner-mock" />,
 }));
 
 import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
@@ -86,6 +101,7 @@ describe("ServiceCatalogItem", () => {
     userRole: "end_user",
     userId: 123,
     brandId: 456,
+    userName: "Test User",
     organizations: [],
     helpCenterPath: "/hc/en-us",
   };
@@ -97,11 +113,18 @@ describe("ServiceCatalogItem", () => {
     form_id: 100,
     thumbnail_url: "",
     categories: [],
+    allow_request_on_behalf: false,
+    published_at: "2025-01-01T00:00:00Z",
     custom_object_fields: {
       "standard::asset_option": "",
       "standard::asset_type_option": "",
       "standard::attachment_option": "",
     },
+  };
+
+  const mockDraftServiceCatalogItem: ServiceCatalogItemType = {
+    ...mockServiceCatalogItem,
+    published_at: null,
   };
 
   const mockRequestFields: TicketFieldObject[] = [
@@ -161,6 +184,178 @@ describe("ServiceCatalogItem", () => {
       isAssetTypeHidden: false,
       assetTypeIds: [],
       assetIds: [],
+    });
+  });
+
+  describe("preview mode", () => {
+    const baseHref = "http://localhost/hc/en-us/services/123";
+    const PREVIEW_CLASS = PREVIEW_MODE_HTML_CLASS;
+
+    const mockLocation = (search: string) => {
+      window.history.replaceState(null, "", `${baseHref}${search}`);
+    };
+
+    beforeEach(() => {
+      window.history.replaceState(null, "", baseHref);
+      document.documentElement.classList.remove(PREVIEW_CLASS);
+    });
+
+    afterEach(() => {
+      window.history.replaceState(null, "", baseHref);
+      document.documentElement.classList.remove(PREVIEW_CLASS);
+    });
+
+    it("does not render the preview banner for published items without the preview query param", () => {
+      mockLocation("");
+      mockUseServiceCatalogItem.mockReturnValue({
+        serviceCatalogItem: mockServiceCatalogItem,
+        errorFetchingItem: null,
+      });
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      expect(
+        screen.queryByTestId("preview-mode-banner-mock")
+      ).not.toBeInTheDocument();
+      expect(screen.getByTestId("item-request-form")).toHaveAttribute(
+        "data-preview-mode",
+        "false"
+      );
+      expect(document.documentElement).not.toHaveClass(PREVIEW_CLASS);
+    });
+
+    it("does not render the preview banner for published items even when ?preview=true is in the URL", () => {
+      mockLocation("?preview=true");
+      mockUseServiceCatalogItem.mockReturnValue({
+        serviceCatalogItem: mockServiceCatalogItem,
+        errorFetchingItem: null,
+      });
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      expect(
+        screen.queryByTestId("preview-mode-banner-mock")
+      ).not.toBeInTheDocument();
+      expect(screen.getByTestId("item-request-form")).toHaveAttribute(
+        "data-preview-mode",
+        "false"
+      );
+      expect(document.documentElement).not.toHaveClass(PREVIEW_CLASS);
+    });
+
+    it("removes ?preview=true from the URL once a published item is loaded", () => {
+      mockLocation("?preview=true&category_id=42");
+      mockUseServiceCatalogItem.mockReturnValue({
+        serviceCatalogItem: mockServiceCatalogItem,
+        errorFetchingItem: null,
+      });
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      expect(window.location.search).not.toContain("preview=true");
+      // Other params are preserved
+      expect(window.location.search).toContain("category_id=42");
+    });
+
+    it("activates preview mode for draft items even without the preview query param", () => {
+      mockLocation("");
+      mockUseServiceCatalogItem.mockReturnValue({
+        serviceCatalogItem: mockDraftServiceCatalogItem,
+        errorFetchingItem: null,
+      });
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      expect(
+        screen.getByTestId("preview-mode-banner-mock")
+      ).toBeInTheDocument();
+      expect(screen.getByTestId("item-request-form")).toHaveAttribute(
+        "data-preview-mode",
+        "true"
+      );
+      expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
+      expect(document.documentElement).toHaveClass(PREVIEW_CLASS);
+    });
+
+    it("adds ?preview=true to the URL once a draft item is loaded so a refresh enters preview cleanly", () => {
+      mockLocation("?category_id=42");
+      mockUseServiceCatalogItem.mockReturnValue({
+        serviceCatalogItem: mockDraftServiceCatalogItem,
+        errorFetchingItem: null,
+      });
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      expect(window.location.search).toContain("preview=true");
+      // Other params are preserved
+      expect(window.location.search).toContain("category_id=42");
+    });
+
+    it("does not modify the URL when the param already matches the item state", () => {
+      mockLocation("?preview=true");
+      mockUseServiceCatalogItem.mockReturnValue({
+        serviceCatalogItem: mockDraftServiceCatalogItem,
+        errorFetchingItem: null,
+      });
+
+      const replaceStateSpy = jest.spyOn(window.history, "replaceState");
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      expect(replaceStateSpy).not.toHaveBeenCalled();
+      replaceStateSpy.mockRestore();
+    });
+
+    it("renders the preview banner and disables submit for draft items with the preview query param", () => {
+      mockLocation("?preview=true");
+      mockUseServiceCatalogItem.mockReturnValue({
+        serviceCatalogItem: mockDraftServiceCatalogItem,
+        errorFetchingItem: null,
+      });
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      expect(
+        screen.getByTestId("preview-mode-banner-mock")
+      ).toBeInTheDocument();
+      expect(screen.getByTestId("item-request-form")).toHaveAttribute(
+        "data-preview-mode",
+        "true"
+      );
+      expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
+      expect(document.documentElement).toHaveClass(PREVIEW_CLASS);
+    });
+
+    it("removes the preview class from the root element on unmount", () => {
+      mockLocation("?preview=true");
+      mockUseServiceCatalogItem.mockReturnValue({
+        serviceCatalogItem: mockDraftServiceCatalogItem,
+        errorFetchingItem: null,
+      });
+
+      const { unmount } = renderWithTheme(
+        <ServiceCatalogItem {...defaultProps} />
+      );
+      expect(document.documentElement).toHaveClass(PREVIEW_CLASS);
+
+      unmount();
+      expect(document.documentElement).not.toHaveClass(PREVIEW_CLASS);
+    });
+
+    it("does not submit the form when in preview mode", async () => {
+      mockLocation("?preview=true");
+      mockUseServiceCatalogItem.mockReturnValue({
+        serviceCatalogItem: mockDraftServiceCatalogItem,
+        errorFetchingItem: null,
+      });
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      const form = screen.getByTestId("item-request-form");
+      fireEvent.submit(form);
+
+      await waitFor(() => {
+        expect(mockSubmitServiceItemRequest).not.toHaveBeenCalled();
+      });
     });
   });
 

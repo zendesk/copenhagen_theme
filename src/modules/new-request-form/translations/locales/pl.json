@@ -13,7 +13,7 @@
   "new-request-form.answer-bot-generative-modal.feedback-error": "Podczas przesyłania opinii wystąpił błąd",
   "new-request-form.answer-bot-generative-modal.generated_by_ai": "Wygenerowano przez SI",
   "new-request-form.answer-bot-generative-modal.loading.finished": "Znalazłem coś, co może pomóc...",
-  "new-request-form.answer-bot-generative-modal.loading.start": "Myślenie",
+  "new-request-form.answer-bot-generative-modal.loading.start": "Myślę",
   "new-request-form.answer-bot-generative-modal.loading.subtitle": "Podczas czekania agent SI spróbuje znaleźć odpowiedź na Twoje zlecenie. Jeśli zamkniesz to okno, otrzymasz e-mail z kontynuacją.",
   "new-request-form.answer-bot-generative-modal.request-closed": "Twoje zlecenie zostało oznaczone jako rozwiązane.",
   "new-request-form.answer-bot-generative-modal.request-submitted": "Zlecenie zostało wysłane",

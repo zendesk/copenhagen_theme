@@ -1,7 +1,4 @@
-import type {
-  IComboboxProps,
-  ISelectedOption,
-} from "@zendeskgarden/react-dropdowns";
+import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import {
   Field,
   Combobox,
@@ -21,11 +18,16 @@ interface TaggerProps {
 
 export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
   const { label, options, error, value, name, required, description } = field;
-  const { currentGroup, isGroupIdentifier, setCurrentGroupByIdentifier } =
-    useNestedOptions({
-      options,
-      hasEmptyOption: true,
-    });
+  const {
+    currentGroup,
+    isGroupIdentifier,
+    setCurrentGroupByIdentifier,
+    getOptionLabel,
+  } = useNestedOptions({
+    options,
+    hasEmptyOption: true,
+    selectedValue: (value as string | undefined) ?? "",
+  });
 
   const selectionValue = (value as string | undefined) ?? "";
   const [isExpanded, setIsExpanded] = useState(false);
@@ -73,9 +75,10 @@ export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
         onChange={handleChange}
         selectionValue={selectionValue}
         inputValue={selectionValue}
-        renderValue={({ selection }) =>
-          (selection as ISelectedOption | null)?.label ?? <EmptyValueOption />
-        }
+        renderValue={() => {
+          const selectedLabel = getOptionLabel(selectionValue);
+          return selectedLabel ? <>{selectedLabel}</> : <EmptyValueOption />;
+        }}
         isExpanded={isExpanded}
       >
         {currentGroup.type === "SubGroup" && (

@@ -1,3 +1,13 @@
+<script type="text/javascript">
+  (function () {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get("preview") === "true") {
+        document.documentElement.classList.add("is-service-catalog-preview");
+      }
+    } catch (e) {}
+  })();
+</script>
 <div class="container-divider"></div>
 <div class="container">
   <div class="sub-nav">
@@ -26,6 +36,7 @@
     hasAtMentions: {{json help_center.at_mentions_enabled}},
     userRole: {{json user.role}},
     userId: {{json user.id}},
+    userName: {{json user.name}},
     brandId: {{json brand.id}},
     organizations: {{json user.organizations}},
     serviceCatalogItemId: id,
