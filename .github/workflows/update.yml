@@ -2,6 +2,10 @@ name: Update theme
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - sandbox
   pull_request:
     types:
       - closed
@@ -11,7 +15,7 @@ on:
 
 jobs:
   update_theme:
-    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -22,6 +26,19 @@ jobs:
         with:
           node-version: 22.x
 
+      - name: Set theme version name
+        run: |
+          VERSION=$(node -p "require('./manifest.json').version.split('.').slice(0,2).join('.')")
+          BRANCH="${{ github.ref_name }}"
+          THEME_NAME="ARPA-H Theme ${VERSION}.${{ github.run_number }} (${BRANCH})"
+          echo "Setting theme name to: ${THEME_NAME}"
+          node -e "
+            const fs = require('fs');
+            const m = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
+            m.name = '${THEME_NAME}';
+            fs.writeFileSync('manifest.json', JSON.stringify(m, null, 2) + '\n');
+          "
+
       - name: Zip theme files
         run: |
           zip -r theme.zip . -x ".*"
@@ -30,10 +47,10 @@ jobs:
       - name: Run updateTheme.js
         run: node ./.github/workflows/scripts/updateTheme.js
         env:
-          ZENDESK_SUBDOMAIN: ${{ (github.ref_name == 'sandbox' || github.base_ref == 'sandbox') && secrets.SANDBOX_DOMAIN || secrets.ZENDESK_SUBDOMAIN }}
+          ZENDESK_SUBDOMAIN: ${{ (github.ref_name == 'sandbox') && secrets.SANDBOX_DOMAIN || secrets.ZENDESK_SUBDOMAIN }}
           ZENDESK_EMAIL: ${{ secrets.ZENDESK_EMAIL }}
-          ZENDESK_TOKEN: ${{ (github.ref_name == 'sandbox' || github.base_ref == 'sandbox') && secrets.SANDBOX_TOKEN || secrets.ZENDESK_TOKEN }}
-          THEME_ID: ${{ (github.ref_name == 'sandbox' || github.base_ref == 'sandbox') && secrets.SANDBOX_THEME_ID || secrets.THEME_ID }}
+          ZENDESK_TOKEN: ${{ (github.ref_name == 'sandbox') && secrets.SANDBOX_TOKEN || secrets.ZENDESK_TOKEN }}
+          BRAND_ID: ${{ (github.ref_name == 'sandbox') && secrets.SANDBOX_BRAND_ID || secrets.BRAND_ID }}
 
       - name: Upload theme file
         uses: actions/upload-artifact@v7
