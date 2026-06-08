@@ -50,7 +50,7 @@ jobs:
           ZENDESK_SUBDOMAIN: ${{ (github.ref_name == 'sandbox') && secrets.SANDBOX_DOMAIN || secrets.ZENDESK_SUBDOMAIN }}
           ZENDESK_EMAIL: ${{ secrets.ZENDESK_EMAIL }}
           ZENDESK_TOKEN: ${{ (github.ref_name == 'sandbox') && secrets.SANDBOX_TOKEN || secrets.ZENDESK_TOKEN }}
-          BRAND_ID: ${{ (github.ref_name == 'sandbox') && secrets.SANDBOX_BRAND_ID || secrets.BRAND_ID }}
+          BRAND_ID: ${{ (github.ref_name == 'sandbox') && vars.SANDBOX_BRAND_ID || vars.BRAND_ID }}
 
       - name: Upload theme file
         uses: actions/upload-artifact@v7
