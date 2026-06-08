@@ -77,7 +77,7 @@ async function importTheme(brandId) {
 async function publishTheme(themeId) {
     try {
         const data = await zendeskFetch(`/guide/theming/themes/${themeId}/publish`, {
-            method: 'PUT',
+            method: 'POST',
         });
         console.log('::group::Publish Theme Response');
         const prettyResponse = JSON.stringify(data, null, 2);
