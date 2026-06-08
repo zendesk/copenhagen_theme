@@ -3429,6 +3429,7 @@ ul {
 }
 .request-main {
   flex: 1 0 auto;
+  max-width: 100%;
   order: 1;
 }
 .request-main .comment-fields, .request-main .request-submit-comment {
