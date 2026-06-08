@@ -38,7 +38,7 @@
     "@zendeskgarden/react-tooltips": "9.15.0",
     "@zendeskgarden/react-typography": "9.15.0",
     "@zendeskgarden/svg-icons": "8.0.0",
-    "dompurify": "3.3.2",
+    "dompurify": "3.4.0",
     "eslint-plugin-check-file": "^2.6.2",
     "i18next": "^23.10.1",
     "linkify-string": "^4.3.2",
@@ -53,8 +53,8 @@
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.3.0",
-    "@commitlint/config-conventional": "17.3.0",
+    "@commitlint/cli": "^20.0.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@jest/globals": "^29.6.4",
     "@rollup/plugin-commonjs": "^25.0.2",
     "@rollup/plugin-dynamic-import-vars": "^2.1.2",

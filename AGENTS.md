@@ -73,6 +73,11 @@ t("key", "Default English value");
 ```
 Translations stored in `src/modules/[module]/translations/`.
 
+### Translations: what goes where
+- `translations.yml` (repo root) is only for strings referenced by `manifest.json` (theme settings labels/descriptions shown in the Settings panel). Don't add template or React strings here.
+- In Curlybars templates (`templates/*.hbs`), the `{{t "key"}}` helper only resolves keys that Help Center exposes to the theme's `t` helper. A new key must be added there first; defining it in `translations.yml` or a module's `translations/` folder does not make it available to `{{t}}`.
+- React component strings live in `src/modules/[module]/translations/` and are loaded via `react-i18next` (see README for the extraction/update workflow).
+
 ## File Naming Conventions
 
 - Folders in `src/`: kebab-case

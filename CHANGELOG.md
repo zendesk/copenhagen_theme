@@ -1,3 +1,84 @@
+## [4.41.2](https://github.com/zendesk/copenhagen_theme/compare/v4.41.1...v4.41.2) (2026-06-03)
+
+
+### Bug Fixes
+
+* fix lodash transitive dependency ([5f5779e](https://github.com/zendesk/copenhagen_theme/commit/5f5779e0690fa3736bef270b2c99b6999824400f))
+* fix transitive dependency for handlebars ([72fc29d](https://github.com/zendesk/copenhagen_theme/commit/72fc29d23a89183c75b276ed791fc58868a8d792))
+* fix transitive dependency for picomatch and tar ([19c2b59](https://github.com/zendesk/copenhagen_theme/commit/19c2b597cb499fc5cff82384aaf601c180d22ca1))
+* update commitlint version ([fc2945a](https://github.com/zendesk/copenhagen_theme/commit/fc2945ad2240928db5f99545470430a613961316))
+* update dompurify version ([19bdc3b](https://github.com/zendesk/copenhagen_theme/commit/19bdc3b1603661702575878462b1a7aa94dfb94a))
+* use yarn set resolutions for dependency issues ([b40fe40](https://github.com/zendesk/copenhagen_theme/commit/b40fe4000ff6385a4c9d89c3401e5884cd92db5c))
+
+## [4.41.1](https://github.com/zendesk/copenhagen_theme/compare/v4.41.0...v4.41.1) (2026-06-02)
+
+
+### Bug Fixes
+
+* **ticket-fields:** show selected label for nested dropdown values ([12c23f0](https://github.com/zendesk/copenhagen_theme/commit/12c23f010b46366c31fbbccce29646623f9e954c))
+
+# [4.41.0](https://github.com/zendesk/copenhagen_theme/compare/v4.40.0...v4.41.0) (2026-05-14)
+
+
+### Features
+
+* add sorting in service catalog items ([374a934](https://github.com/zendesk/copenhagen_theme/commit/374a93499619293bde44e84bc048449ba878a90f))
+
+# [4.40.0](https://github.com/zendesk/copenhagen_theme/compare/v4.39.0...v4.40.0) (2026-05-14)
+
+
+### Features
+
+* add counting to category ([57c1b0a](https://github.com/zendesk/copenhagen_theme/commit/57c1b0a445980e04e21799e3483fb146355610cc))
+
+# [4.39.0](https://github.com/zendesk/copenhagen_theme/compare/v4.38.0...v4.39.0) (2026-05-11)
+
+
+### Features
+
+* preview service catalog ([c9e1bbc](https://github.com/zendesk/copenhagen_theme/commit/c9e1bbca71cafe6097566ddbef41810c4f5c4326))
+
+# [4.38.0](https://github.com/zendesk/copenhagen_theme/compare/v4.37.2...v4.38.0) (2026-05-11)
+
+
+### Features
+
+* filter ticket fields by current brand form ([6b9b49c](https://github.com/zendesk/copenhagen_theme/commit/6b9b49cd95127288c267ae3156205311636a10a4))
+* request only active ticket forms ([2c1f91b](https://github.com/zendesk/copenhagen_theme/commit/2c1f91bd61df1800a810df10252245da4eb664e2))
+
+## [4.37.2](https://github.com/zendesk/copenhagen_theme/compare/v4.37.1...v4.37.2) (2026-05-07)
+
+
+### Bug Fixes
+
+* add ask button only ([81571f1](https://github.com/zendesk/copenhagen_theme/commit/81571f18fa909646e6c0d1f2363169b7eaa2c37c))
+
+## [4.37.1](https://github.com/zendesk/copenhagen_theme/compare/v4.37.0...v4.37.1) (2026-05-06)
+
+
+### Bug Fixes
+
+* download latest translations ([77758d4](https://github.com/zendesk/copenhagen_theme/commit/77758d4f798865cfed154426a5d7f960afd8a928))
+
+# [4.37.0](https://github.com/zendesk/copenhagen_theme/compare/v4.36.1...v4.37.0) (2026-05-05)
+
+
+### Bug Fixes
+
+* translations according to the comments ([b6e7f5d](https://github.com/zendesk/copenhagen_theme/commit/b6e7f5d51c9dc6ec88986783163934e905867f58))
+
+
+### Features
+
+* add translations for RoB ([bb4eb69](https://github.com/zendesk/copenhagen_theme/commit/bb4eb69be247e3b275171043bc78b32c34648e07))
+
+## [4.36.1](https://github.com/zendesk/copenhagen_theme/compare/v4.36.0...v4.36.1) (2026-04-29)
+
+
+### Bug Fixes
+
+* hide uncategorized ([6cc1b7c](https://github.com/zendesk/copenhagen_theme/commit/6cc1b7c42899d733a6c9f404df5d78eba6c446dd))
+
 # [4.36.0](https://github.com/zendesk/copenhagen_theme/compare/v4.35.1...v4.36.0) (2026-04-17)
 
 

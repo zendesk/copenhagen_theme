@@ -58,6 +58,21 @@ parts:
       screenshot: "https://drive.google.com/file/d/1i-5SW5902PNqnPu73-IwxaeuWEAvxGVw/view?usp=sharing"
       value: "Change category"
   - translation:
+      key: "service-catalog.item.preview-mode.title"
+      title: "Title of the preview mode alert banner shown when an admin or manager previews a draft service catalog item"
+      screenshot: "https://drive.google.com/file/d/1g_V7_2FwGUnhkrXypzymlq8aBUuCgaWy/view?usp=sharing"
+      value: "Preview mode"
+  - translation:
+      key: "service-catalog.item.preview-mode.message"
+      title: "Message body of the preview mode alert banner explaining how to exit preview mode"
+      screenshot: "https://drive.google.com/file/d/1g_V7_2FwGUnhkrXypzymlq8aBUuCgaWy/view?usp=sharing"
+      value: "If you navigate away from this page or click on anything outside of this preview, you'll exit the preview mode."
+  - translation:
+      key: "service-catalog.item.preview-mode.submit-disabled-tooltip"
+      title: "Tooltip explaining why the submit request button is disabled while previewing a draft service catalog item"
+      screenshot: "https://drive.google.com/file/d/1g_V7_2FwGUnhkrXypzymlq8aBUuCgaWy/view?usp=sharing"
+      value: "Submitting requests is disabled while previewing a draft"
+  - translation:
       key: "service-catalog.item.submit-button"
       title: "Button to submit a request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1kuv7v6Vtx787TdVz8AOmD6v0ow79Xd6c/view?usp=drive_link"
@@ -188,3 +203,103 @@ parts:
       title: "Label for the navigation item in the service catalog sidebar that shows uncategorized services"
       screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=share_link"
       value: "Uncategorized"
+  - translation:
+      key: "service-catalog.change-user-modal.close"
+      title: "[A11Y] Hidden label for screen readers for close button in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Close modal"
+  - translation:
+      key: "service-catalog.change-user-modal.title"
+      title: "Modal title for changing the requester user"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Change user"
+  - translation:
+      key: "service-catalog.change-user-modal.select-user-label"
+      title: "Label for user selection dropdown in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Select user* (required)"
+  - translation:
+      key: "service-catalog.change-user-modal.search-placeholder"
+      title: "Placeholder text for user search input in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Search users..."
+  - translation:
+      key: "service-catalog.change-user-modal.loading-users"
+      title: "Loading state message while fetching users in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1vGrS-VCQ3sjR2rjuCItssLuJhmrll98D/view?usp=share_link"
+      value: "Loading users..."
+  - translation:
+      key: "service-catalog.change-user-modal.no-matches-found"
+      title: "Empty state message when no users match the search in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Type to search"
+  - translation:
+      key: "service-catalog.change-user-modal.add-user"
+      title: "Link text to add a new user in Change User modal dropdown footer"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Add user"
+  - translation:
+      key: "service-catalog.validation.error.aria.label"
+      title: "[A11Y] Hidden label for screen readers for validation error messages"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Error"
+  - translation:
+      key: "service-catalog.change-user-modal.user-required"
+      title: "Error message when user tries to save without selecting a user"
+      screenshot: "https://drive.google.com/file/d/1NzYBWHmHQZPPia0ud3uLWy41haGPQwUn/view?usp=share_link"
+      value: "Select a user"
+  - translation:
+      key: "service-catalog.change-user-modal.cancel"
+      title: "Cancel button text in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Cancel"
+  - translation:
+      key: "service-catalog.change-user-modal.change-user"
+      title: "Save/Submit button text in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Save"
+  - translation:
+      key: "service-catalog.item.change-user-requesting-on-behalf"
+      title: "Link text to change the requester user on behalf of whom the request is being submitted"
+      screenshot: "https://drive.google.com/file/d/1k5um4vxeW-SV1vQlblYJFU4uHzdejvju/view?usp=share_link"
+      value: "Change"
+  - translation:
+      key: "service-catalog.change-user-modal.new-user-name"
+      title: "Label for name input field in Add User form"
+      screenshot: "https://drive.google.com/file/d/1Br5FvhlHzgUPl4FQlQnZcDA83pXKmHea/view?usp=share_link"
+      value: "Name*"
+  - translation:
+      key: "service-catalog.change-user-modal.new-user-email"
+      title: "Label for email input field in Add User form"
+      screenshot: "https://drive.google.com/file/d/1Br5FvhlHzgUPl4FQlQnZcDA83pXKmHea/view?usp=share_link"
+      value: "Email"
+  - translation:
+      key: "service-catalog.change-user-modal.new-user-name-required"
+      title: "Error message when name field is empty in Add User form"
+      screenshot: "https://drive.google.com/file/d/1Br5FvhlHzgUPl4FQlQnZcDA83pXKmHea/view?usp=share_link"
+      value: "Enter a name"
+  - translation:
+      key: "service-catalog.change-user-modal.new-user-email-exists"
+      title: "Error message when email already exists in Add User form"
+      screenshot: "https://drive.google.com/file/d/1Br5FvhlHzgUPl4FQlQnZcDA83pXKmHea/view?usp=share_link"
+      value: "This email is already being used by a user."
+  - translation:
+      key: "service-catalog.sort.name-asc"
+      title: "Sort option in the service catalog list that orders services alphabetically from A to Z"
+      screenshot: ""
+      value: "A-Z"
+  - translation:
+      key: "service-catalog.sort.name-desc"
+      title: "Sort option in the service catalog list that orders services alphabetically from Z to A"
+      screenshot: ""
+      value: "Z-A"
+  - translation:
+      key: "service-catalog.sort.newest"
+      title: "Sort option in the service catalog list that orders services from newest to oldest"
+      screenshot: ""
+      value: "Newest"
+  - translation:
+      key: "service-catalog.sort.aria-label"
+      title: "[A11Y] Hidden label for screen readers describing the sort options group in the service catalog list"
+      screenshot: ""
+      value: "Sort services"

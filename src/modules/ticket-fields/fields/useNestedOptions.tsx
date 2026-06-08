@@ -190,39 +190,64 @@ function buildNestedOptions(
 }
 
 /**
- * When one or more options are selected, the Combobox component renders the label
- * for an option in the input, searching for an option passed as a child with the
- * same value as the selected option.
+ * Builds a map from each selectable option value to the label that should be
+ * displayed for it once selected (e.g. `"Bass > Fender > Precision"`).
  *
- * In the first render we are passing only the root group options as children,
- * and if we already have some selected values from a SubGroup, the component is not
- * able to find the label for the selected option.
- *
- * We therefore need to pass all the non-navigation options as children in the first render.
- * The passed options are cached by the Combobox component, so we can safely remove them
- * after the first render and pass only the root group options.
+ * The Combobox only renders the options for the currently displayed group, so a
+ * selected value that lives in a different group has no matching option child to
+ * derive its label from. Consumers use this map to resolve the label of a
+ * selected value regardless of which group is currently displayed.
  */
-function getInitialGroup(nestedOptions: NestedOptions): RootGroup {
-  const result: RootGroup = {
-    type: "RootGroup",
-    options: [],
-  };
+function buildOptionLabels(
+  nestedOptions: NestedOptions
+): Record<string, string> {
+  const result: Record<string, string> = {};
 
   Object.values(nestedOptions).forEach(({ options }) => {
-    result.options.push(...options.filter(({ type }) => type === undefined));
+    options.forEach((option) => {
+      // Skip navigation options (next/previous) and the empty option.
+      if (option.type === undefined && option.value !== "") {
+        result[option.value] = option.label;
+      }
+    });
   });
 
   return result;
 }
 
+/**
+ * Finds the group that directly contains the given selectable value, so the menu
+ * can open on the level the value belongs to instead of always starting at the root.
+ */
+function findGroupForValue(
+  nestedOptions: NestedOptions,
+  value: string | undefined
+): OptionGroup | undefined {
+  if (!value) {
+    return undefined;
+  }
+
+  return Object.values(nestedOptions).find(({ options }) =>
+    options.some(
+      (option) => option.type === undefined && option.value === value
+    )
+  );
+}
+
 interface UseNestedOptionsProps {
   options: TicketFieldOptionObject[];
   hasEmptyOption: boolean;
+  /**
+   * When provided, the menu opens on the group that contains this value
+   * instead of the root group.
+   */
+  selectedValue?: string;
 }
 
 export function useNestedOptions({
   options,
   hasEmptyOption,
+  selectedValue,
 }: UseNestedOptionsProps) {
   const { t } = useTranslation();
   const nestedOptions: NestedOptions = useMemo(
@@ -235,13 +260,23 @@ export function useNestedOptions({
     [options, hasEmptyOption, t]
   );
 
-  const [currentGroup, setCurrentGroup] = useState<OptionGroup>(
-    getInitialGroup(nestedOptions)
+  const optionLabels = useMemo(
+    () => buildOptionLabels(nestedOptions),
+    [nestedOptions]
   );
 
+  const initialGroup = useMemo(
+    () =>
+      findGroupForValue(nestedOptions, selectedValue) ??
+      nestedOptions[ROOT_GROUP_IDENTIFIER],
+    [nestedOptions, selectedValue]
+  );
+
+  const [currentGroup, setCurrentGroup] = useState<OptionGroup>(initialGroup);
+
   useEffect(() => {
-    setCurrentGroup(nestedOptions[ROOT_GROUP_IDENTIFIER]);
-  }, [nestedOptions]);
+    setCurrentGroup(initialGroup);
+  }, [initialGroup]);
 
   const setCurrentGroupByIdentifier = (identifier: GroupIdentifier) => {
     const group = nestedOptions[identifier];
@@ -250,9 +285,13 @@ export function useNestedOptions({
     }
   };
 
+  const getOptionLabel = (value: string): string | undefined =>
+    optionLabels[value];
+
   return {
     currentGroup,
     isGroupIdentifier,
     setCurrentGroupByIdentifier,
+    getOptionLabel,
   };
 }

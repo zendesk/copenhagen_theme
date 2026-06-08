@@ -1,5 +1,5 @@
 {
-  "cph-theme-ticket-fields.attachments.choose-file-label": "Choose a file or drag and drop here",
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Pasirinkite failą arba vilkite ir meskite čia",
   "cph-theme-ticket-fields.attachments.drop-files-label": "Drop files here",
   "cph-theme-ticket-fields.attachments.error-separator": "; ",
   "cph-theme-ticket-fields.attachments.file": "File: {{fileName}}, press delete to remove",

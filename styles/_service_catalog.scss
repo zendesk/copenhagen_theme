@@ -24,3 +24,18 @@
     gap: 20px;
   }
 }
+
+// Preview mode marker class added to <html> when the page is opened with
+// `?preview=true` (synchronously via the inline script in service_page.hbs)
+// or when the React app detects a draft item via the API response
+// (ServiceCatalogItem). The selectors below target Zendesk product chrome
+// elements injected outside of the help center theme — they are brittle and
+// must be revisited if Zendesk shell changes its DOM contract.
+.is-service-catalog-preview {
+  #navbar-container,
+  .navbar-container,
+  .assembly-bar,
+  [data-garden-id="chrome.subnav"] {
+    display: none !important;
+  }
+}

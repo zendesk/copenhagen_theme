@@ -259,3 +259,69 @@ $header-height: 71px;
 #zd-modal-container ~ .skip-navigation {
   display: none;
 }
+
+// Garden-style primary "Ask AI" button used in the header navigation.
+// Mirrors `<Button isPrimary><Button.StartIcon><SparkleIcon /></Button.StartIcon> Ask AI</Button>`.
+// Uses the theme's `link_color` / `hover_link_color` settings so the button
+// stays coherent with link styling even when admins customize the theme.
+.ask-ai {
+  align-items: center;
+  background-color: $link_color;
+  border: 1px solid $link_color;
+  border-radius: 4px;
+  color: $brand_text_color;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: $font-weight-semibold;
+  gap: 6px;
+  line-height: 1.4286;
+  padding: 6px 14px;
+
+  &:visited {
+    color: $brand_text_color;
+  }
+
+  .ask-ai-icon {
+    flex-shrink: 0;
+  }
+}
+
+.nav-wrapper-desktop .ask-ai {
+  margin-inline-end: 16px;
+  padding: 6px 14px;
+
+  &,
+  &:visited {
+    color: $brand_text_color;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $hover_link_color;
+    border-color: $hover_link_color;
+    color: $brand_text_color;
+    text-decoration: none;
+  }
+}
+
+.nav-wrapper-mobile .ask-ai {
+  margin: 4px 24px;
+  padding: 6px 14px;
+  width: auto;
+  height: auto;
+
+  &,
+  &:visited {
+    color: $brand_text_color;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $hover_link_color;
+    border-color: $hover_link_color;
+    color: $brand_text_color;
+    text-decoration: none;
+  }
+}
