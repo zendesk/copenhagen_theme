@@ -271,7 +271,7 @@ export function ItemRequestForm({
         key="attachments"
         field={{
           name: AttachmentsInputName,
-          label: attachmentsOption.name,
+          label: t("service-catalog.item.attachments-label", "Upload a file"),
           description:
             attachmentsOption.custom_object_fields["standard::description"] ??
             "",
