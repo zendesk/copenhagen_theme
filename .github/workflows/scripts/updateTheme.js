@@ -11,7 +11,7 @@ const authValue = Buffer.from(`${process.env['ZENDESK_EMAIL']}/token:${process.e
 const baseURL = `https://${process.env['ZENDESK_SUBDOMAIN']}.zendesk.com/api/v2`;
 const themeId = process.env['THEME_ID'];
 const filePath = path.join(__dirname, 'theme.zip');
-const replaceSettings = true;
+const replaceSettings = false;
 const MAX_WAIT_TIME = 5 * 60 * 1000;
 
 async function zendeskFetch(endpoint, options = {}) {
