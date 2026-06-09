@@ -10,7 +10,18 @@ import {
 } from "./service-catalog-categories-sidebar/constants";
 
 function filterUncategorized(categories: Category[]): Category[] {
-  return categories.filter((cat) => cat.id !== UNCATEGORIZED_ID);
+  return categories
+    .filter((cat) => cat.id !== UNCATEGORIZED_ID)
+    .map((cat) =>
+      cat.children
+        ? { ...cat, children: filterUncategorized(cat.children) }
+        : cat
+    );
+}
+
+function sanitizeCategoryId(categoryId: string | null): string | null {
+  if (categoryId === UNCATEGORIZED_ID) return null;
+  return categoryId;
 }
 
 function getCategoryIdFromUrl(): string | null {
@@ -29,12 +40,12 @@ export const ServiceCatalogPage: React.FC<ServiceCatalogPageProps> = ({
 }) => {
   const hasCategories = categoryTree.length > 0;
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
-    getCategoryIdFromUrl
+    () => sanitizeCategoryId(getCategoryIdFromUrl())
   );
 
   useEffect(() => {
     const handlePopState = () => {
-      setSelectedCategoryId(getCategoryIdFromUrl());
+      setSelectedCategoryId(sanitizeCategoryId(getCategoryIdFromUrl()));
     };
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
@@ -43,7 +54,6 @@ export const ServiceCatalogPage: React.FC<ServiceCatalogPageProps> = ({
   const selectedCategoryName = useMemo(() => {
     if (!selectedCategoryId || !hasCategories) return null;
     if (selectedCategoryId === ALL_SERVICES_ID) return ALL_SERVICES_ID;
-    if (selectedCategoryId === UNCATEGORIZED_ID) return UNCATEGORIZED_ID;
     const category = findCategoryById(categoryTree, selectedCategoryId);
     return category?.name ?? null;
   }, [selectedCategoryId, categoryTree, hasCategories]);
