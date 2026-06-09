@@ -4780,10 +4780,6 @@ zd-summary-block {
   border-right-color: #859fa1;
 }
 
-.header {
-  background-color: red;
-}
-
 .service-catalog-hero {
   background-image: url($service_catalog_hero_image);
   margin-bottom: 10px;
