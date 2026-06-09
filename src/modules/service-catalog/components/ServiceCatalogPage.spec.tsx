@@ -1,5 +1,5 @@
 import { render } from "../../test/render";
-import { waitFor } from "@testing-library/react";
+import { waitFor, fireEvent, within } from "@testing-library/react";
 import { ServiceCatalogPage } from "./ServiceCatalogPage";
 import type { Category } from "../data-types/Categories";
 import {
@@ -100,7 +100,7 @@ describe("ServiceCatalogPage uncategorized filtering", () => {
       });
     });
 
-    it("does not render the uncategorized category in nested children", async () => {
+    it("does not render the uncategorized category in nested children after expanding parent", async () => {
       mockFetch();
 
       render(
@@ -110,14 +110,29 @@ describe("ServiceCatalogPage uncategorized filtering", () => {
         />
       );
 
-      // Expand the parent category to reveal children
+      // Expand the parent category "Hardware" by clicking its expand button
+      const parentCategory = document.querySelector(
+        '[data-test-id="sidebar-category-cat-1"]'
+      ) as HTMLElement;
+      expect(parentCategory).toBeInTheDocument();
+      const expandButton = within(parentCategory).getByLabelText(
+        "Expand category"
+      );
+      fireEvent.click(expandButton);
+
+      // After expanding, the valid child "Laptops" should appear but not UNCATEGORIZED_ID
       await waitFor(() => {
         expect(
           document.querySelector(
-            `[data-test-id="sidebar-category-${UNCATEGORIZED_ID}"]`
+            '[data-test-id="sidebar-category-cat-1-1"]'
           )
-        ).toBeNull();
+        ).toBeInTheDocument();
       });
+      expect(
+        document.querySelector(
+          `[data-test-id="sidebar-category-${UNCATEGORIZED_ID}"]`
+        )
+      ).toBeNull();
     });
 
     it("still renders valid categories", async () => {

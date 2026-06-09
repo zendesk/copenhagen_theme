@@ -59,7 +59,7 @@ export const ServiceCatalogPage: React.FC<ServiceCatalogPageProps> = ({
   }, [selectedCategoryId, categoryTree, hasCategories]);
 
   const handleCategorySelect = useCallback((categoryId: string) => {
-    setSelectedCategoryId(categoryId);
+    setSelectedCategoryId(sanitizeCategoryId(categoryId));
   }, []);
 
   return (
