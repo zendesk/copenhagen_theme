@@ -115,17 +115,14 @@ describe("ServiceCatalogPage uncategorized filtering", () => {
         '[data-test-id="sidebar-category-cat-1"]'
       ) as HTMLElement;
       expect(parentCategory).toBeInTheDocument();
-      const expandButton = within(parentCategory).getByLabelText(
-        "Expand category"
-      );
+      const expandButton =
+        within(parentCategory).getByLabelText("Expand category");
       fireEvent.click(expandButton);
 
       // After expanding, the valid child "Laptops" should appear but not UNCATEGORIZED_ID
       await waitFor(() => {
         expect(
-          document.querySelector(
-            '[data-test-id="sidebar-category-cat-1-1"]'
-          )
+          document.querySelector('[data-test-id="sidebar-category-cat-1-1"]')
         ).toBeInTheDocument();
       });
       expect(
