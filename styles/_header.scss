@@ -330,3 +330,33 @@ $header-height: 71px;
     text-decoration: none;
   }
 }
+
+/***** Header "Submit a request" nav button *****/
+
+.nav-wrapper-desktop .submit-a-request {
+  border: 1px solid #0957BE;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: $brand_color;
+  display: flex;
+  flex: 1 0 340px;
+  max-width: 100%;
+  text-align: center;
+  padding: 12px 24px;
+  margin-right: 12px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $brand_color;
+    color: $brand_text_color;
+    text-decoration: none;
+  }
+}
+
+.submit-a-request:focus,
+.submit-a-request:active {
+  background-color: $brand_color;
+  color: $brand_text_color;
+  text-decoration: none;
+}

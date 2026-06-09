@@ -919,6 +919,32 @@ ul {
   text-decoration: none;
 }
 
+/***** Header "Submit a request" nav button *****/
+.nav-wrapper-desktop .submit-a-request {
+  border: 1px solid #0957BE;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: $brand_color;
+  display: flex;
+  flex: 1 0 340px;
+  max-width: 100%;
+  text-align: center;
+  padding: 12px 24px;
+  margin-right: 12px;
+}
+.nav-wrapper-desktop .submit-a-request:hover, .nav-wrapper-desktop .submit-a-request:focus, .nav-wrapper-desktop .submit-a-request:active {
+  background-color: $brand_color;
+  color: $brand_text_color;
+  text-decoration: none;
+}
+
+.submit-a-request:focus,
+.submit-a-request:active {
+  background-color: $brand_color;
+  color: $brand_text_color;
+  text-decoration: none;
+}
+
 /***** User info in header *****/
 .user-info {
   display: inline-block;
@@ -3609,6 +3635,50 @@ ul {
   padding-top: 20px;
 }
 
+/***** Request form ARPA-H overrides *****/
+.heading-centered {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 40px;
+}
+
+.form-centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+.form-centered footer {
+  text-align: center;
+}
+
+.request-form .nesty-input {
+  font-weight: 600;
+  line-height: 1.6;
+}
+.request-form .upload-dropzone {
+  padding: 5px;
+}
+.request-form .ck.ck-editor__main > .ck-editor__editable:not(.ck-focused),
+.request-form .ck-sticky-panel .ck-toolbar {
+  border-color: #1a1d21;
+}
+.request-form input[type=text],
+.request-form textarea,
+.request-form .nesty-input,
+.request-form #hc-wysiwyg,
+.request-form ul[data-hc-pills-container] {
+  padding: 12px 30px;
+  height: 50px;
+  border-color: #1a1d21;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+}
+.request-form label {
+  font-weight: 600;
+  letter-spacing: 1.1px;
+}
+
 /***** Pagination *****/
 .pagination {
   margin: 20px 0;
@@ -4639,6 +4709,58 @@ html[dir=rtl] .notification-left-aligned {
   padding-right: 0;
 }
 
+/***** Alert banner *****/
+.banner-container {
+  width: 100%;
+  max-width: unset;
+  padding: 0;
+}
+
+.alert-banner {
+  background: $alert_banner_bg_color;
+  color: $alert_banner_text_color;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.15);
+  margin-bottom: 40px;
+  margin-top: -60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  align-items: center;
+  align-self: stretch;
+}
+
+.nav-wrapper-desktop.alert-banner .bell-notice-text {
+  width: 90%;
+  max-width: 1160px;
+  margin: 0 auto;
+  text-align: center;
+}
+.nav-wrapper-desktop.alert-banner .bell-notice-text p {
+  margin: 0;
+}
+
+.alert-wrapper-mobile {
+  background: $alert_banner_bg_color;
+  color: $alert_banner_text_color;
+  margin-bottom: 40px;
+  margin-top: -60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 32px;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .nav-wrapper-desktop.alert-banner {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .nav-wrapper-mobile.alert-wrapper-mobile {
+    display: none;
+  }
+}
 .dropdown {
   position: relative;
   display: inline-block;

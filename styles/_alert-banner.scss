@@ -1,0 +1,55 @@
+/***** Alert banner *****/
+
+.banner-container {
+  width: 100%;
+  max-width: unset;
+  padding: 0;
+}
+
+.alert-banner {
+  background: $alert_banner_bg_color;
+  color: $alert_banner_text_color;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, .15);
+  margin-bottom: 40px;
+  margin-top: -60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  align-items: center;
+  align-self: stretch;
+}
+
+.nav-wrapper-desktop.alert-banner .bell-notice-text {
+  width: 90%;
+  max-width: 1160px;
+  margin: 0 auto;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+}
+
+.alert-wrapper-mobile {
+  background: $alert_banner_bg_color;
+  color: $alert_banner_text_color;
+  margin-bottom: 40px;
+  margin-top: -60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 32px;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media (max-width: #{$tablet-width - 1px}) {
+  .nav-wrapper-desktop.alert-banner {
+    display: none;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .nav-wrapper-mobile.alert-wrapper-mobile {
+    display: none;
+  }
+}

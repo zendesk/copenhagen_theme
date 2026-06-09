@@ -182,3 +182,55 @@
     padding-top: 20px;
   }
 }
+
+/***** Request form ARPA-H overrides *****/
+
+.heading-centered {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 40px;
+}
+
+.form-centered {
+  margin-left: auto;
+  margin-right: auto;
+
+  footer {
+    text-align: center;
+  }
+}
+
+.request-form {
+  .nesty-input {
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  .upload-dropzone {
+    padding: 5px;
+  }
+
+  .ck.ck-editor__main > .ck-editor__editable:not(.ck-focused),
+  .ck-sticky-panel .ck-toolbar {
+    border-color: #1a1d21;
+  }
+
+  input[type="text"],
+  textarea,
+  .nesty-input,
+  #hc-wysiwyg,
+  ul[data-hc-pills-container] {
+    padding: 12px 30px;
+    height: 50px;
+    border-color: #1a1d21;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+  }
+
+  label {
+    font-weight: 600;
+    letter-spacing: 1.1px;
+  }
+}
