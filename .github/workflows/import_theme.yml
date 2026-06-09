@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.inputs.branchName }}
 
@@ -34,12 +34,9 @@ jobs:
           branch: ${{ github.event.inputs.scriptBranch }}
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 14.x
-
-      - name: Install dependencies
-        run: npm ci --prefix ./.github/workflows/scripts/
+          node-version: 24.x
 
       - name: Zip theme files
         run: |
