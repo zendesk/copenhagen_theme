@@ -90,10 +90,9 @@ window.addEventListener("DOMContentLoaded", () => {
     return s.trim() === "";
   }
 
-  function isEmptyHtml(xml) {
-    const doc = new DOMParser().parseFromString(`<_>${xml}</_>`, "text/xml");
-    const img = doc.querySelector("img");
-    return img === null && isEmptyPlaintext(doc.children[0].textContent);
+  function isEmptyHtml(html) {
+    if (/<img[\s\/>]/i.test(html)) return false;
+    return isEmptyPlaintext(html.replace(/<[^>]*>/g, ""));
   }
 
   const isEmpty = usesWysiwyg ? isEmptyHtml : isEmptyPlaintext;
