@@ -637,6 +637,11 @@ ul {
   }
 }
 
+.search-wrapper {
+  flex: 1 1 auto;
+  max-width: 600px;
+}
+
 .logo img {
   max-height: 37px;
   vertical-align: middle;
