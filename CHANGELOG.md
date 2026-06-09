@@ -1,3 +1,10 @@
+# [4.42.0](https://github.com/zendesk/copenhagen_theme/compare/v4.41.3...v4.42.0) (2026-06-09)
+
+
+### Features
+
+* add translation to attachments label in service catalog ([bbef73f](https://github.com/zendesk/copenhagen_theme/commit/bbef73f59dfa789ce55c51d077acb815a4df2362))
+
 ## [4.41.3](https://github.com/zendesk/copenhagen_theme/compare/v4.41.2...v4.41.3) (2026-06-08)
 
 
