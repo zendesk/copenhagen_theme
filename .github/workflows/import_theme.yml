@@ -18,23 +18,26 @@ on:
         required: true
         default: 'master'
 
+permissions:
+  contents: read
+
 jobs:
   import_theme:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           ref: ${{ github.event.inputs.branchName }}
 
       - name: Check out importTheme.js
-        uses: Bhacaz/checkout-files@v2
+        uses: Bhacaz/checkout-files@e3e34e7daef91a5f237485bb88a260aee4be29dd # v2
         with:
           files: '.github/workflows/scripts/importTheme.js'
           branch: ${{ github.event.inputs.scriptBranch }}
 
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: 24.x
 
@@ -44,14 +47,15 @@ jobs:
           mv theme.zip ./.github/workflows/scripts/
 
       - name: Run importTheme.js
-        run: node ./.github/workflows/scripts/importTheme.js ${{ github.event.inputs.brandId }} ./.github/workflows/scripts/theme.zip
+        run: node ./.github/workflows/scripts/importTheme.js ./.github/workflows/scripts/theme.zip
         env:
+          BRAND_ID: ${{ github.event.inputs.brandId }}
           ZENDESK_SUBDOMAIN: ${{ github.event.inputs.branchName == 'sandbox' && secrets.SANDBOX_DOMAIN || secrets.ZENDESK_SUBDOMAIN }}
           ZENDESK_EMAIL: ${{ secrets.ZENDESK_EMAIL }}
           ZENDESK_TOKEN: ${{ github.event.inputs.branchName == 'sandbox' && secrets.SANDBOX_TOKEN || secrets.ZENDESK_TOKEN }}
 
       - name: Upload theme file
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: theme-file
           path: ./.github/workflows/scripts/theme.zip

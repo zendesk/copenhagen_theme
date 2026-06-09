@@ -13,16 +13,19 @@ on:
       - main
       - sandbox
 
+permissions:
+  contents: read
+
 jobs:
   update_theme:
     if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: 22.x
 
@@ -53,7 +56,7 @@ jobs:
           BRAND_ID: ${{ (github.ref_name == 'sandbox') && vars.SANDBOX_BRAND_ID || vars.BRAND_ID }}
 
       - name: Upload theme file
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: theme-file
           path: ./.github/workflows/scripts/theme.zip

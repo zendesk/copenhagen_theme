@@ -1,10 +1,10 @@
 const fs = require('fs');
 
-const brandId = process.argv[2];
-const filePath = process.argv[3];
+const brandId = process.env['BRAND_ID'];
+const filePath = process.argv[2];
 
 if (!brandId || !filePath) {
-    console.log('Please provide a brandId and a file path as arguments.');
+    console.log('Please provide BRAND_ID env var and a file path as argument.');
     process.exit(1);
 }
 
