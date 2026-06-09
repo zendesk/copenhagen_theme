@@ -152,7 +152,7 @@ async function checkJobStatus(jobId) {
 }
 
 async function pruneOldThemes(newThemeId) {
-    const KEEP = 5;
+    const KEEP = 4;
     try {
         const data = await zendeskFetch(`/guide/theming/themes?brand_id=${brandId}`, { method: 'GET' });
         const themes = data.themes || [];
