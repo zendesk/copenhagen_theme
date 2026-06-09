@@ -1,3 +1,10 @@
+## [4.41.3](https://github.com/zendesk/copenhagen_theme/compare/v4.41.2...v4.41.3) (2026-06-08)
+
+
+### Bug Fixes
+
+* update styling for wysiwyg resize ([71be4b9](https://github.com/zendesk/copenhagen_theme/commit/71be4b9c2249e7b937f913c2181ea275fdfc3aed))
+
 ## [4.41.2](https://github.com/zendesk/copenhagen_theme/compare/v4.41.1...v4.41.2) (2026-06-03)
 
 
