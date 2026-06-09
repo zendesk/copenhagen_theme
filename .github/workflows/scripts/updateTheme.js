@@ -27,6 +27,8 @@ async function zendeskFetch(endpoint, options = {}) {
         const text = await response.text();
         throw new Error(`${response.status} ${response.statusText}: ${text}`);
     }
+    // DELETE returns 204 No Content
+    if (response.status === 204) return null;
     return response.json();
 }
 
@@ -149,6 +151,40 @@ async function checkJobStatus(jobId) {
     }
 }
 
+async function pruneOldThemes(newThemeId) {
+    const KEEP = 5;
+    try {
+        const data = await zendeskFetch(`/guide/theming/themes?brand_id=${brandId}`, { method: 'GET' });
+        const themes = data.themes || [];
+
+        // Never delete the live theme or the one we just imported
+        const deletable = themes
+            .filter(t => !t.live && t.id !== newThemeId)
+            .sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+
+        const liveCount = themes.filter(t => t.live).length;
+        const totalAfterImport = themes.length;
+        const deleteCount = Math.max(0, totalAfterImport - liveCount - KEEP);
+        const toDelete = deletable.slice(0, deleteCount);
+
+        if (toDelete.length === 0) {
+            console.log(`Theme count (${totalAfterImport}) within limit — no pruning needed.`);
+            return;
+        }
+
+        console.log(`Pruning ${toDelete.length} old theme(s) to stay within ${KEEP} non-live themes...`);
+        for (const theme of toDelete) {
+            await zendeskFetch(`/guide/theming/themes/${theme.id}`, { method: 'DELETE' });
+            console.log(`Deleted theme ${theme.id} (created ${theme.created_at})`);
+        }
+        fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## Pruned Themes\nDeleted ${toDelete.length} old theme(s): ${toDelete.map(t => t.id).join(', ')}`);
+    } catch (error) {
+        // Non-fatal — log and continue
+        console.warn('Theme pruning warning:', error.message);
+        fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## Theme Pruning Warning\n\`\`\`\n${error.message}\n\`\`\``);
+    }
+}
+
 async function run() {
     try {
         const { jobId, themeId, uploadUrl, uploadParameters } = await importTheme(brandId);
@@ -181,6 +217,9 @@ async function run() {
             fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## Import Failed\n\`\`\`json\n${JSON.stringify(jobStatus.errors, null, 2)}\n\`\`\``);
             process.exit(1);
         }
+
+        console.log('Pruning old themes before publish...');
+        await pruneOldThemes(themeId);
 
         console.log('Import completed. Publishing theme...');
         await publishTheme(themeId);
