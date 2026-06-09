@@ -189,7 +189,7 @@ template {
 body {
   background-color: $background_color;
   color: $text_color;
-  font-family: $text_font;
+  font-family: "Poppins", "Public Sans", "Arial", $text_font, sans-serif;
   font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -206,7 +206,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $heading_font;
+  font-family: "Public Sans", "Arial", $heading_font, sans-serif;
   margin-top: 0;
 }
 
@@ -553,7 +553,7 @@ ul {
 .form-field .nesty-input {
   border-radius: 4px;
   border: 1px solid #848F99;
-  height: 40px;
+  height: 80px;
   line-height: 40px;
   outline: none;
   vertical-align: middle;
@@ -626,6 +626,7 @@ ul {
   padding: 0 5%;
   position: relative;
   align-items: center;
+  background-color: #fff;
   display: flex;
   height: 71px;
   justify-content: space-between;
@@ -1236,7 +1237,7 @@ ul {
   .page-header {
     align-items: baseline;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 16px;
     margin: 0;
   }
@@ -1307,7 +1308,7 @@ ul {
 .blocks-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   list-style: none;
   padding: 0;
 }
@@ -1709,6 +1710,24 @@ ul {
 .icon-star {
   color: $brand_color;
   font-size: 18px;
+}
+
+/***** ARPA-H category/section swirl background *****/
+body.category-page .container,
+body.section-page .container {
+  background-image: url($homepage_background_image);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+/***** Custom OS tile image zoom *****/
+.custom-os-tile img {
+  transition: transform 0.4s ease;
+}
+
+.custom-os-tile:hover img {
+  transform: scale(1.1);
 }
 
 /***** Section pages *****/
@@ -5113,4 +5132,26 @@ zd-summary-block {
 .is-service-catalog-preview .assembly-bar,
 .is-service-catalog-preview [data-garden-id="chrome.subnav"] {
   display: none !important;
+}
+
+/***** Service Catalog ARPA-H overrides *****/
+.service-catalog-hero {
+  background-image: url($service_catalog_hero_image);
+  margin-bottom: 10px;
+  height: 320px;
+}
+
+.service-catalog-main-content {
+  display: flex;
+  gap: 32px;
+}
+
+.service-catalog-list {
+  width: 100%;
+}
+
+.service-catalog-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }

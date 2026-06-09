@@ -5,6 +5,7 @@ $header-height: 71px;
   @include max-width-container;
   position: relative;
   align-items: center;
+  background-color: #fff;
   display: flex;
   height: $header-height;
   justify-content: space-between;

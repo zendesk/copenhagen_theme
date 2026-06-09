@@ -57,3 +57,23 @@
   color: $brand_color;
   font-size: 18px;
 }
+
+/***** ARPA-H category/section swirl background *****/
+
+body.category-page .container,
+body.section-page .container {
+  background-image: url($homepage_background_image);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+/***** Custom OS tile image zoom *****/
+
+.custom-os-tile img {
+  transition: transform 0.4s ease;
+}
+
+.custom-os-tile:hover img {
+  transform: scale(1.1);
+}

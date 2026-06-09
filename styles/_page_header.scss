@@ -4,7 +4,7 @@
   @include tablet {
     align-items: baseline;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 16px;
     margin: 0;
   }

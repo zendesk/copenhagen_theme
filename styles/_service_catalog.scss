@@ -39,3 +39,26 @@
     display: none !important;
   }
 }
+
+/***** Service Catalog ARPA-H overrides *****/
+
+.service-catalog-hero {
+  background-image: url($service_catalog_hero_image);
+  margin-bottom: 10px;
+  height: 320px;
+}
+
+.service-catalog-main-content {
+  display: flex;
+  gap: 32px;
+}
+
+.service-catalog-list {
+  width: 100%;
+}
+
+.service-catalog-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
