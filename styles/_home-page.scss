@@ -79,3 +79,38 @@
   border-top: 1px solid $low-contrast-border-color;
   padding: 30px 0;
 }
+
+/***** Hero "Report an issue" button *****/
+
+.centered-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.hero-inner .submit-a-request {
+  background-color: #fff;
+  border: 1px solid $visited_link_color;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: $brand_color;
+  display: inline-block;
+  font-size: 18px;
+  min-width: 250px;
+  padding: 36px 42px;
+  text-align: center;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: none;
+    transform: scale(1.03);
+  }
+
+  &:focus,
+  &:active {
+    background-color: #ddd;
+    color: $text_color;
+    text-decoration: none;
+  }
+}

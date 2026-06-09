@@ -1444,6 +1444,37 @@ ul {
   padding: 30px 0;
 }
 
+/***** Hero "Report an issue" button *****/
+.centered-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.hero-inner .submit-a-request {
+  background-color: #fff;
+  border: 1px solid $visited_link_color;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: $brand_color;
+  display: inline-block;
+  font-size: 18px;
+  min-width: 250px;
+  padding: 36px 42px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.hero-inner .submit-a-request:hover {
+  text-decoration: none;
+  transform: scale(1.03);
+}
+.hero-inner .submit-a-request:focus, .hero-inner .submit-a-request:active {
+  background-color: #ddd;
+  color: $text_color;
+  text-decoration: none;
+}
+
 /***** Recent activity *****/
 .recent-activity-header {
   margin-bottom: 10px;
