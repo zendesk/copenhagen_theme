@@ -595,8 +595,11 @@
     }
 
     function isEmptyHtml(html) {
-      if (/<img[\s\/>]/i.test(html)) return false;
-      return isEmptyPlaintext(html.replace(/<[^>]*>/g, ""));
+      const template = document.createElement("template");
+      template.innerHTML = html;
+      const hasImg = template.content.querySelector("img") !== null;
+      const text = template.content.textContent || "";
+      return !hasImg && isEmptyPlaintext(text);
     }
 
     const isEmpty = usesWysiwyg ? isEmptyHtml : isEmptyPlaintext;

@@ -120,7 +120,6 @@
     "tmp": "^0.2.7",
     "@tootallnate/once": "^2.0.0",
     "flatted": "^3.4.2",
-    "glob": "^12.0.0",
     "@babel/plugin-transform-modules-systemjs": "^7.29.7",
     "lodash-es": "^4.17.23"
   },
