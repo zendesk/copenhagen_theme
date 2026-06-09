@@ -65,11 +65,6 @@
     "branch": "main"
   },
   {
-    "repo": "ARPA-H/web-design-example",
-    "prefix": ".github/skills",
-    "branch": "main"
-  },
-  {
     "repo": "ARPA-H/api-center",
     "prefix": ".github/skills",
     "branch": "main"
