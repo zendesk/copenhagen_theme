@@ -58,6 +58,7 @@ const CountAndSortRow = styled.div`
 function getApiCategoryId(selectedCategoryId: string | null): string | null {
   if (!selectedCategoryId) return null;
   if (selectedCategoryId === ALL_SERVICES_ID) return null;
+  if (selectedCategoryId === UNCATEGORIZED_ID) return null;
   return selectedCategoryId;
 }
 
@@ -221,8 +222,6 @@ export function ServiceCatalogList({
   const categoryHeading =
     selectedCategoryName === ALL_SERVICES_ID
       ? t("service-catalog-sidebar.all-services", "All services")
-      : selectedCategoryName === UNCATEGORIZED_ID
-      ? t("service-catalog-sidebar.uncategorized", "Uncategorized")
       : selectedCategoryName;
 
   return (

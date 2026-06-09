@@ -3,6 +3,10 @@ import { render } from "../../../test/render";
 import { screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { ServiceCatalogList } from "./ServiceCatalogList";
+import {
+  ALL_SERVICES_ID,
+  UNCATEGORIZED_ID,
+} from "../service-catalog-categories-sidebar/constants";
 
 const HELP_CENTER_PATH = "/hc/en-us";
 
@@ -276,6 +280,87 @@ describe("ServiceCatalogList sorting", () => {
         sort_by: "created_at",
         sort_order: "desc",
       });
+    });
+  });
+});
+
+describe("ServiceCatalogList category filtering", () => {
+  beforeEach(() => {
+    setUrl("");
+    jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    setUrl("");
+  });
+
+  it("does not pass UNCATEGORIZED_ID as category_id to the API", async () => {
+    const fetchMock = mockFetch();
+
+    render(
+      <ServiceCatalogList
+        helpCenterPath={HELP_CENTER_PATH}
+        selectedCategoryId={UNCATEGORIZED_ID}
+        selectedCategoryName={null}
+      />
+    );
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+
+    const url = fetchMock.mock.calls[0]?.[0] as string;
+    const params = new URLSearchParams(url.split("?")[1] ?? "");
+    expect(params.get("category_id")).toBeNull();
+  });
+
+  it("does not pass ALL_SERVICES_ID as category_id to the API", async () => {
+    const fetchMock = mockFetch();
+
+    render(
+      <ServiceCatalogList
+        helpCenterPath={HELP_CENTER_PATH}
+        selectedCategoryId={ALL_SERVICES_ID}
+        selectedCategoryName={ALL_SERVICES_ID}
+      />
+    );
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+
+    const url = fetchMock.mock.calls[0]?.[0] as string;
+    const params = new URLSearchParams(url.split("?")[1] ?? "");
+    expect(params.get("category_id")).toBeNull();
+  });
+
+  it("passes a real category_id to the API", async () => {
+    const fetchMock = mockFetch();
+
+    render(
+      <ServiceCatalogList
+        helpCenterPath={HELP_CENTER_PATH}
+        selectedCategoryId="real-cat-id"
+        selectedCategoryName="Hardware"
+      />
+    );
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+
+    const url = fetchMock.mock.calls[0]?.[0] as string;
+    const params = new URLSearchParams(url.split("?")[1] ?? "");
+    expect(params.get("category_id")).toBe("real-cat-id");
+  });
+
+  it("does not render 'Uncategorized' heading when selectedCategoryName is UNCATEGORIZED_ID", async () => {
+    mockFetch();
+
+    render(
+      <ServiceCatalogList
+        helpCenterPath={HELP_CENTER_PATH}
+        selectedCategoryId={UNCATEGORIZED_ID}
+        selectedCategoryName={null}
+      />
+    );
+
+    await waitFor(() => {
+      expect(screen.queryByText("Uncategorized")).not.toBeInTheDocument();
     });
   });
 });
