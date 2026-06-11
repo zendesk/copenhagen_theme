@@ -74,7 +74,11 @@ export const CollapsibleDescription = ({
   const contentRef = useRef<HTMLDivElement>(null);
 
   const sanitizedDescription = useMemo(
-    () => DOMPurify.sanitize(description),
+    () =>
+      DOMPurify.sanitize(description, {
+        ADD_TAGS: ["iframe"],
+        ADD_ATTR: ["allow", "allowfullscreen", "frameborder"],
+      }),
     [description]
   );
 
