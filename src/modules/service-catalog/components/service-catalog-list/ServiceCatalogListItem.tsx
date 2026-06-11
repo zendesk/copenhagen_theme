@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { getColor } from "@zendeskgarden/react-theming";
 import { ItemThumbnail } from "../item-thumbnail/ItemThumbnail";
 import { useMemo } from "react";
+import DOMPurify from "dompurify";
 
 const ItemContainer = styled.div`
   height: 100%;
@@ -70,8 +71,9 @@ const ServiceCatalogListItem = ({
     : `${helpCenterPath}/services/${serviceItem.id}`;
 
   const decodeToText = (htmlString: string) => {
+    const sanitized = DOMPurify.sanitize(htmlString);
     const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = htmlString;
+    tempDiv.innerHTML = sanitized;
     return tempDiv.textContent || tempDiv.innerText || "";
   };
 
