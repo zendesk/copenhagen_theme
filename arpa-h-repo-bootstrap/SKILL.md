@@ -72,7 +72,7 @@ Examine the repo before writing anything. Check for the following signals:
 ### Environment Files
 
 - Look for any `*.example`, `*.sample`, or `*.template` env files (`.env.example`, `local.settings.json.example`, etc.)
-- For each pair found, add a `cp -n <example> <real>` to `onCreateCommand`
+- For each pair found, add a `cp -n <example> <real>` to `postCreateCommand`
 - Env files used by Vite (`VITE_*` prefix) must default to dev/mock mode — never production credentials
 
 ### Linting / Formatting
@@ -229,7 +229,7 @@ Merge them with any stack-specific extensions discovered in Step 1.
 
 The `gh` CLI must always be present. Every ARPA-H repo uses GitHub for issues, PRs, and Actions; `gh` is the standard tool for interacting with the GitHub API from the terminal and from scripts.
 
-`bun` must always be present. It is the preferred package manager for all ARPA-H Node.js repos (see Step 5 — package manager security). The `node` feature with `version: "none"` installs bun without overriding the Node.js runtime already provided by the base image. Add any stack-specific features alongside these entries rather than replacing them.
+`bun` must always be present. It is the preferred package manager for all ARPA-H Node.js repos (see Step 5 — Build lifecycle commands, package manager security). The `node` feature with `version: "none"` installs bun without overriding the Node.js runtime already provided by the base image. Add any stack-specific features alongside these entries rather than replacing them.
 
 ### Always-on: GitHub & Collaboration
 
@@ -307,9 +307,62 @@ Azure Functions specific settings (add when Functions signal detected):
 
 ---
 
-## Step 5 — Build postCreateCommand and onCreateCommand
+## Step 5 — Build lifecycle commands
+
+> **Prebuilds:** A prebuild runs `onCreateCommand` and `updateContentCommand` ahead of time
+> and bakes them into a cached image, so users get a faster container open. `postCreateCommand`
+> runs once when the user's codespace is first created (not on resume). `postStartCommand` runs
+> on every open and resume.
+>
+> The lifecycle commands in this step are structured to be prebuild-compatible. After completing this step, **tell the user** to ask a repo admin to enable the
+> prebuild in GitHub: **Settings → Codespaces → Prebuild configuration → Set up prebuild**.
 
 ### onCreateCommand
+
+Runs **once** when the container is first created.
+
+- No user secrets or Codespaces environment variables are available
+- Must be kept secret-free (it runs during prebuilds when configured)
+
+Suitable for: secret-free, cacheable setup (for example global tool installation) — anything slow that benefits from prebuild caching.
+
+Install global tools only here — things that are slow to install, don't change with repo content, and benefit from being baked into a prebuild cache:
+
+```bash
+# Pattern: global tools only
+bun add --global <global-tool-1> <global-tool-2>
+```
+
+Common global tools:
+
+- `azure-functions-core-tools@4` — for Azure Functions repos
+- `azurite` — for local Azure Storage emulation (install globally, not as a project dep)
+
+### updateContentCommand
+
+Runs after `onCreateCommand` on initial creation **and again whenever the cloned repo content changes** — for example, when a prebuild refreshes against a new commit. This is the correct place for `bun install`.
+
+- No user secrets or Codespaces environment variables are available
+- Must be idempotent (will run more than once over the life of a prebuild)
+
+Suitable for: installing project dependencies whose contents are tied to the repo (i.e. `package.json`, `requirements.txt`, lockfiles).
+
+```bash
+# Pattern: root deps, then sub-package deps
+bun install && cd <subpackage> && bun install
+```
+
+When the command grows beyond a simple one-liner,
+move it into a script in `.devcontainer/` and reference it instead:
+`"updateContentCommand": "bash .devcontainer/update-content.sh"`. Do the same for `postCreateCommand` and `postStartCommand` as needed.
+
+### postCreateCommand
+
+Runs **once per new codespace**, after `onCreateCommand` and `updateContentCommand` (if present), regardless of whether a prebuild was used. Does not run when resuming a suspended codespace.
+
+- User secrets and Codespaces environment variables ARE available
+
+Suitable for: per-user initialization — populating `.env` files from environment variables injected by Codespaces, or any one-time setup that requires secrets.
 
 Copy env example files (runs once at container creation, never overwrites):
 
@@ -320,19 +373,14 @@ cp -n .env.local.example .env.local ; cp -n api/local.settings.json.example api/
 Adapt to whatever example files were found in Step 1. Always end with `; true` to prevent
 failure from blocking container creation if files already exist.
 
-### postCreateCommand
+### postStartCommand
 
-Install all dependencies. Chain with `&&` in dependency order:
+Runs **every time the container starts** — on initial creation and on every resume from suspension.
 
-```bash
-# Pattern: global tools first, then root deps, then sub-package deps
-bun add --global <global-tool-1> <global-tool-2> && bun install && cd <subpackage> && bun install
-```
+- User secrets and environment variables ARE available
+- Runs more often than `postCreate`, so keep it fast and idempotent
 
-Common global tools:
-
-- `azure-functions-core-tools@4` — for Azure Functions repos
-- `azurite` — for local Azure Storage emulation (install globally, not as a project dep)
+Suitable for: starting background services that don't persist across suspensions, such as a local PostgreSQL or Redis instance.
 
 ### Package manager security — prefer `bun`, restrict `npm`
 
@@ -834,7 +882,7 @@ Create `.github/CODEOWNERS`:
 Produce a single `.devcontainer/devcontainer.json` file with:
 
 - Inline comments (`//`) explaining non-obvious choices
-- Sections in this order: `name`, `image`, `features`, `postCreateCommand`, `onCreateCommand`, `forwardPorts`, `portsAttributes`, `customizations`
+- Sections in this order: `name`, `image`, `features`, `onCreateCommand`, `updateContentCommand`, `postCreateCommand`, `postStartCommand`, `forwardPorts`, `portsAttributes`, `customizations`
 - Extension IDs in lowercase exactly as published on the VS Code Marketplace
 
 ---
@@ -846,4 +894,4 @@ Every ARPA-H repo must follow this pattern:
 - Sensitive/local config goes in gitignored files (`.env.local`, `local.settings.json`)
 - A committed `*.example` counterpart documents all variables with safe defaults
 - Example files must default to **dev/mock mode** — never production credentials or `false` for mock flags
-- The `onCreateCommand` copies example → real on first container create using `cp -n`
+- The `postCreateCommand` copies example → real on first container create using `cp -n`
