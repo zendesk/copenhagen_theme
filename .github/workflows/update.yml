@@ -6,12 +6,20 @@ on:
     branches:
       - main
       - sandbox
+    paths-ignore:
+      - '.github/skills/**'
+      - '**.md'
+      - 'LICENSE'
   pull_request:
     types:
       - closed
     branches:
       - main
       - sandbox
+    paths-ignore:
+      - '.github/skills/**'
+      - '**.md'
+      - 'LICENSE'
 
 permissions:
   contents: read
