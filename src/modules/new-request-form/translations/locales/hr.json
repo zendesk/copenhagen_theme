@@ -51,8 +51,8 @@
   "new-request-form.lookup-field.no-matches-found": "No matches found",
   "new-request-form.lookup-field.placeholder": "Search {{label}}",
   "new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
-  "new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
-  "new-request-form.submit": "Submit",
+  "new-request-form.required-fields-info": "Polja označena zvjezdicom (*) obavezna su.",
+  "new-request-form.submit": "Pošalji",
   "new-request-form.suggested-articles": "Suggested articles",
   "new-request-form.suggested-articles-external-link-label": "(Opens in a new tab)"
 }
