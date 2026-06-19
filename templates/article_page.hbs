@@ -12,38 +12,28 @@
   </div>
 
   <div class="article-container" id="article-container">
-    <aside class="article-sidebar" aria-labelledby="section-articles-title">
-      {{#if settings.show_articles_in_section}}
-        <div class="collapsible-sidebar">
-          <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="section-articles-title" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
-              <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
-            </svg>
-          </button>
-          <span id="section-articles-title" class="collapsible-sidebar-title sidenav-title">
-            {{t 'articles_in_section'}}
-          </span>
-          <div class="collapsible-sidebar-body">
-            <ul>
-              {{#each section.articles}}
-                <li>
-                  <a href="{{url}}" 
-                     class="sidenav-item {{#is id ../article.id}}current-article{{/is}}"
-                     {{#is id ../article.id}}aria-current="page"{{/is}}>
-                       {{title}}
-                  </a>
-                </li>
-              {{/each}}
-            </ul>
-            {{#if section.more_articles}}
-              <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
-            {{/if}}
-          </div>
-        </div>
-      {{/if}}
+    <aside class="article-sidebar gb-sidebar" aria-label="Menu">
+      <button type="button" class="gb-sidebar-toggle" aria-expanded="false" aria-controls="gb-sidebar-article">
+        <span>Menu</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M4 6l4 4 4-4"/>
+        </svg>
+      </button>
+      <div class="gb-sidebar-panel" id="gb-sidebar-article">
+        <nav class="gb-nav" data-gb-nav data-current-section-id="{{section.id}}" data-current-article-id="{{article.id}}" data-locale="{{help_center.locale}}">
+          <a href="{{section.url}}" class="gb-nav-title gb-nav-link">{{section.name}}</a>
+          <ul class="gb-nav-list gb-nav-list--nested">
+            {{#each section.articles}}
+              <li class="gb-nav-item">
+                <a href="{{url}}" class="gb-nav-link {{#is id ../article.id}}is-active{{/is}}" {{#is id ../article.id}}aria-current="page"{{/is}}>{{title}}</a>
+              </li>
+            {{/each}}
+          </ul>
+          {{#if section.more_articles}}
+            <a href="{{section.url}}" class="gb-nav-more">{{t 'see_more'}}</a>
+          {{/if}}
+        </nav>
+      </div>
     </aside>
 
     <article id="main-content" class="article">

@@ -11,8 +11,32 @@
     </div>
   </div>
 
-  <div class="section-container">
-    <section id="main-content" class="section-content">
+  <div class="gb-doc-layout">
+    <aside class="gb-sidebar" aria-label="Menu">
+      <button type="button" class="gb-sidebar-toggle" aria-expanded="false" aria-controls="gb-sidebar-section">
+        <span>Menu</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M4 6l4 4 4-4"/>
+        </svg>
+      </button>
+      <div class="gb-sidebar-panel" id="gb-sidebar-section">
+        <nav class="gb-nav" data-gb-nav data-current-section-id="{{section.id}}" data-locale="{{help_center.locale}}">
+          <a href="{{section.url}}" class="gb-nav-title gb-nav-link is-active" aria-current="page">{{section.name}}</a>
+          {{#if section.articles}}
+            <ul class="gb-nav-list gb-nav-list--nested">
+              {{#each section.articles}}
+                <li class="gb-nav-item">
+                  <a href="{{url}}" class="gb-nav-link">{{title}}</a>
+                </li>
+              {{/each}}
+            </ul>
+          {{/if}}
+        </nav>
+      </div>
+    </aside>
+
+    <div class="section-container gb-main">
+      <section id="main-content" class="section-content">
       <header class="page-header">
         <h1>{{section.name}}</h1>
         {{#if settings.show_follow_section}}
@@ -59,10 +83,15 @@
             </li>
           {{/each}}
         </ul>
+      {{else}}
+        <i class="section-empty">
+          <a href="{{section.url}}">{{t 'empty'}}</a>
+        </i>
       {{/if}}
 
       {{pagination "section.articles"}}
 
     </section>
+  </div>
   </div>
 </div>

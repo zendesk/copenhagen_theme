@@ -50,7 +50,6 @@
       });
 
       element.addEventListener("keyup", (event) => {
-        console.log("escape");
         if (event.keyCode === ESCAPE) {
           closeNavigation(toggle, element);
         }
@@ -669,6 +668,197 @@
     ) {
       notificationElm.previousElementSibling.focus();
     }
+  });
+
+  const gbApiCache = new Map();
+
+  function gbFetchJson(url) {
+    if (!gbApiCache.has(url)) {
+      gbApiCache.set(
+        url,
+        fetch(url, { credentials: "same-origin" }).then((response) => {
+          if (!response.ok) {
+            throw new Error(`Request failed: ${response.status}`);
+          }
+
+          return response.json();
+        })
+      );
+    }
+
+    return gbApiCache.get(url);
+  }
+
+  function gbGetLocale(nav) {
+    if (nav.dataset.locale) return nav.dataset.locale;
+
+    const match = window.location.pathname.match(/\/hc\/([^/]+)/);
+    return match ? decodeURIComponent(match[1]) : "nl";
+  }
+
+  function gbApiPath(nav, path) {
+    return `/api/v2/help_center/${encodeURIComponent(gbGetLocale(nav))}/${path}`;
+  }
+
+  function gbNormalizeId(value) {
+    return value ? String(value) : "";
+  }
+
+  function gbLink(url, text, className, isActive) {
+    const link = document.createElement("a");
+    link.href = url || "#";
+    link.textContent = text || "";
+    link.className = className;
+
+    if (isActive) {
+      link.classList.add("is-active");
+      link.setAttribute("aria-current", "page");
+    }
+
+    return link;
+  }
+
+  function gbList(className) {
+    const list = document.createElement("ul");
+    list.className = className || "gb-nav-list";
+    return list;
+  }
+
+  function gbItem(className) {
+    const item = document.createElement("li");
+    item.className = className || "gb-nav-item";
+    return item;
+  }
+
+  async function gbGetCurrentCategoryId(nav, currentCategoryId, currentSectionId) {
+    if (currentCategoryId) return currentCategoryId;
+    if (!currentSectionId) return "";
+
+    const sectionData = await gbFetchJson(
+      gbApiPath(nav, `sections/${encodeURIComponent(currentSectionId)}.json`)
+    );
+
+    return gbNormalizeId(sectionData.section && sectionData.section.category_id);
+  }
+
+  async function gbGetSections(nav, categoryId) {
+    if (!categoryId) return [];
+
+    const data = await gbFetchJson(
+      gbApiPath(nav, `categories/${encodeURIComponent(categoryId)}/sections.json?per_page=100`)
+    );
+
+    return data.sections || [];
+  }
+
+  async function gbGetArticles(nav, sectionId) {
+    if (!sectionId) return [];
+
+    const data = await gbFetchJson(
+      gbApiPath(nav, `sections/${encodeURIComponent(sectionId)}/articles.json?per_page=100`)
+    );
+
+    return data.articles || [];
+  }
+
+  async function gbRenderKnowledgeNav(nav) {
+    const currentSectionId = gbNormalizeId(nav.dataset.currentSectionId);
+    const currentArticleId = gbNormalizeId(nav.dataset.currentArticleId);
+    const startingCategoryId = gbNormalizeId(nav.dataset.currentCategoryId);
+    const currentCategoryId = await gbGetCurrentCategoryId(
+      nav,
+      startingCategoryId,
+      currentSectionId
+    );
+
+    const data = await gbFetchJson(gbApiPath(nav, "categories.json?per_page=100"));
+    const categories = data.categories || [];
+
+    if (!categories.length) return;
+
+    const root = gbList("gb-nav-list");
+    const sections = await gbGetSections(nav, currentCategoryId);
+    const articles = await gbGetArticles(nav, currentSectionId);
+
+    categories.forEach((category) => {
+      const categoryId = gbNormalizeId(category.id);
+      const isCurrentCategory = categoryId === currentCategoryId;
+      const categoryItem = gbItem("gb-nav-item gb-nav-category");
+
+      categoryItem.appendChild(
+        gbLink(
+          category.html_url || category.url,
+          category.name,
+          "gb-nav-link",
+          isCurrentCategory && !currentSectionId && !currentArticleId
+        )
+      );
+
+      if (isCurrentCategory && sections.length) {
+        const sectionList = gbList("gb-nav-list gb-nav-list--nested");
+
+        sections.forEach((section) => {
+          const sectionId = gbNormalizeId(section.id);
+          const isCurrentSection = sectionId === currentSectionId;
+          const sectionItem = gbItem("gb-nav-item gb-nav-section");
+
+          sectionItem.appendChild(
+            gbLink(
+              section.html_url || section.url,
+              section.name,
+              "gb-nav-link",
+              isCurrentSection && !currentArticleId
+            )
+          );
+
+          if (isCurrentSection && articles.length) {
+            const articleList = gbList("gb-nav-list gb-nav-list--nested");
+
+            articles.forEach((article) => {
+              const articleId = gbNormalizeId(article.id);
+              const articleItem = gbItem("gb-nav-item gb-nav-article");
+
+              articleItem.appendChild(
+                gbLink(
+                  article.html_url || article.url,
+                  article.title,
+                  "gb-nav-link",
+                  articleId === currentArticleId
+                )
+              );
+              articleList.appendChild(articleItem);
+            });
+
+            sectionItem.appendChild(articleList);
+          }
+
+          sectionList.appendChild(sectionItem);
+        });
+
+        categoryItem.appendChild(sectionList);
+      }
+
+      root.appendChild(categoryItem);
+    });
+
+    nav.replaceChildren(root);
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".gb-sidebar-toggle").forEach((toggle) => {
+      const sidebar = toggle.closest(".gb-sidebar");
+
+      toggle.addEventListener("click", () => {
+        const isOpen = sidebar.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+      });
+    });
+
+    document.querySelectorAll("[data-gb-nav]").forEach((nav) => {
+      gbRenderKnowledgeNav(nav).catch(() => {
+        nav.classList.add("gb-nav--fallback");
+      });
+    });
   });
 
 })();
