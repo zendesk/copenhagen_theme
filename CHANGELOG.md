@@ -1,3 +1,10 @@
+## [4.42.1](https://github.com/zendesk/copenhagen_theme/compare/v4.42.0...v4.42.1) (2026-06-19)
+
+
+### Bug Fixes
+
+* update translations ([1de00dc](https://github.com/zendesk/copenhagen_theme/commit/1de00dc0ca51f94cf1e2b20eb01c705d6744c2c1))
+
 # [4.42.0](https://github.com/zendesk/copenhagen_theme/compare/v4.41.3...v4.42.0) (2026-06-09)
 
 
