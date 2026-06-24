@@ -21,6 +21,8 @@ interface UserOption {
 interface ChangeUserFormProps {
   onCancel: () => void;
   onCreate: (userName: string, userId: string | null) => Promise<void> | void;
+  selectedUser: UserOption | null;
+  setSelectedUser: (user: UserOption | null) => void;
 }
 
 const StyledHeader = styled(Modal.Header)`
@@ -84,52 +86,23 @@ const DropdownFooter = styled.div`
   z-index: 2;
 `;
 
-// Mock data based on the provided structure
-const mockUsersData = {
-  data: {
-    usersAutocomplete: [
-      {
-        id: "9632214379006",
-        email: "qwe@gmail.com",
-        name: "qwe",
-        role: "END_USER",
-      },
-      {
-        id: "9632214379007",
-        email: "test@example.com",
-        name: "Test User",
-        role: "END_USER",
-      },
-      {
-        id: "9632214379008",
-        email: "john.doe@company.com",
-        name: "John Doe",
-        role: "AGENT",
-      },
-      {
-        id: "9632214379009",
-        email: "jenny.kelly@company.com",
-        name: "Jenny Kelly",
-        role: "END_USER",
-      },
-    ],
-  },
-};
-
 export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
   onCancel,
   onCreate,
+  selectedUser,
+  setSelectedUser,
 }) => {
   const { t } = useTranslation();
   const [userError, setUserError] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [options, setOptions] = useState<UserOption[]>([]);
-  const [selectedUser, setSelectedUser] = useState<UserOption | null>(null);
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>(
+    selectedUser?.name ?? ""
+  );
   const [isLoadingOptions, setIsLoadingOptions] = useState<boolean>(false);
   const [isCreating, setIsCreating] = useState(false);
-  const isTyping = useRef(false);
+  const isTyping = useRef<boolean>(false);
 
   const highlightMatch = (text: string, query: string) => {
     if (!query.trim()) return text;
@@ -173,61 +146,30 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
       setIsLoadingOptions(true);
 
       try {
-        // TODO: Replace with actual GraphQL API call
-        // For now, using mock data with client-side filtering
-        const filteredUsers = mockUsersData.data.usersAutocomplete.filter(
-          (user) =>
-            user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            user.email.toLowerCase().includes(searchQuery.toLowerCase())
+        const response = await fetch(
+          `/hc/api/v2/service_catalog/users?query=${encodeURIComponent(
+            searchQuery
+          )}`
         );
-
-        const userOptions: UserOption[] = filteredUsers.map((user) => ({
-          id: user.id,
-          name: user.name,
-          email: user.email,
-        }));
-
-        if (selectedUser) {
-          const filteredOptions = userOptions.filter(
-            (option) => option.id !== selectedUser.id
-          );
-          setOptions([selectedUser, ...filteredOptions]);
-        } else {
-          setOptions(userOptions);
-        }
-
-        /*
-        // Actual GraphQL implementation would look like:
-        const response = await fetch('/api/v2/graphql', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            query: `
-              query UsersAutocomplete($query: String!) {
-                usersAutocomplete(query: $query) {
-                  id
-                  name
-                  email
-                  role
-                }
-              }
-            `,
-            variables: { query: searchQuery }
-          })
-        });
 
         const data = await response.json();
         if (response.ok) {
-          const userOptions = data.data.usersAutocomplete.map((user: any) => ({
+          const userOptions = data.users.map((user: UserOption) => ({
             id: user.id,
             name: user.name,
             email: user.email,
           }));
-          setOptions(userOptions);
+          setOptions(
+            selectedUser
+              ? [
+                  selectedUser,
+                  ...userOptions.filter(
+                    (o: UserOption) => o.id !== selectedUser.id
+                  ),
+                ]
+              : userOptions
+          );
         }
-        */
       } catch (error) {
         console.error("Error fetching users:", error);
         setOptions([]);
@@ -268,7 +210,7 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
         setInputValue(inputValue);
         isTyping.current = true; // Mark as typing
 
-        if (inputValue.trim().length >= 1) {
+        if (inputValue.trim().length >= 3) {
           debouncedFetchUsers(inputValue.trim());
         } else {
           setOptions([]);
@@ -285,7 +227,6 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
       setUserError(true);
       return;
     }
-
     setIsCreating(true);
     try {
       await onCreate(selectedUser.name, selectedUser.id);
@@ -361,90 +302,92 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
       <StyledHeader tag="h2">
         {t("service-catalog.change-user-modal.title", "Change user")}
       </StyledHeader>
+
       <StyledModalBody>
         <FormContainer>
-          <Field>
-            <Field.Label>
-              {t(
-                "service-catalog.change-user-modal.select-user-label",
-                "Select user* (required)"
-              )}
-            </Field.Label>
-            <Combobox
-              ref={inputRef}
-              inputValue={inputValue}
-              selectionValue={selectedUser?.id}
-              onChange={handleChange}
-              onFocus={handleExpand}
-              validation={userError ? "error" : undefined}
-              data-test-id="user-autocomplete-input"
-              isAutocomplete
-              placeholder={t(
-                "service-catalog.change-user-modal.search-placeholder",
-                "Search users..."
-              )}
-              renderValue={() => selectedUser?.name || ""}
-              inputProps={{
-                onBlur: handleBlur,
-                onKeyDown: handleKeyDown,
-              }}
-            >
-              {displayOptions.length > 0
-                ? displayOptions.map((option) => (
-                    <StyledOption
-                      key={option.id}
-                      value={option.id}
-                      label={option.name}
-                      isDisabled={
-                        option.id === "loading" || option.id === "no-results"
-                      }
-                    >
-                      {option.email ? (
-                        <StyledContainer>
-                          <UserCircleStrokeIcon />
-                          <StyledOptionContent>
-                            <span>
-                              {highlightMatch(option.name, inputValue)}
-                            </span>
-                            <Option.Meta>
-                              <Span hue="grey">{option.email}</Span>
-                            </Option.Meta>
-                          </StyledOptionContent>
-                        </StyledContainer>
-                      ) : (
-                        <OptionContent>
-                          <span>{option.name}</span>
-                        </OptionContent>
-                      )}
-                    </StyledOption>
-                  ))
-                : null}
-              <DropdownFooter>
-                <StyledAnchor
-                  isUnderlined={false}
-                  // TODO: Next step - implement Add User functionality
-                  // onClick={handleAddUser}
-                >
-                  <PlusIcon />
-                  {t("service-catalog.change-user-modal.add-user", "Add User")}
-                </StyledAnchor>
-              </DropdownFooter>
-            </Combobox>
-            {userError && (
-              <Field.Message
-                validation="error"
-                validationLabel={t(
-                  "service-catalog.validation.error.aria.label",
-                  "Error"
-                )}
-              >
+          <>
+            <Field>
+              <Field.Label>
                 {t(
-                  "service-catalog.change-user-modal.user-required",
-                  "Select a user"
+                  "service-catalog.change-user-modal.select-user-label",
+                  "Select user* (required)"
                 )}
-              </Field.Message>
-            )}
-          </Field>
+              </Field.Label>
+              <Combobox
+                ref={inputRef}
+                inputValue={inputValue}
+                selectionValue={selectedUser?.id}
+                onChange={handleChange}
+                onFocus={handleExpand}
+                validation={userError ? "error" : undefined}
+                data-test-id="user-autocomplete-input"
+                isAutocomplete
+                placeholder={t(
+                  "service-catalog.change-user-modal.search-placeholder",
+                  "Search users..."
+                )}
+                renderValue={() => selectedUser?.name || ""}
+                inputProps={{
+                  onBlur: handleBlur,
+                  onKeyDown: handleKeyDown,
+                }}
+              >
+                {displayOptions.length > 0
+                  ? displayOptions.map((option) => (
+                      <StyledOption
+                        key={option.id}
+                        value={option.id}
+                        label={option.name}
+                        isDisabled={
+                          option.id === "loading" || option.id === "no-results"
+                        }
+                      >
+                        {option.email ? (
+                          <StyledContainer>
+                            <UserCircleStrokeIcon />
+                            <StyledOptionContent>
+                              <span>
+                                {highlightMatch(option.name, inputValue)}
+                              </span>
+                              <Option.Meta>
+                                <Span hue="grey">{option.email}</Span>
+                              </Option.Meta>
+                            </StyledOptionContent>
+                          </StyledContainer>
+                        ) : (
+                          <OptionContent>
+                            <span>{option.name}</span>
+                          </OptionContent>
+                        )}
+                      </StyledOption>
+                    ))
+                  : null}
+                <DropdownFooter>
+                  <StyledAnchor isUnderlined={false}>
+                    <PlusIcon />
+                    {t(
+                      "service-catalog.change-user-modal.add-user",
+                      "Add User"
+                    )}
+                  </StyledAnchor>
+                </DropdownFooter>
+              </Combobox>
+              {userError && (
+                <Field.Message
+                  validation="error"
+                  validationLabel={t(
+                    "service-catalog.validation.error.aria.label",
+                    "Error"
+                  )}
+                >
+                  {t(
+                    "service-catalog.change-user-modal.user-required",
+                    "Select a user"
+                  )}
+                </Field.Message>
+              )}
+            </Field>
+          </>
         </FormContainer>
       </StyledModalBody>
       <StyledModalFooter>
