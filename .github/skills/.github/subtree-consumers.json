@@ -88,5 +88,10 @@
     "repo": "ARPA-H/sentinel-connectors-mdca",
     "prefix": ".github/skills",
     "branch": "main"
+  },
+  {
+    "repo": "ARPA-H/sentinel-connectors-adobe-creativecloud",
+    "prefix": ".github/skills",
+    "branch": "main"
   }
 ]
