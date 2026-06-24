@@ -3,15 +3,25 @@ import { Close, Modal } from "@zendeskgarden/react-modals";
 import { ChangeUserForm } from "./ChangeUserForm";
 import { useTranslation } from "react-i18next";
 
+interface UserOption {
+  id: string;
+  name: string;
+  email: string;
+}
+
 interface ChangeUserModalProps {
   userId: string | null;
   onClose: () => void;
   onCreate: (userName: string, userId: string | null) => Promise<void> | void;
+  selectedUser: UserOption | null;
+  setSelectedUser: (user: UserOption | null) => void;
 }
 
 export const ChangeUserModal: React.FC<ChangeUserModalProps> = ({
   onClose,
   onCreate,
+  selectedUser,
+  setSelectedUser,
 }) => {
   const { t } = useTranslation();
 
@@ -21,7 +31,12 @@ export const ChangeUserModal: React.FC<ChangeUserModalProps> = ({
 
   return (
     <Modal onClose={onClose} focusOnMount={false}>
-      <ChangeUserForm onCancel={onClose} onCreate={handleCreate} />
+      <ChangeUserForm
+        onCancel={onClose}
+        onCreate={handleCreate}
+        selectedUser={selectedUser}
+        setSelectedUser={setSelectedUser}
+      />
       <Close
         aria-label={t(
           "service-catalog.change-user-modal.close",

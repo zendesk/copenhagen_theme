@@ -152,6 +152,12 @@ interface ItemRequestFormProps {
   isPreviewMode?: boolean;
 }
 
+interface UserOption {
+  id: string;
+  name: string;
+  email: string;
+}
+
 export function ItemRequestForm({
   requestFields,
   serviceCatalogItem,
@@ -182,6 +188,8 @@ export function ItemRequestForm({
 }: ItemRequestFormProps) {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState<UserOption | null>(null);
+  const [displayedUserName, setDisplayedUserName] = useState(userName);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -191,8 +199,8 @@ export function ItemRequestForm({
     setIsModalOpen(false);
   };
 
-  const handleChangeUser = async () => {
-    // TODO: Implement user change logic
+  const handleChangeUser = async (newUserName: string) => {
+    setDisplayedUserName(newUserName);
     handleCloseModal();
   };
 
@@ -379,7 +387,7 @@ export function ItemRequestForm({
             <ButtonContainer>
               <UserNameWrapper>
                 <Span isBold>{t("service-catalog.item.user", "User")}</Span>
-                <Span>{userName}</Span>
+                <Span>{displayedUserName}</Span>
               </UserNameWrapper>
               {requestOnBehalfEnabled && (
                 <>
@@ -422,6 +430,8 @@ export function ItemRequestForm({
           userId={userId.toString()}
           onClose={handleCloseModal}
           onCreate={handleChangeUser}
+          setSelectedUser={setSelectedUser}
+          selectedUser={selectedUser}
         />
       )}
     </>
