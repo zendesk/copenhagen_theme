@@ -113,7 +113,7 @@ describe("ServiceCatalogItem", () => {
     form_id: 100,
     thumbnail_url: "",
     categories: [],
-    allow_request_on_behalf: false,
+    is_request_on_behalf: false,
     published_at: "2025-01-01T00:00:00Z",
     custom_object_fields: {
       "standard::asset_option": "",

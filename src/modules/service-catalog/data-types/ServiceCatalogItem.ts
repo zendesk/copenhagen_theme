@@ -11,7 +11,7 @@ export interface ServiceCatalogItem {
   form_id: number;
   thumbnail_url: string;
   categories: ServiceCatalogItemCategory[];
-  allow_request_on_behalf: boolean;
+  is_request_on_behalf: boolean;
   // null when the item is a draft (not yet published). Populated only for
   // authorized users (admins/managers) previewing a draft item.
   published_at: string | null;
