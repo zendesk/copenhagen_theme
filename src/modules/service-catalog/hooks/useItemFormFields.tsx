@@ -207,7 +207,8 @@ const fetchTicketFields = async (
         ticketField.editable_in_portal
       ) {
         if (
-          ticketField.type === "lookup" &&
+          (ticketField.type === "lookup" ||
+            ticketField.type === "multi_lookup") &&
           isHiddenServiceCatalogLookup(ticketField)
         ) {
           if (isAssociatedLookupField(ticketField)) {
