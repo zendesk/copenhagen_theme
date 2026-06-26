@@ -32,6 +32,10 @@ parts:
       screenshot: "https://drive.google.com/file/d/1nlnj_I-L7bkIs9Hn93Btrl8bh_HJfL6h/view?usp=drive_link"
       value: "Search {{label}}"
   - translation:
+      key: "cph-theme-ticket-fields.multi-lookup-field.max-reached"
+      title: "Placeholder shown in multi-lookup combobox when maximum number of selections (20) has been reached"
+      value: "Maximum selections reached"
+  - translation:
       key: "cph-theme-ticket-fields.credit-card-digits-hint"
       title: "Additional label shown above the credit card field, informing the user that only the last 4 digits are required."
       screenshot: "https://drive.google.com/file/d/13Pz2p5q7FHX9FKT6MUR6Sg5vWy55X0kP/view?usp=drive_link"
@@ -41,7 +45,6 @@ parts:
       title: "Label for the back option in a multi-level dropdown, used to return to the previous menu."
       screenshot: "https://drive.google.com/file/d/1u_eLJAGP8bGvQE7cteCQyCNJT13_9dOu/view?usp=drive_link"
       value: "Back"
-
   - translation:
       key: "cph-theme-ticket-fields.upload-failed-title"
       title: "Title of the notification shown when the upload of an attachment failed"
