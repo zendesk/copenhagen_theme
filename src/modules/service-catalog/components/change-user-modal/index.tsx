@@ -2,15 +2,9 @@ import type React from "react";
 import { Close, Modal } from "@zendeskgarden/react-modals";
 import { ChangeUserForm } from "./ChangeUserForm";
 import { useTranslation } from "react-i18next";
-
-interface UserOption {
-  id: string;
-  name: string;
-  email: string;
-}
+import type { UserOption } from "../../data-types/UserOption";
 
 interface ChangeUserModalProps {
-  userId: string | null;
   onClose: () => void;
   onCreate: (userName: string, userId: string | null) => Promise<void> | void;
   selectedUser: UserOption | null;

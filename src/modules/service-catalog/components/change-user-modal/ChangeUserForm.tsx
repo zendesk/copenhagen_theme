@@ -1,22 +1,16 @@
 import type React from "react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Modal } from "@zendeskgarden/react-modals";
 import styled from "styled-components";
 import { getColor } from "@zendeskgarden/react-theming";
-import { Anchor, Button } from "@zendeskgarden/react-buttons";
+import { Button } from "@zendeskgarden/react-buttons";
 import { useTranslation } from "react-i18next";
 import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import { Span } from "@zendeskgarden/react-typography";
-import debounce from "lodash.debounce";
 import UserCircleStrokeIcon from "@zendeskgarden/svg-icons/src/16/user-circle-stroke.svg";
-import PlusIcon from "@zendeskgarden/svg-icons/src/16/plus-stroke.svg";
-
-interface UserOption {
-  id: string;
-  name: string;
-  email: string;
-}
+import type { UserOption } from "../../data-types/UserOption";
+import { useUserSearch } from "../../hooks/useUserSearch";
 
 interface ChangeUserFormProps {
   onCancel: () => void;
@@ -59,31 +53,13 @@ const StyledContainer = styled.div`
 `;
 
 const StyledOptionContent = styled.div`
-  align-items: none;
+  display: flex;
   flex-direction: column;
-  gap: none;
 `;
 
 const StyledModalFooter = styled(Modal.Footer)`
   padding: 32px 40px;
   border-top: 1px solid rgb(232, 234, 236);
-`;
-
-const StyledAnchor = styled(Anchor)`
-  line-height: normal;
-  display: inline-flex;
-  align-items: center;
-  gap: ${(props) => props.theme.space.xs};
-`;
-
-const DropdownFooter = styled.div`
-  padding: ${(props) => props.theme.space.sm} ${(props) => props.theme.space.xs};
-  border-top: ${(props) => props.theme.borders.sm}
-    ${({ theme }) => getColor({ theme, hue: "grey", shade: 300 })};
-  background: ${({ theme }) =>
-    getColor({ theme, variable: "background.default" })};
-  bottom: 0;
-  z-index: 2;
 `;
 
 export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
@@ -96,13 +72,16 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
   const [userError, setUserError] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [options, setOptions] = useState<UserOption[]>([]);
   const [inputValue, setInputValue] = useState<string>(
     selectedUser?.name ?? ""
   );
-  const [isLoadingOptions, setIsLoadingOptions] = useState<boolean>(false);
   const [isCreating, setIsCreating] = useState(false);
   const isTyping = useRef<boolean>(false);
+
+  const { options, isLoadingOptions, searchUsers, clearOptions } =
+    useUserSearch(selectedUser, () => {
+      isTyping.current = false;
+    });
 
   const highlightMatch = (text: string, query: string) => {
     if (!query.trim()) return text;
@@ -141,54 +120,6 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
     email: "",
   };
 
-  const fetchUsers = useCallback(
-    async (searchQuery: string) => {
-      setIsLoadingOptions(true);
-
-      try {
-        const response = await fetch(
-          `/hc/api/v2/service_catalog/users?query=${encodeURIComponent(
-            searchQuery
-          )}`
-        );
-
-        const data = await response.json();
-        if (response.ok) {
-          const userOptions = data.users.map((user: UserOption) => ({
-            id: user.id,
-            name: user.name,
-            email: user.email,
-          }));
-          setOptions(
-            selectedUser
-              ? [
-                  selectedUser,
-                  ...userOptions.filter(
-                    (o: UserOption) => o.id !== selectedUser.id
-                  ),
-                ]
-              : userOptions
-          );
-        }
-      } catch (error) {
-        console.error("Error fetching users:", error);
-        setOptions([]);
-      } finally {
-        setIsLoadingOptions(false);
-      }
-    },
-    [selectedUser]
-  );
-
-  const debouncedFetchUsers = useMemo(
-    () =>
-      debounce((query: string) => {
-        fetchUsers(query);
-        isTyping.current = false;
-      }, 300),
-    [fetchUsers]
-  );
-
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
     ({ inputValue, selectionValue }) => {
       if (selectionValue !== undefined) {
@@ -211,15 +142,15 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
         isTyping.current = true; // Mark as typing
 
         if (inputValue.trim().length >= 3) {
-          debouncedFetchUsers(inputValue.trim());
+          searchUsers(inputValue.trim());
         } else {
-          setOptions([]);
+          clearOptions();
           setSelectedUser(null);
           isTyping.current = false;
         }
       }
     },
-    [debouncedFetchUsers, fetchUsers, options]
+    [options, searchUsers, clearOptions, setSelectedUser]
   );
 
   const handleCreate = async () => {
@@ -235,10 +166,6 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
     } finally {
       setIsCreating(false);
     }
-  };
-
-  const handleExpand = () => {
-    // Combobox manages its own open/closed state
   };
 
   const setSelectedUserFromInput = useCallback(() => {
@@ -285,12 +212,6 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
     [isLoadingOptions, setSelectedUserFromInput]
   );
 
-  useEffect(() => {
-    return () => {
-      debouncedFetchUsers.cancel();
-    };
-  }, [debouncedFetchUsers]);
-
   const displayOptions = isLoadingOptions
     ? [loadingOption]
     : options.length === 0
@@ -318,7 +239,6 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
                 inputValue={inputValue}
                 selectionValue={selectedUser?.id}
                 onChange={handleChange}
-                onFocus={handleExpand}
                 validation={userError ? "error" : undefined}
                 data-test-id="user-autocomplete-input"
                 isAutocomplete
@@ -362,15 +282,6 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
                       </StyledOption>
                     ))
                   : null}
-                <DropdownFooter>
-                  <StyledAnchor isUnderlined={false}>
-                    <PlusIcon />
-                    {t(
-                      "service-catalog.change-user-modal.add-user",
-                      "Add User"
-                    )}
-                  </StyledAnchor>
-                </DropdownFooter>
               </Combobox>
               {userError && (
                 <Field.Message

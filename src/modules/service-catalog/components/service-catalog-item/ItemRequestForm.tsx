@@ -9,6 +9,7 @@ import { CollapsibleDescription } from "./CollapsibleDescription";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
 import type { CustomObjectRecord } from "../../../ticket-fields/data-types/CustomObjectRecord";
 import type { ITAMAssetOptionObject } from "../../data-types/ITAMAssetOptionObject";
+import type { UserOption } from "../../data-types/UserOption";
 import { Span } from "@zendeskgarden/react-typography";
 import { Option } from "@zendeskgarden/react-dropdowns";
 import { Attachments } from "../../../ticket-fields/fields/attachments/Attachments";
@@ -150,12 +151,6 @@ interface ItemRequestFormProps {
   onAttachmentUploadingChange: (isUploading: boolean) => void;
   isFormInitializing: boolean;
   isPreviewMode?: boolean;
-}
-
-interface UserOption {
-  id: string;
-  name: string;
-  email: string;
 }
 
 export function ItemRequestForm({
@@ -427,7 +422,6 @@ export function ItemRequestForm({
       </Form>
       {isModalOpen && (
         <ChangeUserModal
-          userId={userId.toString()}
           onClose={handleCloseModal}
           onCreate={handleChangeUser}
           setSelectedUser={setSelectedUser}
