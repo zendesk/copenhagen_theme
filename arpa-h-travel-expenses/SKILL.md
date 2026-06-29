@@ -7,7 +7,8 @@ description: >
   or references the ARPA-H Travel Voucher Form. Reads all receipts in the
   selected folder, extracts amounts and descriptions, categorizes and orders
   expenses chronologically, calculates POV mileage, and fills the PDF using
-  PyMuPDF so all dropdowns work correctly in Adobe Acrobat.
+  PyMuPDF so all fields render correctly in Adobe Acrobat, macOS Preview,
+  iOS Files/Books, and Windows Edge/Reader.
 ---
 
 # ARPA-H Travel Voucher Skill
@@ -264,6 +265,38 @@ doc.save(OUTPUT, garbage=4, deflate=True)
 print(f"Saved: {OUTPUT}  (Total: ${total:.2f})")
 ```
 
+### CRITICAL: Sync values to AcroForm field objects (required for Preview.app)
+
+`page.widgets()` only reaches page annotation objects. This form also has a separate AcroForm `/Fields` object for some fields (notably `VCHTANUM`) that shares the same `/AP` but holds its own `/V`. PDF viewers like Preview read the AcroForm object — if its `/V` is empty, the field shows blank even though the page annotation is correct.
+
+After saving, re-open and sync any such duplicates:
+
+```python
+import re
+
+doc = fitz.open(OUTPUT)
+# Collect values set on page annotations
+filled = {}
+for page in doc:
+    for w in page.widgets():
+        if w.field_value:
+            filled[w.field_name] = w.field_value
+
+# Find any AcroForm field objects with the same /T but empty /V and sync them
+for xref in range(1, doc.xref_length()):
+    try:
+        obj = doc.xref_object(xref, compressed=False)
+        m = re.search(r'/T \(([^)]+)\)', obj)
+        if m and m.group(1) in filled:
+            v = re.search(r'/V \(([^)]*)\)', obj)
+            if v is not None and v.group(1) != filled[m.group(1)]:
+                doc.xref_set_key(xref, "V", f"({filled[m.group(1)]})")
+    except Exception:
+        pass
+
+doc.save(OUTPUT, incremental=True, encryption=fitz.PDF_ENCRYPT_KEEP)
+```
+
 ---
 
 ## Step 6: Verify and Deliver
@@ -317,6 +350,8 @@ Use `AskUserQuestion` when you encounter:
 ## Notes for Future-Proofing
 
 - The POV rate changes annually — always fetch the current rate from the GSA link above rather than hardcoding it.
+- **`VCHTANUM` uses `/Helv` in its `/DA`**, an abbreviated font name only defined in the field's local `/DR`. Preview can't resolve it and shows the field blank. After filling, check `VCHTANUM`'s `/DA` and replace `/Helv` with `/Helvetica`: `doc.xref_set_key(vchtanum_xref, "DA", "(0 g /Helvetica 12 Tf)")`.
+- **`NeedAppearances true`** is set in this form's AcroForm dictionary. Viewers use `/DA` + `/V` to regenerate rendering rather than the `/AP` stream — so the `/DA` font name must be resolvable by the viewer.
 - If the form is updated and field names change, re-run the introspection script in Step 3 to remap them.
 - The `Expensesp1` / `Dropdown2-N` naming pattern (where row 1 uses no suffix, and rows 2+ use `-{N-1}`) is quirky — double-check with the introspection output if things seem off.
 - If a user has more than 23 expense rows, overflow to the "Additional Expenses Form" (page 2) using the `_2` field variants.
