@@ -1,3 +1,16 @@
+# [4.43.0](https://github.com/zendesk/copenhagen_theme/compare/v4.42.2...v4.43.0) (2026-06-30)
+
+
+### Bug Fixes
+
+* stabilize debounce and abort stale user-search requests ([0141bca](https://github.com/zendesk/copenhagen_theme/commit/0141bcab9692457acd20eeb0fc6880318e903d14))
+
+
+### Features
+
+* implement requester modal ui ([31a205a](https://github.com/zendesk/copenhagen_theme/commit/31a205ae48c54c7b7009794e253ba55b03c3d3c2))
+* integrate API for change user modal ([d85a6d6](https://github.com/zendesk/copenhagen_theme/commit/d85a6d619e94557589611c27fa7e088f647804ca))
+
 ## [4.42.2](https://github.com/zendesk/copenhagen_theme/compare/v4.42.1...v4.42.2) (2026-06-22)
 
 
