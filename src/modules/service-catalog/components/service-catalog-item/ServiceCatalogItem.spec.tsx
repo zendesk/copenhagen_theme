@@ -40,20 +40,38 @@ jest.mock("../../hooks/useAttachmentsOption", () => ({
   useAttachmentsOption: jest.fn(),
 }));
 
-// Mock ItemRequestForm to simplify testing
 jest.mock("./ItemRequestForm", () => ({
   ItemRequestForm: ({
     onSubmit,
     isPreviewMode,
+    setSelectedUser,
   }: {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
     isPreviewMode?: boolean;
+    setSelectedUser: (user: {
+      id: string;
+      name: string;
+      email: string;
+    }) => void;
   }) => (
     <form
       data-testid="item-request-form"
       data-preview-mode={isPreviewMode ? "true" : "false"}
       onSubmit={onSubmit}
     >
+      <button
+        type="button"
+        data-testid="select-beneficiary"
+        onClick={() =>
+          setSelectedUser({
+            id: "789",
+            name: "Beneficiary",
+            email: "beneficiary@example.com",
+          })
+        }
+      >
+        Select beneficiary
+      </button>
       <button type="submit" disabled={isPreviewMode}>
         Submit
       </button>
@@ -535,6 +553,50 @@ describe("ServiceCatalogItem", () => {
           })
         );
       });
+    });
+  });
+
+  describe("request on behalf", () => {
+    // defaultProps.userId is 123; the mocked beneficiary has id "789".
+    const successResponse = {
+      ok: true,
+      json: () => Promise.resolve({ request: { id: 555 } }),
+    } as unknown as Response;
+
+    it("does not pass requesterId or note for a self request", async () => {
+      mockSubmitServiceItemRequest.mockResolvedValue(successResponse);
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      fireEvent.submit(screen.getByTestId("item-request-form"));
+
+      await waitFor(() => {
+        expect(mockSubmitServiceItemRequest).toHaveBeenCalled();
+      });
+
+      const callArgs = mockSubmitServiceItemRequest.mock.calls[0]!;
+      // requesterId is the 8th positional arg, onBehalfNoteHtml the 9th.
+      expect(callArgs[7]).toBeNull();
+      expect(callArgs[8]).toBeNull();
+    });
+
+    it("passes the beneficiary id and a submitter/user note when on behalf", async () => {
+      mockSubmitServiceItemRequest.mockResolvedValue(successResponse);
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      // Pick a beneficiary (id 789) different from the current user (123).
+      fireEvent.click(screen.getByTestId("select-beneficiary"));
+      fireEvent.submit(screen.getByTestId("item-request-form"));
+
+      await waitFor(() => {
+        expect(mockSubmitServiceItemRequest).toHaveBeenCalled();
+      });
+
+      const callArgs = mockSubmitServiceItemRequest.mock.calls[0]!;
+      expect(callArgs[7]).toBe(789);
+      expect(callArgs[8]).toContain("Submitter: {{name}}");
+      expect(callArgs[8]).toContain("User: {{name}}");
     });
   });
 });

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useItemFormFields } from "../../hooks/useItemFormFields";
 import { ItemRequestForm } from "./ItemRequestForm";
+import type { UserOption } from "../../data-types/UserOption";
 import { CategorySelector } from "./CategorySelector";
 import { PreviewModeBanner } from "./PreviewModeBanner";
 import type { Organization } from "../../../ticket-fields/data-types/Organization";
@@ -91,6 +92,8 @@ export function ServiceCatalogItem({
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
     null
   );
+
+  const [selectedUser, setSelectedUser] = useState<UserOption | null>(null);
 
   useEffect(() => {
     if (!serviceCatalogItem?.categories?.length) return;
@@ -364,15 +367,33 @@ export function ServiceCatalogItem({
     setIsSubmitting(true);
 
     try {
+      const isRequestingOnBehalf =
+        selectedUser != null && Number(selectedUser.id) !== userId;
+      const requesterId = isRequestingOnBehalf ? Number(selectedUser.id) : null;
+
+      const onBehalfNoteHtml =
+        isRequestingOnBehalf && selectedUser
+          ? `<p style="margin:0;padding:0">${t(
+              "service-catalog.item.submitter-label",
+              "Submitter: {{name}}",
+              { name: userName }
+            )}</p><p style="margin:0;padding:0">${t(
+              "service-catalog.item.user-label",
+              "User: {{name}}",
+              { name: selectedUser.name }
+            )}</p>`
+          : null;
+
       const response = await submitServiceItemRequest(
         serviceCatalogItem,
         requestFieldsWithFormData,
         associatedLookupField,
-        baseLocale,
         attachments,
         helpCenterPath,
         categoryLookupField,
-        selectedCategoryId
+        selectedCategoryId,
+        requesterId,
+        onBehalfNoteHtml
       );
 
       if (response?.ok) {
@@ -434,6 +455,8 @@ export function ServiceCatalogItem({
           userId={userId}
           requestOnBehalfEnabled={requestOnBehalfEnabled}
           userName={userName}
+          selectedUser={selectedUser}
+          setSelectedUser={setSelectedUser}
           brandId={brandId}
           defaultOrganizationId={defaultOrganizationId}
           handleChange={handleFieldChange}
