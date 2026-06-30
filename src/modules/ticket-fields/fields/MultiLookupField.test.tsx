@@ -1,5 +1,5 @@
 import type { TicketFieldObject } from "../data-types/TicketFieldObject";
-import { act, fireEvent, screen } from "@testing-library/react";
+import { act, fireEvent, screen, waitFor } from "@testing-library/react";
 import { MultiLookupField } from "./MultiLookupField";
 import { render } from "../../test/render";
 
@@ -81,21 +81,15 @@ describe("MultiLookupField", () => {
 
   it("renders hidden inputs for selected values", async () => {
     (globalThis.fetch as jest.Mock) = jest.fn((url: string) => {
-      if (url.includes("/records/rec-a")) {
+      if (url.includes("/records?")) {
         return Promise.resolve({
           ok: true,
           json: () =>
             Promise.resolve({
-              custom_object_record: { id: "rec-a", name: "Record A" },
-            }),
-        });
-      }
-      if (url.includes("/records/rec-b")) {
-        return Promise.resolve({
-          ok: true,
-          json: () =>
-            Promise.resolve({
-              custom_object_record: { id: "rec-b", name: "Record B" },
+              custom_object_records: [
+                { id: "rec-a", name: "Record A" },
+                { id: "rec-b", name: "Record B" },
+              ],
             }),
         });
       }
@@ -124,14 +118,88 @@ describe("MultiLookupField", () => {
     expect(hiddenInputs[1]).toHaveValue("rec-b");
   });
 
-  it("renders an empty hidden input when no values are selected", () => {
+  it("renders no hidden inputs when no values are selected", () => {
     const { container } = render(<MultiLookupField {...defaultProps} />);
 
     const hiddenInputs = container.querySelectorAll(
       'input[type="hidden"][name="test_multi_lookup[]"]'
     );
+    expect(hiddenInputs).toHaveLength(0);
+  });
+
+  it("adds an item when selecting an option from the dropdown", async () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <MultiLookupField {...defaultProps} onChange={onChange} />
+    );
+
+    const combobox = screen.getByLabelText("Test Multi Lookup");
+    await act(async () => {
+      fireEvent.click(combobox);
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText("Record A")).toBeInTheDocument();
+    });
+
+    await act(async () => {
+      fireEvent.click(screen.getByText("Record A"));
+    });
+
+    expect(onChange).toHaveBeenCalledWith(["rec-a"]);
+    const hiddenInputs = container.querySelectorAll(
+      'input[type="hidden"][name="test_multi_lookup[]"]'
+    );
     expect(hiddenInputs).toHaveLength(1);
-    expect(hiddenInputs[0]).toHaveValue("");
+    expect(hiddenInputs[0]).toHaveValue("rec-a");
+  });
+
+  it("removes an item when clicking the tag remove button", async () => {
+    (globalThis.fetch as jest.Mock) = jest.fn((url: string) => {
+      if (url.includes("/records?")) {
+        return Promise.resolve({
+          ok: true,
+          json: () =>
+            Promise.resolve({
+              custom_object_records: [
+                { id: "rec-a", name: "Record A" },
+              ],
+            }),
+        });
+      }
+      return Promise.resolve({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            custom_object_records: [
+              { name: "Record B", id: "rec-b" },
+              { name: "Record C", id: "rec-c" },
+            ],
+          }),
+      });
+    });
+
+    const onChange = jest.fn();
+    const { container } = render(
+      <MultiLookupField
+        {...defaultProps}
+        onChange={onChange}
+        field={{ ...defaultField, value: ["rec-a"] }}
+      />
+    );
+
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 0));
+    });
+
+    const removeButton = container.querySelector("[data-garden-id='tags.tag_close']");
+    if (removeButton) {
+      await act(async () => {
+        fireEvent.click(removeButton);
+      });
+
+      expect(onChange).toHaveBeenLastCalledWith([]);
+    }
   });
 
   it("shows required indicator when field is required", () => {

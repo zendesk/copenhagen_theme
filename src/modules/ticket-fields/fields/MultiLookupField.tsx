@@ -1,6 +1,12 @@
 import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import { Field, Combobox, Option } from "@zendeskgarden/react-dropdowns";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import type {
   TicketFieldObject,
   TicketFieldOptionObject,
@@ -16,7 +22,7 @@ import type { CustomObjectRecord } from "../data-types/CustomObjectRecord";
 
 const MAX_SELECTIONS = 20;
 
-export interface MultiLookupFieldProps {
+interface MultiLookupFieldProps {
   field: TicketFieldObject;
   userId: number;
   organizationId: string | null;
@@ -63,9 +69,17 @@ export function MultiLookupField({
     relationship_target_type as string
   );
 
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const selectedValuesRef = useRef<string[]>([]);
   const selectedValues = selectedOptions.map((o) => o.value);
   selectedValuesRef.current = selectedValues;
+
+  useEffect(() => {
+    if (wrapperRef.current && required) {
+      const combobox = wrapperRef.current.querySelector("[role=combobox]");
+      combobox?.setAttribute("aria-required", "true");
+    }
+  }, [wrapperRef, required]);
 
   const isAtLimit = selectedOptions.length >= MAX_SELECTIONS;
 
@@ -87,25 +101,26 @@ export function MultiLookupField({
 
   const fetchSelectedOptions = useCallback(
     async (recordIds: string[]) => {
-      const results: TicketFieldOptionObject[] = [];
-      for (const id of recordIds) {
-        try {
-          const res = await fetch(
-            `/api/v2/custom_objects/${customObjectKey}/records/${id}`
+      try {
+        const params = new URLSearchParams();
+        params.set("filter[ids]", recordIds.join(","));
+        const res = await fetch(
+          `/api/v2/custom_objects/${customObjectKey}/records?${params.toString()}`
+        );
+        if (res.ok) {
+          const { custom_object_records } = await res.json();
+          const results: TicketFieldOptionObject[] = custom_object_records.map(
+            (record: CustomObjectRecord) => ({
+              name: record.name,
+              value: record.id,
+            })
           );
-          if (res.ok) {
-            const { custom_object_record } = await res.json();
-            results.push({
-              name: custom_object_record.name,
-              value: custom_object_record.id,
-            });
-          }
-        } catch {
-          // skip failed fetches
+          setSelectedOptions(results);
+          onChange(results.map((o) => o.value));
         }
+      } catch {
+        // skip failed fetch
       }
-      setSelectedOptions(results);
-      onChange(results.map((o) => o.value));
     },
     [customObjectKey, onChange]
   );
@@ -264,7 +279,8 @@ export function MultiLookupField({
         <Field.Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <Combobox
-        inputProps={{ required: required && selectedOptions.length === 0 }}
+        ref={wrapperRef}
+        inputProps={{ required }}
         data-test-id="multi-lookup-field-combobox"
         validation={error ? "error" : undefined}
         inputValue={inputValue}
@@ -284,7 +300,6 @@ export function MultiLookupField({
                 { label }
               )
         }
-        isDisabled={isAtLimit}
         onFocus={onFocus}
         onChange={handleChange}
       >
@@ -328,9 +343,6 @@ export function MultiLookupField({
       {selectedValues.map((val) => (
         <input key={val} type="hidden" name={`${name}[]`} value={val} />
       ))}
-      {selectedValues.length === 0 && (
-        <input type="hidden" name={`${name}[]`} value="" />
-      )}
     </Field>
   );
 }
