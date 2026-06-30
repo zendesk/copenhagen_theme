@@ -1,3 +1,10 @@
+# [4.44.0](https://github.com/zendesk/copenhagen_theme/compare/v4.43.0...v4.44.0) (2026-06-30)
+
+
+### Features
+
+* migrate to the new endpoint and add submitter/user logic ([51c5131](https://github.com/zendesk/copenhagen_theme/commit/51c5131d015aa1f368239f99b68d7ffa21f1c6d9))
+
 # [4.43.0](https://github.com/zendesk/copenhagen_theme/compare/v4.42.2...v4.43.0) (2026-06-30)
 
 
