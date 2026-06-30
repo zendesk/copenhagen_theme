@@ -161,9 +161,7 @@ describe("MultiLookupField", () => {
           ok: true,
           json: () =>
             Promise.resolve({
-              custom_object_records: [
-                { id: "rec-a", name: "Record A" },
-              ],
+              custom_object_records: [{ id: "rec-a", name: "Record A" }],
             }),
         });
       }
@@ -192,7 +190,9 @@ describe("MultiLookupField", () => {
       await new Promise((r) => setTimeout(r, 0));
     });
 
-    const removeButton = container.querySelector("[data-garden-id='tags.tag_close']");
+    const removeButton = container.querySelector(
+      "[data-garden-id='tags.tag_close']"
+    );
     if (removeButton) {
       await act(async () => {
         fireEvent.click(removeButton);

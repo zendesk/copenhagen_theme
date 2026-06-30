@@ -1,12 +1,6 @@
 import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import { Field, Combobox, Option } from "@zendeskgarden/react-dropdowns";
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type {
   TicketFieldObject,
   TicketFieldOptionObject,
