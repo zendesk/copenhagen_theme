@@ -130,6 +130,8 @@ interface ItemRequestFormProps {
   userId: number;
   requestOnBehalfEnabled: boolean | undefined;
   userName: string;
+  selectedUser: UserOption | null;
+  setSelectedUser: (user: UserOption | null) => void;
   brandId: number;
   defaultOrganizationId: string | null;
   handleChange: (
@@ -162,6 +164,8 @@ export function ItemRequestForm({
   userId,
   requestOnBehalfEnabled,
   userName,
+  selectedUser,
+  setSelectedUser,
   brandId,
   defaultOrganizationId,
   handleChange,
@@ -183,7 +187,6 @@ export function ItemRequestForm({
 }: ItemRequestFormProps) {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedUser, setSelectedUser] = useState<UserOption | null>(null);
   const [displayedUserName, setDisplayedUserName] = useState(userName);
 
   const handleOpenModal = () => {
