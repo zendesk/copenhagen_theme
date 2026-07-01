@@ -1,0 +1,10 @@
+title: "Applications"
+packages:
+  - cph-theme-applications
+
+parts:
+  - translation:
+      key: "applications.description"
+      title: "Placeholder text describing the purpose of the applications page"
+      screenshot: ""
+      value: "This page will be used for SaaS management."
