@@ -18,6 +18,7 @@ const HIDDEN_FIELDS = [
   "priority",
   "tickettype",
   "lookup",
+  "multi_lookup",
   "requester",
 ];
 
