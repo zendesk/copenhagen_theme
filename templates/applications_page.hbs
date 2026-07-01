@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="sub-nav">
+    {{breadcrumbs}}
+  </div>
+
+  <div class="applications-page">
+    <h1>{{t 'applications'}}</h1>
+    <div id="main-content"></div>
+  </div>
+</div>
+
+<script type="module">
+  import { renderApplications } from "applications";
+
+  const container = document.getElementById("main-content");
+  const settings = {{json settings}};
+
+  const props = {
+    locale: {{json help_center.base_locale}}
+  };
+
+  renderApplications(settings, props, container);
+</script>

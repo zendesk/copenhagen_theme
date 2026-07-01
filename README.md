@@ -80,6 +80,7 @@ List of templates in the theme:
 * Service page (optional, service catalog specific)
 * Approval request list page (optional, approvals specific)
 * Approval request page (optional, approvals specific)
+* Applications page (optional, SaaS management)
 
 You can add up to 10 optional templates for:
  * Article page
