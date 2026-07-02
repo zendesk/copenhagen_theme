@@ -7476,6 +7476,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@zendeskgarden/react-buttons@npm:^9.15.6":
+  version: 9.15.6
+  resolution: "@zendeskgarden/react-buttons@npm:9.15.6"
+  dependencies:
+    "@zendeskgarden/container-utilities": "npm:^2.0.4"
+    polished: "npm:^4.3.1"
+    prop-types: "npm:^15.5.7"
+    react-merge-refs: "npm:^2.0.0"
+  peerDependencies:
+    "@zendeskgarden/react-theming": ">=9.14.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/ed72e0a20439f272b9dea60ad62920f93a86eb64f046cc2cba51ca29276c366cbc2573b5426af65e2fa9141cf98053d232a06ea70c34292aa29b6d3282f006c0
+  languageName: node
+  linkType: hard
+
 "@zendeskgarden/react-datepickers@npm:9.15.5":
   version: 9.15.5
   resolution: "@zendeskgarden/react-datepickers@npm:9.15.5"
@@ -7629,12 +7646,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-tables@npm:9.15.5":
-  version: 9.15.5
-  resolution: "@zendeskgarden/react-tables@npm:9.15.5"
+"@zendeskgarden/react-tables@npm:9.15.6":
+  version: 9.15.6
+  resolution: "@zendeskgarden/react-tables@npm:9.15.6"
   dependencies:
     "@zendeskgarden/container-utilities": "npm:^2.0.4"
-    "@zendeskgarden/react-buttons": "npm:^9.15.5"
+    "@zendeskgarden/react-buttons": "npm:^9.15.6"
     dom-helpers: "npm:^5.1.0"
     polished: "npm:^4.3.1"
     prop-types: "npm:^15.5.7"
@@ -7643,7 +7660,7 @@ __metadata:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     styled-components: ^5.3.1 || ^6.0.0
-  checksum: 10c0/49d5d881bead67ca35b8e603a782f1e75795fb3a983adf56dccd9e3061af51aa92185b393b700ff38a116983b13f481030ec2b2c842d27d117ca909a2ea9e948
+  checksum: 10c0/afec03c61efbb31ddaaf8d38679a1bc360b1dc0485795b2feed1724c3fc336d148841d740d15e4126e30a3b44e815233e5d289d3dcda7290c1d53d9da1270549
   languageName: node
   linkType: hard
 
@@ -9969,7 +9986,7 @@ __metadata:
     "@zendeskgarden/react-modals": "npm:9.15.5"
     "@zendeskgarden/react-notifications": "npm:9.15.5"
     "@zendeskgarden/react-pagination": "npm:9.15.5"
-    "@zendeskgarden/react-tables": "npm:9.15.5"
+    "@zendeskgarden/react-tables": "npm:9.15.6"
     "@zendeskgarden/react-tabs": "npm:9.15.5"
     "@zendeskgarden/react-tags": "npm:9.15.5"
     "@zendeskgarden/react-theming": "npm:9.15.5"
