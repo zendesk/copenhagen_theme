@@ -39,7 +39,7 @@
     "@zendeskgarden/react-typography": "9.15.5",
     "@zendeskgarden/svg-icons": "8.4.0",
     "dompurify": "3.4.11",
-    "eslint-plugin-check-file": "^2.8.0",
+    "eslint-plugin-check-file": "^3.3.1",
     "i18next": "^26.3.4",
     "linkify-string": "^4.3.3",
     "linkifyjs": "^4.3.3",

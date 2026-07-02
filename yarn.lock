@@ -10039,7 +10039,7 @@ __metadata:
     eslint: "npm:8.57.1"
     eslint-config-prettier: "npm:8.10.2"
     eslint-import-resolver-typescript: "npm:^3.10.1"
-    eslint-plugin-check-file: "npm:^2.8.0"
+    eslint-plugin-check-file: "npm:^3.3.1"
     eslint-plugin-import: "npm:2.32.0"
     eslint-plugin-jest: "npm:^27.9.0"
     eslint-plugin-prettier: "npm:4.2.5"
@@ -11821,15 +11821,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-check-file@npm:^2.8.0":
-  version: 2.8.0
-  resolution: "eslint-plugin-check-file@npm:2.8.0"
+"eslint-plugin-check-file@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "eslint-plugin-check-file@npm:3.3.1"
   dependencies:
     is-glob: "npm:^4.0.3"
-    micromatch: "npm:^4.0.5"
+    micromatch: "npm:^4.0.8"
   peerDependencies:
-    eslint: ">=7.28.0"
-  checksum: 10c0/5d69544a2b51ca5978b565b6a6f95802fd00b28c59399e3c21b5c9848d2dc8d6eda81026c4681014e4e6ce0483493d77a751113a3e45c57b0582f5d938ebe397
+    eslint: ">=9.0.0"
+  checksum: 10c0/1a6712a493f48b5c48a96f15b0a75f5d8f842f3cac122a57febd9349b6251d2ebb3e908cebc419be598e97df4d4f109d0c6d2bc0aafde16673328fc42d0ba308
   languageName: node
   linkType: hard
 
@@ -16524,7 +16524,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromatch@npm:^4.0.0, micromatch@npm:^4.0.2, micromatch@npm:^4.0.4, micromatch@npm:^4.0.5":
+"micromatch@npm:^4.0.0, micromatch@npm:^4.0.2, micromatch@npm:^4.0.4, micromatch@npm:^4.0.8":
   version: 4.0.8
   resolution: "micromatch@npm:4.0.8"
   dependencies:
