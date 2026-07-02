@@ -40,7 +40,7 @@
     "@zendeskgarden/svg-icons": "8.4.0",
     "dompurify": "3.4.11",
     "eslint-plugin-check-file": "^2.8.0",
-    "i18next": "^23.16.8",
+    "i18next": "^26.3.4",
     "linkify-string": "^4.3.3",
     "linkifyjs": "^4.3.3",
     "lodash.debounce": "^4.0.8",
