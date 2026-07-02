@@ -5692,19 +5692,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/exec@npm:6.0.3":
-  version: 6.0.3
-  resolution: "@semantic-release/exec@npm:6.0.3"
+"@semantic-release/exec@npm:7.1.0":
+  version: 7.1.0
+  resolution: "@semantic-release/exec@npm:7.1.0"
   dependencies:
-    "@semantic-release/error": "npm:^3.0.0"
+    "@semantic-release/error": "npm:^4.0.0"
     aggregate-error: "npm:^3.0.0"
     debug: "npm:^4.0.0"
-    execa: "npm:^5.0.0"
-    lodash: "npm:^4.17.4"
-    parse-json: "npm:^5.0.0"
+    execa: "npm:^9.0.0"
+    lodash-es: "npm:^4.17.21"
+    parse-json: "npm:^8.0.0"
   peerDependencies:
-    semantic-release: ">=18.0.0"
-  checksum: 10c0/87c1f5dcd96e8b51cfa084ff2fd570fa1e2b6368064fba54403797636279e1159b62c199b3e8219d31189acfe8aa6f1b596f6cda6508fd3e1a7e5739c86a1a65
+    semantic-release: ">=24.1.0"
+  checksum: 10c0/ee9cbc719d39e669304cd3f9dbd2eb9e4808466581b1815e2a039a5d2fb2d1a02660941bb7ff667c0373cde074a755a48c55daba10191a61e5e7f0020852b8ce
   languageName: node
   linkType: hard
 
@@ -9938,7 +9938,7 @@ __metadata:
     "@rollup/plugin-terser": "npm:^1.0.0"
     "@rollup/plugin-typescript": "npm:^11.1.6"
     "@semantic-release/changelog": "npm:6.0.3"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
     "@shopify/eslint-plugin": "npm:^44.0.0"
     "@svgr/rollup": "npm:^8.1.0"
@@ -17780,7 +17780,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parse-json@npm:^5.0.0, parse-json@npm:^5.2.0":
+"parse-json@npm:^5.2.0":
   version: 5.2.0
   resolution: "parse-json@npm:5.2.0"
   dependencies:
