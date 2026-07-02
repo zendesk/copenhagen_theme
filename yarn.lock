@@ -7139,7 +7139,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:8.62.1":
+"@typescript-eslint/utils@npm:8.62.1, @typescript-eslint/utils@npm:^8.0.0":
   version: 8.62.1
   resolution: "@typescript-eslint/utils@npm:8.62.1"
   dependencies:
@@ -10290,7 +10290,7 @@ __metadata:
     eslint-import-resolver-typescript: "npm:^3.10.1"
     eslint-plugin-check-file: "npm:^3.3.1"
     eslint-plugin-import: "npm:2.32.0"
-    eslint-plugin-jest: "npm:^27.9.0"
+    eslint-plugin-jest: "npm:^29.15.4"
     eslint-plugin-prettier: "npm:4.2.5"
     eslint-plugin-react: "npm:^7.37.5"
     eslint-plugin-react-hooks: "npm:^4.6.2"
@@ -12148,7 +12148,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jest@npm:^27.2.3, eslint-plugin-jest@npm:^27.9.0":
+"eslint-plugin-jest@npm:^27.2.3":
   version: 27.9.0
   resolution: "eslint-plugin-jest@npm:27.9.0"
   dependencies:
@@ -12163,6 +12163,27 @@ __metadata:
     jest:
       optional: true
   checksum: 10c0/b8b09f7d8ba3d84a8779a6e95702a6e4dce45ab034e4edf5ddb631e77cd38dcdf791dfd9228e0a0d1d80d1eb2d278deb62ad2ec39f10fb8fd43cec07304e0c38
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-jest@npm:^29.15.4":
+  version: 29.15.4
+  resolution: "eslint-plugin-jest@npm:29.15.4"
+  dependencies:
+    "@typescript-eslint/utils": "npm:^8.0.0"
+  peerDependencies:
+    "@typescript-eslint/eslint-plugin": ^8.0.0
+    eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
+    jest: "*"
+    typescript: ">=4.8.4 <7.0.0"
+  peerDependenciesMeta:
+    "@typescript-eslint/eslint-plugin":
+      optional: true
+    jest:
+      optional: true
+    typescript:
+      optional: true
+  checksum: 10c0/4a32cd29cb67b54e5fb5f4acbc749e79c024f50099825e91c93d1d9674caf5b4bfe4810c7931e01d6b30e77cbf72d7619db785a12f459f2b23f5885d39cb1033
   languageName: node
   linkType: hard
 
