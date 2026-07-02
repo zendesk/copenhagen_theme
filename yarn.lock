@@ -7476,6 +7476,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@zendeskgarden/react-buttons@npm:^9.15.6":
+  version: 9.15.6
+  resolution: "@zendeskgarden/react-buttons@npm:9.15.6"
+  dependencies:
+    "@zendeskgarden/container-utilities": "npm:^2.0.4"
+    polished: "npm:^4.3.1"
+    prop-types: "npm:^15.5.7"
+    react-merge-refs: "npm:^2.0.0"
+  peerDependencies:
+    "@zendeskgarden/react-theming": ">=9.14.0"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.3.1 || ^6.0.0
+  checksum: 10c0/ed72e0a20439f272b9dea60ad62920f93a86eb64f046cc2cba51ca29276c366cbc2573b5426af65e2fa9141cf98053d232a06ea70c34292aa29b6d3282f006c0
+  languageName: node
+  linkType: hard
+
 "@zendeskgarden/react-datepickers@npm:9.15.5":
   version: 9.15.5
   resolution: "@zendeskgarden/react-datepickers@npm:9.15.5"
@@ -7574,14 +7591,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-modals@npm:9.15.5":
-  version: 9.15.5
-  resolution: "@zendeskgarden/react-modals@npm:9.15.5"
+"@zendeskgarden/react-modals@npm:9.15.6":
+  version: 9.15.6
+  resolution: "@zendeskgarden/react-modals@npm:9.15.6"
   dependencies:
     "@floating-ui/react-dom": "npm:^2.0.0"
     "@zendeskgarden/container-modal": "npm:^2.0.0"
     "@zendeskgarden/container-utilities": "npm:^2.0.4"
-    "@zendeskgarden/react-buttons": "npm:^9.15.5"
+    "@zendeskgarden/react-buttons": "npm:^9.15.6"
     dom-helpers: "npm:^5.1.0"
     prop-types: "npm:^15.5.7"
     react-merge-refs: "npm:^2.0.0"
@@ -7591,7 +7608,7 @@ __metadata:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     styled-components: ^5.3.1 || ^6.0.0
-  checksum: 10c0/869fbb0a7e71905010240b2d099d8730a9ef9a7556ecd15be850e4b247becff4c57ae4c0f3877dd64300df0dc52b5699aaa906f752c2794fe6073c29251fa2f3
+  checksum: 10c0/cae670508bfa8e7351f4eaab28fba370804c33117bd9bdf1ad0529abc9b8ea1f834c4629be55e2c20fd7a278401f385f2f29d35d9d5d66cbcf1d18029700b60b
   languageName: node
   linkType: hard
 
@@ -9966,7 +9983,7 @@ __metadata:
     "@zendeskgarden/react-forms": "npm:9.15.5"
     "@zendeskgarden/react-grid": "npm:9.15.5"
     "@zendeskgarden/react-loaders": "npm:9.15.5"
-    "@zendeskgarden/react-modals": "npm:9.15.5"
+    "@zendeskgarden/react-modals": "npm:9.15.6"
     "@zendeskgarden/react-notifications": "npm:9.15.5"
     "@zendeskgarden/react-pagination": "npm:9.15.5"
     "@zendeskgarden/react-tables": "npm:9.15.5"
