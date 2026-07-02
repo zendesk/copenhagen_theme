@@ -72,7 +72,7 @@
   "guide-requests-app.requestCount.one": "{{count}} sol·licitud",
   "guide-requests-app.requestCount.other": "{{count}} sol·licituds",
   "guide-requests-app.requestCount.range": "{{from}} - {{to}} de {{total}} sol·licituds",
-  "guide-requests-app.requestCount.screenreader.range": "De {{from}} a {{to}} de{{total}} solicitudes",
+  "guide-requests-app.requestCount.screenreader.range": "De {{from}} a {{to}} de {{total}} sol·licituds",
   "guide-requests-app.requestCount.zero": "{{count}} sol·licituds",
   "guide-requests-app.requester": "Sol·licitant",
   "guide-requests-app.requesterMe": "Jo",
