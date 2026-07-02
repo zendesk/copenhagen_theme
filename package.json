@@ -94,7 +94,7 @@
     "husky": "8.0.3",
     "i18next-parser": "^9.4.0",
     "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
+    "jest-environment-jsdom": "^30.4.1",
     "js-yaml": "^4.2.0",
     "lighthouse": "13.4.0",
     "prettier": "2.8.8",
