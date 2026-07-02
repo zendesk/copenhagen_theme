@@ -102,7 +102,7 @@
     "rollup": "3.30.0",
     "rollup-jest": "^3.1.0",
     "rollup-plugin-sass": "1.15.3",
-    "sass": "1.100.0",
+    "sass": "1.101.0",
     "semantic-release": "25.0.5",
     "ts-jest": "^29.4.11",
     "typescript": "^5.9.3",
