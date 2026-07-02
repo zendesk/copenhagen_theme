@@ -7913,9 +7913,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-tabs@npm:9.15.5":
-  version: 9.15.5
-  resolution: "@zendeskgarden/react-tabs@npm:9.15.5"
+"@zendeskgarden/react-tabs@npm:9.15.6":
+  version: 9.15.6
+  resolution: "@zendeskgarden/react-tabs@npm:9.15.6"
   dependencies:
     "@zendeskgarden/container-tabs": "npm:^2.0.16"
     "@zendeskgarden/container-utilities": "npm:^2.0.4"
@@ -7927,7 +7927,7 @@ __metadata:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     styled-components: ^5.3.1 || ^6.0.0
-  checksum: 10c0/852023efa3ba2c2af645b9f8ae9f5d0c62e442cd02c13710a780236a86aef60f861888fb0df70a372547b903f1473f598689ffea5313a32e1aa0c6b10a785aef
+  checksum: 10c0/95a5f5eb7150ae070a1795d35e0c949ba2a5473b48adaf6388d72e7beb0925ef8d14178fcab0d5a1e1ed70f71598aff1688419c6ea0b90db76dc2bb9ef6278ca
   languageName: node
   linkType: hard
 
@@ -10213,7 +10213,7 @@ __metadata:
     "@zendeskgarden/react-notifications": "npm:9.15.5"
     "@zendeskgarden/react-pagination": "npm:9.15.5"
     "@zendeskgarden/react-tables": "npm:9.15.6"
-    "@zendeskgarden/react-tabs": "npm:9.15.5"
+    "@zendeskgarden/react-tabs": "npm:9.15.6"
     "@zendeskgarden/react-tags": "npm:9.15.6"
     "@zendeskgarden/react-theming": "npm:9.15.5"
     "@zendeskgarden/react-tooltips": "npm:9.15.5"
