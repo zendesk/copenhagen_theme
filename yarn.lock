@@ -7857,9 +7857,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/react-loaders@npm:9.15.5":
-  version: 9.15.5
-  resolution: "@zendeskgarden/react-loaders@npm:9.15.5"
+"@zendeskgarden/react-loaders@npm:9.15.6":
+  version: 9.15.6
+  resolution: "@zendeskgarden/react-loaders@npm:9.15.6"
   dependencies:
     "@zendeskgarden/container-schedule": "npm:^2.0.9"
     polished: "npm:^4.3.1"
@@ -7869,7 +7869,7 @@ __metadata:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     styled-components: ^5.3.1 || ^6.0.0
-  checksum: 10c0/551a1f20b8fbad863c00bbd9466c5f94b0e51e541cfc618952ed1c730c1949a9af691bca18c99894d363bbe463dbd39a96cc5eae9219cca8cfdf0d5a7ab74fd5
+  checksum: 10c0/ab187f57b14d691e93244850af1cbb8b4a3afba3605f6af1a051527a7f0c2ad254824f73a57095ce465dd7a9ad300d1977e97c6f70c316ade7f6df636ca350ab
   languageName: node
   linkType: hard
 
@@ -10271,7 +10271,7 @@ __metadata:
     "@zendeskgarden/react-dropdowns": "npm:9.15.5"
     "@zendeskgarden/react-forms": "npm:9.15.5"
     "@zendeskgarden/react-grid": "npm:9.15.5"
-    "@zendeskgarden/react-loaders": "npm:9.15.5"
+    "@zendeskgarden/react-loaders": "npm:9.15.6"
     "@zendeskgarden/react-modals": "npm:9.15.6"
     "@zendeskgarden/react-notifications": "npm:9.15.5"
     "@zendeskgarden/react-pagination": "npm:9.15.5"
