@@ -308,3 +308,18 @@ parts:
       title: "[A11Y] Hidden label for screen readers describing the sort options group in the service catalog list"
       screenshot: ""
       value: "Sort services"
+  - translation:
+      key: "service-catalog.item.user"
+      title: "Label above the requester's name in the service request form"
+      screenshot: "https://drive.google.com/file/d/1k5um4vxeW-SV1vQlblYJFU4uHzdejvju/view?usp=share_link"
+      value: "User"
+  - translation:
+      key: "service-catalog.item.submitter-label"
+      title: "Line in the request comment naming who submitted the request on behalf of another user. {{name}} is the submitter's name."
+      screenshot: "https://drive.google.com/file/d/1kkyjrLu9UZWVPFowlqwZ-D-qE0zwcUyV/view?usp=sharing"
+      value: "Submitter: {{name}}"
+  - translation:
+      key: "service-catalog.item.user-label"
+      title: "Line in the request comment naming the user the request was submitted on behalf of. {{name}} is that user's name."
+      screenshot: "https://drive.google.com/file/d/1kkyjrLu9UZWVPFowlqwZ-D-qE0zwcUyV/view?usp=sharing"
+      value: "User: {{name}}"

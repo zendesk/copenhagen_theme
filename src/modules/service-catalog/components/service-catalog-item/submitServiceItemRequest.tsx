@@ -19,11 +19,12 @@ export async function submitServiceItemRequest(
   serviceCatalogItem: ServiceCatalogItem,
   requestFields: TicketFieldObject[],
   associatedLookupField: TicketFieldObject,
-  baseLocale: string,
   attachments: Attachment[],
   helpCenterPath: string,
   categoryLookupField?: TicketFieldObject | null,
-  categoryId?: string | null
+  categoryId?: string | null,
+  requesterId?: number | null,
+  onBehalfNoteHtml?: string | null
 ) {
   try {
     const currentUser = await getCurrentUser();
@@ -44,7 +45,12 @@ export async function submitServiceItemRequest(
       lookupFields.push({ id: categoryLookupField.id, value: categoryId });
     }
 
-    const response = await fetch(`/api/v2/requests?locale=${baseLocale}`, {
+    const submitterId = currentUser.user.id;
+
+    const isRequestingOnBehalf =
+      requesterId != null && requesterId !== submitterId;
+
+    const response = await fetch("/hc/api/v2/service_catalog/requests", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,17 +58,22 @@ export async function submitServiceItemRequest(
       },
       body: JSON.stringify({
         request: {
+          item_id: serviceCatalogItem.id,
           subject: `${serviceCatalogItem.name}`,
           comment: {
-            html_body: `<a href="${window.location.origin}${helpCenterPath}/services/${serviceCatalogItem.id}" style="text-decoration: underline" target="_blank" rel="noopener noreferrer">${serviceCatalogItem.name}</a>`,
+            html_body: `<a href="${
+              window.location.origin
+            }${helpCenterPath}/services/${
+              serviceCatalogItem.id
+            }" style="text-decoration: underline" target="_blank" rel="noopener noreferrer">${
+              serviceCatalogItem.name
+            }</a>${onBehalfNoteHtml ?? ""}`,
             uploads: uploadTokens,
           },
-          ticket_form_id: serviceCatalogItem.form_id,
           custom_fields: [...customFields, ...lookupFields],
-          via: {
-            channel: "web form",
-            source: 50,
-          },
+          ...(isRequestingOnBehalf
+            ? { requester_id: requesterId, collaborators: [submitterId] }
+            : {}),
         },
       }),
     });
