@@ -10229,7 +10229,7 @@ __metadata:
     react-dom: "npm:^19.2.7"
     react-dropzone: "npm:^15.0.0"
     react-i18next: "npm:^14.1.3"
-    react-is: "npm:^17.0.2"
+    react-is: "npm:^19.2.7"
     rollup: "npm:3.30.0"
     rollup-jest: "npm:^3.1.0"
     rollup-plugin-sass: "npm:1.15.3"
@@ -18933,10 +18933,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^17.0.1, react-is@npm:^17.0.2":
+"react-is@npm:^17.0.1":
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 10c0/2bdb6b93fbb1820b024b496042cce405c57e2f85e777c9aabd55f9b26d145408f9f74f5934676ffdc46f3dcff656d78413a6e43968e7b3f92eea35b3052e9053
+  languageName: node
+  linkType: hard
+
+"react-is@npm:^19.2.7":
+  version: 19.2.7
+  resolution: "react-is@npm:19.2.7"
+  checksum: 10c0/419fe54d5bd7fdf5414a5bb7bd9a1e0e36f9fae28ffb4cb73290fbe342bde15d8584a90d1db62547f6aa03018dce517b178a041abb522136cd4b4b51b4e94c83
   languageName: node
   linkType: hard
 
