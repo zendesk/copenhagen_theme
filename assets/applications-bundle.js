@@ -118,7 +118,7 @@ function __variableDynamicImportRuntime1__(path) {
 
 function __variableDynamicImportRuntime0__(path) {
   switch (path) {
-
+    case './translations/locales/en-us.json': return import('applications-translations');
     default: return new Promise(function(resolve, reject) {
       (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
         reject.bind(null, new Error("Unknown variable dynamic import: " + path))
