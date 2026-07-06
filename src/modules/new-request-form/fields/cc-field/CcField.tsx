@@ -1,10 +1,7 @@
 import {
   FauxInput,
   Field as GardenField,
-  Hint,
   Input,
-  Label,
-  Message,
 } from "@zendeskgarden/react-forms";
 import styled from "styled-components";
 import { Tag } from "@zendeskgarden/react-tags";
@@ -141,8 +138,8 @@ export function CcField({ field }: CcFieldProps): JSX.Element {
 
   return (
     <GardenField>
-      <Label>{label}</Label>
-      {description && <Hint>{description}</Hint>}
+      <GardenField.Label>{label}</GardenField.Label>
+      {description && <GardenField.Hint>{description}</GardenField.Hint>}
       <Container {...getContainerProps()}>
         {tags.length > 0 && (
           <span
@@ -186,7 +183,9 @@ export function CcField({ field }: CcFieldProps): JSX.Element {
           <StyledInput ref={inputRef} isBare {...getInputProps()} />
         </InputWrapper>
       </Container>
-      {error && <Message validation="error">{error}</Message>}
+      {error && (
+        <GardenField.Message validation="error">{error}</GardenField.Message>
+      )}
       {tags.map((email) => (
         <input key={email} type="hidden" name={name} value={email} />
       ))}

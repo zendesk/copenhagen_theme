@@ -1,13 +1,10 @@
-import type { IComboboxProps } from "@zendeskgarden/react-dropdowns.next";
+import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import {
-  Field as GardenField,
-  Label,
-  Hint,
+  Field,
   Combobox,
-  Message,
   Option,
   OptGroup,
-} from "@zendeskgarden/react-dropdowns.next";
+} from "@zendeskgarden/react-dropdowns";
 import { Span } from "@zendeskgarden/react-typography";
 import { useState, useRef, useEffect } from "react";
 import { useNestedOptions } from "./useNestedOptions";
@@ -23,11 +20,15 @@ export function MultiSelect({
   onChange,
 }: MultiSelectProps): JSX.Element {
   const { label, options, error, value, name, required, description } = field;
-  const { currentGroup, isGroupIdentifier, setCurrentGroupByIdentifier } =
-    useNestedOptions({
-      options,
-      hasEmptyOption: false,
-    });
+  const {
+    currentGroup,
+    isGroupIdentifier,
+    setCurrentGroupByIdentifier,
+    getOptionLabel,
+  } = useNestedOptions({
+    options,
+    hasEmptyOption: false,
+  });
 
   const [selectedValues, setSelectValues] = useState<string[]>(
     (value as string[]) || []
@@ -55,7 +56,7 @@ export function MultiSelect({
   };
 
   return (
-    <GardenField>
+    <Field>
       {selectedValues.map((selectedValue) => (
         <input
           type="hidden"
@@ -64,12 +65,12 @@ export function MultiSelect({
           value={selectedValue}
         />
       ))}
-      <Label>
+      <Field.Label>
         {label}
         {required && <Span aria-hidden="true">*</Span>}
-      </Label>
+      </Field.Label>
       {description && (
-        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+        <Field.Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <Combobox
         ref={wrapperRef}
@@ -81,6 +82,27 @@ export function MultiSelect({
         selectionValue={selectedValues}
         maxHeight="auto"
       >
+        {/*
+         * The Combobox derives each selected tag's label from a matching option
+         * child. Since only the current group's options are rendered, selected
+         * values that live in other groups are rendered as hidden options so
+         * their labels resolve without affecting menu navigation.
+         */}
+        {selectedValues
+          .filter(
+            (selectedValue) =>
+              !currentGroup.options.some(
+                (option) => option.value === selectedValue
+              )
+          )
+          .map((selectedValue) => (
+            <Option
+              key={`selected-${selectedValue}`}
+              value={selectedValue}
+              label={getOptionLabel(selectedValue) ?? selectedValue}
+              isHidden
+            />
+          ))}
         {currentGroup.type === "SubGroup" && (
           <Option {...currentGroup.backOption} />
         )}
@@ -98,7 +120,7 @@ export function MultiSelect({
           ))
         )}
       </Combobox>
-      {error && <Message validation="error">{error}</Message>}
-    </GardenField>
+      {error && <Field.Message validation="error">{error}</Field.Message>}
+    </Field>
   );
 }

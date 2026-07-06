@@ -1,5 +1,5 @@
 import { useCallback, useRef } from "react";
-import { useNotify } from "../../../shared/notifications/useNotify";
+import { notify } from "../../../shared";
 
 interface UseWysiwygOptions {
   hasWysiwyg: boolean;
@@ -17,7 +17,6 @@ export function useWysiwyg({
   brandId,
 }: UseWysiwygOptions) {
   const isInitializedRef = useRef(false);
-  const notify = useNotify();
 
   return useCallback(
     async (ref: HTMLTextAreaElement) => {
@@ -61,6 +60,6 @@ export function useWysiwyg({
         );
       }
     },
-    [hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, notify]
+    [hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId]
   );
 }

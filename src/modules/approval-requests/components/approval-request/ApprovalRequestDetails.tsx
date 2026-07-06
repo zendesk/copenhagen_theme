@@ -2,33 +2,62 @@ import { memo } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { MD } from "@zendeskgarden/react-typography";
-import { getColorV8 } from "@zendeskgarden/react-theming";
-import { Grid, Row, Col } from "@zendeskgarden/react-grid";
+import { getColor } from "@zendeskgarden/react-theming";
+import { Grid } from "@zendeskgarden/react-grid";
 import type { ApprovalRequest } from "../../types";
 import ApprovalStatusTag from "./ApprovalStatusTag";
 import { formatApprovalRequestDate } from "../../utils";
 import { APPROVAL_REQUEST_STATES } from "../../constants";
 import ApprovalRequestPreviousDecision from "./ApprovalRequestPreviousDecision";
+import { getSentByLabel } from "../../getSentByLabel";
+import { getDecisionOriginLabel } from "../../getDecisionOriginLabel";
 
 const Container = styled(Grid)`
   padding: ${(props) => props.theme.space.base * 6}px; /* 24px */
-  background: ${(props) => getColorV8("grey", 100, props.theme)};
+  margin-left: 0;
+  background: ${({ theme }) =>
+    getColor({ theme, variable: "background.default" })};
   border-radius: ${(props) => props.theme.borderRadii.md}; /* 4px */
+  max-width: 296px;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    max-width: 100%;
+  }
 `;
 
 const ApprovalRequestHeader = styled(MD)`
   margin-bottom: ${(props) => props.theme.space.base * 4}px; /* 16px */
 `;
 
-const FieldLabel = styled(MD)`
-  color: ${(props) => getColorV8("grey", 600, props.theme)};
+const WrappedText = styled(MD)`
+  white-space: normal;
+  overflow-wrap: break-word;
 `;
 
-const DetailRow = styled(Row)`
+const FieldLabel = styled(MD)`
+  color: ${({ theme }) => getColor({ theme, hue: "grey", shade: 600 })};
+`;
+
+const DetailRow = styled(Grid.Row)`
   margin-bottom: ${(props) => props.theme.space.sm}; /* 12px */
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.sm}) {
+    flex-direction: column; /* stack columns vertically */
+
+    > div {
+      width: 100% !important; /* full width for each Col */
+      max-width: 100% !important;
+      flex: none !important;
+      margin-bottom: ${(props) => props.theme.space.xxs}; /* 4px */
+    }
+
+    > div:last-child {
+      margin-bottom: 0;
+    }
   }
 `;
 
@@ -50,6 +79,21 @@ function ApprovalRequestDetails({
   const shouldShowPreviousDecision =
     approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN &&
     approvalRequest.decisions.length > 0;
+
+  const formattedDecidedAt = approvalRequest.decided_at
+    ? formatApprovalRequestDate(approvalRequest.decided_at, baseLocale)
+    : "";
+
+  // The `origination_type` field on decisions is only present when arturo `approvals_slack_notifications` is enabled
+  const decisionOriginLabel =
+    approvalRequest.status !== APPROVAL_REQUEST_STATES.WITHDRAWN
+      ? getDecisionOriginLabel(
+          approvalRequest.decisions[0]?.origination_type,
+          formattedDecidedAt,
+          t
+        )
+      : "";
+
   return (
     <Container>
       <ApprovalRequestHeader isBold>
@@ -59,83 +103,83 @@ function ApprovalRequestDetails({
         )}
       </ApprovalRequestHeader>
       <DetailRow>
-        <Col size={4}>
+        <Grid.Col size={4}>
           <FieldLabel>
             {t(
               "approval-requests.request.approval-request-details.sent-by",
               "Sent by"
             )}
           </FieldLabel>
-        </Col>
-        <Col size={8}>
-          <MD>{approvalRequest.created_by_user.name}</MD>
-        </Col>
+        </Grid.Col>
+        <Grid.Col size={8}>
+          <WrappedText>{getSentByLabel(approvalRequest, t)}</WrappedText>
+        </Grid.Col>
       </DetailRow>
       <DetailRow>
-        <Col size={4}>
+        <Grid.Col size={4}>
           <FieldLabel>
             {t(
               "approval-requests.request.approval-request-details.sent-on",
               "Sent on"
             )}
           </FieldLabel>
-        </Col>
-        <Col size={8}>
+        </Grid.Col>
+        <Grid.Col size={8}>
           <MD>
             {formatApprovalRequestDate(approvalRequest.created_at, baseLocale)}
           </MD>
-        </Col>
+        </Grid.Col>
       </DetailRow>
       <DetailRow>
-        <Col size={4}>
+        <Grid.Col size={4}>
           <FieldLabel>
             {t(
               "approval-requests.request.approval-request-details.approver",
               "Approver"
             )}
           </FieldLabel>
-        </Col>
-        <Col size={8}>
-          <MD>{approvalRequest.assignee_user.name}</MD>
-        </Col>
+        </Grid.Col>
+        <Grid.Col size={8}>
+          <WrappedText>{approvalRequest.assignee_user.name}</WrappedText>
+        </Grid.Col>
       </DetailRow>
       <DetailRow>
-        <Col size={4}>
+        <Grid.Col size={4}>
           <FieldLabel>
             {t(
               "approval-requests.request.approval-request-details.status",
               "Status"
             )}
           </FieldLabel>
-        </Col>
-        <Col size={8}>
+        </Grid.Col>
+        <Grid.Col size={8}>
           <MD>
             <ApprovalStatusTag status={approvalRequest.status} />
           </MD>
-        </Col>
+        </Grid.Col>
       </DetailRow>
       {shouldShowApprovalRequestComment && (
         <DetailRow>
-          <Col size={4}>
+          <Grid.Col size={4}>
             <FieldLabel>
               {t(
-                "approval-requests.request.approval-request-details.comment",
-                "Comment"
+                "approval-requests.request.approval-request-details.comment_v2",
+                "Reason"
               )}
             </FieldLabel>
-          </Col>
-          <Col size={8}>
-            <MD>
+          </Grid.Col>
+          <Grid.Col size={8}>
+            <WrappedText>
               {approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
                 ? approvalRequest.withdrawn_reason
                 : approvalRequest.decisions[0]?.decision_notes ?? "-"}
-            </MD>
-          </Col>
+            </WrappedText>
+          </Grid.Col>
         </DetailRow>
       )}
       {approvalRequest.decided_at && (
         <DetailRow>
-          <Col size={4}>
+          <Grid.Col size={4}>
             <FieldLabel>
               {t(
                 approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
@@ -146,15 +190,12 @@ function ApprovalRequestDetails({
                   : "Decided"
               )}
             </FieldLabel>
-          </Col>
-          <Col size={8}>
-            <MD>
-              {formatApprovalRequestDate(
-                approvalRequest.decided_at,
-                baseLocale
-              )}
-            </MD>
-          </Col>
+          </Grid.Col>
+          <Grid.Col size={8}>
+            <WrappedText>
+              {decisionOriginLabel || formattedDecidedAt}
+            </WrappedText>
+          </Grid.Col>
         </DetailRow>
       )}
       {shouldShowPreviousDecision && approvalRequest.decisions[0] && (

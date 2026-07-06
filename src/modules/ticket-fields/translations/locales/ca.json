@@ -1,7 +1,22 @@
 {
-  "cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
-  "cph-theme-ticket-fields.dropdown.empty-option": "Seleccione una opción",
-  "cph-theme-ticket-fields.lookup-field.loading-options": "Cargando elementos...",
-  "cph-theme-ticket-fields.lookup-field.no-matches-found": "No se encontraron coincidencias",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Buscar {{label}}"
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Trieu un fitxer o arrossegueu-lo i deixeu-lo anar aquí",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Deixeu anar els fitxers aquí",
+  "cph-theme-ticket-fields.attachments.error-separator": ";",
+  "cph-theme-ticket-fields.attachments.file": "Fitxer: {{fileName}}, premeu Supr per eliminar",
+  "cph-theme-ticket-fields.attachments.remove-file": "Elimina el fitxer",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Elimina el fitxer: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Atura la càrrega",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Atura la càrrega de {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Hi ha hagut un error en carregar {{fileName}}. Torneu-ho a provar o pugeu un altre fitxer.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Error de pujada",
+  "cph-theme-ticket-fields.attachments.uploading": "S'està pujant {{fileName}}",
+  "cph-theme-ticket-fields.credit-card-digits-hint": "(Últims 4 dígits)",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "Enrere",
+  "cph-theme-ticket-fields.dropdown.empty-option": "Trieu una opció",
+  "cph-theme-ticket-fields.lookup-field.loading-options": "S'estan carregant els elements...",
+  "cph-theme-ticket-fields.lookup-field.no-matches-found": "No s'han trobat coincidències",
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Cerca {{label}}",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "No s'han trobat coincidències",
+  "cph-theme-ticket-fields.search-field.placeholder": "Cerca {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "S'ha produït un error en pujar {{fileName}}"
 }

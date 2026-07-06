@@ -1,11 +1,5 @@
-import { Datepicker as GardenDatepicker } from "@zendeskgarden/react-datepickers";
-import {
-  Field as GardenField,
-  Hint,
-  Input,
-  Label,
-  Message,
-} from "@zendeskgarden/react-forms";
+import { DatePicker as GardenDatePicker } from "@zendeskgarden/react-datepickers";
+import { Field as GardenField, Input } from "@zendeskgarden/react-forms";
 import { Span } from "@zendeskgarden/react-typography";
 import type { TicketFieldObject } from "../data-types/TicketFieldObject";
 import type { ChangeEventHandler } from "react";
@@ -82,14 +76,14 @@ export function DatePicker({
 
   return (
     <GardenField>
-      <Label>
+      <GardenField.Label>
         {label}
         {required && <Span aria-hidden="true">*</Span>}
-      </Label>
+      </GardenField.Label>
       {description && (
-        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+        <GardenField.Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
-      <GardenDatepicker
+      <GardenDatePicker
         value={date}
         onChange={handleChange}
         formatDate={formatDateInput}
@@ -101,8 +95,10 @@ export function DatePicker({
           onChange={handleInputChange}
           validation={error ? "error" : undefined}
         />
-      </GardenDatepicker>
-      {error && <Message validation="error">{error}</Message>}
+      </GardenDatePicker>
+      {error && (
+        <GardenField.Message validation="error">{error}</GardenField.Message>
+      )}
       <input type="hidden" name={name} value={formatDateValue(date)} />
     </GardenField>
   );

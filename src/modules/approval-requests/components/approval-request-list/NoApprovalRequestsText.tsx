@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { MD } from "@zendeskgarden/react-typography";
-import { getColorV8 } from "@zendeskgarden/react-theming";
+import { getColor } from "@zendeskgarden/react-theming";
 import { memo } from "react";
 
 const StyledMD = styled(MD)`
-  color: ${(props) => getColorV8("grey", 600, props.theme)};
+  color: ${({ theme }) => getColor({ theme, hue: "grey", shade: 600 })};
 `;
 
 function NoApprovalRequestsText() {

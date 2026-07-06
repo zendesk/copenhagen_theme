@@ -9,14 +9,9 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import debounce from "lodash.debounce";
 import SearchIcon from "@zendeskgarden/svg-icons/src/16/search-stroke.svg";
-import {
-  Field,
-  Label,
-  Combobox,
-  Option,
-} from "@zendeskgarden/react-dropdowns.next";
+import { Field, Combobox, Option } from "@zendeskgarden/react-dropdowns";
 import { MediaInput } from "@zendeskgarden/react-forms";
-import type { IComboboxProps } from "@zendeskgarden/react-dropdowns.next";
+import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import type { ApprovalRequestDropdownStatus } from "../../types";
 import { APPROVAL_REQUEST_STATES } from "../../constants";
 
@@ -105,12 +100,12 @@ function ApprovalRequestListFilters({
   return (
     <FiltersContainer>
       <SearchField>
-        <Label hidden>
+        <SearchField.Label hidden>
           {t(
             "approval-requests.list.search-placeholder",
             "Search approval requests"
           )}
-        </Label>
+        </SearchField.Label>
         <MediaInput
           start={<SearchIcon />}
           placeholder={t(
@@ -121,9 +116,9 @@ function ApprovalRequestListFilters({
         />
       </SearchField>
       <DropdownFilterField>
-        <Label>
+        <DropdownFilterField.Label>
           {t("approval-requests.list.status-dropdown.label_v2", "Status")}
-        </Label>
+        </DropdownFilterField.Label>
         <Combobox
           isEditable={false}
           onChange={handleChange}

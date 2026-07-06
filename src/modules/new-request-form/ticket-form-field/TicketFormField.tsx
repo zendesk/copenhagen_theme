@@ -1,11 +1,6 @@
-import type { IComboboxProps } from "@zendeskgarden/react-dropdowns.next";
+import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import { createRef, useEffect } from "react";
-import {
-  Combobox,
-  Field as GardenField,
-  Label,
-  Option,
-} from "@zendeskgarden/react-dropdowns.next";
+import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import type { TicketFieldObject } from "../../ticket-fields/data-types/TicketFieldObject";
 
 interface TicketFormFieldProps {
@@ -47,8 +42,8 @@ export function TicketFormField({
     <>
       <input type="hidden" name={field.name} value={field.value as string} />
       {field.options.length > 1 && (
-        <GardenField>
-          <Label>{field.label}</Label>
+        <Field>
+          <Field.Label>{field.label}</Field.Label>
           <Combobox isEditable={false} onChange={handleChange} ref={ref}>
             {field.options.map((option) => (
               <Option
@@ -61,7 +56,7 @@ export function TicketFormField({
               </Option>
             ))}
           </Combobox>
-        </GardenField>
+        </Field>
       )}
     </>
   );

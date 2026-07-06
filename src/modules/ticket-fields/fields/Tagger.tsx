@@ -1,16 +1,10 @@
-import type {
-  IComboboxProps,
-  ISelectedOption,
-} from "@zendeskgarden/react-dropdowns.next";
+import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import {
-  Field as GardenField,
-  Label,
-  Hint,
+  Field,
   Combobox,
-  Message,
   Option,
   OptGroup,
-} from "@zendeskgarden/react-dropdowns.next";
+} from "@zendeskgarden/react-dropdowns";
 import { Span } from "@zendeskgarden/react-typography";
 import { useState, useRef, useEffect } from "react";
 import { useNestedOptions } from "./useNestedOptions";
@@ -24,11 +18,16 @@ interface TaggerProps {
 
 export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
   const { label, options, error, value, name, required, description } = field;
-  const { currentGroup, isGroupIdentifier, setCurrentGroupByIdentifier } =
-    useNestedOptions({
-      options,
-      hasEmptyOption: true,
-    });
+  const {
+    currentGroup,
+    isGroupIdentifier,
+    setCurrentGroupByIdentifier,
+    getOptionLabel,
+  } = useNestedOptions({
+    options,
+    hasEmptyOption: true,
+    selectedValue: (value as string | undefined) ?? "",
+  });
 
   const selectionValue = (value as string | undefined) ?? "";
   const [isExpanded, setIsExpanded] = useState(false);
@@ -60,13 +59,13 @@ export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
   };
 
   return (
-    <GardenField>
-      <Label>
+    <Field>
+      <Field.Label>
         {label}
         {required && <Span aria-hidden="true">*</Span>}
-      </Label>
+      </Field.Label>
       {description && (
-        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+        <Field.Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <Combobox
         ref={wrapperRef}
@@ -76,9 +75,10 @@ export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
         onChange={handleChange}
         selectionValue={selectionValue}
         inputValue={selectionValue}
-        renderValue={({ selection }) =>
-          (selection as ISelectedOption | null)?.label ?? <EmptyValueOption />
-        }
+        renderValue={() => {
+          const selectedLabel = getOptionLabel(selectionValue);
+          return selectedLabel ? <>{selectedLabel}</> : <EmptyValueOption />;
+        }}
         isExpanded={isExpanded}
       >
         {currentGroup.type === "SubGroup" && (
@@ -104,7 +104,7 @@ export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
           )
         )}
       </Combobox>
-      {error && <Message validation="error">{error}</Message>}
-    </GardenField>
+      {error && <Field.Message validation="error">{error}</Field.Message>}
+    </Field>
   );
 }

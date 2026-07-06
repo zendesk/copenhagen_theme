@@ -2,10 +2,10 @@ import type { ReactNode } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { ModalContainerContext } from "./ModalContainerContext";
+import { Z_INDEX_ABOVE_NAVBAR } from "../../notifications/constants";
 
-// z-index needs to be higher than the z-index of the navbar,
 export const ModalContainer = styled.div`
-  z-index: 2147483647;
+  z-index: ${Z_INDEX_ABOVE_NAVBAR};
   position: fixed;
 `;
 

@@ -1,11 +1,29 @@
 import styled from "styled-components";
+import { Fragment, useCallback, useState } from "react";
 import { RequestFormField } from "../../../ticket-fields";
-import { Button } from "@zendeskgarden/react-buttons";
-import { getColorV8 } from "@zendeskgarden/react-theming";
+import { Button, Anchor } from "@zendeskgarden/react-buttons";
+import { getColor } from "@zendeskgarden/react-theming";
 import { useTranslation } from "react-i18next";
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import { CollapsibleDescription } from "./CollapsibleDescription";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
+import type { CustomObjectRecord } from "../../../ticket-fields/data-types/CustomObjectRecord";
+import type { ITAMAssetOptionObject } from "../../data-types/ITAMAssetOptionObject";
+import type { UserOption } from "../../data-types/UserOption";
+import { Span } from "@zendeskgarden/react-typography";
+import { Option } from "@zendeskgarden/react-dropdowns";
+import { Attachments } from "../../../ticket-fields/fields/attachments/Attachments";
+import {
+  AttachmentsInputName,
+  ASSET_TYPE_KEY,
+  ASSET_KEY,
+} from "../../constants";
+import type {
+  AttachmentsError,
+  AttachmentsOption,
+} from "../../data-types/Attachments";
+import { Skeleton } from "@zendeskgarden/react-loaders";
+import { ChangeUserModal } from "../change-user-modal/index";
 
 const Form = styled.form`
   display: flex;
@@ -32,20 +50,20 @@ const FieldsContainer = styled.div`
 
 const ButtonWrapper = styled.div`
   flex: 1;
-  margin-inline-start: ${(props) => props.theme.space.xl};
   padding: ${(props) => props.theme.space.lg};
   border: ${(props) => props.theme.borders.sm}
-    ${(props) => getColorV8("grey", 300, props.theme)};
+    ${({ theme }) => getColor({ theme, hue: "grey", shade: 300 })};
   height: fit-content;
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     position: sticky;
     top: 0;
-    background: ${(props) => props.theme.colors.background};
+    background: ${({ theme }) =>
+      getColor({ theme, variable: "background.default" })};
     padding: ${(props) => props.theme.space.lg};
     border: none;
     border-top: ${(props) => props.theme.borders.sm}
-      ${(props) => getColorV8("grey", 300, props.theme)};
+      ${({ theme }) => getColor({ theme, hue: "grey", shade: 300 })};
     width: 100vw;
     margin-inline-start: 0;
   }
@@ -72,11 +90,36 @@ const LeftColumn = styled.div`
   flex-direction: column;
   gap: ${(props) => props.theme.space.lg};
   margin-inline-end: ${(props) => props.theme.space.xl};
+  min-width: 0;
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     margin-inline-end: 0;
   }
 `;
+
+const ButtonSkeleton = styled(Skeleton)`
+  width: 100%;
+  height: 48px;
+  display: block;
+`;
+
+const UserNameWrapper = styled.div`
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.theme.space.xxs};
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const isAssetField = (f: TicketFieldObject) =>
+  f.relationship_target_type === ASSET_KEY;
+const isAssetTypeField = (f: TicketFieldObject) =>
+  f.relationship_target_type === ASSET_TYPE_KEY;
 
 interface ItemRequestFormProps {
   requestFields: TicketFieldObject[];
@@ -85,6 +128,10 @@ interface ItemRequestFormProps {
   hasAtMentions: boolean;
   userRole: string;
   userId: number;
+  requestOnBehalfEnabled: boolean | undefined;
+  userName: string;
+  selectedUser: UserOption | null;
+  setSelectedUser: (user: UserOption | null) => void;
   brandId: number;
   defaultOrganizationId: string | null;
   handleChange: (
@@ -92,6 +139,20 @@ interface ItemRequestFormProps {
     value: string | string[] | boolean | null
   ) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  attachmentsOption: AttachmentsOption | undefined;
+  attachmentsRequiredError: AttachmentsError;
+  setAttachmentsRequiredError: (error: AttachmentsError) => void;
+  isRequestFieldsLoading: boolean;
+  isLoadingAttachmentsOption: boolean;
+  assetTypeError: string | null;
+  assetError: string | null;
+  assetTypeHiddenValue: string;
+  isAssetTypeHidden: boolean;
+  assetTypeIds: string[];
+  assetIds: string[];
+  onAttachmentUploadingChange: (isUploading: boolean) => void;
+  isFormInitializing: boolean;
+  isPreviewMode?: boolean;
 }
 
 export function ItemRequestForm({
@@ -101,44 +162,275 @@ export function ItemRequestForm({
   hasAtMentions,
   userRole,
   userId,
+  requestOnBehalfEnabled,
+  userName,
+  selectedUser,
+  setSelectedUser,
   brandId,
   defaultOrganizationId,
   handleChange,
   onSubmit,
+  attachmentsOption,
+  attachmentsRequiredError,
+  setAttachmentsRequiredError,
+  isRequestFieldsLoading,
+  isLoadingAttachmentsOption,
+  assetTypeError,
+  assetError,
+  assetTypeHiddenValue,
+  isAssetTypeHidden,
+  assetTypeIds,
+  assetIds,
+  onAttachmentUploadingChange,
+  isFormInitializing,
+  isPreviewMode = false,
 }: ItemRequestFormProps) {
   const { t } = useTranslation();
-  return (
-    <Form onSubmit={onSubmit} noValidate>
-      <LeftColumn>
-        <CollapsibleDescription
-          title={serviceCatalogItem.name}
-          description={serviceCatalogItem.description}
-          thumbnailUrl={serviceCatalogItem.thumbnail_url}
-        />
-        <FieldsContainer>
-          {requestFields.map((field) => (
-            <RequestFormField
-              key={field.id}
-              field={field}
-              baseLocale={baseLocale}
-              hasAtMentions={hasAtMentions}
-              userRole={userRole}
-              userId={userId}
-              brandId={brandId}
-              defaultOrganizationId={defaultOrganizationId}
-              handleChange={handleChange}
-              visibleFields={requestFields}
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [displayedUserName, setDisplayedUserName] = useState(userName);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleChangeUser = async (newUserName: string) => {
+    setDisplayedUserName(newUserName);
+    handleCloseModal();
+  };
+
+  const buildLookupFieldOptions = async (
+    records: CustomObjectRecord[],
+    field: TicketFieldObject
+  ): Promise<ITAMAssetOptionObject[]> => {
+    if (!Array.isArray(records) || records.length === 0) return [];
+
+    const options: ITAMAssetOptionObject[] = records.map((rec) => {
+      const base = {
+        name: rec.name,
+        value: rec.id,
+        serialNumber: rec.custom_object_fields["standard::serial_number"] as
+          | string
+          | undefined,
+      };
+
+      if (rec.custom_object_key === "standard::itam_asset") {
+        const fields = (rec.custom_object_fields ?? {}) as {
+          "standard::asset_type"?: string;
+        };
+        return {
+          ...base,
+          item_asset_type_id: fields["standard::asset_type"] ?? "",
+        };
+      }
+      return { ...base, item_asset_type_id: "" };
+    });
+
+    if (isAssetTypeField(field)) {
+      if (isAssetTypeHidden) return [];
+      if (!assetTypeIds?.length) return [];
+      return options.filter((o) => assetTypeIds.includes(o.value));
+    }
+
+    if (isAssetField(field)) {
+      let list = options;
+      if (assetIds?.length) {
+        list = list.filter((o) =>
+          assetIds.includes(o.item_asset_type_id ?? "")
+        );
+      }
+      return list;
+    }
+    return options.map(({ name, value, serialNumber }) => ({
+      name,
+      value,
+      serialNumber,
+    }));
+  };
+
+  const renderLookupFieldOption = (option: ITAMAssetOptionObject) => {
+    if (option.serialNumber) {
+      return (
+        <>
+          {option.name}
+          <Option.Meta>
+            <Span hue="grey">
+              {t(
+                "service-catalog.item.serial-number-label",
+                "SN: {{serialNumber}}",
+                { serialNumber: option.serialNumber }
+              )}
+            </Span>
+          </Option.Meta>
+        </>
+      );
+    }
+    return option.name;
+  };
+
+  const handleAttachmentsOnUpload = useCallback(
+    (status: boolean) => {
+      setAttachmentsRequiredError(null);
+      onAttachmentUploadingChange(status);
+    },
+    [setAttachmentsRequiredError, onAttachmentUploadingChange]
+  );
+
+  const renderRequestFields = () => {
+    if (isRequestFieldsLoading || isLoadingAttachmentsOption) {
+      return null;
+    }
+
+    const attachmentsPosition =
+      attachmentsOption?.custom_object_fields?.["standard::position_in_portal"];
+
+    const attachmentsElement = attachmentsOption ? (
+      <Attachments
+        key="attachments"
+        field={{
+          name: AttachmentsInputName,
+          label: t("service-catalog.item.attachments-label", "Upload a file"),
+          description:
+            attachmentsOption.custom_object_fields["standard::description"] ??
+            "",
+          error: attachmentsRequiredError,
+          attachments: [],
+          isRequired:
+            attachmentsOption.custom_object_fields["standard::is_required"] ??
+            false,
+        }}
+        baseLocale={baseLocale}
+        onUploadingChange={handleAttachmentsOnUpload}
+      />
+    ) : null;
+
+    const elements: React.ReactNode[] = [];
+
+    requestFields.forEach((field, index) => {
+      if (
+        attachmentsElement &&
+        typeof attachmentsPosition === "number" &&
+        index === attachmentsPosition
+      ) {
+        elements.push(attachmentsElement);
+      }
+
+      if (isAssetTypeField(field) && isAssetTypeHidden) {
+        elements.push(
+          <Fragment key={field.id}>
+            <input
+              type="hidden"
+              name={field.name}
+              value={assetTypeHiddenValue}
             />
-          ))}
-        </FieldsContainer>
-      </LeftColumn>
-      <RightColumn>
-        <ButtonWrapper>
-          <Button isPrimary size="large" isStretched type="submit">
-            {t("service-catalog.item.submit-button", "Submit request")}
-          </Button>
-        </ButtonWrapper>
-      </RightColumn>
-    </Form>
+            <input type="hidden" name="isAssetTypeHidden" value="true" />
+          </Fragment>
+        );
+        return;
+      }
+
+      const customField = {
+        ...field,
+        error: isAssetField(field)
+          ? assetError || field.error
+          : isAssetTypeField(field)
+          ? assetTypeError || field.error
+          : field.error,
+      };
+
+      elements.push(
+        <RequestFormField
+          key={field.id}
+          field={customField}
+          baseLocale={baseLocale}
+          hasAtMentions={hasAtMentions}
+          userRole={userRole}
+          userId={userId}
+          brandId={brandId}
+          defaultOrganizationId={defaultOrganizationId}
+          handleChange={handleChange}
+          visibleFields={requestFields}
+          buildLookupFieldOptions={buildLookupFieldOptions}
+          renderLookupFieldOption={renderLookupFieldOption}
+        />
+      );
+    });
+    if (
+      attachmentsElement &&
+      typeof attachmentsPosition === "number" &&
+      attachmentsPosition >= requestFields.length
+    ) {
+      elements.push(attachmentsElement);
+    }
+
+    return elements;
+  };
+
+  return (
+    <>
+      <Form onSubmit={onSubmit} noValidate>
+        <LeftColumn>
+          <CollapsibleDescription
+            title={serviceCatalogItem.name}
+            description={serviceCatalogItem.description}
+            thumbnailUrl={serviceCatalogItem.thumbnail_url}
+          />
+          <FieldsContainer>{renderRequestFields()}</FieldsContainer>
+        </LeftColumn>
+        <RightColumn>
+          <ButtonWrapper>
+            <ButtonContainer>
+              <UserNameWrapper>
+                <Span isBold>{t("service-catalog.item.user", "User")}</Span>
+                <Span>{displayedUserName}</Span>
+              </UserNameWrapper>
+              {requestOnBehalfEnabled && (
+                <>
+                  <Anchor isUnderlined={false} onClick={handleOpenModal}>
+                    {t(
+                      "service-catalog.item.change-user-requesting-on-behalf",
+                      "Change"
+                    )}
+                  </Anchor>
+                </>
+              )}
+            </ButtonContainer>
+
+            {isFormInitializing ? (
+              <ButtonSkeleton />
+            ) : (
+              <Button
+                isPrimary
+                size="large"
+                isStretched
+                type="submit"
+                disabled={isPreviewMode}
+                title={
+                  isPreviewMode
+                    ? t(
+                        "service-catalog.item.preview-mode.submit-disabled-tooltip",
+                        "Submitting requests is disabled while previewing a draft"
+                      )
+                    : undefined
+                }
+              >
+                {t("service-catalog.item.submit-button", "Submit request")}
+              </Button>
+            )}
+          </ButtonWrapper>
+        </RightColumn>
+      </Form>
+      {isModalOpen && (
+        <ChangeUserModal
+          onClose={handleCloseModal}
+          onCreate={handleChangeUser}
+          setSelectedUser={setSelectedUser}
+          selectedUser={selectedUser}
+        />
+      )}
+    </>
   );
 }

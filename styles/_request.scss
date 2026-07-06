@@ -23,6 +23,7 @@
 
   &-main {
     flex: 1 0 auto;
+    max-width: 100%;
     order: 1;
 
     .comment-fields, .request-submit-comment {
@@ -142,6 +143,9 @@
     dd {
       padding: 0 10px;
       width: 60%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
 
       &::after {
         content: "\A";
@@ -153,6 +157,7 @@
       line-break: strict;
       color: $secondary-text-color;
       width: 40%;
+      overflow-wrap: break-word;
     }
 
     .request-collaborators {

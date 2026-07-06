@@ -1,9 +1,6 @@
 import {
   Field as GardenField,
-  Hint,
   Input as GardenInput,
-  Label,
-  Message,
 } from "@zendeskgarden/react-forms";
 import { Span } from "@zendeskgarden/react-typography";
 import type { TicketFieldObject } from "../data-types/TicketFieldObject";
@@ -27,12 +24,12 @@ export function Input({ field, onChange }: InputProps): JSX.Element {
 
   return (
     <GardenField>
-      <Label>
+      <GardenField.Label>
         {label}
         {required && <Span aria-hidden="true">*</Span>}
-      </Label>
+      </GardenField.Label>
       {description && (
-        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+        <GardenField.Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <GardenInput
         name={name}
@@ -46,7 +43,9 @@ export function Input({ field, onChange }: InputProps): JSX.Element {
         autoComplete={autocomplete}
         {...stepProp}
       />
-      {error && <Message validation="error">{error}</Message>}
+      {error && (
+        <GardenField.Message validation="error">{error}</GardenField.Message>
+      )}
     </GardenField>
   );
 }

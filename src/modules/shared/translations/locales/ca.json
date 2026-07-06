@@ -1,6 +1,6 @@
 {
-  "cph-theme-error-boundary.go-to-homepage": "Ir a la página principal",
-  "cph-theme-error-boundary.message": "Espere un momento y vuelva a intentarlo más tarde",
-  "cph-theme-error-boundary.title": "Algo salió mal.",
-  "cph-theme-shared.close-label": "Cerrar"
+  "cph-theme-error-boundary.go-to-homepage": "Vés a la pàgina d'inici",
+  "cph-theme-error-boundary.message": "Espereu-vos un moment i torneu-ho a intentar més tard",
+  "cph-theme-error-boundary.title": "S’ha produït un error.",
+  "cph-theme-shared.close-label": "Tanca"
 }

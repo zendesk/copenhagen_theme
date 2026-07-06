@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Anchor } from "@zendeskgarden/react-buttons";
 import type { Organization } from "../../../ticket-fields/data-types/Organization";
 import styled from "styled-components";
-import { getColorV8 } from "@zendeskgarden/react-theming";
+import { getColor } from "@zendeskgarden/react-theming";
 
 const StyledBreadcrumb = styled(Breadcrumb)`
   margin-top: ${(props) => props.theme.space.lg}; /* 32px */
@@ -12,7 +12,7 @@ const StyledBreadcrumb = styled(Breadcrumb)`
 
 const BreadcrumbAnchor = styled(Anchor)`
   &:visited {
-    color: ${(props) => getColorV8("blue", 600, props.theme)};
+    color: ${({ theme }) => getColor({ theme, hue: "blue", shade: 600 })};
   }
 `;
 

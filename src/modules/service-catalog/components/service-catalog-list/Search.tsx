@@ -1,4 +1,4 @@
-import { Field, Label, MediaInput } from "@zendeskgarden/react-forms";
+import { Field, MediaInput } from "@zendeskgarden/react-forms";
 import { Dots } from "@zendeskgarden/react-loaders";
 import SearchIcon from "@zendeskgarden/svg-icons/src/16/search-stroke.svg";
 import { useTranslation } from "react-i18next";
@@ -33,9 +33,9 @@ export const Search = ({
 
   return (
     <StyledField>
-      <Label hidden>
+      <StyledField.Label hidden>
         {t("service-catalog.search-services", "Search for services")}
-      </Label>
+      </StyledField.Label>
       <StyledMediaInput
         start={<SearchIcon />}
         type="search"

@@ -1,13 +1,14 @@
-import { screen, render, waitFor, act } from "@testing-library/react";
-import type { ReactElement } from "react";
+import { render } from "../../../test/render";
+import { screen, waitFor, act } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { ThemeProvider } from "@zendeskgarden/react-theming";
 import ApproverActions from "./ApproverActions";
+import { notify } from "../../../shared";
 
-const mockNotify = jest.fn();
-jest.mock("../../../shared/notifications/useNotify", () => ({
-  useNotify: () => mockNotify,
+jest.mock("../../../shared/notifications", () => ({
+  notify: jest.fn(),
 }));
+
+const mockNotify = notify as jest.Mock;
 
 const mockSubmitApprovalDecision = jest.fn();
 jest.mock("../../submitApprovalDecision", () => ({
@@ -24,17 +25,13 @@ const mockApprovalRequestId = "123";
 const mockApprovalWorkflowInstanceId = "456";
 const mockSetApprovalRequest = jest.fn();
 
-const renderWithTheme = (ui: ReactElement) => {
-  return render(<ThemeProvider>{ui}</ThemeProvider>);
-};
-
 describe("ApproverActions", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it("initially renders the approve and deny buttons", () => {
-    renderWithTheme(
+    render(
       <ApproverActions
         approvalRequestId={mockApprovalRequestId}
         approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
@@ -50,7 +47,7 @@ describe("ApproverActions", () => {
   it("shows the comment section when clicking Approve request", async () => {
     const user = userEvent.setup();
 
-    renderWithTheme(
+    render(
       <ApproverActions
         approvalRequestId={mockApprovalRequestId}
         approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
@@ -68,7 +65,7 @@ describe("ApproverActions", () => {
 
   it("does not show the Avatar when assigneeUser has no photo", async () => {
     const user = userEvent.setup();
-    renderWithTheme(
+    render(
       <ApproverActions
         approvalRequestId={mockApprovalRequestId}
         approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
@@ -92,7 +89,7 @@ describe("ApproverActions", () => {
     };
 
     const user = userEvent.setup();
-    renderWithTheme(
+    render(
       <ApproverActions
         approvalRequestId={mockApprovalRequestId}
         approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
@@ -111,7 +108,7 @@ describe("ApproverActions", () => {
 
   it("shows the comment section with required field when clicking Deny request", async () => {
     const user = userEvent.setup();
-    renderWithTheme(
+    render(
       <ApproverActions
         approvalRequestId={mockApprovalRequestId}
         approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
@@ -131,7 +128,7 @@ describe("ApproverActions", () => {
 
   it("shows the validation error when submitting an empty denial", async () => {
     const user = userEvent.setup();
-    renderWithTheme(
+    render(
       <ApproverActions
         approvalRequestId={mockApprovalRequestId}
         approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
@@ -149,7 +146,7 @@ describe("ApproverActions", () => {
 
   it("returns to initial state when clicking Cancel", async () => {
     const user = userEvent.setup();
-    renderWithTheme(
+    render(
       <ApproverActions
         approvalRequestId={mockApprovalRequestId}
         approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
@@ -172,7 +169,7 @@ describe("ApproverActions", () => {
       json: () => Promise.resolve({ approval_request: { id: "123" } }),
     });
 
-    renderWithTheme(
+    render(
       <ApproverActions
         approvalRequestId={mockApprovalRequestId}
         approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
@@ -213,7 +210,7 @@ describe("ApproverActions", () => {
       json: () => Promise.resolve({ approval_request: { id: "123" } }),
     });
 
-    renderWithTheme(
+    render(
       <ApproverActions
         approvalRequestId={mockApprovalRequestId}
         approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
@@ -251,7 +248,7 @@ describe("ApproverActions", () => {
     const user = userEvent.setup();
     mockSubmitApprovalDecision.mockResolvedValue({ ok: false });
 
-    renderWithTheme(
+    render(
       <ApproverActions
         approvalRequestId={mockApprovalRequestId}
         approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}

@@ -2,43 +2,33 @@ import { render } from "react-dom";
 import {
   ThemeProviders,
   createTheme,
-  FLASH_NOTIFICATIONS_KEY,
   initI18next,
   loadTranslations,
 } from "../shared";
-import type { Settings, ToastNotification } from "../shared";
-import { FlashNotifications } from "./FlashNotifications";
+import type { Settings } from "../shared";
+import { GlobalNotificationsRoot } from "../shared/notifications/GlobalNotificationsRoot";
+
+/**
+ * Note: Historically named "flash notifications" after Rails flash messages.
+ * This function now renders all notifications, not only flash ones.
+ * The name is kept for backward compatibility with document_head.hbs.
+ */
 
 export async function renderFlashNotifications(
   settings: Settings,
   baseLocale: string
 ) {
-  const flashNotifications = window.sessionStorage.getItem(
-    FLASH_NOTIFICATIONS_KEY
-  );
-
-  if (flashNotifications === null) {
-    return;
-  }
-
   initI18next(baseLocale);
   await loadTranslations(baseLocale, [
     () => import(`../shared/translations/locales/${baseLocale}.json`),
   ]);
 
-  window.sessionStorage.removeItem(FLASH_NOTIFICATIONS_KEY);
-
   try {
-    const parsedNotifications = JSON.parse(
-      flashNotifications
-    ) as ToastNotification[];
-
     const container = document.createElement("div");
     document.body.appendChild(container);
-
     render(
       <ThemeProviders theme={createTheme(settings)}>
-        <FlashNotifications notifications={parsedNotifications} />
+        <GlobalNotificationsRoot />
       </ThemeProviders>,
       container
     );

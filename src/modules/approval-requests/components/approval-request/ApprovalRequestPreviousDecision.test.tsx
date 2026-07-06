@@ -1,12 +1,7 @@
-import { screen, render } from "@testing-library/react";
-import type { ReactElement } from "react";
-import { ThemeProvider } from "@zendeskgarden/react-theming";
+import { render } from "../../../test/render";
+import { screen } from "@testing-library/react";
 import ApprovalRequestPreviousDecision from "./ApprovalRequestPreviousDecision";
 import type { ApprovalDecision } from "../../types";
-
-const renderWithTheme = (ui: ReactElement) => {
-  return render(<ThemeProvider>{ui}</ThemeProvider>);
-};
 
 const mockDecision: ApprovalDecision = {
   decision_notes: "Looks good to me",
@@ -23,7 +18,7 @@ const mockDecision: ApprovalDecision = {
 
 describe("ApprovalRequestPreviousDecision", () => {
   it("renders the previous decision header, status, and notes", () => {
-    renderWithTheme(
+    render(
       <ApprovalRequestPreviousDecision
         decision={mockDecision}
         baseLocale="en-US"
@@ -41,7 +36,7 @@ describe("ApprovalRequestPreviousDecision", () => {
       decision_notes: null,
     };
 
-    renderWithTheme(
+    render(
       <ApprovalRequestPreviousDecision
         decision={decisionWithoutNotes}
         baseLocale="en-US"

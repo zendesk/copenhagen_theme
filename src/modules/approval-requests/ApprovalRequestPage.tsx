@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import styled from "styled-components";
 import { MD, XXL } from "@zendeskgarden/react-typography";
 import { Spinner } from "@zendeskgarden/react-loaders";
@@ -8,16 +8,29 @@ import ApproverActions from "./components/approval-request/ApproverActions";
 import { useApprovalRequest } from "./hooks/useApprovalRequest";
 import type { Organization } from "../ticket-fields/data-types/Organization";
 import ApprovalRequestBreadcrumbs from "./components/approval-request/ApprovalRequestBreadcrumbs";
+import ClarificationContainer from "./components/approval-request/clarification/ClarificationContainer";
+import { useUserViewedApprovalStatus } from "./hooks/useUserViewedApprovalStatus";
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas:
+    "left right"
+    "approverActions right"
+    "clarification right";
+
+  grid-gap: ${(props) => props.theme.space.lg};
   margin-top: ${(props) => props.theme.space.xl}; /* 40px */
   margin-bottom: ${(props) => props.theme.space.lg}; /* 32px */
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    flex-direction: column;
-    margin-bottom: ${(props) => props.theme.space.xl}; /* 40px */
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "right"
+      "approverActions"
+      "clarification";
+    margin-bottom: ${(props) => props.theme.space.xl};
   }
 `;
 
@@ -28,7 +41,7 @@ const LoadingContainer = styled.div`
 `;
 
 const LeftColumn = styled.div`
-  flex: 2;
+  grid-area: left;
 
   & > *:first-child {
     margin-bottom: ${(props) => props.theme.space.base * 4}px; /* 16px */
@@ -41,21 +54,23 @@ const LeftColumn = styled.div`
   & > *:last-child {
     margin-bottom: 0;
   }
-
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    flex: 1;
-    margin-inline-end: 0;
-    margin-bottom: ${(props) => props.theme.space.lg};
-  }
 `;
 
 const RightColumn = styled.div`
-  flex: 1;
-  margin-inline-start: ${(props) => props.theme.space.base * 6}px; /* 24px */
+  grid-area: right;
+`;
 
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    margin-inline-start: 0;
-  }
+const ClarificationArea = styled.div`
+  grid-area: clarification;
+`;
+
+const ApproverActionsWrapper = styled.div`
+  grid-area: approverActions;
+  margin-top: ${(props) => props.theme.space.lg};
+`;
+
+const StyledDescription = styled(MD)`
+  white-space: pre-wrap;
 `;
 
 export interface ApprovalRequestPageProps {
@@ -65,6 +80,8 @@ export interface ApprovalRequestPageProps {
   helpCenterPath: string;
   organizations: Array<Organization>;
   userId: number;
+  userAvatarUrl: string;
+  userName: string;
 }
 
 function ApprovalRequestPage({
@@ -74,19 +91,42 @@ function ApprovalRequestPage({
   helpCenterPath,
   organizations,
   userId,
+  userAvatarUrl,
+  userName,
 }: ApprovalRequestPageProps) {
   const {
     approvalRequest,
     setApprovalRequest,
     errorFetchingApprovalRequest: error,
     isLoading,
-  } = useApprovalRequest(approvalWorkflowInstanceId, approvalRequestId);
+  } = useApprovalRequest({
+    approvalWorkflowInstanceId: approvalWorkflowInstanceId,
+    approvalRequestId: approvalRequestId,
+    enablePolling: true,
+  });
+
+  const { hasUserViewedBefore, markUserViewed } = useUserViewedApprovalStatus({
+    approvalRequestId: approvalRequest?.id,
+    currentUserId: userId,
+  });
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      markUserViewed();
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [markUserViewed]);
 
   if (error) {
     throw error;
   }
 
-  if (isLoading) {
+  if (isLoading || !approvalRequest) {
     return (
       <LoadingContainer>
         <Spinner size="64" />
@@ -95,8 +135,14 @@ function ApprovalRequestPage({
   }
 
   const showApproverActions =
-    userId === approvalRequest?.assignee_user?.id &&
-    approvalRequest?.status === "active";
+    userId === approvalRequest.assignee_user.id &&
+    approvalRequest.status === "active";
+
+  // The `clarification_flow_messages` field is only present when arturo `approvals_clarification_flow_end_users` is enabled
+  const hasClarificationEnabled =
+    approvalRequest?.clarification_flow_messages !== undefined;
+
+  const collapsedMessage = approvalRequest.message.replace(/\n{3,}/g, "\n\n");
 
   return (
     <>
@@ -106,12 +152,13 @@ function ApprovalRequestPage({
       />
       <Container>
         <LeftColumn>
-          <XXL isBold>{approvalRequest?.subject}</XXL>
-          <MD>{approvalRequest?.message}</MD>
-          {approvalRequest?.ticket_details && (
+          <XXL isBold>{approvalRequest.subject}</XXL>
+          <StyledDescription>{collapsedMessage}</StyledDescription>
+          {approvalRequest.ticket_details && (
             <ApprovalTicketDetails ticket={approvalRequest.ticket_details} />
           )}
         </LeftColumn>
+
         <RightColumn>
           {approvalRequest && (
             <ApprovalRequestDetails
@@ -120,15 +167,36 @@ function ApprovalRequestPage({
             />
           )}
         </RightColumn>
+
+        {showApproverActions && (
+          <ApproverActionsWrapper>
+            <ApproverActions
+              approvalWorkflowInstanceId={approvalWorkflowInstanceId}
+              approvalRequestId={approvalRequestId}
+              setApprovalRequest={setApprovalRequest}
+              assigneeUser={approvalRequest.assignee_user}
+            />
+          </ApproverActionsWrapper>
+        )}
+        {hasClarificationEnabled && (
+          <ClarificationArea>
+            <ClarificationContainer
+              key={approvalRequest?.clarification_flow_messages?.length}
+              approvalRequestId={approvalRequest.id}
+              baseLocale={baseLocale}
+              clarificationFlowMessages={
+                approvalRequest.clarification_flow_messages!
+              }
+              createdByUserId={approvalRequest.created_by_user.id}
+              currentUserAvatarUrl={userAvatarUrl}
+              currentUserId={userId}
+              currentUserName={userName}
+              hasUserViewedBefore={hasUserViewedBefore}
+              status={approvalRequest.status}
+            />
+          </ClarificationArea>
+        )}
       </Container>
-      {showApproverActions && (
-        <ApproverActions
-          approvalWorkflowInstanceId={approvalWorkflowInstanceId}
-          approvalRequestId={approvalRequestId}
-          setApprovalRequest={setApprovalRequest}
-          assigneeUser={approvalRequest?.assignee_user}
-        />
-      )}
     </>
   );
 }

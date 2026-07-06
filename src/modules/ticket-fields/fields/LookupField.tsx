@@ -1,12 +1,5 @@
-import type { IComboboxProps } from "@zendeskgarden/react-dropdowns.next";
-import {
-  Field as GardenField,
-  Label,
-  Hint,
-  Combobox,
-  Option,
-  Message,
-} from "@zendeskgarden/react-dropdowns.next";
+import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
+import { Field, Combobox, Option } from "@zendeskgarden/react-dropdowns";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type {
   TicketFieldObject,
@@ -17,34 +10,33 @@ import debounce from "lodash.debounce";
 import { useTranslation } from "react-i18next";
 import { EmptyValueOption } from "./EmptyValueOption";
 import type { LookupRelationshipFieldFilter } from "../data-types/BaseTicketField";
+import type { CustomObjectRecord } from "../data-types/CustomObjectRecord";
 
 export function buildAdvancedDynamicFilterParams(
   filter?: LookupRelationshipFieldFilter,
   fields: TicketFieldObject[] = []
 ) {
-  const dynamicFilters = filter
-    ? [
-        ...filter.all.filter(
-          (filter) =>
-            filter.operator === "matches" || filter.operator === "not_matches"
-        ),
-        ...filter.any.filter(
-          (filter) =>
-            filter.operator === "matches" || filter.operator === "not_matches"
-        ),
-      ]
-    : [];
+  if (!filter) return [];
 
-  const parsedFilterId =
-    dynamicFilters && dynamicFilters[0]?.value.split("ticket_fields_")[1];
+  const dynamicFilters = [
+    ...filter.all.filter(
+      (f) => f.operator === "matches" || f.operator === "not_matches"
+    ),
+    ...filter.any.filter(
+      (f) => f.operator === "matches" || f.operator === "not_matches"
+    ),
+  ];
 
-  const field = fields.find((field) => {
-    const parsedFieldId = field.id.toString();
-
-    return parsedFieldId === parsedFilterId;
+  return dynamicFilters.map((f) => {
+    const parsedFilterId = f.value.split("ticket_fields_")[1];
+    const field = fields.find(
+      (field) => field.id.toString() === parsedFilterId
+    );
+    return {
+      key: f.value,
+      value: field?.value ?? null,
+    };
   });
-
-  return [dynamicFilters[0]?.value, field?.value];
 }
 
 export function getCustomObjectKey(targetType: string) {
@@ -56,20 +48,29 @@ const EMPTY_OPTION = {
   name: "-",
 };
 
-interface LookupFieldProps {
+export interface LookupFieldProps {
   field: TicketFieldObject;
   userId: number;
   organizationId: string | null;
+  brandId?: number;
   onChange: (value: string) => void;
   visibleFields: TicketFieldObject[];
+  buildLookupFieldOptions?: (
+    records: CustomObjectRecord[],
+    field: TicketFieldObject
+  ) => Promise<TicketFieldOptionObject[]>;
+  renderOption?: (option: TicketFieldOptionObject) => React.ReactNode;
 }
 
 export function LookupField({
   field,
   userId,
   organizationId,
+  brandId,
   onChange,
   visibleFields,
+  buildLookupFieldOptions,
+  renderOption,
 }: LookupFieldProps) {
   const {
     id: fieldId,
@@ -139,15 +140,28 @@ export function LookupField({
       searchParams.set("field_id", fieldId.toString());
       searchParams.set("requester_id", userId.toString());
 
-      const [filterValue, fieldValue] = buildAdvancedDynamicFilterParams(
+      const filterPairs = buildAdvancedDynamicFilterParams(
         field.relationship_filter,
         visibleFields
       );
 
-      const fieldValueParam = fieldValue?.toString() || "";
-      const filterValueParam = `filter[dynamic_values][${filterValue}]`;
+      for (const { key: filterValue, value: fieldValue } of filterPairs) {
+        if (!filterValue) continue;
 
-      if (filterValue) searchParams.set(filterValueParam, fieldValueParam);
+        if (filterValue === "ticket_brand_id") {
+          if (brandId) {
+            searchParams.set(
+              "filter[dynamic_values][ticket_brand_id]",
+              brandId.toString()
+            );
+          }
+          continue;
+        }
+
+        const filterValueParam = `filter[dynamic_values][${filterValue}]`;
+        const fieldValueParam = fieldValue?.toString() || "";
+        searchParams.set(filterValueParam, fieldValueParam);
+      }
 
       if (organizationId) searchParams.set("organization_id", organizationId);
 
@@ -159,21 +173,29 @@ export function LookupField({
 
         const data = await response.json();
         if (response.ok) {
-          let fetchedOptions = data.custom_object_records.map(
-            ({ name, id }: { name: string; id: string }) => ({
-              name,
-              value: id,
-            })
-          );
+          const fetchedRecords = data.custom_object_records;
+
+          let options;
+
+          if (buildLookupFieldOptions) {
+            options = await buildLookupFieldOptions(fetchedRecords, field);
+          } else {
+            options = fetchedRecords.map(
+              ({ name, id }: { name: string; id: string }) => ({
+                name,
+                value: id,
+              })
+            );
+          }
           if (selectedOption) {
-            fetchedOptions = fetchedOptions.filter(
+            options = options.filter(
               (option: TicketFieldOptionObject) =>
                 option.value !== selectedOption.value
             );
-            fetchedOptions = [selectedOption, ...fetchedOptions];
+            options = [selectedOption, ...options];
           }
 
-          setOptions(fetchedOptions);
+          setOptions(options);
         } else {
           setOptions([]);
         }
@@ -184,13 +206,15 @@ export function LookupField({
       }
     },
     [
+      brandId,
       customObjectKey,
-      field.relationship_filter,
+      field,
       fieldId,
       organizationId,
       selectedOption,
       userId,
       visibleFields,
+      buildLookupFieldOptions,
     ]
   );
 
@@ -244,13 +268,13 @@ export function LookupField({
   };
 
   return (
-    <GardenField>
-      <Label>
+    <Field>
+      <Field.Label>
         {label}
         {required && <Span aria-hidden="true">*</Span>}
-      </Label>
+      </Field.Label>
       {description && (
-        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+        <Field.Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <Combobox
         inputProps={{ required }}
@@ -262,7 +286,7 @@ export function LookupField({
         placeholder={t(
           "cph-theme-ticket-fields.lookup-field.placeholder",
           "Search {{label}}",
-          { label: label.toLowerCase() }
+          { label }
         )}
         onFocus={onFocus}
         onChange={handleChange}
@@ -299,11 +323,13 @@ export function LookupField({
               value={option.value}
               label={option.name}
               data-test-id={`option-${option.name}`}
-            />
+            >
+              {renderOption ? renderOption(option) : option.name}
+            </Option>
           ))}
       </Combobox>
-      {error && <Message validation="error">{error}</Message>}
+      {error && <Field.Message validation="error">{error}</Field.Message>}
       <input type="hidden" name={name} value={selectedOption?.value} />
-    </GardenField>
+    </Field>
   );
 }

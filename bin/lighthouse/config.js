@@ -73,6 +73,18 @@ module.exports = {
           selector: "nav > ol.breadcrumbs > li > a",
         },
       ],
+      label: [
+        {
+          path: "/hc/:locale/requests",
+          selector:
+            "div#main-content > div.sc-koXPp > div.sc-imWYAI > input#downshift-0-input",
+        },
+        {
+          path: "/hc/:locale/requests",
+          selector:
+            "thead.StyledHead-sc-spf23a-0 > tr.StyledBaseRow-sc-1t4zqg4-0 > th.StyledCell-sc-8hpncx-0 > input#downshift-1-input",
+        },
+      ],
     },
   },
 };

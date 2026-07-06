@@ -1,0 +1,470 @@
+title: "Guide Requests app"
+packages:
+  - guide-requests-app
+
+parts:
+  - translation:
+      key: guide-requests-app.myRequests
+      title: "Title of a page section where the current user can see their requests"
+      value: "My requests"
+      screenshot: "https://drive.google.com/file/d/1GKtVd7FnRbqu408DNBe-l_-fapj2bWRK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.ccdRequests
+      title: "Title of a page section where the current user can see the requests they have been added as CC"
+      value: "Requests I am CC'd on"
+      screenshot: "https://drive.google.com/file/d/1GKtVd7FnRbqu408DNBe-l_-fapj2bWRK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.organizationalRequests
+      title: "Title of a page section where the current user can see their organizations' requests"
+      value: "Organizational requests"
+      screenshot: "https://drive.google.com/file/d/1GKtVd7FnRbqu408DNBe-l_-fapj2bWRK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.requestCount.zero
+      title: "Label indicating the number of requests, when there are 0 requests"
+      value: "{{count}} requests"
+      screenshot: "https://drive.google.com/file/d/1GKtVd7FnRbqu408DNBe-l_-fapj2bWRK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.requestCount.one
+      title: "Label indicating the number of requests, when there is 1 request"
+      value: "{{count}} request"
+      screenshot: "https://drive.google.com/file/d/1GKtVd7FnRbqu408DNBe-l_-fapj2bWRK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.requestCount.other
+      title: "Label indicating the number of requests, when there are more than 1 request"
+      value: "{{count}} requests"
+      screenshot: "https://drive.google.com/file/d/1GKtVd7FnRbqu408DNBe-l_-fapj2bWRK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.requestCount.range
+      title: "Label indicating the number of requests being displayed / paginated from a total number"
+      value: "{{from}} - {{to}} of {{total}} requests"
+      screenshot: "https://drive.google.com/file/d/1YuSO7WaQF57CRBK4htOObMcWkVDgzrM1/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.requestCount.screenreader.range
+      title: "Label indicating the number of requests being displayed / paginated from a total number"
+      value: "{{from}} to {{to}} of {{total}} requests"
+      screenshot: "https://drive.google.com/file/d/1YuSO7WaQF57CRBK4htOObMcWkVDgzrM1/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.filter
+      title: "Button where users can filter their requests"
+      value: "Filter"
+      screenshot: "https://drive.google.com/file/d/1GKtVd7FnRbqu408DNBe-l_-fapj2bWRK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.subject
+      title: "Field name for the request subject"
+      value: "Subject"
+      screenshot: "https://drive.google.com/file/d/1GKtVd7FnRbqu408DNBe-l_-fapj2bWRK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.id
+      title: "Field name for the request id"
+      value: "ID"
+      screenshot: "https://drive.google.com/file/d/1GKtVd7FnRbqu408DNBe-l_-fapj2bWRK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.createdDate
+      title: "Field name for the request created date"
+      value: "Created date"
+      screenshot: "https://drive.google.com/file/d/1GKtVd7FnRbqu408DNBe-l_-fapj2bWRK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.dateCreated
+      title: "Field name for the request created date"
+      value: "Date created"
+      screenshot: "https://drive.google.com/file/d/1uC0OoEyoKJWka0hfYQ20WOGiWxMYlSTk/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.updatedDate
+      title: "Field name for the request updated date"
+      value: "Updated date"
+      screenshot: "https://drive.google.com/file/d/1GKtVd7FnRbqu408DNBe-l_-fapj2bWRK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.dateUpdated
+      title: "Field name for the request updated date"
+      value: "Date updated"
+      screenshot: "https://drive.google.com/file/d/1C-ZH2KmsXWUMwb1HZYvbkY2BmscUZeKF/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.status
+      title: "Field name for the request status"
+      value: "Status"
+      screenshot: "https://drive.google.com/file/d/1GKtVd7FnRbqu408DNBe-l_-fapj2bWRK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.ccd
+      title: "Filter name for filtering requests where the current user is added as CC"
+      value: "CC'd"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.requester
+      title: "Filter name for filtering requests by requester"
+      value: "Requester"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.requesterMe
+      title: "Filter value for filtering requests requested by the current user"
+      value: "Me"
+      screenshot: "https://drive.google.com/file/d/1P0MKvX8R7R3QMXeMdTgYRBTmS5Xik7jK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.organization
+      title: "Filter name for filtering requests by organization"
+      value: "Organization"
+      screenshot: "https://drive.google.com/file/d/1YuSO7WaQF57CRBK4htOObMcWkVDgzrM1/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.visibleColumns
+      title: "[A11Y] Label that indicates a button can be used to change the visible columns"
+      value: "Visible columns"
+      screenshot: "https://drive.google.com/file/d/1HwnJkadhj0uxiQ-4EjMPE6mx41aIXcJH/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.statusNew
+      title: "Request status when a request is new"
+      value: "New"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.statusOpen
+      title: "Request status when a request is open"
+      value: "Open"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.statusHold
+      title: "Request status when a request is on-hold"
+      value: "On-hold"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.statusPending
+      title: "Requests status when a request is waiting for the user to reply"
+      value: "Awaiting reply"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.statusPending_v2
+      title: "Requests status when a request is waiting for the user to reply"
+      value: "Awaiting your reply"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.statusSolved
+      title: "Requests status when a request is solved"
+      value: "Solved"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.statusClosed
+      title: "Requests status when a request is closed"
+      value: "Closed"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.inThePastDay
+      title: "Filter value that filters by a relative date i.e. created in the past day"
+      value: "In the past day"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.inThePastWeek
+      title: "Filter value that filters by a relative date i.e. created in the past week"
+      value: "In the past week"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.inThePastMonth
+      title: "Filter value that filters by a relative date i.e. created in the past month"
+      value: "In the past month"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.inThePast3Months
+      title: "Filter value that filters by a relative date i.e. created in the past 3 months"
+      value: "In the past 3 months"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.inThePast6Months
+      title: "Filter value that filters by a relative date i.e. created in the past 6 months"
+      value: "In the past 6 months"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.inThePastYear
+      title: "Filter value that filters by a relative date i.e. created in the past year"
+      value: "In the past year"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.custom
+      title: "Filter value that can be customized by the user"
+      value: "Custom"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.startDate
+      title: "Label that indicates the start date"
+      value: "Start"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.endDate
+      title: "Label that indicates the end date"
+      value: "End"
+      screenshot: "https://drive.google.com/file/d/1jxE2zNqbSDZTaQXbfnWq5CoJnmCJD6j7/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.endDateAfterStartDate
+      title: "Error message shown when the user inputs an end date that is prior to the start date"
+      value: "End date must occur after the start date"
+      screenshot: "https://drive.google.com/file/d/1MqbwGyjK1c3ZrY0qww0lui4jkAnkxDMg/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.no-start-date-error
+      title: "Error message shown when the start date is missing in the custom date filters"
+      value: "Select a start date"
+      screenshot: "https://drive.google.com/file/d/1VC1meTmkZx_MITrgPQ52shn4Yk7moOI4/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.no-end-date-error
+      title: "Error message shown when the end date is missing in the custom date filters"
+      value: "Select an end date"
+      screenshot: "https://drive.google.com/file/d/13NR37hV2Gr_HGlVb4P1OOFRcJrlYFDEo/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.date-lte-today
+      title: "Error message shown when the selected date is not less or equal than today in the custom date filters"
+      value: "Select a date earlier than or equal to today"
+      screenshot: "https://drive.google.com/file/d/1XAZl_212gme40L6KUFzXkld1WeHC7v3v/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.pressDeleteToRemove
+      title: "[A11Y] Label that indicates a filter tag can be removed with the keyboard"
+      value: "Press delete to remove"
+      screenshot: "https://drive.google.com/file/d/1rRLBgZu95Oi6mZJ-1rhtpmXxIu5LyUkA/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.clearFilters
+      title: "Label for a button that removes all filters applied by the user"
+      value: "Clear filters"
+      screenshot: "https://drive.google.com/file/d/1GKtVd7FnRbqu408DNBe-l_-fapj2bWRK/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.followOrganization
+      title: "Label for the user to follow an organization and manage their subscriptions"
+      value: "Follow organization"
+      screenshot: "https://drive.google.com/file/d/1YuSO7WaQF57CRBK4htOObMcWkVDgzrM1/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.receiveEmailUpdatesOrganizationsTickets
+      title: "Label that indicates users can subscribe to tickets from an organization list"
+      value: "Receive email updates about tickets within these organizations:"
+      screenshot: "https://drive.google.com/file/d/1L9oOIVIGpBMsrLM4nyfoIla0U3y4SpND/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.cancel
+      title: "Cancel action"
+      value: "Cancel"
+      screenshot: "https://drive.google.com/file/d/1L9oOIVIGpBMsrLM4nyfoIla0U3y4SpND/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.save
+      title: "Save action"
+      value: "Save"
+      screenshot: "https://drive.google.com/file/d/1L9oOIVIGpBMsrLM4nyfoIla0U3y4SpND/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.previous
+      title: "Text for link to go to the previous page of results"
+      value: "Previous"
+      screenshot: "https://drive.google.com/file/d/1XPYr8-ABy9gvGdNtIcukWWzto5Empy-p/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.next
+      title: "Text for link to go to the next page of results"
+      value: "Next"
+      screenshot: "https://drive.google.com/file/d/1XPYr8-ABy9gvGdNtIcukWWzto5Empy-p/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.showMore
+      title: "Text for Show more in the organization management modal"
+      value: "Show more"
+      screenshot: "https://drive.google.com/file/d/1KbALNlh6ISgTGaayd5K6OQxIWrrtbA5w/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.giveItAMomentAndTryAgain
+      title: "Description of the alert error when a subscription fails to save"
+      value: "Give it a moment and try again"
+      screenshot: "https://drive.google.com/file/d/1zVS41m4mJitSZ71vMkdYMSlSMCfVGQeP/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.organizationSubscriptionCouldNotBeSaved
+      title: "Inline error message when a subscription fails to save"
+      value: "Organization subscription could not be saved"
+      screenshot: "https://drive.google.com/file/d/1zVS41m4mJitSZ71vMkdYMSlSMCfVGQeP/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.organizationSubscriptionUpdated
+      title: "Success notification when organization subscriptions saved correctly"
+      value: "Organization subscription updated"
+      screenshot: "https://drive.google.com/file/d/1lJ2liGSDUs00SOGUkSSSUbC8LrnBL2VT/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.closeModal
+      title: "[A11Y] Text for closing a modal for screenreaders as an aria-label"
+      value: "Close modal"
+      screenshot: ""
+  - translation:
+      key: "guide-requests-app.SearchPhraseIsTooLong"
+      title: "Error message when the search phrase contains too many words"
+      value: "Search phrase is too long. Try something shorter."
+      screenshot: "https://drive.google.com/file/d/1O9xgU-OX9_EHcYGH4TW2xcp_LypIrIh2/view?usp=sharing"
+  - translation:
+      key: guide-requests-app.searchLabel
+      title: "[A11Y] Hidden Label for requests search input, for screen readers"
+      value: "Search"
+      screenshot: "https://drive.google.com/file/d/1VizYEMJzTbQ5T7pfYDGMDCU_ZtSZAUq8/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filters-modal.title"
+      title: "Title of the modal for filter selection"
+      value: "Filters"
+      screenshot: "https://drive.google.com/file/d/1RrncIP1dX87tFe6Qg_iZVaDJwbrZQkAI/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filters-modal.select-filter"
+      title: "Label of the select input with fields to filter by"
+      value: "Select filter"
+      screenshot: "https://drive.google.com/file/d/15-YWgjpQQeg10SGfrVCi4bJj_eyBWeir/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filters-modal.apply-filter-button"
+      title: "Text on the button that applies the filter"
+      value: "Apply filter"
+      screenshot: "https://drive.google.com/file/d/1jft9Sz_8AqpKHa8GpBd4nzSC8eybamMM/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filters-dropdown.see-all-filters"
+      title: "Dropdown item that displays the modal with all filters"
+      value: "See all filters"
+      screenshot: "https://drive.google.com/file/d/1hU6lTCnV42DRa7TR1UoPv-kVqQiyLls1/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filters-modal.no-matches-found"
+      title: "Disabled select item text indicating there are no items with given value"
+      value: "No matches found"
+      screenshot: "https://drive.google.com/file/d/12YajmYMOT83MY-JD3zNqH0_jgHCW0D6d/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filters-modal.enter-field-value"
+      title: "Input label, it says to enter the specific field, where field name can be anything and can be translated itself.  Use colons if you encounter gender issues (Enter: {{field_name}})."
+      value: "Enter {{field_name}}"
+      screenshot: "https://drive.google.com/file/d/1mRXVEBmEwaGgGpbLlPKvx95WFYqBz68-/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filters-modal.select-field-value"
+      title: "Select label, it says to select the specific field, where field name can be anything and can be translated itself. Use colons if you encounter gender or declension issues (Select: {{field_name}})."
+      value: "Select {{field_name}}"
+      screenshot: "https://drive.google.com/file/d/1z0iFv-9LbeyAUYqHYyx11lJqsYaJ85hs/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.error-icon-label"
+      title: "[A11Y] Hidden label for the error icon in validation messages"
+      value: "Error"
+      screenshot: "https://drive.google.com/file/d/1dKqep5A75Dcq-QWsxBOVzvKwkp73ogby/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filters-modal.select-filter-required"
+      title: "Error message shown when no filter is selected"
+      value: "Select a filter"
+      screenshot: "https://drive.google.com/file/d/1SrDE63gJVN0LY5Qxz2ANc_jcIQLMfstC/view?usp=share_link"
+  - translation:
+      key: "guide-requests-app.filters-modal.multiselect-no-value-error"
+      title: "Error message shown when no value is selected for dropdown or multiselect filter"
+      value: "Select at least one value"
+      screenshot: "https://drive.google.com/file/d/19F4-U8dfm2AXMWl5rW2zTg3HbmB5VFwG/view?usp=share_link"
+  - translation:
+      key: "guide-requests-app.filters-modal.no-filter-type-error"
+      title: "Error message shown when no value is selected for filter type"
+      value: "Select a filter type"
+      screenshot: "https://drive.google.com/file/d/1hWoM00H61soOgHNgg8fZXLEyL-op8I3V/view?usp=share_link"
+  - translation:
+      key: "guide-requests-app.filters-modal.no-text-value-error"
+      title: "Error message shown when no value is present for text and multiline filter"
+      value: "Insert a value"
+      screenshot: "https://drive.google.com/file/d/1k275CFO_3scDmHgdR1cYCua4tUZO0nVq/view?usp=share_link"
+  - translation:
+      key: "guide-requests-app.filters-modal.select-value-error"
+      title: "Error message shown when no value is selected from a dropdown in a filter"
+      value: "Select a value"
+      screenshot: "https://drive.google.com/file/d/1Byr7-N8u6iM4B9BC48Yr1hw8FEfOd-mk/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.anyValue"
+      title: "Option in a select input. Selecting this option will filter on requests containing any value in the given field."
+      value: "Any value"
+      screenshot: "https://drive.google.com/file/d/1XaGHf3AQl3NfAvh85wzr6ckOH4-bomNh/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.exactMatch"
+      title: "Option in a select input. Selecting this option will filter on requests containing this specific value in the given field."
+      value: "Exact match"
+      screenshot: "https://drive.google.com/file/d/1qFnofAs1OY1el-dlXjbqKJSwly4ZuI1s/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.range-filter-type"
+      title: "Option in a select input for the number custom field filter. Selecting this option will present two inputs to select a range of values."
+      value: "Range"
+      screenshot: "https://drive.google.com/file/d/1RUs2O-UdK3Il3pUAeSdb0ACNaURqUhKa/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filter-modal.filterTypeLabel"
+      title: "Label for the filter type select input."
+      value: "Filter type"
+      screenshot: "https://drive.google.com/file/d/1HLUskbXgkJmnAdqP4HcRQa4DMp-fcDin/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filter-modal.minValue"
+      title: "Label for the field used to insert the minimum value for a range in a number filter."
+      value: "Min value"
+      screenshot: "https://drive.google.com/file/d/1RUs2O-UdK3Il3pUAeSdb0ACNaURqUhKa/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filter-modal.maxValue"
+      title: "Label for the field used to insert the maximum value for a range in a number filter."
+      value: "Max value"
+      screenshot: "https://drive.google.com/file/d/1RUs2O-UdK3Il3pUAeSdb0ACNaURqUhKa/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filter-modal.minValue-greater-than-maxValue"
+      title: "Error message displayed in the number range filter when the minimum value is greater than the maximum value"
+      value: "Select a value greater than min value"
+      screenshot: "https://drive.google.com/file/d/1PyEtbCP7xZBLJh9ssleuq2VZnjG5-TX2/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filter-modal.integer-value-error"
+      title: "Error message displayed in the number filter when the user inserted a decimal value instead of an integer"
+      value: "Insert an integer value"
+      screenshot: "https://drive.google.com/file/d/1kFTJKfl8rURWiyudZa_qmOa4roLxb9pl/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.checkbox-filter.selected"
+      title: "Option in a select input for a checkbox custom field. Selecting this option will filter for requests where the checkbox is selected"
+      value: "Selected"
+      screenshot: "https://drive.google.com/file/d/1z0iFv-9LbeyAUYqHYyx11lJqsYaJ85hs/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.checkbox-filter.not-selected"
+      title: "Option in a select input for a checkbox custom field. Selecting this option will filter for requests where the checkbox is not selected"
+      value: "Not selected"
+      screenshot: "https://drive.google.com/file/d/1z0iFv-9LbeyAUYqHYyx11lJqsYaJ85hs/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filter-modal.credit-card-digits-label"
+      title: "Label for the field used to insert the last 4 digits of a credit card in the credit card custom field filter"
+      value: "Enter the last four digits of the credit card"
+      screenshot: "https://drive.google.com/file/d/1bG0vUElPmgKmDKhWBBFp9UzjCE9WqMoU/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.filter-modal.credit-card-digits-format-error"
+      title: "Error message shown when the user inserted an invalid value for the field containing the last 4 digits of a credit card in the credit card custom field filter"
+      value: "Enter the last four digits of the credit card, using only numbers"
+      screenshot: "https://drive.google.com/file/d/140fwNc0y25Uyk-HlWbNXfgUc9UcgQC2A/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.column-selection.show-hide-columns"
+      title: "Header of a dropdown menu and a modal where the user can select what columns should be shown or hidden in the request list table"
+      value: "Show and hide columns"
+      screenshot: "https://drive.google.com/file/d/1kYoRRkBO9KwxUQHikt_DkKVBSs_HT4Xj/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.column-selection.see-more-columns"
+      title: "Item of a dropdown menu which will open a modal where the user can see more columns to be shown or hidden in the request list table"
+      value: "See more columns"
+      screenshot: "https://drive.google.com/file/d/1kYoRRkBO9KwxUQHikt_DkKVBSs_HT4Xj/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.column-selection.show-all"
+      title: "[A11Y] Label for a checkbox in the column selection modal, which will mark all columns to be shown when clicked"
+      value: "Show all columns"
+      screenshot: "https://drive.google.com/file/d/1ERdCQc6wqVfDEhaHfBVoAgc6dK7RQGhZ/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.column-selection.hide-all"
+      title: "[A11Y] Label for a checkbox in the column selection modal, which will mark all columns to be hidden when clicked"
+      value: "Hide all columns"
+      screenshot: "https://drive.google.com/file/d/1ERdCQc6wqVfDEhaHfBVoAgc6dK7RQGhZ/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.column-selection.column"
+      title: "Table header which describes the column containing the name of the request column that can be shown or hidden"
+      value: "Column"
+      screenshot: "https://drive.google.com/file/d/1ERdCQc6wqVfDEhaHfBVoAgc6dK7RQGhZ/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.column-selection.show-column"
+      title: "[A11Y] Label for a checkbox in the column selection modal, which will mark a column to be shown when clicked"
+      value: "Show {{column_name}} column"
+      screenshot: "https://drive.google.com/file/d/1ERdCQc6wqVfDEhaHfBVoAgc6dK7RQGhZ/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.column-selection.hide-column"
+      title: "[A11Y] Label for a checkbox in the column selection modal, which will mark a column to be hidden when clicked"
+      value: "Hide {{column_name}} column"
+      screenshot: "https://drive.google.com/file/d/1ERdCQc6wqVfDEhaHfBVoAgc6dK7RQGhZ/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.column-selection.search-columns"
+      title: "[A11Y] Hidden label for a search box in the column selection modal, which will let the user to filter by the column name"
+      value: "Search for columns"
+      screenshot: "https://drive.google.com/file/d/1HsJr6R1tstXmqpm00nzIHhgW7LMpJN71/view?usp=sharing"
+  - translation:
+      key: "guide-requests-app.error-boundary-title"
+      title: "Message shown when an error occurs"
+      screenshot: "https://drive.google.com/file/d/1rJ9c4mW0YWnL5d6KWWZaY9TJBEH5otLL/view?usp=drive_link"
+      value: "Something went wrong."
+  - translation:
+      key: "guide-requests-app.error-boundary-message"
+      title: "Message shown when an error occurs"
+      screenshot: "https://drive.google.com/file/d/1rJ9c4mW0YWnL5d6KWWZaY9TJBEH5otLL/view?usp=drive_link"
+      value: "Give it a moment and try again later"
+  - translation:
+      key: "guide-requests-app.error-boundary-go-to-homepage"
+      title: "Error state with a link forwarding user to the homepage "
+      screenshot: "https://drive.google.com/file/d/1rJ9c4mW0YWnL5d6KWWZaY9TJBEH5otLL/view?usp=drive_link"
+      value: "Go to the homepage"
+  - translation:
+      key: "guide-requests-app.requests-empty-state"
+      title: "Message for empty state when no requests were created"
+      screenshot: "https://drive.google.com/file/d/1Wskvy0oxzKjgJ1SbgV9j57n5cwe8tR92/view?usp=sharing"
+      value: "No requests found"

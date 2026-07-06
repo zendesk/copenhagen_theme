@@ -53,6 +53,26 @@ parts:
       screenshot: "https://drive.google.com/file/d/1BYDLuhii7aQs18TkKflGCpReb_UCKSeD/view?usp=drive_link"
       value: "Read less"
   - translation:
+      key: "service-catalog.item.change-category"
+      title: "Dropdown trigger to change the category of a multi-placed service catalog item"
+      screenshot: "https://drive.google.com/file/d/1i-5SW5902PNqnPu73-IwxaeuWEAvxGVw/view?usp=sharing"
+      value: "Change category"
+  - translation:
+      key: "service-catalog.item.preview-mode.title"
+      title: "Title of the preview mode alert banner shown when an admin or manager previews a draft service catalog item"
+      screenshot: "https://drive.google.com/file/d/1g_V7_2FwGUnhkrXypzymlq8aBUuCgaWy/view?usp=sharing"
+      value: "Preview mode"
+  - translation:
+      key: "service-catalog.item.preview-mode.message"
+      title: "Message body of the preview mode alert banner explaining how to exit preview mode"
+      screenshot: "https://drive.google.com/file/d/1g_V7_2FwGUnhkrXypzymlq8aBUuCgaWy/view?usp=sharing"
+      value: "If you navigate away from this page or click on anything outside of this preview, you'll exit the preview mode."
+  - translation:
+      key: "service-catalog.item.preview-mode.submit-disabled-tooltip"
+      title: "Tooltip explaining why the submit request button is disabled while previewing a draft service catalog item"
+      screenshot: "https://drive.google.com/file/d/1g_V7_2FwGUnhkrXypzymlq8aBUuCgaWy/view?usp=sharing"
+      value: "Submitting requests is disabled while previewing a draft"
+  - translation:
       key: "service-catalog.item.submit-button"
       title: "Button to submit a request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1kuv7v6Vtx787TdVz8AOmD6v0ow79Xd6c/view?usp=drive_link"
@@ -72,6 +92,16 @@ parts:
       title: "Error notification after unsuccessful submitting request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1KlkSK4FQiAYn2ERUJwy1tSYfr1gtjW0E/view?usp=drive_link"
       value: "Give it a moment and try it again"
+  - translation:
+      key: "service-catalog.item.service-request-refresh-message"
+      title: "Error notification message instructing user to refresh the page after unsuccessful submitting request for service catalog item"
+      screenshot: "https://drive.google.com/file/d/1zo9CJBpN2F5J5qAjRM39Cr4ytheixdcn/view?usp=sharing"
+      value: "Refresh the page and try again in a few seconds."
+  - translation:
+      key: "service-catalog.item.service-request-refresh-link-text"
+      title: "Refresh page link"
+      screenshot: "https://drive.google.com/file/d/1zo9CJBpN2F5J5qAjRM39Cr4ytheixdcn/view?usp=sharing"
+      value: "Refresh the page"
   - translation:
       key: "service-catalog.item.service-request-error.close-label"
       title: "[A11Y] Hidden label for screen readers for close buttons (e.g. in modals and notifications)"
@@ -123,13 +153,173 @@ parts:
       title: "Search for services in the Service List"
       screenshot: "https://drive.google.com/file/d/1JHDB_jxDaL0ozmpUTYIhYMaCm4-4SN27/view?usp=drive_link"
       value: "Search for services"
-  - translation: 
+  - translation:
       key: "service-catalog.clear-search"
       title: "Clear search button"
       screenshot: "https://drive.google.com/file/d/11u8u7DOlPvAMZcFlsj_aPU1mPOSzjBxY/view?usp=drive_link"
       value: "Clear search"
-  - translation: 
+  - translation:
       key: "service-catalog.empty-state.search-description"
       title: "Empty state with search description"
       screenshot: "https://drive.google.com/file/d/10DiQB3DDf9x13owivlJs9QMNWVXCKdOd/view?usp=drive_link"
       value: "Enter your keywords in the search field."
+  - translation:
+      key: "service-catalog.item.serial-number-label"
+      title: "Label prefix for serial number shown in lookup field options. Serial number (SN) abbreviation can be translated as per language"
+      screenshot: "https://drive.google.com/file/d/1H4Tsm7YHGdtFnSElJH6ZUIIU7VyySq2S/view?usp=sharing"
+      value: "SN: {{serialNumber}}"
+  - translation:
+      key: "service-catalog.item.attachments-label"
+      title: "Label for the attachment upload field in the service catalog item request form"
+      screenshot: "https://drive.google.com/file/d/1iixvKen00peKisWS4FkGLBhip1o8LGKT/view?usp=sharing"
+      value: "Upload a file"
+  - translation:
+      key: "service-catalog.attachments-required-error"
+      title: "Error message for attachments required field validation"
+      screenshot: "https://drive.google.com/file/d/1pzBRSy9JYwExx8v2HsMPbh-aLlKvod57/view?usp=sharing"
+      value: "Upload a file to continue"
+  - translation:
+      key: "service-catalog.asset-type-required-error"
+      title: "Error message for the required field validation of asset type"
+      screenshot: "https://drive.google.com/file/d/1ltxeEIUX0KXNzhjYcXuwXG-ZCG-MEC2z/view?usp=sharing"
+      value: "Select an asset type"
+  - translation:
+      key: "service-catalog.asset-required-error"
+      title: "Error message for the required field validation for asset"
+      screenshot: "https://drive.google.com/file/d/1ltxeEIUX0KXNzhjYcXuwXG-ZCG-MEC2z/view?usp=sharing"
+      value: "Select an asset"
+  - translation:
+      key: "service-catalog-sidebar.collapse-category"
+      title: "[A11Y] Hidden label for screen readers for the collapse category button in the service catalog sidebar"
+      screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=sharing"
+      value: "Collapse"
+  - translation:
+      key: "service-catalog-sidebar.expand-category"
+      title: "[A11Y] Hidden label for screen readers for the expand category button in the service catalog sidebar"
+      screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=sharing"
+      value: "Expand"
+  - translation:
+      key: "service-catalog-sidebar.all-services"
+      title: "Label for the navigation item in the service catalog sidebar that shows all services"
+      screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=share_link"
+      value: "All services"
+  - translation:
+      key: "service-catalog-sidebar.uncategorized"
+      title: "Label for the navigation item in the service catalog sidebar that shows uncategorized services"
+      screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=share_link"
+      value: "Uncategorized"
+  - translation:
+      key: "service-catalog.change-user-modal.close"
+      title: "[A11Y] Hidden label for screen readers for close button in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Close modal"
+  - translation:
+      key: "service-catalog.change-user-modal.title"
+      title: "Modal title for changing the requester user"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Change user"
+  - translation:
+      key: "service-catalog.change-user-modal.select-user-label"
+      title: "Label for user selection dropdown in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Select user* (required)"
+  - translation:
+      key: "service-catalog.change-user-modal.search-placeholder"
+      title: "Placeholder text for user search input in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Search users..."
+  - translation:
+      key: "service-catalog.change-user-modal.loading-users"
+      title: "Loading state message while fetching users in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1vGrS-VCQ3sjR2rjuCItssLuJhmrll98D/view?usp=share_link"
+      value: "Loading users..."
+  - translation:
+      key: "service-catalog.change-user-modal.no-matches-found"
+      title: "Empty state message when no users match the search in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Type to search"
+  - translation:
+      key: "service-catalog.change-user-modal.add-user"
+      title: "Link text to add a new user in Change User modal dropdown footer"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Add user"
+  - translation:
+      key: "service-catalog.validation.error.aria.label"
+      title: "[A11Y] Hidden label for screen readers for validation error messages"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Error"
+  - translation:
+      key: "service-catalog.change-user-modal.user-required"
+      title: "Error message when user tries to save without selecting a user"
+      screenshot: "https://drive.google.com/file/d/1NzYBWHmHQZPPia0ud3uLWy41haGPQwUn/view?usp=share_link"
+      value: "Select a user"
+  - translation:
+      key: "service-catalog.change-user-modal.cancel"
+      title: "Cancel button text in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Cancel"
+  - translation:
+      key: "service-catalog.change-user-modal.change-user"
+      title: "Save/Submit button text in Change User modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Save"
+  - translation:
+      key: "service-catalog.item.change-user-requesting-on-behalf"
+      title: "Link text to change the requester user on behalf of whom the request is being submitted"
+      screenshot: "https://drive.google.com/file/d/1k5um4vxeW-SV1vQlblYJFU4uHzdejvju/view?usp=share_link"
+      value: "Change"
+  - translation:
+      key: "service-catalog.change-user-modal.new-user-name"
+      title: "Label for name input field in Add User form"
+      screenshot: "https://drive.google.com/file/d/1Br5FvhlHzgUPl4FQlQnZcDA83pXKmHea/view?usp=share_link"
+      value: "Name*"
+  - translation:
+      key: "service-catalog.change-user-modal.new-user-email"
+      title: "Label for email input field in Add User form"
+      screenshot: "https://drive.google.com/file/d/1Br5FvhlHzgUPl4FQlQnZcDA83pXKmHea/view?usp=share_link"
+      value: "Email"
+  - translation:
+      key: "service-catalog.change-user-modal.new-user-name-required"
+      title: "Error message when name field is empty in Add User form"
+      screenshot: "https://drive.google.com/file/d/1Br5FvhlHzgUPl4FQlQnZcDA83pXKmHea/view?usp=share_link"
+      value: "Enter a name"
+  - translation:
+      key: "service-catalog.change-user-modal.new-user-email-exists"
+      title: "Error message when email already exists in Add User form"
+      screenshot: "https://drive.google.com/file/d/1Br5FvhlHzgUPl4FQlQnZcDA83pXKmHea/view?usp=share_link"
+      value: "This email is already being used by a user."
+  - translation:
+      key: "service-catalog.sort.name-asc"
+      title: "Sort option in the service catalog list that orders services alphabetically from A to Z"
+      screenshot: ""
+      value: "A-Z"
+  - translation:
+      key: "service-catalog.sort.name-desc"
+      title: "Sort option in the service catalog list that orders services alphabetically from Z to A"
+      screenshot: ""
+      value: "Z-A"
+  - translation:
+      key: "service-catalog.sort.newest"
+      title: "Sort option in the service catalog list that orders services from newest to oldest"
+      screenshot: ""
+      value: "Newest"
+  - translation:
+      key: "service-catalog.sort.aria-label"
+      title: "[A11Y] Hidden label for screen readers describing the sort options group in the service catalog list"
+      screenshot: ""
+      value: "Sort services"
+  - translation:
+      key: "service-catalog.item.user"
+      title: "Label above the requester's name in the service request form"
+      screenshot: "https://drive.google.com/file/d/1k5um4vxeW-SV1vQlblYJFU4uHzdejvju/view?usp=share_link"
+      value: "User"
+  - translation:
+      key: "service-catalog.item.submitter-label"
+      title: "Line in the request comment naming who submitted the request on behalf of another user. {{name}} is the submitter's name."
+      screenshot: "https://drive.google.com/file/d/1kkyjrLu9UZWVPFowlqwZ-D-qE0zwcUyV/view?usp=sharing"
+      value: "Submitter: {{name}}"
+  - translation:
+      key: "service-catalog.item.user-label"
+      title: "Line in the request comment naming the user the request was submitted on behalf of. {{name}} is that user's name."
+      screenshot: "https://drive.google.com/file/d/1kkyjrLu9UZWVPFowlqwZ-D-qE0zwcUyV/view?usp=sharing"
+      value: "User: {{name}}"
