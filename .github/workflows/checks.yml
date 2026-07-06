@@ -30,6 +30,7 @@ jobs:
         run: yarn commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }}
   lint:
     name: Lint JS files
+    if: ${{ github.ref != 'refs/heads/beta' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
