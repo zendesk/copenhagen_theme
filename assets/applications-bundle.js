@@ -1,6 +1,11 @@
-import { Y as initI18next, Z as loadTranslations, _ as reactDomExports, j as jsxRuntimeExports, a0 as ThemeProviders, a1 as createTheme, ap as GlobalNotificationsRoot } from 'shared';
+import { u as useTranslation, j as jsxRuntimeExports, Y as initI18next, Z as loadTranslations, _ as reactDomExports, a0 as ThemeProviders, a1 as createTheme, ao as ErrorBoundary } from 'shared';
 
-function __variableDynamicImportRuntime0__(path) {
+function Applications() {
+    const { t } = useTranslation();
+    return (jsxRuntimeExports.jsx("p", { children: t("applications.description", "This page will be used for SaaS management.") }));
+}
+
+function __variableDynamicImportRuntime1__(path) {
   switch (path) {
     case '../shared/translations/locales/af.json': return import('shared').then(function (n) { return n.aX; });
     case '../shared/translations/locales/ar-x-pseudo.json': return import('shared').then(function (n) { return n.aY; });
@@ -110,24 +115,26 @@ function __variableDynamicImportRuntime0__(path) {
     })
    }
  }
-/**
- * Note: Historically named "flash notifications" after Rails flash messages.
- * This function now renders all notifications, not only flash ones.
- * The name is kept for backward compatibility with document_head.hbs.
- */
-async function renderFlashNotifications(settings, baseLocale) {
-    initI18next(baseLocale);
-    await loadTranslations(baseLocale, [
-        () => __variableDynamicImportRuntime0__(`../shared/translations/locales/${baseLocale}.json`),
+
+function __variableDynamicImportRuntime0__(path) {
+  switch (path) {
+    case './translations/locales/en-us.json': return import('applications-translations');
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+async function renderApplications(themeSettings, props, container) {
+    const { locale } = props;
+    initI18next(locale);
+    await loadTranslations(locale, [
+        () => __variableDynamicImportRuntime0__(`./translations/locales/${locale}.json`),
+        () => __variableDynamicImportRuntime1__(`../shared/translations/locales/${locale}.json`),
     ]);
-    try {
-        const container = document.createElement("div");
-        document.body.appendChild(container);
-        reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(GlobalNotificationsRoot, {}) }), container);
-    }
-    catch (e) {
-        console.error("Cannot render flash notifications", e);
-    }
+    const helpCenterPath = `/hc/${locale}`;
+    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(themeSettings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(Applications, {}) }) }), container);
 }
 
-export { renderFlashNotifications };
+export { renderApplications };
