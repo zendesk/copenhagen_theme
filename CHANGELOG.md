@@ -1,3 +1,16 @@
+# [4.45.0-beta.1](https://github.com/zendesk/copenhagen_theme/compare/v4.44.1...v4.45.0-beta.1) (2026-07-07)
+
+
+### Bug Fixes
+
+* **templates:** remove applications link until help_center is merged ([cb2f43c](https://github.com/zendesk/copenhagen_theme/commit/cb2f43caf72e388574430f54db593b3e150abc47))
+
+
+### Features
+
+* add link to the header ([548ab82](https://github.com/zendesk/copenhagen_theme/commit/548ab82a08cae0fccb0327f042dcf6965a3c8056))
+* **templates:** add applications page and React module ([0337ca5](https://github.com/zendesk/copenhagen_theme/commit/0337ca5528c27f13a5305d3deff13be7ceae7187))
+
 ## [4.44.1](https://github.com/zendesk/copenhagen_theme/compare/v4.44.0...v4.44.1) (2026-07-03)
 
 
