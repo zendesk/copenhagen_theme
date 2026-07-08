@@ -1,3 +1,10 @@
+## [4.44.1](https://github.com/zendesk/copenhagen_theme/compare/v4.44.0...v4.44.1) (2026-07-03)
+
+
+### Bug Fixes
+
+* add styling to wrap long names in request page ([2e2ac5c](https://github.com/zendesk/copenhagen_theme/commit/2e2ac5cdee76cecd0c5a65a1d3f2f831b5fdb0e6))
+
 # [4.44.0](https://github.com/zendesk/copenhagen_theme/compare/v4.43.0...v4.44.0) (2026-06-30)
 
 

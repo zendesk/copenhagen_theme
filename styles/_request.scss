@@ -157,6 +157,7 @@
       line-break: strict;
       color: $secondary-text-color;
       width: 40%;
+      overflow-wrap: break-word;
     }
 
     .request-collaborators {
