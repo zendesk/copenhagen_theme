@@ -46,7 +46,13 @@ const renderComponent = async (params?: Partial<RequestListParams>) => {
     push,
   });
 
-  render(<RequestsList locale="en-us" customStatusesEnabled={false} />);
+  render(
+    <RequestsList
+      locale="en-us"
+      customStatusesEnabled={false}
+      filterTicketFieldsByBrand={false}
+    />
+  );
 
   // This is needed because of a “bug” with the Jest fake timers
   // See: https://github.com/facebook/jest/issues/10221

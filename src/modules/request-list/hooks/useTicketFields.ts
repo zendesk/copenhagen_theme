@@ -37,28 +37,42 @@ async function listTicketForms(
   return await response.json();
 }
 
-export function useTicketFields(locale: string): UseTicketFields {
+export function useTicketFields(
+  locale: string,
+  filterByBrand: boolean
+): UseTicketFields {
   const [ticketFields, setTicketFields] = useState<TicketField[]>([]);
   const [error, setError] = useState<Error | undefined>();
   const [isLoading, setIsLoading] = useState(true);
 
   async function fetchTicketFields() {
     try {
-      const [ticketFields, ticketForms] = await Promise.all([
-        fetchAllCursorPages(() => listTicketFields(locale), "ticket_fields"),
-        fetchAllCursorPages(() => listTicketForms(locale), "ticket_forms"),
-      ]);
+      if (filterByBrand) {
+        const [ticketFields, ticketForms] = await Promise.all([
+          fetchAllCursorPages(() => listTicketFields(locale), "ticket_fields"),
+          fetchAllCursorPages(() => listTicketForms(locale), "ticket_forms"),
+        ]);
 
-      const activeTicketFieldIds = new Set<number>(
-        ticketForms.flatMap((ticketForm) => ticketForm.ticket_field_ids ?? [])
-      );
+        const activeTicketFieldIds = new Set<number>(
+          ticketForms.flatMap((ticketForm) => ticketForm.ticket_field_ids ?? [])
+        );
 
-      setTicketFields(
-        ticketFields.filter(
-          (ticketField) =>
-            ticketField.active && activeTicketFieldIds.has(ticketField.id)
-        )
-      );
+        setTicketFields(
+          ticketFields.filter(
+            (ticketField) =>
+              ticketField.active && activeTicketFieldIds.has(ticketField.id)
+          )
+        );
+      } else {
+        const ticketFields = await fetchAllCursorPages(
+          () => listTicketFields(locale),
+          "ticket_fields"
+        );
+
+        setTicketFields(
+          ticketFields.filter((ticketField) => ticketField.active)
+        );
+      }
 
       setIsLoading(false);
     } catch (error) {
