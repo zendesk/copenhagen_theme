@@ -88,8 +88,11 @@ export function RequestsTable({
   const SELECTABLE_COLUMNS = [...DEFAULT_DESKTOP_COLUMNS, "requester"];
 
   const requestAttributes: RequestAttribute[] = useMemo(() => {
-    if (ticketFields.length === 0) {
-      return [];
+    if (!ticketFields || ticketFields.length === 0) {
+      return DEFAULT_DESKTOP_COLUMNS.map((identifier) => {
+        const label = requestAttributesLabels[identifier] ?? identifier;
+        return { identifier, label };
+      });
     }
 
     return [

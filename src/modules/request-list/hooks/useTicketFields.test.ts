@@ -46,7 +46,9 @@ test("fetches all ticket fields via ticket_fields api call and returns the activ
       },
     ]);
 
-  const { result, waitForNextUpdate } = renderHook(() => useTicketFields("dk"));
+  const { result, waitForNextUpdate } = renderHook(() =>
+    useTicketFields("dk", false)
+  );
 
   await waitForNextUpdate();
 
@@ -63,7 +65,9 @@ test("fetches all ticket fields via ticket_fields api call and returns the activ
 test("handles exceptions", async () => {
   fetchAllCursorPages.mockRejectedValueOnce(new Error("Network error"));
 
-  const { result, waitForNextUpdate } = renderHook(() => useTicketFields("dk"));
+  const { result, waitForNextUpdate } = renderHook(() =>
+    useTicketFields("dk", false)
+  );
 
   await waitForNextUpdate();
 
@@ -93,7 +97,9 @@ test("filters out inactive subject field", async () => {
       },
     ]);
 
-  const { result, waitForNextUpdate } = renderHook(() => useTicketFields("dk"));
+  const { result, waitForNextUpdate } = renderHook(() =>
+    useTicketFields("dk", false)
+  );
 
   await waitForNextUpdate();
 
@@ -123,12 +129,32 @@ test("only returns ticket fields present in active ticket forms", async () => {
       { id: 1, active: true, ticket_field_ids: [10, 40] },
     ]);
 
-  const { result, waitForNextUpdate } = renderHook(() => useTicketFields("dk"));
+  const { result, waitForNextUpdate } = renderHook(() =>
+    useTicketFields("dk", false)
+  );
 
   await waitForNextUpdate();
 
   expect(result.current).toEqual({
     ticketFields: [activeTicketField, activeCustomField40],
+    error: undefined,
+    isLoading: false,
+  });
+});
+
+test("when viewRequestsAcrossBrandsEnabled=true, returns all active fields when ticket forms is empty", async () => {
+  fetchAllCursorPages
+    .mockResolvedValueOnce([activeTicketField, inactiveTicketField])
+    .mockResolvedValueOnce([]);
+
+  const { result, waitForNextUpdate } = renderHook(() =>
+    useTicketFields("dk", true)
+  );
+
+  await waitForNextUpdate();
+
+  expect(result.current).toEqual({
+    ticketFields: [activeTicketField],
     error: undefined,
     isLoading: false,
   });

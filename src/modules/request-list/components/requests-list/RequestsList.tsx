@@ -28,11 +28,13 @@ import { useShowManyUsers } from "../../hooks/useShowManyUsers";
 export interface RequestsListProps {
   locale: string;
   customStatusesEnabled: boolean;
+  viewRequestsAcrossBrandsEnabled: boolean;
 }
 
 export function RequestsList({
   locale,
   customStatusesEnabled,
+  viewRequestsAcrossBrandsEnabled,
 }: RequestsListProps): JSX.Element {
   const { t } = useTranslation();
 
@@ -67,7 +69,7 @@ export function RequestsList({
     ticketFields,
     isLoading: isLoadingTicketFields,
     error: ticketFieldsError,
-  } = useTicketFields(locale);
+  } = useTicketFields(locale, viewRequestsAcrossBrandsEnabled);
 
   const loadingError = requestsError || ticketFieldsError || userError;
 
