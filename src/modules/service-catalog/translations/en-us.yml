@@ -323,3 +323,9 @@ parts:
       title: "Line in the request comment naming the user the request was submitted on behalf of. {{name}} is that user's name."
       screenshot: "https://drive.google.com/file/d/1kkyjrLu9UZWVPFowlqwZ-D-qE0zwcUyV/view?usp=sharing"
       value: "User: {{name}}"
+      obsolete: "2026-10-10"
+  - translation:
+      key: "service-catalog.item.requester-label"
+      title: "Line in the request comment naming the requester. {{name}} is that requester's name."
+      screenshot: "https://drive.google.com/file/d/1DsOq3atb9velOovcY-abPqa41S4NNp9v/view?usp=sharing"
+      value: "Requester: {{name}}"

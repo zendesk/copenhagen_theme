@@ -378,8 +378,8 @@ export function ServiceCatalogItem({
               "Submitter: {{name}}",
               { name: userName }
             )}</p><p style="margin:0;padding:0">${t(
-              "service-catalog.item.user-label",
-              "User: {{name}}",
+              "service-catalog.item.requester-label",
+              "Requester: {{name}}",
               { name: selectedUser.name }
             )}</p>`
           : null;
