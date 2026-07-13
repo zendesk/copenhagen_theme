@@ -1,3 +1,10 @@
+## [4.44.2](https://github.com/zendesk/copenhagen_theme/compare/v4.44.1...v4.44.2) (2026-07-13)
+
+
+### Bug Fixes
+
+* update Garden to v9.15.6 ([f8845da](https://github.com/zendesk/copenhagen_theme/commit/f8845da6178ab6f53b3de857e7a3928e7c142c14))
+
 ## [4.44.1](https://github.com/zendesk/copenhagen_theme/compare/v4.44.0...v4.44.1) (2026-07-03)
 
 
