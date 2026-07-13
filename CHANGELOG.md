@@ -1,3 +1,11 @@
+## [4.44.3](https://github.com/zendesk/copenhagen_theme/compare/v4.44.2...v4.44.3) (2026-07-13)
+
+
+### Bug Fixes
+
+* run yarn download-locales ([e8dab67](https://github.com/zendesk/copenhagen_theme/commit/e8dab6769659ab55da235869879fb80265c35239))
+* update translations ([f183675](https://github.com/zendesk/copenhagen_theme/commit/f1836752a75287a59a0020ead340d4eae12d2d2d))
+
 ## [4.44.2](https://github.com/zendesk/copenhagen_theme/compare/v4.44.1...v4.44.2) (2026-07-13)
 
 
