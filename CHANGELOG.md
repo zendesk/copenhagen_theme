@@ -1,3 +1,10 @@
+# [4.45.0](https://github.com/zendesk/copenhagen_theme/compare/v4.44.3...v4.45.0) (2026-07-13)
+
+
+### Features
+
+* remove filter when requests across brands on ([fe4c186](https://github.com/zendesk/copenhagen_theme/commit/fe4c186ede552be958b21edef7b2dc4008cfc8eb))
+
 ## [4.44.3](https://github.com/zendesk/copenhagen_theme/compare/v4.44.2...v4.44.3) (2026-07-13)
 
 
