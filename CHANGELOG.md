@@ -1,3 +1,10 @@
+# [4.46.0](https://github.com/zendesk/copenhagen_theme/compare/v4.45.0...v4.46.0) (2026-07-13)
+
+
+### Features
+
+* **i18n:** replace user-label with requester-label in request note ([80a0c8f](https://github.com/zendesk/copenhagen_theme/commit/80a0c8f357cddf0389d96b0a2ce73b87d1dc422d))
+
 # [4.45.0](https://github.com/zendesk/copenhagen_theme/compare/v4.44.3...v4.45.0) (2026-07-13)
 
 
