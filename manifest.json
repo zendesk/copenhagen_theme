@@ -409,6 +409,18 @@
           "value": true
         }
       ]
+    },
+    {
+      "label": "request_page_group_label",
+      "variables": [
+        {
+          "identifier": "filter_ticket_fields_by_brand",
+          "type": "checkbox",
+          "description": "filter_ticket_fields_by_brand_description",
+          "label": "filter_ticket_fields_by_brand_label",
+          "value": false
+        }
+      ]
     }
   ]
 }

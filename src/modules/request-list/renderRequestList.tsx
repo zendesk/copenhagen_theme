@@ -12,8 +12,7 @@ export async function renderRequestList(
   props: RequestsListProps,
   container: Element
 ): Promise<void> {
-  const { locale } = props;
-  const { customStatusesEnabled } = props;
+  const { locale, customStatusesEnabled, filterTicketFieldsByBrand } = props;
 
   initI18next(locale);
 
@@ -30,6 +29,7 @@ export async function renderRequestList(
         <RequestsList
           locale={locale}
           customStatusesEnabled={customStatusesEnabled}
+          filterTicketFieldsByBrand={filterTicketFieldsByBrand}
         />
       </ErrorBoundary>
     </ThemeProviders>,

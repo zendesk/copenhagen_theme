@@ -13,9 +13,10 @@
   const container = document.getElementById("main-content"); 
   const settings = {{json settings}}; 
 
-  const props = {   
+  const props = {
     locale: {{json help_center.base_locale}},
-    customStatusesEnabled: {{json help_center.custom_statuses_enabled}}
+    customStatusesEnabled: {{json help_center.custom_statuses_enabled}},
+    filterTicketFieldsByBrand: settings.filter_ticket_fields_by_brand ?? false
   }; 
   
   renderRequestList(settings, props, container);

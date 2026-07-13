@@ -397,6 +397,21 @@ parts:
       screenshot: "https://drive.google.com/file/d/1UrHbBwCWc2R-tzdOXCMoKj-ztZ9FXzfb/view?usp=sharing"
       value: "Show suggested articles on new request form"
   - translation:
+      key: "txt.help_center_copenhagen_theme.request_page_group_label"
+      title: "Label for the request page settings group"
+      screenshot: ""
+      value: "Request page"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.filter_ticket_fields_by_brand_label"
+      title: "Label for the filter ticket fields by brand setting"
+      screenshot: ""
+      value: "Filter ticket fields by brand"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.filter_ticket_fields_by_brand_description"
+      title: "Description for the filter ticket fields by brand setting"
+      screenshot: ""
+      value: "Only show ticket fields associated with the current brand's active forms on the requests page"
+  - translation:
       key: "txt.help_center_copenhagen_theme.show_brand_name_label"
       title: "Label for the show brand name setting"
       screenshot: "https://drive.google.com/file/d/16zQao3zk3uRScIUpkyc6bXAWwqHh3Zh-/view?usp=sharing"
