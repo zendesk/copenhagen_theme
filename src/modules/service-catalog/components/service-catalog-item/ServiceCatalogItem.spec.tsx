@@ -596,7 +596,7 @@ describe("ServiceCatalogItem", () => {
       const callArgs = mockSubmitServiceItemRequest.mock.calls[0]!;
       expect(callArgs[7]).toBe(789);
       expect(callArgs[8]).toContain("Submitter: {{name}}");
-      expect(callArgs[8]).toContain("User: {{name}}");
+      expect(callArgs[8]).toContain("Requester: {{name}}");
     });
   });
 });
