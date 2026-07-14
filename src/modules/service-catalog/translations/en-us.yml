@@ -218,16 +218,34 @@ parts:
       title: "Modal title for changing the requester user"
       screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
       value: "Change user"
+      obsolete: "2026-10-10"
+  - translation:
+      key: "service-catalog.change-user-modal.requester-title"
+      title: "Modal title for changing the requester"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Change requester"
   - translation:
       key: "service-catalog.change-user-modal.select-user-label"
       title: "Label for user selection dropdown in Change User modal"
       screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
       value: "Select user* (required)"
+      obsolete: "2026-10-10"
+  - translation:
+      key: "service-catalog.change-user-modal.select-requester-label"
+      title: "Label for requester selection dropdown in Change Requester modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Select requester* (required)"
   - translation:
       key: "service-catalog.change-user-modal.search-placeholder"
       title: "Placeholder text for user search input in Change User modal"
       screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
       value: "Search users..."
+      obsolete: "2026-10-10"
+  - translation:
+      key: "service-catalog.change-user-modal.requester-search-placeholder"
+      title: "Placeholder text for requester search input in Change Requester modal"
+      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      value: "Search requesters..."
   - translation:
       key: "service-catalog.change-user-modal.loading-users"
       title: "Loading state message while fetching users in Change User modal"
@@ -253,6 +271,12 @@ parts:
       title: "Error message when user tries to save without selecting a user"
       screenshot: "https://drive.google.com/file/d/1NzYBWHmHQZPPia0ud3uLWy41haGPQwUn/view?usp=share_link"
       value: "Select a user"
+      obsolete: "2026-10-10"
+  - translation:
+      key: "service-catalog.change-user-modal.requester-required"
+      title: "Error message when the agent tries to save without selecting a requester"
+      screenshot: "https://drive.google.com/file/d/1NzYBWHmHQZPPia0ud3uLWy41haGPQwUn/view?usp=share_link"
+      value: "Select a requester"
   - translation:
       key: "service-catalog.change-user-modal.cancel"
       title: "Cancel button text in Change User modal"
@@ -313,6 +337,12 @@ parts:
       title: "Label above the requester's name in the service request form"
       screenshot: "https://drive.google.com/file/d/1k5um4vxeW-SV1vQlblYJFU4uHzdejvju/view?usp=share_link"
       value: "User"
+      obsolete: "2026-10-10"
+  - translation:
+      key: "service-catalog.item.requester"
+      title: "Label above the requester's name in the service request form"
+      screenshot: "https://drive.google.com/file/d/1k5um4vxeW-SV1vQlblYJFU4uHzdejvju/view?usp=share_link"
+      value: "Requester"
   - translation:
       key: "service-catalog.item.submitter-label"
       title: "Line in the request comment naming who submitted the request on behalf of another user. {{name}} is the submitter's name."

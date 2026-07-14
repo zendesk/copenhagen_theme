@@ -221,7 +221,10 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
   return (
     <>
       <StyledHeader tag="h2">
-        {t("service-catalog.change-user-modal.title", "Change user")}
+        {t(
+          "service-catalog.change-user-modal.requester-title",
+          "Change requester"
+        )}
       </StyledHeader>
 
       <StyledModalBody>
@@ -230,8 +233,8 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
             <Field>
               <Field.Label>
                 {t(
-                  "service-catalog.change-user-modal.select-user-label",
-                  "Select user* (required)"
+                  "service-catalog.change-user-modal.select-requester-label",
+                  "Select requester* (required)"
                 )}
               </Field.Label>
               <Combobox
@@ -243,8 +246,8 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
                 data-test-id="user-autocomplete-input"
                 isAutocomplete
                 placeholder={t(
-                  "service-catalog.change-user-modal.search-placeholder",
-                  "Search users..."
+                  "service-catalog.change-user-modal.requester-search-placeholder",
+                  "Search requesters..."
                 )}
                 renderValue={() => selectedUser?.name || ""}
                 inputProps={{
@@ -292,8 +295,8 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
                   )}
                 >
                   {t(
-                    "service-catalog.change-user-modal.user-required",
-                    "Select a user"
+                    "service-catalog.change-user-modal.requester-required",
+                    "Select a requester"
                   )}
                 </Field.Message>
               )}
