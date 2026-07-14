@@ -222,7 +222,7 @@ parts:
   - translation:
       key: "service-catalog.change-user-modal.requester-title"
       title: "Modal title for changing the requester"
-      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      screenshot: "https://drive.google.com/file/d/1gXqafXjYZ0EVO8_p3yRop53LQajUS2P7/view?usp=sharing"
       value: "Change requester"
   - translation:
       key: "service-catalog.change-user-modal.select-user-label"
@@ -233,7 +233,7 @@ parts:
   - translation:
       key: "service-catalog.change-user-modal.select-requester-label"
       title: "Label for requester selection dropdown in Change Requester modal"
-      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      screenshot: "https://drive.google.com/file/d/1o1omjXbAqzGTvOJvKS9wkGvbOfbKuDbF/view?usp=sharing"
       value: "Select requester* (required)"
   - translation:
       key: "service-catalog.change-user-modal.search-placeholder"
@@ -244,7 +244,7 @@ parts:
   - translation:
       key: "service-catalog.change-user-modal.requester-search-placeholder"
       title: "Placeholder text for requester search input in Change Requester modal"
-      screenshot: "https://drive.google.com/file/d/1J9wEdvh_WC0j2aoRbQUA6nEHPFDv2NVd/view?usp=share_link"
+      screenshot: "https://drive.google.com/file/d/1o1omjXbAqzGTvOJvKS9wkGvbOfbKuDbF/view?usp=sharing"
       value: "Search requesters..."
   - translation:
       key: "service-catalog.change-user-modal.loading-users"
@@ -275,7 +275,7 @@ parts:
   - translation:
       key: "service-catalog.change-user-modal.requester-required"
       title: "Error message when the agent tries to save without selecting a requester"
-      screenshot: "https://drive.google.com/file/d/1NzYBWHmHQZPPia0ud3uLWy41haGPQwUn/view?usp=share_link"
+      screenshot: "https://drive.google.com/file/d/1o1omjXbAqzGTvOJvKS9wkGvbOfbKuDbF/view?usp=sharing"
       value: "Select a requester"
   - translation:
       key: "service-catalog.change-user-modal.cancel"
@@ -341,7 +341,7 @@ parts:
   - translation:
       key: "service-catalog.item.requester"
       title: "Label above the requester's name in the service request form"
-      screenshot: "https://drive.google.com/file/d/1k5um4vxeW-SV1vQlblYJFU4uHzdejvju/view?usp=share_link"
+      screenshot: "https://drive.google.com/file/d/1o1omjXbAqzGTvOJvKS9wkGvbOfbKuDbF/view?usp=sharing"
       value: "Requester"
   - translation:
       key: "service-catalog.item.submitter-label"
