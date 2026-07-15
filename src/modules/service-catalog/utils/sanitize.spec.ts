@@ -1,4 +1,4 @@
-import { htmlToText, sanitizeHtml } from "./sanitize";
+import { htmlToText, sanitizeFieldDescription, sanitizeHtml } from "./sanitize";
 
 describe("sanitize utils", () => {
   describe("htmlToText", () => {
@@ -90,6 +90,28 @@ describe("sanitize utils", () => {
       const result = sanitizeHtml('<a href="javascript:alert(1)">x</a>');
 
       expect(result).not.toContain("javascript:");
+    });
+  });
+
+  describe("sanitizeFieldDescription", () => {
+    it("preserves safe links and formatting", () => {
+      const result = sanitizeFieldDescription(
+        '<strong>Choose carefully</strong> or visit <a href="https://example.com">docs</a>'
+      );
+
+      expect(result).toContain("<strong>Choose carefully</strong>");
+      expect(result).toContain('href="https://example.com"');
+    });
+
+    it("removes executable content and iframes", () => {
+      const result = sanitizeFieldDescription(
+        '<img src="x" onerror="alert(1)"><script>alert(2)</script><iframe src="https://example.com"></iframe>'
+      );
+
+      expect(result).not.toContain("onerror");
+      expect(result).not.toContain("<script");
+      expect(result).not.toContain("<iframe");
+      expect(result).not.toContain("alert");
     });
   });
 });

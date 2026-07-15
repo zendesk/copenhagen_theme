@@ -12,6 +12,10 @@ export function sanitizeHtml(html: string): string {
   });
 }
 
+export function sanitizeFieldDescription(html: string): string {
+  return DOMPurify.sanitize(html);
+}
+
 /**
  * Converts a possibly-HTML string to plain text using an inert `DOMParser`
  * document, so resources are never fetched and handlers like `onerror` never

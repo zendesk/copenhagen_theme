@@ -12,6 +12,7 @@ import type {
   AssetOptionData,
   AssetConfig,
 } from "../data-types/Assets";
+import { sanitizeFieldDescription } from "../utils/sanitize";
 
 const ASSET_TYPE_KEY = "zen:custom_object:standard::itam_asset_type";
 const ASSET_KEY = "zen:custom_object:standard::itam_asset";
@@ -80,7 +81,9 @@ const formatField = (field: TicketField): TicketFieldObject => {
     relationship_filter,
   } = field;
 
-  const sanitizedDescription = linkifyStr(description);
+  const sanitizedDescription = sanitizeFieldDescription(
+    linkifyStr(description)
+  );
 
   return {
     id,
@@ -132,7 +135,9 @@ const enrichFieldsWithAssetConfig = (
       return {
         ...field,
         label: assetConfig.assetTypeLabel || field.label,
-        description: assetConfig.assetTypeDescription || field.description,
+        description: sanitizeFieldDescription(
+          assetConfig.assetTypeDescription || field.description
+        ),
         required: assetConfig.assetTypeIsRequired || field.required,
       };
     }
@@ -140,7 +145,9 @@ const enrichFieldsWithAssetConfig = (
       return {
         ...field,
         label: assetConfig.assetLabel || field.label,
-        description: assetConfig.assetDescription || field.description,
+        description: sanitizeFieldDescription(
+          assetConfig.assetDescription || field.description
+        ),
         required: assetConfig.assetIsRequired || field.required,
       };
     }
