@@ -41,6 +41,19 @@ describe("sanitize utils", () => {
       expect(spy).not.toHaveBeenCalled();
       delete (window as unknown as { __xss?: () => void }).__xss;
     });
+
+    it("does not execute SVG event-handler payloads", () => {
+      const onload = jest.fn();
+      (window as unknown as { __xss?: () => void }).__xss = onload;
+
+      const result = htmlToText(
+        '<svg onload="window.__xss()">safe svg text</svg>'
+      );
+
+      expect(onload).not.toHaveBeenCalled();
+      expect(result).toBe("safe svg text");
+      delete (window as unknown as { __xss?: () => void }).__xss;
+    });
   });
 
   describe("sanitizeHtml", () => {
@@ -55,6 +68,16 @@ describe("sanitize utils", () => {
 
       expect(result).toContain("<img");
       expect(result).not.toContain("onerror");
+    });
+
+    it("removes SVG event-handler attributes", () => {
+      const result = sanitizeHtml(
+        '<svg onload="alert(1)"><circle cx="10" cy="10" r="5"></circle></svg>'
+      );
+
+      expect(result).toContain("<svg");
+      expect(result).not.toContain("onload");
+      expect(result).not.toContain("alert(1)");
     });
 
     it("preserves safe formatting markup", () => {
