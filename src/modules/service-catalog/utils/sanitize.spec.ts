@@ -59,12 +59,14 @@ describe("sanitize utils", () => {
 
     it("preserves safe formatting markup", () => {
       const input =
-        '<p><strong>Bold</strong> and <a href="https://example.com">link</a></p>';
+        '<p><strong>Bold</strong> and <a href="https://example.com" target="_blank" rel="noopener noreferrer">link</a></p>';
 
       const result = sanitizeHtml(input);
 
       expect(result).toContain("<strong>Bold</strong>");
       expect(result).toContain('href="https://example.com"');
+      expect(result).toContain('target="_blank"');
+      expect(result).toContain('rel="noopener noreferrer"');
     });
 
     it("preserves video iframes", () => {
@@ -96,11 +98,13 @@ describe("sanitize utils", () => {
   describe("sanitizeFieldDescription", () => {
     it("preserves safe links and formatting", () => {
       const result = sanitizeFieldDescription(
-        '<strong>Choose carefully</strong> or visit <a href="https://example.com">docs</a>'
+        '<strong>Choose carefully</strong> or visit <a href="https://example.com" target="_blank" rel="noopener noreferrer">docs</a>'
       );
 
       expect(result).toContain("<strong>Choose carefully</strong>");
       expect(result).toContain('href="https://example.com"');
+      expect(result).toContain('target="_blank"');
+      expect(result).toContain('rel="noopener noreferrer"');
     });
 
     it("removes executable content and iframes", () => {

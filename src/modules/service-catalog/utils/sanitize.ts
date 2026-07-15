@@ -8,12 +8,21 @@ import DOMPurify from "dompurify";
 export function sanitizeHtml(html: string): string {
   return DOMPurify.sanitize(html, {
     ADD_TAGS: ["iframe"],
-    ADD_ATTR: ["allow", "allowfullscreen", "frameborder", "scrolling", "title"],
+    ADD_ATTR: [
+      "allow",
+      "allowfullscreen",
+      "frameborder",
+      "scrolling",
+      "target",
+      "title",
+    ],
   });
 }
 
 export function sanitizeFieldDescription(html: string): string {
-  return DOMPurify.sanitize(html);
+  return DOMPurify.sanitize(html, {
+    ADD_ATTR: ["target"],
+  });
 }
 
 /**
