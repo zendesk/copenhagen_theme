@@ -575,7 +575,7 @@ describe("ServiceCatalogItem", () => {
       });
 
       const callArgs = mockSubmitServiceItemRequest.mock.calls[0]!;
-      // requesterId is the 8th positional arg, onBehalfNoteHtml the 9th.
+      // requesterId is the 8th positional arg, onBehalfNote the 9th.
       expect(callArgs[7]).toBeNull();
       expect(callArgs[8]).toBeNull();
     });
@@ -595,8 +595,10 @@ describe("ServiceCatalogItem", () => {
 
       const callArgs = mockSubmitServiceItemRequest.mock.calls[0]!;
       expect(callArgs[7]).toBe(789);
-      expect(callArgs[8]).toContain("Submitter: {{name}}");
-      expect(callArgs[8]).toContain("Requester: {{name}}");
+      expect(callArgs[8]).toEqual({
+        submitterLabel: expect.stringContaining("Submitter: {{name}}"),
+        requesterLabel: expect.stringContaining("Requester: {{name}}"),
+      });
     });
   });
 });
