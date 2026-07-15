@@ -1,3 +1,11 @@
+# [4.47.0](https://github.com/zendesk/copenhagen_theme/compare/v4.46.0...v4.47.0) (2026-07-15)
+
+
+### Features
+
+* add new screeshots to new sc translations ([36c8ac7](https://github.com/zendesk/copenhagen_theme/commit/36c8ac7938a8500fec24332808251790c80cecd1))
+* requester everywhere ([fef9d7b](https://github.com/zendesk/copenhagen_theme/commit/fef9d7b02a9f953db24de21ed827597c2f4426df))
+
 # [4.46.0](https://github.com/zendesk/copenhagen_theme/compare/v4.45.0...v4.46.0) (2026-07-13)
 
 
