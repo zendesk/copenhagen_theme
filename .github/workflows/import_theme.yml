@@ -21,6 +21,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: update-theme-${{ github.event.inputs.branchName }}
+  cancel-in-progress: true
+
 jobs:
   import_theme:
     runs-on: ubuntu-latest
