@@ -24,6 +24,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: update-theme-${{ github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
   update_theme:
     if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' || github.event_name == 'push'
