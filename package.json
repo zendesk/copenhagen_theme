@@ -137,6 +137,7 @@
     "cosmiconfig/js-yaml": "^4.2.0",
     "@typescript-eslint/typescript-estree/minimatch": "^9.0.9",
     "@zendesk/zcli-apps/uuid": "^11.1.1",
+    "@zendesk/zcli-apps/morgan": "^1.11.0",
     "express/path-to-regexp": "^0.1.13",
     "cosmiconfig/yaml": "^1.10.3",
     "lighthouse/ws": "^7.5.11",
