@@ -1,4 +1,4 @@
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import {
   ThemeProviders,
   createTheme,
@@ -26,11 +26,10 @@ export async function renderFlashNotifications(
   try {
     const container = document.createElement("div");
     document.body.appendChild(container);
-    render(
+    createRoot(container).render(
       <ThemeProviders theme={createTheme(settings)}>
         <GlobalNotificationsRoot />
-      </ThemeProviders>,
-      container
+      </ThemeProviders>
     );
   } catch (e) {
     console.error("Cannot render flash notifications", e);

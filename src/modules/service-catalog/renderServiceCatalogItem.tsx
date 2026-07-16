@@ -1,4 +1,4 @@
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import { ServiceCatalogItem } from "./components/service-catalog-item/ServiceCatalogItem";
 
@@ -24,12 +24,11 @@ export async function renderServiceCatalogItem(
     () => import(`../ticket-fields/translations/locales/${baseLocale}.json`),
     () => import(`../shared/translations/locales/${baseLocale}.json`),
   ]);
-  render(
+  createRoot(container).render(
     <ThemeProviders theme={createTheme(settings)}>
       <ErrorBoundary helpCenterPath={helpCenterPath}>
         <ServiceCatalogItem {...props} />
       </ErrorBoundary>
-    </ThemeProviders>,
-    container
+    </ThemeProviders>
   );
 }

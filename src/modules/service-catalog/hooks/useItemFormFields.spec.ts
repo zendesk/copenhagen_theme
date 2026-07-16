@@ -1,4 +1,4 @@
-import { act, renderHook } from "@testing-library/react-hooks";
+import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ServiceCatalogItem } from "../data-types/ServiceCatalogItem";
 import { useItemFormFields } from "./useItemFormFields";
 
@@ -111,7 +111,7 @@ describe("useItemFormFields", () => {
       });
     });
 
-    const { result, waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useItemFormFields(serviceCatalogItem, baseLocale)
     );
 
@@ -119,9 +119,9 @@ describe("useItemFormFields", () => {
     expect(result.current.associatedLookupField).toBe(undefined);
     expect(result.current.error).toBe(null);
 
-    await waitForNextUpdate();
-
-    expect(result.current.requestFields).toEqual([expectedTextField]);
+    await waitFor(() => {
+      expect(result.current.requestFields).toEqual([expectedTextField]);
+    });
 
     expect(result.current.associatedLookupField).toEqual(expectedLookupField);
     expect(result.current.error).toBe(null);
@@ -135,7 +135,7 @@ describe("useItemFormFields", () => {
       });
     });
 
-    const { result, waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useItemFormFields(serviceCatalogItem, baseLocale)
     );
 
@@ -143,9 +143,11 @@ describe("useItemFormFields", () => {
     expect(result.current.associatedLookupField).toBe(undefined);
     expect(result.current.error).toBe(null);
 
-    await waitForNextUpdate();
-
-    expect(result.current.error).toEqual(new Error("Error fetching form data"));
+    await waitFor(() => {
+      expect(result.current.error).toEqual(
+        new Error("Error fetching form data")
+      );
+    });
   });
 
   it("should return an error if ticket fields fetch fails", async () => {
@@ -172,7 +174,7 @@ describe("useItemFormFields", () => {
         : {};
     });
 
-    const { result, waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useItemFormFields(serviceCatalogItem, baseLocale)
     );
 
@@ -180,11 +182,11 @@ describe("useItemFormFields", () => {
     expect(result.current.associatedLookupField).toBe(undefined);
     expect(result.current.error).toBe(null);
 
-    await waitForNextUpdate();
-
-    expect(result.current.error).toEqual(
-      new Error("Error fetching fields data")
-    );
+    await waitFor(() => {
+      expect(result.current.error).toEqual(
+        new Error("Error fetching fields data")
+      );
+    });
   });
 
   it("should return an error if form data is not active", async () => {
@@ -204,7 +206,7 @@ describe("useItemFormFields", () => {
       });
     });
 
-    const { result, waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useItemFormFields(serviceCatalogItem, baseLocale)
     );
 
@@ -212,11 +214,11 @@ describe("useItemFormFields", () => {
     expect(result.current.associatedLookupField).toBe(undefined);
     expect(result.current.error).toBe(null);
 
-    await waitForNextUpdate();
-
-    expect(result.current.error).toEqual(
-      new Error("Associated ticket form is not active")
-    );
+    await waitFor(() => {
+      expect(result.current.error).toEqual(
+        new Error("Associated ticket form is not active")
+      );
+    });
   });
 
   it("should return an error if the associated lookup field is not found", async () => {
@@ -257,7 +259,7 @@ describe("useItemFormFields", () => {
         : {};
     });
 
-    const { result, waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useItemFormFields(serviceCatalogItem, baseLocale)
     );
 
@@ -265,11 +267,11 @@ describe("useItemFormFields", () => {
     expect(result.current.associatedLookupField).toBe(undefined);
     expect(result.current.error).toBe(null);
 
-    await waitForNextUpdate();
-
-    expect(result.current.error).toEqual(
-      new Error("Associated lookup field not found")
-    );
+    await waitFor(() => {
+      expect(result.current.error).toEqual(
+        new Error("Associated lookup field not found")
+      );
+    });
   });
 
   it("should set the request fields when setRequestFields is called", async () => {
@@ -301,7 +303,7 @@ describe("useItemFormFields", () => {
         : {};
     });
 
-    const { result, waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useItemFormFields(serviceCatalogItem, baseLocale)
     );
 
@@ -309,9 +311,10 @@ describe("useItemFormFields", () => {
     expect(result.current.associatedLookupField).toBe(undefined);
     expect(result.current.error).toBe(null);
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.requestFields).toEqual([expectedTextField]);
+    });
 
-    expect(result.current.requestFields).toEqual([expectedTextField]);
     expect(result.current.associatedLookupField).toEqual(expectedLookupField);
     expect(result.current.error).toBe(null);
 
@@ -357,7 +360,7 @@ describe("useItemFormFields", () => {
         : {};
     });
 
-    const { result, waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useItemFormFields(serviceCatalogItem, baseLocale)
     );
 
@@ -365,9 +368,10 @@ describe("useItemFormFields", () => {
     expect(result.current.associatedLookupField).toBe(undefined);
     expect(result.current.error).toBe(null);
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.requestFields).toEqual([expectedTextField]);
+    });
 
-    expect(result.current.requestFields).toEqual([expectedTextField]);
     expect(result.current.associatedLookupField).toEqual(expectedLookupField);
     expect(result.current.error).toBe(null);
 
@@ -483,12 +487,13 @@ describe("useItemFormFields", () => {
         ok: true,
       });
     });
-    const { result, waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useItemFormFields(serviceCatalogItem, baseLocale)
     );
-    await waitForNextUpdate();
-    const presentIds = result.current.requestFields.map((f) => f.id);
-    expect(presentIds).toEqual([1, 6]);
+    await waitFor(() => {
+      const presentIds = result.current.requestFields.map((f) => f.id);
+      expect(presentIds).toEqual([1, 6]);
+    });
   });
 
   it("should filter out category lookup field from requestFields", async () => {
@@ -531,14 +536,15 @@ describe("useItemFormFields", () => {
       });
     });
 
-    const { result, waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useItemFormFields(serviceCatalogItem, baseLocale)
     );
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      const presentIds = result.current.requestFields.map((f) => f.id);
+      expect(presentIds).toEqual([1]);
+    });
 
-    const presentIds = result.current.requestFields.map((f) => f.id);
-    expect(presentIds).toEqual([1]);
     expect(result.current.associatedLookupField).toEqual(
       expect.objectContaining({ id: 2, type: "lookup" })
     );

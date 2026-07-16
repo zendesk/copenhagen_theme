@@ -1,4 +1,4 @@
-import { renderHook, act } from "@testing-library/react-hooks";
+import { renderHook, act } from "@testing-library/react";
 import { useUserSearch } from "./useUserSearch";
 import type { UserOption } from "../data-types/UserOption";
 

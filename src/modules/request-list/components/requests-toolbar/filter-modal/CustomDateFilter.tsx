@@ -60,8 +60,8 @@ export function CustomDateFilter({
     startValue?: Date;
     endValue?: Date;
   }) => {
-    changes.startValue && setStartValue(changes.startValue);
-    changes.endValue && setEndValue(changes.endValue);
+    if (changes.startValue) setStartValue(changes.startValue);
+    if (changes.endValue) setEndValue(changes.endValue);
     onChange([changes.startValue ?? startValue, changes.endValue ?? endValue]);
   };
 

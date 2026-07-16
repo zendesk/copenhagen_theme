@@ -1,5 +1,5 @@
 import type { User } from "../data-types";
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook, waitFor } from "@testing-library/react";
 import { useUser } from "./useUser";
 
 const user: User = {
@@ -21,14 +21,15 @@ const response = { user };
 );
 
 test("fetches user data via api/v2/users/me", async () => {
-  const { result, waitForNextUpdate } = renderHook(() => useUser());
-  await waitForNextUpdate();
-  expect(fetch).toHaveBeenCalledWith("/api/v2/users/me");
-  expect(result.current).toEqual({
-    user,
-    isLoading: false,
-    error: undefined,
+  const { result } = renderHook(() => useUser());
+  await waitFor(() => {
+    expect(result.current).toEqual({
+      user,
+      isLoading: false,
+      error: undefined,
+    });
   });
+  expect(fetch).toHaveBeenCalledWith("/api/v2/users/me");
 });
 
 test("handles exceptions", async () => {
@@ -36,11 +37,12 @@ test("handles exceptions", async () => {
     Promise.reject("Network error")
   );
 
-  const { result, waitForNextUpdate } = renderHook(() => useUser());
-  await waitForNextUpdate();
-  expect(result.current).toEqual({
-    user: undefined,
-    isLoading: false,
-    error: "Network error",
+  const { result } = renderHook(() => useUser());
+  await waitFor(() => {
+    expect(result.current).toEqual({
+      user: undefined,
+      isLoading: false,
+      error: "Network error",
+    });
   });
 });

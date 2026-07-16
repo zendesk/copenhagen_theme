@@ -1,4 +1,4 @@
-import { renderHook, act } from "@testing-library/react-hooks";
+import { renderHook, act, waitFor } from "@testing-library/react";
 import { useServiceCatalogItems } from "./useServiceCatalogItems";
 
 describe("useServiceCatalogItems", () => {
@@ -24,9 +24,7 @@ describe("useServiceCatalogItems", () => {
       })
     ) as jest.Mock;
 
-    const { result, waitForNextUpdate } = renderHook(() =>
-      useServiceCatalogItems()
-    );
+    const { result } = renderHook(() => useServiceCatalogItems());
 
     act(() => {
       result.current.fetchServiceCatalogItems("", null);
@@ -35,12 +33,13 @@ describe("useServiceCatalogItems", () => {
     expect(result.current.serviceCatalogItems).toEqual([]);
     expect(result.current.isLoading).toBe(true);
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
 
     expect(result.current.serviceCatalogItems).toEqual(
       mockResponse.service_catalog_items
     );
-    expect(result.current.isLoading).toBe(false);
     expect(result.current.meta).toEqual(mockResponse.meta);
     expect(result.current.count).toEqual(mockResponse.count);
   });
@@ -54,9 +53,7 @@ describe("useServiceCatalogItems", () => {
       })
     ) as jest.Mock;
 
-    const { result, waitForNextUpdate } = renderHook(() =>
-      useServiceCatalogItems()
-    );
+    const { result } = renderHook(() => useServiceCatalogItems());
 
     act(() => {
       result.current.fetchServiceCatalogItems("", null);
@@ -65,10 +62,11 @@ describe("useServiceCatalogItems", () => {
     expect(result.current.serviceCatalogItems).toEqual([]);
     expect(result.current.isLoading).toBe(true);
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
 
     expect(result.current.serviceCatalogItems).toEqual([]);
-    expect(result.current.isLoading).toBe(false);
     expect(result.current.errorFetchingItems).toEqual(
       new Error("HTTP error! status: 500")
     );
@@ -83,9 +81,7 @@ describe("useServiceCatalogItems", () => {
       })
     ) as jest.Mock;
 
-    const { result, waitForNextUpdate } = renderHook(() =>
-      useServiceCatalogItems()
-    );
+    const { result } = renderHook(() => useServiceCatalogItems());
 
     act(() => {
       result.current.fetchServiceCatalogItems("", null);
@@ -94,12 +90,13 @@ describe("useServiceCatalogItems", () => {
     expect(result.current.serviceCatalogItems).toEqual([]);
     expect(result.current.isLoading).toBe(true);
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
 
     expect(result.current.serviceCatalogItems).toEqual(
       mockResponse.service_catalog_items
     );
-    expect(result.current.isLoading).toBe(false);
     expect(result.current.meta).toEqual(mockResponse.meta);
     expect(result.current.count).toEqual(mockResponse.count);
 
@@ -128,13 +125,13 @@ describe("useServiceCatalogItems", () => {
     );
     expect(result.current.isLoading).toBe(true);
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
 
     expect(result.current.serviceCatalogItems).toEqual(
       newMockResponse.service_catalog_items
     );
-
-    expect(result.current.isLoading).toBe(false);
 
     expect(result.current.meta).toEqual(newMockResponse.meta);
     expect(result.current.count).toEqual(newMockResponse.count);

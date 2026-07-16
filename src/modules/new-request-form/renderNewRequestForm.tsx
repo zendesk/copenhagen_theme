@@ -1,4 +1,4 @@
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import type { Settings } from "../shared";
 import {
   createTheme,
@@ -23,10 +23,9 @@ export async function renderNewRequestForm(
     () => import(`../shared/translations/locales/${baseLocale}.json`),
   ]);
 
-  render(
+  createRoot(container).render(
     <ThemeProviders theme={createTheme(settings)}>
       <NewRequestForm {...props} />
-    </ThemeProviders>,
-    container
+    </ThemeProviders>
   );
 }

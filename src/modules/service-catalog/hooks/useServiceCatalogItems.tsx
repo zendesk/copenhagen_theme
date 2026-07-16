@@ -45,7 +45,9 @@ export function useServiceCatalogItems(): {
 
       if (currentCursor) {
         const [cursorKey, cursorValue] = currentCursor.split("=");
-        cursorKey && cursorValue && searchParams.set(cursorKey, cursorValue);
+        if (cursorKey && cursorValue) {
+          searchParams.set(cursorKey, cursorValue);
+        }
       }
 
       if (searchInputValue) {

@@ -8,7 +8,12 @@ import {
   Close,
 } from "@zendeskgarden/react-modals";
 import { useEffect, useState, useRef } from "react";
-import { useModalContainer, addFlashNotification, notify } from "../../shared";
+import {
+  useModalContainer,
+  addFlashNotification,
+  notify,
+  navigateTo,
+} from "../../shared";
 import { useTranslation } from "react-i18next";
 import { GenerativeAnswerBotModalBody } from "./GenerativeAnswerBotModalBody";
 import { fetchCsrfToken } from "../fetchCsrfToken";
@@ -91,7 +96,7 @@ export function GenerativeAnswerBotModal({
           isError: !generated_answer,
         }));
         return true;
-      } catch (error) {
+      } catch {
         setModalState((prev) => ({
           ...prev,
           isError: true,
@@ -133,7 +138,7 @@ export function GenerativeAnswerBotModal({
         await fetch(generateReplyEndpoint(requestId), {
           credentials: "same-origin",
         });
-      } catch (error) {
+      } catch {
         if (isMounted) {
           setModalState((prev) => ({
             ...prev,
@@ -153,7 +158,7 @@ export function GenerativeAnswerBotModal({
           if (!jobMapping[status])
             throw new Error(`Unknown job status: ${status}`);
           return await jobMapping[status]?.(requestId);
-        } catch (error) {
+        } catch {
           setModalState((prev) => ({
             ...prev,
             isError: true,
@@ -203,7 +208,7 @@ export function GenerativeAnswerBotModal({
       type: "success",
       message,
     });
-    window.location.assign(getRedirectUrl());
+    navigateTo(getRedirectUrl());
   };
 
   const onClose = () => {
@@ -269,7 +274,7 @@ export function GenerativeAnswerBotModal({
               )
         );
       }
-    } catch (error) {
+    } catch {
       handleFeedbackError();
     }
   };

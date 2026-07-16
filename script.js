@@ -501,7 +501,9 @@
     if (returnFocusTo) {
       sessionStorage.removeItem("returnFocusTo");
       const returnFocusToEl = document.querySelector(returnFocusTo);
-      returnFocusToEl && returnFocusToEl.focus && returnFocusToEl.focus();
+      if (returnFocusToEl && returnFocusToEl.focus) {
+        returnFocusToEl.focus();
+      }
     }
   }
 

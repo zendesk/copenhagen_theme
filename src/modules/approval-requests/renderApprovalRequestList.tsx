@@ -1,4 +1,4 @@
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import ApprovalRequestListPage from "./ApprovalRequestListPage";
 import type { ApprovalRequestListPageProps } from "./ApprovalRequestListPage";
 import {
@@ -23,12 +23,11 @@ export async function renderApprovalRequestList(
     () => import(`../shared/translations/locales/${baseLocale}.json`),
   ]);
 
-  render(
+  createRoot(container).render(
     <ThemeProviders theme={createTheme(settings)}>
       <ErrorBoundary helpCenterPath={helpCenterPath}>
         <ApprovalRequestListPage {...props} helpCenterPath={helpCenterPath} />
       </ErrorBoundary>
-    </ThemeProviders>,
-    container
+    </ThemeProviders>
   );
 }

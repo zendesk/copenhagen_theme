@@ -3,7 +3,6 @@ import { screen } from "@testing-library/react";
 import { getColor } from "@zendeskgarden/react-theming";
 import ServiceCatalogListItem from "./ServiceCatalogListItem";
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
-import { userEvent } from "@testing-library/user-event";
 
 jest.mock("@zendeskgarden/svg-icons/src/16/shapes-fill.svg", () => {
   return function MockShapesIcon() {
@@ -81,7 +80,7 @@ describe("ServiceCatalogListItem", () => {
       );
     });
 
-    it("should use primaryHue as card border color on hover", async () => {
+    it("should use primaryHue as card border color on hover", () => {
       render(
         <ServiceCatalogListItem
           serviceItem={mockServiceItem}
@@ -89,17 +88,25 @@ describe("ServiceCatalogListItem", () => {
         />
       );
 
-      const user = userEvent.setup();
       const linkElement = screen.getByRole("link");
       const defaultBorderColor = testTheme.palette.grey?.[300];
 
       expect(defaultBorderColor).toBeTruthy();
       expect(linkElement).toHaveStyle(`border-color: ${defaultBorderColor}`);
 
-      await user.hover(linkElement);
+      // jsdom has no visual/layout engine and never applies real CSS
+      // `:hover` pseudo-class styles from simulated mouse events, so we
+      // can't assert this via computed style after userEvent.hover().
+      // Instead assert directly against the compiled styled-components
+      // stylesheet for the hover rule.
+      const styleTagsText = Array.from(document.querySelectorAll("style"))
+        .map((style) => style.textContent)
+        .join("\n");
 
-      expect(linkElement).toHaveStyle(
-        `border-color: ${testTheme.colors.primaryHue}`
+      expect(styleTagsText).toMatch(
+        new RegExp(
+          `:hover\\s*\\{[^}]*border-color:\\s*${testTheme.colors.primaryHue}`
+        )
       );
     });
   });

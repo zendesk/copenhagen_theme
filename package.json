@@ -71,7 +71,6 @@
     "@testing-library/dom": "^9.3.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^16.3.2",
-    "@testing-library/react-hooks": "7.0.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/lodash.debounce": "^4.0.9",
     "@types/react": "^19.2.17",
@@ -112,7 +111,6 @@
     "wait-on": "8.0.5"
   },
   "resolutions": {
-    "@types/react": "^17.x",
     "nwsapi": "^2.2.20",
     "tar": "^7.5.16",
     "undici": "^6.27.0",

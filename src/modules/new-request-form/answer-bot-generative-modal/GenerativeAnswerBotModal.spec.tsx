@@ -23,6 +23,7 @@ jest.mock("../../shared", () => ({
   ...jest.requireActual("../../shared"),
   useModalContainer: () => mockModalContainer,
   addFlashNotification: jest.fn(),
+  navigateTo: jest.fn(),
 }));
 
 // Mock fetchCsrfToken
@@ -119,14 +120,6 @@ const renderWithMock = (
 
 describe("GenerativeAnswerBotModal", () => {
   beforeEach(() => {
-    // Mock window.location.assign
-    Object.defineProperty(window, "location", {
-      value: {
-        assign: jest.fn(),
-      },
-      writable: true,
-    });
-
     // Reset mocks
     jest.clearAllMocks();
 
@@ -169,7 +162,7 @@ describe("GenerativeAnswerBotModal", () => {
         type: "success",
         message: "Your request has been solved",
       });
-      expect(window.location.assign).toHaveBeenCalledWith(mockRequestPath);
+      expect(shared.navigateTo).toHaveBeenCalledWith(mockRequestPath);
     });
   });
 
@@ -203,7 +196,7 @@ describe("GenerativeAnswerBotModal", () => {
         type: "success",
         message: "Your request was successfully submitted",
       });
-      expect(window.location.assign).toHaveBeenCalledWith(mockRequestPath);
+      expect(shared.navigateTo).toHaveBeenCalledWith(mockRequestPath);
     });
   });
 
@@ -279,7 +272,7 @@ describe("GenerativeAnswerBotModal", () => {
         type: "success",
         message: "Your request was successfully submitted",
       });
-      expect(window.location.assign).toHaveBeenCalledWith(mockRequestPath);
+      expect(shared.navigateTo).toHaveBeenCalledWith(mockRequestPath);
     });
   });
 

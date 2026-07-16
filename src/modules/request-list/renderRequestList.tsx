@@ -1,7 +1,7 @@
 import type { Settings } from "../shared";
 import { createTheme } from "../shared/garden-theme/createTheme";
 import { ThemeProviders } from "../shared/garden-theme/ThemeProviders";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import { RequestsList } from "./components/requests-list/RequestsList";
 import type { RequestsListProps } from "./components/requests-list/RequestsList";
 import { initI18next, loadTranslations } from "../shared/i18n";
@@ -24,7 +24,7 @@ export async function renderRequestList(
 
   const helpCenterPath = `/hc/${locale}`;
 
-  render(
+  createRoot(container).render(
     <ThemeProviders theme={createTheme(themeSettings)}>
       <ErrorBoundary helpCenterPath={helpCenterPath}>
         <RequestsList
@@ -33,7 +33,6 @@ export async function renderRequestList(
           viewRequestsAcrossBrandsEnabled={viewRequestsAcrossBrandsEnabled}
         />
       </ErrorBoundary>
-    </ThemeProviders>,
-    container
+    </ThemeProviders>
   );
 }

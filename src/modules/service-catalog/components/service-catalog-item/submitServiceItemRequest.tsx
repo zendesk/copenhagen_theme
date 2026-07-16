@@ -10,7 +10,7 @@ const getCurrentUser = async () => {
     }
 
     return await currentUserRequest.json();
-  } catch (error) {
+  } catch {
     throw new Error("Error fetching current user data");
   }
 };

@@ -1,4 +1,4 @@
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook } from "@testing-library/react";
 import { useValidateServiceItemForm } from "./useValidateServiceItemForm";
 import type { TicketFieldObject } from "../../ticket-fields/data-types/TicketFieldObject";
 import type { Attachment } from "../../ticket-fields/data-types/AttachmentsField";

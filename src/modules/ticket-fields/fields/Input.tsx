@@ -38,7 +38,7 @@ export function Input({ field, onChange }: InputProps): JSX.Element {
         validation={error ? "error" : undefined}
         required={required}
         onChange={(e) => {
-          onChange && onChange(e.target.value);
+          if (onChange) onChange(e.target.value);
         }}
         autoComplete={autocomplete}
         {...stepProp}
