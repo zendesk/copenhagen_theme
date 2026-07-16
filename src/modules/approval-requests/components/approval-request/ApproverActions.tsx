@@ -143,7 +143,7 @@ function ApproverActions({
       } else {
         throw new Error(`Failed to submit ${decision} decision`);
       }
-    } catch (error) {
+    } catch {
       notify({
         type: "error",
         title: "Error submitting decision",

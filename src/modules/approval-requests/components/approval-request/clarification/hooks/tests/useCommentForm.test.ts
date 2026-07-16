@@ -1,7 +1,7 @@
 import type React from "react";
 import { useCommentForm } from "../useCommentForm";
 import { MAX_CHAR_COUNT, WARNING_THRESHOLD } from "../../constants";
-import { act, renderHook } from "@testing-library/react-hooks";
+import { act, renderHook } from "@testing-library/react";
 
 const mockEvent = (val: string) => {
   return {

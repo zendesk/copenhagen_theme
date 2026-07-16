@@ -1,4 +1,4 @@
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import { ServiceCatalogPage } from "./components/ServiceCatalogPage";
 import { PageLoadingState } from "./components/PageLoadingState";
@@ -59,12 +59,12 @@ export async function renderServiceCatalogPage(
 ) {
   initI18next(baseLocale);
   const theme = createTheme(settings);
+  const root = createRoot(container);
 
-  render(
+  root.render(
     <ThemeProviders theme={theme}>
       <PageLoadingState />
-    </ThemeProviders>,
-    container
+    </ThemeProviders>
   );
 
   const [, categoryTree] = await Promise.all([
@@ -78,7 +78,7 @@ export async function renderServiceCatalogPage(
     fetchCategoryTree({ publishedOnly: !isPreviewMode() }),
   ]);
 
-  render(
+  root.render(
     <ThemeProviders theme={theme}>
       <ErrorBoundary
         helpCenterPath={helpCenterPath}
@@ -93,7 +93,6 @@ export async function renderServiceCatalogPage(
           categoryTree={categoryTree}
         />
       </ErrorBoundary>
-    </ThemeProviders>,
-    container
+    </ThemeProviders>
   );
 }

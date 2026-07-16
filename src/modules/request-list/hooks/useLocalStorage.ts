@@ -12,7 +12,7 @@ export function useLocalStorage<Value>(
       if (!item) return initialValue;
       const data = JSON.parse(item);
       return data[0] === version ? data[1] : initialValue;
-    } catch (error) {
+    } catch {
       return initialValue;
     }
   }, [initialValue, key]);
@@ -23,7 +23,7 @@ export function useLocalStorage<Value>(
     try {
       setStoredValue(value);
       localStorage.setItem(key, JSON.stringify([version, value]));
-    } catch (error) {
+    } catch {
       // ignore
     }
   };

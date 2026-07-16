@@ -1,7 +1,7 @@
 import type { Settings } from "../shared";
 import { createTheme } from "../shared/garden-theme/createTheme";
 import { ThemeProviders } from "../shared/garden-theme/ThemeProviders";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import { RequestsList } from "./components/requests-list/RequestsList";
 import type { RequestsListProps } from "./components/requests-list/RequestsList";
 import { initI18next, loadTranslations } from "../shared/i18n";
@@ -12,8 +12,8 @@ export async function renderRequestList(
   props: RequestsListProps,
   container: Element
 ): Promise<void> {
-  const { locale } = props;
-  const { customStatusesEnabled } = props;
+  const { locale, customStatusesEnabled, viewRequestsAcrossBrandsEnabled } =
+    props;
 
   initI18next(locale);
 
@@ -24,15 +24,15 @@ export async function renderRequestList(
 
   const helpCenterPath = `/hc/${locale}`;
 
-  render(
+  createRoot(container).render(
     <ThemeProviders theme={createTheme(themeSettings)}>
       <ErrorBoundary helpCenterPath={helpCenterPath}>
         <RequestsList
           locale={locale}
           customStatusesEnabled={customStatusesEnabled}
+          viewRequestsAcrossBrandsEnabled={viewRequestsAcrossBrandsEnabled}
         />
       </ErrorBoundary>
-    </ThemeProviders>,
-    container
+    </ThemeProviders>
   );
 }

@@ -1,4 +1,4 @@
-import { renderHook, act } from "@testing-library/react-hooks";
+import { renderHook, act } from "@testing-library/react";
 import { useSubmitComment } from "../useSubmitComment";
 import type { ApprovalClarificationFlowMessage } from "../../../../../types";
 global.fetch = jest.fn();

@@ -1,4 +1,4 @@
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook, waitFor } from "@testing-library/react";
 import { useAttachmentsOption } from "./useAttachmentsOption";
 
 describe("useAttachmentsOption", () => {
@@ -46,21 +46,21 @@ describe("useAttachmentsOption", () => {
       })
     ) as jest.Mock;
 
-    const { result, waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useAttachmentsOption("01KC9HXSMHV3KFY6R0X9PRYSMA")
     );
 
     expect(result.current.attachmentsOption).toBeUndefined();
     expect(result.current.errorAttachmentsOption).toBeNull();
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.attachmentsOption).toEqual(
+        mockAttachmentsOption.custom_object_record
+      );
+    });
 
     expect(global.fetch).toHaveBeenCalledWith(
       "/api/v2/custom_objects/standard::service_catalog_attachment_option/records/01KC9HXSMHV3KFY6R0X9PRYSMA"
-    );
-
-    expect(result.current.attachmentsOption).toEqual(
-      mockAttachmentsOption.custom_object_record
     );
     expect(result.current.errorAttachmentsOption).toBeNull();
   });
@@ -72,19 +72,18 @@ describe("useAttachmentsOption", () => {
       })
     ) as jest.Mock;
 
-    const { result, waitForNextUpdate } = renderHook(() =>
-      useAttachmentsOption("broken-id")
-    );
+    const { result } = renderHook(() => useAttachmentsOption("broken-id"));
 
     expect(result.current.attachmentsOption).toBeUndefined();
     expect(result.current.errorAttachmentsOption).toBeNull();
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.errorAttachmentsOption).toEqual(
+        new Error("Error fetching service catalog item")
+      );
+    });
 
     expect(result.current.attachmentsOption).toBeUndefined();
-    expect(result.current.errorAttachmentsOption).toEqual(
-      new Error("Error fetching service catalog item")
-    );
   });
 
   it("should refetch when attachmentsOptionId changes", async () => {
@@ -95,18 +94,18 @@ describe("useAttachmentsOption", () => {
       })
     ) as jest.Mock;
 
-    const { result, waitForNextUpdate, rerender } = renderHook(
+    const { result, rerender } = renderHook(
       ({ id }) => useAttachmentsOption(id),
       {
         initialProps: { id: "id-1" },
       }
     );
 
-    await waitForNextUpdate();
-
-    expect(result.current.attachmentsOption).toEqual(
-      mockAttachmentsOption.custom_object_record
-    );
+    await waitFor(() => {
+      expect(result.current.attachmentsOption).toEqual(
+        mockAttachmentsOption.custom_object_record
+      );
+    });
 
     const newMockResponse = {
       custom_object_record: {
@@ -125,10 +124,10 @@ describe("useAttachmentsOption", () => {
 
     rerender({ id: "id-2" });
 
-    await waitForNextUpdate();
-
-    expect(result.current.attachmentsOption).toEqual(
-      newMockResponse.custom_object_record
-    );
+    await waitFor(() => {
+      expect(result.current.attachmentsOption).toEqual(
+        newMockResponse.custom_object_record
+      );
+    });
   });
 });

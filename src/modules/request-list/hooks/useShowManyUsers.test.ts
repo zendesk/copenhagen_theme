@@ -1,6 +1,6 @@
 import type { RequestUser } from "../data-types";
 import { useShowManyUsers } from "./useShowManyUsers";
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook, waitFor } from "@testing-library/react";
 
 const users: RequestUser[] = [
   { id: 1, name: "User 1", alias: "" },
@@ -18,20 +18,18 @@ const response = { users };
 );
 
 test("fetches users data via api/v2/users/show_many", async () => {
-  const { result, waitForNextUpdate } = renderHook(() =>
-    useShowManyUsers([1, 2, 3])
-  );
+  const { result } = renderHook(() => useShowManyUsers([1, 2, 3]));
 
-  await waitForNextUpdate();
+  await waitFor(() => {
+    expect(result.current).toEqual({
+      users,
+      error: undefined,
+      isLoading: false,
+    });
+  });
 
   expect(fetch).toHaveBeenCalledWith("/api/v2/users/show_many.json?ids=1,2,3", {
     signal: expect.any(AbortSignal),
-  });
-
-  expect(result.current).toEqual({
-    users,
-    error: undefined,
-    isLoading: false,
   });
 });
 
@@ -40,13 +38,12 @@ test("handles exceptions", async () => {
     Promise.reject("Oh heck no another error!")
   );
 
-  const { result, waitForNextUpdate } = renderHook(() =>
-    useShowManyUsers([1, 2, 3])
-  );
-  await waitForNextUpdate();
-  expect(result.current).toEqual({
-    users: [],
-    error: "Oh heck no another error!",
-    isLoading: true,
+  const { result } = renderHook(() => useShowManyUsers([1, 2, 3]));
+  await waitFor(() => {
+    expect(result.current).toEqual({
+      users: [],
+      error: "Oh heck no another error!",
+      isLoading: true,
+    });
   });
 });

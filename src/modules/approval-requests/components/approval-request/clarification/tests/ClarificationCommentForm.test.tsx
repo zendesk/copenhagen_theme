@@ -1,10 +1,15 @@
-import { screen, waitFor, act, fireEvent } from "@testing-library/react";
+import {
+  screen,
+  waitFor,
+  act,
+  fireEvent,
+  renderHook,
+} from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import ClarificationCommentForm from "../ClarificationCommentForm";
 import { useSubmitComment } from "../hooks/useSubmitComment";
 import { useGetClarificationCopy } from "../hooks/useGetClarificationCopy";
 import { MAX_CHAR_COUNT, WARNING_THRESHOLD } from "../constants";
-import { renderHook } from "@testing-library/react-hooks";
 import { renderWithTheme } from "../../../../testHelpers";
 
 jest.mock("../hooks/useSubmitComment");

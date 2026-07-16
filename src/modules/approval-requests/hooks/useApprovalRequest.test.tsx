@@ -1,4 +1,4 @@
-import { renderHook, act } from "@testing-library/react-hooks";
+import { renderHook, act, waitFor } from "@testing-library/react";
 import { useApprovalRequest } from "./useApprovalRequest";
 
 global.fetch = jest.fn();
@@ -19,7 +19,7 @@ describe("useApprovalRequest", () => {
       json: async () => ({ approval_request: mockApprovalRequest }),
     });
 
-    const { result, waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useApprovalRequest({
         approvalWorkflowInstanceId: "workflow123",
         approvalRequestId: "1234",
@@ -29,13 +29,14 @@ describe("useApprovalRequest", () => {
 
     expect(result.current.isLoading).toBe(true);
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
 
     expect(fetch).toHaveBeenCalledWith(
       "/api/v2/approval_workflow_instances/workflow123/approval_requests/1234"
     );
     expect(result.current.approvalRequest).toEqual(mockApprovalRequest);
-    expect(result.current.isLoading).toBe(false);
   });
 
   it("polls data when polling is enabled and status is not terminal", async () => {
@@ -46,7 +47,7 @@ describe("useApprovalRequest", () => {
       json: async () => ({ approval_request: mockApprovalRequest }),
     });
 
-    const { waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useApprovalRequest({
         approvalWorkflowInstanceId: "workflow123",
         approvalRequestId: "1234",
@@ -54,7 +55,9 @@ describe("useApprovalRequest", () => {
       })
     );
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
 
     expect(fetch).toHaveBeenCalledTimes(1);
 
@@ -62,9 +65,9 @@ describe("useApprovalRequest", () => {
       jest.advanceTimersByTime(10000);
     });
 
-    await waitForNextUpdate();
-
-    expect(fetch).toHaveBeenCalledTimes(2);
+    await waitFor(() => {
+      expect(fetch).toHaveBeenCalledTimes(2);
+    });
   });
 
   it("does not poll data when polling is disabled", async () => {
@@ -75,7 +78,7 @@ describe("useApprovalRequest", () => {
       json: async () => ({ approval_request: mockApprovalRequest }),
     });
 
-    const { waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useApprovalRequest({
         approvalWorkflowInstanceId: "workflow123",
         approvalRequestId: "1234",
@@ -83,7 +86,9 @@ describe("useApprovalRequest", () => {
       })
     );
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
 
     expect(fetch).toHaveBeenCalledTimes(1);
 
@@ -107,7 +112,7 @@ describe("useApprovalRequest", () => {
       json: async () => ({ approval_request: terminalApprovalRequest }),
     });
 
-    const { waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useApprovalRequest({
         approvalWorkflowInstanceId: "workflow123",
         approvalRequestId: "1234",
@@ -115,7 +120,9 @@ describe("useApprovalRequest", () => {
       })
     );
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
 
     expect(fetch).toHaveBeenCalledTimes(1);
 

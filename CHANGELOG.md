@@ -1,3 +1,40 @@
+# [4.47.0](https://github.com/zendesk/copenhagen_theme/compare/v4.46.0...v4.47.0) (2026-07-15)
+
+
+### Features
+
+* add new screeshots to new sc translations ([36c8ac7](https://github.com/zendesk/copenhagen_theme/commit/36c8ac7938a8500fec24332808251790c80cecd1))
+* requester everywhere ([fef9d7b](https://github.com/zendesk/copenhagen_theme/commit/fef9d7b02a9f953db24de21ed827597c2f4426df))
+
+# [4.46.0](https://github.com/zendesk/copenhagen_theme/compare/v4.45.0...v4.46.0) (2026-07-13)
+
+
+### Features
+
+* **i18n:** replace user-label with requester-label in request note ([80a0c8f](https://github.com/zendesk/copenhagen_theme/commit/80a0c8f357cddf0389d96b0a2ce73b87d1dc422d))
+
+# [4.45.0](https://github.com/zendesk/copenhagen_theme/compare/v4.44.3...v4.45.0) (2026-07-13)
+
+
+### Features
+
+* remove filter when requests across brands on ([fe4c186](https://github.com/zendesk/copenhagen_theme/commit/fe4c186ede552be958b21edef7b2dc4008cfc8eb))
+
+## [4.44.3](https://github.com/zendesk/copenhagen_theme/compare/v4.44.2...v4.44.3) (2026-07-13)
+
+
+### Bug Fixes
+
+* run yarn download-locales ([e8dab67](https://github.com/zendesk/copenhagen_theme/commit/e8dab6769659ab55da235869879fb80265c35239))
+* update translations ([f183675](https://github.com/zendesk/copenhagen_theme/commit/f1836752a75287a59a0020ead340d4eae12d2d2d))
+
+## [4.44.2](https://github.com/zendesk/copenhagen_theme/compare/v4.44.1...v4.44.2) (2026-07-13)
+
+
+### Bug Fixes
+
+* update Garden to v9.15.6 ([f8845da](https://github.com/zendesk/copenhagen_theme/commit/f8845da6178ab6f53b3de857e7a3928e7c142c14))
+
 ## [4.44.1](https://github.com/zendesk/copenhagen_theme/compare/v4.44.0...v4.44.1) (2026-07-03)
 
 

@@ -1,5 +1,4 @@
-import { renderHook } from "@testing-library/react-hooks";
-import { act } from "@testing-library/react";
+import { renderHook, act } from "@testing-library/react";
 import { useGetUnreadComments } from "../useGetUnreadComments";
 import type { ApprovalClarificationFlowMessage } from "../../../../../types";
 import { buildCommentEntityKey } from "../../utils";

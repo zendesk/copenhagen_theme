@@ -1,7 +1,7 @@
 jest.mock("../../shared/notifications/notify");
 
 import type { Request, RequestUser } from "../data-types";
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook, waitFor } from "@testing-library/react";
 import { useRequests, PER_PAGE } from "./useRequests";
 import type { RequestListParams } from "../data-types/request-list-params";
 import {
@@ -68,11 +68,20 @@ test("fetches requests based on the location params via api/v2/requests/search",
     selectedTab: { name: CCD_REQUESTS_TAB_NAME },
   };
 
-  const { result, waitForNextUpdate } = renderHook(() =>
-    useRequests(params, jest.fn())
-  );
+  const { result } = renderHook(() => useRequests(params, jest.fn()));
 
-  await waitForNextUpdate();
+  await waitFor(() => {
+    expect(result.current).toEqual({
+      requests,
+      hasNextPage: true,
+      hasPreviousPage: false,
+      isLoading: false,
+      requestsCount: 2,
+      requestsPerPage: PER_PAGE,
+      users,
+      error: undefined,
+    });
+  });
 
   expect(fetch).toHaveBeenCalledWith(
     `/api/v2/requests/search.json?include=users&cc_id=true&page=1&per_page=${PER_PAGE}&query=printer+on+fire+order_by%3Aupdated_at+sort%3Aasc`,
@@ -80,27 +89,16 @@ test("fetches requests based on the location params via api/v2/requests/search",
       signal,
     }
   );
-
-  expect(result.current).toEqual({
-    requests,
-    hasNextPage: true,
-    hasPreviousPage: false,
-    isLoading: false,
-    requestsCount: 2,
-    requestsPerPage: PER_PAGE,
-    users,
-    error: undefined,
-  });
 });
 
 test("limits request results to 1000 records", async () => {
   const params = { ...defaultParams, page: 70 };
 
-  const { waitForNextUpdate } = renderHook(() =>
-    useRequests(params, jest.fn())
-  );
+  const { result } = renderHook(() => useRequests(params, jest.fn()));
 
-  await waitForNextUpdate();
+  await waitFor(() => {
+    expect(result.current.isLoading).toBe(false);
+  });
 
   expect(fetch).toHaveBeenCalledWith(
     `/api/v2/requests/search.json?include=users&page=66&per_page=${PER_PAGE}&query=*+requester%3Ame`,
@@ -123,7 +121,7 @@ test("calls notify when requests fetches fails with a 406 error", async () => {
 
   (notify as jest.Mock).mockReturnValue(notify);
 
-  const { waitFor } = renderHook(() => useRequests(defaultParams, push));
+  renderHook(() => useRequests(defaultParams, push));
 
   await waitFor(() => {
     expect(notify).toHaveBeenCalledWith({
@@ -139,18 +137,17 @@ test("handles exceptions", async () => {
     Promise.reject("Network error")
   );
 
-  const { result, waitForNextUpdate } = renderHook(() =>
-    useRequests(defaultParams, jest.fn())
-  );
-  await waitForNextUpdate();
-  expect(result.current).toEqual({
-    requests: [],
-    hasNextPage: false,
-    hasPreviousPage: false,
-    isLoading: true,
-    requestsCount: 0,
-    requestsPerPage: PER_PAGE,
-    users: [],
-    error: "Network error",
+  const { result } = renderHook(() => useRequests(defaultParams, jest.fn()));
+  await waitFor(() => {
+    expect(result.current).toEqual({
+      requests: [],
+      hasNextPage: false,
+      hasPreviousPage: false,
+      isLoading: true,
+      requestsCount: 0,
+      requestsPerPage: PER_PAGE,
+      users: [],
+      error: "Network error",
+    });
   });
 });

@@ -384,7 +384,9 @@ export function ItemRequestForm({
           <ButtonWrapper>
             <ButtonContainer>
               <UserNameWrapper>
-                <Span isBold>{t("service-catalog.item.user", "User")}</Span>
+                <Span isBold>
+                  {t("service-catalog.item.requester", "Requester")}
+                </Span>
                 <Span>{displayedUserName}</Span>
               </UserNameWrapper>
               {requestOnBehalfEnabled && (

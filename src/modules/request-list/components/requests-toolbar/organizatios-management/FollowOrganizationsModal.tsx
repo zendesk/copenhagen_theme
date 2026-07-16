@@ -172,7 +172,7 @@ export default function FollowOrganizationsModal(
           } else {
             throw Error(response.statusText);
           }
-        } catch (e) {
+        } catch {
           oss.isError = true;
         } finally {
           oss.isChecked = oss.subscribed;

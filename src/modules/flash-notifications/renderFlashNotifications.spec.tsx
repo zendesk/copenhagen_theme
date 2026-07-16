@@ -21,14 +21,18 @@ const baseLocale = "en-us";
 
 describe("renderFlashNotifications", () => {
   it("creates a container div and mounts provider", async () => {
-    await renderFlashNotifications(settings, baseLocale);
+    await act(async () => {
+      await renderFlashNotifications(settings, baseLocale);
+    });
 
     const container: HTMLDivElement | null = document.body.querySelector("div");
     expect(container).not.toBeNull();
   });
 
   it("renders toast when emitNotify is called after initialization", async () => {
-    await renderFlashNotifications(settings, baseLocale);
+    await act(async () => {
+      await renderFlashNotifications(settings, baseLocale);
+    });
 
     const testId = "toast-test";
     const notification: ToastNotification = {

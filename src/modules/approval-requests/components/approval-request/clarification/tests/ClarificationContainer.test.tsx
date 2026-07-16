@@ -1,4 +1,10 @@
-import { screen, fireEvent, within, act } from "@testing-library/react";
+import {
+  screen,
+  fireEvent,
+  within,
+  act,
+  renderHook,
+} from "@testing-library/react";
 import ClarificationContainer from "../ClarificationContainer";
 import { useGetClarificationCopy } from "../hooks/useGetClarificationCopy";
 import { useGetUnreadComments } from "../hooks/useGetUnreadComments";
@@ -7,7 +13,6 @@ import NewCommentIndicator from "../NewCommentIndicator";
 import { buildCommentEntityKey } from "../utils";
 import { renderWithTheme } from "../../../../testHelpers";
 import { APPROVAL_REQUEST_STATES } from "../../../../constants";
-import { renderHook } from "@testing-library/react-hooks";
 import type { ApprovalClarificationFlowMessage } from "../../../../types";
 
 jest.mock(
