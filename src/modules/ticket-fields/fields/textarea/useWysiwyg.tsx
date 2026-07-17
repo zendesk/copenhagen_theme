@@ -24,9 +24,7 @@ export function useWysiwyg({
         isInitializedRef.current = true;
 
         void (async () => {
-          const { createEditor } = await import(
-            "@zendesk/help-center-wysiwyg"
-          );
+          const { createEditor } = await import("@zendesk/help-center-wysiwyg");
 
           const editor = await createEditor(ref, {
             editorType: "supportRequests",
