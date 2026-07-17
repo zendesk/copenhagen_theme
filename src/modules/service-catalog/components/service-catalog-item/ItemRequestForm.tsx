@@ -54,6 +54,7 @@ const ButtonWrapper = styled.div`
   border: ${(props) => props.theme.borders.sm}
     ${({ theme }) => getColor({ theme, hue: "grey", shade: 300 })};
   height: fit-content;
+  max-width: 360px;
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     position: sticky;
@@ -106,6 +107,8 @@ const ButtonSkeleton = styled(Skeleton)`
 const UserNameWrapper = styled.div`
   margin-bottom: 16px;
   display: flex;
+  flex: 1;
+  min-width: 0;
   flex-direction: column;
   gap: ${(props) => props.theme.space.xxs};
 `;
@@ -114,6 +117,12 @@ const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+const RequesterName = styled.span`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const isAssetField = (f: TicketFieldObject) =>
@@ -387,7 +396,7 @@ export function ItemRequestForm({
                 <Span isBold>
                   {t("service-catalog.item.requester", "Requester")}
                 </Span>
-                <Span>{displayedUserName}</Span>
+                <RequesterName>{displayedUserName}</RequesterName>
               </UserNameWrapper>
               {requestOnBehalfEnabled && (
                 <>
