@@ -7,9 +7,23 @@ on:
       - main
       - sandbox
     paths-ignore:
-      - '.github/skills/**'
+      - '.github/**'
       - '**.md'
       - 'LICENSE'
+      - 'bin/**'
+      - '__mocks__/**'
+      - 'jest.config.mjs'
+      - 'jest.setup.js'
+      - 'tsconfig.json'
+      - 'rollup.config.mjs'
+      - 'zass.mjs'
+      - 'generate-import-map.mjs'
+      - 'package.json'
+      - 'yarn.lock'
+      - 'src/**/*.test.ts'
+      - 'src/**/*.test.tsx'
+      - 'src/**/*.spec.ts'
+      - 'src/**/*.spec.tsx'
   pull_request:
     types:
       - closed
@@ -17,9 +31,23 @@ on:
       - main
       - sandbox
     paths-ignore:
-      - '.github/skills/**'
+      - '.github/**'
       - '**.md'
       - 'LICENSE'
+      - 'bin/**'
+      - '__mocks__/**'
+      - 'jest.config.mjs'
+      - 'jest.setup.js'
+      - 'tsconfig.json'
+      - 'rollup.config.mjs'
+      - 'zass.mjs'
+      - 'generate-import-map.mjs'
+      - 'package.json'
+      - 'yarn.lock'
+      - 'src/**/*.test.ts'
+      - 'src/**/*.test.tsx'
+      - 'src/**/*.spec.ts'
+      - 'src/**/*.spec.tsx'
 
 permissions:
   contents: read
