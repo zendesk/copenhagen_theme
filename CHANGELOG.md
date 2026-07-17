@@ -1,3 +1,10 @@
+## [4.47.2](https://github.com/zendesk/copenhagen_theme/compare/v4.47.1...v4.47.2) (2026-07-17)
+
+
+### Bug Fixes
+
+* truncate requester name properly ([de5a801](https://github.com/zendesk/copenhagen_theme/commit/de5a8017e2646b3f0537fe452f1e97d30d781653))
+
 ## [4.47.1](https://github.com/zendesk/copenhagen_theme/compare/v4.47.0...v4.47.1) (2026-07-17)
 
 
