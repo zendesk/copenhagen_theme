@@ -1,3 +1,10 @@
+## [4.47.1](https://github.com/zendesk/copenhagen_theme/compare/v4.47.0...v4.47.1) (2026-07-17)
+
+
+### Bug Fixes
+
+* double autocomplete call ([cd9ed07](https://github.com/zendesk/copenhagen_theme/commit/cd9ed078ae708176963774119204fc31eee11460))
+
 # [4.47.0](https://github.com/zendesk/copenhagen_theme/compare/v4.46.0...v4.47.0) (2026-07-15)
 
 
