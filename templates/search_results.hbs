@@ -1,18 +1,27 @@
+<!-- Customized 5-21-25 -->
+<!-- Updated 7-16-26: themed to match home/service pages (Poppins + brand
+     tokens). The native search results and the native TYPE / BY CATEGORY
+     sidebar filters are kept fully intact — only styling is applied. The
+     search bar is skinned into the hero pill with a pink submit button; the
+     stock left magnifier is removed and the native clear (×) neutralized so
+     there is no double icon. No API layer, no custom grouping — the native
+     filtering does the work. -->
 <div class="container-divider"></div>
-<div class="container">
+<div class="container svc-search-container">
   <div class="sub-nav">
     {{breadcrumbs}}
-    <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-      </svg>
+    <div class="search-container svc-search-pill">
       {{search submit=false}}
+      <button type="button" class="svc-search-pill-btn" id="svc-search-pill-btn" aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
     </div>
   </div>
 
-  <div class="search-results">
-    <aside class="search-results-sidebar">
+  <div class="search-results svc-search-results">
+    <aside class="search-results-sidebar svc-search-sidebar">
       {{#if source_filters}}
         <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_source'}}</h3>
         <section class="filters-in-section collapsible-sidebar">
@@ -145,9 +154,9 @@
       {{/if}}
     </aside>
 
-    <section id="main-content" class="search-results-column">
+    <section id="main-content" class="search-results-column svc-search-column">
       {{generative_answers}}
-      <h1 class="search-results-subheading">
+      <h1 class="search-results-subheading svc-search-subheading">
         {{#if results}}
           {{#is current_filter.identifier 'unified'}}
             {{#if content_tag_filters }}
@@ -173,13 +182,13 @@
         {{/if}}
       </h1>
       {{#if results}}
-        <ul class="search-results-list">
+        <ul class="search-results-list svc-search-list">
           {{#each results}}
-            <li>
-              <article>
+            <li class="svc-search-li">
+              <article class="svc-result">
                 <header>
                   <div class="search-result-title-container">
-                    <h2 class="search-result-title">
+                    <h2 class="search-result-title svc-result-title">
                       <a href="{{url}}" {{#if is_external}} target="_blank" {{/if}}>
                         {{title}}
                         {{#if is_external}}
@@ -223,12 +232,12 @@
                     </div>
                   </div>
                   <div class="search-result-meta-container">
-                    <nav 
+                    <nav
                       {{#is type 'article'}}aria-label='{{t 'article_location_with_title' title=title}}'{{/is}}
                       {{#is type 'community_post'}}aria-label='{{t 'post_location_with_title' title=title}}'{{/is}}
                       {{#is type 'external_content_record'}}aria-label='{{t 'external_content_location_with_title' title=title}}'{{/is}}
                     >
-                      <ol class="breadcrumbs search-result-breadcrumbs">
+                      <ol class="breadcrumbs search-result-breadcrumbs svc-result-breadcrumbs">
                         {{#each path_steps}}
                           <li><a href="{{url}}" target="{{target}}">{{name}}</a></li>
                         {{/each}}
@@ -240,13 +249,13 @@
                     <span class="meta-data">{{date created_at}}</span>
                   </div>
                 </header>
-                <p class="search-result-description">{{text}}</p>
+                <p class="search-result-description svc-result-desc">{{text}}</p>
               </article>
             </li>
           {{/each}}
         </ul>
       {{else}}
-          <div class="no-results">
+          <div class="no-results svc-no-results">
             <svg width="161" height="120" viewBox="0 0 161 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M130.568 90.859v-7.693h5.387c8.881 0 16.105-6.974 16.105-15.769s-7.224-15.77-16.105-15.77h-20.921v-7.692h20.921c13.163 0 23.872 10.425 23.872 23.462 0 13.037-10.709 23.462-23.872 23.462h-5.387z" fill="#fff"></path><path clip-rule="evenodd" d="M135.955 90.859h-5.387v-7.693h5.387c8.881 0 16.105-6.974 16.105-15.769s-7.224-15.77-16.105-15.77h-20.921v-7.692h20.921c13.163 0 23.872 10.425 23.872 23.462 0 13.037-10.709 23.462-23.872 23.462v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M25.65 90.859h4.725v-7.693h-4.726c-8.88 0-16.105-6.974-16.105-15.769s7.224-15.77 16.105-15.77h20.26v-7.692h-20.26c-13.163 0-23.872 10.425-23.872 23.462 0 13.037 10.71 23.462 23.872 23.462" fill="#fff"></path><path clip-rule="evenodd" d="M25.65 90.859h4.725v-7.693h-4.726c-8.88 0-16.105-6.974-16.105-15.769s7.224-15.77 16.105-15.77h20.26v-7.692h-20.26c-13.163 0-23.872 10.425-23.872 23.462 0 13.037 10.71 23.462 23.872 23.462v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><mask id="a" maskUnits="userSpaceOnUse" x="1" y="0" width="160" height="120" style="mask-type: alpha;"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 120h159.605V0H1v120z" fill="#fff"></path></mask><g mask="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M50.664 102.135h60.507V76.242H50.664v25.893z" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M50.664 102.135h60.507V76.242H50.664v25.893z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M111.171 94.127h20.836V76.242h-20.836v17.885z" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M111.171 94.127h20.836V76.242h-20.836v17.885z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M29.42 94.127h21.244V76.242H29.42v17.885z" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M29.42 94.127h21.244V76.242H29.42v17.885z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M29.42 80.857h102.588M29.42 85.186h102.588" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M90.907 76.445c0 5.527-4.524 10.008-10.105 10.008-5.58 0-10.105-4.48-10.105-10.008" fill="#fff"></path><path d="M90.907 76.445c0 5.527-4.524 10.008-10.105 10.008-5.58 0-10.105-4.48-10.105-10.008" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M92.695 22.397H69.14a1.15 1.15 0 01-1.155-1.144v-.92c0-2.577 2.11-4.667 4.713-4.667h16.44c2.603 0 4.713 2.09 4.713 4.668v.919a1.15 1.15 0 01-1.155 1.144" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M92.695 22.397H69.14a1.15 1.15 0 01-1.155-1.144v-.92c0-2.577 2.11-4.667 4.713-4.667h16.44c2.603 0 4.713 2.09 4.713 4.668v.919a1.15 1.15 0 01-1.155 1.144v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M80.802 77.524c-11.939 0-21.617-9.585-21.617-21.41V41.499c0-11.825 9.678-21.411 21.617-21.411 11.94 0 21.618 9.586 21.618 21.41v14.616c0 11.825-9.678 21.41-21.618 21.41" fill="#fff"></path><path clip-rule="evenodd" d="M80.802 77.524v0c-11.939 0-21.617-9.585-21.617-21.41V41.499c0-11.825 9.678-21.411 21.617-21.411v0c11.94 0 21.618 9.586 21.618 21.41v14.616c0 11.825-9.678 21.41-21.618 21.41v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M80.716 45.217v11.025h-2.354c-1.348 0-2.441 1.083-2.441 2.418v0c0 1.335 1.093 2.417 2.441 2.417h3.933" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M76.3 69.513c0-2.168 1.775-3.925 3.963-3.925s3.962 1.757 3.962 3.925h-7.924z" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M76.3 69.513c0-2.168 1.775-3.925 3.963-3.925s3.962 1.757 3.962 3.925h-7.924v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M98.537 34.511h-35.47l-3.883-11.153s9.56-3.366 21.521-3.366c11.96 0 21.715 3.366 21.715 3.366L98.537 34.51z" fill="#fff"></path><path clip-rule="evenodd" d="M98.537 34.511h-35.47l-3.883-11.153s9.56-3.366 21.521-3.366c11.96 0 21.715 3.366 21.715 3.366L98.537 34.51v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M77.78 25.217h5.695M80.627 23.166v7.308M83.443 28.31c0 1.54-1.261 2.789-2.816 2.789s-2.816-1.248-2.816-2.788" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M91.522 37.66c-.07 0-.139.12-.208.12h-21.27c-.07 0-.139-.12-.209-.12-4.962 0-8.985 3.93-8.985 8.845 0 4.914 4.023 9.152 8.985 9.152 4.963 0 8.986-4.8 8.986-8.645h3.715c0 3.846 4.022 8.618 8.986 8.618 4.963 0 8.985-4.07 8.985-8.985 0-4.915-4.022-8.985-8.986-8.985" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M91.522 37.66c-.07 0-.139.12-.208.12h-21.27c-.07 0-.139-.12-.209-.12-4.962 0-8.985 3.93-8.985 8.845 0 4.914 4.023 9.152 8.985 9.152 4.963 0 8.986-4.8 8.986-8.645h3.715c0 3.846 4.022 8.618 8.986 8.618 4.963 0 8.985-4.07 8.985-8.985 0-4.915-4.022-8.985-8.986-8.985v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M117.21 47.416c0 8.32-6.81 15.065-15.211 15.065-8.4 0-15.21-6.745-15.21-15.065s6.81-15.064 15.21-15.064c8.401 0 15.211 6.744 15.211 15.064" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M117.21 47.416c0 8.32-6.81 15.065-15.211 15.065-8.4 0-15.21-6.745-15.21-15.065s6.81-15.064 15.21-15.064c8.401 0 15.211 6.744 15.211 15.064v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M101.999 56.943c-5.304 0-9.62-4.274-9.62-9.526 0-5.253 4.316-9.526 9.62-9.526 5.303 0 9.618 4.273 9.618 9.526 0 5.252-4.315 9.526-9.618 9.526" fill="#fff"></path><path clip-rule="evenodd" d="M101.999 56.943c-5.304 0-9.62-4.274-9.62-9.526 0-5.253 4.316-9.526 9.62-9.526 5.303 0 9.618 4.273 9.618 9.526 0 5.252-4.315 9.526-9.618 9.526v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M101.998 41.352c3.376 0 6.124 2.72 6.124 6.064z" fill="#fff"></path><path d="M101.998 41.352c3.376 0 6.124 2.72 6.124 6.064" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M74.57 47.416c0 8.32-6.81 15.065-15.212 15.065-8.4 0-15.21-6.745-15.21-15.065s6.81-15.064 15.21-15.064c8.401 0 15.211 6.744 15.211 15.064" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M74.57 47.416c0 8.32-6.81 15.065-15.212 15.065-8.4 0-15.21-6.745-15.21-15.065s6.81-15.064 15.21-15.064c8.401 0 15.211 6.744 15.211 15.064v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M59.358 56.943c-5.303 0-9.619-4.274-9.619-9.526 0-5.253 4.316-9.526 9.619-9.526s9.619 4.273 9.619 9.526c0 5.252-4.316 9.526-9.62 9.526" fill="#fff"></path><path clip-rule="evenodd" d="M59.358 56.943c-5.303 0-9.619-4.274-9.619-9.526 0-5.253 4.316-9.526 9.619-9.526s9.619 4.273 9.619 9.526c0 5.252-4.316 9.526-9.62 9.526v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M59.357 41.352c3.377 0 6.124 2.72 6.124 6.064z" fill="#fff"></path><path d="M59.357 41.352c3.377 0 6.124 2.72 6.124 6.064M88.051 41.352H73.553M80.802 86.453v10.614" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
             <div class="headline">
               {{t 'no_results_unified_start_new_search'}}
@@ -263,10 +272,189 @@
                   </path>
                 </svg>
               {{/link}}
-            </div> 
+            </div>
           </div>
       {{/if}}
     </section>
   </div>
   {{pagination}}
 </div>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.svc-search-container {
+  --svc-navy:      #003399;
+  --svc-navy-deep: #002a6e;
+  --svc-pink:      #e6007e;
+  --svc-pink-deep: #c4006a;
+  --svc-ink:       #1d2b4d;
+  --svc-gray:      #5b6472;
+  --svc-gray-soft: #8089a0;
+  --svc-line:      #eef1f6;
+  --svc-tint:      #eaf0ff;
+  --svc-font: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.svc-search-container,
+.svc-search-container .svc-search-results,
+.svc-search-container .svc-search-results * { font-family: var(--svc-font); }
+
+/* ---- SEARCH PILL (native widget skinned like the hero, pink submit) ----
+   Stock left magnifier removed from markup; native clear (×) neutralized to a
+   small gray control so only the pink button reads as the action. */
+.svc-search-pill {
+  position: relative;
+  display: flex !important;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 6px;
+  width: 100%;
+  max-width: 420px;
+  margin-left: auto;
+  padding: 5px 6px 5px 18px;
+  background: #fff;
+  border: 1px solid #dfe4ee;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(15, 33, 80, 0.05);
+  box-sizing: border-box;
+}
+.svc-search-pill:focus-within { border-color: #b9c9ef; box-shadow: 0 6px 16px rgba(0, 51, 153, 0.12); }
+.svc-search-pill .search-icon { display: none !important; }
+.svc-search-pill > form,
+.svc-search-pill > .search,
+.svc-search-pill [class*="search"]:not(.svc-search-pill-btn):not(.svc-search-pill-btn *),
+.svc-search-pill [class*="Search"]:not(.svc-search-pill-btn):not(.svc-search-pill-btn *) {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+.svc-search-pill input[type="search"],
+.svc-search-pill input[type="text"],
+.svc-search-pill input:not([type]) {
+  width: 100% !important;
+  min-width: 0 !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-family: var(--svc-font);
+  font-size: 15px;
+  color: var(--svc-ink);
+  padding: 10px 8px !important;
+}
+/* Hide the native clear (×) button entirely — only the pink button remains */
+.svc-search-pill button:not(.svc-search-pill-btn),
+.svc-search-pill [class*="clear" i],
+.svc-search-pill [aria-label*="clear" i],
+.svc-search-pill [aria-label*="Clear" i] {
+  display: none !important;
+}
+/* Pink circular submit button, right side (matches the hero) */
+.svc-search-pill-btn {
+  flex: 0 0 auto;
+  order: 99;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 999px;
+  background: linear-gradient(145deg, var(--svc-pink-deep), var(--svc-pink));
+  transition: filter 0.16s ease;
+}
+.svc-search-pill-btn svg { width: 19px; height: 19px; }
+.svc-search-pill-btn:hover { filter: brightness(1.08); }
+.svc-search-pill-btn:focus-visible { outline: 2px solid #6ea8ff; outline-offset: 2px; }
+
+/* Results heading */
+.svc-search-subheading {
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 700;
+  color: var(--svc-ink);
+  margin-bottom: 18px;
+}
+
+/* ---- NATIVE SIDEBAR FILTERS (restyled, fully functional) ---- */
+.svc-search-sidebar .sidenav-title,
+.svc-search-sidebar .collapsible-sidebar-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--svc-gray);
+}
+.svc-search-sidebar .sidenav-item {
+  border-radius: 9px;
+  transition: background-color 0.14s ease, color 0.14s ease;
+}
+.svc-search-sidebar .sidenav-item:hover { background: var(--svc-tint); }
+.svc-search-sidebar .sidenav-item.current {
+  background: var(--svc-tint);
+  color: var(--svc-navy);
+  font-weight: 600;
+}
+.svc-search-sidebar .filter-name { color: inherit; }
+.svc-search-sidebar .doc-count { color: var(--svc-gray-soft); }
+
+/* ---- RESULT CARDS ---- */
+.svc-search-list { list-style: none; margin: 0; padding: 0; }
+.svc-search-li { margin: 0 0 12px; }
+.svc-result {
+  background: #fff;
+  border: 1px solid #e3e8f0;
+  border-radius: 14px;
+  padding: 16px 18px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.svc-result:hover { border-color: #bfd0f3; box-shadow: 0 8px 20px rgba(15, 33, 80, 0.07); }
+.svc-result-title { font-size: 16px; font-weight: 600; margin: 0 0 4px; }
+.svc-result-title a { color: var(--svc-navy); text-decoration: none; }
+.svc-result-title a:hover { text-decoration: underline; }
+.svc-result-breadcrumbs { font-size: 12px; }
+.svc-result-breadcrumbs a { color: var(--svc-gray); }
+.svc-result-desc { color: var(--svc-gray); font-size: 13.5px; line-height: 1.55; margin: 8px 0 0; }
+
+@media (max-width: 768px) {
+  .svc-result { padding: 14px; }
+  .svc-search-pill { max-width: 100%; margin-left: 0; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-search-sidebar .sidenav-item,
+  .svc-result,
+  .svc-search-pill-btn { transition: none !important; }
+}
+</style>
+
+<script>
+/* Wire the pink button to submit the native search (finds the input in the
+   pill and submits its form, matching native behavior exactly). */
+(function () {
+  var btn = document.getElementById('svc-search-pill-btn');
+  if (!btn) return;
+  var pill = btn.closest('.svc-search-pill');
+  if (!pill) return;
+  btn.addEventListener('click', function () {
+    var input = pill.querySelector('input[type="search"], input[type="text"], input:not([type])');
+    if (!input) return;
+    var form = input.form || input.closest('form');
+    if (form) {
+      if (typeof form.requestSubmit === 'function') form.requestSubmit();
+      else form.submit();
+    } else {
+      input.focus();
+      input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', code: 'Enter', keyCode: 13, which: 13, bubbles: true }));
+    }
+  });
+})();
+</script>

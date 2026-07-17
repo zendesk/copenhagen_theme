@@ -1,4 +1,4 @@
-<!-- Customized 5-21-25 -->
+<!-- Customized 6-17-26 -->
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <!-- Make the translated search clear button label available for use in JS -->
 <!-- See buildClearSearchButton() in script.js -->
@@ -29,13 +29,13 @@
 </script>
 <script type="module">
   import { renderFlashNotifications } from "flash-notifications";
-
   const settings = {{json settings}};
   const baseLocale = {{json help_center.base_locale}};
-
   renderFlashNotifications(settings, baseLocale);
 </script>
-  <script>
+
+<script>
+  // Hide any element whose only text is literally "empty"
   document.addEventListener("DOMContentLoaded", function () {
     const elements = document.querySelectorAll("a, li, div");
     elements.forEach(el => {
@@ -46,3 +46,57 @@
   });
 </script>
 
+<script>
+  /* Neutralize the current-page breadcrumb link.
+     Zendesk renders the active breadcrumb as <a href="#" aria-current="page">,
+     and clicking it navigates to "#", which blanks the page. It represents
+     the page you're already on, so it should not navigate at all.
+
+     Rather than only intercepting clicks (which another handler can beat),
+     we STRIP the href entirely — an <a> with no href cannot change the URL,
+     so the blank-page navigation becomes impossible. We also keep a capture-
+     phase click guard as a backstop, and a MutationObserver so breadcrumbs
+     that Zendesk re-renders after load are fixed too. */
+  (function () {
+    var SEL = 'nav[aria-label="Breadcrumb"] a, .breadcrumbs a';
+
+    var isDead = function (a) {
+      if (!a) return false;
+      var href = a.getAttribute('href');
+      return a.getAttribute('aria-current') === 'page' ||
+             href === '#' || href === '' || href === null;
+    };
+
+    var neutralize = function () {
+      document.querySelectorAll(SEL).forEach(function (a) {
+        if (!isDead(a)) return;
+        if (a.hasAttribute('href')) {
+          // Preserve original in case anything needs it, then remove it.
+          a.setAttribute('data-dead-href', a.getAttribute('href'));
+          a.removeAttribute('href');
+        }
+        a.setAttribute('role', 'link');
+        a.setAttribute('aria-disabled', 'true');
+        a.style.cursor = 'default';
+        a.style.textDecoration = 'none';
+      });
+    };
+
+    // Backstop: capture-phase click guard in case an href sneaks back in.
+    document.addEventListener('click', function (e) {
+      var a = (e.target && e.target.closest) ? e.target.closest('a') : null;
+      if (!a) return;
+      var inCrumb = a.closest &&
+        (a.closest('.breadcrumbs') || a.closest('nav[aria-label="Breadcrumb"]'));
+      if (inCrumb && isDead(a)) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+
+    var init = function () {
+      neutralize();
+      new MutationObserver(neutralize).observe(document.body, { childList: true, subtree: true });
+    };
+
+    if (document.readyState !== 'loading') init();
+    else document.addEventListener('DOMContentLoaded', init);
+  })();
+</script>
