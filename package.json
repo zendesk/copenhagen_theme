@@ -69,7 +69,7 @@
     "@shopify/eslint-plugin": "^44.0.0",
     "@svgr/rollup": "^8.1.0",
     "@testing-library/dom": "^9.3.4",
-    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/lodash.debounce": "^4.0.9",
