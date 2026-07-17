@@ -25,13 +25,15 @@ permissions:
   contents: read
 
 concurrency:
-  group: update-theme-${{ github.ref_name }}
+  group: update-theme-${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref || github.ref_name }}
   cancel-in-progress: true
 
 jobs:
   update_theme:
     if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' || github.event_name == 'push'
     runs-on: ubuntu-latest
+    env:
+      TARGET_BRANCH: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref || github.ref_name }}
     steps:
       - name: Check out repository
         uses: actions/checkout@9f698171ed81b15d1823a05fc7211befd50c8ae0 # v6.0.3
@@ -44,7 +46,7 @@ jobs:
       - name: Set theme version name
         run: |
           VERSION=$(node -p "require('./manifest.json').version.split('.').slice(0,2).join('.')")
-          BRANCH="${{ github.ref_name }}"
+          BRANCH="${TARGET_BRANCH}"
           THEME_NAME="ARPA-H Theme ${VERSION}.${{ github.run_number }} (${BRANCH})"
           echo "Setting theme name to: ${THEME_NAME}"
           node -e "
@@ -62,10 +64,10 @@ jobs:
       - name: Run updateTheme.js
         run: node ./.github/workflows/scripts/updateTheme.js
         env:
-          ZENDESK_SUBDOMAIN: ${{ (github.ref_name == 'sandbox') && secrets.SANDBOX_DOMAIN || secrets.ZENDESK_SUBDOMAIN }}
+          ZENDESK_SUBDOMAIN: ${{ (env.TARGET_BRANCH == 'sandbox') && secrets.SANDBOX_DOMAIN || secrets.ZENDESK_SUBDOMAIN }}
           ZENDESK_EMAIL: ${{ secrets.ZENDESK_EMAIL }}
-          ZENDESK_TOKEN: ${{ (github.ref_name == 'sandbox') && secrets.SANDBOX_TOKEN || secrets.ZENDESK_TOKEN }}
-          BRAND_ID: ${{ (github.ref_name == 'sandbox') && vars.SANDBOX_BRAND_ID || vars.BRAND_ID }}
+          ZENDESK_TOKEN: ${{ (env.TARGET_BRANCH == 'sandbox') && secrets.SANDBOX_TOKEN || secrets.ZENDESK_TOKEN }}
+          BRAND_ID: ${{ (env.TARGET_BRANCH == 'sandbox') && vars.SANDBOX_BRAND_ID || vars.BRAND_ID }}
 
       - name: Upload theme file
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
