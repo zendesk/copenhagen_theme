@@ -1,3 +1,14 @@
+## [4.47.3](https://github.com/zendesk/copenhagen_theme/compare/v4.47.2...v4.47.3) (2026-07-21)
+
+
+### Bug Fixes
+
+* **service-catalog:** safely build request comment HTML ([239e9c0](https://github.com/zendesk/copenhagen_theme/commit/239e9c04ab7939d5233237f9d151816e07377312))
+* **service-catalog:** safely build request comment HTML ([6118178](https://github.com/zendesk/copenhagen_theme/commit/6118178f3e4c13394e7431014f4c21ea709e1981))
+* **service-catalog:** safely build request comment HTML ([254b36b](https://github.com/zendesk/copenhagen_theme/commit/254b36b5e8ad599523d375307ed41f3684585944))
+* **service-catalog:** sanitize asset option descriptions ([6d3d3d7](https://github.com/zendesk/copenhagen_theme/commit/6d3d3d73c7926d9e70a88bed44e5611669f1d150))
+* **service-catalog:** sanitize item name and description to prevent stored XSS ([8067c36](https://github.com/zendesk/copenhagen_theme/commit/8067c360a7e904fd3623aeacf02abe0cee46a19c))
+
 ## [4.47.2](https://github.com/zendesk/copenhagen_theme/compare/v4.47.1...v4.47.2) (2026-07-17)
 
 
