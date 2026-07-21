@@ -154,7 +154,7 @@ describe("ServiceCatalogItem", () => {
       label: "Field 1",
       required: true,
       options: [],
-      value: null,
+      value: "Field 1 value",
       error: null,
     },
   ];
@@ -378,6 +378,18 @@ describe("ServiceCatalogItem", () => {
   });
 
   describe("error handling on form submission", () => {
+    let consoleErrorSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      consoleErrorSpy = jest
+        .spyOn(console, "error")
+        .mockImplementation(() => {});
+    });
+
+    afterEach(() => {
+      consoleErrorSpy.mockRestore();
+    });
+
     it("should show error notification when 422 response has missing fields not in the form", async () => {
       const errorResponse = {
         ok: false,
@@ -455,6 +467,137 @@ describe("ServiceCatalogItem", () => {
           })
         );
       });
+    });
+
+    const renderLastNotifyMessage = () => {
+      const lastCall =
+        mockNotify.mock.calls[mockNotify.mock.calls.length - 1]?.[0];
+      return renderWithTheme(<>{lastCall?.message}</>);
+    };
+
+    it("should surface the underlying description when a 422 error has no field_key", async () => {
+      const errorResponse = {
+        ok: false,
+        status: 422,
+        json: () =>
+          Promise.resolve({
+            error: "RecordInvalid",
+            description: "Record validation errors",
+            details: {
+              base: [
+                {
+                  description: "What are you looking for? cannot be blank",
+                  error: "cannot be blank",
+                },
+              ],
+            },
+          }),
+      };
+
+      mockSubmitServiceItemRequest.mockResolvedValue(
+        errorResponse as unknown as Response
+      );
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      const form = screen.getByTestId("item-request-form");
+      fireEvent.submit(form);
+
+      await waitFor(() => {
+        expect(mockNotify).toHaveBeenCalledWith(
+          expect.objectContaining({
+            type: "error",
+            title: "Service couldn't be submitted",
+          })
+        );
+      });
+
+      renderLastNotifyMessage();
+      expect(
+        screen.getByText("What are you looking for? cannot be blank")
+      ).toBeInTheDocument();
+
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
+        "Service request validation failed:",
+        expect.objectContaining({ error: "RecordInvalid" })
+      );
+    });
+
+    it("should not show the refresh message when a 422 error has no field_key", async () => {
+      const errorResponse = {
+        ok: false,
+        status: 422,
+        json: () =>
+          Promise.resolve({
+            error: "RecordInvalid",
+            description: "Record validation errors",
+            details: {
+              base: [
+                {
+                  description: "Subject cannot be blank",
+                  error: "cannot be blank",
+                },
+              ],
+            },
+          }),
+      };
+
+      mockSubmitServiceItemRequest.mockResolvedValue(
+        errorResponse as unknown as Response
+      );
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      const form = screen.getByTestId("item-request-form");
+      fireEvent.submit(form);
+
+      await waitFor(() => {
+        expect(mockNotify).toHaveBeenCalled();
+      });
+
+      renderLastNotifyMessage();
+      expect(
+        screen.queryByText(/Refresh the page and try again/i)
+      ).not.toBeInTheDocument();
+    });
+
+    it("should show the refresh message when a 422 error references a field id not in the form", async () => {
+      const errorResponse = {
+        ok: false,
+        status: 422,
+        json: () =>
+          Promise.resolve({
+            error: "RecordInvalid",
+            description: "Record validation errors",
+            details: {
+              base: [
+                {
+                  description: "Field is required",
+                  error: "BlankValue",
+                  field_key: 999,
+                },
+              ],
+            },
+          }),
+      };
+
+      mockSubmitServiceItemRequest.mockResolvedValue(
+        errorResponse as unknown as Response
+      );
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      const form = screen.getByTestId("item-request-form");
+      fireEvent.submit(form);
+
+      await waitFor(() => {
+        expect(mockNotify).toHaveBeenCalled();
+      });
+
+      renderLastNotifyMessage();
+      expect(
+        screen.getByText(/Refresh the page and try again/i)
+      ).toBeInTheDocument();
     });
 
     it("should show error notification when 422 response JSON parsing fails", async () => {
