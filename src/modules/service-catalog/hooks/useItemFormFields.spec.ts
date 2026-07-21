@@ -543,4 +543,97 @@ describe("useItemFormFields", () => {
       expect.objectContaining({ id: 2, type: "lookup" })
     );
   });
+
+  it("sanitizes asset option descriptions before exposing request fields", async () => {
+    const itemWithAssetOptions: ServiceCatalogItem = {
+      ...serviceCatalogItem,
+      custom_object_fields: {
+        ...serviceCatalogItem.custom_object_fields,
+        "standard::asset_option": "asset-option-id",
+        "standard::asset_type_option": "asset-type-option-id",
+      },
+    };
+    const assetTypeField = {
+      ...textField,
+      id: 3,
+      type: "lookup",
+      relationship_target_type: "zen:custom_object:standard::itam_asset_type",
+    };
+    const assetField = {
+      ...textField,
+      id: 4,
+      type: "lookup",
+      relationship_target_type: "zen:custom_object:standard::itam_asset",
+    };
+    const formResponse = {
+      ticket_form: {
+        id: 1,
+        ticket_field_ids: [1, 2, 3, 4],
+        active: true,
+      },
+    };
+    const ticketFieldResponse = {
+      ticket_fields: [textField, lookupField, assetTypeField, assetField],
+    };
+
+    (globalThis.fetch as jest.Mock) = jest.fn((url: string) => {
+      const responses: Record<string, unknown> = {
+        "/api/v2/ticket_forms/1": formResponse,
+        "/api/v2/ticket_fields?locale=en-us": ticketFieldResponse,
+        "/api/v2/custom_objects/standard::service_catalog_asset_type_option/records/asset-type-option-id":
+          {
+            custom_object_record: {
+              name: "Asset type",
+              custom_object_fields: {
+                "standard::asset_type_ids": "type-1",
+                "standard::description":
+                  '<strong>Choose a type</strong><img src=x onerror="alert(1)">',
+              },
+            },
+          },
+        "/api/v2/custom_objects/standard::service_catalog_asset_option/records/asset-option-id":
+          {
+            custom_object_record: {
+              name: "Asset",
+              custom_object_fields: {
+                "standard::asset_filter_ids": "asset-1",
+                "standard::description":
+                  '<a href="javascript:alert(2)">Choose an asset</a><iframe src="https://example.com"></iframe>',
+              },
+            },
+          },
+      };
+
+      return Promise.resolve({
+        json: () => Promise.resolve(responses[url]),
+        status: 200,
+        ok: true,
+      });
+    });
+
+    const { result, waitFor } = renderHook(() =>
+      useItemFormFields(itemWithAssetOptions, baseLocale)
+    );
+
+    await waitFor(() => {
+      expect(result.current.requestFields).toHaveLength(3);
+    });
+
+    const renderedAssetTypeField = result.current.requestFields.find(
+      (field) => field.id === assetTypeField.id
+    );
+    const renderedAssetField = result.current.requestFields.find(
+      (field) => field.id === assetField.id
+    );
+
+    expect(renderedAssetTypeField?.description).toContain(
+      "<strong>Choose a type</strong>"
+    );
+    expect(renderedAssetTypeField?.description).not.toContain("onerror");
+    expect(renderedAssetTypeField?.description).not.toContain("alert");
+    expect(renderedAssetField?.description).toContain("Choose an asset");
+    expect(renderedAssetField?.description).not.toContain("javascript:");
+    expect(renderedAssetField?.description).not.toContain("<iframe");
+    expect(renderedAssetField?.description).not.toContain("alert");
+  });
 });

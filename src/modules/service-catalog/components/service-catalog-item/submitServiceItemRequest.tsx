@@ -2,6 +2,11 @@ import type { TicketFieldObject } from "../../../ticket-fields/data-types/Ticket
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import type { Attachment } from "../../../ticket-fields/data-types/AttachmentsField";
 
+interface OnBehalfNote {
+  submitterLabel: string;
+  requesterLabel: string;
+}
+
 const getCurrentUser = async () => {
   try {
     const currentUserRequest = await fetch("/api/v2/users/me.json");
@@ -15,6 +20,36 @@ const getCurrentUser = async () => {
   }
 };
 
+const buildCommentHtml = (
+  serviceCatalogItem: ServiceCatalogItem,
+  helpCenterPath: string,
+  onBehalfNote?: OnBehalfNote | null
+) => {
+  const link = document.createElement("a");
+  link.setAttribute(
+    "href",
+    `${window.location.origin}${helpCenterPath}/services/${serviceCatalogItem.id}`
+  );
+  link.setAttribute("style", "text-decoration: underline");
+  link.setAttribute("target", "_blank");
+  link.setAttribute("rel", "noopener noreferrer");
+  link.textContent = serviceCatalogItem.name;
+
+  if (!onBehalfNote) {
+    return link.outerHTML;
+  }
+
+  const submitter = document.createElement("p");
+  submitter.setAttribute("style", "margin:0;padding:0");
+  submitter.textContent = onBehalfNote.submitterLabel;
+
+  const requester = document.createElement("p");
+  requester.setAttribute("style", "margin:0;padding:0");
+  requester.textContent = onBehalfNote.requesterLabel;
+
+  return `${link.outerHTML}${submitter.outerHTML}${requester.outerHTML}`;
+};
+
 export async function submitServiceItemRequest(
   serviceCatalogItem: ServiceCatalogItem,
   requestFields: TicketFieldObject[],
@@ -24,7 +59,7 @@ export async function submitServiceItemRequest(
   categoryLookupField?: TicketFieldObject | null,
   categoryId?: string | null,
   requesterId?: number | null,
-  onBehalfNoteHtml?: string | null
+  onBehalfNote?: OnBehalfNote | null
 ) {
   try {
     const currentUser = await getCurrentUser();
@@ -61,13 +96,11 @@ export async function submitServiceItemRequest(
           item_id: serviceCatalogItem.id,
           subject: `${serviceCatalogItem.name}`,
           comment: {
-            html_body: `<a href="${
-              window.location.origin
-            }${helpCenterPath}/services/${
-              serviceCatalogItem.id
-            }" style="text-decoration: underline" target="_blank" rel="noopener noreferrer">${
-              serviceCatalogItem.name
-            }</a>${onBehalfNoteHtml ?? ""}`,
+            html_body: buildCommentHtml(
+              serviceCatalogItem,
+              helpCenterPath,
+              onBehalfNote
+            ),
             uploads: uploadTokens,
           },
           custom_fields: [...customFields, ...lookupFields],
