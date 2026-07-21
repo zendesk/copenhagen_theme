@@ -90,6 +90,7 @@ describe("useValidateServiceItemForm", () => {
         attachments: null,
         assetType: null,
         asset: null,
+        fields: {},
       });
     });
 
@@ -294,6 +295,7 @@ describe("useValidateServiceItemForm", () => {
         attachments: "Upload a file to continue.",
         assetType: "Select an asset type",
         asset: "Select an asset",
+        fields: {},
       });
     });
 
@@ -317,6 +319,7 @@ describe("useValidateServiceItemForm", () => {
         attachments: null,
         assetType: null,
         asset: "Select an asset",
+        fields: {},
       });
     });
   });
@@ -356,14 +359,36 @@ describe("useValidateServiceItemForm", () => {
       expect(validationResult.hasError).toBe(false);
     });
 
-    it("ignores non-asset fields in validation", () => {
+    it("handles boolean false value for a required regular field as valid", () => {
       const { result } = renderHook(() =>
         useValidateServiceItemForm(undefined)
       );
 
-      // A required text field without asset relationship should not trigger errors
       const fields = [
         createTextField({
+          id: 7,
+          required: true,
+          value: false,
+          relationship_target_type: undefined,
+        }),
+      ];
+
+      const validationResult = result.current.validate(fields, []);
+
+      expect(validationResult.hasError).toBe(false);
+      expect(validationResult.errors.fields).toEqual({});
+    });
+  });
+
+  describe("required regular field validation", () => {
+    it("flags a blank required regular field keyed by field id", () => {
+      const { result } = renderHook(() =>
+        useValidateServiceItemForm(undefined)
+      );
+
+      const fields = [
+        createTextField({
+          id: 42,
           required: true,
           value: null,
           relationship_target_type: undefined,
@@ -372,10 +397,72 @@ describe("useValidateServiceItemForm", () => {
 
       const validationResult = result.current.validate(fields, []);
 
-      // No asset-related errors, even though field is required and empty
-      expect(validationResult.hasError).toBe(false);
+      expect(validationResult.hasError).toBe(true);
+      expect(validationResult.errors.fields).toEqual({
+        42: "This field is required",
+      });
       expect(validationResult.errors.assetType).toBeNull();
       expect(validationResult.errors.asset).toBeNull();
+    });
+
+    it("does not flag a required regular field that has a value", () => {
+      const { result } = renderHook(() =>
+        useValidateServiceItemForm(undefined)
+      );
+
+      const fields = [
+        createTextField({
+          id: 42,
+          required: true,
+          value: "provided",
+          relationship_target_type: undefined,
+        }),
+      ];
+
+      const validationResult = result.current.validate(fields, []);
+
+      expect(validationResult.hasError).toBe(false);
+      expect(validationResult.errors.fields).toEqual({});
+    });
+
+    it("does not flag an optional blank regular field", () => {
+      const { result } = renderHook(() =>
+        useValidateServiceItemForm(undefined)
+      );
+
+      const fields = [
+        createTextField({
+          id: 42,
+          required: false,
+          value: null,
+          relationship_target_type: undefined,
+        }),
+      ];
+
+      const validationResult = result.current.validate(fields, []);
+
+      expect(validationResult.hasError).toBe(false);
+      expect(validationResult.errors.fields).toEqual({});
+    });
+
+    it("flags multiple blank required regular fields", () => {
+      const { result } = renderHook(() =>
+        useValidateServiceItemForm(undefined)
+      );
+
+      const fields = [
+        createTextField({ id: 1, required: true, value: null }),
+        createTextField({ id: 2, required: true, value: "" }),
+        createTextField({ id: 3, required: true, value: "ok" }),
+      ];
+
+      const validationResult = result.current.validate(fields, []);
+
+      expect(validationResult.hasError).toBe(true);
+      expect(validationResult.errors.fields).toEqual({
+        1: "This field is required",
+        2: "This field is required",
+      });
     });
   });
 });

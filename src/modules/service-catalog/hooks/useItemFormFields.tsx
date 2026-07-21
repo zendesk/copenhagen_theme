@@ -332,7 +332,7 @@ export function useItemFormFields(
     (field: TicketFieldObject, value: TicketFieldObject["value"]) => {
       const updatedFields = allRequestFields.map((ticketField) =>
         ticketField.name === field.name
-          ? { ...ticketField, value }
+          ? { ...ticketField, value, error: null }
           : ticketField
       );
 
