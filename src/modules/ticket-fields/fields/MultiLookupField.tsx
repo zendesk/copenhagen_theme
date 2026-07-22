@@ -60,7 +60,6 @@ export function MultiLookupField({
   >([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [isFocused, setIsFocused] = useState<boolean>(false);
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [isLoadingOptions, setIsLoadingOptions] = useState<boolean>(false);
   const { t } = useTranslation();
 
@@ -261,14 +260,12 @@ export function MultiLookupField({
 
   const onFocus = () => {
     setIsFocused(true);
-    setIsExpanded(true);
     setInputValue("");
     fetchOptions("*");
   };
 
   const onBlur = () => {
     setIsFocused(false);
-    setIsExpanded(false);
   };
 
   return (
@@ -287,7 +284,6 @@ export function MultiLookupField({
         validation={error || isAtLimit ? "error" : undefined}
         inputValue={inputValue}
         selectionValue={selectedValues}
-        isExpanded={isExpanded}
         isMultiselectable
         isAutocomplete
         maxHeight="auto"
