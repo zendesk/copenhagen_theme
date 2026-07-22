@@ -14,7 +14,7 @@ import {
 } from "./LookupField";
 import type { CustomObjectRecord } from "../data-types/CustomObjectRecord";
 
-const MAX_SELECTIONS = 20;
+const DEFAULT_MAX_SELECTIONS = 20;
 
 interface MultiLookupFieldProps {
   field: TicketFieldObject;
@@ -49,13 +49,18 @@ export function MultiLookupField({
     required,
     description,
     relationship_target_type,
+    max_selections,
   } = field;
+
+  const maxSelections = max_selections ?? DEFAULT_MAX_SELECTIONS;
 
   const [options, setOptions] = useState<TicketFieldOptionObject[]>([]);
   const [selectedOptions, setSelectedOptions] = useState<
     TicketFieldOptionObject[]
   >([]);
   const [inputValue, setInputValue] = useState<string>("");
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [isLoadingOptions, setIsLoadingOptions] = useState<boolean>(false);
   const { t } = useTranslation();
 
@@ -75,7 +80,7 @@ export function MultiLookupField({
     }
   }, [wrapperRef, required]);
 
-  const isAtLimit = selectedOptions.length >= MAX_SELECTIONS;
+  const isAtLimit = selectedOptions.length > maxSelections;
 
   const loadingOption = {
     name: t(
@@ -242,12 +247,10 @@ export function MultiLookupField({
 
       if (newInputValue !== undefined) {
         setInputValue(newInputValue);
-        if (!isAtLimit) {
-          debouncedFetchOptions(newInputValue);
-        }
+        debouncedFetchOptions(newInputValue);
       }
     },
-    [debouncedFetchOptions, onChange, options, selectedOptions, isAtLimit]
+    [debouncedFetchOptions, onChange, options, selectedOptions]
   );
 
   useEffect(() => {
@@ -257,10 +260,15 @@ export function MultiLookupField({
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onFocus = () => {
-    if (!isAtLimit) {
-      setInputValue("");
-      fetchOptions("*");
-    }
+    setIsFocused(true);
+    setIsExpanded(true);
+    setInputValue("");
+    fetchOptions("*");
+  };
+
+  const onBlur = () => {
+    setIsFocused(false);
+    setIsExpanded(false);
   };
 
   return (
@@ -276,18 +284,16 @@ export function MultiLookupField({
         ref={wrapperRef}
         inputProps={{ required }}
         data-test-id="multi-lookup-field-combobox"
-        validation={error ? "error" : undefined}
+        validation={error || isAtLimit ? "error" : undefined}
         inputValue={inputValue}
         selectionValue={selectedValues}
+        isExpanded={isExpanded}
         isMultiselectable
         isAutocomplete
         maxHeight="auto"
         placeholder={
-          isAtLimit
-            ? t(
-                "cph-theme-ticket-fields.multi-lookup-field.max-reached",
-                "Maximum selections reached"
-              )
+          !isFocused
+            ? ""
             : t(
                 "cph-theme-ticket-fields.lookup-field.placeholder",
                 "Search {{label}}",
@@ -295,6 +301,7 @@ export function MultiLookupField({
               )
         }
         onFocus={onFocus}
+        onBlur={onBlur}
         onChange={handleChange}
       >
         {selectedOptions.map((opt) => (
@@ -334,6 +341,15 @@ export function MultiLookupField({
           ))}
       </Combobox>
       {error && <Field.Message validation="error">{error}</Field.Message>}
+      {isAtLimit && (
+        <Field.Message validation="error">
+          {t(
+            "cph-theme-ticket-fields.multi-lookup-field.limit-reached",
+            "You've reached the limit of {{max}} values.",
+            { max: maxSelections }
+          )}
+        </Field.Message>
+      )}
       {selectedValues.map((val) => (
         <input key={val} type="hidden" name={`${name}[]`} value={val} />
       ))}
