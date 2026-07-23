@@ -12,9 +12,9 @@
   --svc-navy:        #09349d;   // NEXUS logo-blue-dark (was #003399)
   --svc-navy-deep:   #001b5e;   // NEXUS navy / brand-tertiary (was #002a6e)
   --svc-navy-hero:   #000334;   // NEXUS indigo / brand-primary (was #0a1747)
-  // Pink kept intentionally: differentiates internal IT apps from public brand.
-  --svc-pink:        #e6007e;
-  --svc-pink-deep:   #c4006a;
+  // Pink -> NEXUS accent-warmer (pink). Now matches the public brand palette.
+  --svc-pink:        #fd4497;   // NEXUS pink-neutral (was #e6007e)
+  --svc-pink-deep:   #c93678;   // NEXUS pink-600 (was #c4006a)
   // Neutrals snapped to the NEXUS cool-grey (ui-*) ramp.
   --svc-ink:         #252729;   // NEXUS ui-80 (was #1d2b4d)
   --svc-gray:        #6f747a;   // NEXUS ui-60 (was #5b6472)

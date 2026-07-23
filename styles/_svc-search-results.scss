@@ -24,7 +24,7 @@
   color: var(--svc-gray);
 }
 .svc-search-sidebar .sidenav-item {
-  border-radius: 9px;
+  border-radius: 8px;
   transition: background-color 0.14s ease, color 0.14s ease;
 }
 .svc-search-sidebar .sidenav-item:hover { background: var(--svc-tint); }
@@ -42,7 +42,7 @@
 .svc-result {
   background: #fff;
   border: 1px solid #e3e8f0;
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 16px 18px;
   transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
@@ -73,7 +73,7 @@
   padding: 4px 4px 4px 16px !important;
   background: #fff !important;
   border: 1px solid #b9c9ef !important;
-  border-radius: 999px !important;
+  border-radius: 1000px !important;
   box-shadow: 0 2px 6px rgba(0, 51, 153, 0.12) !important;
   box-sizing: border-box;
   overflow: visible !important;
