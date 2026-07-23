@@ -3,10 +3,28 @@
   STYLES: moved to style.css (ARPA-H custom — service item page section).
   Do not re-add a <style> block here; edit style.css instead.
 --}}
+{{!-- Stock preview-mode detection: the service-catalog module / theme key off
+     the .is-service-catalog-preview class when viewed in the Guide editor. --}}
+<script type="text/javascript">
+  (function () {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get("preview") === "true") {
+        document.documentElement.classList.add("is-service-catalog-preview");
+      }
+    } catch (e) {}
+  })();
+</script>
 <div class="container-divider"></div>
 <div class="container svc-container">
   <div class="sub-nav svc-subnav">
-    {{breadcrumbs}}
+    <div class="service-catalog-breadcrumbs">
+      {{breadcrumbs}}
+      {{!-- Category dropdown mount the service-catalog module populates. If your
+           design intentionally removed the category selector, hide it in CSS
+           rather than deleting the div (the module still expects it). --}}
+      <div id="category-selector"></div>
+    </div>
   </div>
   <div id="main-content">
     <div class="svc-shell">
@@ -148,6 +166,7 @@
     hasAtMentions:         {{json help_center.at_mentions_enabled}},
     userRole:              {{json user.role}},
     userId:                {{json user.id}},
+    userName:              {{json user.name}},
     brandId:               {{json brand.id}},
     organizations:         {{json user.organizations}},
     serviceCatalogItemId:  id,
