@@ -20,9 +20,9 @@
             </svg>
           </i>
           <input type="text" id="svc-mini-input" class="svc-mini-input"
-                 placeholder="Search services and resources…" aria-label="Search"
+                 placeholder="Search services and resources…" aria-label="{{t 'search'}}"
                  role="combobox" aria-expanded="false" aria-controls="svc-mini-results" aria-autocomplete="list" />
-          <button type="submit" class="svc-mini-search-btn" aria-label="Search">
+          <button type="submit" class="svc-mini-search-btn" aria-label="{{t 'search'}}">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
@@ -35,8 +35,8 @@
       <div class="svc-topbar">
         <div class="svc-topbar-inner">
           <div class="svc-topbar-left">
-            <a class="svc-topbar-logo" href="https://arpah1775164538.zendesk.com/hc/en-us/services" aria-label="Go to Service Catalog home">
-              {{asset "HLOGO.png"}}
+            <a class="svc-topbar-logo" href="/hc/{{help_center.base_locale}}/services" aria-label="Go to Service Catalog home">
+              <img src="{{asset 'HLOGO.png'}}" alt="" />
             </a>
             <div class="svc-topbar-text">
               <h1 class="svc-title" id="svc-greeting">How can we help?</h1>
@@ -128,7 +128,7 @@
           <span class="svc-help-banner-title">Still can&rsquo;t find what you need?</span>
           <span class="svc-help-banner-sub">Submit a general request.</span>
         </div>
-        <a class="svc-help-btn" href="https://arpah1775164538.zendesk.com/hc/en-us/services/01KT6W4J21065JGC51VMSW8AGB?category_id=01KP3TEETSJKEPJ08CSK7MJG41">
+        <a class="svc-help-btn" href="/hc/{{help_center.base_locale}}/services/01KT6W4J21065JGC51VMSW8AGB?category_id=01KP3TEETSJKEPJ08CSK7MJG41">
           General request
         </a>
       </div>
@@ -164,9 +164,9 @@
     var results = document.getElementById('svc-mini-results');
     if (!form || !input || !results) return;
 
-    var ORIGIN       = window.location.origin;
-    var SERVICES_URL = ORIGIN + '/hc/en-us/services';
-    var SEARCH_PAGE  = ORIGIN + '/hc/en-us/search?query=';
+    var HC_BASE      = (location.pathname.match(/^\/hc\/[^/]+/) || ['/hc/en-us'])[0];
+    var SERVICES_URL = HC_BASE + '/services';
+    var SEARCH_PAGE  = HC_BASE + '/search?query=';
     var MAX = 5;
     var timer = null, token = 0;
 
@@ -208,19 +208,36 @@
     var allServices = null;
     var servicesLoading = null;
 
+    /* Cache the fetched catalog in sessionStorage so it loads once per session
+       (TTL 30 min) instead of on every page load. Shared with the home page. */
+    var SVC_CACHE_KEY = 'svcCatalogItems';
+    var SVC_CACHE_TTL = 30 * 60 * 1000;
+    function svcReadCache() {
+      try {
+        var c = JSON.parse(sessionStorage.getItem(SVC_CACHE_KEY) || 'null');
+        if (!c || !Array.isArray(c.items) || (Date.now() - c.ts) > SVC_CACHE_TTL) return null;
+        return c.items;
+      } catch (e) { return null; }
+    }
+    function svcWriteCache(items) {
+      try { sessionStorage.setItem(SVC_CACHE_KEY, JSON.stringify({ ts: Date.now(), items: items })); } catch (e) {}
+    }
+
     function normalizeItem(it) {
       var id = it.id || it.uuid || '';
       return {
         title: stripTags(it.name || it.title || 'Service'),
         desc:  stripTags(it.description || ''),
         category: stripTags(it.category_name || (it.category && it.category.name) || ''),
-        href:  it.html_url || (id ? '/hc/en-us/services/' + id : SERVICES_URL)
+        href:  it.html_url || (id ? HC_BASE + '/services/' + id : SERVICES_URL)
       };
     }
 
     function loadAllServices() {
       if (allServices) return Promise.resolve(allServices);
       if (servicesLoading) return servicesLoading;
+      var cached = svcReadCache();
+      if (cached) { allServices = cached; return Promise.resolve(cached); }
       servicesLoading = (async function () {
         var out = [];
         var url = '/api/v2/help_center/service_catalog/items.json?page[size]=100';
@@ -238,6 +255,7 @@
           url = (data.meta && data.meta.has_more && data.links && data.links.next) ? data.links.next : null;
         }
         allServices = out;
+        svcWriteCache(out);
         return out;
       })();
       return servicesLoading;
@@ -698,7 +716,7 @@
 {{!-- Redirect the "Services" breadcrumb to the help center home --}}
 <script>
   (function () {
-    var HOME_URL = 'https://arpah1775164538.zendesk.com/hc/en-us';
+    var HOME_URL = (location.pathname.match(/^\/hc\/[^/]+/) || ['/hc/en-us'])[0];
 
     function rewireServicesCrumb() {
       var subnav = document.querySelector('.svc-subnav');

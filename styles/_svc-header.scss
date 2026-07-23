@@ -1,0 +1,249 @@
+/* ============================================================
+   ARPA-H custom — header section
+   ============================================================ */
+.header .logo {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  order: 1;
+}
+.header .nav-wrapper-desktop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 0 0 auto;
+  order: 2;
+}
+.header .logo {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  order: 1;
+}
+.header .nav-wrapper-desktop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 0 0 auto;
+  order: 2;
+}
+html.svc-home .header .search-wrapper {
+  display: none !important;
+}
+.header .search-wrapper {
+  flex: 1 1 320px;
+  order: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-width: 0;
+}
+.header .search-wrapper .search,
+.header .search-wrapper form {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.header .search-wrapper .search-icon {
+  position: absolute;
+  left: calc(50% - 280px + 18px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #9aa3b2;
+  z-index: 2;
+  pointer-events: none;
+}
+@media (max-width: 616px) {
+  .header .search-wrapper .search-icon { left: 18px; }
+}
+.header .search-wrapper input[type="search"],
+.header .search-wrapper input[type="text"],
+.header .search-wrapper .search input {
+  width: 100%;
+  height: 44px;
+  padding-left: 46px;
+  border-radius: 999px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 980px) {
+  .header .search-wrapper {
+    order: 3;
+    flex: 1 1 100%;
+    justify-content: flex-start;
+  }
+  .header .search-wrapper .search,
+  .header .search-wrapper form {
+    max-width: 100%;
+    margin: 0;
+  }
+  .header .search-wrapper .search-icon {
+    left: 18px;
+  }
+}
+
+/* ---- RESPONSIVE HEADER: swap desktop / mobile nav ---- */
+.header { position: relative; }
+/* Desktop default */
+.header .nav-wrapper-desktop { display: flex; }
+.header .nav-wrapper-mobile { display: none; }
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 12px 16px;
+  }
+  /* Swap: hide desktop nav, show mobile hamburger */
+  .header .nav-wrapper-desktop {
+    display: flex !important;
+    flex: 0 0 auto;
+    order: 2;
+  }
+  .header .nav-wrapper-desktop > *:not(.user-info) {
+    display: none !important;
+  }
+  .header .nav-wrapper-desktop .user-info {
+    display: inline-block !important;
+  }
+  .header .nav-wrapper-desktop .user-info .dropdown-toggle .svc-username {
+    display: none !important;
+  }
+  /* Fix B: keep the user dropdown anchored on-screen */
+  .header .nav-wrapper-desktop .user-info {
+    position: relative !important;
+  }
+  .header .nav-wrapper-desktop .dropdown-menu {
+    position: absolute !important;
+    right: 0 !important;
+    left: auto !important;
+    top: calc(100% + 4px) !important;
+    max-width: calc(100vw - 24px) !important;
+    box-sizing: border-box !important;
+  }
+  .header .nav-wrapper-mobile { display: flex !important; align-items: center; }
+  .header .menu-button-mobile { display: inline-flex !important; align-items: center; gap: 8px; }
+  .header .icon-menu { display: inline-flex !important; }
+  .header .logo img { height: 30px; width: auto; }
+  .header .search-wrapper { display: none !important; }
+  /* Mobile dropdown panel */
+  .header .menu-list-mobile {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 12px;
+    left: 12px;
+    background: #ffffff;
+    border: 1px solid #eef1f6;
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(15, 33, 80, 0.16);
+    padding: 8px;
+    z-index: 9500;
+  }
+  .header .menu-list-mobile[aria-expanded="true"] { display: block; }
+  .header .menu-list-mobile-items { list-style: none; margin: 0; padding: 0; }
+  .header .menu-list-mobile-items .item a,
+  .header .menu-list-mobile-items .item {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1d2b4d;
+    text-decoration: none;
+  }
+  .header .menu-list-mobile-items .item a:hover { background: #f5f8ff; color: #003399; }
+  .header .menu-list-mobile-items .nav-divider { height: 1px; background: #eef1f6; margin: 6px 4px; }
+}
+
+.header .user-info .dropdown-toggle .svc-username {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  animation: svcUsernameFailsafe 0s linear 2.5s forwards;
+}
+.header .user-info .dropdown-toggle .svc-username.svc-username-in {
+  opacity: 1;
+  animation: none;
+}
+@keyframes svcUsernameFailsafe { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .header .user-info .dropdown-toggle .svc-username { transition: none; }
+}
+@media (max-width: 768px) {
+  .header {
+    gap: 12px 16px;
+  }
+  html.svc-home .header .search-wrapper {
+    display: none !important;
+  }
+ /* Mobile: prevent user-menu overflow from locking horizontal scroll */
+  html, body {
+    max-width: 100% !important;
+  }
+  .svc-cardwrap, #main-content {
+    overflow-x: clip !important;
+    max-width: 100% !important;
+  }
+}
+/* Tooltip must never create off-screen scroll area (all widths) */
+.svc-tooltip {
+  right: auto;
+}
+.svc-tooltip:not(.svc-tooltip-visible) {
+  left: 0 !important;
+  top: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-9999px) !important;
+}
+
+/* ============================================
+   HEADER FINAL: one user icon, logo left,
+   icon right, scales on all sizes
+   ============================================ */
+.header {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  gap: 0 !important;
+}
+
+.header > .logo {
+  order: 0 !important;
+  margin: 0 auto 0 0 !important;
+  flex: 0 0 auto !important;
+}
+
+.header > .search-wrapper {
+  order: 1 !important;
+  margin: 0 !important;
+  flex: 0 1 auto !important;
+}
+
+.header > .nav-wrapper-desktop {
+  order: 2 !important;
+  margin: 0 !important;
+  flex: 0 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.header > .nav-wrapper-mobile {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .header > .nav-wrapper-desktop {
+    display: flex !important;
+    margin-right: 10px !important;
+  }
+  /* Option A: hide the long email on phones — show avatar + chevron only */
+  .header .nav-wrapper-desktop .user-info .dropdown-toggle .svc-username,
+  .header .nav-wrapper-desktop .user-info [data-user-name] {
+    display: none !important;
+  }
+}

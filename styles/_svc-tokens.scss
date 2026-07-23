@@ -1,0 +1,42 @@
+/* ============================================================
+   ARPA-H custom — design tokens + global service-catalog overrides
+   Source of truth for the ARPA-H help-center customizations.
+   NOTE: fonts are self-hosted / Zendesk-served (Public Sans, the
+   USWDS + ARPA-H standard). Do NOT re-add a Google Fonts @import
+   here — third-party font CDNs are a privacy/CSP concern on a
+   federal site.
+   ============================================================ */
+
+:root {
+  --svc-navy:        #003399;
+  --svc-navy-deep:   #002a6e;
+  --svc-navy-hero:   #0a1747;
+  --svc-pink:        #e6007e;
+  --svc-pink-deep:   #c4006a;
+  --svc-ink:         #1d2b4d;
+  --svc-gray:        #5b6472;
+  --svc-gray-soft:   #8089a0;
+  --svc-line:        #eef1f6;
+  --svc-tint:        #eaf0ff;
+  --svc-tint-hover:  #f1f5ff;
+  --svc-font: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Hide the native header search (the home hero provides its own search). */
+html body .header .search-wrapper {
+  display: none !important;
+}
+
+/* Zendesk Garden floating menus/listboxes must never exceed the viewport. */
+[class*="StyledFloatingMenu"],
+[class*="StyledFloatingListbox"],
+[class*="StyledMenu"],
+[class*="StyledListbox"] {
+  max-width: calc(100vw - 16px) !important;
+  box-sizing: border-box !important;
+}
+
+/* Applied by src/domFixups.js to elements whose only text is "empty". */
+.svc-empty-hidden {
+  display: none !important;
+}

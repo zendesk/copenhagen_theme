@@ -27,23 +27,20 @@
       </header>
 
       {{#is category.id 19382827542427}}
-        <div class="custom-os-tile-group" style="display: flex; flex-direction: column; align-items: left; margin-top: 50px; gap: 40px;">
-          <!-- Row 1: macOS and iOS -->
-          <div class="top-row" style="display: flex; justify-content center; gap: 100px;">
-            <a href="/hc/en-us/sections/39463348119451-macOS" class="custom-os-tile" style="width: 300px; height: 150px; display: flex; align-items: center; justify-content: center; text-align: center;">
-              <img src="{{asset 'macOSsmall.png'}}" class="macos-icon" style="width: 80%; height: auto; margin: 0;">
-              <span style="display:none;">macOS FAQs</span>
+        <div class="custom-os-tile-group">
+          {{!-- Row 1: macOS and iOS --}}
+          <div class="top-row">
+            <a href="/hc/{{help_center.base_locale}}/sections/39463348119451-macOS" class="custom-os-tile custom-os-tile--macos">
+              <img src="{{asset 'macOSsmall.png'}}" class="macos-icon" alt="macOS FAQs" />
             </a>
-            <a href="/hc/en-us/sections/39748766960283" class="custom-os-tile" style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; text-align: center;">
-              <img src="{{asset 'ios.png'}}" class="ios-icon" style="width: 150%; height: auto; margin: 0;">
-              <span style="display:none;">iOS FAQs</span>
+            <a href="/hc/{{help_center.base_locale}}/sections/39748766960283" class="custom-os-tile custom-os-tile--ios">
+              <img src="{{asset 'ios.png'}}" class="ios-icon" alt="iOS FAQs" />
             </a>
           </div>
-          <!-- Row 2: Windows centered -->
-          <div class="bottom-row" style="display: flex; justify-content: center;">
-            <a href="/hc/en-us/sections/19383045462299-Windows" class="custom-os-tile" style="width: 400px; height: 200px; display: flex; align-items: center; justify-content: center; text-align: center;margin-left: -275px;">
-              <img src="{{asset 'Windows11small.png'}}" class="windows-icon" style="width: 100%; height: auto; margin: 0;">
-              <span style="display:none;">Windows FAQs</span>
+          {{!-- Row 2: Windows centered --}}
+          <div class="bottom-row">
+            <a href="/hc/{{help_center.base_locale}}/sections/19383045462299-Windows" class="custom-os-tile custom-os-tile--windows">
+              <img src="{{asset 'Windows11small.png'}}" class="windows-icon" alt="Windows FAQs" />
             </a>
           </div>
         </div>
