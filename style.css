@@ -6176,6 +6176,13 @@ a.svc-help-btn:hover,
 /* ==========================================================
    ARPA-H CUSTOM — Service request (item) page
    ========================================================== */
+/* The stock #category-selector mount stays in the markup (the service-catalog
+   module expects it), but the ARPA-H item-page design omits the category
+   dropdown, so hide it rather than deleting the div. */
+#category-selector {
+  display: none;
+}
+
 /* ---- BASE LAYOUT ---- */
 body {
   background: #ffffff;
