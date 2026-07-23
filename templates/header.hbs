@@ -8,7 +8,15 @@
 <header class="header">
   <div class="logo">
     {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" />
+      {{!-- Prefer the admin-set logo; fall back to the committed SVG lockup for
+           crisp rendering. Zendesk blocks SVG *uploads* (Logo setting), but
+           serving a theme asset is fine. Clear the Logo setting in Guide to use
+           the SVG. --}}
+      {{#if settings.logo}}
+        <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" />
+      {{else}}
+        <img src="{{asset 'arpa-h-logo.svg'}}" alt="{{t 'home_page' name=help_center.name}}" />
+      {{/if}}
       {{#if settings.show_brand_name}}
         <span aria-hidden="true">{{help_center.name}}</span>
       {{/if}}
