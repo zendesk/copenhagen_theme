@@ -201,7 +201,11 @@ body {
 }
 
 h1,
-h2,
+h2 {
+  font-family: "Poppins", "Public Sans", "Arial", $heading_font, sans-serif;
+  margin-top: 0;
+}
+
 h3,
 h4,
 h5,
@@ -5179,18 +5183,19 @@ zd-summary-block {
    federal site.
    ============================================================ */
 :root {
-  --svc-navy: #003399;
-  --svc-navy-deep: #002a6e;
-  --svc-navy-hero: #0a1747;
+  --svc-navy: #09349d;
+  --svc-navy-deep: #001b5e;
+  --svc-navy-hero: #000334;
   --svc-pink: #e6007e;
   --svc-pink-deep: #c4006a;
-  --svc-ink: #1d2b4d;
-  --svc-gray: #5b6472;
-  --svc-gray-soft: #8089a0;
-  --svc-line: #eef1f6;
-  --svc-tint: #eaf0ff;
-  --svc-tint-hover: #f1f5ff;
+  --svc-ink: #252729;
+  --svc-gray: #6f747a;
+  --svc-gray-soft: #959ba3;
+  --svc-line: #e5eaf0;
+  --svc-tint: #e6f5fc;
+  --svc-tint-hover: #f3f5f8;
   --svc-font: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --svc-font-display: "Poppins", "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* Hide the native header search (the home hero provides its own search). */
@@ -5298,6 +5303,7 @@ html body .header .search-wrapper {
 
 .svc-hero-title {
   margin: 0;
+  font-family: var(--svc-font-display);
   font-size: clamp(28px, 4vw, 44px);
   line-height: 1.08;
   font-weight: 700;
@@ -5920,7 +5926,7 @@ a.svc-help-btn:hover,
 
 /* Shimmer sweep */
 .svc-cat-skel-row, .svc-cat-skel-heading, .svc-cat-skel-subtext, .svc-cat-skel-card {
-  background: linear-gradient(100deg, #eef1f6 30%, #f6f8fc 50%, #eef1f6 70%);
+  background: linear-gradient(100deg, #e5eaf0 30%, #f6f8fc 50%, #e5eaf0 70%);
   background-size: 200% 100%;
   animation: svcSkelShimmer 1.3s ease-in-out infinite;
 }
@@ -6265,6 +6271,7 @@ body {
 
 .svc-title {
   margin: 0;
+  font-family: var(--svc-font-display);
   width: 100%;
   text-align: center;
   font-size: clamp(20px, 2.4vw, 26px);
@@ -6308,13 +6315,13 @@ body {
 
 .svc-step-active {
   background: #ffffff;
-  color: #003399;
+  color: #09349d;
   border-color: #b9c9ef;
   box-shadow: 0 2px 6px rgba(0, 51, 153, 0.12);
 }
 
 .svc-step-active .svc-step-number {
-  background: #003399;
+  background: #09349d;
   color: #ffffff;
 }
 
@@ -6420,7 +6427,7 @@ body {
   display: block;
   font-size: 13px;
   font-weight: 600;
-  color: #003399;
+  color: #09349d;
   margin-bottom: 4px;
 }
 
@@ -6589,7 +6596,7 @@ body {
 }
 
 .svc-custom-submit-btn:hover {
-  background: #002a6e;
+  background: #001b5e;
 }
 
 .svc-custom-submit-btn:focus {
@@ -6686,12 +6693,12 @@ body {
 .svc-help-banner-title {
   font-size: 15px;
   font-weight: 600;
-  color: #1d2b4d;
+  color: #252729;
 }
 
 .svc-help-banner-sub {
   font-size: 13px;
-  color: #5b6472;
+  color: #6f747a;
 }
 
 .svc-help-btn {
@@ -6704,15 +6711,15 @@ body {
   font-size: 13.5px;
   font-weight: 600;
   text-align: center;
-  color: #003399 !important;
+  color: #09349d !important;
   text-decoration: none !important;
   background: #ffffff;
-  border: 1.5px solid #003399;
+  border: 1.5px solid #09349d;
   transition: background-color 0.16s ease, color 0.16s ease;
 }
 
 .svc-help-btn:hover {
-  background: #003399;
+  background: #09349d;
   color: #ffffff !important;
 }
 
@@ -6892,7 +6899,7 @@ body {
 
 .svc-skel-divider {
   height: 1px;
-  background: #eef1f6;
+  background: #e5eaf0;
   margin: 18px 0;
 }
 
@@ -6919,7 +6926,7 @@ body {
 }
 
 .svc-skel-avatar, .svc-skel-bar, .svc-skel-input, .svc-skel-box {
-  background: linear-gradient(100deg, #eef1f6 30%, #f6f8fc 50%, #eef1f6 70%);
+  background: linear-gradient(100deg, #e5eaf0 30%, #f6f8fc 50%, #e5eaf0 70%);
   background-size: 200% 100%;
   animation: svcSkelShimmer 1.3s ease-in-out infinite;
 }
@@ -7010,7 +7017,7 @@ body > pre, body > code, body > .template-name, body > .editor-label {
 }
 
 .svc-mini-search-btn:hover {
-  background: #002a6e;
+  background: #001b5e;
 }
 
 .svc-mini-results {
@@ -7021,7 +7028,7 @@ body > pre, body > code, body > .template-name, body > .editor-label {
   overflow-y: auto;
   background: #ffffff;
   border-radius: 14px;
-  border: 1px solid #eef1f6;
+  border: 1px solid #e5eaf0;
   box-shadow: 0 16px 40px rgba(15, 33, 80, 0.16);
   text-align: left;
 }
@@ -7031,11 +7038,11 @@ body > pre, body > code, body > .template-name, body > .editor-label {
   align-items: center;
   gap: 8px;
   padding: 12px 16px 6px;
-  border-bottom: 0.5px solid #eef1f6;
+  border-bottom: 0.5px solid #e5eaf0;
 }
 
 .svc-mr-group-header.svc-mr-docs {
-  border-top: 0.5px solid #eef1f6;
+  border-top: 0.5px solid #e5eaf0;
   background: #fcfcfd;
 }
 
@@ -7047,11 +7054,11 @@ body > pre, body > code, body > .template-name, body > .editor-label {
 }
 
 .svc-mr-services .svc-mr-group-title {
-  color: #003399;
+  color: #09349d;
 }
 
 .svc-mr-docs .svc-mr-group-title {
-  color: #003399;
+  color: #09349d;
 }
 
 .svc-mr-group-count {
@@ -7074,7 +7081,7 @@ body > pre, body > code, body > .template-name, body > .editor-label {
 }
 
 .svc-mr-item.svc-mr-service {
-  border-left: 3px solid #003399;
+  border-left: 3px solid #09349d;
 }
 
 .svc-mr-item.svc-mr-doc {
@@ -7092,8 +7099,8 @@ body > pre, body > code, body > .template-name, body > .editor-label {
 }
 
 .svc-mr-service .svc-mr-icon {
-  background: #eaf0ff;
-  color: #003399;
+  background: #e6f5fc;
+  color: #09349d;
 }
 
 .svc-mr-doc .svc-mr-icon {
@@ -7120,13 +7127,13 @@ body > pre, body > code, body > .template-name, body > .editor-label {
 
 .svc-mr-title {
   font-size: 13.5px;
-  color: #1d2b4d;
+  color: #252729;
   text-decoration: none;
 }
 
 .svc-mr-sub {
   font-size: 12px;
-  color: #8089a0;
+  color: #959ba3;
 }
 
 .svc-mr-badge {
@@ -7138,29 +7145,29 @@ body > pre, body > code, body > .template-name, body > .editor-label {
 }
 
 .svc-mr-service .svc-mr-badge {
-  color: #003399;
-  background: #eaf0ff;
+  color: #09349d;
+  background: #e6f5fc;
 }
 
 .svc-mr-doc .svc-mr-badge {
   color: #6b7280;
-  background: #eef1f6;
+  background: #e5eaf0;
 }
 
 .svc-mr-empty, .svc-mr-loading {
   padding: 16px;
   font-size: 13px;
-  color: #8089a0;
+  color: #959ba3;
   text-align: center;
 }
 
 .svc-mr-footer {
   display: block;
   padding: 11px 16px;
-  border-top: 0.5px solid #eef1f6;
+  border-top: 0.5px solid #e5eaf0;
   font-size: 12.5px;
   font-weight: 500;
-  color: #003399;
+  color: #09349d;
   text-align: center;
   text-decoration: none;
 }
@@ -7428,7 +7435,7 @@ body > pre, body > code, body > .template-name, body > .editor-label {
 }
 
 .svc-search-pill:focus-within {
-  border-color: #003399 !important;
+  border-color: #09349d !important;
   box-shadow: 0 6px 16px rgba(0, 51, 153, 0.12) !important;
 }
 
@@ -7665,7 +7672,7 @@ html.svc-home .header .search-wrapper {
     right: 12px;
     left: 12px;
     background: #ffffff;
-    border: 1px solid #eef1f6;
+    border: 1px solid #e5eaf0;
     border-radius: 12px;
     box-shadow: 0 16px 40px rgba(15, 33, 80, 0.16);
     padding: 8px;
@@ -7685,16 +7692,16 @@ html.svc-home .header .search-wrapper {
     padding: 10px 12px;
     border-radius: 8px;
     font-size: 14px;
-    color: #1d2b4d;
+    color: #252729;
     text-decoration: none;
   }
   .header .menu-list-mobile-items .item a:hover {
     background: #f5f8ff;
-    color: #003399;
+    color: #09349d;
   }
   .header .menu-list-mobile-items .nav-divider {
     height: 1px;
-    background: #eef1f6;
+    background: #e5eaf0;
     margin: 6px 4px;
   }
 }

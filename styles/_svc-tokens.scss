@@ -8,18 +8,24 @@
    ============================================================ */
 
 :root {
-  --svc-navy:        #003399;
-  --svc-navy-deep:   #002a6e;
-  --svc-navy-hero:   #0a1747;
+  // Blues remapped to NEXUS brand tokens (near-identical hues, now official).
+  --svc-navy:        #09349d;   // NEXUS logo-blue-dark (was #003399)
+  --svc-navy-deep:   #001b5e;   // NEXUS navy / brand-tertiary (was #002a6e)
+  --svc-navy-hero:   #000334;   // NEXUS indigo / brand-primary (was #0a1747)
+  // Pink kept intentionally: differentiates internal IT apps from public brand.
   --svc-pink:        #e6007e;
   --svc-pink-deep:   #c4006a;
-  --svc-ink:         #1d2b4d;
-  --svc-gray:        #5b6472;
-  --svc-gray-soft:   #8089a0;
-  --svc-line:        #eef1f6;
-  --svc-tint:        #eaf0ff;
-  --svc-tint-hover:  #f1f5ff;
+  // Neutrals snapped to the NEXUS cool-grey (ui-*) ramp.
+  --svc-ink:         #252729;   // NEXUS ui-80 (was #1d2b4d)
+  --svc-gray:        #6f747a;   // NEXUS ui-60 (was #5b6472)
+  --svc-gray-soft:   #959ba3;   // NEXUS ui-50 (was #8089a0)
+  --svc-line:        #e5eaf0;   // NEXUS ui-10 (was #eef1f6)
+  --svc-tint:        #e6f5fc;   // NEXUS blue-50 (was #eaf0ff)
+  --svc-tint-hover:  #f3f5f8;   // NEXUS ui-5 (was #f1f5ff)
+  // Body/action text (NEXUS secondary).
   --svc-font: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  // Display + h1/h2 (NEXUS primary). Poppins is self-hosted — see document_head.hbs.
+  --svc-font-display: "Poppins", "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* Hide the native header search (the home hero provides its own search). */

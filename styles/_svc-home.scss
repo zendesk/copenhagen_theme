@@ -68,6 +68,7 @@
 }
 .svc-hero-title {
   margin: 0;
+  font-family: var(--svc-font-display);
   font-size: clamp(28px, 4vw, 44px);
   line-height: 1.08;
   font-weight: 700;
@@ -440,7 +441,7 @@ a.svc-help-btn:hover,
 
 /* Shimmer sweep */
 .svc-cat-skel-row, .svc-cat-skel-heading, .svc-cat-skel-subtext, .svc-cat-skel-card {
-  background: linear-gradient(100deg, #eef1f6 30%, #f6f8fc 50%, #eef1f6 70%);
+  background: linear-gradient(100deg, #e5eaf0 30%, #f6f8fc 50%, #e5eaf0 70%);
   background-size: 200% 100%;
   animation: svcSkelShimmer 1.3s ease-in-out infinite;
 }
