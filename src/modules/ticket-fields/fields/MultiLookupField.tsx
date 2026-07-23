@@ -99,6 +99,7 @@ export function MultiLookupField({
 
   const fetchSelectedOptions = useCallback(
     async (recordIds: string[]) => {
+      const fallback = recordIds.map((id) => ({ value: id, name: id }));
       try {
         const params = new URLSearchParams();
         params.set("filter[ids]", recordIds.join(","));
@@ -115,9 +116,11 @@ export function MultiLookupField({
           );
           setSelectedOptions(results);
           onChange(results.map((o) => o.value));
+        } else {
+          setSelectedOptions(fallback);
         }
       } catch {
-        // skip failed fetch
+        setSelectedOptions(fallback);
       }
     },
     [customObjectKey, onChange]
@@ -279,7 +282,7 @@ export function MultiLookupField({
       )}
       <Combobox
         ref={wrapperRef}
-        inputProps={{ required }}
+        inputProps={{}}
         data-test-id="multi-lookup-field-combobox"
         validation={error || isAtLimit ? "error" : undefined}
         inputValue={inputValue}
@@ -340,7 +343,7 @@ export function MultiLookupField({
       {isAtLimit && (
         <Field.Message validation="error">
           {t(
-            "cph-theme-ticket-fields.multi-lookup-field.limit-reached",
+            "cph-theme-ticket-fields.multi-lookup-field.max-reached",
             "You've reached the limit of {{max}} values.",
             { max: maxSelections }
           )}

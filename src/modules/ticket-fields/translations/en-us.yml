@@ -33,8 +33,8 @@ parts:
       value: "Search {{label}}"
   - translation:
       key: "cph-theme-ticket-fields.multi-lookup-field.max-reached"
-      title: "Placeholder shown in multi-lookup combobox when maximum number of selections (20) has been reached"
-      value: "Maximum selections reached"
+      title: "Error message shown when the number of selections exceeds the allowed limit"
+      value: "You've reached the limit of {{max}} values."
   - translation:
       key: "cph-theme-ticket-fields.credit-card-digits-hint"
       title: "Additional label shown above the credit card field, informing the user that only the last 4 digits are required."
