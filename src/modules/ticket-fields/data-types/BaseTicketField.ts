@@ -19,4 +19,5 @@ export interface BaseTicketField {
   description: string;
   relationship_target_type?: string;
   relationship_filter?: LookupRelationshipFieldFilter;
+  max_selections?: number;
 }
