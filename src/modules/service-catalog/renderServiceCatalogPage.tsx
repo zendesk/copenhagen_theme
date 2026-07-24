@@ -17,6 +17,7 @@ import {
   PREVIEW_MODE_QUERY_PARAM,
   PREVIEW_MODE_QUERY_PARAM_VALUE,
 } from "./constants";
+import { normalizeHelpCenterPath } from "./utils/normalizeHelpCenterPath";
 
 function isPreviewMode(): boolean {
   if (typeof window === "undefined") return false;
@@ -57,6 +58,7 @@ export async function renderServiceCatalogPage(
   baseLocale: string,
   helpCenterPath: string
 ) {
+  const safeHelpCenterPath = normalizeHelpCenterPath(helpCenterPath);
   initI18next(baseLocale);
   const theme = createTheme(settings);
   const root = createRoot(container);
@@ -81,15 +83,15 @@ export async function renderServiceCatalogPage(
   root.render(
     <ThemeProviders theme={theme}>
       <ErrorBoundary
-        helpCenterPath={helpCenterPath}
+        helpCenterPath={safeHelpCenterPath}
         fallback={
           <main className="service-catalog-list">
-            <ErrorScreen helpCenterPath={helpCenterPath} />
+            <ErrorScreen helpCenterPath={safeHelpCenterPath} />
           </main>
         }
       >
         <ServiceCatalogPage
-          helpCenterPath={helpCenterPath}
+          helpCenterPath={safeHelpCenterPath}
           categoryTree={categoryTree}
         />
       </ErrorBoundary>

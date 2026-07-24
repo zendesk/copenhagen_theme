@@ -11,6 +11,7 @@ import {
 } from "../shared";
 import type { Settings } from "../shared";
 import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
+import { normalizeHelpCenterPath } from "./utils/normalizeHelpCenterPath";
 
 export async function renderServiceCatalogItem(
   container: HTMLElement,
@@ -18,6 +19,7 @@ export async function renderServiceCatalogItem(
   props: ServiceCatalogItemProps
 ) {
   const { baseLocale, helpCenterPath } = props;
+  const safeHelpCenterPath = normalizeHelpCenterPath(helpCenterPath);
   initI18next(baseLocale);
   await loadTranslations(baseLocale, [
     () => import(`./translations/locales/${baseLocale}.json`),
@@ -26,8 +28,8 @@ export async function renderServiceCatalogItem(
   ]);
   createRoot(container).render(
     <ThemeProviders theme={createTheme(settings)}>
-      <ErrorBoundary helpCenterPath={helpCenterPath}>
-        <ServiceCatalogItem {...props} />
+      <ErrorBoundary helpCenterPath={safeHelpCenterPath}>
+        <ServiceCatalogItem {...props} helpCenterPath={safeHelpCenterPath} />
       </ErrorBoundary>
     </ThemeProviders>
   );
