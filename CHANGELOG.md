@@ -1,3 +1,10 @@
+# [4.48.0](https://github.com/zendesk/copenhagen_theme/compare/v4.47.3...v4.48.0) (2026-07-27)
+
+
+### Features
+
+* **service-catalog:** support query-string prefill for item forms (PDSC-954) ([cc3d075](https://github.com/zendesk/copenhagen_theme/commit/cc3d075cd9c96a1e2a1d7c7fd76d915db7efde73))
+
 ## [4.47.3](https://github.com/zendesk/copenhagen_theme/compare/v4.47.2...v4.47.3) (2026-07-21)
 
 
