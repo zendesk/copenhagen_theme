@@ -122,6 +122,7 @@ describe("submitServiceItemRequest", () => {
       { id: 1, value: "value-1" },
       { id: associatedLookupField.id, value: mockItem.id },
     ]);
+    expect(request.via).toEqual({ channel: "web form", source: 50 });
   });
 
   it("encodes all user-controlled comment values as text", async () => {

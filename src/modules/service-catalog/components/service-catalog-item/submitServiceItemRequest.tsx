@@ -104,6 +104,10 @@ export async function submitServiceItemRequest(
             uploads: uploadTokens,
           },
           custom_fields: [...customFields, ...lookupFields],
+          via: {
+            channel: "web form",
+            source: 50,
+          },
           ...(isRequestingOnBehalf
             ? { requester_id: requesterId, collaborators: [submitterId] }
             : {}),
