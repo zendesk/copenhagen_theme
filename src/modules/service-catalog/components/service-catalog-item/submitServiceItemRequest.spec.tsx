@@ -122,6 +122,12 @@ describe("submitServiceItemRequest", () => {
       { id: 1, value: "value-1" },
       { id: associatedLookupField.id, value: mockItem.id },
     ]);
+    // Guards against a regression where the request submitted through the
+    // `/hc/api/v2/service_catalog/requests` proxy loses its "web form"
+    // channel signal and falls out of channel-based omni-channel routing
+    // (unlike a native <form> submission, this endpoint has no implicit
+    // channel signal, so it must be set explicitly).
+    expect(request.via).toEqual({ channel: "web form", source: 50 });
   });
 
   it("encodes all user-controlled comment values as text", async () => {
