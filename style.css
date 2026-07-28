@@ -5212,11 +5212,6 @@ html body .header .search-wrapper {
   box-sizing: border-box !important;
 }
 
-/* Applied by src/domFixups.js to elements whose only text is "empty". */
-.svc-empty-hidden {
-  display: none !important;
-}
-
 /* ============================================================
    ARPA-H custom — home page (service_list_page): hero, combined
    live search, service-catalog card, skeleton loader, tooltips.
@@ -5334,7 +5329,10 @@ html body .header .search-wrapper {
   text-align: center;
 }
 
-/* Hero search bar */
+/* Hero search bar — the native {{search}} form is skinned into the pink
+   pill (same approach as .svc-search-pill on the results page). Zendesk's
+   platform renders and styles the real-time instant-search dropdown, so we
+   only style the input row here. */
 .svc-hero-search {
   position: relative;
   display: flex;
@@ -5345,6 +5343,10 @@ html body .header .search-wrapper {
   background: #fff;
   border-radius: 1000px;
   border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.svc-hero-search:focus-within {
+  border-color: var(--svc-navy);
 }
 
 .svc-hero-search-icon {
@@ -5358,20 +5360,43 @@ html body .header .search-wrapper {
   height: 24px;
 }
 
-.svc-hero-input {
-  flex: 1;
-  min-width: 0;
-  border: none;
-  outline: none;
-  background: transparent;
+/* Native search form + input, flattened to blend into the pill. */
+.svc-hero-search .search,
+.svc-hero-search form[role=search] {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.svc-hero-search input[type=search] {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  height: auto !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
   font-family: var(--svc-font);
   font-size: 18px;
   color: var(--svc-ink);
-  padding: 13px 16px;
+  padding: 13px 16px !important;
+  box-shadow: none !important;
 }
 
-.svc-hero-input::placeholder {
+.svc-hero-search input[type=search]::placeholder {
   color: #9aa1ad;
+}
+
+/* Zendesk adds its own magnifier + clear button; we supply our own icons. */
+.svc-hero-search .search-icon,
+.svc-hero-search .clear-button {
+  display: none !important;
 }
 
 .svc-hero-search-btn {
@@ -5399,161 +5424,6 @@ html body .header .search-wrapper {
   filter: brightness(1.08);
 }
 
-/* Live results dropdown */
-.svc-hero-results {
-  position: fixed;
-  z-index: 99999;
-  max-height: 70vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background: #fff;
-  border-radius: 16px;
-  border: 1px solid var(--svc-line);
-  text-align: left;
-}
-
-.svc-res-group-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 18px 6px;
-  border-bottom: 0.5px solid var(--svc-line);
-}
-
-.svc-res-group-header.svc-res-docs {
-  border-top: 0.5px solid var(--svc-line);
-  background: #fcfcfd;
-}
-
-.svc-res-group-title {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-}
-
-.svc-res-services .svc-res-group-title {
-  color: var(--svc-navy);
-}
-
-.svc-res-docs .svc-res-group-title {
-  color: var(--svc-gray);
-}
-
-.svc-res-group-count {
-  font-size: 11px;
-  color: #9aa1ad;
-}
-
-.svc-res-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 18px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.14s ease;
-}
-
-.svc-res-item:hover, .svc-res-item.svc-res-active {
-  background: #f5f8ff;
-}
-
-.svc-res-item.svc-res-service {
-  border-left: 3px solid var(--svc-navy);
-}
-
-.svc-res-item.svc-res-doc {
-  border-left: 3px solid #c9ced8;
-}
-
-.svc-res-icon {
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-}
-
-.svc-res-service .svc-res-icon {
-  background: var(--svc-tint);
-  color: var(--svc-navy);
-}
-
-.svc-res-doc .svc-res-icon {
-  background: #f1f3f7;
-  color: var(--svc-gray);
-}
-
-.svc-res-icon svg {
-  width: 18px;
-  height: 18px;
-}
-
-.svc-res-text {
-  flex: 1;
-  min-width: 0;
-}
-
-.svc-res-title, .svc-res-sub {
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.svc-res-title {
-  font-size: 14px;
-  color: var(--svc-ink);
-}
-
-.svc-res-sub {
-  font-size: 12px;
-  color: var(--svc-gray-soft);
-}
-
-.svc-res-badge {
-  flex-shrink: 0;
-  font-size: 10.5px;
-  font-weight: 600;
-  padding: 3px 9px;
-  border-radius: 1000px;
-}
-
-.svc-res-service .svc-res-badge {
-  color: var(--svc-navy);
-  background: var(--svc-tint);
-}
-
-.svc-res-doc .svc-res-badge {
-  color: var(--svc-gray);
-  background: var(--svc-line);
-}
-
-.svc-res-empty, .svc-res-loading {
-  padding: 18px;
-  font-size: 13px;
-  color: var(--svc-gray-soft);
-  text-align: center;
-}
-
-.svc-res-footer {
-  display: block;
-  padding: 11px 18px;
-  border-top: 0.5px solid var(--svc-line);
-  font-size: 12.5px;
-  font-weight: 500;
-  color: var(--svc-navy);
-  text-align: center;
-  text-decoration: none;
-}
-
-.svc-res-footer:hover {
-  background: #f5f8ff;
-}
-
 /* Hero chips */
 .svc-hero-chips {
   display: flex;
@@ -5567,13 +5437,17 @@ html body .header .search-wrapper {
 .svc-hero-chips-label {
   font-family: var(--svc-font);
   font-size: 12.5px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.75);
 }
 
-.svc-hero-chip {
+.svc-hero-chip,
+.svc-hero-chip:visited {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--svc-font);
   font-size: 12.5px;
-  color: #fff;
+  color: #fff !important;
+  text-decoration: none;
   cursor: pointer;
   padding: 5px 12px;
   border-radius: 1000px;
@@ -5585,6 +5459,92 @@ html body .header .search-wrapper {
 .svc-hero-chip:hover {
   background: rgba(255, 255, 255, 0.22);
   border-color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+}
+
+/* Visible keyboard focus for chips (WCAG 2.4.7) */
+.svc-hero-chip:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   HERO INSTANT-SEARCH DROPDOWN — ARPA-H skin
+   Targets Zendesk's real components (zd-autocomplete-multibrand).
+   Light DOM confirmed. 508 / WCAG 2.1 AA aware.
+   ============================================================ */
+
+/* Panel */
+zd-autocomplete[role="listbox"] {
+  display: block !important;
+  background: #fff !important;
+  border: 1px solid var(--svc-line) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 16px 40px rgba(0, 3, 52, 0.18) !important;
+  overflow: hidden !important;
+  margin-top: 8px !important;
+  padding: 6px !important;
+  box-sizing: border-box !important;
+}
+
+/* Force ARPA-H font throughout */
+zd-autocomplete,
+zd-autocomplete * {
+  font-family: var(--svc-font) !important;
+}
+
+/* Each result row */
+zd-autocomplete-multibrand[role="option"] {
+  display: block !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  border: none !important;          /* no accent rail */
+  outline: none !important;         /* no blue focus ring */
+  box-shadow: none !important;      /* no blue edge */
+  cursor: pointer !important;
+  transition: background-color 0.14s ease !important;
+}
+
+/* Hover + keyboard-selected state — tint only (no blue bar).
+   Background tint preserves a visible focus indicator (WCAG 2.4.7). */
+zd-autocomplete-multibrand[role="option"]:hover,
+zd-autocomplete-multibrand[role="option"]:focus,
+zd-autocomplete-multibrand[role="option"]:focus-visible,
+zd-autocomplete-multibrand[role="option"][aria-selected="true"] {
+  background: var(--svc-tint) !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Result title */
+zd-autocomplete-title-multibrand {
+  display: block !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: var(--svc-ink) !important;
+  line-height: 1.35 !important;
+}
+zd-autocomplete-multibrand[role="option"]:hover zd-autocomplete-title-multibrand,
+zd-autocomplete-multibrand[role="option"][aria-selected="true"] zd-autocomplete-title-multibrand {
+  color: var(--svc-navy) !important;
+}
+
+/* Breadcrumb / secondary line */
+zd-autocomplete-breadcrumbs-multibrand {
+  display: block !important;
+  font-size: 12px !important;
+  color: var(--svc-gray) !important;
+  margin-top: 2px !important;
+}
+
+/* Matched search term — bold navy (matches results page) */
+zd-autocomplete em,
+zd-autocomplete-title-multibrand em {
+  background: transparent !important;
+  color: var(--svc-navy) !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
 }
 
 /* ---------- CATALOG CARD ---------- */
@@ -5618,18 +5578,6 @@ html body .header .search-wrapper {
 .service-catalog-main-content [class*=card] *,
 .service-catalog-main-content [class*=Card] * {
   font-weight: 400 !important;
-}
-
-/* Hide the catalog's own search box (hero search replaces it). */
-.service-catalog-main-content form[role=search],
-.service-catalog-main-content input[type=search],
-.service-catalog-main-content input[type=text],
-.service-catalog-main-content input:not([type]) {
-  display: none !important;
-}
-
-.service-catalog-main-content .svc-native-search-hide {
-  display: none !important;
 }
 
 /* SERVICE ICONS — NEVER CLIP */
@@ -6008,9 +5956,9 @@ a.svc-help-btn:hover,
     margin-top: 18px;
     padding: 6px 6px 6px 18px;
   }
-  .svc-hero-input {
-    font-size: 16px;
-    padding: 11px 12px;
+  .svc-hero-search input[type=search] {
+    font-size: 16px !important;
+    padding: 11px 12px !important;
   }
   .svc-hero-search-btn {
     width: 42px;
@@ -6093,6 +6041,7 @@ a.svc-help-btn:hover,
     font-size: 12px;
     padding: 5px 10px;
   }
+
   .svc-list-shell {
     padding: 14px 10px 20px;
   }
@@ -6626,9 +6575,16 @@ body {
 }
 
 /* ---- SUBMIT BUTTON: overlap-aware hiding handled by JS ---- */
+/* Let the catalog form (and its dropdowns) stack above the custom submit */
+.svc-form-panel #service-catalog-item {
+  position: relative;
+  z-index: 2;
+}
+
+/* Keep the custom submit wrap BELOW the form's dropdowns */
 .svc-custom-submit-wrap {
   position: relative;
-  z-index: 0;
+  z-index: 1;   /* was 0 — but must stay under the dropdown */
 }
 
 /* ---- HELPER INFORMATION CARDS ---- */
@@ -6945,9 +6901,19 @@ body > pre, body > code, body > .template-name, body > .editor-label {
 
 /* ---- COMPACT SEARCH ROW ---- */
 .svc-searchrow {
-  margin: 0 0 16px;
+  margin: 0 auto 16px;
+  max-width: 560px;   /* matches the compact pill size */
+  width: 100%;
 }
-
+/* Item-page search button — ARPA-H navy (overrides the hero gradient here only) */
+.svc-searchrow .svc-hero-search-btn {
+  background: var(--svc-navy) !important;
+}
+.svc-searchrow .svc-hero-search-btn:hover {
+  background: var(--svc-navy-deep) !important;
+  filter: none !important;   /* cancel the hero's brightness hover */
+  transform: none !important;
+}
 .svc-mini-search {
   position: relative;
   display: flex;
@@ -7800,4 +7766,16 @@ html.svc-home .header .search-wrapper {
   .header .nav-wrapper-desktop .user-info [data-user-name] {
     display: none !important;
   }
+  /* ============================================================
+   FORCE-SHOW: bring back the catalog's native "Search for services"
+   box (overrides any earlier hide rules). Placed last so it wins.
+   ============================================================ */
+.service-catalog-main-content form[role=search],
+.service-catalog-main-content input[type=search],
+.service-catalog-main-content input[type=text],
+.service-catalog-main-content .svc-native-search-hide {
+  display: revert !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
 }
