@@ -12,6 +12,9 @@ import type {
   AssetOptionData,
   AssetConfig,
 } from "../data-types/Assets";
+import { sanitizeFieldDescription } from "../utils/sanitize";
+import { applyPrefillToFields } from "../utils/applyPrefillToFields";
+import { useQueryStringPrefill } from "./useQueryStringPrefill";
 
 const ASSET_TYPE_KEY = "zen:custom_object:standard::itam_asset_type";
 const ASSET_KEY = "zen:custom_object:standard::itam_asset";
@@ -80,7 +83,9 @@ const formatField = (field: TicketField): TicketFieldObject => {
     relationship_filter,
   } = field;
 
-  const sanitizedDescription = linkifyStr(description);
+  const sanitizedDescription = sanitizeFieldDescription(
+    linkifyStr(description)
+  );
 
   return {
     id,
@@ -132,7 +137,9 @@ const enrichFieldsWithAssetConfig = (
       return {
         ...field,
         label: assetConfig.assetTypeLabel || field.label,
-        description: assetConfig.assetTypeDescription || field.description,
+        description: sanitizeFieldDescription(
+          assetConfig.assetTypeDescription || field.description
+        ),
         required: assetConfig.assetTypeIsRequired || field.required,
       };
     }
@@ -140,7 +147,9 @@ const enrichFieldsWithAssetConfig = (
       return {
         ...field,
         label: assetConfig.assetLabel || field.label,
-        description: assetConfig.assetDescription || field.description,
+        description: sanitizeFieldDescription(
+          assetConfig.assetDescription || field.description
+        ),
         required: assetConfig.assetIsRequired || field.required,
       };
     }
@@ -263,6 +272,10 @@ export function useItemFormFields(
     assetTypeOptionId ?? ""
   );
 
+  // Prefill (PDSC-954) is applied to the full field set before visibility is
+  // computed, so a prefilled parent reveals its conditional children.
+  const prefill = useQueryStringPrefill();
+
   useEffect(() => {
     if (!serviceCatalogItem?.form_id) return;
 
@@ -302,7 +315,8 @@ export function useItemFormFields(
           requestFields,
           processedAssetConfig
         );
-        setAllRequestFields(enrichedFields);
+        const prefilledFields = applyPrefillToFields(enrichedFields, prefill);
+        setAllRequestFields(prefilledFields);
       } catch (error) {
         if (alive) {
           setError(error);
@@ -319,7 +333,13 @@ export function useItemFormFields(
     return () => {
       alive = false;
     };
-  }, [baseLocale, serviceCatalogItem?.form_id, fetchAssets, fetchAssetTypes]);
+  }, [
+    baseLocale,
+    serviceCatalogItem?.form_id,
+    fetchAssets,
+    fetchAssetTypes,
+    prefill,
+  ]);
 
   const handleChange = useCallback(
     (field: TicketFieldObject, value: TicketFieldObject["value"]) => {

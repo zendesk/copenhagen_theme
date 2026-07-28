@@ -121,7 +121,7 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
   };
 
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
-    ({ inputValue, selectionValue }) => {
+    ({ type, inputValue, selectionValue }) => {
       if (selectionValue !== undefined) {
         const selectedOption = options.find((opt) => opt.id === selectionValue);
 
@@ -137,7 +137,8 @@ export const ChangeUserForm: React.FC<ChangeUserFormProps> = ({
         }
       }
 
-      if (inputValue !== undefined) {
+      // Without this guard that would fire a redundant search for the just-selected user.
+      if (type === "input:change" && inputValue !== undefined) {
         setInputValue(inputValue);
         isTyping.current = true; // Mark as typing
 

@@ -371,17 +371,20 @@ export function ServiceCatalogItem({
         selectedUser != null && Number(selectedUser.id) !== userId;
       const requesterId = isRequestingOnBehalf ? Number(selectedUser.id) : null;
 
-      const onBehalfNoteHtml =
+      const onBehalfNote =
         isRequestingOnBehalf && selectedUser
-          ? `<p style="margin:0;padding:0">${t(
-              "service-catalog.item.submitter-label",
-              "Submitter: {{name}}",
-              { name: userName }
-            )}</p><p style="margin:0;padding:0">${t(
-              "service-catalog.item.requester-label",
-              "Requester: {{name}}",
-              { name: selectedUser.name }
-            )}</p>`
+          ? {
+              submitterLabel: t(
+                "service-catalog.item.submitter-label",
+                "Submitter: {{name}}",
+                { name: userName }
+              ),
+              requesterLabel: t(
+                "service-catalog.item.requester-label",
+                "Requester: {{name}}",
+                { name: selectedUser.name }
+              ),
+            }
           : null;
 
       const response = await submitServiceItemRequest(
@@ -393,7 +396,7 @@ export function ServiceCatalogItem({
         categoryLookupField,
         selectedCategoryId,
         requesterId,
-        onBehalfNoteHtml
+        onBehalfNote
       );
 
       if (response?.ok) {

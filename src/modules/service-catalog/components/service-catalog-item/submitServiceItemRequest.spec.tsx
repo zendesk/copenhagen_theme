@@ -101,13 +101,68 @@ describe("submitServiceItemRequest", () => {
     );
 
     const request = getSubmittedRequest(fetchMock);
+    const parsedDocument = new DOMParser().parseFromString(
+      request.comment.html_body,
+      "text/html"
+    );
+    const link = parsedDocument.querySelector("a");
+
     expect(request.item_id).toBe(mockItem.id);
     expect(request.subject).toBe(mockItem.name);
     expect(request.comment.uploads).toEqual(["token-1"]);
+    expect(link?.getAttribute("href")).toBe(
+      `${window.location.origin}${helpCenterPath}/services/${mockItem.id}`
+    );
+    expect(link?.getAttribute("target")).toBe("_blank");
+    expect(link?.getAttribute("rel")).toBe("noopener noreferrer");
+    expect(link?.getAttribute("style")).toBe("text-decoration: underline");
+    expect(link?.textContent).toBe(mockItem.name);
+    expect(parsedDocument.querySelector("p")).toBeNull();
     expect(request.custom_fields).toEqual([
       { id: 1, value: "value-1" },
       { id: associatedLookupField.id, value: mockItem.id },
     ]);
+  });
+
+  it("encodes all user-controlled comment values as text", async () => {
+    const fetchMock = mockFetch();
+    const unsafeName = '<img src=x onerror="alert(1)"> & Service';
+    const unsafeSubmitterLabel =
+      'Submitter: <img src=x onerror="alert(2)"> Agent';
+    const unsafeRequesterLabel =
+      "Requester: <script>alert(3)</script> Employee";
+
+    await submitServiceItemRequest(
+      { ...mockItem, name: unsafeName },
+      [],
+      associatedLookupField,
+      attachments,
+      helpCenterPath,
+      null,
+      null,
+      null,
+      {
+        submitterLabel: unsafeSubmitterLabel,
+        requesterLabel: unsafeRequesterLabel,
+      }
+    );
+
+    const request = getSubmittedRequest(fetchMock);
+    const htmlBody = request.comment.html_body;
+    const parsedDocument = new DOMParser().parseFromString(
+      htmlBody,
+      "text/html"
+    );
+    const link = parsedDocument.querySelector("a");
+    const paragraphs = parsedDocument.querySelectorAll("p");
+
+    expect(request.subject).toBe(unsafeName);
+    expect(link?.textContent).toBe(unsafeName);
+    expect(link?.children).toHaveLength(0);
+    expect(paragraphs[0]?.textContent).toBe(unsafeSubmitterLabel);
+    expect(paragraphs[0]?.children).toHaveLength(0);
+    expect(paragraphs[1]?.textContent).toBe(unsafeRequesterLabel);
+    expect(paragraphs[1]?.children).toHaveLength(0);
   });
 
   it("does not send requester_id or collaborators for a self request", async () => {
@@ -162,15 +217,26 @@ describe("submitServiceItemRequest", () => {
       null,
       null,
       beneficiaryId,
-      "<p>Submitter: Agent</p><p>User: Beneficiary</p>"
+      {
+        submitterLabel: "Submitter: Agent",
+        requesterLabel: "Requester: Beneficiary",
+      }
     );
 
     const request = getSubmittedRequest(fetchMock);
+    const parsedDocument = new DOMParser().parseFromString(
+      request.comment.html_body,
+      "text/html"
+    );
+    const paragraphs = parsedDocument.querySelectorAll("p");
+
     expect(request.requester_id).toBe(beneficiaryId);
     expect(request.collaborators).toEqual([SUBMITTER_ID]);
-    expect(request.comment.html_body).toContain(
-      "<p>Submitter: Agent</p><p>User: Beneficiary</p>"
-    );
+    expect(paragraphs).toHaveLength(2);
+    expect(paragraphs[0]?.textContent).toBe("Submitter: Agent");
+    expect(paragraphs[0]?.getAttribute("style")).toBe("margin:0;padding:0");
+    expect(paragraphs[1]?.textContent).toBe("Requester: Beneficiary");
+    expect(paragraphs[1]?.getAttribute("style")).toBe("margin:0;padding:0");
   });
 
   it("appends the category lookup field when a category is provided", async () => {

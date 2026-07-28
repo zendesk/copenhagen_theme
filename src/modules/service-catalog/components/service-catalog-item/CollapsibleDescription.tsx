@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import styled from "styled-components";
 import { Button } from "@zendeskgarden/react-buttons";
 import ChevronUp from "@zendeskgarden/svg-icons/src/16/chevron-up-fill.svg";
@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { getColor } from "@zendeskgarden/react-theming";
 import { XXXL } from "@zendeskgarden/react-typography";
 import { ItemThumbnail } from "../item-thumbnail/ItemThumbnail";
+import { sanitizeHtml } from "../../utils/sanitize";
 
 const DescriptionWrapper = styled.div`
   border-bottom: ${(props) => props.theme.borders.sm}
@@ -72,6 +73,11 @@ export const CollapsibleDescription = ({
   const { t } = useTranslation();
   const contentRef = useRef<HTMLDivElement>(null);
 
+  const sanitizedDescription = useMemo(
+    () => sanitizeHtml(description ?? ""),
+    [description]
+  );
+
   useEffect(() => {
     const el = contentRef.current;
     if (el) {
@@ -86,7 +92,7 @@ export const CollapsibleDescription = ({
       };
       requestAnimationFrame(checkClamped);
     }
-  }, [description]);
+  }, [sanitizedDescription]);
 
   const toggleDescription = () => {
     setIsCollapsed(!isCollapsed);
@@ -98,12 +104,12 @@ export const CollapsibleDescription = ({
         <ItemThumbnail size="large" url={thumbnailUrl} />
         <ItemTitle tag="h1">{title}</ItemTitle>
       </HeaderContainer>
-      {description && (
+      {sanitizedDescription && (
         <CollapsibleText
           ref={contentRef}
           className="service-catalog-description"
           isCollapsed={isCollapsed}
-          dangerouslySetInnerHTML={{ __html: description }}
+          dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
         ></CollapsibleText>
       )}
       {isClamped && (
