@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { getColor } from "@zendeskgarden/react-theming";
 import { ItemThumbnail } from "../item-thumbnail/ItemThumbnail";
 import { useMemo } from "react";
+import { htmlToText } from "../../utils/sanitize";
 
 const ItemContainer = styled.div`
   height: 100%;
@@ -69,19 +70,13 @@ const ServiceCatalogListItem = ({
     ? `${helpCenterPath}/services/${serviceItem.id}?category_id=${selectedCategoryId}`
     : `${helpCenterPath}/services/${serviceItem.id}`;
 
-  const decodeToText = (htmlString: string) => {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = htmlString;
-    return tempDiv.textContent || tempDiv.innerText || "";
-  };
-
   const titleText = useMemo(
-    () => decodeToText(serviceItem.name || ""),
+    () => htmlToText(serviceItem.name || ""),
     [serviceItem.name]
   );
 
   const cleanText = useMemo(
-    () => decodeToText(serviceItem.description || ""),
+    () => htmlToText(serviceItem.description || ""),
     [serviceItem.description]
   );
 
