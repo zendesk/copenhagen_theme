@@ -29,24 +29,21 @@
   <div id="main-content">
     <div class="svc-shell">
 
-      {{!-- Compact search (services + resources) --}}
+      {{!-- Native Zendesk instant search (same skin as the home hero). --}}
       <div class="svc-searchrow">
-        <form class="svc-mini-search" id="svc-mini-search" role="search" autocomplete="off">
-          <i class="svc-mini-search-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="svc-hero-search" id="svc-hero-search">
+          <span class="svc-hero-search-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-          </i>
-          <input type="text" id="svc-mini-input" class="svc-mini-input"
-                 placeholder="Search services and resources…" aria-label="{{t 'search'}}"
-                 role="combobox" aria-expanded="false" aria-controls="svc-mini-results" aria-autocomplete="list" />
-          <button type="submit" class="svc-mini-search-btn" aria-label="{{t 'search'}}">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          </span>
+          {{search submit=false instant=settings.instant_search class='search search-full'}}
+          <button type="button" class="svc-hero-search-btn" id="svc-hero-search-btn" aria-label="{{t 'search'}}">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
           </button>
-          <div class="svc-mini-results" id="svc-mini-results" role="listbox" aria-label="Search results" hidden></div>
-        </form>
+        </div>
       </div>
 
       {{!-- Header bar: logo (desktop), centered greeting, step indicator --}}
@@ -93,7 +90,7 @@
               <div class="svc-skel-box"></div>
             </div>
             <div class="svc-custom-submit-wrap">
-              <button type="button" id="svc-custom-submit" class="svc-custom-submit-btn">{{t 'submit_a_request'}}</button>
+              <button type="button" id="svc-custom-submit" class="svc-custom-submit-btn">Submit request</button>
               <p class="svc-custom-submit-note">Review your request details, then submit to the Service Desk.</p>
             </div>
           </div>
@@ -146,7 +143,7 @@
           <span class="svc-help-banner-title">Still can&rsquo;t find what you need?</span>
           <span class="svc-help-banner-sub">Submit a general request.</span>
         </div>
-        <a class="svc-help-btn" href="/hc/{{help_center.base_locale}}/services/{{settings.general_request_service_id}}?category_id={{settings.general_request_category_id}}">
+        <a class="svc-help-btn" href="/hc/{{help_center.base_locale}}/services/01KT6W4J21065JGC51VMSW8AGB?category_id=01KP3TEETSJKEPJ08CSK7MJG41">
           General request
         </a>
       </div>
@@ -175,35 +172,25 @@
   renderServiceCatalogItem(container, settings, props);
 </script>
 
-{{!-- Compact search: services (catalog API) + articles (Help Center API).
-     Shared logic lives in src/svcSearch.js (bundled into script.js) so it
-     isn't duplicated with the hero search in service_list_page.hbs. --}}
+{{!-- Native instant-search wiring: the pink button submits the native
+     {{search}} form; placeholder text is set to match this page. The
+     real-time suggestions + results page are provided by Zendesk's platform. --}}
 <script>
   (function () {
-    var config = {
-      formId: 'svc-mini-search',
-      inputId: 'svc-mini-input',
-      resultsId: 'svc-mini-results',
-      resultPrefix: 'mr',
-      iconSize: 17,
-      gapPx: 8
-    };
-    // script.js (which defines window.initSvcSearch) is a classic script
-    // whose load order relative to this inline block isn't guaranteed, so
-    // poll briefly instead of assuming it has already run.
-    function tryInit() {
-      if (typeof window.initSvcSearch === 'function') {
-        window.initSvcSearch(config);
-        return true;
-      }
-      return false;
-    }
-    if (!tryInit()) {
-      var attempts = 0;
-      var iv = setInterval(function () {
-        attempts++;
-        if (tryInit() || attempts > 100) clearInterval(iv);
-      }, 20);
+    var wrap = document.getElementById('svc-hero-search');
+    if (!wrap) return;
+    var form  = wrap.querySelector('form[role="search"]');
+    var input = wrap.querySelector('input[type="search"]');
+    var btn   = document.getElementById('svc-hero-search-btn');
+
+    if (input) input.setAttribute('placeholder', 'Search services and resources…');
+
+    if (btn && form) {
+      btn.addEventListener('click', function () {
+        if (input && !input.value.trim()) { input.focus(); return; }
+        if (typeof form.requestSubmit === 'function') form.requestSubmit();
+        else form.submit();
+      });
     }
   })();
 </script>
@@ -319,27 +306,17 @@
   })();
 </script>
 
-{{!-- Floating training button. Hidden by default: only rendered when an
-     admin has enabled it and provided a destination URL in the theme's
-     Settings panel (Service Catalog > Show Technology Training button /
-     Technology Training URL). See manifest.json's show_training_fab /
-     training_url settings. --}}
+{{!-- Floating training button --}}
 <script>
   (function () {
-    var showTrainingFab = {{json settings.show_training_fab}};
-    var trainingUrl = {{json settings.training_url}};
-    // No Help Center "stock" translation key covers this ARPA-H-specific
-    // copy, so it's declared once here (used for both the aria-label and
-    // visible label below) rather than duplicated as two literals.
-    var trainingLabel = 'Looking for Technology Training?';
-    if (!showTrainingFab || typeof trainingUrl !== 'string' || !trainingUrl.trim()) return;
+    var TRAINING_URL = 'REPLACE_WITH_TRAINING_URL';
     if (document.getElementById('svc-training-fab')) return;
 
     var fab = document.createElement('a');
     fab.id = 'svc-training-fab';
     fab.className = 'svc-training-fab';
-    fab.href = window.svcSafeHref ? window.svcSafeHref(trainingUrl, '#') : trainingUrl;
-    fab.setAttribute('aria-label', trainingLabel);
+    fab.href = TRAINING_URL;
+    fab.setAttribute('aria-label', 'Looking for Technology Training?');
     fab.innerHTML =
       '<span class="svc-training-fab-icon" aria-hidden="true">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
@@ -347,7 +324,7 @@
           '<path d="M6 12v5c0 1 2.5 2.5 6 2.5s6-1.5 6-2.5v-5"></path>' +
         '</svg>' +
       '</span>' +
-      '<span class="svc-training-fab-label">' + trainingLabel + '</span>';
+      '<span class="svc-training-fab-label">Looking for Technology Training?</span>';
     document.body.appendChild(fab);
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -363,8 +340,6 @@
   (function () {
     var serviceContainer = document.getElementById('service-catalog-item');
     var customSubmit = document.getElementById('svc-custom-submit');
-    var submitLabel = "{{t 'submit_a_request'}}";
-    var submittingLabel = 'Submitting...';
 
     function getNativeSubmit() {
       if (!serviceContainer) return null;
@@ -378,7 +353,7 @@
       var actionBlock = submitEl.closest('section') || submitEl.closest('fieldset') || submitEl.closest('div[role="group"]') || submitEl.parentElement;
       while (actionBlock && actionBlock !== serviceContainer) {
         var txt = (actionBlock.textContent || '').replace(/\s+/g, ' ').trim();
-        if (/submit request/i.test(txt) && /user/i.test(txt)) {
+        if (/submit request/i.test(txt) && /(user|requester)/i.test(txt)) {
           actionBlock.classList.add('svc-hide-native-actions');
           return;
         }
@@ -392,11 +367,11 @@
         var nativeSubmit = getNativeSubmit();
         if (!nativeSubmit) return;
         customSubmit.disabled = true;
-        customSubmit.textContent = submittingLabel;
+        customSubmit.textContent = 'Submitting...';
         nativeSubmit.click();
         setTimeout(function () {
           customSubmit.disabled = false;
-          customSubmit.textContent = submitLabel;
+          customSubmit.textContent = 'Submit request';
         }, 3000);
       });
     }
@@ -424,21 +399,6 @@
     var lastQuery = '';
     var activeController = null;
 
-    // ARPA-H-specific copy (no Help Center "stock" {{t}} key covers these —
-    // see src/svcSearch.js header comment for why). Centralized here as the
-    // single source of truth for this widget; the "empty" string must match
-    // the server-rendered placeholder in the markup above (shown before JS
-    // runs / when the query is too short).
-    var STRINGS = {
-      searching: 'Searching for related articles...',
-      loadError: "We couldn't load suggested articles right now.",
-      noResults: 'No related articles found yet. Try adding more detail in the request description.',
-      empty: 'Start typing in the request form to see related knowledge base articles.',
-      untitledArticle: 'Untitled article',
-      openForDetails: 'Open this article for more details.',
-      sectionPrefix: 'Section: '
-    };
-
     function escapeHtml(str) {
       return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
@@ -456,21 +416,21 @@
       suggestionsEl.innerHTML = '<div class="svc-article-empty">' + escapeHtml(message) + '</div>';
     }
     function renderLoading() {
-      suggestionsEl.innerHTML = '<div class="svc-article-loading">' + escapeHtml(STRINGS.searching) + '</div>';
+      suggestionsEl.innerHTML = '<div class="svc-article-loading">Searching for related articles...</div>';
     }
     function renderError() {
-      suggestionsEl.innerHTML = '<div class="svc-article-error">' + escapeHtml(STRINGS.loadError) + '</div>';
+      suggestionsEl.innerHTML = '<div class="svc-article-error">We couldn\'t load suggested articles right now.</div>';
     }
     function renderArticles(results) {
       if (!results || !results.length) {
-        renderEmpty(STRINGS.noResults);
+        renderEmpty('No related articles found yet. Try adding more detail in the request description.');
         return;
       }
       suggestionsEl.innerHTML = results.map(function (article) {
-        var t = escapeHtml(article.title || STRINGS.untitledArticle);
-        var href = escapeHtml(window.svcSafeHref ? window.svcSafeHref(article.html_url || article.url, '#') : (article.html_url || article.url || '#'));
-        var body = truncate(stripHtml(article.snippet || article.body || article.description || ''), 140) || STRINGS.openForDetails;
-        var section = article.section_name ? STRINGS.sectionPrefix + escapeHtml(article.section_name) : '';
+        var t = escapeHtml(article.title || 'Untitled article');
+        var href = escapeHtml(article.html_url || article.url || '#');
+        var body = truncate(stripHtml(article.snippet || article.body || article.description || ''), 140) || 'Open this article for more details.';
+        var section = article.section_name ? 'Section: ' + escapeHtml(article.section_name) : '';
         return '<a class="svc-article-item" href="' + href + '">' +
           '<span class="svc-article-item-title">' + t + '</span>' +
           '<span class="svc-article-item-meta">' + escapeHtml(body) + '</span>' +
@@ -519,7 +479,7 @@
       if (query.length < 3) {
         lastQuery = '';
         if (activeController) activeController.abort();
-        renderEmpty(STRINGS.empty);
+        renderEmpty('Start typing in the request form to see related knowledge base articles.');
         return;
       }
       if (query === lastQuery) return;
