@@ -93,7 +93,7 @@
               <div class="svc-skel-box"></div>
             </div>
             <div class="svc-custom-submit-wrap">
-              <button type="button" id="svc-custom-submit" class="svc-custom-submit-btn">Submit request</button>
+              <button type="button" id="svc-custom-submit" class="svc-custom-submit-btn">{{t 'submit_a_request'}}</button>
               <p class="svc-custom-submit-note">Review your request details, then submit to the Service Desk.</p>
             </div>
           </div>
@@ -146,7 +146,7 @@
           <span class="svc-help-banner-title">Still can&rsquo;t find what you need?</span>
           <span class="svc-help-banner-sub">Submit a general request.</span>
         </div>
-        <a class="svc-help-btn" href="/hc/{{help_center.base_locale}}/services/01KT6W4J21065JGC51VMSW8AGB?category_id=01KP3TEETSJKEPJ08CSK7MJG41">
+        <a class="svc-help-btn" href="/hc/{{help_center.base_locale}}/services/{{settings.general_request_service_id}}?category_id={{settings.general_request_category_id}}">
           General request
         </a>
       </div>
@@ -175,249 +175,36 @@
   renderServiceCatalogItem(container, settings, props);
 </script>
 
-{{!-- Compact search: services (catalog API) + articles (Help Center API) --}}
+{{!-- Compact search: services (catalog API) + articles (Help Center API).
+     Shared logic lives in src/svcSearch.js (bundled into script.js) so it
+     isn't duplicated with the hero search in service_list_page.hbs. --}}
 <script>
   (function () {
-    var form    = document.getElementById('svc-mini-search');
-    var input   = document.getElementById('svc-mini-input');
-    var results = document.getElementById('svc-mini-results');
-    if (!form || !input || !results) return;
-
-    var HC_BASE      = (location.pathname.match(/^\/hc\/[^/]+/) || ['/hc/en-us'])[0];
-    var SERVICES_URL = HC_BASE + '/services';
-    var SEARCH_PAGE  = HC_BASE + '/search?query=';
-    var MAX = 5;
-    var timer = null, token = 0;
-
-    var SYNONYMS = {
-      laptop:   ['device', 'computer', 'macbook', 'hardware', 'equipment'],
-      computer: ['device', 'laptop', 'hardware', 'equipment'],
-      monitor:  ['device', 'peripheral', 'hardware', 'display'],
-      keyboard: ['device', 'peripheral', 'hardware'],
-      mouse:    ['device', 'peripheral', 'hardware'],
-      wifi:     ['network', 'internet', 'wireless', 'connection'],
-      internet: ['network', 'wifi', 'connection'],
-      vpn:      ['network', 'remote', 'access', 'connection'],
-      email:    ['outlook', 'mailbox', 'mail'],
-      phone:    ['mobile', 'cell', 'device', 'telephone'],
-      login:    ['account', 'password', 'access', 'sign in', 'credentials'],
-      signin:   ['account', 'password', 'access', 'login'],
-      printer:  ['print', 'peripheral', 'device']
+    var config = {
+      formId: 'svc-mini-search',
+      inputId: 'svc-mini-input',
+      resultsId: 'svc-mini-results',
+      resultPrefix: 'mr',
+      iconSize: 17,
+      gapPx: 8
     };
-
-    if (results.parentElement !== document.body) document.body.appendChild(results);
-
-    var ICON_SERVICE = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"></rect><line x1="2" y1="20" x2="22" y2="20"></line></svg>';
-    var ICON_DOC     = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>';
-
-    function esc(s) {
-      return String(s == null ? '' : s)
-        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-        .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-    }
-    function stripTags(s) { var d = document.createElement('div'); d.innerHTML = s || ''; return (d.textContent || '').trim(); }
-
-    function fetchJSON(url, tok) {
-      return fetch(url, { headers: { Accept: 'application/json' }, credentials: 'same-origin' })
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (d) { return tok === token ? d : null; })
-        .catch(function () { return null; });
-    }
-
-    var allServices = null;
-    var servicesLoading = null;
-
-    /* Cache the fetched catalog in sessionStorage so it loads once per session
-       (TTL 30 min) instead of on every page load. Shared with the home page. */
-    var SVC_CACHE_KEY = 'svcCatalogItems';
-    var SVC_CACHE_TTL = 30 * 60 * 1000;
-    function svcReadCache() {
-      try {
-        var c = JSON.parse(sessionStorage.getItem(SVC_CACHE_KEY) || 'null');
-        if (!c || !Array.isArray(c.items) || (Date.now() - c.ts) > SVC_CACHE_TTL) return null;
-        return c.items;
-      } catch (e) { return null; }
-    }
-    function svcWriteCache(items) {
-      try { sessionStorage.setItem(SVC_CACHE_KEY, JSON.stringify({ ts: Date.now(), items: items })); } catch (e) {}
-    }
-
-    function normalizeItem(it) {
-      var id = it.id || it.uuid || '';
-      return {
-        title: stripTags(it.name || it.title || 'Service'),
-        desc:  stripTags(it.description || ''),
-        category: stripTags(it.category_name || (it.category && it.category.name) || ''),
-        href:  it.html_url || (id ? HC_BASE + '/services/' + id : SERVICES_URL)
-      };
-    }
-
-    function loadAllServices() {
-      if (allServices) return Promise.resolve(allServices);
-      if (servicesLoading) return servicesLoading;
-      var cached = svcReadCache();
-      if (cached) { allServices = cached; return Promise.resolve(cached); }
-      servicesLoading = (async function () {
-        var out = [];
-        var url = '/api/v2/help_center/service_catalog/items.json?page[size]=100';
-        var guard = 0;
-        while (url && guard < 20) {
-          guard++;
-          var data;
-          try {
-            var r = await fetch(url, { headers: { Accept: 'application/json' }, credentials: 'same-origin' });
-            if (!r.ok) break;
-            data = await r.json();
-          } catch (e) { break; }
-          var arr = data.service_catalog_items || data.items || data.results || data.records || [];
-          arr.forEach(function (it) { out.push(normalizeItem(it)); });
-          url = (data.meta && data.meta.has_more && data.links && data.links.next) ? data.links.next : null;
-        }
-        allServices = out;
-        svcWriteCache(out);
-        return out;
-      })();
-      return servicesLoading;
-    }
-
-    function scoreService(svc, terms) {
-      var title = svc.title.toLowerCase();
-      var desc  = svc.desc.toLowerCase();
-      var cat   = svc.category.toLowerCase();
-      var score = 0;
-      for (var i = 0; i < terms.length; i++) {
-        var t = terms[i];
-        if (!t) continue;
-        if (title === t) score += 100;
-        else if (title.indexOf(t) === 0) score += 50;
-        else if (title.indexOf(t) !== -1) score += 30;
-        if (desc.indexOf(t) !== -1) score += 10;
-        if (cat.indexOf(t) !== -1) score += 15;
+    // script.js (which defines window.initSvcSearch) is a classic script
+    // whose load order relative to this inline block isn't guaranteed, so
+    // poll briefly instead of assuming it has already run.
+    function tryInit() {
+      if (typeof window.initSvcSearch === 'function') {
+        window.initSvcSearch(config);
+        return true;
       }
-      return score;
+      return false;
     }
-
-    function buildTerms(q) {
-      var base = q.toLowerCase().split(/\s+/).filter(Boolean);
-      var terms = {};
-      base.forEach(function (w) { terms[w] = 1; });
-      base.forEach(function (w) {
-        var key = w.replace(/[^a-z]/g, '');
-        (SYNONYMS[key] || []).forEach(function (s) { terms[s.toLowerCase()] = 1; });
-      });
-      return { primary: base, all: Object.keys(terms) };
+    if (!tryInit()) {
+      var attempts = 0;
+      var iv = setInterval(function () {
+        attempts++;
+        if (tryInit() || attempts > 100) clearInterval(iv);
+      }, 20);
     }
-
-    function getServices(q) {
-      return loadAllServices().then(function (list) {
-        if (!list || !list.length) return [];
-        var parts = buildTerms(q), primary = parts.primary, all = parts.all;
-        var scored = list
-          .map(function (svc) { return { svc: svc, score: scoreService(svc, primary) }; })
-          .filter(function (x) { return x.score > 0; });
-        if (scored.length < 3 && all.length > primary.length) {
-          var have = {};
-          scored.forEach(function (x) { have[x.svc.href] = 1; });
-          list.forEach(function (svc) {
-            if (have[svc.href]) return;
-            var s = scoreService(svc, all);
-            if (s > 0) scored.push({ svc: svc, score: s - 5 });
-          });
-        }
-        scored.sort(function (a, b) { return b.score - a.score; });
-        return scored.slice(0, MAX).map(function (x) {
-          return {
-            title: x.svc.title,
-            href: x.svc.href,
-            sub: x.svc.category || (x.svc.desc ? x.svc.desc.slice(0, 70) : 'Service catalog')
-          };
-        });
-      });
-    }
-
-    function getDocs(q, tok) {
-      var url = '/api/v2/help_center/articles/search.json?per_page=' + MAX + '&query=' + encodeURIComponent(q);
-      return fetchJSON(url, tok).then(function (d) {
-        if (!d) return [];
-        return (d.results || []).slice(0, MAX).map(function (a) {
-          return {
-            title: stripTags(a.title) || 'Untitled',
-            href: a.html_url || (SEARCH_PAGE + encodeURIComponent(q)),
-            sub: a.snippet ? stripTags(a.snippet).slice(0, 70) : 'Knowledge article'
-          };
-        });
-      });
-    }
-
-    function group(title, cls, badge, icon, items) {
-      if (!items.length) return '';
-      var itemCls = cls === 'svc-mr-services' ? 'svc-mr-service' : 'svc-mr-doc';
-      var html = '<div class="svc-mr-group-header ' + cls + '">' +
-        '<span class="svc-mr-group-title">' + esc(title) + '</span>' +
-        '<span class="svc-mr-group-count">' + items.length + '</span></div>';
-      items.forEach(function (it) {
-        html += '<a class="svc-mr-item ' + itemCls + '" role="option" href="' + esc(it.href) + '">' +
-          '<span class="svc-mr-icon" aria-hidden="true">' + icon + '</span>' +
-          '<span class="svc-mr-text"><span class="svc-mr-title">' + esc(it.title) + '</span>' +
-          '<span class="svc-mr-sub">' + esc(it.sub) + '</span></span>' +
-          '<span class="svc-mr-badge">' + badge + '</span></a>';
-      });
-      return html;
-    }
-
-    function place() {
-      var r = form.getBoundingClientRect();
-      var m = 12;
-      var w = Math.min(r.width, window.innerWidth - m * 2);
-      var l = Math.min(Math.max(r.left, m), window.innerWidth - m - w);
-      results.style.left  = Math.round(l) + 'px';
-      results.style.width = Math.round(w) + 'px';
-      results.style.top   = Math.round(r.bottom + 8) + 'px';
-    }
-    function show(html) { results.innerHTML = html; results.hidden = false; place(); input.setAttribute('aria-expanded', 'true'); }
-    function hide()     { results.hidden = true; results.innerHTML = ''; input.setAttribute('aria-expanded', 'false'); }
-
-    function run(q) {
-      q = (q || '').trim();
-      if (q.length < 2) { hide(); return; }
-      var tok = ++token;
-      show('<div class="svc-mr-loading">Searching…</div>');
-      Promise.all([getServices(q), getDocs(q, tok)]).then(function (res) {
-        var services = res[0], docs = res[1];
-        if (tok !== token) return;
-        var html =
-          group('Recommended services', 'svc-mr-services', 'Service', ICON_SERVICE, services) +
-          group('Self-Help Resources', 'svc-mr-docs', 'Resource', ICON_DOC, docs);
-        if (!services.length && !docs.length) html = '<div class="svc-mr-empty">No matching services or resources.</div>';
-        html += '<a class="svc-mr-footer" href="' + SEARCH_PAGE + encodeURIComponent(q) + '">See all results for &ldquo;' + esc(q) + '&rdquo;</a>';
-        show(html);
-      });
-    }
-
-    loadAllServices();
-
-    input.addEventListener('input', function () { clearTimeout(timer); var q = input.value; timer = setTimeout(function () { run(q); }, 220); });
-    input.addEventListener('focus', function () { if (input.value.trim().length >= 2 && results.innerHTML) { results.hidden = false; place(); } });
-    form.addEventListener('submit', function (e) { e.preventDefault(); var q = input.value.trim(); if (q) window.location.href = SEARCH_PAGE + encodeURIComponent(q); });
-
-    input.addEventListener('keydown', function (e) {
-      if (results.hidden) return;
-      var items = Array.prototype.slice.call(results.querySelectorAll('.svc-mr-item'));
-      if (!items.length) return;
-      var i = items.findIndex(function (el) { return el.classList.contains('svc-mr-active'); });
-      if (e.key === 'ArrowDown')      { e.preventDefault(); i = (i + 1) % items.length; }
-      else if (e.key === 'ArrowUp')   { e.preventDefault(); i = (i - 1 + items.length) % items.length; }
-      else if (e.key === 'Enter' && i >= 0) { e.preventDefault(); window.location.href = items[i].getAttribute('href'); return; }
-      else if (e.key === 'Escape')    { hide(); return; }
-      else return;
-      items.forEach(function (el) { el.classList.remove('svc-mr-active'); });
-      items[i].classList.add('svc-mr-active');
-      items[i].scrollIntoView({ block: 'nearest' });
-    });
-
-    document.addEventListener('click', function (e) { if (!form.contains(e.target) && !results.contains(e.target)) hide(); });
-    window.addEventListener('scroll', function () { if (!results.hidden) place(); }, { passive: true });
-    window.addEventListener('resize', function () { if (!results.hidden) place(); });
   })();
 </script>
 
@@ -532,17 +319,27 @@
   })();
 </script>
 
-{{!-- Floating training button --}}
+{{!-- Floating training button. Hidden by default: only rendered when an
+     admin has enabled it and provided a destination URL in the theme's
+     Settings panel (Service Catalog > Show Technology Training button /
+     Technology Training URL). See manifest.json's show_training_fab /
+     training_url settings. --}}
 <script>
   (function () {
-    var TRAINING_URL = 'REPLACE_WITH_TRAINING_URL';
+    var showTrainingFab = {{json settings.show_training_fab}};
+    var trainingUrl = {{json settings.training_url}};
+    // No Help Center "stock" translation key covers this ARPA-H-specific
+    // copy, so it's declared once here (used for both the aria-label and
+    // visible label below) rather than duplicated as two literals.
+    var trainingLabel = 'Looking for Technology Training?';
+    if (!showTrainingFab || typeof trainingUrl !== 'string' || !trainingUrl.trim()) return;
     if (document.getElementById('svc-training-fab')) return;
 
     var fab = document.createElement('a');
     fab.id = 'svc-training-fab';
     fab.className = 'svc-training-fab';
-    fab.href = TRAINING_URL;
-    fab.setAttribute('aria-label', 'Looking for Technology Training?');
+    fab.href = window.svcSafeHref ? window.svcSafeHref(trainingUrl, '#') : trainingUrl;
+    fab.setAttribute('aria-label', trainingLabel);
     fab.innerHTML =
       '<span class="svc-training-fab-icon" aria-hidden="true">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
@@ -550,7 +347,7 @@
           '<path d="M6 12v5c0 1 2.5 2.5 6 2.5s6-1.5 6-2.5v-5"></path>' +
         '</svg>' +
       '</span>' +
-      '<span class="svc-training-fab-label">Looking for Technology Training?</span>';
+      '<span class="svc-training-fab-label">' + trainingLabel + '</span>';
     document.body.appendChild(fab);
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -566,6 +363,8 @@
   (function () {
     var serviceContainer = document.getElementById('service-catalog-item');
     var customSubmit = document.getElementById('svc-custom-submit');
+    var submitLabel = "{{t 'submit_a_request'}}";
+    var submittingLabel = 'Submitting...';
 
     function getNativeSubmit() {
       if (!serviceContainer) return null;
@@ -593,11 +392,11 @@
         var nativeSubmit = getNativeSubmit();
         if (!nativeSubmit) return;
         customSubmit.disabled = true;
-        customSubmit.textContent = 'Submitting...';
+        customSubmit.textContent = submittingLabel;
         nativeSubmit.click();
         setTimeout(function () {
           customSubmit.disabled = false;
-          customSubmit.textContent = 'Submit request';
+          customSubmit.textContent = submitLabel;
         }, 3000);
       });
     }
@@ -625,6 +424,21 @@
     var lastQuery = '';
     var activeController = null;
 
+    // ARPA-H-specific copy (no Help Center "stock" {{t}} key covers these —
+    // see src/svcSearch.js header comment for why). Centralized here as the
+    // single source of truth for this widget; the "empty" string must match
+    // the server-rendered placeholder in the markup above (shown before JS
+    // runs / when the query is too short).
+    var STRINGS = {
+      searching: 'Searching for related articles...',
+      loadError: "We couldn't load suggested articles right now.",
+      noResults: 'No related articles found yet. Try adding more detail in the request description.',
+      empty: 'Start typing in the request form to see related knowledge base articles.',
+      untitledArticle: 'Untitled article',
+      openForDetails: 'Open this article for more details.',
+      sectionPrefix: 'Section: '
+    };
+
     function escapeHtml(str) {
       return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
@@ -642,21 +456,21 @@
       suggestionsEl.innerHTML = '<div class="svc-article-empty">' + escapeHtml(message) + '</div>';
     }
     function renderLoading() {
-      suggestionsEl.innerHTML = '<div class="svc-article-loading">Searching for related articles...</div>';
+      suggestionsEl.innerHTML = '<div class="svc-article-loading">' + escapeHtml(STRINGS.searching) + '</div>';
     }
     function renderError() {
-      suggestionsEl.innerHTML = '<div class="svc-article-error">We couldn\'t load suggested articles right now.</div>';
+      suggestionsEl.innerHTML = '<div class="svc-article-error">' + escapeHtml(STRINGS.loadError) + '</div>';
     }
     function renderArticles(results) {
       if (!results || !results.length) {
-        renderEmpty('No related articles found yet. Try adding more detail in the request description.');
+        renderEmpty(STRINGS.noResults);
         return;
       }
       suggestionsEl.innerHTML = results.map(function (article) {
-        var t = escapeHtml(article.title || 'Untitled article');
-        var href = escapeHtml(article.html_url || article.url || '#');
-        var body = truncate(stripHtml(article.snippet || article.body || article.description || ''), 140) || 'Open this article for more details.';
-        var section = article.section_name ? 'Section: ' + escapeHtml(article.section_name) : '';
+        var t = escapeHtml(article.title || STRINGS.untitledArticle);
+        var href = escapeHtml(window.svcSafeHref ? window.svcSafeHref(article.html_url || article.url, '#') : (article.html_url || article.url || '#'));
+        var body = truncate(stripHtml(article.snippet || article.body || article.description || ''), 140) || STRINGS.openForDetails;
+        var section = article.section_name ? STRINGS.sectionPrefix + escapeHtml(article.section_name) : '';
         return '<a class="svc-article-item" href="' + href + '">' +
           '<span class="svc-article-item-title">' + t + '</span>' +
           '<span class="svc-article-item-meta">' + escapeHtml(body) + '</span>' +
@@ -705,7 +519,7 @@
       if (query.length < 3) {
         lastQuery = '';
         if (activeController) activeController.abort();
-        renderEmpty('Start typing in the request form to see related knowledge base articles.');
+        renderEmpty(STRINGS.empty);
         return;
       }
       if (query === lastQuery) return;

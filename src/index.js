@@ -6,3 +6,4 @@ import "./share";
 import "./search";
 import "./forms";
 import "./domFixups";
+import "./svcSearch";

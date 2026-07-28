@@ -122,7 +122,7 @@
           <span class="svc-help-banner-title">Still can&rsquo;t find what you need?</span>
           <span class="svc-help-banner-sub">Submit a general request.</span>
         </div>
-        <a class="svc-help-btn" href="/hc/{{help_center.base_locale}}/services/01KT6W4J21065JGC51VMSW8AGB?category_id=01KP3TEETSJKEPJ08CSK7MJG41">
+        <a class="svc-help-btn" href="/hc/{{help_center.base_locale}}/services/{{settings.general_request_service_id}}?category_id={{settings.general_request_category_id}}">
           General request
         </a>
       </div>
@@ -213,253 +213,38 @@
   })();
 </script>
 
-<!-- Combined live search: services (catalog API) + resources (articles API) -->
+<!-- Combined live search: services (catalog API) + resources (articles API).
+     Shared logic lives in src/svcSearch.js (bundled into script.js) so it
+     isn't duplicated with the mini search in service_page.hbs. -->
 <script>
   (function () {
-    const form    = document.getElementById('svc-hero-search');
-    const input   = document.getElementById('svc-hero-input');
-    const chips   = document.getElementById('svc-hero-chips');
-    const results = document.getElementById('svc-hero-results');
-    if (!form || !input || !results) return;
-
-    const HC_BASE = (location.pathname.match(/^\/hc\/[^/]+/) || ['/hc/en-us'])[0];
-    const SERVICES_URL = HC_BASE + '/services';
-    const SEARCH_PAGE  = HC_BASE + '/search?query=';
-    const MAX = 5;
-    let timer = null, token = 0;
-
-    const SYNONYMS = {
-      laptop:   ['device', 'computer', 'macbook', 'hardware', 'equipment'],
-      computer: ['device', 'laptop', 'hardware', 'equipment'],
-      monitor:  ['device', 'peripheral', 'hardware', 'display'],
-      keyboard: ['device', 'peripheral', 'hardware'],
-      mouse:    ['device', 'peripheral', 'hardware'],
-      wifi:     ['network', 'internet', 'wireless', 'connection'],
-      internet: ['network', 'wifi', 'connection'],
-      vpn:      ['network', 'remote', 'access', 'connection'],
-      email:    ['outlook', 'mailbox', 'mail'],
-      phone:    ['mobile', 'cell', 'device', 'telephone'],
-      login:    ['account', 'password', 'access', 'sign in', 'credentials'],
-      signin:   ['account', 'password', 'access', 'login'],
-      printer:  ['print', 'peripheral', 'device']
+    var config = {
+      formId: 'svc-hero-search',
+      inputId: 'svc-hero-input',
+      resultsId: 'svc-hero-results',
+      chipsId: 'svc-hero-chips',
+      chipSelector: '.svc-hero-chip',
+      resultPrefix: 'res',
+      iconSize: 18,
+      gapPx: 10
     };
-
-    if (results.parentElement !== document.body) document.body.appendChild(results);
-
-    const ICON_SERVICE = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"></rect><line x1="2" y1="20" x2="22" y2="20"></line></svg>';
-    const ICON_DOC     = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>';
-
-    const esc = s => String(s == null ? '' : s)
-      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-    const stripTags = s => { const d = document.createElement('div'); d.innerHTML = s || ''; return (d.textContent || '').trim(); };
-
-    function fetchJSON(url, tok) {
-      return fetch(url, { headers: { Accept: 'application/json' }, credentials: 'same-origin' })
-        .then(r => r.ok ? r.json() : null)
-        .then(d => tok === token ? d : null)
-        .catch(() => null);
-    }
-
-    let allServices = null;
-    let servicesLoading = null;
-
-    /* Cache the fetched catalog in sessionStorage so it loads once per session
-       (TTL 30 min) instead of on every page load. Shared with the item page. */
-    const SVC_CACHE_KEY = 'svcCatalogItems';
-    const SVC_CACHE_TTL = 30 * 60 * 1000;
-    function svcReadCache() {
-      try {
-        const c = JSON.parse(sessionStorage.getItem(SVC_CACHE_KEY) || 'null');
-        if (!c || !Array.isArray(c.items) || (Date.now() - c.ts) > SVC_CACHE_TTL) return null;
-        return c.items;
-      } catch (e) { return null; }
-    }
-    function svcWriteCache(items) {
-      try { sessionStorage.setItem(SVC_CACHE_KEY, JSON.stringify({ ts: Date.now(), items: items })); } catch (e) {}
-    }
-
-    function normalizeItem(it) {
-      const id = it.id || it.uuid || '';
-      return {
-        title: stripTags(it.name || it.title || 'Service'),
-        desc:  stripTags(it.description || ''),
-        category: stripTags(it.category_name || (it.category && it.category.name) || ''),
-        href:  it.html_url || (id ? HC_BASE + '/services/' + id : SERVICES_URL)
-      };
-    }
-
-    function loadAllServices() {
-      if (allServices) return Promise.resolve(allServices);
-      if (servicesLoading) return servicesLoading;
-
-      const cached = svcReadCache();
-      if (cached) { allServices = cached; return Promise.resolve(cached); }
-
-      servicesLoading = (async () => {
-        const out = [];
-        let url = '/api/v2/help_center/service_catalog/items.json?page[size]=100';
-        let guard = 0;
-        while (url && guard < 20) {
-          guard++;
-          let data;
-          try {
-            const r = await fetch(url, { headers: { Accept: 'application/json' }, credentials: 'same-origin' });
-            if (!r.ok) break;
-            data = await r.json();
-          } catch (e) { break; }
-          const arr = data.service_catalog_items || data.items || data.results || data.records || [];
-          arr.forEach(it => out.push(normalizeItem(it)));
-          url = (data.meta && data.meta.has_more && data.links && data.links.next) ? data.links.next : null;
-        }
-        allServices = out;
-        svcWriteCache(out);
-        return out;
-      })();
-
-      return servicesLoading;
-    }
-
-    function scoreService(svc, terms) {
-      const title = svc.title.toLowerCase();
-      const desc  = svc.desc.toLowerCase();
-      const cat   = svc.category.toLowerCase();
-      let score = 0;
-      for (const t of terms) {
-        if (!t) continue;
-        if (title === t) score += 100;
-        else if (title.startsWith(t)) score += 50;
-        else if (title.indexOf(t) !== -1) score += 30;
-        if (desc.indexOf(t) !== -1) score += 10;
-        if (cat.indexOf(t) !== -1) score += 15;
+    // script.js (which defines window.initSvcSearch) is a classic script
+    // whose load order relative to this inline block isn't guaranteed, so
+    // poll briefly instead of assuming it has already run.
+    function tryInit() {
+      if (typeof window.initSvcSearch === 'function') {
+        window.initSvcSearch(config);
+        return true;
       }
-      return score;
+      return false;
     }
-
-    function buildTerms(q) {
-      const base = q.toLowerCase().split(/\s+/).filter(Boolean);
-      const terms = new Set(base);
-      base.forEach(w => {
-        const key = w.replace(/[^a-z]/g, '');
-        (SYNONYMS[key] || []).forEach(s => terms.add(s.toLowerCase()));
-      });
-      return { primary: base, all: Array.from(terms) };
+    if (!tryInit()) {
+      var attempts = 0;
+      var iv = setInterval(function () {
+        attempts++;
+        if (tryInit() || attempts > 100) clearInterval(iv);
+      }, 20);
     }
-
-    function getServices(q) {
-      return loadAllServices().then(list => {
-        if (!list || !list.length) return [];
-        const { primary, all } = buildTerms(q);
-
-        let scored = list
-          .map(svc => ({ svc, score: scoreService(svc, primary) }))
-          .filter(x => x.score > 0);
-
-        if (scored.length < 3 && all.length > primary.length) {
-          const have = new Set(scored.map(x => x.svc.href));
-          list.forEach(svc => {
-            if (have.has(svc.href)) return;
-            const s = scoreService(svc, all);
-            if (s > 0) scored.push({ svc, score: s - 5 });
-          });
-        }
-
-        scored.sort((a, b) => b.score - a.score);
-        return scored.slice(0, MAX).map(x => ({
-          title: x.svc.title,
-          href: x.svc.href,
-          sub: x.svc.category || (x.svc.desc ? x.svc.desc.slice(0, 70) : 'Service catalog')
-        }));
-      });
-    }
-
-    function getDocs(q, tok) {
-      const url = '/api/v2/help_center/articles/search.json?per_page=' + MAX + '&query=' + encodeURIComponent(q);
-      return fetchJSON(url, tok).then(d => {
-        if (!d) return [];
-        return (d.results || []).slice(0, MAX).map(a => ({
-          title: stripTags(a.title) || 'Untitled',
-          href: a.html_url || (SEARCH_PAGE + encodeURIComponent(q)),
-          sub: a.snippet ? stripTags(a.snippet).slice(0, 70) : 'Knowledge article'
-        }));
-      });
-    }
-
-    function group(title, cls, badge, icon, items) {
-      if (!items.length) return '';
-      const itemCls = cls === 'svc-res-services' ? 'svc-res-service' : 'svc-res-doc';
-      let html = '<div class="svc-res-group-header ' + cls + '">' +
-        '<span class="svc-res-group-title">' + esc(title) + '</span>' +
-        '<span class="svc-res-group-count">' + items.length + '</span></div>';
-      for (const it of items) {
-        html += '<a class="svc-res-item ' + itemCls + '" role="option" href="' + esc(it.href) + '">' +
-          '<span class="svc-res-icon" aria-hidden="true">' + icon + '</span>' +
-          '<span class="svc-res-text"><span class="svc-res-title">' + esc(it.title) + '</span>' +
-          '<span class="svc-res-sub">' + esc(it.sub) + '</span></span>' +
-          '<span class="svc-res-badge">' + badge + '</span></a>';
-      }
-      return html;
-    }
-
-    function place() {
-      const r = form.getBoundingClientRect();
-      const m = 12;
-      let w = Math.min(r.width, window.innerWidth - m * 2);
-      let l = Math.min(Math.max(r.left, m), window.innerWidth - m - w);
-      results.style.left  = Math.round(l) + 'px';
-      results.style.width = Math.round(w) + 'px';
-      results.style.top   = Math.round(r.bottom + 10) + 'px';
-    }
-    function show(html) { results.innerHTML = html; results.hidden = false; place(); input.setAttribute('aria-expanded', 'true'); }
-    function hide()     { results.hidden = true; results.innerHTML = ''; input.setAttribute('aria-expanded', 'false'); }
-
-    function run(q) {
-      q = (q || '').trim();
-      if (q.length < 2) { hide(); return; }
-      const tok = ++token;
-      show('<div class="svc-res-loading">Searching…</div>');
-      Promise.all([getServices(q), getDocs(q, tok)]).then(([services, docs]) => {
-        if (tok !== token) return;
-        let html =
-          group('Recommended services', 'svc-res-services', 'Service', ICON_SERVICE, services) +
-          group('Self-Help Resources', 'svc-res-docs', 'Resource', ICON_DOC, docs);
-        if (!services.length && !docs.length) html = '<div class="svc-res-empty">No matching services or resources.</div>';
-        html += '<a class="svc-res-footer" href="' + SEARCH_PAGE + encodeURIComponent(q) + '">See all results for &ldquo;' + esc(q) + '&rdquo;</a>';
-        show(html);
-      });
-    }
-
-    loadAllServices();
-
-    input.addEventListener('input', () => { clearTimeout(timer); const q = input.value; timer = setTimeout(() => run(q), 220); });
-    input.addEventListener('focus', () => { if (input.value.trim().length >= 2 && results.innerHTML) { results.hidden = false; place(); } });
-    form.addEventListener('submit', e => { e.preventDefault(); const q = input.value.trim(); if (q) window.location.href = SEARCH_PAGE + encodeURIComponent(q); });
-
-    if (chips) chips.addEventListener('click', e => {
-      const chip = e.target.closest && e.target.closest('.svc-hero-chip');
-      if (!chip) return;
-      const q = chip.getAttribute('data-q') || chip.textContent.trim();
-      input.value = q; input.focus(); run(q);
-    });
-
-    input.addEventListener('keydown', e => {
-      if (results.hidden) return;
-      const items = Array.from(results.querySelectorAll('.svc-res-item'));
-      if (!items.length) return;
-      let i = items.findIndex(el => el.classList.contains('svc-res-active'));
-      if (e.key === 'ArrowDown')      { e.preventDefault(); i = (i + 1) % items.length; }
-      else if (e.key === 'ArrowUp')   { e.preventDefault(); i = (i - 1 + items.length) % items.length; }
-      else if (e.key === 'Enter' && i >= 0) { e.preventDefault(); window.location.href = items[i].getAttribute('href'); return; }
-      else if (e.key === 'Escape')    { hide(); return; }
-      else return;
-      items.forEach(el => el.classList.remove('svc-res-active'));
-      items[i].classList.add('svc-res-active');
-      items[i].scrollIntoView({ block: 'nearest' });
-    });
-
-    document.addEventListener('click', e => { if (!form.contains(e.target) && !results.contains(e.target)) hide(); });
-    window.addEventListener('scroll', () => { if (!results.hidden) place(); }, { passive: true });
-    window.addEventListener('resize', () => { if (!results.hidden) place(); });
   })();
 </script>
 
