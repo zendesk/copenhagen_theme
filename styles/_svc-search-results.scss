@@ -1,0 +1,134 @@
+/* ============================================================
+   ARPA-H custom — search results page section
+   ============================================================ */
+
+.svc-search-container,
+.svc-search-container .svc-search-results,
+.svc-search-container .svc-search-results * { font-family: var(--svc-font); }
+
+/* Results heading */
+.svc-search-subheading {
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 700;
+  color: var(--svc-ink);
+  margin-bottom: 18px;
+}
+
+/* Native sidebar filters (restyled) */
+.svc-search-sidebar .sidenav-title,
+.svc-search-sidebar .collapsible-sidebar-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--svc-gray);
+}
+.svc-search-sidebar .sidenav-item {
+  border-radius: 8px;
+  transition: background-color 0.14s ease, color 0.14s ease;
+}
+.svc-search-sidebar .sidenav-item:hover { background: var(--svc-tint); }
+.svc-search-sidebar .sidenav-item.current {
+  background: var(--svc-tint);
+  color: var(--svc-navy);
+  font-weight: 600;
+}
+.svc-search-sidebar .filter-name { color: inherit; }
+.svc-search-sidebar .doc-count { color: var(--svc-gray-soft); }
+
+/* Result cards */
+.svc-search-list { list-style: none; margin: 0; padding: 0; }
+.svc-search-li { margin: 0 0 12px; }
+.svc-result {
+  background: #fff;
+  border: 1px solid #e3e8f0;
+  border-radius: 16px;
+  padding: 16px 18px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.svc-result:hover { border-color: #bfd0f3; box-shadow: 0 8px 20px rgba(15, 33, 80, 0.07); }
+.svc-result-title { font-size: 16px; font-weight: 600; margin: 0 0 4px; }
+.svc-result-title a { color: var(--svc-navy); text-decoration: none; }
+.svc-result-title a:hover { text-decoration: underline; }
+.svc-result-breadcrumbs { font-size: 12px; }
+.svc-result-breadcrumbs a { color: var(--svc-gray); }
+.svc-result-desc { color: var(--svc-gray); font-size: 13.5px; line-height: 1.55; margin: 8px 0 0; }
+
+/* Search-results: sub-nav row + search pill */
+.svc-search-container .sub-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.svc-search-pill {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 0 0 auto !important;
+  padding: 4px 4px 4px 16px !important;
+  background: #fff !important;
+  border: 1px solid #b9c9ef !important;
+  border-radius: 1000px !important;
+  box-shadow: 0 2px 6px rgba(0, 51, 153, 0.12) !important;
+  box-sizing: border-box;
+  overflow: visible !important;
+}
+.svc-search-pill:focus-within {
+  border-color: #09349d !important;
+  box-shadow: 0 6px 16px rgba(0, 51, 153, 0.12) !important;
+}
+.svc-search-pill > *:not(.svc-search-pill-btn),
+.svc-search-pill .search,
+.svc-search-pill .search-full,
+.svc-search-pill form {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.svc-search-pill input[type="search"],
+.svc-search-pill input[type="text"] {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  height: 40px !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  font-size: 14px !important;
+  color: #0f172a !important;
+  padding: 0 8px !important;
+  box-shadow: none !important;
+}
+/* Hide Zendesk's native buttons inside the form (the real class is
+   "clear-button", NOT "search-icon"). Never touch the pink button. */
+.svc-search-pill .search-icon,
+.svc-search-pill .clear-button,
+.svc-search-pill form button:not(.svc-search-pill-btn) {
+  display: none !important;
+}
+/* The custom pill button is intentionally hidden on the search results
+   page — users press Enter to search. (Previously this was a contradictory
+   pair of rules: styled visible here, hidden by an ID rule elsewhere.) */
+.svc-search-pill .svc-search-pill-btn {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .svc-result { padding: 14px; }
+  .svc-search-pill { max-width: 100%; margin: 8px 0 0 !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-search-sidebar .sidenav-item,
+  .svc-result { transition: none !important; }
+}
+

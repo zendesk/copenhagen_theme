@@ -1,0 +1,46 @@
+/* ============================================================
+   ARPA-H custom — category page OS tiles (macOS / iOS / Windows)
+   Replaces the former inline style="" attributes on the tiles.
+   NOTE: the negative margin on the Windows tile preserves the
+   original hand-tuned centering; revisit with a proper grid later.
+   ============================================================ */
+
+.custom-os-tile-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* was the invalid `align-items: left` */
+  margin-top: 50px;
+  gap: 40px;
+}
+
+.custom-os-tile-group .top-row {
+  display: flex;
+  justify-content: center; /* was the invalid `justify-content center` (missing colon) */
+  gap: 100px;
+}
+
+.custom-os-tile-group .bottom-row {
+  display: flex;
+  justify-content: center;
+}
+
+.custom-os-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.custom-os-tile img {
+  height: auto;
+  margin: 0;
+}
+
+.custom-os-tile--macos { width: 300px; height: 150px; }
+.custom-os-tile--macos img { width: 80%; }
+
+.custom-os-tile--ios { width: 150px; height: 150px; }
+.custom-os-tile--ios img { width: 150%; }
+
+.custom-os-tile--windows { width: 400px; height: 200px; margin-left: -275px; }
+.custom-os-tile--windows img { width: 100%; }

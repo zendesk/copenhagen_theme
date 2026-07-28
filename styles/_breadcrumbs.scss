@@ -27,3 +27,16 @@
     }
   }
 }
+
+/* The current-page breadcrumb must not navigate (see src/domFixups.js, which
+   strips its href). pointer-events guards the mouse; the href removal guards
+   the keyboard. This replaces a body-wide MutationObserver + inline styles. */
+.breadcrumbs a[aria-current="page"],
+.breadcrumbs a[aria-disabled="true"],
+.breadcrumbs a[href="#"],
+nav[aria-label="Breadcrumb"] a[aria-current="page"],
+nav[aria-label="Breadcrumb"] a[aria-disabled="true"] {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+}

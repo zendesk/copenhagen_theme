@@ -1,3 +1,10 @@
+{{!--
+  Service request (item) page
+  STYLES: moved to style.css (ARPA-H custom — service item page section).
+  Do not re-add a <style> block here; edit style.css instead.
+--}}
+{{!-- Stock preview-mode detection: the service-catalog module / theme key off
+     the .is-service-catalog-preview class when viewed in the Guide editor. --}}
 <script type="text/javascript">
   (function () {
     try {
@@ -9,39 +16,565 @@
   })();
 </script>
 <div class="container-divider"></div>
-<div class="container">
-  <div class="sub-nav">
+<div class="container svc-container">
+  <div class="sub-nav svc-subnav">
     <div class="service-catalog-breadcrumbs">
       {{breadcrumbs}}
+      {{!-- Category dropdown mount the service-catalog module populates. If your
+           design intentionally removed the category selector, hide it in CSS
+           rather than deleting the div (the module still expects it). --}}
       <div id="category-selector"></div>
     </div>
   </div>
-
   <div id="main-content">
-     <div id="service-catalog-item"></div>
+    <div class="svc-shell">
+
+      {{!-- Compact search (services + resources) --}}
+      <div class="svc-searchrow">
+        <form class="svc-mini-search" id="svc-mini-search" role="search" autocomplete="off">
+          <i class="svc-mini-search-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </i>
+          <input type="text" id="svc-mini-input" class="svc-mini-input"
+                 placeholder="Search services and resources…" aria-label="{{t 'search'}}"
+                 role="combobox" aria-expanded="false" aria-controls="svc-mini-results" aria-autocomplete="list" />
+          <button type="submit" class="svc-mini-search-btn" aria-label="{{t 'search'}}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+          <div class="svc-mini-results" id="svc-mini-results" role="listbox" aria-label="Search results" hidden></div>
+        </form>
+      </div>
+
+      {{!-- Header bar: logo (desktop), centered greeting, step indicator --}}
+      <div class="svc-topbar">
+        <div class="svc-topbar-inner">
+          <div class="svc-topbar-left">
+            <a class="svc-topbar-logo" href="/hc/{{help_center.base_locale}}/services" aria-label="Go to Service Catalog home">
+              <img src="{{asset 'arpa-h-logomark.svg'}}" alt="" />
+            </a>
+            <div class="svc-topbar-text">
+              <h1 class="svc-title" id="svc-greeting">How can we help?</h1>
+            </div>
+          </div>
+          <ol class="svc-steps" aria-label="How this request works">
+            <li class="svc-step svc-step-active">
+              <span class="svc-step-number">1</span>
+              <span class="svc-step-label">Describe your request below</span>
+            </li>
+            <li class="svc-step svc-step-active">
+              <span class="svc-step-number">2</span>
+              <span class="svc-step-label">Submit to the Service Desk</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      {{!-- Main content: form (left) + suggested articles (right) --}}
+      <div class="svc-form-layout">
+        <div class="svc-form-column">
+          <div class="svc-form-panel" aria-label="Service request form">
+            <div id="service-catalog-item"></div>
+            <div id="svc-form-skeleton" class="svc-skeleton" aria-hidden="true">
+              <div class="svc-skel-row svc-skel-icon-row">
+                <div class="svc-skel-avatar"></div>
+                <div class="svc-skel-lines">
+                  <div class="svc-skel-bar svc-skel-title"></div>
+                  <div class="svc-skel-bar svc-skel-sub"></div>
+                </div>
+              </div>
+              <div class="svc-skel-divider"></div>
+              <div class="svc-skel-bar svc-skel-label"></div>
+              <div class="svc-skel-bar svc-skel-input"></div>
+              <div class="svc-skel-bar svc-skel-label svc-skel-label-2"></div>
+              <div class="svc-skel-box"></div>
+            </div>
+            <div class="svc-custom-submit-wrap">
+              <button type="button" id="svc-custom-submit" class="svc-custom-submit-btn">{{t 'submit_a_request'}}</button>
+              <p class="svc-custom-submit-note">Review your request details, then submit to the Service Desk.</p>
+            </div>
+          </div>
+        </div>
+        <aside class="svc-side-column" aria-label="Suggested help articles">
+          <section class="svc-article-card">
+            <div class="svc-article-card-header">
+              <h2 class="svc-card-title svc-article-title">Suggested articles</h2>
+              <p class="svc-article-subtitle">Related content appears as you type.</p>
+            </div>
+            <div id="svc-suggested-articles" class="svc-article-list" aria-live="polite">
+              <div class="svc-article-empty">Start typing in the request form to see related knowledge base articles.</div>
+            </div>
+          </section>
+        </aside>
+      </div>
+
+      {{!-- Helper information cards --}}
+      <div class="svc-helper-row" aria-label="Helpful information">
+        <section class="svc-card">
+          <h2 class="svc-card-title">Helpful details to include</h2>
+          <ul class="svc-card-list">
+            <li>What you're trying to do or fix in plain language.</li>
+            <li>Where this applies (system, URL, device, location, or team).</li>
+            <li>Who is affected (you, your team, or a distribution list).</li>
+            <li>Any timing or context that might change how we handle it.</li>
+          </ul>
+        </section>
+        <section class="svc-card">
+          <h2 class="svc-card-title">What happens after you submit?</h2>
+          <ul class="svc-card-list">
+            <li>You'll receive an email confirmation with your request or ticket number.</li>
+            <li>You can reply to that email at any time to add updates or attachments.</li>
+            <li>You can track progress in the Service Hub under <strong>My requests</strong>.</li>
+          </ul>
+        </section>
+        <section class="svc-card">
+          <h2 class="svc-card-title">Need help with the form?</h2>
+          <ul class="svc-card-list">
+            <li>If you're not sure which option fits, pick the closest one and explain in the description field.</li>
+            <li>Use clear language instead of acronyms whenever possible.</li>
+            <li>For urgent issues, keep using your usual escalation channel in addition to submitting this request.</li>
+          </ul>
+        </section>
+      </div>
+
+      {{!-- General-request footer banner --}}
+      <div class="svc-help-banner">
+        <div class="svc-help-banner-text">
+          <span class="svc-help-banner-title">Still can&rsquo;t find what you need?</span>
+          <span class="svc-help-banner-sub">Submit a general request.</span>
+        </div>
+        <a class="svc-help-btn" href="/hc/{{help_center.base_locale}}/services/{{settings.general_request_service_id}}?category_id={{settings.general_request_category_id}}">
+          General request
+        </a>
+      </div>
+
+    </div>
   </div>
 </div>
 
+{{!-- Render the embedded service catalog item form --}}
 <script type="module">
   import { renderServiceCatalogItem } from "service-catalog";
-
-  const settings = {{json settings}};
+  const settings  = {{json settings}};
   const container = document.getElementById("service-catalog-item");
-
-  // Extract the ID from the URL
-  const id = window.location.pathname.split("/").pop()
-
+  const id = window.location.pathname.split("/").pop();
   const props = {
-    baseLocale: {{json help_center.base_locale}},
-    hasAtMentions: {{json help_center.at_mentions_enabled}},
-    userRole: {{json user.role}},
-    userId: {{json user.id}},
-    userName: {{json user.name}},
-    brandId: {{json brand.id}},
-    organizations: {{json user.organizations}},
-    serviceCatalogItemId: id,
-    helpCenterPath: {{json (page_path 'help_center')}},
-  }
-
+    baseLocale:            {{json help_center.base_locale}},
+    hasAtMentions:         {{json help_center.at_mentions_enabled}},
+    userRole:              {{json user.role}},
+    userId:                {{json user.id}},
+    userName:              {{json user.name}},
+    brandId:               {{json brand.id}},
+    organizations:         {{json user.organizations}},
+    serviceCatalogItemId:  id,
+    helpCenterPath:        {{json (page_path 'help_center')}},
+  };
   renderServiceCatalogItem(container, settings, props);
+</script>
+
+{{!-- Compact search: services (catalog API) + articles (Help Center API).
+     Shared logic lives in src/svcSearch.js (bundled into script.js) so it
+     isn't duplicated with the hero search in service_list_page.hbs. --}}
+<script>
+  (function () {
+    var config = {
+      formId: 'svc-mini-search',
+      inputId: 'svc-mini-input',
+      resultsId: 'svc-mini-results',
+      resultPrefix: 'mr',
+      iconSize: 17,
+      gapPx: 8
+    };
+    // script.js (which defines window.initSvcSearch) is a classic script
+    // whose load order relative to this inline block isn't guaranteed, so
+    // poll briefly instead of assuming it has already run.
+    function tryInit() {
+      if (typeof window.initSvcSearch === 'function') {
+        window.initSvcSearch(config);
+        return true;
+      }
+      return false;
+    }
+    if (!tryInit()) {
+      var attempts = 0;
+      var iv = setInterval(function () {
+        attempts++;
+        if (tryInit() || attempts > 100) clearInterval(iv);
+      }, 20);
+    }
+  })();
+</script>
+
+{{!-- Personalized greeting --}}
+<script>
+  (function () {
+    var title = document.getElementById('svc-greeting');
+    if (!title) return;
+
+    function reveal() { title.classList.add('svc-greeting-ready'); }
+
+    function looksLikeAlias(v) {
+      if (!v) return true;
+      var s = String(v).trim();
+      if (!s) return true;
+      if (s.indexOf('@') !== -1) return true;
+      if (/^[a-z0-9._-]+$/.test(s) && s.indexOf(' ') === -1) return true;
+      return false;
+    }
+
+    function firstNameOf(name) {
+      var s = String(name || '').trim();
+      if (!s) return '';
+      if (s.indexOf(',') !== -1) {
+        var parts = s.split(',').map(function (p) { return p.trim(); }).filter(Boolean);
+        if (parts.length >= 2) return parts[1].split(/\s+/)[0];
+      }
+      return s.split(/\s+/)[0];
+    }
+
+    function setGreeting(name) {
+      var first = firstNameOf(name);
+      title.textContent = first ? ('How can we help, ' + first + '?') : 'How can we help?';
+    }
+
+    var revealed = false;
+    var revealTimer = setTimeout(function () {
+      if (revealed) return;
+      revealed = true;
+      setGreeting('');
+      reveal();
+    }, 2400);
+
+    function finish(name) {
+      if (revealed) return;
+      revealed = true;
+      clearTimeout(revealTimer);
+      setGreeting(name || '');
+      reveal();
+    }
+
+    fetch('/api/v2/users/me.json', { headers: { Accept: 'application/json' }, credentials: 'same-origin' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        var u = d && d.user;
+        if (!u) { finish(''); return; }
+        var candidates = [
+          u.name,
+          u.details && u.details.name,
+          u.user_fields && (u.user_fields.full_name || u.user_fields.preferred_name || u.user_fields.first_name)
+        ];
+        var realName = candidates.find(function (c) { return !looksLikeAlias(c); }) || u.name;
+        finish(realName);
+      })
+      .catch(function () { finish(''); });
+  })();
+</script>
+
+{{!-- Swap skeleton -> real form once complete --}}
+<script>
+  (function () {
+    var root = document.documentElement;
+    var form = document.getElementById('service-catalog-item');
+    var skel = document.getElementById('svc-form-skeleton');
+    if (!form) return;
+
+    var done = false;
+    function showForm() {
+      if (done) return;
+      done = true;
+      root.classList.add('svc-form-ready');
+      if (skel) {
+        skel.classList.add('svc-skel-hide');
+        setTimeout(function () { if (skel && skel.parentNode) skel.parentNode.removeChild(skel); }, 320);
+      }
+    }
+
+    function formIsComplete() {
+      return !!form.querySelector('input, textarea, select, button[type="submit"], [role="textbox"]');
+    }
+
+    var SETTLE_MS = 400;
+    var settleTimer = null;
+    function armSettle() {
+      if (settleTimer) clearTimeout(settleTimer);
+      settleTimer = setTimeout(showForm, SETTLE_MS);
+    }
+
+    function check() {
+      if (done) return;
+      if (formIsComplete()) armSettle();
+    }
+
+    check();
+    var mo = new MutationObserver(check);
+    mo.observe(form, { childList: true, subtree: true });
+    (function stop() { if (done) mo.disconnect(); else setTimeout(stop, 300); })();
+
+    setTimeout(showForm, 6000);
+
+    window.addEventListener('pageshow', function (e) { if (e.persisted) showForm(); });
+  })();
+</script>
+
+{{!-- Floating training button. Hidden by default: only rendered when an
+     admin has enabled it and provided a destination URL in the theme's
+     Settings panel (Service Catalog > Show Technology Training button /
+     Technology Training URL). See manifest.json's show_training_fab /
+     training_url settings. --}}
+<script>
+  (function () {
+    var showTrainingFab = {{json settings.show_training_fab}};
+    var trainingUrl = {{json settings.training_url}};
+    // No Help Center "stock" translation key covers this ARPA-H-specific
+    // copy, so it's declared once here (used for both the aria-label and
+    // visible label below) rather than duplicated as two literals.
+    var trainingLabel = 'Looking for Technology Training?';
+    if (!showTrainingFab || typeof trainingUrl !== 'string' || !trainingUrl.trim()) return;
+    if (document.getElementById('svc-training-fab')) return;
+
+    var fab = document.createElement('a');
+    fab.id = 'svc-training-fab';
+    fab.className = 'svc-training-fab';
+    fab.href = window.svcSafeHref ? window.svcSafeHref(trainingUrl, '#') : trainingUrl;
+    fab.setAttribute('aria-label', trainingLabel);
+    fab.innerHTML =
+      '<span class="svc-training-fab-icon" aria-hidden="true">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+          '<path d="M22 10L12 5 2 10l10 5 10-5z"></path>' +
+          '<path d="M6 12v5c0 1 2.5 2.5 6 2.5s6-1.5 6-2.5v-5"></path>' +
+        '</svg>' +
+      '</span>' +
+      '<span class="svc-training-fab-label">' + trainingLabel + '</span>';
+    document.body.appendChild(fab);
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    setTimeout(function () {
+      fab.classList.add('svc-fab-pulse');
+      fab.addEventListener('animationend', function () { fab.classList.remove('svc-fab-pulse'); }, { once: true });
+    }, 1200);
+  })();
+</script>
+
+{{!-- Custom submit: hide the native action area and proxy the click --}}
+<script>
+  (function () {
+    var serviceContainer = document.getElementById('service-catalog-item');
+    var customSubmit = document.getElementById('svc-custom-submit');
+    var submitLabel = "{{t 'submit_a_request'}}";
+    var submittingLabel = 'Submitting...';
+
+    function getNativeSubmit() {
+      if (!serviceContainer) return null;
+      return serviceContainer.querySelector('button[type="submit"], input[type="submit"], [role="button"]');
+    }
+
+    function hideNativeActionArea() {
+      if (!serviceContainer) return;
+      var submitEl = getNativeSubmit();
+      if (!submitEl) return;
+      var actionBlock = submitEl.closest('section') || submitEl.closest('fieldset') || submitEl.closest('div[role="group"]') || submitEl.parentElement;
+      while (actionBlock && actionBlock !== serviceContainer) {
+        var txt = (actionBlock.textContent || '').replace(/\s+/g, ' ').trim();
+        if (/submit request/i.test(txt) && /user/i.test(txt)) {
+          actionBlock.classList.add('svc-hide-native-actions');
+          return;
+        }
+        actionBlock = actionBlock.parentElement;
+      }
+    }
+
+    function wireCustomSubmit() {
+      if (!customSubmit) return;
+      customSubmit.addEventListener('click', function () {
+        var nativeSubmit = getNativeSubmit();
+        if (!nativeSubmit) return;
+        customSubmit.disabled = true;
+        customSubmit.textContent = submittingLabel;
+        nativeSubmit.click();
+        setTimeout(function () {
+          customSubmit.disabled = false;
+          customSubmit.textContent = submitLabel;
+        }, 3000);
+      });
+    }
+
+    window.addEventListener('load', function () {
+      wireCustomSubmit();
+      hideNativeActionArea();
+      if (serviceContainer) {
+        var obs = new MutationObserver(function () { hideNativeActionArea(); });
+        obs.observe(serviceContainer, { childList: true, subtree: true });
+      }
+    });
+  })();
+</script>
+
+{{!-- Suggested articles: live search based on form input --}}
+<script>
+  (function () {
+    var serviceContainer = document.getElementById('service-catalog-item');
+    var suggestionsEl = document.getElementById('svc-suggested-articles');
+    var locale = {{json help_center.locale}};
+    var brandId = {{json brand.id}};
+    if (!serviceContainer || !suggestionsEl) return;
+
+    var lastQuery = '';
+    var activeController = null;
+
+    // ARPA-H-specific copy (no Help Center "stock" {{t}} key covers these —
+    // see src/svcSearch.js header comment for why). Centralized here as the
+    // single source of truth for this widget; the "empty" string must match
+    // the server-rendered placeholder in the markup above (shown before JS
+    // runs / when the query is too short).
+    var STRINGS = {
+      searching: 'Searching for related articles...',
+      loadError: "We couldn't load suggested articles right now.",
+      noResults: 'No related articles found yet. Try adding more detail in the request description.',
+      empty: 'Start typing in the request form to see related knowledge base articles.',
+      untitledArticle: 'Untitled article',
+      openForDetails: 'Open this article for more details.',
+      sectionPrefix: 'Section: '
+    };
+
+    function escapeHtml(str) {
+      return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+    function stripHtml(str) {
+      var div = document.createElement('div');
+      div.innerHTML = str || '';
+      return (div.textContent || div.innerText || '').trim();
+    }
+    function truncate(str, max) {
+      var text = String(str || '').trim();
+      return text.length <= max ? text : text.slice(0, max).trim() + '…';
+    }
+
+    function renderEmpty(message) {
+      suggestionsEl.innerHTML = '<div class="svc-article-empty">' + escapeHtml(message) + '</div>';
+    }
+    function renderLoading() {
+      suggestionsEl.innerHTML = '<div class="svc-article-loading">' + escapeHtml(STRINGS.searching) + '</div>';
+    }
+    function renderError() {
+      suggestionsEl.innerHTML = '<div class="svc-article-error">' + escapeHtml(STRINGS.loadError) + '</div>';
+    }
+    function renderArticles(results) {
+      if (!results || !results.length) {
+        renderEmpty(STRINGS.noResults);
+        return;
+      }
+      suggestionsEl.innerHTML = results.map(function (article) {
+        var t = escapeHtml(article.title || STRINGS.untitledArticle);
+        var href = escapeHtml(window.svcSafeHref ? window.svcSafeHref(article.html_url || article.url, '#') : (article.html_url || article.url || '#'));
+        var body = truncate(stripHtml(article.snippet || article.body || article.description || ''), 140) || STRINGS.openForDetails;
+        var section = article.section_name ? STRINGS.sectionPrefix + escapeHtml(article.section_name) : '';
+        return '<a class="svc-article-item" href="' + href + '">' +
+          '<span class="svc-article-item-title">' + t + '</span>' +
+          '<span class="svc-article-item-meta">' + escapeHtml(body) + '</span>' +
+          (section ? '<span class="svc-article-item-meta">' + section + '</span>' : '') +
+          '</a>';
+      }).join('');
+    }
+
+    function getFormText() {
+      var fields = serviceContainer.querySelectorAll('input[type="text"], input:not([type]), textarea, select');
+      var values = [];
+      fields.forEach(function (field) {
+        if (field.disabled) return;
+        if (field.tagName === 'SELECT') {
+          var selected = field.options[field.selectedIndex];
+          if (selected && selected.value) values.push((selected.textContent || '').trim());
+          return;
+        }
+        var value = (field.value || '').trim();
+        if (value) values.push(value);
+      });
+      return values.join(' ').replace(/\s+/g, ' ').trim();
+    }
+    function normalizeQuery(text) {
+      return text.toLowerCase().replace(/[^\w\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+
+    function searchArticles(query) {
+      if (activeController) activeController.abort();
+      activeController = new AbortController();
+      var url = new URL('/api/v2/help_center/articles/search.json', window.location.origin);
+      url.searchParams.set('query', query);
+      url.searchParams.set('per_page', '5');
+      if (locale) url.searchParams.set('locale', locale);
+      if (brandId) url.searchParams.set('brand_id', String(brandId));
+      return fetch(url.toString(), { method: 'GET', headers: { Accept: 'application/json' }, signal: activeController.signal })
+        .then(function (response) {
+          if (!response.ok) throw new Error('Article search failed with status ' + response.status);
+          return response.json();
+        })
+        .then(function (data) { return data.results || []; });
+    }
+
+    function updateSuggestions() {
+      var query = normalizeQuery(getFormText());
+      if (query.length < 3) {
+        lastQuery = '';
+        if (activeController) activeController.abort();
+        renderEmpty(STRINGS.empty);
+        return;
+      }
+      if (query === lastQuery) return;
+      lastQuery = query;
+      renderLoading();
+      searchArticles(query).then(renderArticles).catch(function (error) {
+        if (error.name === 'AbortError') return;
+        renderError();
+      });
+    }
+
+    var debouncedUpdate = (function () {
+      var timer;
+      return function () {
+        clearTimeout(timer);
+        timer = setTimeout(updateSuggestions, 350);
+      };
+    })();
+
+    serviceContainer.addEventListener('input', debouncedUpdate);
+    serviceContainer.addEventListener('change', debouncedUpdate);
+    new MutationObserver(debouncedUpdate).observe(serviceContainer, { childList: true, subtree: true });
+    updateSuggestions();
+  })();
+</script>
+
+{{!-- Redirect the "Services" breadcrumb to the help center home --}}
+<script>
+  (function () {
+    var HOME_URL = (location.pathname.match(/^\/hc\/[^/]+/) || ['/hc/en-us'])[0];
+
+    function rewireServicesCrumb() {
+      var subnav = document.querySelector('.svc-subnav');
+      if (!subnav) return;
+      subnav.querySelectorAll('a').forEach(function (a) {
+        if (a.dataset.svcRewired === '1') return;
+        var label = (a.textContent || '').replace(/\s+/g, ' ').trim();
+        if (label.toLowerCase() === 'services') {
+          a.setAttribute('href', HOME_URL);
+          a.dataset.svcRewired = '1';
+          a.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.href = HOME_URL;
+          });
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', rewireServicesCrumb);
+    } else {
+      rewireServicesCrumb();
+    }
+
+    var subnav = document.querySelector('.svc-subnav');
+    if (subnav) new MutationObserver(rewireServicesCrumb).observe(subnav, { childList: true, subtree: true });
+  })();
 </script>

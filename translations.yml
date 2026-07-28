@@ -423,3 +423,48 @@ parts:
       screenshot: "https://drive.google.com/file/d/18d736vhJIuaYHO_uPeg9E4IBaVnJCoVM/view?usp=sharing"
       value: "Requests list"
       obsolete: "2026-04-01"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.service_catalog_group_label"
+      title: "Label for the service catalog settings group"
+      screenshot: ""
+      value: "Service Catalog"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.show_training_fab_label"
+      title: "Label for the show training FAB setting"
+      screenshot: ""
+      value: "Show Technology Training button"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.show_training_fab_description"
+      title: "Description for the show training FAB setting"
+      screenshot: ""
+      value: "Display a floating button that links to Technology Training on Service Catalog request pages"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.training_url_label"
+      title: "Label for the training URL setting"
+      screenshot: ""
+      value: "Technology Training URL"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.training_url_description"
+      title: "Description for the training URL setting"
+      screenshot: ""
+      value: "The destination URL for the floating Technology Training button. Leave blank to keep the button hidden."
+  - translation:
+      key: "txt.help_center_copenhagen_theme.general_request_service_id_label"
+      title: "Label for the general request service id setting"
+      screenshot: ""
+      value: "General request service ID"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.general_request_service_id_description"
+      title: "Description for the general request service id setting"
+      screenshot: ""
+      value: "The service catalog item ID used by the \"General request\" fallback link"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.general_request_category_id_label"
+      title: "Label for the general request category id setting"
+      screenshot: ""
+      value: "General request category ID"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.general_request_category_id_description"
+      title: "Description for the general request category id setting"
+      screenshot: ""
+      value: "The service catalog category ID used by the \"General request\" fallback link"

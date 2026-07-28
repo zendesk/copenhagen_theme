@@ -1,0 +1,569 @@
+/* ============================================================
+   ARPA-H custom — home page (service_list_page): hero, combined
+   live search, service-catalog card, skeleton loader, tooltips.
+   Design tokens live in _svc-tokens.scss.
+
+   FOUC/reveal note: the hero is static, fully-styled markup and is
+   shown immediately (no hide-by-default guard). Only the catalog is
+   async — it renders a skeleton placeholder and fades in real content
+   once the module has staged it (.svc-cat-ready), with a CSS failsafe
+   so it can never stay hidden. This replaces the old inline
+   "hide-everything-then-reveal-with-JS" FOUC scaffold.
+   ============================================================ */
+
+/* ---------- HOME-PAGE HEADER (transparent over the hero) ---------- */
+.svc-home .header {
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  position: relative;
+  z-index: 5;
+}
+.svc-home .header .search-wrapper,
+.svc-home .header .search,
+.svc-home .header form[role="search"],
+.svc-home .header .search-full { display: none !important; }
+.svc-home .header .logo span,
+.svc-home .header .ask-ai span,
+.svc-home .header .user-nav a,
+.svc-home .header .sign-in {
+  color: #ffffff !important;
+}
+.svc-home .header .user-info span,
+.svc-home .header .dropdown-toggle span,
+.svc-home .header .dropdown-chevron-icon {
+  color: var(--svc-navy) !important;
+}
+.svc-home .header .ask-ai {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-radius: 1000px;
+  padding: 7px 14px;
+}
+.svc-home .header .ask-ai-icon,
+.svc-home .header .icon-menu { color: #ffffff !important; }
+.svc-home .header .menu-button-mobile { color: #ffffff !important; }
+
+/* ---------- HERO ---------- */
+.svc-hero { position: relative; }
+.svc-hero .svc-hero-inner,
+.svc-hero .hero-inner {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 240px;
+  padding: 36px clamp(20px, 6vw, 88px);
+  box-sizing: border-box;
+}
+.svc-hero-greeting {
+  width: 100%;
+  max-width: 1000px;
+  color: #fff;
+  font-family: var(--svc-font);
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.svc-hero-title {
+  margin: 0;
+  font-family: var(--svc-font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+.svc-greeting-name { opacity: 0; transition: opacity 0.45s ease; }
+.svc-greeting-name.svc-name-in { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .svc-greeting-name { transition: none; }
+}
+.svc-hero-subtitle {
+  margin: 10px auto 0;
+  max-width: 460px;
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+}
+
+/* Hero search bar */
+.svc-hero-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 26px auto 0;
+  padding: 9px 9px 9px 26px;
+  background: #fff;
+  border-radius: 1000px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.svc-hero-search-icon { display: inline-flex; align-items: center; color: var(--svc-gray); }
+.svc-hero-search-icon svg { width: 24px; height: 24px; }
+.svc-hero-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--svc-font);
+  font-size: 18px;
+  color: var(--svc-ink);
+  padding: 13px 16px;
+}
+.svc-hero-input::placeholder { color: #9aa1ad; }
+.svc-hero-search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 1000px;
+  background: linear-gradient(145deg, var(--svc-pink-deep), var(--svc-pink));
+  transition: filter 0.16s ease;
+}
+.svc-hero-search-btn svg { width: 20px; height: 20px; }
+.svc-hero-search-btn:hover { filter: brightness(1.08); }
+
+/* Live results dropdown */
+.svc-hero-results {
+  position: fixed;
+  z-index: 99999;
+  max-height: 70vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid var(--svc-line);
+  text-align: left;
+}
+.svc-res-group-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px 6px;
+  border-bottom: 0.5px solid var(--svc-line);
+}
+.svc-res-group-header.svc-res-docs { border-top: 0.5px solid var(--svc-line); background: #fcfcfd; }
+.svc-res-group-title { font-size: 11px; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase; }
+.svc-res-services .svc-res-group-title { color: var(--svc-navy); }
+.svc-res-docs .svc-res-group-title { color: var(--svc-gray); }
+.svc-res-group-count { font-size: 11px; color: #9aa1ad; }
+.svc-res-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 18px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.14s ease;
+}
+.svc-res-item:hover, .svc-res-item.svc-res-active { background: #f5f8ff; }
+.svc-res-item.svc-res-service { border-left: 3px solid var(--svc-navy); }
+.svc-res-item.svc-res-doc { border-left: 3px solid #c9ced8; }
+.svc-res-icon {
+  width: 34px; height: 34px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+}
+.svc-res-service .svc-res-icon { background: var(--svc-tint); color: var(--svc-navy); }
+.svc-res-doc .svc-res-icon { background: #f1f3f7; color: var(--svc-gray); }
+.svc-res-icon svg { width: 18px; height: 18px; }
+.svc-res-text { flex: 1; min-width: 0; }
+.svc-res-title, .svc-res-sub {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.svc-res-title { font-size: 14px; color: var(--svc-ink); }
+.svc-res-sub { font-size: 12px; color: var(--svc-gray-soft); }
+.svc-res-badge { flex-shrink: 0; font-size: 10.5px; font-weight: 600; padding: 3px 9px; border-radius: 1000px; }
+.svc-res-service .svc-res-badge { color: var(--svc-navy); background: var(--svc-tint); }
+.svc-res-doc .svc-res-badge { color: var(--svc-gray); background: var(--svc-line); }
+.svc-res-empty, .svc-res-loading { padding: 18px; font-size: 13px; color: var(--svc-gray-soft); text-align: center; }
+.svc-res-footer {
+  display: block;
+  padding: 11px 18px;
+  border-top: 0.5px solid var(--svc-line);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--svc-navy);
+  text-align: center;
+  text-decoration: none;
+}
+.svc-res-footer:hover { background: #f5f8ff; }
+
+/* Hero chips */
+.svc-hero-chips { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.svc-hero-chips-label { font-family: var(--svc-font); font-size: 12.5px; color: rgba(255, 255, 255, 0.6); }
+.svc-hero-chip {
+  font-family: var(--svc-font);
+  font-size: 12.5px;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 1000px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+.svc-hero-chip:hover { background: rgba(255, 255, 255, 0.22); border-color: rgba(255, 255, 255, 0.45); }
+
+/* ---------- CATALOG CARD ---------- */
+.svc-cardwrap {
+  width: 100%;
+  max-width: 1760px;
+  margin: 0 auto;
+  padding: 40px clamp(16px, 3vw, 48px) 64px;
+  box-sizing: border-box;
+}
+.svc-list-shell {
+  position: relative;
+  z-index: 3;
+  margin-top: -56px;
+  padding: 32px clamp(20px, 2.4vw, 40px) 40px;
+  background: #fff;
+  border-radius: 24px;
+  border: 1px solid #dfe4ee;
+}
+
+/* Poppins + normal weight inside the catalog */
+.svc-cardwrap, .svc-cardwrap *,
+.service-catalog-main-content, .service-catalog-main-content *,
+.svc-tooltip { font-family: var(--svc-font) !important; }
+.service-catalog-main-content a[href*="/services/"],
+.service-catalog-main-content a[href*="/services/"] *,
+.service-catalog-main-content [class*="card"] *,
+.service-catalog-main-content [class*="Card"] * { font-weight: 400 !important; }
+
+/* Hide the catalog's own search box (hero search replaces it). */
+.service-catalog-main-content form[role="search"],
+.service-catalog-main-content input[type="search"],
+.service-catalog-main-content input[type="text"],
+.service-catalog-main-content input:not([type]) { display: none !important; }
+.service-catalog-main-content .svc-native-search-hide { display: none !important; }
+
+/* SERVICE ICONS — NEVER CLIP */
+.service-catalog-main-content figure,
+.service-catalog-main-content [data-garden-id="avatars.avatar"],
+.service-catalog-main-content [class*="StyledAvatar"],
+.service-catalog-main-content [class*="Avatar"] {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  overflow: visible !important;
+}
+.service-catalog-main-content figure img,
+.service-catalog-main-content figure svg,
+.service-catalog-main-content [class*="Avatar"] img,
+.service-catalog-main-content [class*="Avatar"] svg,
+.service-catalog-main-content [data-garden-id="avatars.avatar"] img,
+.service-catalog-main-content [data-garden-id="avatars.avatar"] svg,
+.service-catalog-main-content a[href*="/services/"] img,
+.service-catalog-main-content a[href*="/services/"] svg {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  overflow: visible !important;
+  display: block;
+}
+
+/* Service cards */
+.service-catalog-main-content [class*="card"],
+.service-catalog-main-content [class*="Card"],
+.service-catalog-main-content a[href*="/services/"] {
+  border-radius: 16px !important;
+  background: #fff !important;
+  border: 2px solid #e3e8f0 !important;
+  transition: border-color 0.2s ease !important;
+  overflow: visible !important;
+}
+.service-catalog-main-content a[href*="/services/"]:hover,
+.service-catalog-main-content [class*="card"]:hover,
+.service-catalog-main-content [class*="Card"]:hover {
+  border-color: var(--svc-pink) !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Service-card label text */
+.service-catalog-main-content a[href*="/services/"] h1,
+.service-catalog-main-content a[href*="/services/"] h2,
+.service-catalog-main-content a[href*="/services/"] h3,
+.service-catalog-main-content a[href*="/services/"] h4,
+.service-catalog-main-content a[href*="/services/"] h5,
+.service-catalog-main-content a[href*="/services/"] h6,
+.service-catalog-main-content [class*="card"] h1,
+.service-catalog-main-content [class*="card"] h2,
+.service-catalog-main-content [class*="card"] h3,
+.service-catalog-main-content [class*="card"] h4,
+.service-catalog-main-content [class*="card"] h5,
+.service-catalog-main-content [class*="card"] h6,
+.service-catalog-main-content [class*="Card"] h1,
+.service-catalog-main-content [class*="Card"] h2,
+.service-catalog-main-content [class*="Card"] h3,
+.service-catalog-main-content [class*="Card"] h4,
+.service-catalog-main-content [class*="Card"] h5,
+.service-catalog-main-content [class*="Card"] h6 {
+  white-space: normal !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+  hyphens: none !important;
+  text-align: center !important;
+}
+
+/* Hidden card descriptions + hover tooltip */
+.service-catalog-main-content .svc-desc-hidden,
+.service-catalog-main-content a[href*="/services/"] p,
+.service-catalog-main-content [class*="card"] p,
+.service-catalog-main-content [class*="Card"] p { display: none !important; }
+.svc-tooltip {
+  position: fixed;
+  z-index: 10000;
+  max-width: 240px;
+  padding: 8px 11px;
+  border-radius: 8px;
+  background: var(--svc-ink);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.4;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.16s ease;
+}
+.svc-tooltip.svc-tooltip-visible { opacity: 1; }
+.svc-tooltip::after {
+  content: "";
+  position: absolute;
+  left: var(--svc-arrow-left, 20px);
+  width: 8px; height: 8px;
+  background: var(--svc-ink);
+  transform: rotate(45deg);
+}
+.svc-tooltip.svc-tooltip-below::after { top: -4px; }
+.svc-tooltip.svc-tooltip-above::after { bottom: -4px; }
+
+/* "Can't find it" footer banner */
+.svc-help-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 32px 0 4px;
+  padding: 18px 22px;
+  box-sizing: border-box;
+  border: 1px solid #e3e8f0;
+  border-radius: 16px;
+  background: #fbfcfe;
+}
+.svc-help-banner-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.svc-help-banner-title { font-family: var(--svc-font); font-size: 15px; font-weight: 600; color: var(--svc-ink); }
+.svc-help-banner-sub { font-family: var(--svc-font); font-size: 13px; color: var(--svc-gray); }
+a.svc-help-btn,
+.service-catalog-main-content a.svc-help-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 10px 20px;
+  border-radius: 1000px;
+  font-family: var(--svc-font);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--svc-navy) !important;
+  text-decoration: none !important;
+  background: #fff !important;
+  border: 1.5px solid var(--svc-navy) !important;
+  transition: background-color 0.16s ease, color 0.16s ease !important;
+}
+a.svc-help-btn:hover,
+.service-catalog-main-content a.svc-help-btn:hover {
+  background: var(--svc-navy) !important;
+  color: #fff !important;
+}
+
+/* Category description under the heading */
+.svc-cat-description { margin: 6px 0 0; max-width: 640px; font-size: 13.5px; line-height: 1.5; color: var(--svc-gray); }
+
+/* Fallback message when the catalog module can't load */
+.svc-catalog-fallback { padding: 12px; color: var(--svc-gray); font-family: var(--svc-font); }
+
+/* Search input rounding (defensive) */
+.service-catalog-main-content input[type="text"],
+.service-catalog-main-content input[type="search"] { border-radius: 16px !important; }
+
+/* ---------- CATALOG SKELETON + FADE-IN ---------- */
+.svc-catalog-stage { position: relative; min-height: 460px; }
+#service-catalog-main-content { opacity: 0; transition: opacity 0.3s ease; }
+.svc-cat-ready #service-catalog-main-content { opacity: 1; }
+@keyframes svcCatFailsafe { to { opacity: 1; } }
+#service-catalog-main-content { animation: svcCatFailsafe 0s linear 6.5s forwards; }
+.svc-cat-ready .svc-catalog-stage { min-height: 0; }
+
+.svc-cat-skeleton {
+  position: absolute; inset: 0;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 28px;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+.svc-cat-skeleton.svc-cat-skel-hide { opacity: 0; pointer-events: none; }
+.svc-cat-skel-side { display: flex; flex-direction: column; gap: 12px; padding-top: 6px; }
+.svc-cat-skel-row { height: 34px; border-radius: 8px; }
+.svc-cat-skel-row-active { background-color: var(--svc-tint) !important; }
+.svc-cat-skel-main { min-width: 0; }
+.svc-cat-skel-heading { width: 200px; height: 30px; border-radius: 8px; margin-bottom: 14px; }
+.svc-cat-skel-subtext { width: 70%; max-width: 520px; height: 14px; border-radius: 8px; margin-bottom: 28px; }
+.svc-cat-skel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.svc-cat-skel-card { height: 120px; border-radius: 16px; }
+
+/* Shimmer sweep */
+.svc-cat-skel-row, .svc-cat-skel-heading, .svc-cat-skel-subtext, .svc-cat-skel-card {
+  background: linear-gradient(100deg, #e5eaf0 30%, #f6f8fc 50%, #e5eaf0 70%);
+  background-size: 200% 100%;
+  animation: svcSkelShimmer 1.3s ease-in-out infinite;
+}
+@keyframes svcSkelShimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* Category-swap: hide Zendesk's gray skeleton "loading" boxes */
+.service-catalog-main-content .svc-skeleton { visibility: hidden !important; }
+
+@media (max-width: 960px) {
+  .svc-hero .svc-hero-inner, .svc-hero .hero-inner { min-height: 200px; padding: 28px 20px; }
+  .svc-cardwrap { padding: 24px 12px 48px; }
+  .svc-list-shell { margin-top: -32px; padding: 20px 14px 28px; }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden !important; max-width: 100% !important; }
+
+  /* Hide only stray/duplicate menu buttons — NOT our real menu button */
+  .svc-home .header .mobile-menu-button,
+  .svc-home .header button[aria-label*="menu" i],
+  .svc-home .header button[aria-label*="Menu" i],
+  .svc-home .header [class*="MobileMenu"],
+  .svc-home .header [class*="mobile-menu"],
+  .svc-home .header [data-testid*="mobile-menu"],
+  .svc-home .header [data-testid*="MobileMenu"] {
+    display: none !important;
+  }
+
+  /* Show the real mobile menu button on home, styled for the dark hero */
+  .svc-home .header .nav-wrapper-mobile {
+    display: flex !important;
+    align-items: center;
+  }
+  .svc-home .header .menu-button-mobile {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff !important;
+  }
+  .svc-home .header .icon-menu {
+    display: inline-flex !important;
+    color: #ffffff !important;
+  }
+  .svc-home .header .menu-button-mobile .user-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 1000px;
+  }
+
+  .svc-hero .svc-hero-inner, .svc-hero .hero-inner { min-height: 160px; padding: 22px 16px; }
+  .svc-hero-title { font-size: clamp(24px, 7vw, 32px); }
+  .svc-hero-subtitle { font-size: 14px; margin-top: 8px; }
+  .svc-hero-search { margin-top: 18px; padding: 6px 6px 6px 18px; }
+  .svc-hero-input { font-size: 16px; padding: 11px 12px; }
+  .svc-hero-search-btn { width: 42px; height: 42px; }
+
+  .svc-cardwrap { padding: 18px 10px 40px; max-width: 100%; overflow-x: hidden; }
+  .svc-list-shell { margin-top: -24px; padding: 16px 12px 24px; border-radius: 16px; overflow: visible; }
+
+  .service-catalog-main-content {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin;
+  }
+
+  .service-catalog-main-content a[href*="/services/"],
+  .service-catalog-main-content [class*="card"],
+  .service-catalog-main-content [class*="Card"] {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+  }
+  .service-catalog-main-content a[href*="/services/"] h1,
+  .service-catalog-main-content a[href*="/services/"] h2,
+  .service-catalog-main-content a[href*="/services/"] h3,
+  .service-catalog-main-content a[href*="/services/"] h4,
+  .service-catalog-main-content a[href*="/services/"] h5,
+  .service-catalog-main-content a[href*="/services/"] h6,
+  .service-catalog-main-content [class*="card"] h1,
+  .service-catalog-main-content [class*="card"] h2,
+  .service-catalog-main-content [class*="card"] h3,
+  .service-catalog-main-content [class*="card"] h4,
+  .service-catalog-main-content [class*="card"] h5,
+  .service-catalog-main-content [class*="card"] h6,
+  .service-catalog-main-content [class*="Card"] h1,
+  .service-catalog-main-content [class*="Card"] h2,
+  .service-catalog-main-content [class*="Card"] h3,
+  .service-catalog-main-content [class*="Card"] h4,
+  .service-catalog-main-content [class*="Card"] h5,
+  .service-catalog-main-content [class*="Card"] h6 {
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+    word-break: keep-all !important;
+    hyphens: none !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+
+  .svc-help-banner { flex-direction: column; align-items: stretch; text-align: center; padding: 16px 16px; }
+  .svc-help-banner-text { align-items: center; }
+  .svc-help-banner a.svc-help-btn { width: 100%; padding: 13px 22px; }
+
+  .svc-tooltip { display: none !important; }
+}
+
+@media (max-width: 430px) {
+  .svc-hero-chips { gap: 6px; }
+  .svc-hero-chip { font-size: 12px; padding: 5px 10px; }
+  .svc-list-shell { padding: 14px 10px 20px; }
+  .svc-cat-description { font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-tooltip { transition: none !important; }
+  #service-catalog-main-content { transition: none !important; }
+  .svc-cat-skel-row, .svc-cat-skel-heading, .svc-cat-skel-subtext, .svc-cat-skel-card { animation: none !important; }
+  .service-catalog-main-content .svc-skeleton { visibility: visible !important; }
+}
