@@ -8,10 +8,10 @@ import {
   ThemeProviders,
   initI18next,
   loadTranslations,
+  normalizeHelpCenterPath,
 } from "../shared";
 import type { Settings } from "../shared";
 import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
-import { normalizeHelpCenterPath } from "./utils/normalizeHelpCenterPath";
 
 export async function renderServiceCatalogItem(
   container: HTMLElement,

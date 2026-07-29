@@ -8,6 +8,7 @@ import {
   ThemeProviders,
   initI18next,
   loadTranslations,
+  normalizeHelpCenterPath,
 } from "../shared";
 import type { Settings } from "../shared";
 import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
@@ -17,7 +18,6 @@ import {
   PREVIEW_MODE_QUERY_PARAM,
   PREVIEW_MODE_QUERY_PARAM_VALUE,
 } from "./constants";
-import { normalizeHelpCenterPath } from "./utils/normalizeHelpCenterPath";
 
 function isPreviewMode(): boolean {
   if (typeof window === "undefined") return false;

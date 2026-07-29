@@ -6,6 +6,7 @@ import {
   ThemeProviders,
   initI18next,
   loadTranslations,
+  normalizeHelpCenterPath,
 } from "../shared";
 import type { Settings } from "../shared";
 import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
@@ -17,6 +18,7 @@ export async function renderApprovalRequestList(
   helpCenterPath: string
 ) {
   const { baseLocale } = props;
+  const safeHelpCenterPath = normalizeHelpCenterPath(helpCenterPath);
   initI18next(baseLocale);
   await loadTranslations(baseLocale, [
     () => import(`./translations/locales/${baseLocale}.json`),
@@ -25,8 +27,11 @@ export async function renderApprovalRequestList(
 
   createRoot(container).render(
     <ThemeProviders theme={createTheme(settings)}>
-      <ErrorBoundary helpCenterPath={helpCenterPath}>
-        <ApprovalRequestListPage {...props} helpCenterPath={helpCenterPath} />
+      <ErrorBoundary helpCenterPath={safeHelpCenterPath}>
+        <ApprovalRequestListPage
+          {...props}
+          helpCenterPath={safeHelpCenterPath}
+        />
       </ErrorBoundary>
     </ThemeProviders>
   );
