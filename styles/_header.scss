@@ -335,7 +335,10 @@ $header-height: 71px;
 /***** Header "Submit a request" nav button *****/
 
 .nav-wrapper-desktop .submit-a-request {
-  border: 1px solid #0957BE;
+  // Was hardcoded to #0957BE; matches $brand_color like the rest of this
+  // rule so the border stays in sync if brand_color is changed in Theming
+  // Center settings.
+  border: 1px solid $brand_color;
   border-radius: 8px;
   box-sizing: border-box;
   color: $brand_color;
@@ -355,6 +358,9 @@ $header-height: 71px;
   }
 }
 
+// Unscoped (not just .nav-wrapper-desktop) because this same 'submit_a_request'
+// link is also rendered in .nav-wrapper-mobile (templates/header.hbs), which
+// has no focus/active rule of its own.
 .submit-a-request:focus,
 .submit-a-request:active {
   background-color: $brand_color;

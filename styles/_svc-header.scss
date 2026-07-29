@@ -14,19 +14,6 @@
   flex: 0 0 auto;
   order: 2;
 }
-.header .logo {
-  display: flex;
-  align-items: center;
-  flex: 0 0 auto;
-  order: 1;
-}
-.header .nav-wrapper-desktop {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 0 0 auto;
-  order: 2;
-}
 html.svc-home .header .search-wrapper {
   display: none !important;
 }
@@ -139,7 +126,7 @@ html.svc-home .header .search-wrapper {
     right: 12px;
     left: 12px;
     background: #ffffff;
-    border: 1px solid #e5eaf0;
+    border: 1px solid var(--svc-line);
     border-radius: 16px;
     box-shadow: 0 16px 40px rgba(15, 33, 80, 0.16);
     padding: 8px;
@@ -153,11 +140,11 @@ html.svc-home .header .search-wrapper {
     padding: 10px 12px;
     border-radius: 8px;
     font-size: 14px;
-    color: #252729;
+    color: var(--svc-ink);
     text-decoration: none;
   }
-  .header .menu-list-mobile-items .item a:hover { background: #f5f8ff; color: #09349d; }
-  .header .menu-list-mobile-items .nav-divider { height: 1px; background: #e5eaf0; margin: 6px 4px; }
+  .header .menu-list-mobile-items .item a:hover { background: #f5f8ff; color: var(--svc-navy); }
+  .header .menu-list-mobile-items .nav-divider { height: 1px; background: var(--svc-line); margin: 6px 4px; }
 }
 
 .header .user-info .dropdown-toggle .svc-username {

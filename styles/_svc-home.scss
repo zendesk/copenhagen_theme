@@ -441,13 +441,7 @@ a.svc-help-btn:hover,
 
 /* Shimmer sweep */
 .svc-cat-skel-row, .svc-cat-skel-heading, .svc-cat-skel-subtext, .svc-cat-skel-card {
-  background: linear-gradient(100deg, #e5eaf0 30%, #f6f8fc 50%, #e5eaf0 70%);
-  background-size: 200% 100%;
-  animation: svcSkelShimmer 1.3s ease-in-out infinite;
-}
-@keyframes svcSkelShimmer {
-  from { background-position: 200% 0; }
-  to   { background-position: -200% 0; }
+  @extend %svc-skel-shimmer;
 }
 
 /* Category-swap: hide Zendesk's gray skeleton "loading" boxes */

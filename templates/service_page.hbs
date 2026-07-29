@@ -127,7 +127,7 @@
           <ul class="svc-card-list">
             <li>You'll receive an email confirmation with your request or ticket number.</li>
             <li>You can reply to that email at any time to add updates or attachments.</li>
-            <li>You can track progress in the Service Hub under <strong>My requests</strong>.</li>
+            <li>You can track progress in the Service Hub under <strong>{{t 'my_requests'}}</strong>.</li>
           </ul>
         </section>
         <section class="svc-card">
@@ -208,7 +208,9 @@
   })();
 </script>
 
-{{!-- Personalized greeting --}}
+{{!-- Personalized greeting. Name-resolution fetch is shared with
+     service_list_page.hbs via src/svcGreeting.js (window.svcFetchFirstName);
+     the reveal timing/text-formatting below is specific to this page. --}}
 <script>
   (function () {
     var title = document.getElementById('svc-greeting');
@@ -216,27 +218,7 @@
 
     function reveal() { title.classList.add('svc-greeting-ready'); }
 
-    function looksLikeAlias(v) {
-      if (!v) return true;
-      var s = String(v).trim();
-      if (!s) return true;
-      if (s.indexOf('@') !== -1) return true;
-      if (/^[a-z0-9._-]+$/.test(s) && s.indexOf(' ') === -1) return true;
-      return false;
-    }
-
-    function firstNameOf(name) {
-      var s = String(name || '').trim();
-      if (!s) return '';
-      if (s.indexOf(',') !== -1) {
-        var parts = s.split(',').map(function (p) { return p.trim(); }).filter(Boolean);
-        if (parts.length >= 2) return parts[1].split(/\s+/)[0];
-      }
-      return s.split(/\s+/)[0];
-    }
-
-    function setGreeting(name) {
-      var first = firstNameOf(name);
+    function setGreeting(first) {
       title.textContent = first ? ('How can we help, ' + first + '?') : 'How can we help?';
     }
 
@@ -248,74 +230,64 @@
       reveal();
     }, 2400);
 
-    function finish(name) {
+    function finish(first) {
       if (revealed) return;
       revealed = true;
       clearTimeout(revealTimer);
-      setGreeting(name || '');
+      setGreeting(first || '');
       reveal();
     }
 
-    fetch('/api/v2/users/me.json', { headers: { Accept: 'application/json' }, credentials: 'same-origin' })
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (d) {
-        var u = d && d.user;
-        if (!u) { finish(''); return; }
-        var candidates = [
-          u.name,
-          u.details && u.details.name,
-          u.user_fields && (u.user_fields.full_name || u.user_fields.preferred_name || u.user_fields.first_name)
-        ];
-        var realName = candidates.find(function (c) { return !looksLikeAlias(c); }) || u.name;
-        finish(realName);
-      })
-      .catch(function () { finish(''); });
+    // script.js (which defines window.svcFetchFirstName) is a classic script
+    // whose load order relative to this inline block isn't guaranteed, so
+    // poll briefly instead of assuming it has already run.
+    function tryFetch() {
+      if (typeof window.svcFetchFirstName === 'function') {
+        window.svcFetchFirstName(finish);
+        return true;
+      }
+      return false;
+    }
+    if (!tryFetch()) {
+      var attempts = 0;
+      var iv = setInterval(function () {
+        attempts++;
+        if (tryFetch() || attempts > 100) clearInterval(iv);
+      }, 20);
+    }
   })();
 </script>
 
-{{!-- Swap skeleton -> real form once complete --}}
+{{!-- Swap skeleton -> real form once complete. Shared reveal-on-complete
+     controller lives in src/svcReveal.js (window.initSvcRevealOnComplete),
+     consistent with service_list_page.hbs's catalog reveal. --}}
 <script>
   (function () {
-    var root = document.documentElement;
-    var form = document.getElementById('service-catalog-item');
-    var skel = document.getElementById('svc-form-skeleton');
-    if (!form) return;
-
-    var done = false;
-    function showForm() {
-      if (done) return;
-      done = true;
-      root.classList.add('svc-form-ready');
-      if (skel) {
-        skel.classList.add('svc-skel-hide');
-        setTimeout(function () { if (skel && skel.parentNode) skel.parentNode.removeChild(skel); }, 320);
+    var config = {
+      targetId: 'service-catalog-item',
+      skeletonId: 'svc-form-skeleton',
+      readyClasses: ['svc-form-ready'],
+      isComplete: function (form) {
+        return !!form.querySelector('input, textarea, select, button[type="submit"], [role="textbox"]');
       }
+    };
+    // script.js (which defines window.initSvcRevealOnComplete) is a classic
+    // script whose load order relative to this inline block isn't
+    // guaranteed, so poll briefly instead of assuming it has already run.
+    function tryInit() {
+      if (typeof window.initSvcRevealOnComplete === 'function') {
+        window.initSvcRevealOnComplete(config);
+        return true;
+      }
+      return false;
     }
-
-    function formIsComplete() {
-      return !!form.querySelector('input, textarea, select, button[type="submit"], [role="textbox"]');
+    if (!tryInit()) {
+      var attempts = 0;
+      var iv = setInterval(function () {
+        attempts++;
+        if (tryInit() || attempts > 100) clearInterval(iv);
+      }, 20);
     }
-
-    var SETTLE_MS = 400;
-    var settleTimer = null;
-    function armSettle() {
-      if (settleTimer) clearTimeout(settleTimer);
-      settleTimer = setTimeout(showForm, SETTLE_MS);
-    }
-
-    function check() {
-      if (done) return;
-      if (formIsComplete()) armSettle();
-    }
-
-    check();
-    var mo = new MutationObserver(check);
-    mo.observe(form, { childList: true, subtree: true });
-    (function stop() { if (done) mo.disconnect(); else setTimeout(stop, 300); })();
-
-    setTimeout(showForm, 6000);
-
-    window.addEventListener('pageshow', function (e) { if (e.persisted) showForm(); });
   })();
 </script>
 
@@ -340,14 +312,34 @@
     fab.className = 'svc-training-fab';
     fab.href = window.svcSafeHref ? window.svcSafeHref(trainingUrl, '#') : trainingUrl;
     fab.setAttribute('aria-label', trainingLabel);
-    fab.innerHTML =
-      '<span class="svc-training-fab-icon" aria-hidden="true">' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-          '<path d="M22 10L12 5 2 10l10 5 10-5z"></path>' +
-          '<path d="M6 12v5c0 1 2.5 2.5 6 2.5s6-1.5 6-2.5v-5"></path>' +
-        '</svg>' +
-      '</span>' +
-      '<span class="svc-training-fab-label">' + trainingLabel + '</span>';
+
+    // Built via DOM/SVG APIs (not an innerHTML string) to avoid the
+    // markup-via-string-concatenation pattern used elsewhere in this file.
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+    var iconWrap = document.createElement('span');
+    iconWrap.className = 'svc-training-fab-icon';
+    iconWrap.setAttribute('aria-hidden', 'true');
+    var svg = document.createElementNS(SVG_NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '2');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+    var capPath = document.createElementNS(SVG_NS, 'path');
+    capPath.setAttribute('d', 'M22 10L12 5 2 10l10 5 10-5z');
+    var basePath = document.createElementNS(SVG_NS, 'path');
+    basePath.setAttribute('d', 'M6 12v5c0 1 2.5 2.5 6 2.5s6-1.5 6-2.5v-5');
+    svg.appendChild(capPath);
+    svg.appendChild(basePath);
+    iconWrap.appendChild(svg);
+
+    var labelEl = document.createElement('span');
+    labelEl.className = 'svc-training-fab-label';
+    labelEl.textContent = trainingLabel;
+
+    fab.appendChild(iconWrap);
+    fab.appendChild(labelEl);
     document.body.appendChild(fab);
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
