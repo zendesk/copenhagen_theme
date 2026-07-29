@@ -6819,8 +6819,12 @@ body {
 }
 
 /* ---- SUBMIT BUTTON: overlap-aware hiding handled by JS ---- */
-.svc-custom-submit-wrap {
+.svc-custom-submit-wrap {}
+
+/* Ensure form dropdowns render above the submit wrap */
+.svc-form-panel #service-catalog-item {
   position: relative;
+  z-index: 1;
 }
 
 /* ---- HELPER INFORMATION CARDS ---- */
