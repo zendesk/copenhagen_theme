@@ -7133,12 +7133,20 @@ body > pre, body > code, body > .template-name, body > .editor-label {
 .svc-searchrow .svc-hero-search {
   max-width: 560px;
   margin: 0 auto;
+  padding: 6px 6px 6px 20px;
   border: 1px solid #b9c9ef;
   box-shadow: 0 2px 6px rgba(0, 51, 153, 0.12);
 }
 
+.svc-searchrow .svc-hero-search input[type=search] {
+  font-size: 15px !important;
+  padding: 10px 12px !important;
+}
+
 .svc-searchrow .svc-hero-search-btn {
   background: #003b91;
+  width: 38px;
+  height: 38px;
 }
 
 .svc-mini-search {
