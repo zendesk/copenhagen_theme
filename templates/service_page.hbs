@@ -443,7 +443,7 @@
       }
       suggestionsEl.innerHTML = results.map(function (article) {
         var t = escapeHtml(article.title || 'Untitled article');
-        var href = escapeHtml(window.svcSafeHref ? window.svcSafeHref(article.html_url || article.url, '#') : (article.html_url || article.url || '#'));
+        var href = escapeHtml(window.svcSafeHref ? window.svcSafeHref(article.html_url || article.url, '#') : '#');
         var body = truncate(stripHtml(article.snippet || article.body || article.description || ''), 140) || 'Open this article for more details.';
         var section = article.section_name ? 'Section: ' + escapeHtml(article.section_name) : '';
         return '<a class="svc-article-item" href="' + href + '">' +
