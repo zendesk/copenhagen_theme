@@ -7,3 +7,6 @@ import "./search";
 import "./forms";
 import "./domFixups";
 import "./svcSearch";
+import "./svcGreeting";
+import "./svcReveal";
+import "./svcCatalogEnhancements";

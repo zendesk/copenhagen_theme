@@ -27,7 +27,7 @@
       &:last-child  { margin-right: 0; }
     }
 
-    border: 1px solid #E5EAF0;
+    border: 1px solid var(--svc-line);
     border-radius: 12px;
     box-sizing: border-box;
     color: $brand_color;

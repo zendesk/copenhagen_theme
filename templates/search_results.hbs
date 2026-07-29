@@ -287,26 +287,5 @@
   {{pagination}}
 </div>
 
-{{!-- Wire the pink button to submit the native search --}}
-<script>
-/* Finds the input in the pill and submits its form, matching native
-   behavior exactly. */
-(function () {
-  var btn = document.getElementById('svc-search-pill-btn');
-  if (!btn) return;
-  var pill = btn.closest('.svc-search-pill');
-  if (!pill) return;
-  btn.addEventListener('click', function () {
-    var input = pill.querySelector('input[type="search"], input[type="text"], input:not([type])');
-    if (!input) return;
-    var form = input.form || input.closest('form');
-    if (form) {
-      if (typeof form.requestSubmit === 'function') form.requestSubmit();
-      else form.submit();
-    } else {
-      input.focus();
-      input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', code: 'Enter', keyCode: 13, which: 13, bubbles: true }));
-    }
-  });
-})();
-</script>
+{{!-- Pink search-pill button submit wiring now lives in src/domFixups.js
+      (bundled into script.js). Do not re-add it inline. --}}
