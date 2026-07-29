@@ -363,16 +363,31 @@
 
     function wireCustomSubmit() {
       if (!customSubmit) return;
+      var originalLabel = customSubmit.textContent;
       customSubmit.addEventListener('click', function () {
         var nativeSubmit = getNativeSubmit();
         if (!nativeSubmit) return;
         customSubmit.disabled = true;
-        customSubmit.textContent = 'Submitting...';
+        customSubmit.textContent = 'Submitting\u2026';
         nativeSubmit.click();
+        var observer = new MutationObserver(function () {
+          var current = getNativeSubmit();
+          if (current && !current.disabled) {
+            customSubmit.disabled = false;
+            customSubmit.textContent = originalLabel;
+            observer.disconnect();
+          }
+        });
+        observer.observe(serviceContainer, {
+          attributes: true,
+          subtree: true,
+          attributeFilter: ['disabled']
+        });
         setTimeout(function () {
+          observer.disconnect();
           customSubmit.disabled = false;
-          customSubmit.textContent = 'Submit request';
-        }, 3000);
+          customSubmit.textContent = originalLabel;
+        }, 15000);
       });
     }
 
