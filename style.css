@@ -5530,6 +5530,7 @@ html body .header .search-wrapper {
   display: flex !important;
   align-items: center !important;
 }
+
 .svc-hero-input {
   flex: 1;
   min-width: 0;
@@ -6019,12 +6020,12 @@ a.svc-help-btn:hover,
 }
 
 /* Kill Garden wrapper focus border on catalog search */
-.service-catalog-main-content [data-garden-id*="forms"],
-.service-catalog-main-content [data-garden-id*="forms"] *,
-.service-catalog-main-content [data-garden-id*="mediaInput"],
-.service-catalog-main-content [data-garden-id*="mediaInput"] *,
-.service-catalog-main-content [class*="StyledMedia"],
-.service-catalog-main-content [class*="StyledMedia"]:focus-within {
+.service-catalog-main-content [data-garden-id*=forms],
+.service-catalog-main-content [data-garden-id*=forms] *,
+.service-catalog-main-content [data-garden-id*=mediaInput],
+.service-catalog-main-content [data-garden-id*=mediaInput] *,
+.service-catalog-main-content [class*=StyledMedia],
+.service-catalog-main-content [class*=StyledMedia]:focus-within {
   border-color: #dfe4ee !important;
   box-shadow: none !important;
   outline: none !important;
@@ -6807,8 +6808,6 @@ body {
 }
 
 /* ---- SUBMIT BUTTON: overlap-aware hiding handled by JS ---- */
-.svc-custom-submit-wrap {}
-
 /* Ensure form dropdowns render above the submit wrap */
 .svc-form-panel #service-catalog-item {
   position: relative;
