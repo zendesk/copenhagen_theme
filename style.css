@@ -5810,18 +5810,6 @@ html body .header .search-wrapper {
   font-weight: 400 !important;
 }
 
-/* Hide the catalog's own search box (hero search replaces it). */
-/*.service-catalog-main-content form[role=search],
-.service-catalog-main-content input[type=search],
-.service-catalog-main-content input[type=text],
-.service-catalog-main-content input:not([type]) {
-  display: none !important;
-}
-
-.service-catalog-main-content .svc-native-search-hide {
-  display: none !important;
-}*/
-
 /* SERVICE ICONS — NEVER CLIP */
 .service-catalog-main-content figure,
 .service-catalog-main-content [data-garden-id="avatars.avatar"],
