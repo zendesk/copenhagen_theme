@@ -1,289 +1,134 @@
-{{!--
-  Home page (service_list_page) — hero + combined live search + service catalog.
-  Styling: styles/_svc-home.scss (design tokens in _svc-tokens.scss). Do NOT add
-  <style> blocks or style="" attributes here — edit the SCSS partials instead.
-
-  The hero is static, fully-styled markup and renders immediately (no
-  hide-by-default guard). Only the async service-catalog uses a skeleton
-  placeholder and fades in once staged (.svc-cat-ready). The page-specific JS
-  below needs server-rendered {{json}} data, so it stays inline on this page.
---}}
-
+<!-- Customized 06.07.2026 by joel.peterson@arpa-h.gov -->
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
-<script>
-  /* Tag <html>/<body> as the home page so the global header can restyle
-     itself over the hero (Zendesk adds no built-in home-page class). */
-  (function () {
-    var add = function () {
-      document.documentElement.classList.add('svc-home');
-      if (document.body) document.body.classList.add('svc-home');
-    };
-    add();
-    document.addEventListener('DOMContentLoaded', add);
-  })();
-</script>
 
-<!-- ===== HERO (greeting + search) ===== -->
-<section id="hero-content" class="section hero svc-hero">
-  <div class="hero-inner svc-hero-inner">
-    {{#if signed_in}}
-    <div class="svc-hero-greeting">
-      <h2 class="svc-hero-title"><span id="svc-list-greeting">&nbsp;</span><span id="svc-list-greeting-name" class="svc-greeting-name"></span></h2>
-      <p class="svc-hero-subtitle" id="svc-list-subtitle">What do you need help with today?</p>
-
-      {{!-- Native Zendesk instant search (articles), skinned into the hero
-            pill. Real-time suggestions and the results page are rendered by
-            the platform — there is no custom fetch/scoring layer. The left
-            icon is decorative; the pink button submits the native form (wired
-            in the script below). Styling lives in styles/_svc-home.scss. --}}
-      <h2 class="visibility-hidden">{{ t 'search' }}</h2>
-      <div class="svc-hero-search" id="svc-hero-search">
-        <span class="svc-hero-search-icon" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </span>
-        {{search submit=false instant=settings.instant_search class='search search-full'}}
-        <button type="button" class="svc-hero-search-btn" id="svc-hero-search-btn" aria-label="{{t 'search'}}">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
-      </div>
-
-      <div class="svc-hero-chips" id="svc-hero-chips">
-        <span class="svc-hero-chips-label">Popular:</span>
-        <a class="svc-hero-chip" href="/hc/{{help_center.base_locale}}/search?query=PIV%20certificate%20renewal">PIV Cert Renewal</a>
-        <a class="svc-hero-chip" href="/hc/{{help_center.base_locale}}/search?query=lost%20stolen%20device">Lost/Stolen Device</a>
-        <a class="svc-hero-chip" href="/hc/{{help_center.base_locale}}/search?query=lost%20stolen%20PIV%20card">Lost/Stolen PIV Card</a>
-        <a class="svc-hero-chip" href="/hc/{{help_center.base_locale}}/search?query=external%20sharepoint">SharePoint</a>
-        <a class="svc-hero-chip" href="/hc/{{help_center.base_locale}}/search?query=shared%20mailbox%20distribution%20list">Shared Mailboxes/Distribution Lists</a>
-      </div>
+<section id="main-content" class="section hero">
+  <div class="hero-inner">
+    {{!-- <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+    </svg>
+    {{search submit=false instant=settings.instant_search class='search search-full'}}
+    --}}
+   {{#if signed_in}}
+    <div class="centered-buttons">
+		  <span class="item">{{#link 'new_request' class='submit-a-request'}}Report an issue{{/link}}</span>
+      <!-- <span class="item submit-a-request"><a href="https://arpah1746463021.zendesk.com/hc/en-us/services">Services</a></span> -->
     </div>
-    {{/if}}
-  </div>
+   {{/if}}     
 </section>
-
-<script>
-  /* Time-based greeting set synchronously, before first paint. */
-  (function () {
-    var el = document.getElementById('svc-list-greeting');
-    if (!el) return;
-    var h = new Date().getHours();
-    el.textContent = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
-  })();
-</script>
 
 {{#unless signed_in}}
 <div class="container banner-container">
   {{#if settings.display_alert_banner}}
     <div class="nav-wrapper-desktop alert-banner">
-      <div class="bell-notice-text"><div class="inner-site-notice"><p>{{settings.alert_banner_text}}</p></div></div>
+      <div class="bell-notice-text">
+        <div class="inner-site-notice">
+          <p>
+            {{settings.alert_banner_text}}
+          </p>
+        </div>
+      </div>
     </div>
     <div class="nav-wrapper-mobile alert-wrapper-mobile">
-      <div class="alert-banner-text"><div class="inner-site-notice"><p>{{settings.alert_banner_text}}</p></div></div>
+      <div class="alert-banner-text">
+        <div class="inner-site-notice">
+          <p>
+            {{settings.alert_banner_text}}
+          </p>
+        </div>
+      </div>
+
     </div>
   {{/if}}
 </div>
 {{/unless}}
+<div class="container">
+  <section class="section knowledge-base">
+    <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
+    <section class="categories blocks">
+      <ul class="blocks-list">
+        {{#each categories}}
+          {{#if ../has_multiple_categories}}
+            {{!-- <li class="blocks-item"> --}}
+            <li class="blocks-item blocks-item-category-{{id}}">
+              <a href='{{url}}' class="blocks-item-link">
+                   <!-- Category image -->
+                <span class="blocks-item-img-wrapper">
+                  {{! Human Resources }}
+                  {{#is id 37066828975515}}<img class="blocks-item-img" alt="People at table icon representing Human Resources." src="{{asset 'ARPA-H-icons-humanresouces-01-rgb-full-color.svg'}}" />{{/is}} 
+                  {{! Service Desk }}
+                  {{#is id 19382804915227}}<img class="blocks-item-img" alt="Magnifying glass icon representing help desk." src="{{asset 'ARPA-H-icons-magnifying-glass-rgb-full-color.svg'}}" />{{/is}}
+                  {{! Asset Management }}
+                  {{#is id 30126071388315}}<img class="blocks-item-img" alt="Icon representing asset management." src="{{asset 'ARPA-H-icons-community-rgb-full-color.svg'}}" />{{/is}}
+                  {{! Self Service }}
+                  {{#is id 19382827542427}}<img class="blocks-item-img" alt="Organization chart icon representing user support." src="{{asset 'ARPA-H-icons-org-chart-02-rgb-full-color.svg'}}" />{{/is}}
+                  {{! External User Support }}
+                  {{#is id 37066784640923}}<img class="blocks-item-img" alt="Shaking hands icon represening external user support." src="{{asset 'ARPA-H-icons-handshake-01-rgb-full-color.svg'}}" />{{/is}}
+                </span>
+                <!-- End category image -->
+                <span class="blocks-item-title">{{name}}</span>
+                <span class="blocks-item-description">{{excerpt description}}</span>
+              </a>
+            </li>
+          {{else}}
+            {{#each sections}}
+              <li class="blocks-item">
+                <a href='{{url}}' class="blocks-item-link">
+                  <span class="blocks-item-img-wrapper">
+                    {{! Self Service FAQs}}
+                    {{#is id 19383045462299}}<img class="blocks-item-img" alt="Magnifying glass icon representing FAQs." src="{{asset 'ARPA-H-icons-magnifying-glass-rgb-full-color.svg'}}" />{{/is}}
+                  </span>
+                  <span class="blocks-item-title">
+                    {{name}}
+                  </span>
+                  <span class="blocks-item-description">{{excerpt description}}</span>
+                </a>
+              </li>
+            {{/each}}
+          {{/if}}
+        {{/each}}
+      </ul>
+      {{pagination}}
+    </section>
 
-<!-- ===== SERVICE CATALOG (wide floating card) ===== -->
-{{#if signed_in}}
-<div class="svc-cardwrap">
-  <div id="svc-home-content">
-    <div class="svc-list-shell">
-      <div class="svc-catalog-stage">
-        <div id="service-catalog-main-content" class="service-catalog-main-content"></div>
-        <!-- Skeleton placeholder for the catalog. -->
-        <div id="svc-catalog-skeleton" class="svc-cat-skeleton" aria-hidden="true">
-          <div class="svc-cat-skel-side">
-            <div class="svc-cat-skel-row svc-cat-skel-row-active"></div>
-            <div class="svc-cat-skel-row"></div>
-            <div class="svc-cat-skel-row"></div>
-            <div class="svc-cat-skel-row"></div>
-            <div class="svc-cat-skel-row"></div>
-            <div class="svc-cat-skel-row"></div>
-            <div class="svc-cat-skel-row"></div>
-          </div>
-          <div class="svc-cat-skel-main">
-            <div class="svc-cat-skel-heading"></div>
-            <div class="svc-cat-skel-subtext"></div>
-            <div class="svc-cat-skel-grid">
-              <div class="svc-cat-skel-card"></div>
-              <div class="svc-cat-skel-card"></div>
-              <div class="svc-cat-skel-card"></div>
-              <div class="svc-cat-skel-card"></div>
-              <div class="svc-cat-skel-card"></div>
-              <div class="svc-cat-skel-card"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-            <!-- Static "Can't find it" banner. -->
-      <div class="svc-help-banner">
-        <div class="svc-help-banner-text">
-          <span class="svc-help-banner-title">Still can&rsquo;t find what you need?</span>
-          <span class="svc-help-banner-sub">Submit a general request.</span>
-        </div>
-        <a class="svc-help-btn" href="/hc/{{help_center.base_locale}}/services/{{settings.other_request_service_id}}">
-          General request
-        </a>
-      </div>
-    </div>
-  </div>
+    {{#if promoted_articles}}
+      <section class="articles">
+        <h2>{{t 'promoted_articles'}}</h2>
+        <ul class="article-list promoted-articles">
+          {{#each promoted_articles}}
+            <li class="promoted-articles-item">
+                <a href="{{url}}">
+                  {{title}}
+
+                  {{#if internal}}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
+                      <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
+                      <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
+                    </svg>
+                  {{/if}}
+                </a>
+            </li>
+          {{/each}}
+        </ul>
+      </section>
+    {{/if}}
+  </section>
+{{!--
+  {{#if help_center.community_enabled}}
+    <section class="section home-section community">
+      <h2>{{t 'community'}}</h2>
+      {{#link 'community' class='community-link'}}
+        {{t 'join_conversation'}}
+      {{/link}}
+
+      <div class="community-image"></div>
+    </section>
+  {{/if}}
+--}}
+  <section class="section home-section activity">
+    {{#if settings.show_recent_activity}}
+      {{recent_activity}}
+    {{/if}}
+  </section>
 </div>
-{{/if}}
-
-{{#if signed_in}}
-<!-- Render the Zendesk service catalog into our card -->
-<script type="module">
-  try {
-    const { renderServiceCatalogPage } = await import("service-catalog");
-    const main = document.getElementById("service-catalog-main-content");
-    if (main) {
-      renderServiceCatalogPage(
-        main,
-        {{json settings}},
-        {{json help_center.base_locale}},
-        {{json (page_path 'help_center')}}
-      );
-    }
-  } catch (e) {
-    console.warn("Service catalog module unavailable:", e);
-    const main = document.getElementById("service-catalog-main-content");
-    if (main) {
-      const hcBase = (location.pathname.match(/^\/hc\/[^/]+/) || ["/hc/en-us"])[0];
-      // Built via DOM APIs (not innerHTML string concatenation) so hcBase —
-      // derived from location.pathname — can never be interpreted as markup.
-      const fallback = document.createElement("p");
-      fallback.className = "svc-catalog-fallback";
-      fallback.append("View the full ");
-      const link = document.createElement("a");
-      link.href = `${hcBase}/services`;
-      link.textContent = "Service Catalog";
-      fallback.append(link, ".");
-      main.replaceChildren(fallback);
-    }
-  }
-</script>
-
-<!-- Personalized time-based greeting in the hero. Name-resolution fetch is
-     shared with service_page.hbs via src/svcGreeting.js
-     (window.svcFetchFirstName); the fade-in timing below is page-specific. -->
-<script>
-  (function () {
-    const nameEl = document.getElementById('svc-list-greeting-name');
-    if (!nameEl) return;
-
-    function setGreeting(first) {
-      if (!first) return;
-      const text = `, ${first}`;
-      if ((nameEl.textContent || '') === text && nameEl.classList.contains('svc-name-in')) return;
-      nameEl.textContent = text;
-      requestAnimationFrame(() => nameEl.classList.add('svc-name-in'));
-    }
-
-    // script.js (which defines window.svcFetchFirstName) is a classic script
-    // whose load order relative to this inline block isn't guaranteed, so
-    // poll briefly instead of assuming it has already run.
-    function tryFetch() {
-      if (typeof window.svcFetchFirstName === 'function') {
-        window.svcFetchFirstName(setGreeting);
-        return true;
-      }
-      return false;
-    }
-    if (!tryFetch()) {
-      let attempts = 0;
-      const iv = setInterval(() => {
-        attempts++;
-        if (tryFetch() || attempts > 100) clearInterval(iv);
-      }, 20);
-    }
-  })();
-</script>
-
-<!-- Native instant-search wiring: submit the native {{search}} form when the
-     pink button is clicked, and keep the ARPA-H placeholder text. The
-     real-time article suggestions and the results page are provided by
-     Zendesk's platform — there is no custom fetch/scoring layer. -->
-<script>
-  (function () {
-    var wrap = document.getElementById('svc-hero-search');
-    if (!wrap) return;
-    var form  = wrap.querySelector('form[role="search"]');
-    var input = wrap.querySelector('input[type="search"]');
-    var btn   = document.getElementById('svc-hero-search-btn');
-
-    if (input) input.setAttribute('placeholder', 'Search by service or keyword (e.g., Software, Device, SharePoint)…');
-
-    if (btn && form) {
-      btn.addEventListener('click', function () {
-        if (input && !input.value.trim()) { input.focus(); return; }
-        if (typeof form.requestSubmit === 'function') form.requestSubmit();
-        else form.submit();
-      });
-    }
-  })();
-</script>
-
-<!-- Catalog enhancements (tooltips, category text, search removal) and
-     category-swap skeleton hiding now live in src/svcCatalogEnhancements.js
-     (bundled into script.js) since neither depends on server-rendered
-     Curlybars data. Do not re-add them inline. -->
-
-<!-- Catalog reveal controller. The hero is static, fully-styled markup and is
-     visible immediately (no hide-by-default guard); only the async service
-     catalog is gated. This swaps the skeleton for the real catalog
-     (.svc-cat-ready) once it is complete. (.svc-ready is now a harmless no-op,
-     kept only so existing callers don't need touching.)
-     Shared reveal-on-complete controller lives in src/svcReveal.js
-     (window.initSvcRevealOnComplete), consistent with service_page.hbs's
-     form-skeleton reveal. SAFETY: 6s JS hard cap + 6.5s CSS failsafe +
-     instant reveal on bfcache. -->
-<script>
-  (function () {
-    var root = document.documentElement;
-
-    // Reveal the hero immediately once the page is interactive — the hero is
-    // our own fully-styled markup, so there's no reason to hold it for the
-    // catalog. Holding only the catalog behind its skeleton avoids the flash
-    // while keeping the greeting snappy.
-    function revealHero() { root.classList.add('svc-ready'); }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', revealHero);
-    } else {
-      revealHero();
-    }
-    window.addEventListener('pageshow', function (e) { if (e.persisted) revealHero(); });
-
-    var config = {
-      targetId: 'service-catalog-main-content',
-      skeletonId: 'svc-catalog-skeleton',
-      skeletonHideClass: 'svc-cat-skel-hide',
-      readyClasses: ['svc-cat-ready'],
-      // "Complete" = the catalog has real service links rendered.
-      isComplete: function (main) {
-        return !!main.querySelector('a[href*="/services/"]');
-      }
-    };
-    // script.js (which defines window.initSvcRevealOnComplete) is a classic
-    // script whose load order relative to this inline block isn't
-    // guaranteed, so poll briefly instead of assuming it has already run.
-    function tryInit() {
-      if (typeof window.initSvcRevealOnComplete === 'function') {
-        window.initSvcRevealOnComplete(config);
-        return true;
-      }
-      return false;
-    }
-    if (!tryInit()) {
-      var attempts = 0;
-      var iv = setInterval(function () {
-        attempts++;
-        if (tryInit() || attempts > 100) clearInterval(iv);
-      }, 20);
-    }
-  })();
-</script>
-{{/if}}
