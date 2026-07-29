@@ -306,17 +306,27 @@
   })();
 </script>
 
-{{!-- Floating training button --}}
+{{!-- Floating training button. Hidden by default: only rendered when an
+     admin has enabled it and provided a destination URL in the theme's
+     Settings panel (Service Catalog > Show Technology Training button /
+     Technology Training URL). See manifest.json's show_training_fab /
+     training_url settings. --}}
 <script>
   (function () {
-    var TRAINING_URL = 'REPLACE_WITH_TRAINING_URL';
+    var showTrainingFab = {{json settings.show_training_fab}};
+    var trainingUrl = {{json settings.training_url}};
+    // No Help Center "stock" translation key covers this ARPA-H-specific
+    // copy, so it's declared once here (used for both the aria-label and
+    // visible label below) rather than duplicated as two literals.
+    var trainingLabel = 'Looking for Technology Training?';
+    if (!showTrainingFab || typeof trainingUrl !== 'string' || !trainingUrl.trim()) return;
     if (document.getElementById('svc-training-fab')) return;
 
     var fab = document.createElement('a');
     fab.id = 'svc-training-fab';
     fab.className = 'svc-training-fab';
-    fab.href = TRAINING_URL;
-    fab.setAttribute('aria-label', 'Looking for Technology Training?');
+    fab.href = window.svcSafeHref ? window.svcSafeHref(trainingUrl, '#') : trainingUrl;
+    fab.setAttribute('aria-label', trainingLabel);
     fab.innerHTML =
       '<span class="svc-training-fab-icon" aria-hidden="true">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
@@ -324,7 +334,7 @@
           '<path d="M6 12v5c0 1 2.5 2.5 6 2.5s6-1.5 6-2.5v-5"></path>' +
         '</svg>' +
       '</span>' +
-      '<span class="svc-training-fab-label">Looking for Technology Training?</span>';
+      '<span class="svc-training-fab-label">' + trainingLabel + '</span>';
     document.body.appendChild(fab);
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
