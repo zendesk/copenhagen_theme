@@ -424,6 +424,21 @@
     var lastQuery = '';
     var activeController = null;
 
+    // ARPA-H-specific copy (no Help Center "stock" {{t}} key covers these —
+    // see src/svcSearch.js header comment for why). Centralized here as the
+    // single source of truth for this widget; the "empty" string must match
+    // the server-rendered placeholder in the markup above (shown before JS
+    // runs / when the query is too short).
+    var STRINGS = {
+      searching: 'Searching for related articles...',
+      loadError: "We couldn't load suggested articles right now.",
+      noResults: 'No related articles found yet. Try adding more detail in the request description.',
+      empty: 'Start typing in the request form to see related knowledge base articles.',
+      untitledArticle: 'Untitled article',
+      openForDetails: 'Open this article for more details.',
+      sectionPrefix: 'Section: '
+    };
+
     function escapeHtml(str) {
       return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
@@ -441,21 +456,21 @@
       suggestionsEl.innerHTML = '<div class="svc-article-empty">' + escapeHtml(message) + '</div>';
     }
     function renderLoading() {
-      suggestionsEl.innerHTML = '<div class="svc-article-loading">Searching for related articles...</div>';
+      suggestionsEl.innerHTML = '<div class="svc-article-loading">' + escapeHtml(STRINGS.searching) + '</div>';
     }
     function renderError() {
-      suggestionsEl.innerHTML = '<div class="svc-article-error">We couldn\'t load suggested articles right now.</div>';
+      suggestionsEl.innerHTML = '<div class="svc-article-error">' + escapeHtml(STRINGS.loadError) + '</div>';
     }
     function renderArticles(results) {
       if (!results || !results.length) {
-        renderEmpty('No related articles found yet. Try adding more detail in the request description.');
+        renderEmpty(STRINGS.noResults);
         return;
       }
       suggestionsEl.innerHTML = results.map(function (article) {
-        var t = escapeHtml(article.title || 'Untitled article');
+        var t = escapeHtml(article.title || STRINGS.untitledArticle);
         var href = escapeHtml(window.svcSafeHref ? window.svcSafeHref(article.html_url || article.url, '#') : '#');
-        var body = truncate(stripHtml(article.snippet || article.body || article.description || ''), 140) || 'Open this article for more details.';
-        var section = article.section_name ? 'Section: ' + escapeHtml(article.section_name) : '';
+        var body = truncate(stripHtml(article.snippet || article.body || article.description || ''), 140) || STRINGS.openForDetails;
+        var section = article.section_name ? STRINGS.sectionPrefix + escapeHtml(article.section_name) : '';
         return '<a class="svc-article-item" href="' + href + '">' +
           '<span class="svc-article-item-title">' + t + '</span>' +
           '<span class="svc-article-item-meta">' + escapeHtml(body) + '</span>' +
@@ -504,7 +519,7 @@
       if (query.length < 3) {
         lastQuery = '';
         if (activeController) activeController.abort();
-        renderEmpty('Start typing in the request form to see related knowledge base articles.');
+        renderEmpty(STRINGS.empty);
         return;
       }
       if (query === lastQuery) return;
