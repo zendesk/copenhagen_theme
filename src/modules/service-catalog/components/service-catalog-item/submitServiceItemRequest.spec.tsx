@@ -171,6 +171,47 @@ describe("submitServiceItemRequest", () => {
     expect(paragraphs[1]?.children).toHaveLength(0);
   });
 
+  it("encodes all user-controlled comment values as text", async () => {
+    const fetchMock = mockFetch();
+    const unsafeName = '<img src=x onerror="alert(1)"> & Service';
+    const unsafeSubmitterLabel =
+      'Submitter: <img src=x onerror="alert(2)"> Agent';
+    const unsafeRequesterLabel =
+      "Requester: <script>alert(3)</script> Employee";
+
+    await submitServiceItemRequest(
+      { ...mockItem, name: unsafeName },
+      [],
+      associatedLookupField,
+      attachments,
+      helpCenterPath,
+      null,
+      null,
+      null,
+      {
+        submitterLabel: unsafeSubmitterLabel,
+        requesterLabel: unsafeRequesterLabel,
+      }
+    );
+
+    const request = getSubmittedRequest(fetchMock);
+    const htmlBody = request.comment.html_body;
+    const parsedDocument = new DOMParser().parseFromString(
+      htmlBody,
+      "text/html"
+    );
+    const link = parsedDocument.querySelector("a");
+    const paragraphs = parsedDocument.querySelectorAll("p");
+
+    expect(request.subject).toBe(unsafeName);
+    expect(link?.textContent).toBe(unsafeName);
+    expect(link?.children).toHaveLength(0);
+    expect(paragraphs[0]?.textContent).toBe(unsafeSubmitterLabel);
+    expect(paragraphs[0]?.children).toHaveLength(0);
+    expect(paragraphs[1]?.textContent).toBe(unsafeRequesterLabel);
+    expect(paragraphs[1]?.children).toHaveLength(0);
+  });
+
   it("does not send requester_id or collaborators for a self request", async () => {
     const fetchMock = mockFetch();
 
