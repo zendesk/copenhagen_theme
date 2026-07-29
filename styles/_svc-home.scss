@@ -99,10 +99,21 @@
   padding: 9px 9px 9px 26px;
   background: #fff;
   border-radius: 1000px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: none;
+  box-shadow: none;
 }
-.svc-hero-search-icon { display: inline-flex; align-items: center; color: var(--svc-gray); }
+.svc-hero-search > * {
+  border: none !important;
+  box-shadow: none !important;
+}
+.svc-hero-search-icon { display: inline-flex; border: none; align-items: center; color: var(--svc-gray); }
 .svc-hero-search-icon svg { width: 24px; height: 24px; }
+.svc-hero-search > *:not(.svc-hero-search-icon):not(.svc-hero-search-btn) {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
 .svc-hero-input {
   flex: 1;
   min-width: 0;
@@ -110,11 +121,25 @@
   outline: none;
   background: transparent;
   font-family: var(--svc-font);
-  font-size: 18px;
+  font-size: 18px !important;
   color: var(--svc-ink);
   padding: 13px 16px;
 }
 .svc-hero-input::placeholder { color: #9aa1ad; }
+.svc-hero-search input[type="search"] {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  height: auto !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  font-family: var(--svc-font);
+  font-size: 18px !important;
+  color: var(--svc-ink);
+  padding: 13px 16px !important;
+  box-shadow: none !important;
+}
+.svc-hero-search input[type="search"]::placeholder { color: #9aa1ad; }
 .svc-hero-search-btn {
   display: inline-flex;
   align-items: center;
@@ -245,13 +270,6 @@
 .service-catalog-main-content a[href*="/services/"] *,
 .service-catalog-main-content [class*="card"] *,
 .service-catalog-main-content [class*="Card"] * { font-weight: 400 !important; }
-
-/* Hide the catalog's own search box (hero search replaces it). */
-.service-catalog-main-content form[role="search"],
-.service-catalog-main-content input[type="search"],
-.service-catalog-main-content input[type="text"],
-.service-catalog-main-content input:not([type]) { display: none !important; }
-.service-catalog-main-content .svc-native-search-hide { display: none !important; }
 
 /* SERVICE ICONS — NEVER CLIP */
 .service-catalog-main-content figure,
@@ -407,7 +425,26 @@ a.svc-help-btn:hover,
 
 /* Search input rounding (defensive) */
 .service-catalog-main-content input[type="text"],
-.service-catalog-main-content input[type="search"] { border-radius: 16px !important; }
+.service-catalog-main-content input[type="search"] {
+  border-radius: 16px !important;
+  padding: 2px 8px !important;
+  font-size: 14px !important;
+  caret-color: var(--svc-ink) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Kill Garden wrapper focus border on catalog search */
+.service-catalog-main-content [data-garden-id*="forms"],
+.service-catalog-main-content [data-garden-id*="forms"] *,
+.service-catalog-main-content [data-garden-id*="mediaInput"],
+.service-catalog-main-content [data-garden-id*="mediaInput"] *,
+.service-catalog-main-content [class*="StyledMedia"],
+.service-catalog-main-content [class*="StyledMedia"]:focus-within {
+  border-color: #dfe4ee !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
 
 /* ---------- CATALOG SKELETON + FADE-IN ---------- */
 .svc-catalog-stage { position: relative; min-height: 460px; }

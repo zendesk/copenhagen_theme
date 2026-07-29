@@ -3,11 +3,19 @@
 
 <section id="main-content" class="section hero">
   <div class="hero-inner">
+    {{!-- <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+    </svg>
+    {{search submit=false instant=settings.instant_search class='search search-full'}}
+    --}}
    {{#if signed_in}}
     <div class="centered-buttons">
-      <span class="item">{{link 'new_request' class='submit-a-request'}}</span>
+		  <span class="item">{{#link 'new_request' class='submit-a-request'}}Report an issue{{/link}}</span>
+      <!-- <span class="item submit-a-request"><a href="https://arpah1746463021.zendesk.com/hc/en-us/services">Services</a></span> -->
     </div>
-   {{/if}}
+   {{/if}}     
 </section>
 
 {{#unless signed_in}}
