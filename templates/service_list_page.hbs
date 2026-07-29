@@ -152,66 +152,54 @@
     console.warn("Service catalog module unavailable:", e);
     const main = document.getElementById("service-catalog-main-content");
     if (main) {
-      const hcBase = (location.pathname.match(/^\/hc\/[^/]+/) || ['/hc/en-us'])[0];
-      main.innerHTML =
-        '<p class="svc-catalog-fallback">View the full ' +
-        '<a href="' + hcBase + '/services">Service Catalog</a>.</p>';
+      const hcBase = (location.pathname.match(/^\/hc\/[^/]+/) || ["/hc/en-us"])[0];
+      // Built via DOM APIs (not innerHTML string concatenation) so hcBase —
+      // derived from location.pathname — can never be interpreted as markup.
+      const fallback = document.createElement("p");
+      fallback.className = "svc-catalog-fallback";
+      fallback.append("View the full ");
+      const link = document.createElement("a");
+      link.href = `${hcBase}/services`;
+      link.textContent = "Service Catalog";
+      fallback.append(link, ".");
+      main.replaceChildren(fallback);
     }
   }
 </script>
 
-<!-- Personalized time-based greeting in the hero. -->
+<!-- Personalized time-based greeting in the hero. Name-resolution fetch is
+     shared with service_page.hbs via src/svcGreeting.js
+     (window.svcFetchFirstName); the fade-in timing below is page-specific. -->
 <script>
   (function () {
-    const title = document.getElementById('svc-list-greeting');
     const nameEl = document.getElementById('svc-list-greeting-name');
+    if (!nameEl) return;
 
-    const hour = new Date().getHours();
-    const timeGreeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
-
-    const looksLikeAlias = (v) => {
-      if (!v) return true;
-      const s = String(v).trim();
-      if (!s) return true;
-      if (s.indexOf('@') !== -1) return true;
-      if (/^[a-z0-9._-]+$/.test(s) && s.indexOf(' ') === -1) return true;
-      return false;
-    };
-
-    const firstNameOf = (name) => {
-      const s = String(name || '').trim();
-      if (!s) return '';
-      if (s.indexOf(',') !== -1) {
-        const parts = s.split(',').map(p => p.trim()).filter(Boolean);
-        if (parts.length >= 2) return parts[1].split(/\s+/)[0];
-      }
-      return s.split(/\s+/)[0];
-    };
-
-    const setGreeting = (name) => {
-      if (!nameEl) return;
-      const first = firstNameOf(name);
+    function setGreeting(first) {
       if (!first) return;
       const text = `, ${first}`;
       if ((nameEl.textContent || '') === text && nameEl.classList.contains('svc-name-in')) return;
       nameEl.textContent = text;
       requestAnimationFrame(() => nameEl.classList.add('svc-name-in'));
-    };
+    }
 
-    fetch('/api/v2/users/me.json', { headers: { Accept: 'application/json' }, credentials: 'same-origin' })
-      .then(r => r.ok ? r.json() : null)
-      .then(d => {
-        const u = d && d.user;
-        if (!u) return;
-        const candidates = [
-          u.name,
-          u.details && u.details.name,
-          u.user_fields && (u.user_fields.full_name || u.user_fields.preferred_name || u.user_fields.first_name)
-        ];
-        const realName = candidates.find(c => !looksLikeAlias(c)) || u.name;
-        if (realName) setGreeting(realName);
-      })
-      .catch(() => {});
+    // script.js (which defines window.svcFetchFirstName) is a classic script
+    // whose load order relative to this inline block isn't guaranteed, so
+    // poll briefly instead of assuming it has already run.
+    function tryFetch() {
+      if (typeof window.svcFetchFirstName === 'function') {
+        window.svcFetchFirstName(setGreeting);
+        return true;
+      }
+      return false;
+    }
+    if (!tryFetch()) {
+      let attempts = 0;
+      const iv = setInterval(() => {
+        attempts++;
+        if (tryFetch() || attempts > 100) clearInterval(iv);
+      }, 20);
+    }
   })();
 </script>
 
@@ -239,239 +227,63 @@
   })();
 </script>
 
-<!-- Catalog enhancements: tooltips, category text, search removal. -->
-<script>
-  (function () {
-    const main = document.getElementById('service-catalog-main-content');
-    if (!main) return;
-
-    const safeClosest = (el, sel) => (el && el.nodeType === 1 && typeof el.closest === 'function') ? el.closest(sel) : null;
-    const inSidebar = el => !!safeClosest(el, '[data-test-id^="sidebar-category"]');
-
-    const tip = document.createElement('div');
-    tip.className = 'svc-tooltip';
-    tip.setAttribute('role', 'tooltip');
-    tip.style.left = '-9999px';
-    tip.style.top = '-9999px';
-    document.body.appendChild(tip);
-    let hideTimer = null;
-
-    function getCard(el) {
-      if (!el || el.nodeType !== 1) return null;
-      if (inSidebar(el)) return null;
-      const card = safeClosest(el, 'a[href*="/services/"]') ||
-                   safeClosest(el, '[data-testid="service-catalog-list-item-container"]');
-      if (!card || inSidebar(card)) return null;
-      if (!safeClosest(card, 'a[href*="/services/"]') && !card.querySelector('a[href*="/services/"]')) return null;
-      return card;
-    }
-    function findDescEl(card) {
-      if (!card || inSidebar(card) || typeof card.querySelectorAll !== 'function') return null;
-      const leaves = Array.from(card.querySelectorAll('div, p, span')).filter(el =>
-        el && !el.querySelector('a, h1, h2, h3, h4, h5, h6, svg, img, button, div, p, span') &&
-        (el.textContent || '').trim().length > 0
-      );
-      if (leaves.length < 2) return null;
-      const heading = card.querySelector('h1,h2,h3,h4,h5,h6');
-      const titleText = heading ? heading.textContent.trim() : leaves[0].textContent.trim();
-      return leaves.find(l => { const t = l.textContent.trim(); return t && t !== titleText; }) || null;
-    }
-    function descText(card) {
-      const el = findDescEl(card);
-      if (!el) return '';
-      const t = el.textContent.trim();
-      if (/^\d+$/.test(t)) return '';
-      return t;
-    }
-
-    function hideDescriptions() {
-      main.querySelectorAll('a[href*="/services/"], [class*="card"], [class*="Card"]').forEach(card => {
-        if (inSidebar(card)) return;
-        const el = findDescEl(card);
-        if (el && !el.classList.contains('svc-desc-hidden')) el.classList.add('svc-desc-hidden');
-      });
-    }
-    function positionTip(card) {
-      const rect = card.getBoundingClientRect();
-      tip.style.maxWidth = Math.max(180, Math.min(240, rect.width + 20)) + 'px';
-      const t = tip.getBoundingClientRect(), gap = 8;
-      let left = Math.min(Math.max(rect.left, 12), window.innerWidth - t.width - 12);
-      tip.style.setProperty('--svc-arrow-left', Math.max(10, Math.min(t.width - 18, (rect.left + rect.width / 2) - left - 4)) + 'px');
-      let top;
-      if (window.innerHeight - rect.bottom > t.height + gap + 12) { top = rect.bottom + gap; tip.classList.add('svc-tooltip-below'); tip.classList.remove('svc-tooltip-above'); }
-      else { top = rect.top - t.height - gap; tip.classList.add('svc-tooltip-above'); tip.classList.remove('svc-tooltip-below'); }
-      tip.style.left = Math.round(left) + 'px';
-      tip.style.top  = Math.round(top) + 'px';
-    }
-    function showTip(card) {
-      if (!card || inSidebar(card)) return;
-      const d = descText(card);
-      if (!d) return;
-      clearTimeout(hideTimer);
-      tip.textContent = d;
-      tip.style.left = '-9999px'; tip.style.top = '0px';
-      requestAnimationFrame(() => { positionTip(card); requestAnimationFrame(() => tip.classList.add('svc-tooltip-visible')); });
-    }
-    function hideTip() { tip.classList.remove('svc-tooltip-visible'); hideTimer = setTimeout(() => { tip.style.left = '-9999px'; }, 200); }
-
-    let userInteracted = false;
-    ['pointerdown', 'keydown', 'mousemove'].forEach(evt =>
-      window.addEventListener(evt, () => { userInteracted = true; }, { once: true, passive: true })
-    );
-
-    main.addEventListener('mouseover', e => { const c = getCard(e.target); if (c) showTip(c); });
-    main.addEventListener('mouseout',  e => { const c = getCard(e.target), to = e.relatedTarget ? getCard(e.relatedTarget) : null; if (c && c !== to) hideTip(); });
-    main.addEventListener('focusin',   e => { if (!userInteracted) return; const c = getCard(e.target); if (c) showTip(c); });
-    main.addEventListener('focusout',  e => { const c = getCard(e.target), to = e.relatedTarget ? getCard(e.relatedTarget) : null; if (c && c !== to) hideTip(); });
-    window.addEventListener('scroll', hideTip, { passive: true });
-    window.addEventListener('resize', hideTip);
-
-    function removeCatalogSearch() {
-      const fields = main.querySelectorAll(
-        'input[type="search"], input[type="text"], input:not([type]), [role="searchbox"], [contenteditable="true"]'
-      );
-      fields.forEach(field => {
-        if (inSidebar(field)) return;
-        const wrap = safeClosest(field, 'form[role="search"]') ||
-                     safeClosest(field, '[class*="search"]') ||
-                     safeClosest(field, '[class*="Search"]') ||
-                     field.parentElement;
-        if (wrap && wrap !== main &&
-            !wrap.querySelector('a[href*="/services/"]') &&
-            !wrap.querySelector('[data-test-id^="sidebar-category"]')) {
-          wrap.remove();
-        } else {
-          field.remove();
-        }
-      });
-    }
-
-    const DESCRIPTIONS = {
-      "all services": "Browse every service available from the Service Desk, or pick a category to narrow things down.",
-      "accessibility": "Request accessibility reviews and support to ensure content and tools work for everyone.",
-      "account services": "Manage your accounts, access, passwords, and identity credentials like PIV cards.",
-      "apps & tools": "Get access to, install, or troubleshoot the software applications and tools you use day to day.",
-      "aurora": "Support and requests related to the AURORA platform.",
-      "collaboration": "Tools and support for working together — chat, meetings, file sharing, and team spaces.",
-      "devices & equipment": "Request, return, or get help with laptops, peripherals, and other hardware.",
-      "event and room support": "Book and get technical support for conference rooms, events, and presentations.",
-      "get help": "Report an issue or get support — outages, hardware and software problems, lost devices, security incidents, and more.",
-      "grace": "Support and requests related to the GRACE platform.",
-      "help me learn": "Find training, certifications, and learning resources to build your skills."
-    };
-    const DEFAULT_DESC = "Browse the services in this category and submit a request to the Service Desk.";
-    function applyCategoryDescription() {
-      const heading = Array.from(main.querySelectorAll('h1, h2, h3')).find(h => !inSidebar(h));
-      if (!heading) return;
-      const text = DESCRIPTIONS[(heading.textContent || '').trim().toLowerCase()] || DEFAULT_DESC;
-      let desc = heading.parentElement ? heading.parentElement.querySelector(':scope > .svc-cat-description') : null;
-      if (!desc) { desc = document.createElement('p'); desc.className = 'svc-cat-description'; heading.insertAdjacentElement('afterend', desc); }
-      if (desc.textContent !== text) desc.textContent = text;
-    }
-
-        function enhance() {
-      [hideDescriptions, applyCategoryDescription]
-        .forEach(fn => { try { fn(); } catch (e) { console.warn('enhance step failed:', e); } });
-    }
-    enhance();
-    new MutationObserver(enhance).observe(main, { childList: true, subtree: true });
-  })();
-</script>
-
-<!-- Category-swap skeleton hiding -->
-<script>
-  (function () {
-    const main = document.getElementById('service-catalog-main-content');
-    if (!main) return;
-
-    const inSidebar = (el) =>
-      !!(el && el.nodeType === 1 && typeof el.closest === 'function' &&
-         el.closest('[data-test-id^="sidebar-category"]'));
-
-    function tagSkeletons() {
-      const cells = main.querySelectorAll(
-        '[data-testid="service-catalog-list-item-container"], [data-garden-id="grid.col"]'
-      );
-      cells.forEach(cell => {
-        if (cell.nodeType !== 1) return;
-        if (inSidebar(cell)) return;
-        const link = cell.querySelector('a[href*="/services/"]');
-        const isSkeleton = !link || (link.textContent || '').trim().length === 0;
-        cell.classList.toggle('svc-skeleton', isSkeleton);
-      });
-    }
-
-    try { tagSkeletons(); } catch (e) { console.warn('skeleton tag failed:', e); }
-    new MutationObserver(() => {
-      try { tagSkeletons(); } catch (e) { console.warn('skeleton tag failed:', e); }
-    }).observe(main, { childList: true, subtree: true });
-  })();
-</script>
+<!-- Catalog enhancements (tooltips, category text, search removal) and
+     category-swap skeleton hiding now live in src/svcCatalogEnhancements.js
+     (bundled into script.js) since neither depends on server-rendered
+     Curlybars data. Do not re-add them inline. -->
 
 <!-- Catalog reveal controller. The hero is static, fully-styled markup and is
      visible immediately (no hide-by-default guard); only the async service
      catalog is gated. This swaps the skeleton for the real catalog
      (.svc-cat-ready) once it is complete. (.svc-ready is now a harmless no-op,
      kept only so existing callers don't need touching.)
-     SAFETY: 6s JS hard cap + 6.5s CSS failsafe + instant reveal on bfcache. -->
+     Shared reveal-on-complete controller lives in src/svcReveal.js
+     (window.initSvcRevealOnComplete), consistent with service_page.hbs's
+     form-skeleton reveal. SAFETY: 6s JS hard cap + 6.5s CSS failsafe +
+     instant reveal on bfcache. -->
 <script>
   (function () {
     var root = document.documentElement;
-    var main = document.getElementById('service-catalog-main-content');
-    var skel = document.getElementById('svc-catalog-skeleton');
 
     // Reveal the hero immediately once the page is interactive — the hero is
     // our own fully-styled markup, so there's no reason to hold it for the
     // catalog. Holding only the catalog behind its skeleton avoids the flash
     // while keeping the greeting snappy.
-    function revealPage() { root.classList.add('svc-ready'); }
-
-    var done = false;
-    function showCatalog() {
-      if (done) return;
-      done = true;
-      root.classList.add('svc-cat-ready');
-      if (skel) {
-        skel.classList.add('svc-cat-skel-hide');
-        setTimeout(function () { if (skel && skel.parentNode) skel.parentNode.removeChild(skel); }, 320);
-      }
-    }
-
-    // Reveal the hero as soon as styles are applied (this script runs after
-    // the stylesheet in the body, so styling is guaranteed here).
+    function revealHero() { root.classList.add('svc-ready'); }
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', revealPage);
+      document.addEventListener('DOMContentLoaded', revealHero);
     } else {
-      revealPage();
+      revealHero();
     }
+    window.addEventListener('pageshow', function (e) { if (e.persisted) revealHero(); });
 
-    if (!main) { revealPage(); return; }
-
-    // "Complete" = the catalog has real service links rendered.
-    function catalogIsComplete() {
-      return !!main.querySelector('a[href*="/services/"]');
+    var config = {
+      targetId: 'service-catalog-main-content',
+      skeletonId: 'svc-catalog-skeleton',
+      skeletonHideClass: 'svc-cat-skel-hide',
+      readyClasses: ['svc-cat-ready'],
+      // "Complete" = the catalog has real service links rendered.
+      isComplete: function (main) {
+        return !!main.querySelector('a[href*="/services/"]');
+      }
+    };
+    // script.js (which defines window.initSvcRevealOnComplete) is a classic
+    // script whose load order relative to this inline block isn't
+    // guaranteed, so poll briefly instead of assuming it has already run.
+    function tryInit() {
+      if (typeof window.initSvcRevealOnComplete === 'function') {
+        window.initSvcRevealOnComplete(config);
+        return true;
+      }
+      return false;
     }
-
-    var SETTLE_MS = 400;
-    var settleTimer = null;
-    function armSettle() {
-      if (settleTimer) clearTimeout(settleTimer);
-      settleTimer = setTimeout(showCatalog, SETTLE_MS);
+    if (!tryInit()) {
+      var attempts = 0;
+      var iv = setInterval(function () {
+        attempts++;
+        if (tryInit() || attempts > 100) clearInterval(iv);
+      }, 20);
     }
-    function check() { if (!done && catalogIsComplete()) armSettle(); }
-
-    check();
-    var mo = new MutationObserver(check);
-    mo.observe(main, { childList: true, subtree: true });
-    (function stop() { if (done) mo.disconnect(); else setTimeout(stop, 300); })();
-
-    // Hard failsafe: reveal everything no later than 6s regardless.
-    setTimeout(function () { revealPage(); showCatalog(); }, 6000);
-
-    // bfcache restore: already rendered, reveal instantly.
-    window.addEventListener('pageshow', function (e) {
-      if (e.persisted) { revealPage(); showCatalog(); }
-    });
   })();
 </script>
 {{/if}}

@@ -39,7 +39,10 @@
   border-radius: 4px;
   border: 1px solid $high-contrast-border-color;
   height: 80px;
-  line-height: 40px;
+  // line-height matches height so single-line text stays vertically
+  // centered in the taller (accessibility touch-target) box; was
+  // previously left at the pre-bump 40px, which top-aligned the text.
+  line-height: 80px;
   outline: none;
   vertical-align: middle;
 

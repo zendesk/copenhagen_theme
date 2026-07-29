@@ -46,3 +46,18 @@ html body .header .search-wrapper {
 .svc-empty-hidden {
   display: none !important;
 }
+
+/* Shared skeleton-loading shimmer sweep. Used by the category/list skeleton
+   placeholders in _svc-home.scss and the item-page skeleton in
+   _svc-service-item.scss — defined once here so both @extend the same
+   gradient/animation instead of duplicating it. */
+@keyframes svcSkelShimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+%svc-skel-shimmer {
+  background: linear-gradient(100deg, var(--svc-line) 30%, #f6f8fc 50%, var(--svc-line) 70%);
+  background-size: 200% 100%;
+  animation: svcSkelShimmer 1.3s ease-in-out infinite;
+}

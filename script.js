@@ -754,6 +754,50 @@
     }
   })();
 
+  // ---------------------------------------------------------------------------
+  // 3. Wire the pink search-pill button (templates/search_results.hbs) to
+  //    submit the native search, matching native <button type="submit"> behavior.
+  //    Previously an inline <script> in that template; moved here per the
+  //    "don't re-add inline scripts" rule documented in document_head.hbs.
+  // ---------------------------------------------------------------------------
+  (function () {
+    function wireSearchPillButton() {
+      var btn = document.getElementById("svc-search-pill-btn");
+      if (!btn || btn.dataset.svcWired === "1") return;
+      var pill = btn.closest(".svc-search-pill");
+      if (!pill) return;
+      btn.dataset.svcWired = "1";
+      btn.addEventListener("click", function () {
+        var input = pill.querySelector(
+          'input[type="search"], input[type="text"], input:not([type])'
+        );
+        if (!input) return;
+        var form = input.form || input.closest("form");
+        if (form) {
+          if (typeof form.requestSubmit === "function") form.requestSubmit();
+          else form.submit();
+        } else {
+          input.focus();
+          input.dispatchEvent(
+            new KeyboardEvent("keydown", {
+              key: "Enter",
+              code: "Enter",
+              keyCode: 13,
+              which: 13,
+              bubbles: true,
+            })
+          );
+        }
+      });
+    }
+
+    if (document.readyState !== "loading") {
+      wireSearchPillButton();
+    } else {
+      document.addEventListener("DOMContentLoaded", wireSearchPillButton);
+    }
+  })();
+
   /*
    * Shared "live search" widget logic for the Service Catalog mini search
    * (service_page.hbs) and hero search (service_list_page.hbs).
@@ -1339,5 +1383,436 @@
     window.initSvcSearch = initSvcSearch;
     window.svcSafeHref = safeHref;
   }
+
+  /*
+   * Shared "who is this user" name-resolution helper for the service-catalog
+   * personalized greetings.
+   *
+   * Previously this fetch + alias/first-name parsing logic was copy-pasted
+   * almost line-for-line inline in both templates/service_page.hbs and
+   * templates/service_list_page.hbs (one ES5, one ES6, otherwise identical).
+   * Centralized here — same rationale as src/svcSearch.js, which already
+   * consolidated the duplicated search widget logic out of these same two
+   * templates.
+   *
+   * Each page still composes its own greeting text/reveal-timing around the
+   * resolved name (that part genuinely differs per page), so this module only
+   * owns the "fetch the signed-in user and pick a real display name" part.
+   *
+   * ES2015 only — this file is bundled into script.js.
+   */
+
+  function looksLikeAlias(v) {
+    if (!v) return true;
+    var s = String(v).trim();
+    if (!s) return true;
+    if (s.indexOf("@") !== -1) return true;
+    if (/^[a-z0-9._-]+$/.test(s) && s.indexOf(" ") === -1) return true;
+    return false;
+  }
+
+  function firstNameOf(name) {
+    var s = String(name || "").trim();
+    if (!s) return "";
+    if (s.indexOf(",") !== -1) {
+      var parts = s
+        .split(",")
+        .map(function (p) {
+          return p.trim();
+        })
+        .filter(Boolean);
+      if (parts.length >= 2) return parts[1].split(/\s+/)[0];
+    }
+    return s.split(/\s+/)[0];
+  }
+
+  // Fetches the signed-in user and calls back with their resolved first name
+  // (or "" if unavailable/anonymous/alias-only). Never rejects — network or
+  // parsing failures resolve to "" so callers don't need their own try/catch.
+  window.svcFetchFirstName = function (callback) {
+    fetch("/api/v2/users/me.json", {
+      headers: { Accept: "application/json" },
+      credentials: "same-origin",
+    })
+      .then(function (r) {
+        return r.ok ? r.json() : null;
+      })
+      .then(function (d) {
+        var u = d && d.user;
+        if (!u) {
+          callback("");
+          return;
+        }
+        var candidates = [
+          u.name,
+          u.details && u.details.name,
+          u.user_fields &&
+            (u.user_fields.full_name ||
+              u.user_fields.preferred_name ||
+              u.user_fields.first_name),
+        ];
+        var realName =
+          candidates.find(function (c) {
+            return !looksLikeAlias(c);
+          }) || u.name;
+        callback(firstNameOf(realName));
+      })
+      .catch(function () {
+        callback("");
+      });
+  };
+
+  /*
+   * Shared "reveal once the async content is ready" controller for the
+   * service-catalog skeleton placeholders.
+   *
+   * Previously this MutationObserver + settle-timer + hard-timeout + bfcache
+   * pattern was duplicated (with only the completion check and target/skeleton
+   * ids differing) between templates/service_page.hbs (form skeleton) and
+   * templates/service_list_page.hbs (catalog skeleton). Centralized here so
+   * both pages configure the same controller instead of re-implementing it.
+   *
+   * ES2015 only — this file is bundled into script.js.
+   */
+
+  // options:
+  //   targetId       (required) id of the element to observe for completion
+  //   skeletonId     (optional) id of the skeleton placeholder to hide/remove
+  //   readyClasses   (optional) array of classes added to <html> once revealed
+  //   isComplete(el) (required) returns true once `el` has its real content
+  //   settleMs       (optional, default 400) debounce after isComplete() first
+  //                  passes, so we don't reveal mid-render
+  //   hardCapMs      (optional, default 6000) reveal unconditionally by this
+  //                  point even if isComplete() never returns true
+  //   onReveal()     (optional) extra callback once revealed
+  window.initSvcRevealOnComplete = function (options) {
+    var root = document.documentElement;
+    var target = document.getElementById(options.targetId);
+    if (!target) return;
+    var skel = options.skeletonId
+      ? document.getElementById(options.skeletonId)
+      : null;
+
+    var done = false;
+    function reveal() {
+      if (done) return;
+      done = true;
+      (options.readyClasses || []).forEach(function (c) {
+        root.classList.add(c);
+      });
+      if (skel) {
+        skel.classList.add(options.skeletonHideClass || "svc-skel-hide");
+        setTimeout(function () {
+          if (skel && skel.parentNode) skel.parentNode.removeChild(skel);
+        }, 320);
+      }
+      if (options.onReveal) options.onReveal();
+    }
+
+    var settleTimer = null;
+    function armSettle() {
+      if (settleTimer) clearTimeout(settleTimer);
+      settleTimer = setTimeout(reveal, options.settleMs || 400);
+    }
+    function check() {
+      if (!done && options.isComplete(target)) armSettle();
+    }
+
+    check();
+    var mo = new MutationObserver(check);
+    mo.observe(target, { childList: true, subtree: true });
+    (function stop() {
+      if (done) mo.disconnect();
+      else setTimeout(stop, 300);
+    })();
+
+    setTimeout(reveal, options.hardCapMs || 6000);
+
+    window.addEventListener("pageshow", function (e) {
+      if (e.persisted) reveal();
+    });
+  };
+
+  /*
+   * Service-catalog list-page enhancements that used to be two separate inline
+   * <script> blocks in templates/service_list_page.hbs ("Catalog enhancements"
+   * and "Category-swap skeleton hiding"). Neither depends on server-rendered
+   * Curlybars data, so — same rationale as src/domFixups.js — they belong here
+   * instead of inline in the template.
+   *
+   * Both sections no-op on any page without #service-catalog-main-content, so
+   * this file is safe to include globally (bundled into script.js for every
+   * page) rather than only on the service list page.
+   *
+   * ES2015 only — this file is bundled into script.js.
+   */
+
+  // ---------------------------------------------------------------------------
+  // 1. Tooltips for truncated card descriptions and category description text.
+  //    (This used to also strip the Zendesk service-catalog widget's own
+  //    "search within services" field so it wouldn't duplicate the page's hero
+  //    search. PR #69 intentionally restored that native in-catalog search box,
+  //    so this module no longer removes it — see PR description "Added native
+  //    search back into services page list to search within services".)
+  // ---------------------------------------------------------------------------
+  (function () {
+    const main = document.getElementById("service-catalog-main-content");
+    if (!main) return;
+
+    const safeClosest = (el, sel) =>
+      el && el.nodeType === 1 && typeof el.closest === "function"
+        ? el.closest(sel)
+        : null;
+    const inSidebar = (el) =>
+      !!safeClosest(el, '[data-test-id^="sidebar-category"]');
+
+    const tip = document.createElement("div");
+    tip.className = "svc-tooltip";
+    tip.setAttribute("role", "tooltip");
+    tip.style.left = "-9999px";
+    tip.style.top = "-9999px";
+    document.body.appendChild(tip);
+    let hideTimer = null;
+
+    function getCard(el) {
+      if (!el || el.nodeType !== 1) return null;
+      if (inSidebar(el)) return null;
+      const card =
+        safeClosest(el, 'a[href*="/services/"]') ||
+        safeClosest(el, '[data-testid="service-catalog-list-item-container"]');
+      if (!card || inSidebar(card)) return null;
+      if (
+        !safeClosest(card, 'a[href*="/services/"]') &&
+        !card.querySelector('a[href*="/services/"]')
+      )
+        return null;
+      return card;
+    }
+    function findDescEl(card) {
+      if (!card || inSidebar(card) || typeof card.querySelectorAll !== "function")
+        return null;
+      const leaves = Array.from(card.querySelectorAll("div, p, span")).filter(
+        (el) =>
+          el &&
+          !el.querySelector(
+            "a, h1, h2, h3, h4, h5, h6, svg, img, button, div, p, span"
+          ) &&
+          (el.textContent || "").trim().length > 0
+      );
+      if (leaves.length < 2) return null;
+      const heading = card.querySelector("h1,h2,h3,h4,h5,h6");
+      const titleText = heading
+        ? heading.textContent.trim()
+        : leaves[0].textContent.trim();
+      return (
+        leaves.find((l) => {
+          const t = l.textContent.trim();
+          return t && t !== titleText;
+        }) || null
+      );
+    }
+    function descText(card) {
+      const el = findDescEl(card);
+      if (!el) return "";
+      const t = el.textContent.trim();
+      if (/^\d+$/.test(t)) return "";
+      return t;
+    }
+
+    function hideDescriptions() {
+      main
+        .querySelectorAll(
+          'a[href*="/services/"], [class*="card"], [class*="Card"]'
+        )
+        .forEach((card) => {
+          if (inSidebar(card)) return;
+          const el = findDescEl(card);
+          if (el && !el.classList.contains("svc-desc-hidden"))
+            el.classList.add("svc-desc-hidden");
+        });
+    }
+    function positionTip(card) {
+      const rect = card.getBoundingClientRect();
+      tip.style.maxWidth = Math.max(180, Math.min(240, rect.width + 20)) + "px";
+      const t = tip.getBoundingClientRect(),
+        gap = 8;
+      let left = Math.min(
+        Math.max(rect.left, 12),
+        window.innerWidth - t.width - 12
+      );
+      tip.style.setProperty(
+        "--svc-arrow-left",
+        Math.max(
+          10,
+          Math.min(t.width - 18, rect.left + rect.width / 2 - left - 4)
+        ) + "px"
+      );
+      let top;
+      if (window.innerHeight - rect.bottom > t.height + gap + 12) {
+        top = rect.bottom + gap;
+        tip.classList.add("svc-tooltip-below");
+        tip.classList.remove("svc-tooltip-above");
+      } else {
+        top = rect.top - t.height - gap;
+        tip.classList.add("svc-tooltip-above");
+        tip.classList.remove("svc-tooltip-below");
+      }
+      tip.style.left = Math.round(left) + "px";
+      tip.style.top = Math.round(top) + "px";
+    }
+    function showTip(card) {
+      if (!card || inSidebar(card)) return;
+      const d = descText(card);
+      if (!d) return;
+      clearTimeout(hideTimer);
+      tip.textContent = d;
+      tip.style.left = "-9999px";
+      tip.style.top = "0px";
+      requestAnimationFrame(() => {
+        positionTip(card);
+        requestAnimationFrame(() => tip.classList.add("svc-tooltip-visible"));
+      });
+    }
+    function hideTip() {
+      tip.classList.remove("svc-tooltip-visible");
+      hideTimer = setTimeout(() => {
+        tip.style.left = "-9999px";
+      }, 200);
+    }
+
+    let userInteracted = false;
+    ["pointerdown", "keydown", "mousemove"].forEach((evt) =>
+      window.addEventListener(
+        evt,
+        () => {
+          userInteracted = true;
+        },
+        { once: true, passive: true }
+      )
+    );
+
+    main.addEventListener("mouseover", (e) => {
+      const c = getCard(e.target);
+      if (c) showTip(c);
+    });
+    main.addEventListener("mouseout", (e) => {
+      const c = getCard(e.target),
+        to = e.relatedTarget ? getCard(e.relatedTarget) : null;
+      if (c && c !== to) hideTip();
+    });
+    main.addEventListener("focusin", (e) => {
+      if (!userInteracted) return;
+      const c = getCard(e.target);
+      if (c) showTip(c);
+    });
+    main.addEventListener("focusout", (e) => {
+      const c = getCard(e.target),
+        to = e.relatedTarget ? getCard(e.relatedTarget) : null;
+      if (c && c !== to) hideTip();
+    });
+    window.addEventListener("scroll", hideTip, { passive: true });
+    window.addEventListener("resize", hideTip);
+
+    const DESCRIPTIONS = {
+      "all services":
+        "Browse every service available from the Service Desk, or pick a category to narrow things down.",
+      accessibility:
+        "Request accessibility reviews and support to ensure content and tools work for everyone.",
+      "account services":
+        "Manage your accounts, access, passwords, and identity credentials like PIV cards.",
+      "apps & tools":
+        "Get access to, install, or troubleshoot the software applications and tools you use day to day.",
+      aurora: "Support and requests related to the AURORA platform.",
+      collaboration:
+        "Tools and support for working together — chat, meetings, file sharing, and team spaces.",
+      "devices & equipment":
+        "Request, return, or get help with laptops, peripherals, and other hardware.",
+      "event and room support":
+        "Book and get technical support for conference rooms, events, and presentations.",
+      "get help":
+        "Report an issue or get support — outages, hardware and software problems, lost devices, security incidents, and more.",
+      grace: "Support and requests related to the GRACE platform.",
+      "help me learn":
+        "Find training, certifications, and learning resources to build your skills.",
+    };
+    const DEFAULT_DESC =
+      "Browse the services in this category and submit a request to the Service Desk.";
+    function applyCategoryDescription() {
+      const heading = Array.from(main.querySelectorAll("h1, h2, h3")).find(
+        (h) => !inSidebar(h)
+      );
+      if (!heading) return;
+      const text =
+        DESCRIPTIONS[(heading.textContent || "").trim().toLowerCase()] ||
+        DEFAULT_DESC;
+      let desc = heading.parentElement
+        ? heading.parentElement.querySelector(":scope > .svc-cat-description")
+        : null;
+      if (!desc) {
+        desc = document.createElement("p");
+        desc.className = "svc-cat-description";
+        heading.insertAdjacentElement("afterend", desc);
+      }
+      if (desc.textContent !== text) desc.textContent = text;
+    }
+
+    function enhance() {
+      [hideDescriptions, applyCategoryDescription].forEach((fn) => {
+        try {
+          fn();
+        } catch (e) {
+          console.warn("enhance step failed:", e);
+        }
+      });
+    }
+    enhance();
+    new MutationObserver(enhance).observe(main, {
+      childList: true,
+      subtree: true,
+    });
+  })();
+
+  // ---------------------------------------------------------------------------
+  // 2. Category-swap skeleton hiding: tag catalog grid cells that haven't
+  //    rendered their real link yet as skeletons so the CSS shimmer applies.
+  // ---------------------------------------------------------------------------
+  (function () {
+    const main = document.getElementById("service-catalog-main-content");
+    if (!main) return;
+
+    const inSidebar = (el) =>
+      !!(
+        el &&
+        el.nodeType === 1 &&
+        typeof el.closest === "function" &&
+        el.closest('[data-test-id^="sidebar-category"]')
+      );
+
+    function tagSkeletons() {
+      const cells = main.querySelectorAll(
+        '[data-testid="service-catalog-list-item-container"], [data-garden-id="grid.col"]'
+      );
+      cells.forEach((cell) => {
+        if (cell.nodeType !== 1) return;
+        if (inSidebar(cell)) return;
+        const link = cell.querySelector('a[href*="/services/"]');
+        const isSkeleton = !link || (link.textContent || "").trim().length === 0;
+        cell.classList.toggle("svc-skeleton", isSkeleton);
+      });
+    }
+
+    try {
+      tagSkeletons();
+    } catch (e) {
+      console.warn("skeleton tag failed:", e);
+    }
+    new MutationObserver(() => {
+      try {
+        tagSkeletons();
+      } catch (e) {
+        console.warn("skeleton tag failed:", e);
+      }
+    }).observe(main, { childList: true, subtree: true });
+  })();
 
 })();

@@ -75,3 +75,47 @@
     document.addEventListener("DOMContentLoaded", hideEmpty);
   }
 })();
+
+// ---------------------------------------------------------------------------
+// 3. Wire the pink search-pill button (templates/search_results.hbs) to
+//    submit the native search, matching native <button type="submit"> behavior.
+//    Previously an inline <script> in that template; moved here per the
+//    "don't re-add inline scripts" rule documented in document_head.hbs.
+// ---------------------------------------------------------------------------
+(function () {
+  function wireSearchPillButton() {
+    var btn = document.getElementById("svc-search-pill-btn");
+    if (!btn || btn.dataset.svcWired === "1") return;
+    var pill = btn.closest(".svc-search-pill");
+    if (!pill) return;
+    btn.dataset.svcWired = "1";
+    btn.addEventListener("click", function () {
+      var input = pill.querySelector(
+        'input[type="search"], input[type="text"], input:not([type])'
+      );
+      if (!input) return;
+      var form = input.form || input.closest("form");
+      if (form) {
+        if (typeof form.requestSubmit === "function") form.requestSubmit();
+        else form.submit();
+      } else {
+        input.focus();
+        input.dispatchEvent(
+          new KeyboardEvent("keydown", {
+            key: "Enter",
+            code: "Enter",
+            keyCode: 13,
+            which: 13,
+            bubbles: true,
+          })
+        );
+      }
+    });
+  }
+
+  if (document.readyState !== "loading") {
+    wireSearchPillButton();
+  } else {
+    document.addEventListener("DOMContentLoaded", wireSearchPillButton);
+  }
+})();
