@@ -6821,7 +6821,6 @@ body {
 /* ---- SUBMIT BUTTON: overlap-aware hiding handled by JS ---- */
 .svc-custom-submit-wrap {
   position: relative;
-  z-index: 0;
 }
 
 /* ---- HELPER INFORMATION CARDS ---- */
