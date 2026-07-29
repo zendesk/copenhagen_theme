@@ -5212,6 +5212,11 @@ html body .header .search-wrapper {
   box-sizing: border-box !important;
 }
 
+/* Applied by src/domFixups.js to elements whose only text is "empty". */
+.svc-empty-hidden {
+  display: none !important;
+}
+
 /* ============================================================
    ARPA-H custom — home page (service_list_page): hero, combined
    live search, service-catalog card, skeleton loader, tooltips.
