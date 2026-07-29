@@ -31,30 +31,33 @@
       <h2 class="svc-hero-title"><span id="svc-list-greeting">&nbsp;</span><span id="svc-list-greeting-name" class="svc-greeting-name"></span></h2>
       <p class="svc-hero-subtitle" id="svc-list-subtitle">What do you need help with today?</p>
 
-      <form class="svc-hero-search" id="svc-hero-search" role="search" autocomplete="off">
-        <i class="svc-hero-search-icon" aria-hidden="true">
+      {{!-- Native Zendesk instant search (articles), skinned into the hero
+            pill. Real-time suggestions and the results page are rendered by
+            the platform — there is no custom fetch/scoring layer. The left
+            icon is decorative; the pink button submits the native form (wired
+            in the script below). Styling lives in styles/_svc-home.scss. --}}
+      <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+      <div class="svc-hero-search" id="svc-hero-search">
+        <span class="svc-hero-search-icon" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
-        </i>
-        <input type="text" id="svc-hero-input" class="svc-hero-input"
-               placeholder="How can we help?" aria-label="{{t 'search'}}"
-               role="combobox" aria-expanded="false" aria-controls="svc-hero-results" aria-autocomplete="list" />
-        <button type="submit" class="svc-hero-search-btn" aria-label="{{t 'search'}}">
+        </span>
+        {{search submit=false instant=settings.instant_search class='search search-full'}}
+        <button type="button" class="svc-hero-search-btn" id="svc-hero-search-btn" aria-label="{{t 'search'}}">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
         </button>
-        <div class="svc-hero-results" id="svc-hero-results" role="listbox" aria-label="Search results" hidden></div>
-      </form>
+      </div>
 
       <div class="svc-hero-chips" id="svc-hero-chips">
         <span class="svc-hero-chips-label">Popular:</span>
-        <button type="button" class="svc-hero-chip" data-q="PIV certificate renewal">PIV Cert Renewal</button>
-        <button type="button" class="svc-hero-chip" data-q="lost stolen device">Lost/Stolen Device</button>
-        <button type="button" class="svc-hero-chip" data-q="lost stolen PIV card">Lost/Stolen PIV Card</button>
-        <button type="button" class="svc-hero-chip" data-q="external sharepoint">SharePoint</button>
-        <button type="button" class="svc-hero-chip" data-q="shared mailbox distribution list">Shared Mailboxes/Distribution Lists</button>
+        <a class="svc-hero-chip" href="/hc/{{help_center.base_locale}}/search?query=PIV%20certificate%20renewal">PIV Cert Renewal</a>
+        <a class="svc-hero-chip" href="/hc/{{help_center.base_locale}}/search?query=lost%20stolen%20device">Lost/Stolen Device</a>
+        <a class="svc-hero-chip" href="/hc/{{help_center.base_locale}}/search?query=lost%20stolen%20PIV%20card">Lost/Stolen PIV Card</a>
+        <a class="svc-hero-chip" href="/hc/{{help_center.base_locale}}/search?query=external%20sharepoint">SharePoint</a>
+        <a class="svc-hero-chip" href="/hc/{{help_center.base_locale}}/search?query=shared%20mailbox%20distribution%20list">Shared Mailboxes/Distribution Lists</a>
       </div>
     </div>
     {{/if}}
@@ -116,13 +119,13 @@
           </div>
         </div>
       </div>
-      <!-- Static "Can't find it" banner. -->
+            <!-- Static "Can't find it" banner. -->
       <div class="svc-help-banner">
         <div class="svc-help-banner-text">
           <span class="svc-help-banner-title">Still can&rsquo;t find what you need?</span>
           <span class="svc-help-banner-sub">Submit a general request.</span>
         </div>
-        <a class="svc-help-btn" href="/hc/{{help_center.base_locale}}/services/{{settings.general_request_service_id}}?category_id={{settings.general_request_category_id}}">
+        <a class="svc-help-btn" href="/hc/{{help_center.base_locale}}/services/{{settings.other_request_service_id}}">
           General request
         </a>
       </div>
@@ -130,7 +133,6 @@
   </div>
 </div>
 {{/if}}
-
 
 {{#if signed_in}}
 <!-- Render the Zendesk service catalog into our card -->
@@ -201,37 +203,26 @@
   })();
 </script>
 
-<!-- Combined live search: services (catalog API) + resources (articles API).
-     Shared logic lives in src/svcSearch.js (bundled into script.js) so it
-     isn't duplicated with the mini search in service_page.hbs. -->
+<!-- Native instant-search wiring: submit the native {{search}} form when the
+     pink button is clicked, and keep the ARPA-H placeholder text. The
+     real-time article suggestions and the results page are provided by
+     Zendesk's platform — there is no custom fetch/scoring layer. -->
 <script>
   (function () {
-    var config = {
-      formId: 'svc-hero-search',
-      inputId: 'svc-hero-input',
-      resultsId: 'svc-hero-results',
-      chipsId: 'svc-hero-chips',
-      chipSelector: '.svc-hero-chip',
-      resultPrefix: 'res',
-      iconSize: 18,
-      gapPx: 10
-    };
-    // script.js (which defines window.initSvcSearch) is a classic script
-    // whose load order relative to this inline block isn't guaranteed, so
-    // poll briefly instead of assuming it has already run.
-    function tryInit() {
-      if (typeof window.initSvcSearch === 'function') {
-        window.initSvcSearch(config);
-        return true;
-      }
-      return false;
-    }
-    if (!tryInit()) {
-      var attempts = 0;
-      var iv = setInterval(function () {
-        attempts++;
-        if (tryInit() || attempts > 100) clearInterval(iv);
-      }, 20);
+    var wrap = document.getElementById('svc-hero-search');
+    if (!wrap) return;
+    var form  = wrap.querySelector('form[role="search"]');
+    var input = wrap.querySelector('input[type="search"]');
+    var btn   = document.getElementById('svc-hero-search-btn');
+
+    if (input) input.setAttribute('placeholder', 'How can we help?');
+
+    if (btn && form) {
+      btn.addEventListener('click', function () {
+        if (input && !input.value.trim()) { input.focus(); return; }
+        if (typeof form.requestSubmit === 'function') form.requestSubmit();
+        else form.submit();
+      });
     }
   })();
 </script>

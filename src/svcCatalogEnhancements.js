@@ -13,9 +13,12 @@
  */
 
 // ---------------------------------------------------------------------------
-// 1. Tooltips for truncated card descriptions, category description text,
-//    and removing the Zendesk service-catalog widget's own search field
-//    (the page has its own hero search instead).
+// 1. Tooltips for truncated card descriptions and category description text.
+//    (This used to also strip the Zendesk service-catalog widget's own
+//    "search within services" field so it wouldn't duplicate the page's hero
+//    search. PR #69 intentionally restored that native in-catalog search box,
+//    so this module no longer removes it — see PR description "Added native
+//    search back into services page list to search within services".)
 // ---------------------------------------------------------------------------
 (function () {
   const main = document.getElementById("service-catalog-main-content");
@@ -175,30 +178,6 @@
   window.addEventListener("scroll", hideTip, { passive: true });
   window.addEventListener("resize", hideTip);
 
-  function removeCatalogSearch() {
-    const fields = main.querySelectorAll(
-      'input[type="search"], input[type="text"], input:not([type]), [role="searchbox"], [contenteditable="true"]'
-    );
-    fields.forEach((field) => {
-      if (inSidebar(field)) return;
-      const wrap =
-        safeClosest(field, 'form[role="search"]') ||
-        safeClosest(field, '[class*="search"]') ||
-        safeClosest(field, '[class*="Search"]') ||
-        field.parentElement;
-      if (
-        wrap &&
-        wrap !== main &&
-        !wrap.querySelector('a[href*="/services/"]') &&
-        !wrap.querySelector('[data-test-id^="sidebar-category"]')
-      ) {
-        wrap.remove();
-      } else {
-        field.remove();
-      }
-    });
-  }
-
   const DESCRIPTIONS = {
     "all services":
       "Browse every service available from the Service Desk, or pick a category to narrow things down.",
@@ -243,15 +222,13 @@
   }
 
   function enhance() {
-    [removeCatalogSearch, hideDescriptions, applyCategoryDescription].forEach(
-      (fn) => {
-        try {
-          fn();
-        } catch (e) {
-          console.warn("enhance step failed:", e);
-        }
+    [hideDescriptions, applyCategoryDescription].forEach((fn) => {
+      try {
+        fn();
+      } catch (e) {
+        console.warn("enhance step failed:", e);
       }
-    );
+    });
   }
   enhance();
   new MutationObserver(enhance).observe(main, {

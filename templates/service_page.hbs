@@ -29,24 +29,21 @@
   <div id="main-content">
     <div class="svc-shell">
 
-      {{!-- Compact search (services + resources) --}}
+      {{!-- Native Zendesk instant search (same skin as the home hero). --}}
       <div class="svc-searchrow">
-        <form class="svc-mini-search" id="svc-mini-search" role="search" autocomplete="off">
-          <i class="svc-mini-search-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="svc-hero-search" id="svc-hero-search">
+          <span class="svc-hero-search-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-          </i>
-          <input type="text" id="svc-mini-input" class="svc-mini-input"
-                 placeholder="Search services and resources…" aria-label="{{t 'search'}}"
-                 role="combobox" aria-expanded="false" aria-controls="svc-mini-results" aria-autocomplete="list" />
-          <button type="submit" class="svc-mini-search-btn" aria-label="{{t 'search'}}">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          </span>
+          {{search submit=false instant=settings.instant_search class='search search-full'}}
+          <button type="button" class="svc-hero-search-btn" id="svc-hero-search-btn" aria-label="{{t 'search'}}">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
           </button>
-          <div class="svc-mini-results" id="svc-mini-results" role="listbox" aria-label="Search results" hidden></div>
-        </form>
+        </div>
       </div>
 
       {{!-- Header bar: logo (desktop), centered greeting, step indicator --}}
@@ -146,7 +143,7 @@
           <span class="svc-help-banner-title">Still can&rsquo;t find what you need?</span>
           <span class="svc-help-banner-sub">Submit a general request.</span>
         </div>
-        <a class="svc-help-btn" href="/hc/{{help_center.base_locale}}/services/{{settings.general_request_service_id}}?category_id={{settings.general_request_category_id}}">
+        <a class="svc-help-btn" href="/hc/{{help_center.base_locale}}/services/{{settings.other_request_service_id}}">
           General request
         </a>
       </div>
@@ -175,35 +172,25 @@
   renderServiceCatalogItem(container, settings, props);
 </script>
 
-{{!-- Compact search: services (catalog API) + articles (Help Center API).
-     Shared logic lives in src/svcSearch.js (bundled into script.js) so it
-     isn't duplicated with the hero search in service_list_page.hbs. --}}
+{{!-- Native instant-search wiring: the pink button submits the native
+     {{search}} form; placeholder text is set to match this page. The
+     real-time suggestions + results page are provided by Zendesk's platform. --}}
 <script>
   (function () {
-    var config = {
-      formId: 'svc-mini-search',
-      inputId: 'svc-mini-input',
-      resultsId: 'svc-mini-results',
-      resultPrefix: 'mr',
-      iconSize: 17,
-      gapPx: 8
-    };
-    // script.js (which defines window.initSvcSearch) is a classic script
-    // whose load order relative to this inline block isn't guaranteed, so
-    // poll briefly instead of assuming it has already run.
-    function tryInit() {
-      if (typeof window.initSvcSearch === 'function') {
-        window.initSvcSearch(config);
-        return true;
-      }
-      return false;
-    }
-    if (!tryInit()) {
-      var attempts = 0;
-      var iv = setInterval(function () {
-        attempts++;
-        if (tryInit() || attempts > 100) clearInterval(iv);
-      }, 20);
+    var wrap = document.getElementById('svc-hero-search');
+    if (!wrap) return;
+    var form  = wrap.querySelector('form[role="search"]');
+    var input = wrap.querySelector('input[type="search"]');
+    var btn   = document.getElementById('svc-hero-search-btn');
+
+    if (input) input.setAttribute('placeholder', 'Search services and resources…');
+
+    if (btn && form) {
+      btn.addEventListener('click', function () {
+        if (input && !input.value.trim()) { input.focus(); return; }
+        if (typeof form.requestSubmit === 'function') form.requestSubmit();
+        else form.submit();
+      });
     }
   })();
 </script>
@@ -355,8 +342,6 @@
   (function () {
     var serviceContainer = document.getElementById('service-catalog-item');
     var customSubmit = document.getElementById('svc-custom-submit');
-    var submitLabel = "{{t 'submit_a_request'}}";
-    var submittingLabel = 'Submitting...';
 
     function getNativeSubmit() {
       if (!serviceContainer) return null;
@@ -370,7 +355,7 @@
       var actionBlock = submitEl.closest('section') || submitEl.closest('fieldset') || submitEl.closest('div[role="group"]') || submitEl.parentElement;
       while (actionBlock && actionBlock !== serviceContainer) {
         var txt = (actionBlock.textContent || '').replace(/\s+/g, ' ').trim();
-        if (/submit request/i.test(txt) && /user/i.test(txt)) {
+        if (/submit request/i.test(txt) && /(user|requester)/i.test(txt)) {
           actionBlock.classList.add('svc-hide-native-actions');
           return;
         }
@@ -380,16 +365,31 @@
 
     function wireCustomSubmit() {
       if (!customSubmit) return;
+      var originalLabel = customSubmit.textContent;
       customSubmit.addEventListener('click', function () {
         var nativeSubmit = getNativeSubmit();
         if (!nativeSubmit) return;
         customSubmit.disabled = true;
-        customSubmit.textContent = submittingLabel;
+        customSubmit.textContent = 'Submitting\u2026';
         nativeSubmit.click();
+        var observer = new MutationObserver(function () {
+          var current = getNativeSubmit();
+          if (current && !current.disabled) {
+            customSubmit.disabled = false;
+            customSubmit.textContent = originalLabel;
+            observer.disconnect();
+          }
+        });
+        observer.observe(serviceContainer, {
+          attributes: true,
+          subtree: true,
+          attributeFilter: ['disabled']
+        });
         setTimeout(function () {
+          observer.disconnect();
           customSubmit.disabled = false;
-          customSubmit.textContent = submitLabel;
-        }, 3000);
+          customSubmit.textContent = originalLabel;
+        }, 15000);
       });
     }
 
@@ -460,7 +460,7 @@
       }
       suggestionsEl.innerHTML = results.map(function (article) {
         var t = escapeHtml(article.title || STRINGS.untitledArticle);
-        var href = escapeHtml(window.svcSafeHref ? window.svcSafeHref(article.html_url || article.url, '#') : (article.html_url || article.url || '#'));
+        var href = escapeHtml(window.svcSafeHref ? window.svcSafeHref(article.html_url || article.url, '#') : '#');
         var body = truncate(stripHtml(article.snippet || article.body || article.description || ''), 140) || STRINGS.openForDetails;
         var section = article.section_name ? STRINGS.sectionPrefix + escapeHtml(article.section_name) : '';
         return '<a class="svc-article-item" href="' + href + '">' +
