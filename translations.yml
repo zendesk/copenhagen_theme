@@ -468,3 +468,13 @@ parts:
       title: "Description for the general request category id setting"
       screenshot: ""
       value: "The service catalog category ID used by the \"General request\" fallback link"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.other_request_service_id_label"
+      title: "Label for the other request service id setting"
+      screenshot: ""
+      value: "Other request service ID"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.other_request_service_id_description"
+      title: "Description for the other request service id setting"
+      screenshot: ""
+      value: "The service catalog item ID for the \"Other\" request, used by the \"General request\" fallback link on service pages"

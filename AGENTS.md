@@ -76,6 +76,8 @@ Translations stored in `src/modules/[module]/translations/`.
 ### Translations: what goes where
 - `translations.yml` (repo root) is only for strings referenced by `manifest.json` (theme settings labels/descriptions shown in the Settings panel). Don't add template or React strings here.
 - In Curlybars templates (`templates/*.hbs`), the `{{t "key"}}` helper only resolves keys that Help Center exposes to the theme's `t` helper. A new key must be added there first; defining it in `translations.yml` or a module's `translations/` folder does not make it available to `{{t}}`.
+- `manifest.json` `label`/`description` fields hold translation *keys*, not literal text. The actual strings shown in the Settings panel live in `translations/en-us.json` — edit that file directly for new/changed setting labels and descriptions.
+- **Never run `yarn download-locales`** in this fork. It overwrites every file under `translations/*.json` (including `en-us.json`) with strings fetched from Zendesk's official `help_center_copenhagen_theme` CDN package, which has no knowledge of this fork's custom keys — running it silently deletes any custom translations added here.
 - React component strings live in `src/modules/[module]/translations/` and are loaded via `react-i18next` (see README for the extraction/update workflow).
 
 ## File Naming Conventions
