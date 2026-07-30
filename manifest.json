@@ -473,21 +473,21 @@
           "type": "text",
           "description": "general_request_service_id_description",
           "label": "general_request_service_id_label",
-          "value": "01KT6W4J21065JGC51VMSW8AGB"
+          "value": ""
         },
         {
           "identifier": "general_request_category_id",
           "type": "text",
           "description": "general_request_category_id_description",
           "label": "general_request_category_id_label",
-          "value": "01KP3TEETSJKEPJ08CSK7MJG41"
+          "value": ""
         },
-         {
+        {
           "identifier": "other_request_service_id",
           "type": "text",
           "description": "other_request_service_id_description",
           "label": "other_request_service_id_label",
-          "value": "01KX417CKM31JC6K7JBXYB0P7C"
+          "value": ""
         }
       ]
     }
