@@ -31,6 +31,7 @@ const HIDDEN_FIELDS = [
   "assignee",
   "custom_status",
   "lookup",
+  "multi_lookup",
 ];
 const NON_REMOVABLE_FIELDS = ["subject"];
 
