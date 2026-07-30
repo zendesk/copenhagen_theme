@@ -5423,12 +5423,7 @@ html body .header .search-wrapper {
   padding: 7px 14px;
 }
 
-.svc-home .header .ask-ai-icon,
-.svc-home .header .icon-menu {
-  color: #ffffff !important;
-}
-
-.svc-home .header .menu-button-mobile {
+.svc-home .header .ask-ai-icon {
   color: #ffffff !important;
 }
 
@@ -6155,7 +6150,13 @@ a.svc-help-btn:hover,
   .svc-home .header [data-testid*=MobileMenu] {
     display: none !important;
   }
-  /* Show the real mobile menu button on home, styled for the dark hero */
+  /* Show the real mobile menu button on home. NOTE: no forced white color
+     here (unlike a previous version) — the header is transparent and does
+     NOT visually overlap the hero image (they're separate, stacked,
+     non-overlapping elements), so a "styled for the dark hero" white icon
+     was actually white-on-white against the plain page background and
+     invisible. Falls back to the same default (dark, inherited) color
+     every other page already uses successfully. */
   .svc-home .header .nav-wrapper-mobile {
     display: flex !important;
     align-items: center;
@@ -6164,11 +6165,9 @@ a.svc-help-btn:hover,
     display: inline-flex !important;
     align-items: center;
     gap: 8px;
-    color: #ffffff !important;
   }
   .svc-home .header .icon-menu {
     display: inline-flex !important;
-    color: #ffffff !important;
   }
   .svc-home .header .menu-button-mobile .user-avatar {
     width: 28px;

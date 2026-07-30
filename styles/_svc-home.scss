@@ -39,9 +39,16 @@
   border-radius: 1000px;
   padding: 7px 14px;
 }
-.svc-home .header .ask-ai-icon,
-.svc-home .header .icon-menu { color: #ffffff !important; }
-.svc-home .header .menu-button-mobile { color: #ffffff !important; }
+.svc-home .header .ask-ai-icon { color: #ffffff !important; }
+// NOTE: unlike .ask-ai-icon (which sits inside the .ask-ai pill's own
+// rgba(255,255,255,0.12) background, so white always has contrast), the
+// mobile hamburger has no background of its own — it sits directly on
+// .svc-home .header, which is transparent (see top of this file) and is
+// NOT visually overlapping the hero image; the header and hero are
+// separate, stacked, non-overlapping elements. Forcing white here made the
+// hamburger icon and button invisible (white-on-white) against the plain
+// page background. Removed so it falls back to the same default (dark,
+// inherited) color every other page already uses successfully.
 
 /* ---------- HERO ---------- */
 .svc-hero { position: relative; }
@@ -514,7 +521,13 @@ a.svc-help-btn:hover,
     display: none !important;
   }
 
-  /* Show the real mobile menu button on home, styled for the dark hero */
+  /* Show the real mobile menu button on home. NOTE: no forced white color
+     here (unlike a previous version) — the header is transparent and does
+     NOT visually overlap the hero image (they're separate, stacked,
+     non-overlapping elements), so a "styled for the dark hero" white icon
+     was actually white-on-white against the plain page background and
+     invisible. Falls back to the same default (dark, inherited) color
+     every other page already uses successfully. */
   .svc-home .header .nav-wrapper-mobile {
     display: flex !important;
     align-items: center;
@@ -523,11 +536,9 @@ a.svc-help-btn:hover,
     display: inline-flex !important;
     align-items: center;
     gap: 8px;
-    color: #ffffff !important;
   }
   .svc-home .header .icon-menu {
     display: inline-flex !important;
-    color: #ffffff !important;
   }
   .svc-home .header .menu-button-mobile .user-avatar {
     width: 28px;
