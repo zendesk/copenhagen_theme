@@ -219,8 +219,16 @@ html.svc-home .header .search-wrapper {
   align-items: center !important;
 }
 
-.header > .nav-wrapper-mobile {
-  display: none !important;
+// Desktop-only: hide the mobile hamburger nav above the 768px breakpoint.
+// Must stay scoped to a media query — an unscoped `!important` here has the
+// same specificity as (and previously overrode, via later source order) the
+// `@media (max-width: 768px) { .header .nav-wrapper-mobile { display: flex } }`
+// rule above, which permanently hid the mobile hamburger button at every
+// viewport width.
+@media (min-width: 769px) {
+  .header > .nav-wrapper-mobile {
+    display: none !important;
+  }
 }
 
 @media (max-width: 768px) {
