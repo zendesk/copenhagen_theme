@@ -1,3 +1,11 @@
+# [4.49.0](https://github.com/zendesk/copenhagen_theme/compare/v4.48.0...v4.49.0) (2026-07-30)
+
+
+### Features
+
+* add MultiLookupField for multi-select lookup ticket fields [CD-4026] ([8adcb8b](https://github.com/zendesk/copenhagen_theme/commit/8adcb8b92ba15556e880f8bdd5b1728fa4838e6f))
+* add MultiLookupField translation strings ([b1ba531](https://github.com/zendesk/copenhagen_theme/commit/b1ba531eb83a37749a53917b2902b67e9f5e4762))
+
 # [4.48.0](https://github.com/zendesk/copenhagen_theme/compare/v4.47.3...v4.48.0) (2026-07-27)
 
 
