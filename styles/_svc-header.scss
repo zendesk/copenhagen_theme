@@ -7,6 +7,14 @@
   flex: 0 0 auto;
   order: 1;
 }
+// Redundant next to the logo image (and, for this org, long enough — e.g.
+// "Advanced Research Projects Agency for Health - Sandbox" — to be a major
+// contributor to header overflow at narrow widths); hide it everywhere.
+// Controlled by the theme's "Show Help Center name" setting, but even when
+// enabled we don't want it rendered.
+.header .logo span {
+  display: none !important;
+}
 .header .nav-wrapper-desktop {
   display: flex;
   align-items: center;
@@ -86,32 +94,16 @@ html.svc-home .header .search-wrapper {
     gap: 16px;
     padding: 12px 16px;
   }
-  /* Swap: hide desktop nav, show mobile hamburger */
+  /* Swap: hide desktop nav entirely, show mobile hamburger only.
+     .menu-button-mobile already renders the avatar plus a menu containing
+     every .user-info dropdown action (profile/requests/activities/sign
+     out) *and* the nav items that only exist in .nav-wrapper-desktop (Ask
+     AI, Submit a request, Service Catalog). Keeping .user-info visible
+     here duplicated the avatar on-screen and added unshrinkable width to
+     the header (logo + user-info + hamburger, none of which can shrink),
+     which is what pushed content off the right edge below ~612px. */
   .header .nav-wrapper-desktop {
-    display: flex !important;
-    flex: 0 0 auto;
-    order: 2;
-  }
-  .header .nav-wrapper-desktop > *:not(.user-info) {
     display: none !important;
-  }
-  .header .nav-wrapper-desktop .user-info {
-    display: inline-block !important;
-  }
-  .header .nav-wrapper-desktop .user-info .dropdown-toggle .svc-username {
-    display: none !important;
-  }
-  /* Fix B: keep the user dropdown anchored on-screen */
-  .header .nav-wrapper-desktop .user-info {
-    position: relative !important;
-  }
-  .header .nav-wrapper-desktop .dropdown-menu {
-    position: absolute !important;
-    right: 0 !important;
-    left: auto !important;
-    top: calc(100% + 4px) !important;
-    max-width: calc(100vw - 24px) !important;
-    box-sizing: border-box !important;
   }
   .header .nav-wrapper-mobile { display: flex !important; align-items: center; }
   .header .menu-button-mobile { display: inline-flex !important; align-items: center; gap: 8px; }
@@ -232,13 +224,11 @@ html.svc-home .header .search-wrapper {
 }
 
 @media (max-width: 768px) {
+  // .nav-wrapper-desktop (and the .user-info avatar dropdown it contains)
+  // is fully hidden on mobile above in the "Swap" block — .menu-button-mobile
+  // is the one user icon shown here, so there's nothing left to anchor or
+  // hide the username inside .user-info for.
   .header > .nav-wrapper-desktop {
-    display: flex !important;
-    margin-right: 10px !important;
-  }
-  /* Option A: hide the long email on phones — show avatar + chevron only */
-  .header .nav-wrapper-desktop .user-info .dropdown-toggle .svc-username,
-  .header .nav-wrapper-desktop .user-info [data-user-name] {
     display: none !important;
   }
 }
