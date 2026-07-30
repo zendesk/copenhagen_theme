@@ -6141,7 +6141,7 @@ a.svc-help-btn:hover,
 }
 /* ---------- MOBILE ---------- */
 @media (max-width: 768px) {
-  html, body {
+  html.svc-home, body.svc-home {
     overflow-x: hidden !important;
     max-width: 100% !important;
   }
