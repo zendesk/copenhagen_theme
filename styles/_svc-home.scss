@@ -492,7 +492,16 @@ a.svc-help-btn:hover,
 
 /* ---------- MOBILE ---------- */
 @media (max-width: 768px) {
-  html, body { overflow-x: hidden !important; max-width: 100% !important; }
+  // Scoped to .svc-home (added to both <html> and <body> by
+  // templates/service_list_page.hbs) — this used to be a bare `html, body`
+  // selector, which applied on *every* page, not just the home page. Since
+  // neither selector is scoped by combinator to an ancestor, `overflow-x:
+  // hidden !important` suppressed the horizontal scrollbar site-wide any
+  // time header content (logo + user-info avatar + mobile hamburger, none
+  // of which shrink) overflowed the viewport, silently clipping whichever
+  // header item sat off the right edge instead of leaving it reachable via
+  // scroll.
+  html.svc-home, body.svc-home { overflow-x: hidden !important; max-width: 100% !important; }
 
   /* Hide only stray/duplicate menu buttons — NOT our real menu button */
   .svc-home .header .mobile-menu-button,
