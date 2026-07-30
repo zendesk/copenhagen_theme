@@ -32,6 +32,21 @@ async function zendeskFetch(endpoint, options = {}) {
     return response.json();
 }
 
+async function getLiveThemeId(brandId) {
+    try {
+        const data = await zendeskFetch(`/guide/theming/themes?brand_id=${brandId}`, { method: 'GET' });
+        const themes = data.themes || [];
+        const liveTheme = themes.find(t => t.live);
+        return liveTheme ? liveTheme.id : null;
+    } catch (error) {
+        console.log('::group::Action failed with error');
+        console.log(error.message);
+        console.log('::endgroup::');
+        fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## List Themes Error\n\`\`\`\n${error.message}\n\`\`\``);
+        process.exit(1);
+    }
+}
+
 async function importTheme(brandId) {
     try {
         const data = await zendeskFetch('/guide/theming/jobs/themes/imports', {
@@ -72,6 +87,51 @@ async function importTheme(brandId) {
         console.log(error.message);
         console.log('::endgroup::');
         fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## Import Theme Error\n\`\`\`\n${error.message}\n\`\`\``);
+        process.exit(1);
+    }
+}
+
+async function updateTheme(themeId) {
+    try {
+        const data = await zendeskFetch('/guide/theming/jobs/themes/updates', {
+            method: 'POST',
+            body: JSON.stringify({
+                job: {
+                    attributes: {
+                        theme_id: themeId,
+                        // Preserve settings customized per-environment in the Theming Center
+                        // (e.g. service catalog IDs) instead of resetting them to manifest.json defaults.
+                        replace_settings: false,
+                        format: "zip"
+                    }
+                }
+            }),
+        });
+
+        const safeData = {
+            job: {
+                id: data.job.id,
+                status: data.job.status,
+                upload_url: data.job.data.upload.url,
+                upload_parameters: '[REDACTED]'
+            }
+        };
+        console.log('::group::Update Theme Response');
+        const prettyResponse = JSON.stringify(safeData, null, 2);
+        console.log(prettyResponse);
+        console.log('::endgroup::');
+        fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## Update Theme Response\n\`\`\`json\n${prettyResponse}\n\`\`\``);
+
+        return {
+            jobId: data.job.id,
+            uploadUrl: data.job.data.upload.url,
+            uploadParameters: data.job.data.upload.parameters
+        };
+    } catch (error) {
+        console.log('::group::Action failed with error');
+        console.log(error.message);
+        console.log('::endgroup::');
+        fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## Update Theme Error\n\`\`\`\n${error.message}\n\`\`\``);
         process.exit(1);
     }
 }
@@ -185,45 +245,78 @@ async function pruneOldThemes(newThemeId) {
     }
 }
 
-async function run() {
-    try {
-        const { jobId, themeId, uploadUrl, uploadParameters } = await importTheme(brandId);
-        console.log('Job ID:', jobId);
-        console.log('Theme ID:', themeId);
-        fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## New Theme ID\n\`${themeId}\``);
+async function waitForJob(jobId, actionLabel) {
+    let jobStatus = await checkJobStatus(jobId);
+    const startTime = Date.now();
+    let attemptInterval = 5000;
 
-        console.log('Uploading theme file...');
-        await uploadThemeFile(uploadUrl, uploadParameters, filePath);
-        console.log('Theme file uploaded.');
-
-        let jobStatus = await checkJobStatus(jobId);
-        const startTime = Date.now();
-        let attemptInterval = 5000;
-
-        while (jobStatus.status !== 'completed' && jobStatus.status !== 'failed') {
-            if (Date.now() - startTime > MAX_WAIT_TIME) {
-                console.error('Job status check timed out');
-                fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## Job Status Check Timeout\nJob did not complete within ${MAX_WAIT_TIME / 1000} seconds`);
-                process.exit(1);
-            }
-            console.log('Waiting for import to complete...');
-            await new Promise(resolve => setTimeout(resolve, attemptInterval));
-            jobStatus = await checkJobStatus(jobId);
-            attemptInterval = Math.min(attemptInterval * 1.5, 60000);
-        }
-
-        if (jobStatus.status === 'failed') {
-            console.error('Import failed:', JSON.stringify(jobStatus.errors, null, 2));
-            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## Import Failed\n\`\`\`json\n${JSON.stringify(jobStatus.errors, null, 2)}\n\`\`\``);
+    while (jobStatus.status !== 'completed' && jobStatus.status !== 'failed') {
+        if (Date.now() - startTime > MAX_WAIT_TIME) {
+            console.error('Job status check timed out');
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## Job Status Check Timeout\nJob did not complete within ${MAX_WAIT_TIME / 1000} seconds`);
             process.exit(1);
         }
+        console.log(`Waiting for ${actionLabel} to complete...`);
+        await new Promise(resolve => setTimeout(resolve, attemptInterval));
+        jobStatus = await checkJobStatus(jobId);
+        attemptInterval = Math.min(attemptInterval * 1.5, 60000);
+    }
 
-        console.log('Pruning old themes before publish...');
-        await pruneOldThemes(themeId);
+    if (jobStatus.status === 'failed') {
+        console.error(`${actionLabel} failed:`, JSON.stringify(jobStatus.errors, null, 2));
+        fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## ${actionLabel} Failed\n\`\`\`json\n${JSON.stringify(jobStatus.errors, null, 2)}\n\`\`\``);
+        process.exit(1);
+    }
 
-        console.log('Import completed. Publishing theme...');
-        await publishTheme(themeId);
-        console.log('Theme published.');
+    return jobStatus;
+}
+
+async function run() {
+    try {
+        const liveThemeId = await getLiveThemeId(brandId);
+
+        if (liveThemeId) {
+            // Update the existing live theme in place with replace_settings: false so
+            // per-environment settings (e.g. service catalog IDs) set in the Theming
+            // Center aren't reset to the manifest.json defaults on every deploy.
+            console.log('Live theme found:', liveThemeId);
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## Live Theme ID\n\`${liveThemeId}\``);
+
+            const { jobId, uploadUrl, uploadParameters } = await updateTheme(liveThemeId);
+            console.log('Job ID:', jobId);
+
+            console.log('Uploading theme file...');
+            await uploadThemeFile(uploadUrl, uploadParameters, filePath);
+            console.log('Theme file uploaded.');
+
+            await waitForJob(jobId, 'Update');
+            console.log('Theme updated in place. No publish needed — it was already live.');
+
+            console.log('Pruning old themes...');
+            await pruneOldThemes(liveThemeId);
+        } else {
+            // No live theme yet for this brand (e.g. first-time setup) — fall back to
+            // importing a brand-new theme and publishing it.
+            console.log('No live theme found for brand. Falling back to import.');
+
+            const { jobId, themeId, uploadUrl, uploadParameters } = await importTheme(brandId);
+            console.log('Job ID:', jobId);
+            console.log('Theme ID:', themeId);
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\n## New Theme ID\n\`${themeId}\``);
+
+            console.log('Uploading theme file...');
+            await uploadThemeFile(uploadUrl, uploadParameters, filePath);
+            console.log('Theme file uploaded.');
+
+            await waitForJob(jobId, 'Import');
+
+            console.log('Pruning old themes before publish...');
+            await pruneOldThemes(themeId);
+
+            console.log('Import completed. Publishing theme...');
+            await publishTheme(themeId);
+            console.log('Theme published.');
+        }
     } catch (error) {
         console.error('An error occurred:', error);
         process.exit(1);
