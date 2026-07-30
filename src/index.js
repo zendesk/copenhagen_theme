@@ -6,7 +6,6 @@ import "./share";
 import "./search";
 import "./forms";
 import "./domFixups";
-import "./fixDuplicatedHelpCenterPath";
 import "./svcSearch";
 import "./svcGreeting";
 import "./svcReveal";

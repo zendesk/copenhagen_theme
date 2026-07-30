@@ -11,14 +11,11 @@
   /hc/<locale>/services/<other-id>/hc/services/<id>) and landing on a 404.
 
   We can't patch that widget directly - its DOM lives in closed shadow
-  roots we have no access to (see src/fixDuplicatedHelpCenterPath.js for
-  the full writeup and the tested/canonical version of this same check).
-  This inline copy exists ONLY so the redirect can run synchronously,
-  before the browser parses/paints any <body> content, avoiding a visible
-  flash of the broken page. It must stay a plain, dependency-free snippet
-  (no bundle, no asset helper) to guarantee it runs first. Keep this in sync
-  with getCorrectedHelpCenterPath() in fixDuplicatedHelpCenterPath.js/.spec.js
-  if the algorithm ever changes.
+  roots we have no access to. This runs here, inline and dependency-free
+  at the very top of <head>, rather than in script.js, so the redirect
+  happens synchronously before the browser parses or paints any <body>
+  content - avoiding a visible flash of the broken page. This is the only
+  copy of this logic; it intentionally isn't duplicated into script.js.
 -->
 <script type="text/javascript">
   (function () {
