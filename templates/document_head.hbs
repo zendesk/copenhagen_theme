@@ -1,3 +1,41 @@
+<!--
+  Zero-flash guard against a specific broken-navigation bug: Zendesk's
+  native instant-search widget (the platform's own `<zd-autocomplete>` /
+  `<zd-autocomplete-multibrand>` custom elements behind the native "search"
+  template helper's instant-search mode, used on service_list_page.hbs and
+  service_page.hbs) returns service-catalog suggestions with a *relative*
+  URL missing its leading slash (e.g. "hc/services/<id>"). Clicking one
+  makes the browser resolve it against whatever directory the user was in,
+  producing a duplicated "/hc/" segment somewhere in the path (shape
+  differs by page, e.g. /hc/<locale>/hc/services/<id> or
+  /hc/<locale>/services/<other-id>/hc/services/<id>) and landing on a 404.
+
+  We can't patch that widget directly - its DOM lives in closed shadow
+  roots we have no access to (see src/fixDuplicatedHelpCenterPath.js for
+  the full writeup and the tested/canonical version of this same check).
+  This inline copy exists ONLY so the redirect can run synchronously,
+  before the browser parses/paints any <body> content, avoiding a visible
+  flash of the broken page. It must stay a plain, dependency-free snippet
+  (no bundle, no asset helper) to guarantee it runs first. Keep this in sync
+  with getCorrectedHelpCenterPath() in fixDuplicatedHelpCenterPath.js/.spec.js
+  if the algorithm ever changes.
+-->
+<script type="text/javascript">
+  (function () {
+    var pathname = window.location.pathname;
+    var firstSegmentMatch = /^\/hc\/([^/]+)\//.exec(pathname);
+    if (!firstSegmentMatch) return;
+    var locale = firstSegmentMatch[1];
+    var lastHcIndex = pathname.lastIndexOf("/hc/");
+    if (lastHcIndex <= 0) return;
+    var rest = pathname.slice(lastHcIndex + "/hc/".length);
+    if (!rest) return;
+    var corrected = "/hc/" + locale + "/" + rest;
+    if (corrected === pathname) return;
+    window.location.replace(corrected + window.location.search + window.location.hash);
+  })();
+</script>
+
 <!-- Customized 5-21-25 -->
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
