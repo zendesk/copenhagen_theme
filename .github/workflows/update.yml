@@ -72,12 +72,18 @@ jobs:
         run: |
           VERSION=$(node -p "require('./manifest.json').version.split('.').slice(0,2).join('.')")
           BRANCH="${TARGET_BRANCH}"
-          THEME_NAME="ARPA-H Theme ${VERSION}.${{ github.run_number }} (${BRANCH})"
+          RUN_NUMBER="${{ github.run_number }}"
+          THEME_NAME="ARPA-H Theme ${VERSION}.${RUN_NUMBER} (${BRANCH})"
           echo "Setting theme name to: ${THEME_NAME}"
+          # The Theme Update Job rejects uploads whose manifest "version" isn't strictly
+          # higher than the currently live theme's version, so bump the patch component
+          # with the ever-increasing run number. This is build-only (not committed back
+          # to git) — the real semantic version is still managed by semantic-release.
           node -e "
             const fs = require('fs');
             const m = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
             m.name = '${THEME_NAME}';
+            m.version = '${VERSION}.${RUN_NUMBER}';
             fs.writeFileSync('manifest.json', JSON.stringify(m, null, 2) + '\n');
           "
 
