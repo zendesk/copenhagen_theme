@@ -2,10 +2,18 @@ import { describe, it, expect } from "@jest/globals";
 import { getCorrectedHelpCenterPath } from "./fixDuplicatedHelpCenterPath";
 
 describe("getCorrectedHelpCenterPath", () => {
-  it("strips the duplicated /hc/<locale>/hc/ segment for a services link", () => {
+  it("strips the duplicated /hc/<locale>/hc/ segment for a services link (service_list_page.hbs shape)", () => {
     expect(
       getCorrectedHelpCenterPath(
         "/hc/en-us/hc/services/01KJZS1V2QCTPM1BR9Q9CWAZE3"
+      )
+    ).toBe("/hc/en-us/services/01KJZS1V2QCTPM1BR9Q9CWAZE3");
+  });
+
+  it("strips a duplicated /hc/ segment nested deeper in the path (service_page.hbs shape)", () => {
+    expect(
+      getCorrectedHelpCenterPath(
+        "/hc/en-us/services/01KJZQZ73Q8GF00C22QS8FVR83/hc/services/01KJZS1V2QCTPM1BR9Q9CWAZE3"
       )
     ).toBe("/hc/en-us/services/01KJZS1V2QCTPM1BR9Q9CWAZE3");
   });
@@ -16,6 +24,12 @@ describe("getCorrectedHelpCenterPath", () => {
     );
     expect(getCorrectedHelpCenterPath("/hc/en-us/hc/approval_requests/9")).toBe(
       "/hc/en-us/approval_requests/9"
+    );
+  });
+
+  it("self-heals even if the duplication somehow compounds more than once", () => {
+    expect(getCorrectedHelpCenterPath("/hc/en-us/hc/hc/services/1")).toBe(
+      "/hc/en-us/services/1"
     );
   });
 
