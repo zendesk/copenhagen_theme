@@ -7959,10 +7959,11 @@ html.svc-home .header .search-wrapper {
   align-items: center !important;
 }
 
-.header > .nav-wrapper-mobile {
-  display: none !important;
+@media (min-width: 769px) {
+  .header > .nav-wrapper-mobile {
+    display: none !important;
+  }
 }
-
 @media (max-width: 768px) {
   .header > .nav-wrapper-desktop {
     display: flex !important;
