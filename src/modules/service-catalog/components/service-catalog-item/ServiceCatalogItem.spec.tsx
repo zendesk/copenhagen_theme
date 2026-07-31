@@ -403,7 +403,7 @@ describe("ServiceCatalogItem", () => {
                 {
                   description: "Field is required",
                   error: "BlankValue",
-                  field_key: 999, // Field not in the form
+                  field_id: 999, // Field not in the form
                 },
               ],
             },
@@ -442,7 +442,7 @@ describe("ServiceCatalogItem", () => {
                 {
                   description: "Field is required",
                   error: "BlankValue",
-                  field_key: 1, // Field IS in the form
+                  field_id: 1, // Field IS in the form
                 },
               ],
             },
@@ -469,7 +469,7 @@ describe("ServiceCatalogItem", () => {
       });
     });
 
-    it("lights up the matching field with the backend error when field_key is present", async () => {
+    it("lights up the matching field with the backend error when field_id is present", async () => {
       const setRequestFields = jest.fn();
       mockUseItemFormFields.mockReturnValue({
         requestFields: mockRequestFields,
@@ -497,7 +497,7 @@ describe("ServiceCatalogItem", () => {
                 {
                   description: "Product name: cannot be blank",
                   error: "cannot be blank",
-                  field_key: 1,
+                  field_id: 1,
                 },
               ],
             },
@@ -529,7 +529,7 @@ describe("ServiceCatalogItem", () => {
       return renderWithTheme(<>{lastCall?.message}</>);
     };
 
-    it("should surface the underlying description when a 422 error has no field_key", async () => {
+    it("should surface the underlying description when a 422 error has no field_id", async () => {
       const errorResponse = {
         ok: false,
         status: 422,
@@ -577,7 +577,7 @@ describe("ServiceCatalogItem", () => {
       );
     });
 
-    it("should not show the refresh message when a 422 error has no field_key", async () => {
+    it("should not show the refresh message when a 422 error has no field_id", async () => {
       const errorResponse = {
         ok: false,
         status: 422,
@@ -628,7 +628,7 @@ describe("ServiceCatalogItem", () => {
                 {
                   description: "Field is required",
                   error: "BlankValue",
-                  field_key: 999,
+                  field_id: 999,
                 },
               ],
             },

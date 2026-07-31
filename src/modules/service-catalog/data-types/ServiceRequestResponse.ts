@@ -1,7 +1,7 @@
 export interface ServiceRequestValidationError {
   description: string;
   error: string;
-  field_key?: number;
+  field_id?: number | null;
 }
 
 export interface ServiceRequestResponse {

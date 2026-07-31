@@ -292,12 +292,12 @@ export function ServiceCatalogItem({
 
     const staleFieldErrors = invalidFieldErrors.filter(
       (errorField) =>
-        errorField.field_key !== undefined &&
-        !requestFields.some((field) => field.id === errorField.field_key)
+        errorField.field_id != null &&
+        !requestFields.some((field) => field.id === errorField.field_id)
     );
 
     const unmappableErrors = invalidFieldErrors.filter(
-      (errorField) => errorField.field_key === undefined
+      (errorField) => errorField.field_id == null
     );
 
     if (staleFieldErrors.length > 0) {
@@ -331,7 +331,7 @@ export function ServiceCatalogItem({
 
     const updatedFields = requestFields.map((field) => {
       const errorField = invalidFieldErrors.find(
-        (errorField) => errorField.field_key === field.id
+        (errorField) => errorField.field_id === field.id
       );
       return { ...field, error: errorField?.description || null };
     });
