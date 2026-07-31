@@ -14,6 +14,7 @@ export interface ValidationErrors {
 export interface ValidationResult {
   hasError: boolean;
   errors: ValidationErrors;
+  fieldErrors: Record<string, string>;
 }
 
 function isAssetTypeField(field: TicketFieldObject): boolean {
@@ -62,6 +63,8 @@ export function useValidateServiceItemForm(
         }
       }
 
+      const fieldErrors: Record<string, string> = {};
+
       for (const field of fields) {
         if (field.required && !hasFieldValue(field)) {
           if (isAssetTypeField(field)) {
@@ -74,15 +77,23 @@ export function useValidateServiceItemForm(
               "service-catalog.asset-required-error",
               "Select an asset"
             );
+          } else {
+            fieldErrors[field.id] = t(
+              "service-catalog.field-required-error",
+              "This field is required."
+            );
           }
         }
       }
 
       const hasError = Boolean(
-        errors.attachments || errors.assetType || errors.asset
+        errors.attachments ||
+          errors.assetType ||
+          errors.asset ||
+          Object.keys(fieldErrors).length > 0
       );
 
-      return { hasError, errors };
+      return { hasError, errors, fieldErrors };
     },
     [attachmentsOption, t]
   );

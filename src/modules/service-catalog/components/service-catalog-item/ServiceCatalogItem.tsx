@@ -252,11 +252,18 @@ export function ServiceCatalogItem({
     fields: TicketFieldObject[],
     attachments: Attachment[]
   ): boolean {
-    const { hasError, errors } = validate(fields, attachments);
+    const { hasError, errors, fieldErrors } = validate(fields, attachments);
 
     setAttachmentsRequiredError(errors.attachments);
     setAssetTypeError(errors.assetType);
     setAssetError(errors.asset);
+
+    setRequestFields(
+      fields.map((field) => ({
+        ...field,
+        error: fieldErrors[field.id] ?? null,
+      }))
+    );
 
     return hasError;
   }

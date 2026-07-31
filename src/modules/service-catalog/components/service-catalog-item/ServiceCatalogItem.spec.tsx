@@ -154,7 +154,7 @@ describe("ServiceCatalogItem", () => {
       label: "Field 1",
       required: true,
       options: [],
-      value: null,
+      value: "Field 1 value",
       error: null,
     },
   ];
@@ -598,6 +598,70 @@ describe("ServiceCatalogItem", () => {
       expect(callArgs[8]).toEqual({
         submitterLabel: expect.stringContaining("Submitter: {{name}}"),
         requesterLabel: expect.stringContaining("Requester: {{name}}"),
+      });
+    });
+  });
+
+  describe("client-side required field validation", () => {
+    it("blocks submission and flags a required non-asset field left empty", async () => {
+      const mockSetRequestFields = jest.fn();
+      mockUseItemFormFields.mockReturnValue({
+        requestFields: [{ ...mockRequestFields[0]!, value: null }],
+        associatedLookupField: mockAssociatedLookupField,
+        categoryLookupField: null,
+        error: null,
+        setRequestFields: mockSetRequestFields,
+        handleChange: jest.fn(),
+        isRequestFieldsLoading: false,
+        assetTypeHiddenValue: "",
+        isAssetTypeHidden: false,
+        assetTypeIds: [],
+        assetIds: [],
+      });
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      fireEvent.submit(screen.getByTestId("item-request-form"));
+
+      await waitFor(() => {
+        expect(mockSetRequestFields).toHaveBeenCalledWith([
+          expect.objectContaining({
+            id: mockRequestFields[0]!.id,
+            error: "This field is required.",
+          }),
+        ]);
+      });
+
+      expect(mockSubmitServiceItemRequest).not.toHaveBeenCalled();
+    });
+
+    it("allows submission once the required field has a value", async () => {
+      const mockSetRequestFields = jest.fn();
+      mockUseItemFormFields.mockReturnValue({
+        requestFields: [{ ...mockRequestFields[0]!, value: "Field 1 value" }],
+        associatedLookupField: mockAssociatedLookupField,
+        categoryLookupField: null,
+        error: null,
+        setRequestFields: mockSetRequestFields,
+        handleChange: jest.fn(),
+        isRequestFieldsLoading: false,
+        assetTypeHiddenValue: "",
+        isAssetTypeHidden: false,
+        assetTypeIds: [],
+        assetIds: [],
+      });
+
+      mockSubmitServiceItemRequest.mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve({ request: { id: 1 } }),
+      } as unknown as Response);
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      fireEvent.submit(screen.getByTestId("item-request-form"));
+
+      await waitFor(() => {
+        expect(mockSubmitServiceItemRequest).toHaveBeenCalled();
       });
     });
   });
