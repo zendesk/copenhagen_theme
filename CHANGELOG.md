@@ -1,3 +1,11 @@
+# [4.50.0](https://github.com/zendesk/copenhagen_theme/compare/v4.49.0...v4.50.0) (2026-08-05)
+
+
+### Features
+
+* **templates:** add Applications nav link to header ([3e96418](https://github.com/zendesk/copenhagen_theme/commit/3e96418d05651ae0ad73f034dbb0c8d69e0e6190))
+* **templates:** add applications_page with application_catalog helper ([6cc60de](https://github.com/zendesk/copenhagen_theme/commit/6cc60de6203b2ee3371220093b0521f6f11604f4))
+
 # [4.49.0](https://github.com/zendesk/copenhagen_theme/compare/v4.48.0...v4.49.0) (2026-07-30)
 
 
