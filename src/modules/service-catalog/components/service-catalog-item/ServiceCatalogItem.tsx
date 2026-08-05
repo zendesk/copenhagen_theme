@@ -288,10 +288,6 @@ export function ServiceCatalogItem({
     const errorData: ServiceRequestResponse = await response.json();
     const invalidFieldErrors = errorData?.details?.base ?? [];
 
-    // Log the raw error payload since the notification only shows a generic
-    // user-facing message, and there's no error-tracking service to capture it otherwise.
-    console.error("Service request validation failed:", errorData);
-
     const staleFieldErrors = invalidFieldErrors.filter(
       (errorField) =>
         errorField.field_id != null &&

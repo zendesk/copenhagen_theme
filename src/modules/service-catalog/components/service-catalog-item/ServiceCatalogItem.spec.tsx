@@ -378,18 +378,6 @@ describe("ServiceCatalogItem", () => {
   });
 
   describe("error handling on form submission", () => {
-    let consoleErrorSpy: jest.SpyInstance;
-
-    beforeEach(() => {
-      consoleErrorSpy = jest
-        .spyOn(console, "error")
-        .mockImplementation(() => {});
-    });
-
-    afterEach(() => {
-      consoleErrorSpy.mockRestore();
-    });
-
     it("should show error notification when 422 response has missing fields not in the form", async () => {
       const errorResponse = {
         ok: false,
@@ -570,11 +558,6 @@ describe("ServiceCatalogItem", () => {
       expect(
         screen.getByText("What are you looking for? cannot be blank")
       ).toBeInTheDocument();
-
-      expect(consoleErrorSpy).toHaveBeenCalledWith(
-        "Service request validation failed:",
-        expect.objectContaining({ error: "RecordInvalid" })
-      );
     });
 
     it("should not show the refresh message when a 422 error has no field_id", async () => {
