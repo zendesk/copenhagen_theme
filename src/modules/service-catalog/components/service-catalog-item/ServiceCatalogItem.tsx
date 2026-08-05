@@ -288,8 +288,6 @@ export function ServiceCatalogItem({
     const errorData: ServiceRequestResponse = await response.json();
     const invalidFieldErrors = errorData?.details?.base ?? [];
 
-    console.error("Service request validation failed:", errorData);
-
     const staleFieldErrors = invalidFieldErrors.filter(
       (errorField) =>
         errorField.field_id != null &&
