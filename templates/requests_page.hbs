@@ -3,22 +3,5 @@
     <h1>{{t "requests"}}</h1>
   </header>
 
-  <div id="main-content">
-  </div>
+  {{component "request_list"}}
 </div>
-
-<script type="module">
-  import { renderRequestList } from "request-list"; 
-  
-  const container = document.getElementById("main-content"); 
-  const settings = {{json settings}}; 
-
-
-  const props = {   
-    locale: {{json help_center.base_locale}},
-    customStatusesEnabled: {{json help_center.custom_statuses_enabled}},
-    viewRequestsAcrossBrandsEnabled: {{json help_center.view_requests_across_brands_enabled}},
-  }; 
-  
-  renderRequestList(settings, props, container);
-</script>
