@@ -258,6 +258,13 @@ export function ServiceCatalogItem({
     setAssetTypeError(errors.assetType);
     setAssetError(errors.asset);
 
+    setRequestFields((currentFields) =>
+      currentFields.map((field) => ({
+        ...field,
+        error: errors.fields[field.id] ?? null,
+      }))
+    );
+
     return hasError;
   }
 
@@ -280,12 +287,18 @@ export function ServiceCatalogItem({
   async function handleValidationErrors(response: Response) {
     const errorData: ServiceRequestResponse = await response.json();
     const invalidFieldErrors = errorData?.details?.base ?? [];
-    const missingErrorFields = invalidFieldErrors.filter(
+
+    const staleFieldErrors = invalidFieldErrors.filter(
       (errorField) =>
-        !requestFields.some((field) => field.id === errorField.field_key)
+        errorField.field_id != null &&
+        !requestFields.some((field) => field.id === errorField.field_id)
     );
 
-    if (missingErrorFields.length > 0) {
+    const unmappableErrors = invalidFieldErrors.filter(
+      (errorField) => errorField.field_id == null
+    );
+
+    if (staleFieldErrors.length > 0) {
       notifySubmitError(
         <>
           {t(
@@ -302,13 +315,21 @@ export function ServiceCatalogItem({
           </StyledNotificationLink>
         </>
       );
+    } else if (unmappableErrors.length > 0) {
+      notifySubmitError(
+        <>
+          {unmappableErrors.map((errorField, index) => (
+            <div key={index}>{errorField.description}</div>
+          ))}
+        </>
+      );
     } else if (invalidFieldErrors.length > 0) {
       notifySubmitError();
     }
 
     const updatedFields = requestFields.map((field) => {
       const errorField = invalidFieldErrors.find(
-        (errorField) => errorField.field_key === field.id
+        (errorField) => errorField.field_id === field.id
       );
       return { ...field, error: errorField?.description || null };
     });

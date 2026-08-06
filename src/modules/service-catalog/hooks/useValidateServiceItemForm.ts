@@ -9,6 +9,7 @@ export interface ValidationErrors {
   attachments: string | null;
   assetType: string | null;
   asset: string | null;
+  fields: Record<number, string>;
 }
 
 export interface ValidationResult {
@@ -48,6 +49,7 @@ export function useValidateServiceItemForm(
         attachments: null,
         assetType: null,
         asset: null,
+        fields: {},
       };
 
       if (attachmentsOption) {
@@ -74,12 +76,20 @@ export function useValidateServiceItemForm(
               "service-catalog.asset-required-error",
               "Select an asset"
             );
+          } else {
+            errors.fields[field.id] = t(
+              "service-catalog.field-required-error",
+              "This field is required"
+            );
           }
         }
       }
 
       const hasError = Boolean(
-        errors.attachments || errors.assetType || errors.asset
+        errors.attachments ||
+          errors.assetType ||
+          errors.asset ||
+          Object.keys(errors.fields).length > 0
       );
 
       return { hasError, errors };
