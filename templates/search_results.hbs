@@ -37,7 +37,7 @@
                 </a>
               </li>
             {{/each}}
-            <li>
+            <li class="see-all-filters-item">
               <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_sources'}}">{{t 'show_more_sources'}}</button>
             </li>
           </ul>
@@ -100,12 +100,12 @@
               </li>
             {{/each}}
             {{#is current_filter.identifier 'knowledge_base'}}
-              <li>
+              <li class="see-all-filters-item">
                 <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_categories'}}">{{t 'show_more_categories'}}</button>
               </li>
             {{/is}}
             {{#is current_filter.identifier 'community'}}
-              <li>
+              <li class="see-all-filters-item">
                 <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_topics'}}">{{t 'show_more_topics'}}</button>
               </li>
             {{/is}}

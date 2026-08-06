@@ -4330,7 +4330,7 @@ ul {
     display: block;
   }
 }
-.search-results-sidebar .multibrand-filter-list--collapsed li:nth-child(1n+6) {
+.search-results-sidebar .multibrand-filter-list--collapsed li:nth-child(1n+6):not(.see-all-filters-item) {
   display: none;
 }
 .search-results-sidebar .multibrand-filter-list .doc-count {
