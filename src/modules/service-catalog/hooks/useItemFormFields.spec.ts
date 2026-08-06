@@ -1,5 +1,6 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 import type { ServiceCatalogItem } from "../data-types/ServiceCatalogItem";
+import type { TicketFieldObject } from "../../ticket-fields/data-types/TicketFieldObject";
 import { useItemFormFields } from "./useItemFormFields";
 
 describe("useItemFormFields", () => {
@@ -403,6 +404,113 @@ describe("useItemFormFields", () => {
         value: "Test Value",
       },
     ]);
+  });
+
+  it("clears an existing field error when handleChange is given a real value", async () => {
+    const fieldWithError: TicketFieldObject = {
+      ...expectedTextField,
+      options: [],
+      error: "This field is required.",
+    };
+
+    const formResponse = {
+      ticket_form: {
+        id: 1,
+        ticket_field_ids: [1, 2],
+        active: true,
+      },
+    };
+
+    const ticketFieldResponse = {
+      ticket_fields: [textField, lookupField],
+    };
+
+    (globalThis.fetch as jest.Mock) = jest.fn((url) => {
+      return url.includes("/api/v2/ticket_forms/1")
+        ? Promise.resolve({
+            json: () => Promise.resolve(formResponse),
+            status: 200,
+            ok: true,
+          })
+        : url.includes("/api/v2/ticket_fields?locale=en-us")
+        ? Promise.resolve({
+            json: () => Promise.resolve(ticketFieldResponse),
+            status: 200,
+            ok: true,
+          })
+        : {};
+    });
+
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useItemFormFields(serviceCatalogItem, baseLocale)
+    );
+
+    await waitForNextUpdate();
+
+    act(() => {
+      result.current.setRequestFields([fieldWithError]);
+    });
+
+    act(() => {
+      result.current.handleChange(fieldWithError, "Test Value");
+    });
+
+    expect(result.current.requestFields[0]!.error).toBeNull();
+    expect(result.current.requestFields[0]!.value).toBe("Test Value");
+  });
+
+  it("does not clear an existing field error when handleChange is given an empty value", async () => {
+    const fieldWithError: TicketFieldObject = {
+      ...expectedTextField,
+      options: [],
+      error: "This field is required.",
+    };
+
+    const formResponse = {
+      ticket_form: {
+        id: 1,
+        ticket_field_ids: [1, 2],
+        active: true,
+      },
+    };
+
+    const ticketFieldResponse = {
+      ticket_fields: [textField, lookupField],
+    };
+
+    (globalThis.fetch as jest.Mock) = jest.fn((url) => {
+      return url.includes("/api/v2/ticket_forms/1")
+        ? Promise.resolve({
+            json: () => Promise.resolve(formResponse),
+            status: 200,
+            ok: true,
+          })
+        : url.includes("/api/v2/ticket_fields?locale=en-us")
+        ? Promise.resolve({
+            json: () => Promise.resolve(ticketFieldResponse),
+            status: 200,
+            ok: true,
+          })
+        : {};
+    });
+
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useItemFormFields(serviceCatalogItem, baseLocale)
+    );
+
+    await waitForNextUpdate();
+
+    act(() => {
+      result.current.setRequestFields([fieldWithError]);
+    });
+
+    act(() => {
+      result.current.handleChange(fieldWithError, "");
+    });
+
+    expect(result.current.requestFields[0]!.error).toBe(
+      "This field is required."
+    );
   });
 
   it("should not include fields with type 'subject', type 'description', active false, or editable_in_portal false in requestFields", async () => {

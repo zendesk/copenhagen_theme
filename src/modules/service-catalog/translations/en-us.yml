@@ -189,6 +189,11 @@ parts:
       screenshot: "https://drive.google.com/file/d/1ltxeEIUX0KXNzhjYcXuwXG-ZCG-MEC2z/view?usp=sharing"
       value: "Select an asset"
   - translation:
+      key: "service-catalog.field-required-error"
+      title: "Error message shown under a required field left empty in the service catalog item request form"
+      screenshot: ""
+      value: "This field is required."
+  - translation:
       key: "service-catalog-sidebar.collapse-category"
       title: "[A11Y] Hidden label for screen readers for the collapse category button in the service catalog sidebar"
       screenshot: "https://drive.google.com/file/d/1QaRvkzKPV1ptp6fQ2JLeUJV91p6vBftE/view?usp=sharing"

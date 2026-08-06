@@ -356,12 +356,13 @@ describe("useValidateServiceItemForm", () => {
       expect(validationResult.hasError).toBe(false);
     });
 
-    it("ignores non-asset fields in validation", () => {
+    it("flags a required, empty, non-asset field via fieldErrors", () => {
       const { result } = renderHook(() =>
         useValidateServiceItemForm(undefined)
       );
 
-      // A required text field without asset relationship should not trigger errors
+      // A required text field without asset relationship should still be
+      // flagged, just via fieldErrors rather than the asset-specific errors.
       const fields = [
         createTextField({
           required: true,
@@ -372,10 +373,31 @@ describe("useValidateServiceItemForm", () => {
 
       const validationResult = result.current.validate(fields, []);
 
-      // No asset-related errors, even though field is required and empty
-      expect(validationResult.hasError).toBe(false);
+      expect(validationResult.hasError).toBe(true);
       expect(validationResult.errors.assetType).toBeNull();
       expect(validationResult.errors.asset).toBeNull();
+      expect(validationResult.fieldErrors[fields[0]!.id]).toBe(
+        "This field is required."
+      );
+    });
+
+    it("does not flag a required non-asset field once it has a value", () => {
+      const { result } = renderHook(() =>
+        useValidateServiceItemForm(undefined)
+      );
+
+      const fields = [
+        createTextField({
+          required: true,
+          value: "some value",
+          relationship_target_type: undefined,
+        }),
+      ];
+
+      const validationResult = result.current.validate(fields, []);
+
+      expect(validationResult.hasError).toBe(false);
+      expect(validationResult.fieldErrors).toEqual({});
     });
   });
 });

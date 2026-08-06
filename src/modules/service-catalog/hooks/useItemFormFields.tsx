@@ -343,9 +343,17 @@ export function useItemFormFields(
 
   const handleChange = useCallback(
     (field: TicketFieldObject, value: TicketFieldObject["value"]) => {
+      const hasValue = Array.isArray(value)
+        ? value.length > 0
+        : value !== undefined && value !== null && value !== "";
+
       const updatedFields = allRequestFields.map((ticketField) =>
         ticketField.name === field.name
-          ? { ...ticketField, value }
+          ? {
+              ...ticketField,
+              value,
+              error: hasValue ? null : ticketField.error,
+            }
           : ticketField
       );
 
