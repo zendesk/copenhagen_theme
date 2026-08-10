@@ -90,7 +90,7 @@
       }
     }
 
-    .multibrand-filter-list--collapsed li:nth-child(1n + 6) {
+    .multibrand-filter-list--collapsed li:nth-child(1n + 6):not(.see-all-filters-item) {
       display: none;
     }
 
