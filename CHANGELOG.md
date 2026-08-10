@@ -1,3 +1,10 @@
+## [4.50.2](https://github.com/zendesk/copenhagen_theme/compare/v4.50.1...v4.50.2) (2026-08-10)
+
+
+### Bug Fixes
+
+* show more filters button hidden in search sidebar ([91c2a80](https://github.com/zendesk/copenhagen_theme/commit/91c2a8027fb4242488114086669b6ac35178556f))
+
 ## [4.50.1](https://github.com/zendesk/copenhagen_theme/compare/v4.50.0...v4.50.1) (2026-08-06)
 
 
