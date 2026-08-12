@@ -10,11 +10,21 @@ import terser from "@rollup/plugin-terser";
 import svgr from "@svgr/rollup";
 import { generateImportMap } from "./generate-import-map.mjs";
 import { defineConfig } from "rollup";
+import { sep as filePathSeparator } from "path";
 
 const fileNames = "[name]-bundle.js";
 const isProduction = process.env.NODE_ENV === "production";
-const TRANSLATION_FILE_REGEX =
-  /src\/modules\/(.+?)\/translations\/locales\/.+?\.json$/;
+const TRANSLATION_FILE_REGEX = ( // IIFE
+  () => {
+    // escape the file path separator if it's a backslash (Windows)
+    const escapedSeparator = filePathSeparator.replace("\\", "\\\\");
+
+    return new RegExp(
+      ["src", "modules", "(.+?)", "translations", "locales", ".+?\.json$"].join(escapedSeparator)
+    );
+  }
+)();
+
 
 export default defineConfig([
   // Configuration for bundling the script.js file
