@@ -1,3 +1,10 @@
+## [4.50.3](https://github.com/zendesk/copenhagen_theme/compare/v4.50.2...v4.50.3) (2026-08-13)
+
+
+### Bug Fixes
+
+* **service-catalog:** preserve conditionally hidden fields on submission errors ([c36554d](https://github.com/zendesk/copenhagen_theme/commit/c36554dc6566d1492ef588303c5bf94c03d761a8))
+
 ## [4.50.2](https://github.com/zendesk/copenhagen_theme/compare/v4.50.1...v4.50.2) (2026-08-10)
 
 
