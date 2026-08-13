@@ -327,13 +327,18 @@ export function ServiceCatalogItem({
       notifySubmitError();
     }
 
-    const updatedFields = requestFields.map((field) => {
-      const errorField = invalidFieldErrors.find(
-        (errorField) => errorField.field_id === field.id
-      );
-      return { ...field, error: errorField?.description || null };
-    });
-    setRequestFields(updatedFields);
+    // setRequestFields is backed by the full (not just visible) field list,
+    // so we must merge via a functional update rather than replacing it with
+    // a mapped copy of `requestFields` (the visible subset) — otherwise any
+    // field currently hidden by an end-user condition would be dropped.
+    setRequestFields((prevFields) =>
+      prevFields.map((field) => {
+        const errorField = invalidFieldErrors.find(
+          (errorField) => errorField.field_id === field.id
+        );
+        return { ...field, error: errorField?.description || null };
+      })
+    );
   }
 
   async function handleSubmitError(response: Response | undefined) {

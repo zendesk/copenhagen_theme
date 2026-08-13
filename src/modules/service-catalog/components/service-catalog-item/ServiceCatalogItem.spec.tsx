@@ -502,13 +502,21 @@ describe("ServiceCatalogItem", () => {
       fireEvent.submit(form);
 
       await waitFor(() => {
-        expect(setRequestFields).toHaveBeenCalledWith([
-          expect.objectContaining({
-            id: 1,
-            error: "Product name: cannot be blank",
-          }),
-        ]);
+        expect(setRequestFields).toHaveBeenCalledWith(expect.any(Function));
       });
+
+      // validateForm's client-side check also calls setRequestFields
+      // (clearing stale errors) before handleValidationErrors does, so we
+      // need the last call, not the first.
+      const calls = setRequestFields.mock.calls;
+      const updateFn = calls[calls.length - 1][0];
+      const result = updateFn(mockRequestFields);
+      expect(result).toEqual([
+        expect.objectContaining({
+          id: 1,
+          error: "Product name: cannot be blank",
+        }),
+      ]);
     });
 
     const renderLastNotifyMessage = () => {
@@ -688,6 +696,87 @@ describe("ServiceCatalogItem", () => {
       await waitFor(() => {
         expect(mockNotify).not.toHaveBeenCalled();
       });
+    });
+
+    it("should merge field errors onto the full field list via a functional update, preserving fields hidden by end-user conditions", async () => {
+      const mockSetRequestFields = jest.fn();
+      mockUseItemFormFields.mockReturnValue({
+        requestFields: mockRequestFields,
+        associatedLookupField: mockAssociatedLookupField,
+        categoryLookupField: null,
+        error: null,
+        setRequestFields: mockSetRequestFields,
+        handleChange: jest.fn(),
+        isRequestFieldsLoading: false,
+        assetTypeHiddenValue: "",
+        isAssetTypeHidden: false,
+        assetTypeIds: [],
+        assetIds: [],
+      });
+
+      const errorResponse = {
+        ok: false,
+        status: 422,
+        json: () =>
+          Promise.resolve({
+            error: "RecordInvalid",
+            description: "Record validation errors",
+            details: {
+              base: [
+                {
+                  description: "Field is required",
+                  error: "BlankValue",
+                  field_id: 1, // matches mockRequestFields[0]
+                },
+              ],
+            },
+          }),
+      };
+
+      mockSubmitServiceItemRequest.mockResolvedValue(
+        errorResponse as unknown as Response
+      );
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      const form = screen.getByTestId("item-request-form");
+      fireEvent.submit(form);
+
+      await waitFor(() => {
+        // validateForm's client-side check calls setRequestFields first
+        // (clearing stale errors); handleValidationErrors's merge is the
+        // subsequent call once the mocked 422 response resolves.
+        expect(mockSetRequestFields.mock.calls.length).toBeGreaterThanOrEqual(
+          2
+        );
+      });
+
+      // A field hidden by an end-user condition would be absent from the
+      // (visible-only) `requestFields` passed to the component, but must
+      // still exist in the full underlying list the functional update
+      // operates on.
+      const hiddenField: TicketFieldObject = {
+        id: 42,
+        name: "custom_fields_42",
+        type: "text",
+        description: "Hidden field",
+        label: "Hidden field",
+        required: false,
+        options: [],
+        value: "should be preserved",
+        error: null,
+      };
+      const fullFieldList = [...mockRequestFields, hiddenField];
+
+      const calls = mockSetRequestFields.mock.calls;
+      const updateFn = calls[calls.length - 1][0];
+      const result = updateFn(fullFieldList);
+
+      expect(result).toContainEqual(hiddenField);
+      expect(result).toHaveLength(fullFieldList.length);
+      expect(result.find((f: TicketFieldObject) => f.id === 1)?.error).toBe(
+        "Field is required"
+      );
     });
 
     it("should show error notification for non-422 error responses", async () => {
