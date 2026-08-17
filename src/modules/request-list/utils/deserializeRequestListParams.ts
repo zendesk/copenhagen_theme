@@ -94,8 +94,9 @@ function getFiltersFromSearchParams(
   return res;
 }
 
-function isFilterValue(value: string): value is FilterValue {
+export function isFilterValue(value: unknown): value is FilterValue {
   return (
-    value.startsWith(":") || value.startsWith("<") || value.startsWith(">")
+    typeof value === "string" &&
+    (value.startsWith(":") || value.startsWith("<") || value.startsWith(">"))
   );
 }

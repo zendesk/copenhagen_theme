@@ -1,6 +1,7 @@
 import { CursorPagination } from "@zendeskgarden/react-pagination";
 import { useTranslation } from "react-i18next";
 import { useParams } from "../../hooks/useParams";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 import RequestsToolbar from "../requests-toolbar/RequestsToolbar";
 import { RequestsTable } from "../requests-table/RequestsTable";
 import RequestsTabs from "../requests-tabs/RequestsTabs";
@@ -17,6 +18,7 @@ import {
 
 import { serializeRequestListParams } from "../../utils/serializeRequestListParams";
 import { deserializeRequestListParams } from "../../utils/deserializeRequestListParams";
+import { isFilterValuesMap } from "../../utils/isFilterValuesMap";
 
 import { useUser } from "../../hooks/useUser";
 import { useOrganizations } from "../../hooks/useOrganizations";
@@ -31,6 +33,8 @@ export interface RequestsListProps {
   viewRequestsAcrossBrandsEnabled: boolean;
 }
 
+const FILTERS_LOCAL_STORAGE_KEY = "REQUEST_LIST_FILTERS";
+
 export function RequestsList({
   locale,
   customStatusesEnabled,
@@ -38,13 +42,18 @@ export function RequestsList({
 }: RequestsListProps): JSX.Element {
   const { t } = useTranslation();
 
+  const [storedFilters, setStoredFilters] = useLocalStorage<FilterValuesMap>(
+    FILTERS_LOCAL_STORAGE_KEY,
+    {}
+  );
+
   const { params, push } = useParams<RequestListParams>(
     {
       query: "",
       page: 1,
       sort: { order: "desc", by: "updated_at" },
       selectedTab: { name: MY_REQUESTS_TAB_NAME },
-      filters: {},
+      filters: isFilterValuesMap(storedFilters) ? storedFilters : {},
     },
     serializeRequestListParams,
     deserializeRequestListParams
@@ -96,7 +105,6 @@ export function RequestsList({
     push({
       page: 1,
       selectedTab: newSelectedTab,
-      filters: {},
     });
   };
 
@@ -114,6 +122,7 @@ export function RequestsList({
 
   const handleFiltersChanged = (newFilters: FilterValuesMap) => {
     push({ page: 1, filters: newFilters });
+    setStoredFilters(newFilters);
   };
 
   const onSort = (name: string): void => {

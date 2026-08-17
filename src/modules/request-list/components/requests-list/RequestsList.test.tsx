@@ -372,8 +372,87 @@ describe("Filter tabs", () => {
     expect(push).toHaveBeenCalledWith({
       page: 1,
       selectedTab: { name: ORG_REQUESTS_TAB_NAME, organizationId: 1 },
-      filters: {},
     });
+  });
+});
+
+describe("Filters persistence", () => {
+  const FILTERS_LOCAL_STORAGE_KEY = "REQUEST_LIST_FILTERS";
+
+  const storeFilters = (value: unknown, version = "v1") => {
+    localStorage.setItem(
+      FILTERS_LOCAL_STORAGE_KEY,
+      JSON.stringify([version, value])
+    );
+  };
+
+  const readStoredFilters = () =>
+    JSON.parse(localStorage.getItem(FILTERS_LOCAL_STORAGE_KEY) as string);
+
+  const expectInitialFilters = (filters: RequestListParams["filters"]) => {
+    expect(useParams).toHaveBeenCalledWith(
+      expect.objectContaining({ filters }),
+      expect.any(Function),
+      expect.any(Function)
+    );
+  };
+
+  test("<RequestsList /> restores stored filters when there are no URL params", async () => {
+    storeFilters({ status: [":open"] });
+
+    await renderComponent();
+
+    expectInitialFilters({ status: [":open"] });
+  });
+
+  test("<RequestsList /> ignores a corrupt stored value", async () => {
+    storeFilters("nonsense");
+
+    await renderComponent();
+
+    expectInitialFilters({});
+  });
+
+  test("<RequestsList /> ignores a stored value from an older version", async () => {
+    storeFilters({ status: [":open"] }, "v0");
+
+    await renderComponent();
+
+    expectInitialFilters({});
+  });
+
+  test("<RequestsList /> persists a filter selected in the modal", async () => {
+    await renderComponent();
+
+    fireEvent.click(screen.getByRole("button", { name: "Filter" }));
+    fireEvent.click(
+      screen.getByLabelText("Select filter", { selector: "input" })
+    );
+    fireEvent.click(screen.getByRole("option", { name: "Status" }));
+    fireEvent.click(screen.getByLabelText("Status", { selector: "input" }));
+    fireEvent.click(screen.getByRole("option", { name: "Open" }));
+    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+
+    const filters = { status: [":open :new :hold"] };
+
+    expect(push).toHaveBeenCalledWith({ page: 1, filters });
+    expect(readStoredFilters()).toEqual(["v1", filters]);
+  });
+
+  test("<RequestsList /> keeps stored filters when switching tabs", async () => {
+    storeFilters({ status: [":open"] });
+
+    await renderComponent({ filters: { status: [":open"] } });
+
+    fireEvent.click(
+      screen.getByRole("tab", { name: "Organizational requests" })
+    );
+
+    expect(push).toHaveBeenCalledWith({
+      page: 1,
+      selectedTab: { name: ORG_REQUESTS_TAB_NAME, organizationId: 1 },
+    });
+    expect(readStoredFilters()).toEqual(["v1", { status: [":open"] }]);
   });
 });
 
