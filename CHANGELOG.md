@@ -1,3 +1,10 @@
+## [4.50.4](https://github.com/zendesk/copenhagen_theme/compare/v4.50.3...v4.50.4) (2026-08-18)
+
+
+### Bug Fixes
+
+* **new-request-form:** support lookup and multi_lookup field prefill via URL params ([5ff6b07](https://github.com/zendesk/copenhagen_theme/commit/5ff6b07b0368bd8d0fb22c1ed9aaef4adf931dd1))
+
 ## [4.50.3](https://github.com/zendesk/copenhagen_theme/compare/v4.50.2...v4.50.3) (2026-08-13)
 
 
