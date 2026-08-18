@@ -44,7 +44,8 @@ export function RequestsList({
 
   const [storedFilters, setStoredFilters] = useLocalStorage<FilterValuesMap>(
     FILTERS_LOCAL_STORAGE_KEY,
-    {}
+    {},
+    "v1"
   );
 
   const { params, push } = useParams<RequestListParams>(
