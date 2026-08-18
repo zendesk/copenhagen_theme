@@ -5,6 +5,7 @@ import type { TicketFieldObject } from "../ticket-fields/data-types/TicketFieldO
 const MAX_URL_LENGTH = 2048;
 const TICKET_FIELD_PREFIX = "tf_";
 const DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
+const ULID_REGEX = /^[0-9A-HJKMNP-TV-Z]{26}$/i;
 
 const ALLOWED_BOOLEAN_VALUES = ["true", "false"];
 const ALLOWED_HTML_TAGS = [
@@ -56,6 +57,10 @@ function getFieldFromId(id: string, prefilledTicketFields: Fields) {
         (field) => field.name === `request[${id}]`
       );
   }
+}
+
+function isValidUlid(value: string) {
+  return ULID_REGEX.test(value);
 }
 
 function isValidDate(dateString: string) {
@@ -122,6 +127,14 @@ function getPrefilledTicketFields(fields: Fields): Fields {
         if (isValidDate(sanitizedValue)) {
           field.value = sanitizedValue;
         }
+        break;
+      case "lookup":
+        if (isValidUlid(sanitizedValue)) {
+          field.value = sanitizedValue;
+        }
+        break;
+      case "multi_lookup":
+        field.value = sanitizedValue.split(",").filter(isValidUlid);
         break;
       default:
         field.value = sanitizedValue;
