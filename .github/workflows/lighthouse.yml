@@ -10,7 +10,7 @@ jobs:
       - name: Setup Node.js
         uses: zendesk/setup-node@v3
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
       # The following step is needed to run puppeteer with ubuntu >= 23.10
       # ref: https://pptr.dev/troubleshooting#issues-with-apparmor-on-ubuntu
       - name: Disable AppArmor
@@ -37,7 +37,6 @@ jobs:
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/categories/360002267479
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/sections/360003307259
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/articles/360010829359
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests/new
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=Help+Center
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/topics
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/topics/360000644279

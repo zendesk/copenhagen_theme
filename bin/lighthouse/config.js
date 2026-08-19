@@ -73,12 +73,6 @@ module.exports = {
           selector: "nav > ol.breadcrumbs > li > a",
         },
       ],
-      "meta-refresh": [
-        {
-          path: "/hc/:locale/requests/new",
-          selector: "head > meta",
-        },
-      ],
       label: [
         {
           path: "/hc/:locale/requests",
