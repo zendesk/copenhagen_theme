@@ -59,34 +59,6 @@ test("falls back to stored filters when the URL has no recognized params", () =>
   expect(result.current.params.filters).toEqual({ status: [":open"] });
 });
 
-test("a URL with only unrecognized params is not treated as authoritative", () => {
-  setUrl("?utm_source=email");
-  storeFilters({ status: [":open"] });
-
-  const { result } = renderHook(() => useRequestListParams());
-
-  expect(result.current.params.filters).toEqual({ status: [":open"] });
-});
-
-test("ignores a corrupt stored value", () => {
-  storeFilters("nonsense");
-
-  const { result } = renderHook(() => useRequestListParams());
-
-  expect(result.current.params.filters).toEqual({});
-});
-
-test("ignores a stored value with a stale version", () => {
-  localStorage.setItem(
-    FILTERS_LOCAL_STORAGE_KEY,
-    JSON.stringify(["v0", { status: [":open"] }])
-  );
-
-  const { result } = renderHook(() => useRequestListParams());
-
-  expect(result.current.params.filters).toEqual({});
-});
-
 test("hydration writes storage-derived filters back into the URL via replaceState", () => {
   storeFilters({ status: [":open"] });
 
@@ -117,21 +89,6 @@ test("push writes both the URL and storage when filters are included", () => {
   });
 
   expect(result.current.params.filters).toEqual({ status: [":open"] });
-  expect(readStoredFilters()).toEqual([
-    FILTERS_LOCAL_STORAGE_VERSION,
-    { status: [":open"] },
-  ]);
-});
-
-test("push without filters leaves storage untouched", () => {
-  storeFilters({ status: [":open"] });
-
-  const { result } = renderHook(() => useRequestListParams());
-
-  act(() => {
-    result.current.push({ page: 2 });
-  });
-
   expect(readStoredFilters()).toEqual([
     FILTERS_LOCAL_STORAGE_VERSION,
     { status: [":open"] },

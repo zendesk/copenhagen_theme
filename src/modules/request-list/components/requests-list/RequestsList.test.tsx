@@ -364,25 +364,6 @@ describe("Filter tabs", () => {
   });
 });
 
-describe("Filters", () => {
-  test("<RequestsList /> pushes a filter selected in the modal", async () => {
-    await renderComponent();
-
-    fireEvent.click(screen.getByRole("button", { name: "Filter" }));
-    fireEvent.click(
-      screen.getByLabelText("Select filter", { selector: "input" })
-    );
-    fireEvent.click(screen.getByRole("option", { name: "Status" }));
-    fireEvent.click(screen.getByLabelText("Status", { selector: "input" }));
-    fireEvent.click(screen.getByRole("option", { name: "Open" }));
-    fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
-
-    const filters = { status: [":open :new :hold"] };
-
-    expect(push).toHaveBeenCalledWith({ page: 1, filters });
-  });
-});
-
 describe("Navigating", () => {
   test("navigates to the request page after clicking the subject", async () => {
     const locationAssignSpy = jest

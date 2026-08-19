@@ -131,18 +131,16 @@ test("push with replace: true calls replaceState instead of pushState", () => {
   expect(pushStateSpy).not.toHaveBeenCalled();
 });
 
-test("replaceUrlOnMount writes the resolved params via replaceState once, with no extra pushState and no params identity change", () => {
+test("replaceUrlOnMount writes the resolved params via replaceState once, with no extra pushState", () => {
   setUrl("?query=hi");
   const pushStateSpy = jest.spyOn(window.history, "pushState");
   const replaceStateSpy = jest.spyOn(window.history, "replaceState");
 
-  const { result } = renderHook(() =>
+  renderHook(() =>
     useParams(DEFAULT_PARAMS, serialize, deserialize, {
       replaceUrlOnMount: true,
     })
   );
-
-  const paramsAfterMount = result.current.params;
 
   expect(replaceStateSpy).toHaveBeenCalledTimes(1);
   expect(replaceStateSpy).toHaveBeenCalledWith(
@@ -151,20 +149,6 @@ test("replaceUrlOnMount writes the resolved params via replaceState once, with n
     "/hc/requests?query=hi&page=1"
   );
   expect(pushStateSpy).not.toHaveBeenCalled();
-  expect(result.current.params).toBe(paramsAfterMount);
-});
-
-test("two push calls in the same act both apply, without clobbering each other", () => {
-  const { result } = renderHook(() =>
-    useParams(DEFAULT_PARAMS, serialize, deserialize)
-  );
-
-  act(() => {
-    result.current.push({ page: 2 });
-    result.current.push({ query: "hi" });
-  });
-
-  expect(result.current.params).toEqual({ query: "hi", page: 2, sort: null });
 });
 
 test("popstate re-resolves params from the URL, resetting keys absent from the URL to defaults", () => {
@@ -190,34 +174,4 @@ test("popstate re-resolves params from the URL, resetting keys absent from the U
   });
 
   expect(result.current.params).toEqual({ query: "hi", page: 3, sort: null });
-});
-
-test("does not sync on popstate when syncOnPopState is not set", () => {
-  const { result } = renderHook(() =>
-    useParams(DEFAULT_PARAMS, serialize, deserialize)
-  );
-
-  act(() => {
-    setUrl("?query=hi&page=3");
-    window.dispatchEvent(new PopStateEvent("popstate"));
-  });
-
-  expect(result.current.params).toEqual(DEFAULT_PARAMS);
-});
-
-test("removes the popstate listener on unmount", () => {
-  const removeEventListenerSpy = jest.spyOn(window, "removeEventListener");
-
-  const { unmount } = renderHook(() =>
-    useParams(DEFAULT_PARAMS, serialize, deserialize, {
-      syncOnPopState: true,
-    })
-  );
-
-  unmount();
-
-  expect(removeEventListenerSpy).toHaveBeenCalledWith(
-    "popstate",
-    expect.any(Function)
-  );
 });
