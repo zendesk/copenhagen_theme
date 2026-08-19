@@ -71,6 +71,18 @@ export function deserializeRequestListParams(
   return res;
 }
 
+const RECOGNIZED_KEYS: string[] = Object.values(SERIALIZED_KEYS);
+
+export function hasRequestListParams(searchParams: URLSearchParams): boolean {
+  for (const key of searchParams.keys()) {
+    if (RECOGNIZED_KEYS.includes(key) || key.startsWith(FILTER_PREFIX)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 function getFiltersFromSearchParams(
   searchParams: URLSearchParams
 ): FilterValuesMap {
@@ -94,8 +106,9 @@ function getFiltersFromSearchParams(
   return res;
 }
 
-function isFilterValue(value: string): value is FilterValue {
+export function isFilterValue(value: unknown): value is FilterValue {
   return (
-    value.startsWith(":") || value.startsWith("<") || value.startsWith(">")
+    typeof value === "string" &&
+    (value.startsWith(":") || value.startsWith("<") || value.startsWith(">"))
   );
 }

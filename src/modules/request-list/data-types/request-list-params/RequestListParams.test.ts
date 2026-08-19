@@ -6,7 +6,10 @@ import {
 } from "./RequestListParams";
 
 import { serializeRequestListParams } from "../../utils/serializeRequestListParams";
-import { deserializeRequestListParams } from "../../utils/deserializeRequestListParams";
+import {
+  deserializeRequestListParams,
+  hasRequestListParams,
+} from "../../utils/deserializeRequestListParams";
 
 const basicParams: RequestListParams = {
   query: "test",
@@ -77,4 +80,21 @@ describe("RequestListParams", () => {
 
     expect(deserialized).toEqual(expected);
   });
+});
+
+describe("hasRequestListParams", () => {
+  it.each([
+    ["query=&page=1"],
+    [`filter_status=${encodeURIComponent(":open")}`],
+    ["selected_tab_name=ccd-requests"],
+  ])("returns true for a recognized param (%s)", (search) => {
+    expect(hasRequestListParams(new URLSearchParams(search))).toBe(true);
+  });
+
+  it.each([[""], ["utm_source=email&foo=bar"]])(
+    "returns false when there are no recognized params (%s)",
+    (search) => {
+      expect(hasRequestListParams(new URLSearchParams(search))).toBe(false);
+    }
+  );
 });
