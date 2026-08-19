@@ -1,24 +1,13 @@
 import { CursorPagination } from "@zendeskgarden/react-pagination";
 import { useTranslation } from "react-i18next";
-import { useParams } from "../../hooks/useParams";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { useRequestListParams } from "../../hooks/useRequestListParams";
 import RequestsToolbar from "../requests-toolbar/RequestsToolbar";
 import { RequestsTable } from "../requests-table/RequestsTable";
 import RequestsTabs from "../requests-tabs/RequestsTabs";
 import type { FilterValuesMap } from "../../data-types/FilterValue";
-import type {
-  RequestListParams,
-  SelectedTab,
-} from "../../data-types/request-list-params";
+import type { SelectedTab } from "../../data-types/request-list-params";
 
-import {
-  MY_REQUESTS_TAB_NAME,
-  ORG_REQUESTS_TAB_NAME,
-} from "../../data-types/request-list-params";
-
-import { serializeRequestListParams } from "../../utils/serializeRequestListParams";
-import { deserializeRequestListParams } from "../../utils/deserializeRequestListParams";
-import { isFilterValuesMap } from "../../utils/isFilterValuesMap";
+import { ORG_REQUESTS_TAB_NAME } from "../../data-types/request-list-params";
 
 import { useUser } from "../../hooks/useUser";
 import { useOrganizations } from "../../hooks/useOrganizations";
@@ -33,8 +22,6 @@ export interface RequestsListProps {
   viewRequestsAcrossBrandsEnabled: boolean;
 }
 
-const FILTERS_LOCAL_STORAGE_KEY = "REQUEST_LIST_FILTERS";
-
 export function RequestsList({
   locale,
   customStatusesEnabled,
@@ -42,23 +29,7 @@ export function RequestsList({
 }: RequestsListProps): JSX.Element {
   const { t } = useTranslation();
 
-  const [storedFilters, setStoredFilters] = useLocalStorage<FilterValuesMap>(
-    FILTERS_LOCAL_STORAGE_KEY,
-    {},
-    "v1"
-  );
-
-  const { params, push } = useParams<RequestListParams>(
-    {
-      query: "",
-      page: 1,
-      sort: { order: "desc", by: "updated_at" },
-      selectedTab: { name: MY_REQUESTS_TAB_NAME },
-      filters: isFilterValuesMap(storedFilters) ? storedFilters : {},
-    },
-    serializeRequestListParams,
-    deserializeRequestListParams
-  );
+  const { params, push } = useRequestListParams();
 
   const { query, page, sort, selectedTab, filters } = params;
 
@@ -123,7 +94,6 @@ export function RequestsList({
 
   const handleFiltersChanged = (newFilters: FilterValuesMap) => {
     push({ page: 1, filters: newFilters });
-    setStoredFilters(newFilters);
   };
 
   const onSort = (name: string): void => {

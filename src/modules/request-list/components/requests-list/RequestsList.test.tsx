@@ -2,13 +2,13 @@ jest.mock("../../hooks/useUser");
 jest.mock("../../hooks/useOrganizations");
 jest.mock("../../hooks/useTicketFields");
 jest.mock("../../hooks/useRequests");
-jest.mock("../../hooks/useParams");
+jest.mock("../../hooks/useRequestListParams");
 jest.mock("../../hooks/useShowManyUsers");
 
 import { render } from "../../../test/render";
 import { screen, act, fireEvent } from "@testing-library/react";
 import { RequestsList } from "./RequestsList";
-import { useParams } from "../../hooks/useParams";
+import { useRequestListParams } from "../../hooks/useRequestListParams";
 import { useUser } from "../../hooks/useUser";
 import { useOrganizations } from "../../hooks/useOrganizations";
 import { useRequests } from "../../hooks/useRequests";
@@ -41,7 +41,7 @@ const defaultParams: RequestListParams = {
 const push = jest.fn();
 
 const renderComponent = async (params?: Partial<RequestListParams>) => {
-  (useParams as jest.Mock).mockReturnValue({
+  (useRequestListParams as jest.Mock).mockReturnValue({
     params: { ...defaultParams, ...params },
     push,
   });
@@ -122,18 +122,6 @@ describe("Rendering", () => {
       screen.getByRole("link", { name: "My request" })
     ).toBeInTheDocument();
   }, 10000);
-
-  test("applies a default sort of updated at and descending", async () => {
-    await renderComponent();
-
-    expect(useParams).toHaveBeenCalledWith(
-      expect.objectContaining({
-        sort: { order: "desc", by: "updated_at" },
-      }),
-      expect.any(Function),
-      expect.any(Function)
-    );
-  });
 
   test("renders the request description when the subject is empty", async () => {
     await renderComponent();
@@ -376,52 +364,8 @@ describe("Filter tabs", () => {
   });
 });
 
-describe("Filters persistence", () => {
-  const FILTERS_LOCAL_STORAGE_KEY = "REQUEST_LIST_FILTERS";
-
-  const storeFilters = (value: unknown, version = "v1") => {
-    localStorage.setItem(
-      FILTERS_LOCAL_STORAGE_KEY,
-      JSON.stringify([version, value])
-    );
-  };
-
-  const readStoredFilters = () =>
-    JSON.parse(localStorage.getItem(FILTERS_LOCAL_STORAGE_KEY) as string);
-
-  const expectInitialFilters = (filters: RequestListParams["filters"]) => {
-    expect(useParams).toHaveBeenCalledWith(
-      expect.objectContaining({ filters }),
-      expect.any(Function),
-      expect.any(Function)
-    );
-  };
-
-  test("<RequestsList /> restores stored filters when there are no URL params", async () => {
-    storeFilters({ status: [":open"] });
-
-    await renderComponent();
-
-    expectInitialFilters({ status: [":open"] });
-  });
-
-  test("<RequestsList /> ignores a corrupt stored value", async () => {
-    storeFilters("nonsense");
-
-    await renderComponent();
-
-    expectInitialFilters({});
-  });
-
-  test("<RequestsList /> ignores a stored value from an older version", async () => {
-    storeFilters({ status: [":open"] }, "v0");
-
-    await renderComponent();
-
-    expectInitialFilters({});
-  });
-
-  test("<RequestsList /> persists a filter selected in the modal", async () => {
+describe("Filters", () => {
+  test("<RequestsList /> pushes a filter selected in the modal", async () => {
     await renderComponent();
 
     fireEvent.click(screen.getByRole("button", { name: "Filter" }));
@@ -436,23 +380,6 @@ describe("Filters persistence", () => {
     const filters = { status: [":open :new :hold"] };
 
     expect(push).toHaveBeenCalledWith({ page: 1, filters });
-    expect(readStoredFilters()).toEqual(["v1", filters]);
-  });
-
-  test("<RequestsList /> keeps stored filters when switching tabs", async () => {
-    storeFilters({ status: [":open"] });
-
-    await renderComponent({ filters: { status: [":open"] } });
-
-    fireEvent.click(
-      screen.getByRole("tab", { name: "Organizational requests" })
-    );
-
-    expect(push).toHaveBeenCalledWith({
-      page: 1,
-      selectedTab: { name: ORG_REQUESTS_TAB_NAME, organizationId: 1 },
-    });
-    expect(readStoredFilters()).toEqual(["v1", { status: [":open"] }]);
   });
 });
 
