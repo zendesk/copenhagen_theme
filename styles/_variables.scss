@@ -1,5 +1,14 @@
 // Variables
 
+// Default brand variables for Grocery Shop theme (can be overridden by theme settings)
+$brand_color: #4CAF50 !default; // fresh green for grocery
+$brand_text_color: #FFFFFF !default;
+$text_color: #263238 !default; // dark slate
+$link_color: #FF8C00 !default; // orange accent
+$hover_link_color: #E65100 !default;
+$visited_link_color: #6B3E00 !default;
+$background_color: #FFFFFF !default;
+
 // Colors
 $hover-button-color: zass-darken($brand_color, 20%);
 $secondary-text-color: zass-lighten($text_color, 20%);
