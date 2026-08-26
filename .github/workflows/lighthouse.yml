@@ -3,7 +3,7 @@ name: Lighthouse
 
 jobs:
   lighthouse:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, zendesk-stable]
     steps:
       - name: Checkout
         uses: zendesk/checkout@v3
@@ -37,6 +37,7 @@ jobs:
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/categories/360002267479
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/sections/360003307259
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/articles/360010829359
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests/new
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=Help+Center
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/topics
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/topics/360000644279
