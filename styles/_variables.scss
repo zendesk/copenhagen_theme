@@ -1,5 +1,10 @@
 // Variables
 
+// Theme components
+:root {
+  --hc-primary-color: #{$brand_color};
+}
+
 // Colors
 $hover-button-color: zass-darken($brand_color, 20%);
 $secondary-text-color: zass-lighten($text_color, 20%);
