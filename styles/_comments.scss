@@ -28,6 +28,12 @@
     @include standalone-link;
   }
 
+  &-label {
+    display: block;
+    font-size: $font-size-small;
+    margin-bottom: 10px;
+  }
+
 
   &-sorter {
     display: inline-block;

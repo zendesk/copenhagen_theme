@@ -308,7 +308,8 @@
             {{user_avatar class='user-avatar'}}
           </div>
           <div class="comment-container">
-            {{wysiwyg 'body'}}
+            {{label 'body' id='community-comment-body-label' class='comment-label'}}
+            {{wysiwyg 'body' aria-labelledby='community-comment-body-label'}}
             <div class="comment-form-controls">
               {{checkbox 'official'}}
               {{label 'official'}}
