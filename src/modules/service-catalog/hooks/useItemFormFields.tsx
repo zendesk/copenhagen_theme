@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import type { ServiceCatalogItem } from "../data-types/ServiceCatalogItem";
+import type {
+  ServiceCatalogItem,
+  ServiceCatalogUserLookupField,
+} from "../data-types/ServiceCatalogItem";
 import type { TicketField } from "../../ticket-fields/data-types/TicketField";
 import type { TicketFieldObject } from "../../ticket-fields/data-types/TicketFieldObject";
 import type { EndUserCondition } from "../../ticket-fields/data-types/EndUserCondition";
@@ -102,6 +105,25 @@ const formatField = (field: TicketField): TicketFieldObject => {
   };
 };
 
+// zen:user lookups are agent-only in Classic (editable_in_portal is false),
+// so they never arrive through the end-user ticket fields API. They come from
+// the service catalog item payload instead, populated by Help Center only
+// when the account is employee-only.
+const formatUserLookupField = (
+  field: ServiceCatalogUserLookupField
+): TicketFieldObject => ({
+  id: field.id,
+  type: field.type,
+  name: `custom_fields_${field.id}`,
+  description: sanitizeFieldDescription(linkifyStr(field.description || "")),
+  label: field.title_in_portal,
+  options: [],
+  required: field.required_in_portal,
+  relationship_target_type: field.relationship_target_type,
+  error: null,
+  value: null,
+});
+
 const HIDDEN_SERVICE_CATALOG_LOOKUP_KEYS = [
   "standard::service_catalog_item",
   "standard::service_catalog_category",
@@ -164,12 +186,9 @@ interface FetchTicketFieldsResult {
   endUserConditions: EndUserCondition[];
 }
 
-const USER_RELATIONSHIP_TARGET = "zen:user";
-
 const fetchTicketFields = async (
   form_id: number,
-  baseLocale: string,
-  employeeOnlyAccount: boolean
+  baseLocale: string
 ): Promise<FetchTicketFieldsResult> => {
   const [formResponse, fieldsResponse] = await Promise.all([
     fetch(`/api/v2/ticket_forms/${form_id}`),
@@ -220,14 +239,6 @@ const fetchTicketFields = async (
           } else if (isCategoryLookupField(ticketField)) {
             categoryLookupField = ticketField;
           }
-          return null;
-        }
-        // B1: hide zen:user lookups when employee-only is off
-        if (
-          !employeeOnlyAccount &&
-          ticketField.type === "lookup" &&
-          ticketField.relationship_target_type === USER_RELATIONSHIP_TARGET
-        ) {
           return null;
         }
         return formatField(ticketField);
@@ -287,6 +298,13 @@ export function useItemFormFields(
   // computed, so a prefilled parent reveals its conditional children.
   const prefill = useQueryStringPrefill();
 
+  // The item object (and its user_lookup_fields array) can be recreated on
+  // every render, so the effect below must depend on a primitive key derived
+  // from the fields, never on the array identity itself.
+  const userLookupFieldsKey = serviceCatalogItem?.user_lookup_fields
+    ?.map((field) => field.id)
+    .join(",");
+
   useEffect(() => {
     if (!serviceCatalogItem?.form_id) return;
 
@@ -299,11 +317,7 @@ export function useItemFormFields(
       try {
         const [ticketFieldsResult, assetTypeData, assetData] =
           await Promise.all([
-            fetchTicketFields(
-              serviceCatalogItem.form_id,
-              baseLocale,
-              serviceCatalogItem.employee_only_account === true
-            ),
+            fetchTicketFields(serviceCatalogItem.form_id, baseLocale),
             fetchAssetTypes(),
             fetchAssets(),
           ]);
@@ -326,8 +340,16 @@ export function useItemFormFields(
         setCategoryLookupField(categoryLookupField);
         setEndUserConditions(endUserConditions);
 
+        // B1: the item payload only carries zen:user lookups on employee-only
+        // accounts; the guard keeps the form clean even if that ever regresses.
+        const userLookupFields = (
+          serviceCatalogItem.employee_only_account === true
+            ? serviceCatalogItem.user_lookup_fields ?? []
+            : []
+        ).map(formatUserLookupField);
+
         const enrichedFields = enrichFieldsWithAssetConfig(
-          requestFields,
+          [...requestFields, ...userLookupFields],
           processedAssetConfig
         );
         const prefilledFields = applyPrefillToFields(enrichedFields, prefill);
@@ -348,9 +370,14 @@ export function useItemFormFields(
     return () => {
       alive = false;
     };
+    // user_lookup_fields is covered by the derived userLookupFieldsKey: the
+    // array identity changes per render and would loop the effect.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     baseLocale,
     serviceCatalogItem?.form_id,
+    serviceCatalogItem?.employee_only_account,
+    userLookupFieldsKey,
     fetchAssets,
     fetchAssetTypes,
     prefill,

@@ -492,26 +492,26 @@ describe("useItemFormFields", () => {
     expect(presentIds).toEqual([1, 6]);
   });
 
-  it("hides zen:user lookup fields when employee_only_account is false (B1)", async () => {
+  it("adds zen:user lookup fields from the item payload when employee_only_account is true (B1)", async () => {
     const userLookupField = {
       id: 9,
       type: "lookup",
       description: "Colleague",
       title_in_portal: "Find end users",
-      editable_in_portal: true,
-      relationship_target_type: "zen:user",
       required_in_portal: false,
-      active: true,
+      relationship_target_type: "zen:user",
     };
+    // zen:user lookups are agent-only in Classic, so the end-user ticket
+    // fields API never returns them; they only arrive via the item payload.
     const formResponse = {
       ticket_form: {
         id: 1,
-        ticket_field_ids: [1, 2, 9],
+        ticket_field_ids: [1, 2],
         active: true,
       },
     };
     const ticketFieldResponse = {
-      ticket_fields: [textField, lookupField, userLookupField],
+      ticket_fields: [textField, lookupField],
     };
     (globalThis.fetch as jest.Mock) = jest.fn((url) => {
       return Promise.resolve({
@@ -528,9 +528,14 @@ describe("useItemFormFields", () => {
       });
     });
 
+    // B1: not employee-only → payload fields are dropped even if present
     const { result, waitForNextUpdate } = renderHook(() =>
       useItemFormFields(
-        { ...serviceCatalogItem, employee_only_account: false },
+        {
+          ...serviceCatalogItem,
+          employee_only_account: false,
+          user_lookup_fields: [userLookupField],
+        },
         baseLocale
       )
     );
@@ -539,12 +544,24 @@ describe("useItemFormFields", () => {
 
     const { result: resultOn, waitForNextUpdate: waitOn } = renderHook(() =>
       useItemFormFields(
-        { ...serviceCatalogItem, employee_only_account: true },
+        {
+          ...serviceCatalogItem,
+          employee_only_account: true,
+          user_lookup_fields: [userLookupField],
+        },
         baseLocale
       )
     );
     await waitOn();
     expect(resultOn.current.requestFields.map((f) => f.id)).toEqual([1, 9]);
+    const renderedUserField = resultOn.current.requestFields.find(
+      (f) => f.id === 9
+    );
+    expect(renderedUserField).toMatchObject({
+      name: "custom_fields_9",
+      label: "Find end users",
+      relationship_target_type: "zen:user",
+    });
   });
 
   it("should filter out category lookup field from requestFields", async () => {
