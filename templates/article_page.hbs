@@ -313,8 +313,8 @@
                 {{user_avatar class='user-avatar'}}
               </div>
               <div class="comment-container">
-                {{label 'body' id='article-comment-body-label' class='comment-label'}}
-                {{wysiwyg 'body' aria-labelledby='article-comment-body-label'}}
+                {{label_text 'body' id=(concat 'article-comment-body-label-' article.id) class='comment-label'}}
+                {{wysiwyg 'body' aria-labelledby=(concat 'article-comment-body-label-' article.id)}}
                 <div class="comment-form-controls">
                   {{input type='submit' class="button button-large"}}
                 </div>

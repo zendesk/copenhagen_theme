@@ -3,22 +3,23 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const commentForms = [
-  ["templates/article_page.hbs", "article-comment-body-label"],
-  ["templates/community_post_page.hbs", "community-comment-body-label"],
-  ["templates/request_page.hbs", "request-comment-body-label"],
+  ["templates/article_page.hbs", "article", "article-comment-body-label"],
+  ["templates/community_post_page.hbs", "post", "community-comment-body-label"],
+  ["templates/request_page.hbs", "request", "request-comment-body-label"],
 ];
 
 describe("comment form labels", () => {
   it.each(commentForms)(
-    "%s renders a visible label associated with its rich-text editor",
-    (templatePath, labelId) => {
+    "%s renders a unique visible label associated with its rich-text editor",
+    (templatePath, entity, labelId) => {
       const template = readFileSync(resolve(templatePath), "utf8");
+      const uniqueLabelId = `(concat '${labelId}-' ${entity}.id)`;
 
       expect(template).toContain(
-        `{{label 'body' id='${labelId}' class='comment-label'}}`
+        `{{label_text 'body' id=${uniqueLabelId} class='comment-label'}}`
       );
       expect(template).toContain(
-        `{{wysiwyg 'body' aria-labelledby='${labelId}'`
+        `{{wysiwyg 'body' aria-labelledby=${uniqueLabelId}`
       );
     }
   );
