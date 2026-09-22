@@ -11,6 +11,7 @@ describe("useItemFormFields", () => {
     thumbnail_url: "",
     categories: [],
     is_request_on_behalf: false,
+    employee_only_account: false,
     published_at: "2025-01-01T00:00:00Z",
     custom_object_fields: {
       "standard::asset_option": "",
@@ -489,6 +490,61 @@ describe("useItemFormFields", () => {
     await waitForNextUpdate();
     const presentIds = result.current.requestFields.map((f) => f.id);
     expect(presentIds).toEqual([1, 6]);
+  });
+
+  it("hides zen:user lookup fields when employee_only_account is false (B1)", async () => {
+    const userLookupField = {
+      id: 9,
+      type: "lookup",
+      description: "Colleague",
+      title_in_portal: "Find end users",
+      editable_in_portal: true,
+      relationship_target_type: "zen:user",
+      required_in_portal: false,
+      active: true,
+    };
+    const formResponse = {
+      ticket_form: {
+        id: 1,
+        ticket_field_ids: [1, 2, 9],
+        active: true,
+      },
+    };
+    const ticketFieldResponse = {
+      ticket_fields: [textField, lookupField, userLookupField],
+    };
+    (globalThis.fetch as jest.Mock) = jest.fn((url) => {
+      return Promise.resolve({
+        json: () =>
+          Promise.resolve(
+            url.includes("/api/v2/ticket_forms/1")
+              ? formResponse
+              : url.includes(`/api/v2/ticket_fields?locale=${baseLocale}`)
+              ? ticketFieldResponse
+              : {}
+          ),
+        status: 200,
+        ok: true,
+      });
+    });
+
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useItemFormFields(
+        { ...serviceCatalogItem, employee_only_account: false },
+        baseLocale
+      )
+    );
+    await waitForNextUpdate();
+    expect(result.current.requestFields.map((f) => f.id)).toEqual([1]);
+
+    const { result: resultOn, waitForNextUpdate: waitOn } = renderHook(() =>
+      useItemFormFields(
+        { ...serviceCatalogItem, employee_only_account: true },
+        baseLocale
+      )
+    );
+    await waitOn();
+    expect(resultOn.current.requestFields.map((f) => f.id)).toEqual([1, 9]);
   });
 
   it("should filter out category lookup field from requestFields", async () => {

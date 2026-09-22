@@ -15,6 +15,7 @@ const mockItem: ServiceCatalogItem = {
   thumbnail_url: "",
   categories: [],
   is_request_on_behalf: true,
+    employee_only_account: false,
   published_at: "2025-01-01T00:00:00Z",
   custom_object_fields: {
     "standard::asset_option": "",

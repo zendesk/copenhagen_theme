@@ -164,9 +164,12 @@ interface FetchTicketFieldsResult {
   endUserConditions: EndUserCondition[];
 }
 
+const USER_RELATIONSHIP_TARGET = "zen:user";
+
 const fetchTicketFields = async (
   form_id: number,
-  baseLocale: string
+  baseLocale: string,
+  employeeOnlyAccount: boolean
 ): Promise<FetchTicketFieldsResult> => {
   const [formResponse, fieldsResponse] = await Promise.all([
     fetch(`/api/v2/ticket_forms/${form_id}`),
@@ -217,6 +220,14 @@ const fetchTicketFields = async (
           } else if (isCategoryLookupField(ticketField)) {
             categoryLookupField = ticketField;
           }
+          return null;
+        }
+        // B1: hide zen:user lookups when employee-only is off
+        if (
+          !employeeOnlyAccount &&
+          ticketField.type === "lookup" &&
+          ticketField.relationship_target_type === USER_RELATIONSHIP_TARGET
+        ) {
           return null;
         }
         return formatField(ticketField);
@@ -288,7 +299,11 @@ export function useItemFormFields(
       try {
         const [ticketFieldsResult, assetTypeData, assetData] =
           await Promise.all([
-            fetchTicketFields(serviceCatalogItem.form_id, baseLocale),
+            fetchTicketFields(
+              serviceCatalogItem.form_id,
+              baseLocale,
+              serviceCatalogItem.employee_only_account === true
+            ),
             fetchAssetTypes(),
             fetchAssets(),
           ]);
