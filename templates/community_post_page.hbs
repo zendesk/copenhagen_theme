@@ -308,7 +308,9 @@
             {{user_avatar class='user-avatar'}}
           </div>
           <div class="comment-container">
-            {{label_text 'body' id=(concat 'community-comment-body-label-' post.id) class='comment-label'}}
+            <div id="{{concat 'community-comment-body-label-' post.id}}" class="comment-label">
+              {{label 'body'}}
+            </div>
             {{wysiwyg 'body' aria-labelledby=(concat 'community-comment-body-label-' post.id)}}
             <div class="comment-form-controls">
               {{checkbox 'official'}}
