@@ -18,7 +18,7 @@
     white-space: nowrap;
 
     + li::before {
-      content: ">";
+      content: ">" / "";
       margin: 0 4px;
     }
 
