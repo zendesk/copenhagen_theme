@@ -3413,7 +3413,7 @@ ul {
 @media (min-width: 1024px) {
   .request-container {
     align-items: flex-start;
-    flex-direction: row;
+    flex-direction: row-reverse;
   }
 }
 .request-container .comment-container {

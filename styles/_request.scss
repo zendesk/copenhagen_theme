@@ -3,7 +3,7 @@
   &-container {
     @include desktop {
       align-items: flex-start;
-      flex-direction: row;
+      flex-direction: row-reverse;
     }
 
     display: flex;
