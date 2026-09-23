@@ -1,0 +1,22 @@
+<nav aria-label="{{t 'breadcrumb'}}">
+  <ol class="breadcrumbs">
+    {{#each path_steps}}
+      {{#if @first}}
+        {{!-- no separator before the first step --}}
+      {{else}}
+        <li aria-hidden="true" class="breadcrumbs-separator">&gt;</li>
+      {{/if}}
+      <li>
+        {{#is url '#'}}
+          {{#is name '...'}}
+            ...
+          {{else}}
+            <a href="{{url}}" aria-current="page">{{name}}</a>
+          {{/is}}
+        {{else}}
+          <a href="{{url}}">{{name}}</a>
+        {{/is}}
+      </li>
+    {{/each}}
+  </ol>
+</nav>
