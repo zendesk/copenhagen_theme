@@ -81,9 +81,7 @@
               </div>
             {{/if}}
 
-            <div id="{{concat 'request-comment-body-label-' request.id}}" class="comment-label">
-              {{label 'body'}}
-            </div>
+            {{label 'body' id=(concat 'request-comment-body-label-' request.id) class='comment-label'}}
             {{wysiwyg 'body' aria-labelledby=(concat 'request-comment-body-label-' request.id) rows='7'}}
 
             <div class="comment-attachments">

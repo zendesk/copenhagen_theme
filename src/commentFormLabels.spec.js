@@ -13,11 +13,10 @@ describe("comment form labels", () => {
     "%s renders a unique visible label associated with its rich-text editor",
     (templatePath, entity, labelId) => {
       const template = readFileSync(resolve(templatePath), "utf8");
-      const collapsedTemplate = template.replace(/\s+/g, " ");
       const uniqueLabelId = `(concat '${labelId}-' ${entity}.id)`;
 
-      expect(collapsedTemplate).toContain(
-        `<div id="{{concat '${labelId}-' ${entity}.id}}" class="comment-label"> {{label 'body'}} </div>`
+      expect(template).toContain(
+        `{{label 'body' id=${uniqueLabelId} class='comment-label'}}`
       );
       expect(template).toContain(
         `{{wysiwyg 'body' aria-labelledby=${uniqueLabelId}`
