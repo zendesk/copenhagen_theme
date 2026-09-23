@@ -1044,7 +1044,7 @@ ul {
   white-space: nowrap;
 }
 .breadcrumbs li + li::before {
-  content: ">";
+  content: ">"/"";
   margin: 0 4px;
 }
 .breadcrumbs li a:visited {
