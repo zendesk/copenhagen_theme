@@ -1,3 +1,10 @@
+## [4.51.2](https://github.com/zendesk/copenhagen_theme/compare/v4.51.1...v4.51.2) (2026-09-23)
+
+
+### Bug Fixes
+
+* **a11y:** hide breadcrumb separator from screen readers ([a1e6891](https://github.com/zendesk/copenhagen_theme/commit/a1e689129a53cec99812916a1c155f3bafe88c32))
+
 ## [4.51.1](https://github.com/zendesk/copenhagen_theme/compare/v4.51.0...v4.51.1) (2026-09-07)
 
 
