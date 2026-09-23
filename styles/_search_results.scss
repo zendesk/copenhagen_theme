@@ -82,7 +82,7 @@
     .collapsible-sidebar {
       margin-bottom: 30px;
 
-      &[aria-expanded="false"] {
+      &:not(.expanded) {
         .multibrand-filter-list {
           display: none;
           @include desktop { display: block; }

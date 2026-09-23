@@ -59,7 +59,7 @@
     display: none;
   }
 
-  &[aria-expanded="true"] {
+  &.expanded {
     max-height: none;
 
     .collapsible-sidebar-body {
