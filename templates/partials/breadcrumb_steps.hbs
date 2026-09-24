@@ -1,10 +1,10 @@
 {{#each path_steps}}
-  {{#if @first}}
-    {{!-- no separator before the first step --}}
-  {{else}}
-    <li aria-hidden="true" class="breadcrumbs-separator">&gt;</li>
-  {{/if}}
   <li>
+    {{#if @first}}
+      {{!-- no separator before the first step --}}
+    {{else}}
+      <span aria-hidden="true" class="breadcrumbs-separator">&gt;</span>
+    {{/if}}
     {{#if current_page}}
       <a href="{{url}}" aria-current="page">{{name}}</a>
     {{else}}
