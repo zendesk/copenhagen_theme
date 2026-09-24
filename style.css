@@ -2071,6 +2071,11 @@ ul {
 .comment-callout a:hover, .comment-callout a:active, .comment-callout a:focus {
   color: $hover_link_color;
 }
+.comment-label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
 .comment-sorter {
   display: inline-block;
   float: right;
