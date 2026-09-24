@@ -536,6 +536,28 @@
       }
     }
 
+    document
+      .querySelectorAll(".comment-container .comment-label")
+      .forEach((label) => {
+        label.addEventListener("click", (event) => {
+          const commentContainer = label.closest(".comment-container");
+          const editor = commentContainer.querySelector(".ck-editor__editable");
+
+          if (editor) {
+            // The label still targets the textarea replaced by the rich-text editor.
+            event.preventDefault();
+            editor.focus();
+
+            const controls = commentContainer.querySelector(
+              ".comment-form-controls"
+            );
+            if (controls) {
+              controls.style.display = "block";
+            }
+          }
+        });
+      });
+
     // Expand Request comment form when Add to conversation is clicked
     const showRequestCommentContainerTrigger = document.querySelector(
       ".request-container .comment-container .comment-show-container"

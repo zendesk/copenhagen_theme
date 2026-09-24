@@ -2185,9 +2185,6 @@ ul {
 .comment-ccs {
   display: none;
 }
-.comment-ccs + textarea {
-  margin-top: 10px;
-}
 .comment-attachments {
   margin-top: 10px;
 }
@@ -3459,6 +3456,9 @@ ul {
 .request-main .comment-ccs {
   display: block;
 }
+.request-main .comment-label {
+  margin-top: 10px;
+}
 .request-main .comment-show-container {
   border-radius: 2px;
   border: 1px solid #ddd;
@@ -3470,26 +3470,8 @@ ul {
 .request-main .comment-show-container.hidden {
   display: none;
 }
-.request-main .form-field.comment-ccs > ul {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom: 0;
-}
 .request-main .form-field.comment-ccs > ul[data-hc-focus=true] {
   border: 1px solid $brand_color;
-}
-.request-main .form-field.comment-ccs > input[type=text] {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom: 0;
-}
-.request-main .comment-ccs + textarea {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  margin-top: 0;
-}
-.request-main .comment-ccs + textarea:focus {
-  border-top: 1px solid $brand_color;
 }
 .request-main input#mark_as_solved {
   display: none;
