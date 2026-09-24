@@ -3,164 +3,167 @@
 
   <h1 class="request-title">{{request.subject}}</h1>
 
-  <div id="main-content" class="request-container">
-    <section class="request-sidebar collapsible-sidebar">
-      <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="request-sidebar-title" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
-          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
-          <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
-        </svg>
-      </button>
-      <h2 id="request-sidebar-title" class="collapsible-sidebar-title">
-        {{t 'ticket_details'}}
-      </h2>
-      <div class="collapsible-sidebar-body">
-        {{#if request.followup_source_id}}
-          <dl class="request-details">
-            <dt>{{t 'followup'}}</dt>
-            <dd>{{link 'request' id=request.followup_source_id}}</dd>
-          </dl>
-        {{/if}}
+  <!-- Collapsible ticket details, shown on smaller viewports only.
+       Rendered before the request container so the focus and reading
+       order matches the visual order. -->
+  <section class="request-sidebar collapsible-sidebar">
+    <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="request-sidebar-title" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
+        <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+      </svg>
+    </button>
+    <h2 id="request-sidebar-title" class="collapsible-sidebar-title">
+      {{t 'ticket_details'}}
+    </h2>
+    <div class="collapsible-sidebar-body">
+      {{#if request.followup_source_id}}
+        <dl class="request-details">
+          <dt>{{t 'followup'}}</dt>
+          <dd>{{link 'request' id=request.followup_source_id}}</dd>
+        </dl>
+      {{/if}}
 
-        {{#with satisfaction_response}}
-          {{#with rating}}
+      {{#with satisfaction_response}}
+        {{#with rating}}
+          <dl class="request-details">
+            <dt>{{t 'rating'}}</dt>
+            <dd>
+              <div>
+                {{#is scale_type 'numeric'}}
+                  {{t 'numerical_rating' value=value max_value=max_value}}
+                {{else}}
+                  {{scale_value}}
+                {{/is}}
+              </div>
+
+              {{#link 'survey_response' id=../id}}
+                {{#if ../editable}}
+                  {{t 'edit_feedback'}}
+                {{else}}
+                  {{t 'view_feedback'}}
+                {{/if}}
+              {{/link}}
+            </dd>
+          </dl>
+        {{else}}
+          {{#if editable}}
             <dl class="request-details">
               <dt>{{t 'rating'}}</dt>
               <dd>
-                <div>
-                  {{#is scale_type 'numeric'}}
-                    {{t 'numerical_rating' value=value max_value=max_value}}
-                  {{else}}
-                    {{scale_value}}
-                  {{/is}}
-                </div>
-
-                {{#link 'survey_response' id=../id}}
-                  {{#if ../editable}}
-                    {{t 'edit_feedback'}}
-                  {{else}}
-                    {{t 'view_feedback'}}
-                  {{/if}}
+                {{#link 'survey_response' id=id}}
+                  {{t 'add_feedback'}}
                 {{/link}}
               </dd>
             </dl>
-          {{else}}
-            {{#if editable}}
-              <dl class="request-details">
-                <dt>{{t 'rating'}}</dt>
-                <dd>
-                  {{#link 'survey_response' id=id}}
-                    {{t 'add_feedback'}}
-                  {{/link}}
-                </dd>
-              </dl>
-            {{/if}}
-          {{/with}}
+          {{/if}}
         {{/with}}
+      {{/with}}
 
-        <dl class="request-details">
-          <dt>{{t 'requester'}}</dt>
-          <dd>{{request.requester.name}}</dd>
+      <dl class="request-details">
+        <dt>{{t 'requester'}}</dt>
+        <dd>{{request.requester.name}}</dd>
 
-          <dt>{{t 'created'}}</dt>
-          <dd>{{date request.created_at}}</dd>
+        <dt>{{t 'created'}}</dt>
+        <dd>{{date request.created_at}}</dd>
 
-          <dt>{{t 'last_activity'}}</dt>
-          <dd>{{date request.updated_at}}</dd>
+        <dt>{{t 'last_activity'}}</dt>
+        <dd>{{date request.updated_at}}</dd>
 
-          {{#if collaborators}}
-            <dt>{{t 'ccs'}}</dt>
-            <dd>
-              <ul class="request-collaborators">
-                {{#each collaborators}}
-                  <li title="{{name}}">{{name}}</li>
-                {{/each}}
-              </ul>
-            </dd>
-          {{/if}}
-        </dl>
-
-        <dl class="request-details">
-          {{#if assignee}}
-            <dt>{{t 'assignee'}}</dt>
-            <dd>
-              {{assignee.name}}
-            </dd>
-          {{/if}}
-
-          <dt>{{t 'id'}}</dt>
-          <dd>#{{request.id}}</dd>
-
-          {{#form 'organization' id='request-organization' class='hbs-form'}}
-            <dt>{{t 'organization'}}</dt>
-            <dd>{{select 'organization'}}</dd>
-          {{/form}}
-
-          {{#if group}}
-            <dt>{{t 'group'}}</dt>
-            <dd>
-              {{group.name}}
-            </dd>
-          {{/if}}
-
-          <dt>{{t 'status'}}</dt>
+        {{#if collaborators}}
+          <dt>{{t 'ccs'}}</dt>
           <dd>
-            <span class="status-label status-label-request status-label-{{request.status}}" title="{{request.status_description}}">
-              {{request.status_name}}
-            </span>
+            <ul class="request-collaborators">
+              {{#each collaborators}}
+                <li title="{{name}}">{{name}}</li>
+              {{/each}}
+            </ul>
           </dd>
-
-          {{#if request.type}}
-            <dt>{{request.type_title}}</dt>
-            <dd>
-              {{request.type_name}}
-              {{#is request.type 'task'}}
-                {{t 'task_due_date' due_date=request.due_date}}
-              {{/is}}
-            </dd>
-          {{/if}}
-
-          {{#if request.priority}}
-            <dt>{{request.priority_title}}</dt>
-            <dd>
-              {{request.priority_name}}
-            </dd>
-          {{/if}}
-
-          {{#each custom_fields}}
-            <dt>{{title}}</dt>
-            <dd>
-              {{value}}
-            </dd>
-          {{/each}}
-        </dl>
-
-        {{#if attachments}}
-          <dl class="request-details request-attachments">
-            <dt>{{t 'attachments_heading'}}</dt>
-            <dd>
-              <ul class="attachments">
-                {{#each attachments}}
-                  <li class="attachment-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
-                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"/>
-                    </svg>
-                    <a href="{{url}}" target="_blank">{{name}}</a>
-                    <div class="attachment-meta meta-group">
-                      <span class="attachment-meta-item meta-data">{{size}}</span>
-                      <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
-                    </div>
-                  </li>
-                {{/each}}
-              </ul>
-            </dd>
-          </dl>
         {{/if}}
-      </div>
-    </section>
-    
+      </dl>
+
+      <dl class="request-details">
+        {{#if assignee}}
+          <dt>{{t 'assignee'}}</dt>
+          <dd>
+            {{assignee.name}}
+          </dd>
+        {{/if}}
+
+        <dt>{{t 'id'}}</dt>
+        <dd>#{{request.id}}</dd>
+
+        {{#form 'organization' id='request-organization-collapsible' class='hbs-form'}}
+          <dt>{{t 'organization'}}</dt>
+          <dd>{{select 'organization'}}</dd>
+        {{/form}}
+
+        {{#if group}}
+          <dt>{{t 'group'}}</dt>
+          <dd>
+            {{group.name}}
+          </dd>
+        {{/if}}
+
+        <dt>{{t 'status'}}</dt>
+        <dd>
+          <span class="status-label status-label-request status-label-{{request.status}}" title="{{request.status_description}}">
+            {{request.status_name}}
+          </span>
+        </dd>
+
+        {{#if request.type}}
+          <dt>{{request.type_title}}</dt>
+          <dd>
+            {{request.type_name}}
+            {{#is request.type 'task'}}
+              {{t 'task_due_date' due_date=request.due_date}}
+            {{/is}}
+          </dd>
+        {{/if}}
+
+        {{#if request.priority}}
+          <dt>{{request.priority_title}}</dt>
+          <dd>
+            {{request.priority_name}}
+          </dd>
+        {{/if}}
+
+        {{#each custom_fields}}
+          <dt>{{title}}</dt>
+          <dd>
+            {{value}}
+          </dd>
+        {{/each}}
+      </dl>
+
+      {{#if attachments}}
+        <dl class="request-details request-attachments">
+          <dt>{{t 'attachments_heading'}}</dt>
+          <dd>
+            <ul class="attachments">
+              {{#each attachments}}
+                <li class="attachment-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"/>
+                  </svg>
+                  <a href="{{url}}" target="_blank">{{name}}</a>
+                  <div class="attachment-meta meta-group">
+                    <span class="attachment-meta-item meta-data">{{size}}</span>
+                    <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
+                  </div>
+                </li>
+              {{/each}}
+            </ul>
+          </dd>
+        </dl>
+      {{/if}}
+    </div>
+  </section>
+
+  <div id="main-content" class="request-container">
     <section class="request-main">
       {{satisfaction}}
       <ul class="comment-list">
@@ -262,6 +265,153 @@
           </div>
         </div>
       {{/form}}
+    </section>
+
+    <!-- Non-collapsible ticket details, shown on larger viewports only.
+         Rendered after the request main so the focus and reading order
+         matches the visual order. -->
+    <section class="request-sidebar">
+      {{#if request.followup_source_id}}
+        <dl class="request-details">
+          <dt>{{t 'followup'}}</dt>
+          <dd>{{link 'request' id=request.followup_source_id}}</dd>
+        </dl>
+      {{/if}}
+
+      {{#with satisfaction_response}}
+        {{#with rating}}
+          <dl class="request-details">
+            <dt>{{t 'rating'}}</dt>
+            <dd>
+              <div>
+                {{#is scale_type 'numeric'}}
+                  {{t 'numerical_rating' value=value max_value=max_value}}
+                {{else}}
+                  {{scale_value}}
+                {{/is}}
+              </div>
+
+              {{#link 'survey_response' id=../id}}
+                {{#if ../editable}}
+                  {{t 'edit_feedback'}}
+                {{else}}
+                  {{t 'view_feedback'}}
+                {{/if}}
+              {{/link}}
+            </dd>
+          </dl>
+        {{else}}
+          {{#if editable}}
+            <dl class="request-details">
+              <dt>{{t 'rating'}}</dt>
+              <dd>
+                {{#link 'survey_response' id=id}}
+                  {{t 'add_feedback'}}
+                {{/link}}
+              </dd>
+            </dl>
+          {{/if}}
+        {{/with}}
+      {{/with}}
+
+      <dl class="request-details">
+        <dt>{{t 'requester'}}</dt>
+        <dd>{{request.requester.name}}</dd>
+
+        <dt>{{t 'created'}}</dt>
+        <dd>{{date request.created_at}}</dd>
+
+        <dt>{{t 'last_activity'}}</dt>
+        <dd>{{date request.updated_at}}</dd>
+
+        {{#if collaborators}}
+          <dt>{{t 'ccs'}}</dt>
+          <dd>
+            <ul class="request-collaborators">
+              {{#each collaborators}}
+                <li title="{{name}}">{{name}}</li>
+              {{/each}}
+            </ul>
+          </dd>
+        {{/if}}
+      </dl>
+
+      <dl class="request-details">
+        {{#if assignee}}
+          <dt>{{t 'assignee'}}</dt>
+          <dd>
+            {{assignee.name}}
+          </dd>
+        {{/if}}
+
+        <dt>{{t 'id'}}</dt>
+        <dd>#{{request.id}}</dd>
+
+        {{#form 'organization' id='request-organization' class='hbs-form'}}
+          <dt>{{t 'organization'}}</dt>
+          <dd>{{select 'organization'}}</dd>
+        {{/form}}
+
+        {{#if group}}
+          <dt>{{t 'group'}}</dt>
+          <dd>
+            {{group.name}}
+          </dd>
+        {{/if}}
+
+        <dt>{{t 'status'}}</dt>
+        <dd>
+          <span class="status-label status-label-request status-label-{{request.status}}" title="{{request.status_description}}">
+            {{request.status_name}}
+          </span>
+        </dd>
+
+        {{#if request.type}}
+          <dt>{{request.type_title}}</dt>
+          <dd>
+            {{request.type_name}}
+            {{#is request.type 'task'}}
+              {{t 'task_due_date' due_date=request.due_date}}
+            {{/is}}
+          </dd>
+        {{/if}}
+
+        {{#if request.priority}}
+          <dt>{{request.priority_title}}</dt>
+          <dd>
+            {{request.priority_name}}
+          </dd>
+        {{/if}}
+
+        {{#each custom_fields}}
+          <dt>{{title}}</dt>
+          <dd>
+            {{value}}
+          </dd>
+        {{/each}}
+      </dl>
+
+      {{#if attachments}}
+        <dl class="request-details request-attachments">
+          <dt>{{t 'attachments_heading'}}</dt>
+          <dd>
+            <ul class="attachments">
+              {{#each attachments}}
+                <li class="attachment-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"/>
+                  </svg>
+                  <a href="{{url}}" target="_blank">{{name}}</a>
+                  <div class="attachment-meta meta-group">
+                    <span class="attachment-meta-item meta-data">{{size}}</span>
+                    <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
+                  </div>
+                </li>
+              {{/each}}
+            </ul>
+          </dd>
+        </dl>
+      {{/if}}
     </section>
   </div>
 </div>

@@ -3413,7 +3413,7 @@ ul {
 @media (min-width: 1024px) {
   .request-container {
     align-items: flex-start;
-    flex-direction: row-reverse;
+    flex-direction: row;
   }
 }
 .request-container .comment-container {
@@ -3430,7 +3430,6 @@ ul {
 .request-main {
   flex: 1 0 auto;
   max-width: 100%;
-  order: 1;
 }
 .request-main .comment-fields, .request-main .request-submit-comment {
   display: none;
@@ -3444,7 +3443,6 @@ ul {
 @media (min-width: 1024px) {
   .request-main {
     flex: 0 0 66%;
-    order: 0;
     min-width: 0;
   }
 }
@@ -3501,30 +3499,33 @@ ul {
   }
 }
 .request-sidebar {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
-  flex: 1 0 auto;
-  order: 0;
+  display: none;
 }
 @media (min-width: 1024px) {
   .request-sidebar {
     background-color: darken($background_color, 3%);
     border: 0;
+    display: block;
     font-size: 13px;
     flex: 0 0 auto;
     padding: 0 20px;
     width: 30%;
   }
 }
-.request-sidebar h2 {
+.request-sidebar.collapsible-sidebar {
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  display: block;
+}
+@media (min-width: 1024px) {
+  .request-sidebar.collapsible-sidebar {
+    display: none;
+  }
+}
+.request-sidebar.collapsible-sidebar h2 {
   font-size: 15px;
   font-weight: 600;
   position: relative;
-}
-@media (min-width: 1024px) {
-  .request-sidebar h2 {
-    display: none;
-  }
 }
 .request-details {
   border-bottom: 1px solid #ddd;
