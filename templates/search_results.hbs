@@ -229,9 +229,7 @@
                       {{#is type 'external_content_record'}}aria-label='{{t 'external_content_location_with_title' title=title}}'{{/is}}
                     >
                       <ol class="breadcrumbs search-result-breadcrumbs">
-                        {{#each path_steps}}
-                          <li><a href="{{url}}" target="{{target}}">{{name}}</a></li>
-                        {{/each}}
+                        {{> breadcrumb_steps path_steps=path_steps }}
                       </ol>
                     </nav>
                     {{#unless is_external}}
