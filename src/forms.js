@@ -140,21 +140,23 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Submit organization form in the request page
-  const requestOrganisationSelect = document.querySelector(
-    "#request-organization select"
+  // Submit organization form in the request page. The sidebar is rendered
+  // twice (collapsible on smaller viewports, non-collapsible on larger ones),
+  // so bind the select in both copies.
+  const requestOrganisationSelects = document.querySelectorAll(
+    "#request-organization select, #request-organization-collapsible select"
   );
 
-  if (requestOrganisationSelect) {
-    requestOrganisationSelect.addEventListener("change", () => {
-      requestOrganisationSelect.form.submit();
+  requestOrganisationSelects.forEach((element) => {
+    element.addEventListener("change", () => {
+      element.form.submit();
     });
 
-    requestOrganisationSelect.addEventListener("click", (e) => {
+    element.addEventListener("click", (e) => {
       // Prevents Ticket details collapsible-sidebar to close on mobile
       e.stopPropagation();
     });
-  }
+  });
 
   // If there are any error notifications below an input field, focus that field
   const notificationElm = document.querySelector(".notification-error");

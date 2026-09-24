@@ -24,7 +24,6 @@
   &-main {
     flex: 1 0 auto;
     max-width: 100%;
-    order: 1;
 
     .comment-fields, .request-submit-comment {
       display: none;
@@ -35,7 +34,6 @@
 
     @include desktop {
       flex: 0 0 66%; // 4% spacing
-      order: 0;
       min-width: 0; // Tricky detail to show truncated text https://css-tricks.com/flexbox-truncated-text/
     }
 
@@ -100,28 +98,35 @@
   }
 
   &-sidebar {
+    // Non-collapsible ticket details, rendered after the request main so the
+    // focus and reading order matches the visual order on larger viewports
+    display: none;
+
     @include desktop {
       background-color: $primary-shade;
       border: 0;
+      display: block;
       font-size: $font-size-small;
       flex: 0 0 auto;
       padding: 0 20px;
       width: 30%; //IE11 fix
     }
 
-    border-bottom: 1px solid $low-contrast-border-color;
-    border-top: 1px solid $low-contrast-border-color;
-    flex: 1 0 auto;
-    order: 0; //Bring to top
+    // Collapsible ticket details, rendered before the request container so
+    // the focus and reading order matches the visual order on smaller
+    // viewports too
+    &.collapsible-sidebar {
+      @include desktop { display: none; }
 
-    h2 {
-      @include desktop {
-        display: none;
+      border-bottom: 1px solid $low-contrast-border-color;
+      border-top: 1px solid $low-contrast-border-color;
+      display: block;
+
+      h2 {
+        font-size: $font-size-base;
+        font-weight: $font-weight-semibold;
+        position: relative;
       }
-
-      font-size: $font-size-base;
-      font-weight: $font-weight-semibold;
-      position: relative;
     }
   }
 
