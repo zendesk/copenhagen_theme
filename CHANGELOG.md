@@ -1,3 +1,10 @@
+## [4.51.3](https://github.com/zendesk/copenhagen_theme/compare/v4.51.2...v4.51.3) (2026-09-24)
+
+
+### Bug Fixes
+
+* reorder sidebar heading before toggle for screen reader reading order ([575500e](https://github.com/zendesk/copenhagen_theme/commit/575500e13dfef01b14aa53382aa819a6755ca8a5))
+
 ## [4.51.2](https://github.com/zendesk/copenhagen_theme/compare/v4.51.1...v4.51.2) (2026-09-23)
 
 
