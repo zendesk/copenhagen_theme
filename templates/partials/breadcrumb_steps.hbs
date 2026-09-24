@@ -5,14 +5,14 @@
     <li aria-hidden="true" class="breadcrumbs-separator">&gt;</li>
   {{/if}}
   <li>
-    {{#is url '#'}}
+    {{#if current_page}}
+      <a href="{{url}}" aria-current="page">{{name}}</a>
+    {{else}}
       {{#is name '...'}}
         ...
       {{else}}
-        <a href="{{url}}" aria-current="page">{{name}}</a>
+        <a href="{{url}}" {{#if target}}target="{{target}}"{{/if}}>{{name}}</a>
       {{/is}}
-    {{else}}
-      <a href="{{url}}" {{#if target}}target="{{target}}"{{/if}}>{{name}}</a>
-    {{/is}}
+    {{/if}}
   </li>
 {{/each}}
