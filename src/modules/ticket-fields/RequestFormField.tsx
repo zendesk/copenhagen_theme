@@ -7,6 +7,7 @@ import { Input } from "./fields/Input";
 import type { LookupFieldProps } from "./fields/LookupField";
 import { LookupField } from "./fields/LookupField";
 import { MultiLookupField } from "./fields/MultiLookupField";
+import { isUserLookupField, UserLookupField } from "./fields/UserLookupField";
 import { MultiSelect } from "./fields/MultiSelect";
 import { Tagger } from "./fields/Tagger";
 import { TextArea } from "./fields/textarea/TextArea";
@@ -134,6 +135,15 @@ export const RequestFormField = ({
       );
 
     case "lookup":
+      if (isUserLookupField(field)) {
+        return (
+          <UserLookupField
+            key={field.name}
+            field={field}
+            onChange={(value) => handleChange(field, value)}
+          />
+        );
+      }
       return (
         <LookupField
           key={field.name}
