@@ -129,7 +129,7 @@
   }
 }
 
-.collapsible-nav[aria-expanded="true"] {
+.collapsible-nav.expanded {
   li:not([aria-selected="true"]),
   li:not(.current) {
     display: block;
