@@ -1,3 +1,10 @@
+## [4.51.4](https://github.com/zendesk/copenhagen_theme/compare/v4.51.3...v4.51.4) (2026-09-25)
+
+
+### Bug Fixes
+
+* remove invalid aria-expanded from collapsible containers ([f340d79](https://github.com/zendesk/copenhagen_theme/commit/f340d79a22a088b1e7d17805eeebcba42cecd863))
+
 ## [4.51.3](https://github.com/zendesk/copenhagen_theme/compare/v4.51.2...v4.51.3) (2026-09-24)
 
 
