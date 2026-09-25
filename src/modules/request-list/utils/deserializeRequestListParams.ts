@@ -86,7 +86,12 @@ export function hasRequestListParams(searchParams: URLSearchParams): boolean {
 function getFiltersFromSearchParams(
   searchParams: URLSearchParams
 ): FilterValuesMap {
-  const res: FilterValuesMap = {};
+  // Use a null-prototype object so that attacker-controlled field names
+  // (derived from query-param names, e.g. "filter___proto__") cannot be
+  // used to pollute Object.prototype/Array.prototype. Unlike a blocklist
+  // of dangerous keys (`__proto__`, `constructor`, `prototype`, ...), this
+  // is structurally safe: there is no prototype chain to write onto.
+  const res: FilterValuesMap = Object.create(null);
 
   for (const [key] of searchParams) {
     if (!key.startsWith(FILTER_PREFIX)) {
