@@ -32,6 +32,7 @@ interface RequestsToolbarProps {
   requestsCount: number;
   requestsPerPage: number;
   organizations: Organization[];
+  hasMoreOrganizations?: boolean;
   user?: User;
   ticketFields: TicketField[];
   customStatusesEnabled: boolean;
@@ -137,6 +138,7 @@ export default function RequestsToolbar({
   filters,
   onFiltersChanged,
   organizations,
+  hasMoreOrganizations = false,
   selectedTab,
   onOrganizationSelected,
   user,
@@ -200,6 +202,7 @@ export default function RequestsToolbar({
           <OrganizationBlock>
             <OrganizationsDropdown
               organizations={organizations}
+              hasMore={hasMoreOrganizations}
               currentOrganizationId={selectedTab.organizationId}
               onOrganizationSelected={onOrganizationSelected}
             />
