@@ -21,6 +21,7 @@ const basicParams: RequestListParams = {
   selectedTab: {
     name: ORG_REQUESTS_TAB_NAME,
     organizationId: 2,
+    organizationQuery: "global",
   },
   filters: {
     created_at: ["<1week"],
@@ -28,7 +29,7 @@ const basicParams: RequestListParams = {
   },
 };
 
-const basicSerializedParams = `query=test&page=1&sort_by=created_at&sort_order=desc&selected_tab_name=org-requests&organization_id=2&filter_created_at=${encodeURIComponent(
+const basicSerializedParams = `query=test&page=1&sort_by=created_at&sort_order=desc&selected_tab_name=org-requests&organization_id=2&organization_query=global&filter_created_at=${encodeURIComponent(
   "<1week"
 )}&filter_updated_at=${encodeURIComponent(
   ">=2022-07-04"
