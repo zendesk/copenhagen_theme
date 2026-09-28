@@ -3,9 +3,12 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import type { Organization } from "../../../data-types";
+import { useOrganizationSearch } from "../../../hooks/useOrganizationSearch";
 
 interface OrganizationsDropdownProps {
   organizations: Organization[];
+  // True when the loaded organizations are only the first page of results
+  hasMore?: boolean;
   currentOrganizationId: number;
   onOrganizationSelected: (organizationId: number) => void;
 }
@@ -16,13 +19,15 @@ const StyledField = styled(Field)`
 
 export default function OrganizationsDropdown({
   organizations,
+  hasMore = false,
   currentOrganizationId,
   onOrganizationSelected,
 }: OrganizationsDropdownProps): JSX.Element {
   const { t } = useTranslation();
 
-  const [filteredOrganizations, setFilteredOrganizations] =
-    useState(organizations);
+  const { searchResults, search } = useOrganizationSearch();
+
+  const [filterQuery, setFilterQuery] = useState("");
 
   const [inputValue, setInputValue] = useState(() => {
     const selectedOrganization = organizations.find(
@@ -30,6 +35,18 @@ export default function OrganizationsDropdown({
     );
     return selectedOrganization?.name ?? "";
   });
+
+  const normalizedQuery = filterQuery.trim().toLowerCase();
+  const filteredOrganizations =
+    normalizedQuery === ""
+      ? organizations
+      : organizations.filter((organization) =>
+          organization.name.trim().toLowerCase().includes(normalizedQuery)
+        );
+
+  // When only the first page is loaded, server results replace the local list
+  const displayedOrganizations =
+    hasMore && searchResults !== null ? searchResults : filteredOrganizations;
 
   const handleChange = useCallback(
     (changes: {
@@ -40,18 +57,10 @@ export default function OrganizationsDropdown({
 
       if (inputValue !== undefined) {
         setInputValue(inputValue);
+        setFilterQuery(inputValue);
 
-        if (inputValue === "") {
-          setFilteredOrganizations(organizations);
-        } else {
-          const matchedOrganizations = organizations.filter((organization) => {
-            return organization.name
-              .trim()
-              .toLowerCase()
-              .includes(inputValue.trim().toLowerCase());
-          });
-
-          setFilteredOrganizations(matchedOrganizations);
+        if (hasMore) {
+          search(inputValue);
         }
       }
 
@@ -66,7 +75,7 @@ export default function OrganizationsDropdown({
         }
       }
     },
-    [organizations, onOrganizationSelected]
+    [hasMore, search, onOrganizationSelected]
   );
 
   return (
@@ -81,7 +90,7 @@ export default function OrganizationsDropdown({
         data-test-id="organizations-menu"
         onChange={handleChange}
       >
-        {filteredOrganizations.length === 0 ? (
+        {displayedOrganizations.length === 0 ? (
           <Option
             isDisabled
             label={t(
@@ -91,7 +100,7 @@ export default function OrganizationsDropdown({
             value=""
           />
         ) : (
-          filteredOrganizations.map((organization) => (
+          displayedOrganizations.map((organization) => (
             <Option
               key={organization.id}
               label={organization.name}
