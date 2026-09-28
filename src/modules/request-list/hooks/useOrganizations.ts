@@ -1,45 +1,41 @@
 import { useState, useEffect } from "react";
-import type { User, OrganizationMembership, Organization } from "../data-types";
-import type { CursorPaginatedResponse } from "../utils/pagination/CursorPaginatedResponse";
-import { fetchAllCursorPages } from "../utils/pagination/fetchAllCursorPages";
+import type {
+  User,
+  Organization,
+  AccessibleOrganizationsResponse,
+} from "../data-types";
 
 export function useOrganizations(user?: User): {
   organizations: Organization[];
+  hasMore: boolean;
   error?: Error;
 } {
   const [organizations, setOrganizations] = useState<Organization[]>([]);
+  const [hasMore, setHasMore] = useState(false);
   const [error, setError] = useState<Error | undefined>();
 
-  async function fetchOrganizationsPage(): Promise<
-    CursorPaginatedResponse<"organization_memberships", OrganizationMembership>
-  > {
-    const response = await fetch(
-      `/api/v2/users/${user?.id}/organization_memberships?page[size]=100`
-    );
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-    return await response.json();
-  }
-
+  // Only the first page is fetched. When more pages exist, the dropdown
+  // searches the endpoint by name instead of walking every page.
   async function fetchOrganizations() {
     try {
-      const memberships = await fetchAllCursorPages(
-        fetchOrganizationsPage,
-        "organization_memberships"
-      );
+      const response = await fetch("/api/v2/organizations/accessible");
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      const { organizations, next_page }: AccessibleOrganizationsResponse =
+        await response.json();
 
-      const membershipsWithTicketPermissions = memberships.filter(
-        (organization) => organization.view_tickets
-      );
-
+      // Restricted organizations only expose the user's own tickets, so they are left out.
       setOrganizations(
-        membershipsWithTicketPermissions.map((organization) => ({
-          id: organization.organization_id,
-          name: organization.organization_name,
-          default: organization.default,
-        }))
+        organizations
+          .filter((organization) => organization.shared_tickets)
+          .map((organization) => ({
+            id: organization.id,
+            name: organization.name,
+            default: organization.default,
+          }))
       );
+      setHasMore(next_page !== null);
     } catch (error) {
       setError(error as Error);
     }
@@ -51,5 +47,5 @@ export function useOrganizations(user?: User): {
     }
   }, [user]);
 
-  return { organizations, error };
+  return { organizations, hasMore, error };
 }
