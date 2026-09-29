@@ -405,7 +405,7 @@ describe("useItemFormFields", () => {
     ]);
   });
 
-  it("should not include fields with type 'subject', type 'description', active false, or editable_in_portal false in requestFields", async () => {
+  it("includes description while filtering subject, inactive, and non-editable fields", async () => {
     const formResponse = {
       ticket_form: {
         id: 1,
@@ -438,7 +438,7 @@ describe("useItemFormFields", () => {
           active: true,
           editable_in_portal: true,
           required_in_portal: true,
-        }, // should be filtered out
+        }, // should be present
         {
           ...textField,
           id: 4,
@@ -488,7 +488,7 @@ describe("useItemFormFields", () => {
     );
     await waitForNextUpdate();
     const presentIds = result.current.requestFields.map((f) => f.id);
-    expect(presentIds).toEqual([1, 6]);
+    expect(presentIds).toEqual([1, 3, 6]);
   });
 
   it("should filter out category lookup field from requestFields", async () => {
