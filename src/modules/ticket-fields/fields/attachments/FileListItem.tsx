@@ -21,10 +21,11 @@ const FileNameWrapper = styled.div`
 `;
 
 /*
- * Custom remove control — the file chip's keyboard tab stop. Garden's
+ * Custom remove control — keyboard tab stop for remove/stop-upload. Garden's
  * File.Close / File.Delete hardcode tabIndex={-1} after props, so they cannot
- * be reached by Tab. Pattern mirrors zendesk/ui PromptInput FileTag:
- * button has no ring; the File root shows focusStyles via :has(button:focus-visible).
+ * be reached by Tab. Unlike PromptInput FileTag (one tab stop; ring on the
+ * chip via :has), HC attachments also tab to the file link, so the focus ring
+ * stays on this button — not the whole File chip.
  */
 const StyledRemoveButton = styled.button<{ $isDanger?: boolean }>`
   display: flex;
@@ -34,6 +35,7 @@ const StyledRemoveButton = styled.button<{ $isDanger?: boolean }>`
   transition: opacity 0.25s ease-in-out;
   opacity: 0.8;
   border: none;
+  border-radius: ${(props) => props.theme.borderRadii.md};
   background: transparent;
   cursor: pointer;
   padding: 0;
@@ -51,27 +53,22 @@ const StyledRemoveButton = styled.button<{ $isDanger?: boolean }>`
   &:focus {
     outline: none;
   }
-`;
 
-const StyledAttachmentFile = styled(File)`
-  /*
-   * Tooltip may wrap the button (Tippy), so match a descendant button rather
-   * than a direct child — same focus-ring intent as PromptInput StyledFileTag.
-   */
   ${(props) =>
     focusStyles({
       theme: props.theme,
-      selector: "&:has(button:focus-visible)",
+      selector: "&:focus-visible",
       color: { variable: "border.primaryEmphasis" },
     })}
+`;
 
+const StyledAttachmentFile = styled(File)`
   & ${StyledRemoveButton} {
     width: ${(props) => `${props.theme.space.base * 10}px`};
     height: ${(props) => `${props.theme.space.base * 10}px`};
     margin-inline-end: ${(props) => `-${props.theme.space.base * 3}px`};
   }
 `;
-
 const RemoveButton = forwardRef(function RemoveButton(
   {
     ariaLabel,
@@ -100,9 +97,11 @@ const RemoveButton = forwardRef(function RemoveButton(
       <StyledRemoveButton
         ref={ref}
         type="button"
+        tabIndex={0}
         $isDanger={isDanger}
         aria-label={ariaLabel}
         aria-describedby={undefined}
+        title={tooltip}
         onClick={onRemove}
         onKeyDown={handleKeyDown}
       >
