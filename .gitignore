@@ -14,3 +14,6 @@ coverage/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# local-only a11y playground (not for PR)
+playground/

@@ -4,7 +4,7 @@ import {
   Input,
   FileList,
 } from "@zendeskgarden/react-forms";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { useTranslation } from "react-i18next";
 import type { AttachmentField } from "../../data-types/AttachmentsField";
@@ -18,6 +18,18 @@ const StyledErrorMessage = styled(GardenField.Message)<{
   hasDescription?: boolean;
 }>`
   margin-top: ${(props) => (props.hasDescription ? props.theme.space.xxs : 0)};
+`;
+
+const VisuallyHiddenLiveRegion = styled.div`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 `;
 
 interface AttachmentProps {
@@ -44,6 +56,14 @@ export interface UploadFileResponse {
   };
 }
 
+function getFileKey(file: AttachedFile): string {
+  return file.status === "pending" ? file.id : file.value.id;
+}
+
+function getFileName(file: AttachedFile): string {
+  return file.status === "pending" ? file.file_name : file.value.file_name;
+}
+
 export function Attachments({
   field,
   baseLocale,
@@ -64,12 +84,52 @@ export function Attachments({
     })) ?? []
   );
   const { t } = useTranslation();
+  const [liveMessage, setLiveMessage] = useState("");
+  const fileUploadRef = useRef<HTMLDivElement>(null);
+  const removeButtonRefs = useRef<Map<string, HTMLButtonElement | null>>(
+    new Map()
+  );
 
   const isUploading = files.some((file) => file.status === "pending");
 
   useEffect(() => {
     onUploadingChange?.(isUploading);
   }, [isUploading, onUploadingChange]);
+
+  const setRemoveButtonRef = useCallback(
+    (key: string, node: HTMLButtonElement | null) => {
+      if (node) {
+        removeButtonRefs.current.set(key, node);
+      } else {
+        removeButtonRefs.current.delete(key);
+      }
+    },
+    []
+  );
+
+  const focusAfterRemoval = useCallback(
+    (removedIndex: number, remainingKeys: string[]) => {
+      const fallbackKey =
+        remainingKeys[removedIndex - 1] ?? remainingKeys[removedIndex] ?? null;
+      const fallbackButton = fallbackKey
+        ? removeButtonRefs.current.get(fallbackKey)
+        : null;
+
+      if (fallbackButton) {
+        fallbackButton.focus();
+        return;
+      }
+
+      const uploadRoot = fileUploadRef.current;
+      const focusTarget =
+        uploadRoot?.querySelector<HTMLElement>(
+          'input[type="file"], button, [tabindex]:not([tabindex="-1"])'
+        ) ?? uploadRoot;
+
+      focusTarget?.focus();
+    },
+    []
+  );
 
   const uploadFailedTitle = useCallback(
     (file: File) => {
@@ -206,7 +266,25 @@ export function Attachments({
     onDrop,
   });
 
-  const handleRemove = async (file: AttachedFile) => {
+  const handleRemove = async (file: AttachedFile, index: number) => {
+    const fileName = getFileName(file);
+    const remainingKeys = files
+      .filter((_, i) => i !== index)
+      .map((entry) => getFileKey(entry));
+
+    /*
+     * Focus-first: move keyboard focus before the item unmounts so focus does
+     * not drop to document.body (PromptInput TagGroup pattern).
+     */
+    focusAfterRemoval(index, remainingKeys);
+    setLiveMessage(
+      t(
+        "cph-theme-ticket-fields.attachments.file-removed",
+        "Removed {{fileName}}",
+        { fileName }
+      )
+    );
+
     if (file.status === "pending") {
       file.xhr.abort();
       removePendingFile(file.id);
@@ -241,34 +319,44 @@ export function Attachments({
         </StyledErrorMessage>
       )}
 
-      <FileUpload {...getRootProps()} isDragging={isDragActive}>
-        {isDragActive ? (
-          <span>
-            {t(
-              "cph-theme-ticket-fields.attachments.drop-files-label",
-              "Drop files here"
-            )}
-          </span>
-        ) : (
-          <span>
-            {t(
-              "cph-theme-ticket-fields.attachments.choose-file-label",
-              "Choose a file or drag and drop here"
-            )}
-          </span>
-        )}
-        <Input {...getInputProps()} />
-      </FileUpload>
+      <div ref={fileUploadRef}>
+        <FileUpload {...getRootProps()} isDragging={isDragActive}>
+          {isDragActive ? (
+            <span>
+              {t(
+                "cph-theme-ticket-fields.attachments.drop-files-label",
+                "Drop files here"
+              )}
+            </span>
+          ) : (
+            <span>
+              {t(
+                "cph-theme-ticket-fields.attachments.choose-file-label",
+                "Choose a file or drag and drop here"
+              )}
+            </span>
+          )}
+          <Input {...getInputProps()} />
+        </FileUpload>
+      </div>
+      <VisuallyHiddenLiveRegion aria-live="polite" aria-atomic="true">
+        {liveMessage}
+      </VisuallyHiddenLiveRegion>
       <FileList>
-        {files.map((file) => (
-          <FileListItem
-            key={file.status === "pending" ? file.id : file.value.id}
-            file={file}
-            onRemove={() => {
-              handleRemove(file);
-            }}
-          />
-        ))}
+        {files.map((file, index) => {
+          const key = getFileKey(file);
+
+          return (
+            <FileListItem
+              key={key}
+              ref={(node) => setRemoveButtonRef(key, node)}
+              file={file}
+              onRemove={() => {
+                void handleRemove(file, index);
+              }}
+            />
+          );
+        })}
       </FileList>
       {files.map(
         (file) =>
