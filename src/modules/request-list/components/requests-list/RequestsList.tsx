@@ -52,11 +52,11 @@ export function RequestsList({
     ticketFields,
     isLoading: isLoadingTicketFields,
     error: ticketFieldsError,
-  } = useTicketFields(
+  } = useTicketFields({
     locale,
     viewRequestsAcrossBrandsEnabled,
-    filterTicketFieldsByBrand
-  );
+    filterByBrand: filterTicketFieldsByBrand,
+  });
 
   const loadingError = requestsError || ticketFieldsError || userError;
 

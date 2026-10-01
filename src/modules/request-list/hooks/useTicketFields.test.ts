@@ -47,7 +47,11 @@ test("fetches all ticket fields via ticket_fields api call and returns the activ
     ]);
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useTicketFields("dk", false, true)
+    useTicketFields({
+      locale: "dk",
+      viewRequestsAcrossBrandsEnabled: false,
+      filterByBrand: true,
+    })
   );
 
   await waitForNextUpdate();
@@ -66,7 +70,11 @@ test("handles exceptions", async () => {
   fetchAllCursorPages.mockRejectedValueOnce(new Error("Network error"));
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useTicketFields("dk", false, false)
+    useTicketFields({
+      locale: "dk",
+      viewRequestsAcrossBrandsEnabled: false,
+      filterByBrand: false,
+    })
   );
 
   await waitForNextUpdate();
@@ -98,7 +106,11 @@ test("filters out inactive subject field", async () => {
     ]);
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useTicketFields("dk", false, false)
+    useTicketFields({
+      locale: "dk",
+      viewRequestsAcrossBrandsEnabled: false,
+      filterByBrand: false,
+    })
   );
 
   await waitForNextUpdate();
@@ -130,7 +142,11 @@ test("only returns ticket fields present in active ticket forms", async () => {
     ]);
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useTicketFields("dk", false, true)
+    useTicketFields({
+      locale: "dk",
+      viewRequestsAcrossBrandsEnabled: false,
+      filterByBrand: true,
+    })
   );
 
   await waitForNextUpdate();
@@ -148,7 +164,11 @@ test("when viewRequestsAcrossBrandsEnabled=true, returns all active fields when 
     .mockResolvedValueOnce([]);
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useTicketFields("dk", true, false)
+    useTicketFields({
+      locale: "dk",
+      viewRequestsAcrossBrandsEnabled: true,
+      filterByBrand: false,
+    })
   );
   await waitForNextUpdate();
 
@@ -177,7 +197,11 @@ test("when filterByBrand is false, only fetches ticket fields and filters by act
   ]);
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useTicketFields("dk", false, false)
+    useTicketFields({
+      locale: "dk",
+      viewRequestsAcrossBrandsEnabled: false,
+      filterByBrand: false,
+    })
   );
 
   await waitForNextUpdate();
@@ -195,7 +219,11 @@ test("when filterByBrand is false, does not fetch ticket forms", async () => {
   fetchAllCursorPages.mockResolvedValueOnce([activeTicketField]);
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useTicketFields("dk", false, false)
+    useTicketFields({
+      locale: "dk",
+      viewRequestsAcrossBrandsEnabled: false,
+      filterByBrand: false,
+    })
   );
 
   await waitForNextUpdate();

@@ -3,6 +3,12 @@ import type { CursorPaginatedResponse } from "../utils/pagination/CursorPaginate
 import type { TicketField, TicketForm } from "../data-types";
 import { fetchAllCursorPages } from "../utils/pagination/fetchAllCursorPages";
 
+interface UseTicketFieldsParams {
+  locale: string;
+  viewRequestsAcrossBrandsEnabled: boolean;
+  filterByBrand: boolean;
+}
+
 interface UseTicketFields {
   ticketFields: TicketField[];
   error?: Error;
@@ -37,11 +43,11 @@ async function listTicketForms(
   return await response.json();
 }
 
-export function useTicketFields(
-  locale: string,
-  viewRequestsAcrossBrandsEnabled: boolean,
-  filterByBrand: boolean
-): UseTicketFields {
+export function useTicketFields({
+  locale,
+  viewRequestsAcrossBrandsEnabled,
+  filterByBrand,
+}: UseTicketFieldsParams): UseTicketFields {
   const [ticketFields, setTicketFields] = useState<TicketField[]>([]);
   const [error, setError] = useState<Error | undefined>();
   const [isLoading, setIsLoading] = useState(true);
