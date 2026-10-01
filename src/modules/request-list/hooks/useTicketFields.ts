@@ -39,7 +39,8 @@ async function listTicketForms(
 
 export function useTicketFields(
   locale: string,
-  viewRequestsAcrossBrandsEnabled: boolean
+  viewRequestsAcrossBrandsEnabled: boolean,
+  filterByBrand: boolean
 ): UseTicketFields {
   const [ticketFields, setTicketFields] = useState<TicketField[]>([]);
   const [error, setError] = useState<Error | undefined>();
@@ -47,16 +48,7 @@ export function useTicketFields(
 
   async function fetchTicketFields() {
     try {
-      if (viewRequestsAcrossBrandsEnabled) {
-        const ticketFields = await fetchAllCursorPages(
-          () => listTicketFields(locale),
-          "ticket_fields"
-        );
-
-        setTicketFields(
-          ticketFields.filter((ticketField) => ticketField.active)
-        );
-      } else {
+      if (filterByBrand && !viewRequestsAcrossBrandsEnabled) {
         const [ticketFields, ticketForms] = await Promise.all([
           fetchAllCursorPages(() => listTicketFields(locale), "ticket_fields"),
           fetchAllCursorPages(() => listTicketForms(locale), "ticket_forms"),
@@ -72,8 +64,15 @@ export function useTicketFields(
               ticketField.active && activeTicketFieldIds.has(ticketField.id)
           )
         );
+      } else {
+        const ticketFields = await fetchAllCursorPages(
+          () => listTicketFields(locale),
+          "ticket_fields"
+        );
+        setTicketFields(
+          ticketFields.filter((ticketField) => ticketField.active)
+        );
       }
-
       setIsLoading(false);
     } catch (error) {
       setError(error as Error);

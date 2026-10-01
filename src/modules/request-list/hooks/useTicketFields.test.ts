@@ -47,7 +47,7 @@ test("fetches all ticket fields via ticket_fields api call and returns the activ
     ]);
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useTicketFields("dk", false)
+    useTicketFields("dk", false, true)
   );
 
   await waitForNextUpdate();
@@ -66,7 +66,7 @@ test("handles exceptions", async () => {
   fetchAllCursorPages.mockRejectedValueOnce(new Error("Network error"));
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useTicketFields("dk", false)
+    useTicketFields("dk", false, false)
   );
 
   await waitForNextUpdate();
@@ -98,7 +98,7 @@ test("filters out inactive subject field", async () => {
     ]);
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useTicketFields("dk", false)
+    useTicketFields("dk", false, false)
   );
 
   await waitForNextUpdate();
@@ -130,7 +130,7 @@ test("only returns ticket fields present in active ticket forms", async () => {
     ]);
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useTicketFields("dk", false)
+    useTicketFields("dk", false, true)
   );
 
   await waitForNextUpdate();
@@ -148,9 +148,8 @@ test("when viewRequestsAcrossBrandsEnabled=true, returns all active fields when 
     .mockResolvedValueOnce([]);
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useTicketFields("dk", true)
+    useTicketFields("dk", true, false)
   );
-
   await waitForNextUpdate();
 
   expect(result.current).toEqual({
@@ -158,4 +157,51 @@ test("when viewRequestsAcrossBrandsEnabled=true, returns all active fields when 
     error: undefined,
     isLoading: false,
   });
+});
+
+test("when filterByBrand is false, only fetches ticket fields and filters by active status", async () => {
+  const activeCustomField: TicketField = {
+    id: 50,
+    type: "text",
+    active: true,
+    title: "Custom field",
+    title_in_portal: "Custom field",
+    description: "",
+    custom_field_options: [],
+  };
+
+  fetchAllCursorPages.mockResolvedValueOnce([
+    activeTicketField,
+    inactiveTicketField,
+    activeCustomField,
+  ]);
+
+  const { result, waitForNextUpdate } = renderHook(() =>
+    useTicketFields("dk", false, false)
+  );
+
+  await waitForNextUpdate();
+
+  expect(fetchAllCursorPages).toHaveBeenCalledTimes(1);
+
+  expect(result.current).toEqual({
+    ticketFields: [activeTicketField, activeCustomField],
+    error: undefined,
+    isLoading: false,
+  });
+});
+
+test("when filterByBrand is false, does not fetch ticket forms", async () => {
+  fetchAllCursorPages.mockResolvedValueOnce([activeTicketField]);
+
+  const { result, waitForNextUpdate } = renderHook(() =>
+    useTicketFields("dk", false, false)
+  );
+
+  await waitForNextUpdate();
+
+  expect(fetchAllCursorPages).toHaveBeenCalledTimes(1);
+  expect(fetchAllCursorPages.mock.calls[0][1]).toEqual("ticket_fields");
+
+  expect(result.current.ticketFields).toEqual([activeTicketField]);
 });

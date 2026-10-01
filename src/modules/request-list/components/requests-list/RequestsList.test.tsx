@@ -51,6 +51,7 @@ const renderComponent = async (params?: Partial<RequestListParams>) => {
       locale="en-us"
       customStatusesEnabled={false}
       viewRequestsAcrossBrandsEnabled={false}
+      filterTicketFieldsByBrand={false}
     />
   );
 
