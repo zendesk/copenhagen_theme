@@ -20,12 +20,14 @@ export interface RequestsListProps {
   locale: string;
   customStatusesEnabled: boolean;
   viewRequestsAcrossBrandsEnabled: boolean;
+  filterTicketFieldsByBrand: boolean;
 }
 
 export function RequestsList({
   locale,
   customStatusesEnabled,
   viewRequestsAcrossBrandsEnabled,
+  filterTicketFieldsByBrand,
 }: RequestsListProps): JSX.Element {
   const { t } = useTranslation();
 
@@ -50,7 +52,11 @@ export function RequestsList({
     ticketFields,
     isLoading: isLoadingTicketFields,
     error: ticketFieldsError,
-  } = useTicketFields(locale, viewRequestsAcrossBrandsEnabled);
+  } = useTicketFields({
+    locale,
+    viewRequestsAcrossBrandsEnabled,
+    filterByBrand: filterTicketFieldsByBrand,
+  });
 
   const loadingError = requestsError || ticketFieldsError || userError;
 
