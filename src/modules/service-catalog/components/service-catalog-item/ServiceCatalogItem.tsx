@@ -353,9 +353,7 @@ export function ServiceCatalogItem({
     }
   }
 
-  const handleRequestSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const submitRequest = async (form: HTMLFormElement) => {
     // Submitting requests is not allowed while previewing a draft. Bail out
     // silently so the admin doesn't see a misleading error toast.
     if (isPreviewMode) {
@@ -367,13 +365,15 @@ export function ServiceCatalogItem({
       return;
     }
 
-    const form = e.currentTarget;
     const formData = new FormData(form);
     const isAssetTypeFieldHidden = formData.get("isAssetTypeHidden") === "true";
     const attachments = parseAttachments(formData);
 
     const requestFieldsWithFormData = requestFields.map((field) => {
-      if (isAssetTypeField(field) && isAssetTypeFieldHidden) {
+      if (
+        field.type === "description" ||
+        (isAssetTypeField(field) && isAssetTypeFieldHidden)
+      ) {
         return {
           ...field,
           value: formData.get(field.name),
@@ -446,6 +446,21 @@ export function ServiceCatalogItem({
     setIsSubmitting(false);
   };
 
+  const handleRequestSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    void submitRequest(e.currentTarget);
+  };
+
+  const requestFormRef = (form: HTMLFormElement | null) => {
+    if (form) {
+      // The Help Center WYSIWYG stops the submit event and calls
+      // form.submit() directly. Route that call through the same request flow.
+      form.submit = () => {
+        void submitRequest(form);
+      };
+    }
+  };
+
   const defaultOrganizationId =
     organizations.length > 0 && organizations[0]?.id
       ? organizations[0]?.id?.toString()
@@ -489,6 +504,7 @@ export function ServiceCatalogItem({
           brandId={brandId}
           defaultOrganizationId={defaultOrganizationId}
           handleChange={handleFieldChange}
+          formRef={requestFormRef}
           onSubmit={handleRequestSubmit}
           attachmentsOption={attachmentsOption}
           attachmentsRequiredError={attachmentsRequiredError}

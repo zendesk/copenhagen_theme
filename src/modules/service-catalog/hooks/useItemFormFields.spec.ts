@@ -405,7 +405,7 @@ describe("useItemFormFields", () => {
     ]);
   });
 
-  it("should not include fields with type 'subject', type 'description', active false, or editable_in_portal false in requestFields", async () => {
+  it("includes description only when the item opts in", async () => {
     const formResponse = {
       ticket_form: {
         id: 1,
@@ -438,7 +438,7 @@ describe("useItemFormFields", () => {
           active: true,
           editable_in_portal: true,
           required_in_portal: true,
-        }, // should be filtered out
+        },
         {
           ...textField,
           id: 4,
@@ -483,12 +483,23 @@ describe("useItemFormFields", () => {
         ok: true,
       });
     });
-    const { result, waitForNextUpdate } = renderHook(() =>
-      useItemFormFields(serviceCatalogItem, baseLocale)
+    const { result, waitForNextUpdate, rerender } = renderHook(
+      ({ item }) => useItemFormFields(item, baseLocale),
+      { initialProps: { item: serviceCatalogItem } }
     );
+
     await waitForNextUpdate();
-    const presentIds = result.current.requestFields.map((f) => f.id);
-    expect(presentIds).toEqual([1, 6]);
+    expect(result.current.requestFields.map((field) => field.id)).toEqual([
+      1, 6,
+    ]);
+
+    rerender({
+      item: { ...serviceCatalogItem, description_input_field_enabled: true },
+    });
+    await waitForNextUpdate();
+    expect(result.current.requestFields.map((field) => field.id)).toEqual([
+      1, 3, 6,
+    ]);
   });
 
   it("should filter out category lookup field from requestFields", async () => {
