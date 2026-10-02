@@ -494,7 +494,7 @@ describe("useItemFormFields", () => {
     ]);
 
     rerender({
-      item: { ...serviceCatalogItem, request_description_enabled: true },
+      item: { ...serviceCatalogItem, description_input_field_enabled: true },
     });
     await waitForNextUpdate();
     expect(result.current.requestFields.map((field) => field.id)).toEqual([
