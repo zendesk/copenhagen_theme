@@ -97,11 +97,9 @@ const RemoveButton = forwardRef(function RemoveButton(
       <StyledRemoveButton
         ref={ref}
         type="button"
-        tabIndex={0}
         $isDanger={isDanger}
         aria-label={ariaLabel}
         aria-describedby={undefined}
-        title={tooltip}
         onClick={onRemove}
         onKeyDown={handleKeyDown}
       >

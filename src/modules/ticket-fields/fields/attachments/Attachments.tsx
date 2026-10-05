@@ -4,7 +4,15 @@ import {
   Input,
   FileList,
 } from "@zendeskgarden/react-forms";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Span } from "@zendeskgarden/react-typography";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type MutableRefObject,
+  type Ref,
+} from "react";
 import { useDropzone } from "react-dropzone";
 import { useTranslation } from "react-i18next";
 import type { AttachmentField } from "../../data-types/AttachmentsField";
@@ -18,18 +26,6 @@ const StyledErrorMessage = styled(GardenField.Message)<{
   hasDescription?: boolean;
 }>`
   margin-top: ${(props) => (props.hasDescription ? props.theme.space.xxs : 0)};
-`;
-
-const VisuallyHiddenLiveRegion = styled.div`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 `;
 
 interface AttachmentProps {
@@ -56,13 +52,11 @@ export interface UploadFileResponse {
   };
 }
 
-function getFileKey(file: AttachedFile): string {
-  return file.status === "pending" ? file.id : file.value.id;
-}
+const getFileKey = (file: AttachedFile): string =>
+  file.status === "pending" ? file.id : file.value.id;
 
-function getFileName(file: AttachedFile): string {
-  return file.status === "pending" ? file.file_name : file.value.file_name;
-}
+const getFileName = (file: AttachedFile): string =>
+  file.status === "pending" ? file.file_name : file.value.file_name;
 
 export function Attachments({
   field,
@@ -265,6 +259,7 @@ export function Attachments({
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
   });
+  const { ref: dropzoneRef, ...rootProps } = getRootProps();
 
   const handleRemove = async (file: AttachedFile, index: number) => {
     const fileName = getFileName(file);
@@ -319,29 +314,41 @@ export function Attachments({
         </StyledErrorMessage>
       )}
 
-      <div ref={fileUploadRef}>
-        <FileUpload {...getRootProps()} isDragging={isDragActive}>
-          {isDragActive ? (
-            <span>
-              {t(
-                "cph-theme-ticket-fields.attachments.drop-files-label",
-                "Drop files here"
-              )}
-            </span>
-          ) : (
-            <span>
-              {t(
-                "cph-theme-ticket-fields.attachments.choose-file-label",
-                "Choose a file or drag and drop here"
-              )}
-            </span>
-          )}
-          <Input {...getInputProps()} />
-        </FileUpload>
-      </div>
-      <VisuallyHiddenLiveRegion aria-live="polite" aria-atomic="true">
+      <FileUpload
+        {...rootProps}
+        ref={(node) => {
+          fileUploadRef.current = node;
+
+          const ref = dropzoneRef as Ref<HTMLDivElement> | undefined;
+
+          if (typeof ref === "function") {
+            ref(node);
+          } else if (ref) {
+            (ref as MutableRefObject<HTMLDivElement | null>).current = node;
+          }
+        }}
+        isDragging={isDragActive}
+      >
+        {isDragActive ? (
+          <span>
+            {t(
+              "cph-theme-ticket-fields.attachments.drop-files-label",
+              "Drop files here"
+            )}
+          </span>
+        ) : (
+          <span>
+            {t(
+              "cph-theme-ticket-fields.attachments.choose-file-label",
+              "Choose a file or drag and drop here"
+            )}
+          </span>
+        )}
+        <Input {...getInputProps()} />
+      </FileUpload>
+      <Span role="status" aria-live="polite" aria-atomic="true" hidden>
         {liveMessage}
-      </VisuallyHiddenLiveRegion>
+      </Span>
       <FileList>
         {files.map((file, index) => {
           const key = getFileKey(file);
