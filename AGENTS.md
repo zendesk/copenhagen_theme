@@ -33,7 +33,7 @@ yarn i18n:update-translations
 yarn i18n:update-translations --module=module-name
 ```
 
-**Note:** Preview requires Zendesk authentication. Run `yarn zcli login -i` first if needed.
+**Note:** Preview requires Zendesk authentication. Run `yarn zcli login` first if needed.
 
 ## Architecture
 

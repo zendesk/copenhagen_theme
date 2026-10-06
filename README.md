@@ -106,7 +106,7 @@ Notes:
 
 - We intentionally do not use babel when compiling `script.js` so we can get a clean bundle output. Make sure to only use widely supported ecmascript features (ES2015).
 - Do not edit `style.css`, `script.js` and the files inside the `assets` folder directly. They are regenerated during release.
-- Preview requires login so make sure to first run `yarn zcli login -i` if you haven't done that before.
+- Preview requires login so make sure to first run `yarn zcli login` if you haven't done that before.
 
 ## Assets
 The Copenhagen theme comes with a few JavaScript assets, but you can add other assets to your theme by placing them in the `assets` folder.
@@ -255,7 +255,7 @@ React components use `react-i18next` with YAML translation files under `src/modu
 We use a custom node script that runs [lighthouse](https://github.com/GoogleChrome/lighthouse) for automated accessibility testing.
 
 There are two ways of running the script:
-- **Development mode** - it runs the accessibility audits on the local theme preview, on a specific account. It requires `zcli themes:preview` to be running;
+- **Development mode** - it runs the accessibility audits on the local theme preview, on a specific account. It requires `yarn zcli themes:preview` to be running;
 - **CI mode** - it runs the accessibility audits on the live theme of a specific account.
 
 Depending on the scope of testing, some manual testing might be needed in addition to the above.
