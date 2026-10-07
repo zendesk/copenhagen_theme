@@ -79,7 +79,7 @@ export function Attachments({
   );
   const { t } = useTranslation();
   const [liveMessage, setLiveMessage] = useState("");
-  const fileUploadRef = useRef<HTMLDivElement>(null);
+  const fileUploadRef =  useRef<HTMLDivElement | null>(null);
   const removeButtonRefs = useRef<Map<string, HTMLButtonElement | null>>(
     new Map()
   );
