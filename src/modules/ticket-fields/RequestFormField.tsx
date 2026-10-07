@@ -67,11 +67,12 @@ export const RequestFormField = ({
         />
       );
     case "textarea":
+    case "description":
       return (
         <TextArea
           key={field.name}
           field={field}
-          hasWysiwyg={false}
+          hasWysiwyg={field.type === "description"}
           baseLocale={baseLocale}
           hasAtMentions={hasAtMentions}
           userRole={userRole}
