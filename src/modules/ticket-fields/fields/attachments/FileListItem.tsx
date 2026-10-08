@@ -1,8 +1,12 @@
 import { Anchor } from "@zendeskgarden/react-buttons";
 import { File, FileList } from "@zendeskgarden/react-forms";
 import { Progress } from "@zendeskgarden/react-loaders";
+import { focusStyles, getColor } from "@zendeskgarden/react-theming";
 import { Tooltip } from "@zendeskgarden/react-tooltips";
-import type { KeyboardEvent } from "react";
+import TrashIcon from "@zendeskgarden/svg-icons/src/16/trash-stroke.svg";
+import XIcon from "@zendeskgarden/svg-icons/src/16/x-stroke.svg";
+import type { ForwardedRef, KeyboardEvent, Ref } from "react";
+import { forwardRef } from "react";
 import styled from "styled-components";
 import type { AttachedFile } from "./useAttachedFiles";
 import { useTranslation } from "react-i18next";
@@ -16,37 +20,104 @@ const FileNameWrapper = styled.div`
   flex: 1;
 `;
 
-export function FileListItem({
-  file,
-  onRemove,
-}: FileListItemProps): JSX.Element {
+/*
+ * Custom remove control — keyboard tab stop for remove/stop-upload. Garden's
+ * File.Close / File.Delete hardcode tabIndex={-1} after props, so they cannot
+ * be reached by Tab. Unlike PromptInput FileTag (one tab stop; ring on the
+ * chip via :has), HC attachments also tab to the file link, so the focus ring
+ * stays on this button — not the whole File chip.
+ */
+const StyledRemoveButton = styled.button<{ $isDanger?: boolean }>`
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.25s ease-in-out;
+  opacity: 0.8;
+  border: none;
+  border-radius: ${(props) => props.theme.borderRadii.md};
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  color: ${(props) =>
+    getColor({
+      theme: props.theme,
+      variable: props.$isDanger ? "foreground.danger" : "foreground.subtle",
+    })};
+  appearance: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  ${(props) =>
+    focusStyles({
+      theme: props.theme,
+      selector: "&:focus-visible",
+      color: { variable: "border.primaryEmphasis" },
+    })}
+`;
+
+const StyledAttachmentFile = styled(File)`
+  & ${StyledRemoveButton} {
+    width: ${(props) => `${props.theme.space.base * 10}px`};
+    height: ${(props) => `${props.theme.space.base * 10}px`};
+    margin-inline-end: ${(props) => `-${props.theme.space.base * 3}px`};
+  }
+`;
+const RemoveButton = forwardRef(function RemoveButton(
+  {
+    ariaLabel,
+    isDanger,
+    onRemove,
+    tooltip,
+  }: {
+    ariaLabel: string;
+    isDanger?: boolean;
+    onRemove: () => void;
+    tooltip: string;
+  },
+  ref: ForwardedRef<HTMLButtonElement>
+) {
+  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key !== "Delete" && event.key !== "Backspace") {
+      return;
+    }
+
+    event.preventDefault();
+    onRemove();
+  };
+
+  return (
+    <Tooltip content={tooltip}>
+      <StyledRemoveButton
+        ref={ref}
+        type="button"
+        $isDanger={isDanger}
+        aria-label={ariaLabel}
+        aria-describedby={undefined}
+        onClick={onRemove}
+        onKeyDown={handleKeyDown}
+      >
+        {isDanger ? (
+          <TrashIcon aria-hidden="true" focusable="false" />
+        ) : (
+          <XIcon aria-hidden="true" focusable="false" />
+        )}
+      </StyledRemoveButton>
+    </Tooltip>
+  );
+});
+
+export const FileListItem = forwardRef(function FileListItem(
+  { file, onRemove }: FileListItemProps,
+  ref: Ref<HTMLButtonElement>
+): JSX.Element {
   const { t } = useTranslation();
-
-  const handleFileKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.code === "Delete" || e.code === "Backspace" || e.code === "Enter") {
-      e.preventDefault();
-      onRemove();
-    }
-  };
-
-  const handleFileKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.code === "Space") {
-      e.preventDefault();
-      onRemove();
-    }
-  };
-
-  const handleCloseKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
-    if (
-      e.code === "Enter" ||
-      e.code === "Space" ||
-      e.code === "Delete" ||
-      e.code === "Backspace"
-    ) {
-      e.preventDefault();
-      onRemove();
-    }
-  };
 
   const fileName =
     file.status === "pending" ? file.file_name : file.value.file_name;
@@ -62,34 +133,20 @@ export function FileListItem({
 
   return (
     <FileList.Item>
-      <File
-        type="generic"
-        tabIndex={0}
-        aria-label={t(
-          "cph-theme-ticket-fields.attachments.file",
-          "File: {{fileName}}, press delete to remove",
-          { fileName }
-        )}
-        onKeyDown={handleFileKeyDown}
-        onKeyUp={handleFileKeyUp}
-      >
+      <StyledAttachmentFile type="generic">
         {file.status === "pending" ? (
           <>
             <FileNameWrapper>{fileName}</FileNameWrapper>
-            <Tooltip content={stopUploadLabel}>
-              <File.Close
-                aria-label={t(
-                  "cph-theme-ticket-fields.attachments.stop-upload-aria-label",
-                  "Stop uploading {{fileName}}",
-                  { fileName }
-                )}
-                aria-describedby={undefined}
-                onClick={() => {
-                  onRemove();
-                }}
-                onKeyDown={handleCloseKeyDown}
-              />
-            </Tooltip>
+            <RemoveButton
+              ref={ref}
+              tooltip={stopUploadLabel}
+              ariaLabel={t(
+                "cph-theme-ticket-fields.attachments.stop-upload-aria-label",
+                "Stop uploading {{fileName}}",
+                { fileName }
+              )}
+              onRemove={onRemove}
+            />
             <Progress
               value={file.progress}
               aria-label={t(
@@ -106,24 +163,21 @@ export function FileListItem({
                 {fileName}
               </Anchor>
             </FileNameWrapper>
-            <Tooltip content={removeFileLabel}>
-              <File.Delete
-                aria-label={t(
-                  "cph-theme-ticket-fields.attachments.remove-file-aria-label",
-                  "Remove file: {{fileName}}",
-                  { fileName }
-                )}
-                aria-describedby={undefined}
-                onClick={() => {
-                  onRemove();
-                }}
-                onKeyDown={handleCloseKeyDown}
-              />
-            </Tooltip>
+            <RemoveButton
+              ref={ref}
+              isDanger
+              tooltip={removeFileLabel}
+              ariaLabel={t(
+                "cph-theme-ticket-fields.attachments.remove-file-aria-label",
+                "Remove file: {{fileName}}",
+                { fileName }
+              )}
+              onRemove={onRemove}
+            />
             <Progress value={100} aria-hidden="true" />
           </>
         )}
-      </File>
+      </StyledAttachmentFile>
     </FileList.Item>
   );
-}
+});
