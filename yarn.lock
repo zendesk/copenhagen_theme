@@ -9058,7 +9058,7 @@ __metadata:
     "@zendeskgarden/react-typography": "npm:9.15.6"
     "@zendeskgarden/svg-icons": "npm:8.0.0"
     concurrently: "npm:8.2.2"
-    dompurify: "npm:3.4.0"
+    dompurify: "npm:3.4.16"
     dotenv: "npm:16.0.3"
     eslint: "npm:8.35.0"
     eslint-config-prettier: "npm:8.6.0"
@@ -9873,15 +9873,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:3.4.0":
-  version: 3.4.0
-  resolution: "dompurify@npm:3.4.0"
+"dompurify@npm:3.4.16":
+  version: 3.4.16
+  resolution: "dompurify@npm:3.4.16"
   dependencies:
     "@types/trusted-types": "npm:^2.0.7"
   dependenciesMeta:
     "@types/trusted-types":
       optional: true
-  checksum: 10c0/5593ac44ee20b9aa521c2120884effc98927fb9128c548183c75e79e0a04357c62ee913a049a267c8f396cb8c9d520ecf72562826c5524c46d4fe03c12063638
+  checksum: 10c0/65a901c6b6d489d3e898f67223d81dac66d613cda48f5785f0ed52a4ae320c4b2745490a58c14161e29f0273080fea0a0cb234a9ef892650e1a9b2a7befa07a5
   languageName: node
   linkType: hard
 
