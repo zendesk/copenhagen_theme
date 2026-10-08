@@ -79,7 +79,7 @@ export function Attachments({
   );
   const { t } = useTranslation();
   const [liveMessage, setLiveMessage] = useState("");
-  const fileUploadRef =  useRef<HTMLDivElement | null>(null);
+  const fileUploadRef = useRef<HTMLDivElement | null>(null);
   const removeButtonRefs = useRef<Map<string, HTMLButtonElement | null>>(
     new Map()
   );
@@ -114,13 +114,8 @@ export function Attachments({
         return;
       }
 
-      const uploadRoot = fileUploadRef.current;
-      const focusTarget =
-        uploadRoot?.querySelector<HTMLElement>(
-          'input[type="file"], button, [tabindex]:not([tabindex="-1"])'
-        ) ?? uploadRoot;
-
-      focusTarget?.focus();
+      // FileUpload root (dropzone tab stop), not the nested display:none file input.
+      fileUploadRef.current?.focus();
     },
     []
   );
