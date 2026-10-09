@@ -7,15 +7,16 @@
   margin: 0 0 15px 0;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
 
   li {
     display: inline-block;
     color: $secondary-text-color;
     font-size: $font-size-small;
     max-width: 450px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    // Long multi-word names are unaffected, but a long unbroken string breaks instead of pushing the
+    // page wider than the viewport
+    overflow-wrap: anywhere;
 
     + li::before {
       content: ">" / "";
