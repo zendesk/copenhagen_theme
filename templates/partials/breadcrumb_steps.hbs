@@ -1,0 +1,18 @@
+{{#each path_steps}}
+  <li>
+    {{#if @first}}
+      {{!-- no separator before the first step --}}
+    {{else}}
+      <span aria-hidden="true" class="breadcrumbs-separator">&gt;</span>
+    {{/if}}
+    {{#if current_page}}
+      <a href="{{url}}" aria-current="page">{{name}}</a>
+    {{else}}
+      {{#is name '...'}}
+        ...
+      {{else}}
+        <a href="{{url}}" {{#if target}}target="{{target}}"{{/if}}>{{name}}</a>
+      {{/is}}
+    {{/if}}
+  </li>
+{{/each}}

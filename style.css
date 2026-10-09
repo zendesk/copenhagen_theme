@@ -1043,12 +1043,11 @@ ul {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.breadcrumbs li + li::before {
-  content: ">"/"";
-  margin: 0 4px;
-}
 .breadcrumbs li a:visited {
   color: $link_color;
+}
+.breadcrumbs .breadcrumbs-separator {
+  margin: 0 4px;
 }
 
 /***** Search field *****/

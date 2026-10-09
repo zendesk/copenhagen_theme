@@ -201,9 +201,7 @@
                         {{#is object_type 'comment'}}aria-label='{{t 'comment_location_with_author_name' author_name=author.name}}'{{/is}}
                       >
                         <ol class="breadcrumbs profile-contribution-breadcrumbs">
-                          {{#each path_steps}}
-                            <li><a href="{{url}}">{{name}}</a></li>
-                          {{/each}}
+                          {{> breadcrumb_steps path_steps=path_steps }}
                         </ol>
                       </nav>
 
@@ -367,9 +365,7 @@
                       {{#is object_type 'comment'}}aria-label='{{t 'comment_location_with_author_name' author_name=author.name}}'{{/is}}
                     >
                       <ol class="breadcrumbs profile-contribution-breadcrumbs">
-                        {{#each path_steps}}
-                          <li><a href="{{url}}">{{name}}</a></li>
-                        {{/each}}
+                        {{> breadcrumb_steps path_steps=path_steps }}
                       </ol>
                     </nav>
 

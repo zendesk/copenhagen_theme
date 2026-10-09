@@ -17,13 +17,12 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    + li::before {
-      content: ">" / "";
-      margin: 0 4px;
-    }
-
     a:visited {
       color: $link_color;
     }
+  }
+
+  .breadcrumbs-separator {
+    margin: 0 4px;
   }
 }
