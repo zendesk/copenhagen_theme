@@ -167,12 +167,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
     ({ inputValue: nextInput, selectionValue }) => {
       if (selectionValue !== undefined) {
-        if (
-          selectionValue === loadingOption.id ||
-          selectionValue === noResultsOption.id
-        ) {
-          // Non-selectable rows; ignore.
-        } else if (selectionValue === EMPTY_OPTION.value) {
+        if (selectionValue === EMPTY_OPTION.value) {
           setSelectedOption(null);
           setInputValue(EMPTY_OPTION.name);
           setOptions([]);
@@ -186,6 +181,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
             onChange(selected.id);
           }
         }
+        return;
       }
 
       if (nextInput !== undefined) {
@@ -196,13 +192,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
         debouncedFetchUsers(nextInput);
       }
     },
-    [
-      debouncedFetchUsers,
-      onChange,
-      options,
-      loadingOption.id,
-      noResultsOption.id,
-    ]
+    [debouncedFetchUsers, onChange, options]
   );
 
   return (

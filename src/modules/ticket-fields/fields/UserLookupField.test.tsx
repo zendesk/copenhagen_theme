@@ -151,9 +151,10 @@ describe("UserLookupField", () => {
   });
 
   it("selects a user from the results and calls onChange with the id", async () => {
-    global.fetch = jest
+    const fetchMock = jest
       .fn()
       .mockResolvedValue(usersSearchResponse([userA, userB])) as jest.Mock;
+    global.fetch = fetchMock;
     const onChange = jest.fn();
 
     render(<UserLookupField field={defaultField} onChange={onChange} />);
@@ -170,6 +171,14 @@ describe("UserLookupField", () => {
     });
 
     expect(onChange).toHaveBeenCalledWith("1");
+    // Garden/downshift sends both selectionValue and inputValue (the option's
+    // label) on selection; the displayed value must stay the user's name, not
+    // the "name (email)" label, and selecting must not trigger another search.
+    expect(combobox).toHaveValue("Alice");
+    await act(async () => {
+      jest.advanceTimersByTime(300);
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   it("clears the selection via the '-' option and calls onChange with an empty value", async () => {
