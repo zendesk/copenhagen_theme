@@ -68,8 +68,8 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
     try {
       const res = await fetch(`/api/v2/users/${userId}.json`);
       if (!res.ok) {
-        setSelectedOption({ id: userId, name: userId, email: "" });
-        setInputValue(userId);
+        setSelectedOption({ id: userId, name: EMPTY_OPTION.name, email: "" });
+        setInputValue(EMPTY_OPTION.name);
         return;
       }
       const data = await res.json();
@@ -83,8 +83,8 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
       setInputValue(user.name);
     } catch (err) {
       console.error(err);
-      setSelectedOption({ id: userId, name: userId, email: "" });
-      setInputValue(userId);
+      setSelectedOption({ id: userId, name: EMPTY_OPTION.name, email: "" });
+      setInputValue(EMPTY_OPTION.name);
     }
   }, []);
 
@@ -136,6 +136,9 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
     () =>
       debounce((query: string) => {
         if (query.trim().length < MIN_QUERY_LENGTH) {
+          abortControllerRef.current?.abort();
+          abortControllerRef.current = null;
+          setIsLoadingOptions(false);
           setOptions(
             selectedOptionRef.current ? [selectedOptionRef.current] : []
           );
@@ -164,7 +167,12 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
     ({ inputValue: nextInput, selectionValue }) => {
       if (selectionValue !== undefined) {
-        if (selectionValue === "") {
+        if (
+          selectionValue === loadingOption.id ||
+          selectionValue === noResultsOption.id
+        ) {
+          // Non-selectable rows; ignore.
+        } else if (selectionValue === EMPTY_OPTION.value) {
           setSelectedOption(null);
           setInputValue(EMPTY_OPTION.name);
           setOptions([]);
@@ -182,10 +190,19 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
 
       if (nextInput !== undefined) {
         setInputValue(nextInput);
+        if (nextInput.trim().length >= MIN_QUERY_LENGTH) {
+          setIsLoadingOptions(true);
+        }
         debouncedFetchUsers(nextInput);
       }
     },
-    [debouncedFetchUsers, onChange, options]
+    [
+      debouncedFetchUsers,
+      onChange,
+      options,
+      loadingOption.id,
+      noResultsOption.id,
+    ]
   );
 
   return (
@@ -205,8 +222,12 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
         validation={error ? "error" : undefined}
         onChange={handleChange}
         renderValue={() => selectedOption?.name || EMPTY_OPTION.name}
+        placeholder={t(
+          "cph-theme-ticket-fields.lookup-field.placeholder",
+          "Search {{label}}",
+          { label }
+        )}
         inputProps={{
-          name,
           required,
           "aria-required": required,
           "aria-describedby": error ? `${name}-error` : undefined,
@@ -219,7 +240,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
           <Option
             key={loadingOption.id}
             isDisabled
-            value=""
+            value={loadingOption.id}
             label={loadingOption.name}
           />
         )}
@@ -229,7 +250,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
             <Option
               key={noResultsOption.id}
               isDisabled
-              value=""
+              value={noResultsOption.id}
               label={noResultsOption.name}
             />
           )}
@@ -248,6 +269,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
           {error}
         </Field.Message>
       )}
+      <input type="hidden" name={name} value={selectedOption?.id ?? ""} />
     </Field>
   );
 }
