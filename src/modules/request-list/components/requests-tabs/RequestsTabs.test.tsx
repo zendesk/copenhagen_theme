@@ -91,6 +91,30 @@ test("<RequestsTabs /> calls onTabSelected when switching tabs", () => {
   expect(onTabSelected).toHaveBeenCalledWith({ name: MY_REQUESTS_TAB_NAME });
 });
 
+test("<RequestsTabs /> selects the default organization when switching to 'Organizational requests'", () => {
+  const onTabSelected = jest.fn();
+
+  render(
+    <ThemeProvider>
+      <RequestsTabs
+        organizations={[
+          { id: 1, name: "Organization 1", default: false },
+          { id: 2, name: "Organization 2", default: true },
+        ]}
+        selectedTab={{ name: MY_REQUESTS_TAB_NAME }}
+        onTabSelected={onTabSelected}
+      />
+    </ThemeProvider>
+  );
+
+  fireEvent.click(screen.getByRole("tab", { name: "Organizational requests" }));
+
+  expect(onTabSelected).toHaveBeenCalledWith({
+    name: ORG_REQUESTS_TAB_NAME,
+    organizationId: 2,
+  });
+});
+
 test("<RequestsTabs /> does not render the 'Organizational requests' tab if it's not available", () => {
   const onTabSelected = jest.fn();
 

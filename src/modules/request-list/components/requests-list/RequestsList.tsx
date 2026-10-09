@@ -34,7 +34,8 @@ export function RequestsList({
   const { query, page, sort, selectedTab, filters } = params;
 
   const { user, isLoading: isLoadingUser, error: userError } = useUser();
-  const { organizations } = useOrganizations(user);
+  const { organizations, hasMore: hasMoreOrganizations } =
+    useOrganizations(user);
   const {
     requests,
     users,
@@ -145,6 +146,7 @@ export function RequestsList({
             ticketFields={ticketFields}
             onFiltersChanged={handleFiltersChanged}
             organizations={organizations}
+            hasMoreOrganizations={hasMoreOrganizations}
             selectedTab={selectedTab}
             onOrganizationSelected={handleOrganizationSelected}
             user={user}
