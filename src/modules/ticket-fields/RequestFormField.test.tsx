@@ -174,7 +174,7 @@ describe("RequestFormField lookup routing", () => {
 
     expect(fetch).toHaveBeenCalledWith(
       expect.stringContaining("/hc/api/v2/service_catalog/users?query=ali"),
-      expect.anything()
+      expect.objectContaining({ signal: expect.any(AbortSignal) })
     );
   });
 
