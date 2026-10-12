@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useItemFormFields } from "../../hooks/useItemFormFields";
 import { ItemRequestForm } from "./ItemRequestForm";
-import type { UserOption } from "../../data-types/UserOption";
+import type { UserOption } from "../../../ticket-fields/data-types/UserOption";
 import { CategorySelector } from "./CategorySelector";
 import { PreviewModeBanner } from "./PreviewModeBanner";
 import type { Organization } from "../../../ticket-fields/data-types/Organization";

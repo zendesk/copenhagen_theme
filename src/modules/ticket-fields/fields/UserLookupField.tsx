@@ -1,20 +1,14 @@
 import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import { Field, Combobox, Option } from "@zendeskgarden/react-dropdowns";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { TicketFieldObject } from "../data-types/TicketFieldObject";
+import type { UserOption } from "../data-types/UserOption";
 import { Span } from "@zendeskgarden/react-typography";
-import debounce from "lodash.debounce";
 import { useTranslation } from "react-i18next";
 import { EmptyValueOption } from "./EmptyValueOption";
+import { useUserSearch } from "../hooks/useUserSearch";
 
-const SEARCH_DEBOUNCE_MS = 300;
 const MIN_QUERY_LENGTH = 3;
-
-interface EndUserOption {
-  id: string;
-  name: string;
-  email: string;
-}
 
 const EMPTY_OPTION = {
   value: "",
@@ -34,20 +28,14 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
   const { label, error, value, name, required, description } = field;
   const { t } = useTranslation();
 
-  const [options, setOptions] = useState<EndUserOption[]>([]);
-  const [selectedOption, setSelectedOption] = useState<EndUserOption | null>(
-    null
-  );
+  const [selectedOption, setSelectedOption] = useState<UserOption | null>(null);
   const [inputValue, setInputValue] = useState("");
-  const [isLoadingOptions, setIsLoadingOptions] = useState(false);
+  const [isSearchPending, setIsSearchPending] = useState(false);
 
-  const selectedOptionRef = useRef(selectedOption);
-  useEffect(() => {
-    selectedOptionRef.current = selectedOption;
-  }, [selectedOption]);
-
-  const abortControllerRef = useRef<AbortController | null>(null);
   const hasUserSelectedRef = useRef(false);
+
+  const { options, isLoadingOptions, searchUsers, clearOptions } =
+    useUserSearch(selectedOption, () => setIsSearchPending(false));
 
   const loadingOption = {
     name: t(
@@ -92,74 +80,6 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
     }
   }, []);
 
-  const fetchUsers = useCallback(async (searchQuery: string) => {
-    abortControllerRef.current?.abort();
-    const controller = new AbortController();
-    abortControllerRef.current = controller;
-    setIsLoadingOptions(true);
-
-    try {
-      const response = await fetch(
-        `/hc/api/v2/service_catalog/users?query=${encodeURIComponent(
-          searchQuery
-        )}`,
-        { signal: controller.signal }
-      );
-      const data = await response.json();
-      if (response.ok) {
-        const selected = selectedOptionRef.current;
-        const userOptions: EndUserOption[] = (data.users || []).map(
-          (user: EndUserOption) => ({
-            id: String(user.id),
-            name: user.name,
-            email: user.email,
-          })
-        );
-        setOptions(
-          selected
-            ? [selected, ...userOptions.filter((o) => o.id !== selected.id)]
-            : userOptions
-        );
-      } else {
-        setOptions([]);
-      }
-    } catch (err) {
-      if (err instanceof DOMException && err.name === "AbortError") {
-        return;
-      }
-      console.error("Error fetching end users:", err);
-      setOptions([]);
-    } finally {
-      if (abortControllerRef.current === controller) {
-        setIsLoadingOptions(false);
-      }
-    }
-  }, []);
-
-  const debouncedFetchUsers = useMemo(
-    () =>
-      debounce((query: string) => {
-        if (query.trim().length < MIN_QUERY_LENGTH) {
-          abortControllerRef.current?.abort();
-          abortControllerRef.current = null;
-          setIsLoadingOptions(false);
-          setOptions(
-            selectedOptionRef.current ? [selectedOptionRef.current] : []
-          );
-          return;
-        }
-        fetchUsers(query.trim());
-      }, SEARCH_DEBOUNCE_MS),
-    [fetchUsers]
-  );
-
-  useEffect(() => {
-    return () => {
-      debouncedFetchUsers.cancel();
-      abortControllerRef.current?.abort();
-    };
-  }, [debouncedFetchUsers]);
-
   useEffect(() => {
     if (value) {
       fetchSelectedUser(String(value));
@@ -168,21 +88,25 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const displayOptions =
+    options.length > 0 ? options : selectedOption ? [selectedOption] : [];
+
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
     ({ inputValue: nextInput, selectionValue }) => {
       if (selectionValue !== undefined) {
         hasUserSelectedRef.current = true;
+        setIsSearchPending(false);
         if (selectionValue === EMPTY_OPTION.value) {
           setSelectedOption(null);
           setInputValue(EMPTY_OPTION.name);
-          setOptions([]);
+          clearOptions();
           onChange(EMPTY_OPTION.value);
         } else {
           const selected = options.find((o) => o.id === selectionValue);
           if (selected) {
             setInputValue(selected.name);
             setSelectedOption(selected);
-            setOptions([selected]);
+            clearOptions();
             onChange(selected.id);
           }
         }
@@ -191,13 +115,17 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
 
       if (nextInput !== undefined) {
         setInputValue(nextInput);
-        if (nextInput.trim().length >= MIN_QUERY_LENGTH) {
-          setIsLoadingOptions(true);
+        const trimmed = nextInput.trim();
+        if (trimmed.length >= MIN_QUERY_LENGTH) {
+          setIsSearchPending(true);
+          searchUsers(trimmed);
+        } else {
+          setIsSearchPending(false);
+          clearOptions();
         }
-        debouncedFetchUsers(nextInput);
       }
     },
-    [debouncedFetchUsers, onChange, options]
+    [clearOptions, onChange, options, searchUsers]
   );
 
   return (
@@ -231,7 +159,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
         <Option value={EMPTY_OPTION.value} label={EMPTY_OPTION.name}>
           <EmptyValueOption />
         </Option>
-        {isLoadingOptions && (
+        {(isSearchPending || isLoadingOptions) && (
           <Option
             key={loadingOption.id}
             isDisabled
@@ -239,9 +167,9 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
             label={loadingOption.name}
           />
         )}
-        {!isLoadingOptions &&
+        {!(isSearchPending || isLoadingOptions) &&
           inputValue.trim().length >= MIN_QUERY_LENGTH &&
-          options.length === 0 && (
+          displayOptions.length === 0 && (
             <Option
               key={noResultsOption.id}
               isDisabled
@@ -249,7 +177,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
               label={noResultsOption.name}
             />
           )}
-        {options.map((option) => (
+        {displayOptions.map((option) => (
           <Option
             key={option.id}
             value={option.id}

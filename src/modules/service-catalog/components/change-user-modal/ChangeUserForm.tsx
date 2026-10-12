@@ -9,8 +9,8 @@ import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import { Span } from "@zendeskgarden/react-typography";
 import UserCircleStrokeIcon from "@zendeskgarden/svg-icons/src/16/user-circle-stroke.svg";
-import type { UserOption } from "../../data-types/UserOption";
-import { useUserSearch } from "../../hooks/useUserSearch";
+import type { UserOption } from "../../../ticket-fields/data-types/UserOption";
+import { useUserSearch } from "../../../ticket-fields/hooks/useUserSearch";
 
 interface ChangeUserFormProps {
   onCancel: () => void;

@@ -85,6 +85,7 @@ export function useUserSearch(
     searchUsers.cancel();
     abortControllerRef.current?.abort();
     setOptions([]);
+    setIsLoadingOptions(false);
   }, [searchUsers]);
 
   useEffect(() => {
