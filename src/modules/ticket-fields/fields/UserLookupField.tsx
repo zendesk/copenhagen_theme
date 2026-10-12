@@ -47,6 +47,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
   }, [selectedOption]);
 
   const abortControllerRef = useRef<AbortController | null>(null);
+  const hasUserSelectedRef = useRef(false);
 
   const loadingOption = {
     name: t(
@@ -67,12 +68,14 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
   const fetchSelectedUser = useCallback(async (userId: string) => {
     try {
       const res = await fetch(`/api/v2/users/${userId}.json`);
+      if (hasUserSelectedRef.current) return;
       if (!res.ok) {
         setSelectedOption({ id: userId, name: EMPTY_OPTION.name, email: "" });
         setInputValue(EMPTY_OPTION.name);
         return;
       }
       const data = await res.json();
+      if (hasUserSelectedRef.current) return;
       const user = data.user;
       const option = {
         id: String(user.id),
@@ -82,6 +85,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
       setSelectedOption(option);
       setInputValue(user.name);
     } catch (err) {
+      if (hasUserSelectedRef.current) return;
       console.error(err);
       setSelectedOption({ id: userId, name: EMPTY_OPTION.name, email: "" });
       setInputValue(EMPTY_OPTION.name);
@@ -167,6 +171,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
     ({ inputValue: nextInput, selectionValue }) => {
       if (selectionValue !== undefined) {
+        hasUserSelectedRef.current = true;
         if (selectionValue === EMPTY_OPTION.value) {
           setSelectedOption(null);
           setInputValue(EMPTY_OPTION.name);

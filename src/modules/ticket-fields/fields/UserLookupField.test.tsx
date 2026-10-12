@@ -245,6 +245,54 @@ describe("UserLookupField", () => {
     expect(await screen.findByLabelText("Assignee")).toHaveValue("-");
   });
 
+  it("ignores a stale initial-value fetch that resolves after the user selects someone else", async () => {
+    let resolveInitialFetch: (value: unknown) => void;
+    const fetchMock = jest.fn((url: string) => {
+      if (url === "/api/v2/users/1.json") {
+        return new Promise((resolve) => {
+          resolveInitialFetch = resolve;
+        });
+      }
+      return Promise.resolve(usersSearchResponse([userB]));
+    }) as unknown as jest.Mock;
+    global.fetch = fetchMock;
+    const onChange = jest.fn();
+
+    const { container } = render(
+      <UserLookupField
+        field={{ ...defaultField, value: "1" }}
+        onChange={onChange}
+      />
+    );
+    const combobox = screen.getByLabelText("Assignee");
+
+    const hiddenInput = container.querySelector(
+      `input[type="hidden"][name="${defaultField.name}"]`
+    ) as HTMLInputElement;
+
+    await act(async () => {
+      fireEvent.change(combobox, { target: { value: "bob" } });
+      jest.advanceTimersByTime(300);
+    });
+    const option = await screen.findByText("Bob (bob@example.com)");
+    await act(async () => {
+      fireEvent.click(option);
+    });
+
+    expect(onChange).toHaveBeenCalledWith("2");
+    expect(combobox).toHaveValue("Bob");
+    expect(hiddenInput.value).toBe("2");
+
+    await act(async () => {
+      resolveInitialFetch(userShowResponse(userA));
+    });
+
+    // The stale Alice response must not overwrite Bob's selection.
+    expect(combobox).toHaveValue("Bob");
+    expect(hiddenInput.value).toBe("2");
+    expect(onChange).toHaveBeenLastCalledWith("2");
+  });
+
   it("submits the selected user id via a hidden input in a native form", async () => {
     global.fetch = jest
       .fn()
