@@ -1,3 +1,10 @@
+# [4.52.0](https://github.com/zendesk/copenhagen_theme/compare/v4.51.5...v4.52.0) (2026-10-12)
+
+
+### Features
+
+* add filter_ticket_fields_by_brand setting ([09712a2](https://github.com/zendesk/copenhagen_theme/commit/09712a288f5b91fc08ae0302731183d7e2ae9c35))
+
 ## [4.51.5](https://github.com/zendesk/copenhagen_theme/compare/v4.51.4...v4.51.5) (2026-10-09)
 
 
