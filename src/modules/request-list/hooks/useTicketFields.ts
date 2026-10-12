@@ -3,6 +3,12 @@ import type { CursorPaginatedResponse } from "../utils/pagination/CursorPaginate
 import type { TicketField, TicketForm } from "../data-types";
 import { fetchAllCursorPages } from "../utils/pagination/fetchAllCursorPages";
 
+interface UseTicketFieldsParams {
+  locale: string;
+  viewRequestsAcrossBrandsEnabled: boolean;
+  filterByBrand: boolean;
+}
+
 interface UseTicketFields {
   ticketFields: TicketField[];
   error?: Error;
@@ -37,26 +43,18 @@ async function listTicketForms(
   return await response.json();
 }
 
-export function useTicketFields(
-  locale: string,
-  viewRequestsAcrossBrandsEnabled: boolean
-): UseTicketFields {
+export function useTicketFields({
+  locale,
+  viewRequestsAcrossBrandsEnabled,
+  filterByBrand,
+}: UseTicketFieldsParams): UseTicketFields {
   const [ticketFields, setTicketFields] = useState<TicketField[]>([]);
   const [error, setError] = useState<Error | undefined>();
   const [isLoading, setIsLoading] = useState(true);
 
   async function fetchTicketFields() {
     try {
-      if (viewRequestsAcrossBrandsEnabled) {
-        const ticketFields = await fetchAllCursorPages(
-          () => listTicketFields(locale),
-          "ticket_fields"
-        );
-
-        setTicketFields(
-          ticketFields.filter((ticketField) => ticketField.active)
-        );
-      } else {
+      if (filterByBrand && !viewRequestsAcrossBrandsEnabled) {
         const [ticketFields, ticketForms] = await Promise.all([
           fetchAllCursorPages(() => listTicketFields(locale), "ticket_fields"),
           fetchAllCursorPages(() => listTicketForms(locale), "ticket_forms"),
@@ -72,8 +70,15 @@ export function useTicketFields(
               ticketField.active && activeTicketFieldIds.has(ticketField.id)
           )
         );
+      } else {
+        const ticketFields = await fetchAllCursorPages(
+          () => listTicketFields(locale),
+          "ticket_fields"
+        );
+        setTicketFields(
+          ticketFields.filter((ticketField) => ticketField.active)
+        );
       }
-
       setIsLoading(false);
     } catch (error) {
       setError(error as Error);
