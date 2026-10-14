@@ -451,10 +451,17 @@ describe("ServiceCatalogItem", () => {
           expect.objectContaining({
             type: "error",
             title: "Service couldn't be submitted",
-            message: "Give it a moment and try it again",
           })
         );
       });
+
+      renderLastNotifyMessage();
+      expect(
+        screen.getByText("Check the form for errors and try again.")
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByText("Field is required")
+      ).not.toBeInTheDocument();
     });
 
     it("lights up the matching field with the backend error when field_id is present", async () => {
@@ -525,7 +532,7 @@ describe("ServiceCatalogItem", () => {
       return renderWithTheme(<>{lastCall?.message}</>);
     };
 
-    it("should surface the underlying description when a 422 error has no field_id", async () => {
+    it("should show the generic form errors message instead of the raw description when a 422 error has no field_id", async () => {
       const errorResponse = {
         ok: false,
         status: 422,
@@ -564,11 +571,14 @@ describe("ServiceCatalogItem", () => {
 
       renderLastNotifyMessage();
       expect(
-        screen.getByText("What are you looking for? cannot be blank")
+        screen.getByText("Check the form for errors and try again.")
       ).toBeInTheDocument();
+      expect(
+        screen.queryByText("What are you looking for? cannot be blank")
+      ).not.toBeInTheDocument();
     });
 
-    it("should not show the refresh message when a 422 error has no field_id", async () => {
+    it("should show the generic form errors message when a 422 error has no field_id", async () => {
       const errorResponse = {
         ok: false,
         status: 422,
@@ -601,6 +611,9 @@ describe("ServiceCatalogItem", () => {
       });
 
       renderLastNotifyMessage();
+      expect(
+        screen.getByText("Check the form for errors and try again.")
+      ).toBeInTheDocument();
       expect(
         screen.queryByText(/Refresh the page and try again/i)
       ).not.toBeInTheDocument();
