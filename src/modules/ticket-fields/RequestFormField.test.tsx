@@ -140,7 +140,15 @@ describe("RequestFormField organizationId resolution for lookup fields", () => {
 });
 
 describe("RequestFormField lookup routing", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+    jest.useRealTimers();
     jest.clearAllMocks();
   });
 
@@ -169,7 +177,7 @@ describe("RequestFormField lookup routing", () => {
       fireEvent.change(combobox, { target: { value: "ali" } });
     });
     await act(async () => {
-      await new Promise((resolve) => setTimeout(resolve, 300));
+      jest.advanceTimersByTime(300);
     });
 
     expect(fetch).toHaveBeenCalledWith(

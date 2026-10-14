@@ -32,7 +32,13 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
   const [inputValue, setInputValue] = useState("");
   const [isSearchPending, setIsSearchPending] = useState(false);
 
-  const hasUserSelectedRef = useRef(false);
+  // Async code must call the latest onChange: earlier ones close over stale form state.
+  const onChangeRef = useRef(onChange);
+  useEffect(() => {
+    onChangeRef.current = onChange;
+  }, [onChange]);
+
+  const initialValueRequestRef = useRef<AbortController | null>(null);
 
   const { options, isLoadingOptions, searchUsers, clearOptions } =
     useUserSearch(selectedOption, () => setIsSearchPending(false));
@@ -53,37 +59,47 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
     id: "no-results",
   };
 
-  const fetchSelectedUser = useCallback(async (userId: string) => {
-    try {
-      const res = await fetch(`/api/v2/users/${userId}.json`);
-      if (hasUserSelectedRef.current) return;
-      if (!res.ok) {
-        setSelectedOption({ id: userId, name: EMPTY_OPTION.name, email: "" });
-        setInputValue(EMPTY_OPTION.name);
-        return;
-      }
-      const data = await res.json();
-      if (hasUserSelectedRef.current) return;
-      const user = data.user;
-      const option = {
-        id: String(user.id),
-        name: user.name as string,
-        email: (user.email as string) || "",
-      };
-      setSelectedOption(option);
-      setInputValue(user.name);
-    } catch (err) {
-      if (hasUserSelectedRef.current) return;
-      console.error(err);
-      setSelectedOption({ id: userId, name: EMPTY_OPTION.name, email: "" });
-      setInputValue(EMPTY_OPTION.name);
-    }
+  const clearSelection = useCallback(() => {
+    setSelectedOption(null);
+    setInputValue(EMPTY_OPTION.name);
+    onChangeRef.current(EMPTY_OPTION.value);
   }, []);
 
   useEffect(() => {
-    if (value) {
-      fetchSelectedUser(String(value));
-    }
+    if (!value) return;
+
+    const controller = new AbortController();
+    initialValueRequestRef.current = controller;
+    const { signal } = controller;
+
+    const resolveInitialValue = async () => {
+      try {
+        const res = await fetch(`/api/v2/users/${value}.json`, { signal });
+        if (signal.aborted) return;
+        // End users can only read their own profile. A value we can't show
+        // must not be submitted either, so drop it instead of keeping it hidden.
+        if (!res.ok) {
+          clearSelection();
+          return;
+        }
+        const { user } = await res.json();
+        if (signal.aborted) return;
+        setSelectedOption({
+          id: String(user.id),
+          name: user.name,
+          email: user.email || "",
+        });
+        setInputValue(user.name);
+      } catch (err) {
+        if (signal.aborted) return;
+        console.error(err);
+        clearSelection();
+      }
+    };
+
+    resolveInitialValue();
+
+    return () => controller.abort();
     // intentionally run once on mount for initial value
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -94,13 +110,11 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
     ({ inputValue: nextInput, selectionValue }) => {
       if (selectionValue !== undefined) {
-        hasUserSelectedRef.current = true;
+        initialValueRequestRef.current?.abort();
         setIsSearchPending(false);
         if (selectionValue === EMPTY_OPTION.value) {
-          setSelectedOption(null);
-          setInputValue(EMPTY_OPTION.name);
+          clearSelection();
           clearOptions();
-          onChange(EMPTY_OPTION.value);
         } else {
           const selected = options.find((o) => o.id === selectionValue);
           if (selected) {
@@ -125,7 +139,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
         }
       }
     },
-    [clearOptions, onChange, options, searchUsers]
+    [clearOptions, clearSelection, onChange, options, searchUsers]
   );
 
   return (
@@ -150,11 +164,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
           "Search {{label}}",
           { label }
         )}
-        inputProps={{
-          required,
-          "aria-required": required,
-          "aria-describedby": error ? `${name}-error` : undefined,
-        }}
+        inputProps={{ required }}
       >
         <Option value={EMPTY_OPTION.value} label={EMPTY_OPTION.name}>
           <EmptyValueOption />
@@ -187,11 +197,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
           />
         ))}
       </Combobox>
-      {error && (
-        <Field.Message validation="error" id={`${name}-error`}>
-          {error}
-        </Field.Message>
-      )}
+      {error && <Field.Message validation="error">{error}</Field.Message>}
       <input type="hidden" name={name} value={selectedOption?.id ?? ""} />
     </Field>
   );

@@ -144,6 +144,52 @@ describe("useUserSearch", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
+  it("normalizes numeric user ids from the API to strings", async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      json: () =>
+        Promise.resolve({
+          users: [{ id: 1, name: "Alice", email: "alice@example.com" }],
+        }),
+    }) as jest.Mock;
+
+    const { result } = renderHook(() => useUserSearch(userA));
+
+    await act(async () => {
+      result.current.searchUsers("ali");
+      jest.advanceTimersByTime(300);
+    });
+
+    // The selected "1" and the API's 1 are the same user, listed once.
+    expect(result.current.options).toEqual([userA]);
+  });
+
+  it("empties options when the API responds with an error", async () => {
+    global.fetch = jest
+      .fn()
+      .mockResolvedValueOnce(okResponse([userA]))
+      .mockResolvedValueOnce({
+        ok: false,
+        json: () => Promise.resolve({ error: "Rate limit exceeded" }),
+      }) as jest.Mock;
+
+    const { result } = renderHook(() => useUserSearch(null));
+
+    await act(async () => {
+      result.current.searchUsers("ali");
+      jest.advanceTimersByTime(300);
+    });
+    expect(result.current.options).toEqual([userA]);
+
+    await act(async () => {
+      result.current.searchUsers("alic");
+      jest.advanceTimersByTime(300);
+    });
+
+    expect(result.current.options).toEqual([]);
+    expect(result.current.isLoadingOptions).toBe(false);
+  });
+
   it("empties options on fetch error", async () => {
     global.fetch = jest
       .fn()

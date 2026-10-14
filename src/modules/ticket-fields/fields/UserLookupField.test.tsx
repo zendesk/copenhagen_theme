@@ -72,7 +72,9 @@ describe("UserLookupField", () => {
   });
 
   afterEach(() => {
-    jest.runOnlyPendingTimers();
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
     jest.useRealTimers();
     jest.clearAllMocks();
   });
@@ -224,25 +226,79 @@ describe("UserLookupField", () => {
     );
 
     await waitFor(() => {
-      expect(fetch).toHaveBeenCalledWith("/api/v2/users/1.json");
+      expect(fetch).toHaveBeenCalledWith(
+        "/api/v2/users/1.json",
+        expect.objectContaining({ signal: expect.any(AbortSignal) })
+      );
     });
     expect(await screen.findByLabelText("Assignee")).toHaveValue("Alice");
   });
 
-  it("falls back to '-' when the initial value's user can't be read (e.g. 403)", async () => {
+  it("clears the value when the initial value's user can't be read (e.g. 403)", async () => {
     global.fetch = jest.fn().mockResolvedValue({ ok: false }) as jest.Mock;
+    const onChange = jest.fn();
 
-    render(
+    const { container } = render(
       <UserLookupField
         field={{ ...defaultField, value: "1" }}
-        onChange={jest.fn()}
+        onChange={onChange}
       />
     );
 
     await waitFor(() => {
-      expect(fetch).toHaveBeenCalledWith("/api/v2/users/1.json");
+      expect(onChange).toHaveBeenCalledWith("");
     });
-    expect(await screen.findByLabelText("Assignee")).toHaveValue("-");
+    expect(screen.getByLabelText("Assignee")).toHaveValue("-");
+    const hiddenInput = container.querySelector(
+      `input[type="hidden"][name="${defaultField.name}"]`
+    ) as HTMLInputElement;
+    expect(hiddenInput.value).toBe("");
+  });
+
+  it("aborts the initial-value request on unmount without touching the value", async () => {
+    global.fetch = jest.fn(
+      (_url: string, options: { signal: AbortSignal }) =>
+        new Promise((_resolve, reject) => {
+          options.signal.addEventListener("abort", () =>
+            reject(new DOMException("Aborted", "AbortError"))
+          );
+        })
+    ) as unknown as jest.Mock;
+    const consoleError = jest.spyOn(console, "error");
+    const onChange = jest.fn();
+
+    const { unmount } = render(
+      <UserLookupField
+        field={{ ...defaultField, value: "1" }}
+        onChange={onChange}
+      />
+    );
+    await act(async () => {
+      unmount();
+    });
+
+    expect(onChange).not.toHaveBeenCalled();
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+  });
+
+  it("describes the input with both the hint and the error", () => {
+    global.fetch = jest.fn() as jest.Mock;
+
+    render(
+      <UserLookupField
+        field={{
+          ...defaultField,
+          description: "Pick a colleague",
+          error: "Assignee is required",
+        }}
+        onChange={jest.fn()}
+      />
+    );
+
+    const combobox = screen.getByLabelText("Assignee");
+    expect(combobox).toHaveAccessibleDescription(/Pick a colleague/);
+    expect(combobox).toHaveAccessibleDescription(/Assignee is required/);
   });
 
   it("ignores a stale initial-value fetch that resolves after the user selects someone else", async () => {
