@@ -1028,6 +1028,7 @@ ul {
   margin: 0 0 15px 0;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
 }
 @media (min-width: 768px) {
   .breadcrumbs {
@@ -1039,9 +1040,7 @@ ul {
   color: lighten($text_color, 20%);
   font-size: 13px;
   max-width: 450px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 .breadcrumbs li + li::before {
   content: ">"/"";
