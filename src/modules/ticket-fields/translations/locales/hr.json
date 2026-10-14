@@ -18,5 +18,7 @@
   "cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}",
   "cph-theme-ticket-fields.search-field.no-matches-found": "No matches found",
   "cph-theme-ticket-fields.search-field.placeholder": "Search {{label}}",
-  "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} upload failed"
+  "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} upload failed",
+  "new-request-form.submit": "Pošalji",
+  "new-request-form.required-fields-info": "Polja označena zvjezdicom (*) obavezna su."
 }
