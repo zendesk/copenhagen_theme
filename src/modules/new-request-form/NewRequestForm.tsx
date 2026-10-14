@@ -33,7 +33,7 @@ export interface NewRequestFormProps {
   baseLocale: string;
   hasAtMentions: boolean;
   userRole: string;
-  userId: number;
+  userId: number | null;
   brandId: number;
   showSuggestedArticles: boolean;
   organizations: Array<Organization>;

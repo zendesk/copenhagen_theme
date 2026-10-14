@@ -66,6 +66,31 @@ describe("MultiLookupField", () => {
     );
   });
 
+  it("omits requester_id in autocomplete URL when userId is null (anonymous visitor)", async () => {
+    render(<MultiLookupField {...defaultProps} userId={null} />);
+
+    const combobox = screen.getByLabelText("Test Multi Lookup");
+    await act(async () => {
+      fireEvent.focus(combobox);
+    });
+
+    const url = (fetch as jest.Mock).mock.calls[0][0];
+    expect(url).not.toContain("requester_id");
+  });
+
+  it("includes requester_id in autocomplete URL when userId is a number", async () => {
+    render(<MultiLookupField {...defaultProps} />);
+
+    const combobox = screen.getByLabelText("Test Multi Lookup");
+    await act(async () => {
+      fireEvent.focus(combobox);
+    });
+
+    expect(fetch).toHaveBeenCalledWith(
+      expect.stringContaining("requester_id=1")
+    );
+  });
+
   it("includes organization_id in autocomplete URL when provided", async () => {
     render(<MultiLookupField {...defaultProps} organizationId="456" />);
 
