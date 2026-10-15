@@ -9,7 +9,7 @@ import { CollapsibleDescription } from "./CollapsibleDescription";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
 import type { CustomObjectRecord } from "../../../ticket-fields/data-types/CustomObjectRecord";
 import type { ITAMAssetOptionObject } from "../../data-types/ITAMAssetOptionObject";
-import type { UserOption } from "../../data-types/UserOption";
+import type { UserOption } from "../../../ticket-fields/data-types/UserOption";
 import { Span } from "@zendeskgarden/react-typography";
 import { Option } from "@zendeskgarden/react-dropdowns";
 import { Attachments } from "../../../ticket-fields/fields/attachments/Attachments";

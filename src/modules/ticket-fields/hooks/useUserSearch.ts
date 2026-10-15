@@ -44,8 +44,8 @@ export function useUserSearch(
       if (response.ok) {
         const selected = selectedUserRef.current;
         const userOptions: UserOption[] = data.users.map(
-          (user: UserOption) => ({
-            id: user.id,
+          (user: { id: number | string; name: string; email: string }) => ({
+            id: String(user.id),
             name: user.name,
             email: user.email,
           })
@@ -55,6 +55,8 @@ export function useUserSearch(
             ? [selected, ...userOptions.filter((o) => o.id !== selected.id)]
             : userOptions
         );
+      } else {
+        setOptions([]);
       }
     } catch (error) {
       // A newer search aborted this one; the newer request owns the state.
@@ -85,6 +87,7 @@ export function useUserSearch(
     searchUsers.cancel();
     abortControllerRef.current?.abort();
     setOptions([]);
+    setIsLoadingOptions(false);
   }, [searchUsers]);
 
   useEffect(() => {

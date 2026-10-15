@@ -2,7 +2,7 @@ import type React from "react";
 import { Close, Modal } from "@zendeskgarden/react-modals";
 import { ChangeUserForm } from "./ChangeUserForm";
 import { useTranslation } from "react-i18next";
-import type { UserOption } from "../../data-types/UserOption";
+import type { UserOption } from "../../../ticket-fields/data-types/UserOption";
 
 interface ChangeUserModalProps {
   onClose: () => void;
