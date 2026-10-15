@@ -1,3 +1,18 @@
+# [4.53.0](https://github.com/zendesk/copenhagen_theme/compare/v4.52.1...v4.53.0) (2026-10-15)
+
+
+### Bug Fixes
+
+* **ticket-fields:** address review feedback on zen:user lookup field ([6d84cc8](https://github.com/zendesk/copenhagen_theme/commit/6d84cc8eff85b3a4bfbe44bb65daa829e447ce5d))
+* **ticket-fields:** avoid double-signal overwrite on user lookup selection ([2519eff](https://github.com/zendesk/copenhagen_theme/commit/2519eff84f918e294ef8b3d323af1dacb012087f)), closes [#876](https://github.com/zendesk/copenhagen_theme/issues/876)
+* **ticket-fields:** harden zen:user lookup initial value, a11y and search errors ([c83ac78](https://github.com/zendesk/copenhagen_theme/commit/c83ac782048729cb553dea3850af0225c3087652))
+* **ticket-fields:** ignore stale initial-value fetch after user selection ([e9bcce1](https://github.com/zendesk/copenhagen_theme/commit/e9bcce1690ebb3092fe5290e6bed9df3f49bdad8))
+
+
+### Features
+
+* **service-catalog:** zen:user lookup on SC forms via SC users search (PDSC-1037) ([c2926f2](https://github.com/zendesk/copenhagen_theme/commit/c2926f2e935b67dca7e8b9462c085c8f8729de2d))
+
 ## [4.52.1](https://github.com/zendesk/copenhagen_theme/compare/v4.52.0...v4.52.1) (2026-10-14)
 
 
