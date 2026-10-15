@@ -295,8 +295,6 @@ export function ServiceCatalogItem({
     );
 
     if (staleFieldErrors.length > 0) {
-      // The backend errored on a field the user's form doesn't show (the form
-      // config likely changed since page load), so refreshing is the real fix.
       notifySubmitError(
         <>
           {t(
