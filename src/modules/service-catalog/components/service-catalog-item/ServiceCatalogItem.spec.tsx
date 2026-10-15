@@ -459,9 +459,7 @@ describe("ServiceCatalogItem", () => {
       expect(
         screen.getByText("Check the form for errors and try again.")
       ).toBeInTheDocument();
-      expect(
-        screen.queryByText("Field is required")
-      ).not.toBeInTheDocument();
+      expect(screen.queryByText("Field is required")).not.toBeInTheDocument();
     });
 
     it("lights up the matching field with the backend error when field_id is present", async () => {
