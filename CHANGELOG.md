@@ -1,3 +1,11 @@
+## [4.53.1](https://github.com/zendesk/copenhagen_theme/compare/v4.53.0...v4.53.1) (2026-10-16)
+
+
+### Bug Fixes
+
+* update JS module translations ([e8205e6](https://github.com/zendesk/copenhagen_theme/commit/e8205e6307f02a424718a4c0af03f6bf5aa1b6eb))
+* update settings translations ([9bef79d](https://github.com/zendesk/copenhagen_theme/commit/9bef79db5e0a21fbcc0d06b89fed22c087a4ba43))
+
 # [4.53.0](https://github.com/zendesk/copenhagen_theme/compare/v4.52.1...v4.53.0) (2026-10-15)
 
 
