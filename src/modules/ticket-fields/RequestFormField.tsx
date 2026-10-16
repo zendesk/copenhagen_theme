@@ -17,7 +17,7 @@ interface RequestFormFieldProps {
   baseLocale: string;
   hasAtMentions: boolean;
   userRole: string;
-  userId: number;
+  userId: number | null;
   defaultOrganizationId: string | null;
   organizationField?: TicketFieldObject | null;
   brandId: number;

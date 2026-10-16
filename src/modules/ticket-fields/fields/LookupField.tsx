@@ -50,7 +50,7 @@ const EMPTY_OPTION = {
 
 export interface LookupFieldProps {
   field: TicketFieldObject;
-  userId: number;
+  userId: number | null;
   organizationId: string | null;
   brandId?: number;
   onChange: (value: string) => void;
@@ -138,7 +138,7 @@ export function LookupField({
       searchParams.set("name", inputValue.toLocaleLowerCase());
       searchParams.set("source", "zen:ticket");
       searchParams.set("field_id", fieldId.toString());
-      searchParams.set("requester_id", userId.toString());
+      if (userId !== null) searchParams.set("requester_id", userId.toString());
 
       const filterPairs = buildAdvancedDynamicFilterParams(
         field.relationship_filter,

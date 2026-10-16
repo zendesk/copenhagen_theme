@@ -25,6 +25,49 @@ const defaultProps = {
   visibleFields: [],
 };
 
+describe("LookupField userId in autocomplete URL", () => {
+  beforeEach(() => {
+    (globalThis.fetch as jest.Mock) = jest.fn(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ custom_object_records: [] }),
+      })
+    );
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test("omits requester_id when userId is null (anonymous visitor)", async () => {
+    render(
+      <LookupField {...defaultProps} userId={null} organizationId={null} />
+    );
+
+    const combobox = screen.getByLabelText("Test Lookup");
+    await act(async () => {
+      fireEvent.focus(combobox);
+    });
+
+    expect(fetch).toHaveBeenCalled();
+    const url = (fetch as jest.Mock).mock.calls[0][0];
+    expect(url).not.toContain("requester_id");
+  });
+
+  test("includes requester_id when userId is a number", async () => {
+    render(<LookupField {...defaultProps} organizationId={null} />);
+
+    const combobox = screen.getByLabelText("Test Lookup");
+    await act(async () => {
+      fireEvent.focus(combobox);
+    });
+
+    expect(fetch).toHaveBeenCalledWith(
+      expect.stringContaining("requester_id=1")
+    );
+  });
+});
+
 describe("LookupField organization_id in autocomplete URL", () => {
   beforeEach(() => {
     (globalThis.fetch as jest.Mock) = jest.fn(() =>
