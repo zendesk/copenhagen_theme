@@ -48,7 +48,7 @@
   "approval-requests.status.info-needed": "Informations nécessaires",
   "approval-requests.status.withdrawn": "Retiré",
   "txt.approval_requests.clarification.cancel_button": "Annuler",
-  "txt.approval_requests.clarification.comment_form_aria_label": "Saisir un commentaire pour demander des informations supplémentaires au sujet de cette demande d’approbation",
+  "txt.approval_requests.clarification.comment_form_aria_label": "Saisissez un commentaire pour demander des informations supplémentaires au sujet de cette demande d’approbation",
   "txt.approval_requests.clarification.description": "Ajouter des notes ou demander des informations supplémentaires sur cette demande",
   "txt.approval_requests.clarification.max_comment_alert_message": "Vous ne pouvez pas ajouter de commentaires, les approbateurs peuvent encore approuver ou refuser.",
   "txt.approval_requests.clarification.max_comment_alert_title": "Limite de commentaires atteinte",
@@ -62,5 +62,5 @@
   "txt.approval_requests.validation.characters_remaining.other": "{{numCharacters}} caractères restants",
   "txt.approval_requests.validation.characters_remaining.two": "{{numCharacters}} caractères restants",
   "txt.approval_requests.validation.characters_remaining.zero": "{{numCharacters}} caractères restants",
-  "txt.approval_requests.validation.empty_comment_error": "Saisir un commentaire"
+  "txt.approval_requests.validation.empty_comment_error": "Saisissez un commentaire"
 }

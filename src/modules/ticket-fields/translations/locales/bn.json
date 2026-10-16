@@ -16,6 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "আইটেমগুলি লোড করা হচ্ছে...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "কোনও মিল খুঁজে পাওয়া যায়নি",
   "cph-theme-ticket-fields.lookup-field.placeholder": "{{label}} অনুসন্ধান করুন",
+  "cph-theme-ticket-fields.multi-lookup-field.max-reached": "You've reached the limit of {{max}} values.",
   "cph-theme-ticket-fields.search-field.no-matches-found": "No matches found",
   "cph-theme-ticket-fields.search-field.placeholder": "Search {{label}}",
   "cph-theme-ticket-fields.upload-failed-title": "{{fileName}} আপলোড করা যায়নি"

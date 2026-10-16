@@ -16,6 +16,7 @@
   "cph-theme-ticket-fields.lookup-field.loading-options": "Chargement des éléments en cours...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Aucun résultat",
   "cph-theme-ticket-fields.lookup-field.placeholder": "Rechercher {{label}}",
+  "cph-theme-ticket-fields.multi-lookup-field.max-reached": "Vous avez atteint la limite de {{max}} valeurs.",
   "cph-theme-ticket-fields.search-field.no-matches-found": "Aucun résultat",
   "cph-theme-ticket-fields.search-field.placeholder": "Rechercher {{label}}",
   "cph-theme-ticket-fields.upload-failed-title": "Échec du téléversement de {{fileName}}"

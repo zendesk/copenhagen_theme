@@ -69,10 +69,13 @@
   "guide-requests-app.previous": "Попередня",
   "guide-requests-app.range-filter-type": "Діапазон",
   "guide-requests-app.receiveEmailUpdatesOrganizationsTickets": "Отримуйте оновлення електронною поштою про квитки в цих організаціях:",
+  "guide-requests-app.requestCount.few": "Запитів: {{count}}",
+  "guide-requests-app.requestCount.many": "Запитів: {{count}}",
   "guide-requests-app.requestCount.one": "{{count}} запит",
   "guide-requests-app.requestCount.other": "Запитів: {{count}}",
   "guide-requests-app.requestCount.range": "Запити: {{from}}–{{to}} з {{total}}",
   "guide-requests-app.requestCount.screenreader.range": "Запити: від {{from}} до {{to}} з {{total}}",
+  "guide-requests-app.requestCount.two": "Запитів: {{count}}",
   "guide-requests-app.requestCount.zero": "Запитів: {{count}}",
   "guide-requests-app.requester": "Автор запиту",
   "guide-requests-app.requesterMe": "Я",
@@ -90,6 +93,6 @@
   "guide-requests-app.statusPending_v2": "Очікування вашої відповіді",
   "guide-requests-app.statusSolved": "Вирішено",
   "guide-requests-app.subject": "Тема",
-  "guide-requests-app.updatedDate": "Оновлені дати",
+  "guide-requests-app.updatedDate": "Дата оновлення",
   "guide-requests-app.visibleColumns": "Видимі стовпці"
 }
