@@ -1,3 +1,10 @@
+## [4.53.3](https://github.com/zendesk/copenhagen_theme/compare/v4.53.2...v4.53.3) (2026-10-16)
+
+
+### Bug Fixes
+
+* **GA11YFIX-481:** name the mobile navigation landmark ([e32de4f](https://github.com/zendesk/copenhagen_theme/commit/e32de4feef188061beaeb8e5344b7fe7324e9431))
+
 ## [4.53.2](https://github.com/zendesk/copenhagen_theme/compare/v4.53.1...v4.53.2) (2026-10-16)
 
 
