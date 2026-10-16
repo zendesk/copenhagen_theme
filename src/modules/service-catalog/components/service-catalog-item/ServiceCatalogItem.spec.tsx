@@ -43,11 +43,15 @@ jest.mock("../../hooks/useAttachmentsOption", () => ({
 jest.mock("./ItemRequestForm", () => ({
   ItemRequestForm: ({
     onSubmit,
+    formRef,
     isPreviewMode,
+    requestFields,
     setSelectedUser,
   }: {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+    formRef?: React.Ref<HTMLFormElement>;
     isPreviewMode?: boolean;
+    requestFields: TicketFieldObject[];
     setSelectedUser: (user: {
       id: string;
       name: string;
@@ -55,8 +59,10 @@ jest.mock("./ItemRequestForm", () => ({
     }) => void;
   }) => (
     <form
+      ref={formRef}
       data-testid="item-request-form"
       data-preview-mode={isPreviewMode ? "true" : "false"}
+      data-has-programmatic-submit-handler={formRef ? "true" : "false"}
       onSubmit={onSubmit}
     >
       <button
@@ -75,6 +81,21 @@ jest.mock("./ItemRequestForm", () => ({
       <button type="submit" disabled={isPreviewMode}>
         Submit
       </button>
+      <button
+        type="button"
+        onClick={(event) => event.currentTarget.form?.submit()}
+      >
+        Programmatic submit
+      </button>
+      {requestFields
+        .filter((field) => field.type === "description")
+        .map((field) => (
+          <textarea
+            key={field.id}
+            name={field.name}
+            defaultValue="<p>Browser description</p>"
+          />
+        ))}
     </form>
   ),
   ASSET_TYPE_KEY: "zen:custom_object:standard::itam_asset_type",
@@ -831,6 +852,56 @@ describe("ServiceCatalogItem", () => {
       ok: true,
       json: () => Promise.resolve({ request: { id: 555 } }),
     } as unknown as Response;
+
+    it("submits through the request API when the WYSIWYG calls form.submit()", async () => {
+      mockSubmitServiceItemRequest.mockResolvedValue(successResponse);
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      expect(screen.getByTestId("item-request-form")).toHaveAttribute(
+        "data-has-programmatic-submit-handler",
+        "true"
+      );
+      fireEvent.click(
+        screen.getByRole("button", { name: "Programmatic submit" })
+      );
+
+      await waitFor(() => {
+        expect(mockSubmitServiceItemRequest).toHaveBeenCalled();
+      });
+    });
+
+    it("submits the WYSIWYG description stored in form data", async () => {
+      const descriptionField: TicketFieldObject = {
+        ...mockRequestFields[0]!,
+        type: "description",
+        value: null,
+      };
+      mockUseItemFormFields.mockReturnValue({
+        requestFields: [descriptionField],
+        associatedLookupField: mockAssociatedLookupField,
+        categoryLookupField: null,
+        error: null,
+        setRequestFields: jest.fn(),
+        handleChange: jest.fn(),
+        isRequestFieldsLoading: false,
+        assetTypeHiddenValue: "",
+        isAssetTypeHidden: false,
+        assetTypeIds: [],
+        assetIds: [],
+      });
+      mockSubmitServiceItemRequest.mockResolvedValue(undefined);
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+      fireEvent.submit(screen.getByTestId("item-request-form"));
+
+      await waitFor(() => {
+        expect(mockSubmitServiceItemRequest).toHaveBeenCalled();
+      });
+      expect(mockSubmitServiceItemRequest.mock.calls[0]![1][0]!.value).toBe(
+        "<p>Browser description</p>"
+      );
+    });
 
     it("does not pass requesterId or note for a self request", async () => {
       mockSubmitServiceItemRequest.mockResolvedValue(successResponse);
