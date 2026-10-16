@@ -11,8 +11,8 @@ import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
 import { submitServiceItemRequest } from "./submitServiceItemRequest";
 import type { ServiceRequestResponse } from "../../data-types/ServiceRequestResponse";
 import { addFlashNotification, notify } from "../../../shared";
-import { useTranslation } from "react-i18next";
 import { Anchor } from "@zendeskgarden/react-buttons";
+import { useTranslation } from "react-i18next";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
 import {
   AttachmentsInputName,
@@ -294,10 +294,6 @@ export function ServiceCatalogItem({
         !requestFields.some((field) => field.id === errorField.field_id)
     );
 
-    const unmappableErrors = invalidFieldErrors.filter(
-      (errorField) => errorField.field_id == null
-    );
-
     if (staleFieldErrors.length > 0) {
       notifySubmitError(
         <>
@@ -315,16 +311,13 @@ export function ServiceCatalogItem({
           </StyledNotificationLink>
         </>
       );
-    } else if (unmappableErrors.length > 0) {
+    } else {
       notifySubmitError(
-        <>
-          {unmappableErrors.map((errorField, index) => (
-            <div key={index}>{errorField.description}</div>
-          ))}
-        </>
+        t(
+          "service-catalog.item.service-request-form-errors-message",
+          "Check the form for errors and try again."
+        )
       );
-    } else if (invalidFieldErrors.length > 0) {
-      notifySubmitError();
     }
 
     // setRequestFields is backed by the full (not just visible) field list,

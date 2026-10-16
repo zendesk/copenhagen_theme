@@ -93,6 +93,11 @@ parts:
       screenshot: "https://drive.google.com/file/d/1KlkSK4FQiAYn2ERUJwy1tSYfr1gtjW0E/view?usp=drive_link"
       value: "Give it a moment and try it again"
   - translation:
+      key: "service-catalog.item.service-request-form-errors-message"
+      title: "Error notification message instructing user to check the form for errors after unsuccessful submitting request for service catalog item"
+      screenshot: "https://drive.google.com/file/d/1zo9CJBpN2F5J5qAjRM39Cr4ytheixdcn/view?usp=sharing"
+      value: "Check the form for errors and try again."
+  - translation:
       key: "service-catalog.item.service-request-refresh-message"
       title: "Error notification message instructing user to refresh the page after unsuccessful submitting request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1zo9CJBpN2F5J5qAjRM39Cr4ytheixdcn/view?usp=sharing"
