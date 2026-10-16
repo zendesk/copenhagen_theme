@@ -1,3 +1,10 @@
+## [4.53.2](https://github.com/zendesk/copenhagen_theme/compare/v4.53.1...v4.53.2) (2026-10-16)
+
+
+### Bug Fixes
+
+* make Copenhagen Theme lookup fields work without a signed-in user (CD-4178) ([9f783a0](https://github.com/zendesk/copenhagen_theme/commit/9f783a0c9234a7d016043439eb731223c1d4b5b5))
+
 ## [4.53.1](https://github.com/zendesk/copenhagen_theme/compare/v4.53.0...v4.53.1) (2026-10-16)
 
 
