@@ -69,10 +69,13 @@
   "guide-requests-app.previous": "Zurück",
   "guide-requests-app.range-filter-type": "Bereich",
   "guide-requests-app.receiveEmailUpdatesOrganizationsTickets": "E-Mail-Benachrichtigungen zu Tickets in diesen Organisationen erhalten:",
+  "guide-requests-app.requestCount.few": "{{count}} Anfragen",
+  "guide-requests-app.requestCount.many": "{{count}} Anfragen",
   "guide-requests-app.requestCount.one": "{{count}} Anfrage",
   "guide-requests-app.requestCount.other": "{{count}} Anfragen",
   "guide-requests-app.requestCount.range": "{{from}}–{{to}} von {{total}} Anfragen",
   "guide-requests-app.requestCount.screenreader.range": "{{from}} bis {{to}} von {{total}} Anfragen",
+  "guide-requests-app.requestCount.two": "{{count}} Anfragen",
   "guide-requests-app.requestCount.zero": "{{count}} Anfragen",
   "guide-requests-app.requester": "Anfragender",
   "guide-requests-app.requesterMe": "Ich",
@@ -90,6 +93,6 @@
   "guide-requests-app.statusPending_v2": "Wartet auf Ihre Antwort",
   "guide-requests-app.statusSolved": "Gelöst",
   "guide-requests-app.subject": "Betreff",
-  "guide-requests-app.updatedDate": "Aktualisierungsdatum",
+  "guide-requests-app.updatedDate": "Aktualisiert",
   "guide-requests-app.visibleColumns": "Sichtbare Spalten"
 }

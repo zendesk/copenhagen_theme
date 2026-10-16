@@ -1,0 +1,23 @@
+{
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Causir un fichièr o arrosgar e deishar anar aicí",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Deishar anar los fichièrs aicí",
+  "cph-theme-ticket-fields.attachments.error-separator": ";",
+  "cph-theme-ticket-fields.attachments.file": "Fichièr : {{fileName}}, quichatz sus Eliminar per lo tirar",
+  "cph-theme-ticket-fields.attachments.remove-file": "Tirar lo fichièr",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Tirar lo fichièr : {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Arrestar lo cargament",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Arrestar lo cargament de {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "I a agut ua error en cargar {{fileName}}. Tornatz ensajar o cargatz un aute fichièr.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Error de cargament",
+  "cph-theme-ticket-fields.attachments.uploading": "Cargament de {{fileName}}",
+  "cph-theme-ticket-fields.credit-card-digits-hint": "(4 darrèrs chifras).",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "Enrèira",
+  "cph-theme-ticket-fields.dropdown.empty-option": "Seleccionar ua opcion",
+  "cph-theme-ticket-fields.lookup-field.loading-options": "Cargament deus elements",
+  "cph-theme-ticket-fields.lookup-field.no-matches-found": "Cap de correspondéncia trobada",
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Cercar {{label}}",
+  "cph-theme-ticket-fields.multi-lookup-field.max-reached": "Avètz agantat lo limit de {{max}} valors.",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "Cap de correspondéncia trobada",
+  "cph-theme-ticket-fields.search-field.placeholder": "Cercar {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Error de cargament de {{fileName}}"
+}

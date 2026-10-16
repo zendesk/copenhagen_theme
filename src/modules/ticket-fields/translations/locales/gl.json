@@ -1,0 +1,23 @@
+{
+  "cph-theme-ticket-fields.attachments.choose-file-label": "Elixe un ficheiro ou arrastra e solta aquí",
+  "cph-theme-ticket-fields.attachments.drop-files-label": "Solta os ficheiros aquí",
+  "cph-theme-ticket-fields.attachments.error-separator": ";",
+  "cph-theme-ticket-fields.attachments.file": "Ficheiro: {{fileName}}, preme eliminar para quitalo",
+  "cph-theme-ticket-fields.attachments.remove-file": "Eliminar ficheiro",
+  "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Eliminar ficheiro: {{fileName}}",
+  "cph-theme-ticket-fields.attachments.stop-upload": "Deter a carga",
+  "cph-theme-ticket-fields.attachments.stop-upload-aria-label": "Deter a carga de {{fileName}}",
+  "cph-theme-ticket-fields.attachments.upload-error-description": "Houbo un erro ao cargar {{fileName}}. Téntao de novo ou carga outro ficheiro.",
+  "cph-theme-ticket-fields.attachments.upload-error-title": "Erro de carga",
+  "cph-theme-ticket-fields.attachments.uploading": "Cargando {{fileName}}",
+  "cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 díxitos).",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "Atrás",
+  "cph-theme-ticket-fields.dropdown.empty-option": "Seleccionar unha opción",
+  "cph-theme-ticket-fields.lookup-field.loading-options": "Cargando elementos",
+  "cph-theme-ticket-fields.lookup-field.no-matches-found": "Non se atoparon coincidencias",
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Buscar {{label}}",
+  "cph-theme-ticket-fields.multi-lookup-field.max-reached": "Alcanzaches o límite de {{max}} valores.",
+  "cph-theme-ticket-fields.search-field.no-matches-found": "Non se atoparon coincidencias",
+  "cph-theme-ticket-fields.search-field.placeholder": "Buscar {{label}}",
+  "cph-theme-ticket-fields.upload-failed-title": "Fallou a carga de {{fileName}}"
+}
