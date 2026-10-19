@@ -88,7 +88,7 @@ parts:
       value: "Remove file"
   - translation:
       key: "cph-theme-ticket-fields.attachments.remove-file-aria-label"
-      title: "[A11Y] Visually-hidden label for screen readers for removing an attachment. Provides more information than visible tooltip alone. 'Remove file' must match the value of the visible tooltip, i.e., the value of cph-theme-ticket-fields.attachments.remove-file. {{fileName}} will be replaced by file name, e.g., [image.png]."
+      title: "[A11Y] Hidden label for screen readers for removing an attachment. Provides more information than visible tooltip alone. 'Remove file' must match the value of the visible tooltip, i.e., the value of cph-theme-ticket-fields.attachments.remove-file. {{fileName}} will be replaced by file name, e.g., [image.png]."
       screenshot: "https://drive.google.com/file/d/1JFVE2twzUkg-U6gGAs2EHqD-3jPvtJDA/view?usp=drive_link"
       value: "Remove file: {{fileName}}"    
   - translation:
@@ -118,5 +118,5 @@ parts:
       value: "Search {{label}}"
   - translation:
       key: "cph-theme-ticket-fields.attachments.file-removed"
-      title: "[A11Y] Screen reader announcement after the user removes an attached file. {{fileName}} will be replaced by the file name, e.g., [image.png]. Alternative English if you encounter declension issues: [File removed: {{fileName}}]"
+      title: "[A11Y] Screen reader announcement after the user removes an attached file. {{fileName}} will be replaced by the file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Removed the file {{fileName}}]"
       value: "Removed {{fileName}}"
