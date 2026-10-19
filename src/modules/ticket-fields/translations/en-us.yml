@@ -116,3 +116,7 @@ parts:
       title: "Placeholder shown in combobox, {{label}} will be replaced by field label. Alternative English for languages with grammar/declension issues: [Search label {{label}}]."
       screenshot: "https://drive.google.com/file/d/1uy01ESlYxmssiOxDD5gVNhP96xCnDQd0/view?usp=drive_link"
       value: "Search {{label}}"
+  - translation:
+      key: "cph-theme-ticket-fields.attachments.file-removed"
+      title: "[A11Y] Screen reader announcement after the user removes an attached file. {{fileName}} will be replaced by the file name, e.g., [image.png]. Alternative English if you encounter declension issues: [File removed: {{fileName}}]"
+      value: "Removed {{fileName}}"
