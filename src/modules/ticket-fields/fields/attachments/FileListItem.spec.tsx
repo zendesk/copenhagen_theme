@@ -5,12 +5,6 @@ import { render } from "../../../test/render";
 import { FileListItem } from "./FileListItem";
 import type { AttachedFile } from "./useAttachedFiles";
 
-jest.mock(
-  "@zendeskgarden/svg-icons/src/16/trash-stroke.svg",
-  () => "trash-svg"
-);
-jest.mock("@zendeskgarden/svg-icons/src/16/x-stroke.svg", () => "x-svg");
-
 const uploadedFile: AttachedFile = {
   status: "uploaded",
   value: {

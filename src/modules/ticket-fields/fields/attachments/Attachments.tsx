@@ -90,35 +90,32 @@ export function Attachments({
     onUploadingChange?.(isUploading);
   }, [isUploading, onUploadingChange]);
 
-  const setRemoveButtonRef = useCallback(
-    (key: string, node: HTMLButtonElement | null) => {
-      if (node) {
-        removeButtonRefs.current.set(key, node);
-      } else {
-        removeButtonRefs.current.delete(key);
-      }
-    },
-    []
-  );
+  const setRemoveButtonRef = (key: string, node: HTMLButtonElement | null) => {
+    if (node) {
+      removeButtonRefs.current.set(key, node);
+    } else {
+      removeButtonRefs.current.delete(key);
+    }
+  };
 
-  const focusAfterRemoval = useCallback(
-    (removedIndex: number, remainingKeys: string[]) => {
-      const fallbackKey =
-        remainingKeys[removedIndex - 1] ?? remainingKeys[removedIndex] ?? null;
-      const fallbackButton = fallbackKey
-        ? removeButtonRefs.current.get(fallbackKey)
-        : null;
+  const focusAfterRemoval = (
+    removedIndex: number,
+    remainingKeys: string[]
+  ) => {
+    const fallbackKey =
+      remainingKeys[removedIndex - 1] ?? remainingKeys[removedIndex] ?? null;
+    const fallbackButton = fallbackKey
+      ? removeButtonRefs.current.get(fallbackKey)
+      : null;
 
-      if (fallbackButton) {
-        fallbackButton.focus();
-        return;
-      }
+    if (fallbackButton) {
+      fallbackButton.focus();
+      return;
+    }
 
-      // FileUpload root (dropzone tab stop), not the nested display:none file input.
-      fileUploadRef.current?.focus();
-    },
-    []
-  );
+    // FileUpload root (dropzone tab stop), not the nested display:none file input.
+    fileUploadRef.current?.focus();
+  };
 
   const uploadFailedTitle = useCallback(
     (file: File) => {
@@ -279,9 +276,11 @@ export function Attachments({
       file.xhr.abort();
       removePendingFile(file.id);
     } else {
-      const csrfToken = await fetchCsrfToken();
       const token = file.value.id;
-      removeUploadedFile(file.value.id);
+      // Remove from the UI first: awaiting the CSRF token before this can
+      // delay the removal and leave focus pointing at an already-removed file.
+      removeUploadedFile(token);
+      const csrfToken = await fetchCsrfToken();
       await fetch(`/api/v2/uploads/${token}.json`, {
         method: "DELETE",
         headers: { "X-CSRF-Token": csrfToken },

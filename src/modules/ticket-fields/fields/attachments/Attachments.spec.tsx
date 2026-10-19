@@ -4,12 +4,6 @@ import { render } from "../../../test/render";
 import { Attachments } from "./Attachments";
 import type { AttachmentField } from "../../data-types/AttachmentsField";
 
-jest.mock(
-  "@zendeskgarden/svg-icons/src/16/trash-stroke.svg",
-  () => "trash-svg"
-);
-jest.mock("@zendeskgarden/svg-icons/src/16/x-stroke.svg", () => "x-svg");
-
 const fieldWithAttachments = (
   attachments: AttachmentField["attachments"]
 ): AttachmentField => ({
