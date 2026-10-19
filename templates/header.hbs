@@ -2,12 +2,12 @@
 
 <header class="header">
   <div class="logo">
-    {{#link 'help_center'}}
+    <a href="{{page_path 'help_center'}}">
       <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" />
       {{#if settings.show_brand_name}}
         <span aria-hidden="true">{{help_center.name}}</span>
       {{/if}}
-    {{/link}}
+    </a>
   </div>
 
   <div class="nav-wrapper-desktop">
