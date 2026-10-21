@@ -116,4 +116,24 @@ describe("<FilterPropertyDropdown />", () => {
       })
     );
   });
+
+  test("shows all filter properties again after selecting one", async () => {
+    renderComponent();
+    const user = userEvent.setup();
+
+    const input = screen.getByLabelText("Select filter");
+
+    await user.click(input);
+    const allOptionCount = screen.getAllByRole("option").length;
+
+    await user.type(input, "Date");
+    await user.click(screen.getByRole("option", { name: "DateField" }));
+
+    expect(input).toHaveValue("DateField");
+
+    await user.click(input);
+
+    expect(screen.getAllByRole("option")).toHaveLength(allOptionCount);
+    expect(screen.getByText("Created date")).toBeInTheDocument();
+  });
 });

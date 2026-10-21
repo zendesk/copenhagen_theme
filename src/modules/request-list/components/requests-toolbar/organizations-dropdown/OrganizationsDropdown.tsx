@@ -1,7 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
+import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import type { Organization } from "../../../data-types";
 
 interface OrganizationsDropdownProps {
@@ -21,9 +22,6 @@ export default function OrganizationsDropdown({
 }: OrganizationsDropdownProps): JSX.Element {
   const { t } = useTranslation();
 
-  const [filteredOrganizations, setFilteredOrganizations] =
-    useState(organizations);
-
   const [inputValue, setInputValue] = useState(() => {
     const selectedOrganization = organizations.find(
       (organization) => organization.id === currentOrganizationId
@@ -31,28 +29,25 @@ export default function OrganizationsDropdown({
     return selectedOrganization?.name ?? "";
   });
 
-  const handleChange = useCallback(
-    (changes: {
-      selectionValue?: string | string[] | null;
-      inputValue?: string;
-    }) => {
-      const { inputValue, selectionValue } = changes;
+  const [filterValue, setFilterValue] = useState("");
 
+  const filteredOrganizations = useMemo(() => {
+    const query = filterValue.trim().toLowerCase();
+
+    if (query === "") {
+      return organizations;
+    }
+
+    return organizations.filter((organization) =>
+      organization.name.trim().toLowerCase().includes(query)
+    );
+  }, [organizations, filterValue]);
+
+  const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
+    ({ type, inputValue, selectionValue }) => {
       if (inputValue !== undefined) {
         setInputValue(inputValue);
-
-        if (inputValue === "") {
-          setFilteredOrganizations(organizations);
-        } else {
-          const matchedOrganizations = organizations.filter((organization) => {
-            return organization.name
-              .trim()
-              .toLowerCase()
-              .includes(inputValue.trim().toLowerCase());
-          });
-
-          setFilteredOrganizations(matchedOrganizations);
-        }
+        setFilterValue(type === "input:change" ? inputValue : "");
       }
 
       if (selectionValue !== undefined && selectionValue !== null) {
@@ -66,7 +61,7 @@ export default function OrganizationsDropdown({
         }
       }
     },
-    [organizations, onOrganizationSelected]
+    [onOrganizationSelected]
   );
 
   return (

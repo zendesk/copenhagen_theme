@@ -1,10 +1,11 @@
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
+import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 
 import { useTranslation } from "react-i18next";
 import { FieldError } from "./FieldError";
 import type { FormErrors } from "./FormState";
 import type { Organization, TicketField } from "../../../data-types";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
 
@@ -87,37 +88,29 @@ export function FilterPropertyDropdown({
     [t, hasCustomStatuses, organizations, ticketFields]
   );
 
-  const [options, setOptions] = useState<FilterProperty[]>([]);
+  const [filterValue, setFilterValue] = useState("");
 
-  useEffect(() => {
-    setOptions(filterProperties);
-  }, [filterProperties]);
+  const options = useMemo(() => {
+    const query = filterValue.trim().toLowerCase();
+
+    if (query === "") {
+      return filterProperties;
+    }
+
+    return filterProperties.filter((option) =>
+      option.label.trim().toLowerCase().includes(query)
+    );
+  }, [filterProperties, filterValue]);
 
   const getOptionValue = useCallback(
     (property: FilterProperty) => property.identifier,
     []
   );
 
-  const handleChange = useCallback(
-    (changes: {
-      selectionValue?: string | string[] | null;
-      inputValue?: string;
-    }) => {
-      const { inputValue, selectionValue } = changes;
-
+  const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
+    ({ type, inputValue, selectionValue }) => {
       if (inputValue !== undefined) {
-        if (inputValue === "") {
-          setOptions(filterProperties);
-        } else {
-          const matchedOptions = filterProperties.filter((option) => {
-            return option.label
-              .trim()
-              .toLowerCase()
-              .includes(inputValue.trim().toLowerCase());
-          });
-
-          setOptions(matchedOptions);
-        }
+        setFilterValue(type === "input:change" ? inputValue : "");
       }
 
       if (selectionValue && typeof selectionValue === "string") {
