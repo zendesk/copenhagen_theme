@@ -1,7 +1,9 @@
 import { render } from "react-dom";
+import { createTranslationLoader } from "../shared/i18n/createTranslationLoader";
 import ApprovalRequestListPage from "./ApprovalRequestListPage";
 import type { ApprovalRequestListPageProps } from "./ApprovalRequestListPage";
 import {
+  sharedTranslations,
   createTheme,
   ThemeProviders,
   initI18next,
@@ -13,14 +15,17 @@ import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
 export async function renderApprovalRequestList(
   container: HTMLElement,
   settings: Settings,
-  props: ApprovalRequestListPageProps,
+  props: ApprovalRequestListPageProps & { locale: string },
   helpCenterPath: string
 ) {
-  const { baseLocale } = props;
+  const { baseLocale, locale } = props;
   initI18next(baseLocale);
-  await loadTranslations(baseLocale, [
-    () => import(`./translations/locales/${baseLocale}.json`),
-    () => import(`../shared/translations/locales/${baseLocale}.json`),
+  await loadTranslations(locale, baseLocale, [
+    createTranslationLoader(
+      "approval-requests",
+      (locale) => import(`./translations/locales/${locale}.json`)
+    ),
+    sharedTranslations,
   ]);
 
   render(

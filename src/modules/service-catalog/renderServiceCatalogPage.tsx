@@ -1,9 +1,12 @@
 import { render } from "react-dom";
+import { createTranslationLoader } from "../shared/i18n/createTranslationLoader";
+import { ticketFieldsTranslations } from "../ticket-fields";
 
 import { ServiceCatalogPage } from "./components/ServiceCatalogPage";
 import { PageLoadingState } from "./components/PageLoadingState";
 
 import {
+  sharedTranslations,
   createTheme,
   ThemeProviders,
   initI18next,
@@ -55,7 +58,8 @@ export async function renderServiceCatalogPage(
   container: HTMLElement,
   settings: Settings,
   baseLocale: string,
-  helpCenterPath: string
+  helpCenterPath: string,
+  locale: string
 ) {
   initI18next(baseLocale);
   const theme = createTheme(settings);
@@ -68,13 +72,14 @@ export async function renderServiceCatalogPage(
   );
 
   const [, categoryTree] = await Promise.all([
-    loadTranslations(baseLocale, [
-      () => import(`./translations/locales/${baseLocale}.json`),
-      () => import(`../ticket-fields/translations/locales/${baseLocale}.json`),
-      () => import(`../shared/translations/locales/${baseLocale}.json`),
-    ]).catch((error) => {
-      console.error("Failed to load translations:", error);
-    }),
+    loadTranslations(locale, baseLocale, [
+      createTranslationLoader(
+        "service-catalog",
+        (locale) => import(`./translations/locales/${locale}.json`)
+      ),
+      ticketFieldsTranslations,
+      sharedTranslations,
+    ]),
     fetchCategoryTree({ publishedOnly: !isPreviewMode() }),
   ]);
 
