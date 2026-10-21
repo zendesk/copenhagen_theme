@@ -1,3 +1,10 @@
+## [4.53.5](https://github.com/zendesk/copenhagen_theme/compare/v4.53.4...v4.53.5) (2026-10-21)
+
+
+### Bug Fixes
+
+* show unified form errors message for all service catalog requests ([c77fc06](https://github.com/zendesk/copenhagen_theme/commit/c77fc0672a21a276602e4ff14c7c13e1ddbc8b8f))
+
 ## [4.53.4](https://github.com/zendesk/copenhagen_theme/compare/v4.53.3...v4.53.4) (2026-10-19)
 
 
