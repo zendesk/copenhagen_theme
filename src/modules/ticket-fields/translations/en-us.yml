@@ -87,15 +87,15 @@ parts:
       screenshot: "https://drive.google.com/file/d/1JFVE2twzUkg-U6gGAs2EHqD-3jPvtJDA/view?usp=drive_link"
       value: "Remove file"
   - translation:
+      key: "cph-theme-ticket-fields.attachments.remove-file-aria-label"
+      title: "[A11Y] Hidden label for screen readers for removing an attachment. Provides more information than visible tooltip alone. 'Remove file' must match the value of the visible tooltip, i.e., the value of cph-theme-ticket-fields.attachments.remove-file. {{fileName}} will be replaced by file name, e.g., [image.png]."
+      screenshot: "https://drive.google.com/file/d/1JFVE2twzUkg-U6gGAs2EHqD-3jPvtJDA/view?usp=drive_link"
+      value: "Remove file: {{fileName}}"    
+  - translation:
       key: "cph-theme-ticket-fields.attachments.stop-upload-aria-label"
       title: "[A11Y] Hidden label for screen readers for stopping the upload of an attachment. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Stop uploading the file {{fileName}}]"
       screenshot: "https://drive.google.com/file/d/1Y6yeqp3fbfJbuq7tT8VutsLa80GZju-V/view?usp=drive_link"
       value: "Stop uploading {{fileName}}"
-  - translation:
-      key: "cph-theme-ticket-fields.attachments.remove-file-aria-label"
-      title: "[A11Y] Hidden label for screen readers for removing an attachment. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Removing the file {{fileName}}]"
-      screenshot: "https://drive.google.com/file/d/1JFVE2twzUkg-U6gGAs2EHqD-3jPvtJDA/view?usp=drive_link"
-      value: "Remove file: {{fileName}}"
   - translation:
       key: "cph-theme-ticket-fields.attachments.uploading"
       title: "[A11Y] Hidden label for screen readers for the upload attachment progress bar. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Uploading the file {{fileName}}]"
@@ -116,3 +116,7 @@ parts:
       title: "Placeholder shown in combobox, {{label}} will be replaced by field label. Alternative English for languages with grammar/declension issues: [Search label {{label}}]."
       screenshot: "https://drive.google.com/file/d/1uy01ESlYxmssiOxDD5gVNhP96xCnDQd0/view?usp=drive_link"
       value: "Search {{label}}"
+  - translation:
+      key: "cph-theme-ticket-fields.attachments.file-removed"
+      title: "[A11Y] Screen reader announcement after the user removes an attached file. {{fileName}} will be replaced by the file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Removed the file {{fileName}}]"
+      value: "Removed {{fileName}}"
