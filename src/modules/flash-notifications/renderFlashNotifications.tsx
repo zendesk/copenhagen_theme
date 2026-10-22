@@ -1,5 +1,6 @@
 import { render } from "react-dom";
 import {
+  sharedTranslations,
   ThemeProviders,
   createTheme,
   initI18next,
@@ -16,12 +17,11 @@ import { GlobalNotificationsRoot } from "../shared/notifications/GlobalNotificat
 
 export async function renderFlashNotifications(
   settings: Settings,
-  baseLocale: string
+  baseLocale: string,
+  locale: string
 ) {
   initI18next(baseLocale);
-  await loadTranslations(baseLocale, [
-    () => import(`../shared/translations/locales/${baseLocale}.json`),
-  ]);
+  await loadTranslations(locale, baseLocale, [sharedTranslations]);
 
   try {
     const container = document.createElement("div");

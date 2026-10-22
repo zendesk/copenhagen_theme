@@ -1,6 +1,9 @@
 import { render } from "react-dom";
+import { createTranslationLoader } from "../shared/i18n/createTranslationLoader";
+import { ticketFieldsTranslations } from "../ticket-fields";
 import type { Settings } from "../shared";
 import {
+  sharedTranslations,
   createTheme,
   ThemeProviders,
   loadTranslations,
@@ -14,13 +17,16 @@ export async function renderNewRequestForm(
   props: NewRequestFormProps,
   container: HTMLElement
 ) {
-  const { baseLocale } = props;
+  const { baseLocale, locale } = props;
 
   initI18next(baseLocale);
-  await loadTranslations(baseLocale, [
-    () => import(`./translations/locales/${baseLocale}.json`),
-    () => import(`../ticket-fields/translations/locales/${baseLocale}.json`),
-    () => import(`../shared/translations/locales/${baseLocale}.json`),
+  await loadTranslations(locale, baseLocale, [
+    createTranslationLoader(
+      "new-request-form",
+      (locale) => import(`./translations/locales/${locale}.json`)
+    ),
+    ticketFieldsTranslations,
+    sharedTranslations,
   ]);
 
   render(
