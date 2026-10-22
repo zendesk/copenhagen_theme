@@ -39,6 +39,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
   }, [onChange]);
 
   const initialValueRequestRef = useRef<AbortController | null>(null);
+  const hasTypedRef = useRef(false);
 
   const { options, isLoadingOptions, searchUsers, clearOptions } =
     useUserSearch(selectedOption, () => setIsSearchPending(false));
@@ -65,6 +66,15 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
     onChangeRef.current(EMPTY_OPTION.value);
   }, []);
 
+  const dropInitialValue = useCallback(() => {
+    if (!hasTypedRef.current) {
+      clearSelection();
+      return;
+    }
+    setSelectedOption(null);
+    onChangeRef.current(EMPTY_OPTION.value);
+  }, [clearSelection]);
+
   useEffect(() => {
     if (!value) return;
 
@@ -79,7 +89,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
         // End users can only read their own profile. A value we can't show
         // must not be submitted either, so drop it instead of keeping it hidden.
         if (!res.ok) {
-          clearSelection();
+          dropInitialValue();
           return;
         }
         const { user } = await res.json();
@@ -89,11 +99,11 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
           name: user.name,
           email: user.email || "",
         });
-        setInputValue(user.name);
+        if (!hasTypedRef.current) setInputValue(user.name);
       } catch (err) {
         if (signal.aborted) return;
         console.error(err);
-        clearSelection();
+        dropInitialValue();
       }
     };
 
@@ -108,7 +118,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
     options.length > 0 ? options : selectedOption ? [selectedOption] : [];
 
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
-    ({ inputValue: nextInput, selectionValue }) => {
+    ({ type, inputValue: nextInput, selectionValue }) => {
       if (selectionValue !== undefined) {
         initialValueRequestRef.current?.abort();
         setIsSearchPending(false);
@@ -128,6 +138,7 @@ export function UserLookupField({ field, onChange }: UserLookupFieldProps) {
       }
 
       if (nextInput !== undefined) {
+        if (type === "input:change") hasTypedRef.current = true;
         setInputValue(nextInput);
         const trimmed = nextInput.trim();
         if (trimmed.length >= MIN_QUERY_LENGTH) {
