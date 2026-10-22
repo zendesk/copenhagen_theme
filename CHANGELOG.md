@@ -1,3 +1,10 @@
+## [4.53.6](https://github.com/zendesk/copenhagen_theme/compare/v4.53.5...v4.53.6) (2026-10-22)
+
+
+### Bug Fixes
+
+* load React translations for the Help Center locale ([c1e5e49](https://github.com/zendesk/copenhagen_theme/commit/c1e5e491517e5d7889e0730f6c3f6d9d0b16d486))
+
 ## [4.53.5](https://github.com/zendesk/copenhagen_theme/compare/v4.53.4...v4.53.5) (2026-10-21)
 
 
