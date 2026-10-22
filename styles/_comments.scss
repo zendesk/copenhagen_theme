@@ -28,6 +28,11 @@
     @include standalone-link;
   }
 
+  &-label {
+    display: block;
+    font-size: $font-size-small;
+    margin-bottom: 10px;
+  }
 
   &-sorter {
     display: inline-block;
@@ -139,7 +144,6 @@
   }
 
   &-ccs { display: none; }
-  &-ccs + textarea { margin-top: 10px; }
 
   &-attachments {
     margin-top: 10px;
