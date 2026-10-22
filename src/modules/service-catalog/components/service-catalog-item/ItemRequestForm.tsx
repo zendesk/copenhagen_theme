@@ -147,6 +147,7 @@ interface ItemRequestFormProps {
     field: TicketFieldObject,
     value: string | string[] | boolean | null
   ) => void;
+  formRef: React.Ref<HTMLFormElement>;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   attachmentsOption: AttachmentsOption | undefined;
   attachmentsRequiredError: AttachmentsError;
@@ -178,6 +179,7 @@ export function ItemRequestForm({
   brandId,
   defaultOrganizationId,
   handleChange,
+  formRef,
   onSubmit,
   attachmentsOption,
   attachmentsRequiredError,
@@ -380,7 +382,7 @@ export function ItemRequestForm({
 
   return (
     <>
-      <Form onSubmit={onSubmit} noValidate>
+      <Form ref={formRef} onSubmit={onSubmit} noValidate>
         <LeftColumn>
           <CollapsibleDescription
             title={serviceCatalogItem.name}
