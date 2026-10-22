@@ -324,6 +324,51 @@ describe("useValidateServiceItemForm", () => {
     });
   });
 
+  describe("description validation", () => {
+    it.each(["", "   ", "<p><br></p>", "<p>&nbsp;</p>"])(
+      "rejects visually empty required rich text: %s",
+      (value) => {
+        const { result } = renderHook(() =>
+          useValidateServiceItemForm(undefined)
+        );
+        const descriptionField = createTextField({
+          type: "description",
+          required: true,
+          value,
+        });
+
+        const validationResult = result.current.validate(
+          [descriptionField],
+          []
+        );
+
+        expect(validationResult.hasError).toBe(true);
+        expect(validationResult.errors.fields).toEqual({
+          [descriptionField.id]: "This field is required",
+        });
+      }
+    );
+
+    it.each([
+      "<p>My printer is <strong>broken</strong>.</p>",
+      '<p><img src="/hc/article_attachments/1"></p>',
+    ])("accepts rich description content: %s", (value) => {
+      const { result } = renderHook(() =>
+        useValidateServiceItemForm(undefined)
+      );
+      const descriptionField = createTextField({
+        type: "description",
+        required: true,
+        value,
+      });
+
+      const validationResult = result.current.validate([descriptionField], []);
+
+      expect(validationResult.hasError).toBe(false);
+      expect(validationResult.errors.fields).toEqual({});
+    });
+  });
+
   describe("edge cases", () => {
     it("handles undefined field value", () => {
       const { result } = renderHook(() =>
