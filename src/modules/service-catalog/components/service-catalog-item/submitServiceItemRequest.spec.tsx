@@ -124,6 +124,35 @@ describe("submitServiceItemRequest", () => {
     ]);
   });
 
+  it("submits Description as rich comment content instead of a custom field", async () => {
+    const fetchMock = mockFetch();
+    const descriptionField = {
+      ...makeField(2, "<p>My printer is <strong>broken</strong>.</p>"),
+      type: "description",
+    };
+
+    await submitServiceItemRequest(
+      mockItem,
+      [makeField(1, "value-1"), descriptionField],
+      associatedLookupField,
+      attachments,
+      helpCenterPath
+    );
+
+    const request = getSubmittedRequest(fetchMock);
+    const parsedDocument = new DOMParser().parseFromString(
+      request.comment.html_body,
+      "text/html"
+    );
+
+    expect(parsedDocument.querySelector("strong")?.textContent).toBe("broken");
+    expect(parsedDocument.querySelector("a")?.textContent).toBe(mockItem.name);
+    expect(request.custom_fields).toEqual([
+      { id: 1, value: "value-1" },
+      { id: associatedLookupField.id, value: mockItem.id },
+    ]);
+  });
+
   it("encodes all user-controlled comment values as text", async () => {
     const fetchMock = mockFetch();
     const unsafeName = '<img src=x onerror="alert(1)"> & Service';
