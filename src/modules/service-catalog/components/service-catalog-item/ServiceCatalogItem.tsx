@@ -123,6 +123,7 @@ export function ServiceCatalogItem({
     serviceCatalogItem?.custom_object_fields?.["standard::attachment_option"];
 
   const requestOnBehalfEnabled = serviceCatalogItem?.is_request_on_behalf;
+  const requesterUserId = selectedUser ? Number(selectedUser.id) : userId;
 
   const {
     attachmentsOption,
@@ -474,7 +475,7 @@ export function ServiceCatalogItem({
           baseLocale={baseLocale}
           hasAtMentions={hasAtMentions}
           userRole={userRole}
-          userId={userId}
+          userId={requesterUserId}
           requestOnBehalfEnabled={requestOnBehalfEnabled}
           userName={userName}
           selectedUser={selectedUser}

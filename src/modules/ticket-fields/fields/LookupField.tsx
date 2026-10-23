@@ -1,6 +1,6 @@
 import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import { Field, Combobox, Option } from "@zendeskgarden/react-dropdowns";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type {
   TicketFieldObject,
   TicketFieldOptionObject,
@@ -41,6 +41,14 @@ export function buildAdvancedDynamicFilterParams(
 
 export function getCustomObjectKey(targetType: string) {
   return targetType.replace("zen:custom_object:", "");
+}
+
+export function isRequesterDependentField(
+  filter?: LookupRelationshipFieldFilter
+) {
+  if (!filter) return false;
+
+  return [...filter.all, ...filter.any].some((f) => f.value === "requester_id");
 }
 
 const EMPTY_OPTION = {
@@ -261,6 +269,23 @@ export function LookupField({
       fetchSelectedOption(value as string);
     }
   }, []); //we don't set dependency array as we want this hook to be called only once
+
+  const previousUserIdRef = useRef(userId);
+  useEffect(() => {
+    if (previousUserIdRef.current === userId) return;
+    previousUserIdRef.current = userId;
+
+    if (
+      isRequesterDependentField(field.relationship_filter) &&
+      selectedOption &&
+      selectedOption !== EMPTY_OPTION
+    ) {
+      setSelectedOption(EMPTY_OPTION);
+      setInputValue(EMPTY_OPTION.name);
+      setOptions([]);
+      onChange(EMPTY_OPTION.value);
+    }
+  }, [userId, field.relationship_filter, selectedOption, onChange]);
 
   const onFocus = () => {
     setInputValue("");

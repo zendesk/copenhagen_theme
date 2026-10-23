@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import {
   buildAdvancedDynamicFilterParams,
   getCustomObjectKey,
+  isRequesterDependentField,
 } from "./LookupField";
 import type { CustomObjectRecord } from "../data-types/CustomObjectRecord";
 
@@ -256,6 +257,20 @@ export function MultiLookupField({
       fetchSelectedOptions(value as string[]);
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const previousUserIdRef = useRef(userId);
+  useEffect(() => {
+    if (previousUserIdRef.current === userId) return;
+    previousUserIdRef.current = userId;
+
+    if (
+      isRequesterDependentField(field.relationship_filter) &&
+      selectedOptions.length > 0
+    ) {
+      setSelectedOptions([]);
+      onChange([]);
+    }
+  }, [userId, field.relationship_filter, selectedOptions, onChange]);
 
   const onFocus = () => {
     setIsFocused(true);

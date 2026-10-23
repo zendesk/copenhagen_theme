@@ -257,3 +257,101 @@ describe("MultiLookupField", () => {
     expect(screen.getByText("Pick multiple records")).toBeInTheDocument();
   });
 });
+
+describe("MultiLookupField when the requester changes", () => {
+  const requesterFilter = {
+    all: [
+      {
+        field:
+          "custom_object.standard::itam_asset.custom_fields.standard::user",
+        operator: "is",
+        value: "requester_id",
+      },
+    ],
+    any: [],
+  };
+
+  const renderField = (
+    onChange: jest.Mock,
+    userId: number,
+    filter = requesterFilter
+  ) => (
+    <MultiLookupField
+      field={{
+        ...defaultField,
+        value: ["rec-a"],
+        relationship_filter: filter,
+      }}
+      userId={userId}
+      organizationId={null}
+      onChange={onChange}
+      visibleFields={[] as TicketFieldObject[]}
+    />
+  );
+
+  beforeEach(() => {
+    (globalThis.fetch as jest.Mock) = jest.fn((url: string) => {
+      if (url.includes("/records?")) {
+        return Promise.resolve({
+          ok: true,
+          json: () =>
+            Promise.resolve({
+              custom_object_records: [{ id: "rec-a", name: "Record A" }],
+            }),
+        });
+      }
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ custom_object_records: [] }),
+      });
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("clears selected records and fires onChange with an empty array", async () => {
+    const onChange = jest.fn();
+    const { rerender, container } = render(renderField(onChange, 1));
+
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 0));
+    });
+    expect(
+      container.querySelector('input[name="test_multi_lookup[]"]')
+    ).toHaveValue("rec-a");
+
+    await act(async () => {
+      rerender(renderField(onChange, 2));
+    });
+
+    expect(onChange).toHaveBeenLastCalledWith([]);
+    expect(
+      container.querySelectorAll('input[name="test_multi_lookup[]"]')
+    ).toHaveLength(0);
+  });
+
+  it("does not clear fields that do not depend on the requester", async () => {
+    const nonRequesterFilter = {
+      all: [{ field: "someField", operator: "is", value: "foo" }],
+      any: [],
+    };
+    const onChange = jest.fn();
+    const { rerender, container } = render(
+      renderField(onChange, 1, nonRequesterFilter)
+    );
+
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 0));
+    });
+    await act(async () => {
+      rerender(renderField(onChange, 2, nonRequesterFilter));
+    });
+
+    expect(onChange).not.toHaveBeenLastCalledWith([]);
+    expect(
+      container.querySelector('input[name="test_multi_lookup[]"]')
+    ).toHaveValue("rec-a");
+  });
+});
