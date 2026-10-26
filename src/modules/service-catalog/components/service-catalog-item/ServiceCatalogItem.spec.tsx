@@ -44,10 +44,12 @@ jest.mock("./ItemRequestForm", () => ({
   ItemRequestForm: ({
     onSubmit,
     isPreviewMode,
+    userId,
     setSelectedUser,
   }: {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
     isPreviewMode?: boolean;
+    userId: number;
     setSelectedUser: (user: {
       id: string;
       name: string;
@@ -57,6 +59,7 @@ jest.mock("./ItemRequestForm", () => ({
     <form
       data-testid="item-request-form"
       data-preview-mode={isPreviewMode ? "true" : "false"}
+      data-user-id={userId}
       onSubmit={onSubmit}
     >
       <button
@@ -881,6 +884,39 @@ describe("ServiceCatalogItem", () => {
         submitterLabel: expect.stringContaining("Submitter: {{name}}"),
         requesterLabel: expect.stringContaining("Requester: {{name}}"),
       });
+    });
+  });
+
+  describe("request on behalf requester pass-down", () => {
+    const renderOnBehalfItem = () => {
+      mockUseServiceCatalogItem.mockReturnValue({
+        serviceCatalogItem: {
+          ...mockServiceCatalogItem,
+          is_request_on_behalf: true,
+        },
+        errorFetchingItem: null,
+      });
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+    };
+
+    it("keeps the signed-in user id when no beneficiary is selected", () => {
+      renderOnBehalfItem();
+
+      expect(screen.getByTestId("item-request-form")).toHaveAttribute(
+        "data-user-id",
+        "123"
+      );
+    });
+
+    it("hands the selected beneficiary's id to ItemRequestForm as userId", () => {
+      renderOnBehalfItem();
+
+      fireEvent.click(screen.getByTestId("select-beneficiary"));
+
+      expect(screen.getByTestId("item-request-form")).toHaveAttribute(
+        "data-user-id",
+        "789"
+      );
     });
   });
 });

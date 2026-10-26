@@ -1,6 +1,7 @@
 import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import { Field, Combobox, Option } from "@zendeskgarden/react-dropdowns";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { useClearOnRequesterChange } from "../hooks/useClearOnRequesterChange";
 import type {
   TicketFieldObject,
   TicketFieldOptionObject,
@@ -270,22 +271,17 @@ export function LookupField({
     }
   }, []); //we don't set dependency array as we want this hook to be called only once
 
-  const previousUserIdRef = useRef(userId);
-  useEffect(() => {
-    if (previousUserIdRef.current === userId) return;
-    previousUserIdRef.current = userId;
-
-    if (
-      isRequesterDependentField(field.relationship_filter) &&
-      selectedOption &&
-      selectedOption !== EMPTY_OPTION
-    ) {
+  useClearOnRequesterChange(
+    userId,
+    isRequesterDependentField(field.relationship_filter),
+    selectedOption != null && selectedOption !== EMPTY_OPTION,
+    () => {
       setSelectedOption(EMPTY_OPTION);
       setInputValue(EMPTY_OPTION.name);
       setOptions([]);
       onChange(EMPTY_OPTION.value);
     }
-  }, [userId, field.relationship_filter, selectedOption, onChange]);
+  );
 
   const onFocus = () => {
     setInputValue("");

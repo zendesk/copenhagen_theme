@@ -13,6 +13,7 @@ import {
   getCustomObjectKey,
   isRequesterDependentField,
 } from "./LookupField";
+import { useClearOnRequesterChange } from "../hooks/useClearOnRequesterChange";
 import type { CustomObjectRecord } from "../data-types/CustomObjectRecord";
 
 const DEFAULT_MAX_SELECTIONS = 20;
@@ -258,19 +259,15 @@ export function MultiLookupField({
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const previousUserIdRef = useRef(userId);
-  useEffect(() => {
-    if (previousUserIdRef.current === userId) return;
-    previousUserIdRef.current = userId;
-
-    if (
-      isRequesterDependentField(field.relationship_filter) &&
-      selectedOptions.length > 0
-    ) {
+  useClearOnRequesterChange(
+    userId,
+    isRequesterDependentField(field.relationship_filter),
+    selectedOptions.length > 0,
+    () => {
       setSelectedOptions([]);
       onChange([]);
     }
-  }, [userId, field.relationship_filter, selectedOptions, onChange]);
+  );
 
   const onFocus = () => {
     setIsFocused(true);
