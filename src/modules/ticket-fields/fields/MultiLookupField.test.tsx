@@ -315,21 +315,14 @@ describe("MultiLookupField when the requester changes", () => {
     const onChange = jest.fn();
     const { rerender, container } = render(renderField(onChange, 1));
 
-    await act(async () => {
-      await new Promise((r) => setTimeout(r, 0));
-    });
-    expect(
-      container.querySelector('input[name="test_multi_lookup[]"]')
-    ).toHaveValue("rec-a");
+    const hiddenInputs = () =>
+      container.querySelectorAll('input[name="test_multi_lookup[]"]');
+    await waitFor(() => expect(hiddenInputs()[0]).toHaveValue("rec-a"));
 
-    await act(async () => {
-      rerender(renderField(onChange, 2));
-    });
+    rerender(renderField(onChange, 2));
 
+    await waitFor(() => expect(hiddenInputs()).toHaveLength(0));
     expect(onChange).toHaveBeenLastCalledWith([]);
-    expect(
-      container.querySelectorAll('input[name="test_multi_lookup[]"]')
-    ).toHaveLength(0);
   });
 
   it("does not clear fields that do not depend on the requester", async () => {
@@ -342,16 +335,69 @@ describe("MultiLookupField when the requester changes", () => {
       renderField(onChange, 1, nonRequesterFilter)
     );
 
+    const hiddenInputs = () =>
+      container.querySelectorAll('input[name="test_multi_lookup[]"]');
+    await waitFor(() => expect(hiddenInputs()[0]).toHaveValue("rec-a"));
+
+    rerender(renderField(onChange, 2, nonRequesterFilter));
+
+    fireEvent.focus(screen.getByLabelText("Test Multi Lookup"));
+    await waitFor(() =>
+      expect(fetch).toHaveBeenCalledWith(
+        expect.stringContaining("requester_id=2")
+      )
+    );
+    expect(hiddenInputs()[0]).toHaveValue("rec-a");
+  });
+
+  it("ignores the initial records fetch when the requester changed while it was in flight", async () => {
+    let resolveFetch: (value: unknown) => void = () => {};
+    (globalThis.fetch as jest.Mock) = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          resolveFetch = resolve;
+        })
+    );
+    const onChange = jest.fn();
+    const { rerender, container } = render(renderField(onChange, 1));
+
     await act(async () => {
-      await new Promise((r) => setTimeout(r, 0));
-    });
-    await act(async () => {
-      rerender(renderField(onChange, 2, nonRequesterFilter));
+      rerender(renderField(onChange, 2));
     });
 
-    expect(onChange).not.toHaveBeenLastCalledWith([]);
+    await act(async () => {
+      resolveFetch({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            custom_object_records: [{ id: "rec-a", name: "Record A" }],
+          }),
+      });
+    });
+
+    expect(onChange).not.toHaveBeenCalled();
     expect(
-      container.querySelector('input[name="test_multi_lookup[]"]')
-    ).toHaveValue("rec-a");
+      container.querySelectorAll('input[name="test_multi_lookup[]"]')
+    ).toHaveLength(0);
+  });
+
+  it("refetches options for the new requester when focused while it changes", async () => {
+    const onChange = jest.fn();
+    const { rerender } = render(renderField(onChange, 1));
+
+    fireEvent.focus(screen.getByLabelText("Test Multi Lookup"));
+    await waitFor(() =>
+      expect(fetch).toHaveBeenCalledWith(
+        expect.stringContaining("requester_id=1")
+      )
+    );
+
+    rerender(renderField(onChange, 2));
+
+    await waitFor(() =>
+      expect(fetch).toHaveBeenCalledWith(
+        expect.stringContaining("requester_id=2")
+      )
+    );
   });
 });

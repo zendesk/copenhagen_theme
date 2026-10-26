@@ -1,6 +1,6 @@
 import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import { Field, Combobox, Option } from "@zendeskgarden/react-dropdowns";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useClearOnRequesterChange } from "../hooks/useClearOnRequesterChange";
 import type {
   TicketFieldObject,
@@ -97,11 +97,17 @@ export function LookupField({
     useState<TicketFieldOptionObject | null>(null);
   const [inputValue, setInputValue] = useState<string>(value as string);
   const [isLoadingOptions, setIsLoadingOptions] = useState<boolean>(false);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
   const { t } = useTranslation();
 
   const customObjectKey = getCustomObjectKey(
     relationship_target_type as string
   );
+
+  const requesterRef = useRef(userId);
+  useEffect(() => {
+    requesterRef.current = userId;
+  }, [userId]);
 
   const loadingOption = {
     name: t(
@@ -121,28 +127,32 @@ export function LookupField({
 
   const fetchSelectedOption = useCallback(
     async (selectionValue: string) => {
+      const requesterId = userId;
       try {
         const res = await fetch(
           `/api/v2/custom_objects/${customObjectKey}/records/${selectionValue}`
         );
-        if (res.ok) {
-          const { custom_object_record } = await res.json();
-          const newSelectedOption = {
-            name: custom_object_record.name,
-            value: custom_object_record.id,
-          };
-          setSelectedOption(newSelectedOption);
-          setInputValue(custom_object_record.name);
-        }
+        if (!res.ok) return;
+
+        const { custom_object_record } = await res.json();
+        if (requesterId !== requesterRef.current) return;
+
+        const newSelectedOption = {
+          name: custom_object_record.name,
+          value: custom_object_record.id,
+        };
+        setSelectedOption(newSelectedOption);
+        setInputValue(custom_object_record.name);
       } catch (error) {
         console.error(error);
       }
     },
-    [customObjectKey]
+    [customObjectKey, userId]
   );
 
   const fetchOptions = useCallback(
     async (inputValue: string) => {
+      const requesterId = userId;
       const searchParams = new URLSearchParams();
       searchParams.set("name", inputValue.toLocaleLowerCase());
       searchParams.set("source", "zen:ticket");
@@ -181,6 +191,8 @@ export function LookupField({
         );
 
         const data = await response.json();
+        if (requesterId !== requesterRef.current) return;
+
         if (response.ok) {
           const fetchedRecords = data.custom_object_records;
 
@@ -274,18 +286,25 @@ export function LookupField({
   useClearOnRequesterChange(
     userId,
     isRequesterDependentField(field.relationship_filter),
-    selectedOption != null && selectedOption !== EMPTY_OPTION,
     () => {
-      setSelectedOption(EMPTY_OPTION);
-      setInputValue(EMPTY_OPTION.name);
       setOptions([]);
-      onChange(EMPTY_OPTION.value);
+      setInputValue(EMPTY_OPTION.name);
+      if (selectedOption && selectedOption !== EMPTY_OPTION) {
+        setSelectedOption(EMPTY_OPTION);
+        onChange(EMPTY_OPTION.value);
+      }
+      if (isFocused) fetchOptions("*");
     }
   );
 
   const onFocus = () => {
+    setIsFocused(true);
     setInputValue("");
     fetchOptions("*");
+  };
+
+  const onBlur = () => {
+    setIsFocused(false);
   };
 
   return (
@@ -310,6 +329,7 @@ export function LookupField({
           { label }
         )}
         onFocus={onFocus}
+        onBlur={onBlur}
         onChange={handleChange}
         renderValue={() =>
           selectedOption ? selectedOption?.name : EMPTY_OPTION.name

@@ -1,6 +1,6 @@
 import type { LookupRelationshipFieldFilter } from "../data-types/BaseTicketField";
 import type { TicketFieldObject } from "../data-types/TicketFieldObject";
-import { act, fireEvent, screen } from "@testing-library/react";
+import { act, fireEvent, screen, waitFor } from "@testing-library/react";
 import {
   buildAdvancedDynamicFilterParams,
   isRequesterDependentField,
@@ -453,21 +453,14 @@ describe("LookupField when the requester changes", () => {
     const onChange = jest.fn();
     const { rerender } = render(renderField(onChange, 1));
 
-    await act(async () => {});
-    expect(document.querySelector('input[name="test_lookup"]')).toHaveAttribute(
-      "value",
-      "rec-1"
-    );
+    const hiddenInput = () =>
+      document.querySelector('input[name="test_lookup"]');
+    await waitFor(() => expect(hiddenInput()).toHaveValue("rec-1"));
 
-    await act(async () => {
-      rerender(renderField(onChange, 2));
-    });
+    rerender(renderField(onChange, 2));
 
-    expect(onChange).toHaveBeenLastCalledWith("");
-    expect(document.querySelector('input[name="test_lookup"]')).toHaveAttribute(
-      "value",
-      ""
-    );
+    await waitFor(() => expect(onChange).toHaveBeenLastCalledWith(""));
+    expect(hiddenInput()).toHaveValue("");
   });
 
   test("does not clear fields that do not depend on the requester", async () => {
@@ -478,34 +471,92 @@ describe("LookupField when the requester changes", () => {
     const onChange = jest.fn();
     const { rerender } = render(renderField(onChange, 1, nonRequesterFilter));
 
-    await act(async () => {});
-    await act(async () => {
-      rerender(renderField(onChange, 2, nonRequesterFilter));
-    });
+    const hiddenInput = () =>
+      document.querySelector('input[name="test_lookup"]');
+    await waitFor(() => expect(hiddenInput()).toHaveValue("rec-1"));
 
-    expect(onChange).not.toHaveBeenCalledWith("");
-    expect(document.querySelector('input[name="test_lookup"]')).toHaveAttribute(
-      "value",
-      "rec-1"
+    rerender(renderField(onChange, 2, nonRequesterFilter));
+
+    fireEvent.focus(screen.getByLabelText("Test Lookup"));
+    await waitFor(() =>
+      expect(fetch).toHaveBeenCalledWith(
+        expect.stringContaining("requester_id=2")
+      )
     );
+    expect(onChange).not.toHaveBeenCalledWith("");
+    expect(hiddenInput()).toHaveValue("rec-1");
   });
 
   test("uses the new requester id in subsequent autocomplete calls", async () => {
     const onChange = jest.fn();
     const { rerender } = render(renderField(onChange, 1));
 
-    await act(async () => {});
+    await waitFor(() =>
+      expect(document.querySelector('input[name="test_lookup"]')).toHaveValue(
+        "rec-1"
+      )
+    );
+
+    rerender(renderField(onChange, 2));
+
+    fireEvent.focus(screen.getByLabelText("Test Lookup"));
+    await waitFor(() =>
+      expect(fetch).toHaveBeenCalledWith(
+        expect.stringContaining("requester_id=2")
+      )
+    );
+  });
+
+  test("ignores the initial record fetch when the requester changed while it was in flight", async () => {
+    let resolveFetch: (value: unknown) => void = () => {};
+    (globalThis.fetch as jest.Mock) = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          resolveFetch = resolve;
+        })
+    );
+    const onChange = jest.fn();
+    const { rerender } = render(renderField(onChange, 1));
+
     await act(async () => {
       rerender(renderField(onChange, 2));
     });
 
-    const combobox = screen.getByLabelText("Test Lookup");
     await act(async () => {
-      fireEvent.focus(combobox);
+      resolveFetch({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            custom_object_record: {
+              name: "Asset One",
+              id: "rec-1",
+              custom_object_fields: {},
+            },
+          }),
+      });
     });
 
-    expect(fetch).toHaveBeenCalledWith(
-      expect.stringContaining("requester_id=2")
+    expect(onChange).not.toHaveBeenCalled();
+    expect(document.querySelector('input[name="test_lookup"]')).toHaveValue("");
+  });
+
+  test("refetches options for the new requester when focused while it changes", async () => {
+    const onChange = jest.fn();
+    const { rerender } = render(renderField(onChange, 1));
+
+    fireEvent.focus(screen.getByLabelText("Test Lookup"));
+    await waitFor(() =>
+      expect(fetch).toHaveBeenCalledWith(
+        expect.stringContaining("requester_id=1")
+      )
+    );
+
+    rerender(renderField(onChange, 2));
+
+    await waitFor(() =>
+      expect(fetch).toHaveBeenCalledWith(
+        expect.stringContaining("requester_id=2")
+      )
     );
   });
 });

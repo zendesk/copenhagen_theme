@@ -75,6 +75,11 @@ export function MultiLookupField({
   const selectedValues = selectedOptions.map((o) => o.value);
   selectedValuesRef.current = selectedValues;
 
+  const requesterRef = useRef(userId);
+  useEffect(() => {
+    requesterRef.current = userId;
+  }, [userId]);
+
   useEffect(() => {
     if (wrapperRef.current && required) {
       const combobox = wrapperRef.current.querySelector("[role=combobox]");
@@ -102,6 +107,7 @@ export function MultiLookupField({
 
   const fetchSelectedOptions = useCallback(
     async (recordIds: string[]) => {
+      const requesterId = userId;
       const fallback = recordIds.map((id) => ({ value: id, name: id }));
       try {
         const params = new URLSearchParams();
@@ -111,6 +117,8 @@ export function MultiLookupField({
         );
         if (res.ok) {
           const { custom_object_records } = await res.json();
+          if (requesterId !== requesterRef.current) return;
+
           const results: TicketFieldOptionObject[] = custom_object_records.map(
             (record: CustomObjectRecord) => ({
               name: record.name,
@@ -126,11 +134,12 @@ export function MultiLookupField({
         setSelectedOptions(fallback);
       }
     },
-    [customObjectKey, onChange]
+    [customObjectKey, onChange, userId]
   );
 
   const fetchOptions = useCallback(
     async (query: string) => {
+      const requesterId = userId;
       const searchParams = new URLSearchParams();
       searchParams.set("name", query.toLocaleLowerCase());
       searchParams.set("source", "zen:ticket");
@@ -169,6 +178,8 @@ export function MultiLookupField({
         );
 
         const data = await response.json();
+        if (requesterId !== requesterRef.current) return;
+
         if (response.ok) {
           const fetchedRecords = data.custom_object_records;
 
@@ -262,10 +273,14 @@ export function MultiLookupField({
   useClearOnRequesterChange(
     userId,
     isRequesterDependentField(field.relationship_filter),
-    selectedOptions.length > 0,
     () => {
-      setSelectedOptions([]);
-      onChange([]);
+      setOptions([]);
+      setInputValue("");
+      if (selectedOptions.length > 0) {
+        setSelectedOptions([]);
+        onChange([]);
+      }
+      if (isFocused) fetchOptions("*");
     }
   );
 
