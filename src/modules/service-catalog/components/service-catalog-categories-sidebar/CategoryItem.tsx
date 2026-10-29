@@ -5,7 +5,10 @@ import ChevronDownIcon from "@zendeskgarden/svg-icons/src/12/chevron-down-fill.s
 import ChevronUpIcon from "@zendeskgarden/svg-icons/src/12/chevron-up-fill.svg";
 import { useTranslation } from "react-i18next";
 import type { Category } from "../../data-types/Categories";
-import { ALL_SERVICES_ID, UNCATEGORIZED_ID } from "./constants";
+import {
+  isAllServicesCategory,
+  isUncategorizedCategory,
+} from "../../utils/categoryTreeUtils";
 
 const MAX_NESTING_LEVEL = 6;
 const INDENT_PER_LEVEL = 20;
@@ -133,8 +136,8 @@ export const CategoryItem: React.FC<CategoryItemProps> = ({
 }) => {
   const hasChildren = (category.children?.length ?? 0) > 0;
   const isExpanded = expandedCategories.has(category.id);
-  const isAllServices = category.id === ALL_SERVICES_ID;
-  const isUncategorized = category.id === UNCATEGORIZED_ID;
+  const isAllServices = isAllServicesCategory(category);
+  const isUncategorized = isUncategorizedCategory(category);
   const isSelected = selectedCategoryId === category.id;
 
   const { t } = useTranslation();
