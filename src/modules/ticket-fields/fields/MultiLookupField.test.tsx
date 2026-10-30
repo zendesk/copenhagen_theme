@@ -350,7 +350,43 @@ describe("MultiLookupField when the requester changes", () => {
     expect(hiddenInputs()[0]).toHaveValue("rec-a");
   });
 
-  it("ignores the initial records fetch when the requester changed while it was in flight", async () => {
+  it("clears a pending prefill and ignores the initial records fetch when the requester changed while it was in flight", async () => {
+    let resolveFetch: (value: unknown) => void = () => {};
+    (globalThis.fetch as jest.Mock) = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          resolveFetch = resolve;
+        })
+    );
+    const onChange = jest.fn();
+    const { rerender, container } = render(renderField(onChange, 1));
+
+    await act(async () => {
+      rerender(renderField(onChange, 2));
+    });
+
+    await waitFor(() => expect(onChange).toHaveBeenCalledWith([]));
+    expect(
+      container.querySelectorAll('input[name="test_multi_lookup[]"]')
+    ).toHaveLength(0);
+
+    await act(async () => {
+      resolveFetch({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            custom_object_records: [{ id: "rec-a", name: "Record A" }],
+          }),
+      });
+    });
+
+    expect(onChange).toHaveBeenLastCalledWith([]);
+    expect(
+      container.querySelectorAll('input[name="test_multi_lookup[]"]')
+    ).toHaveLength(0);
+  });
+
+  it("does not apply the fallback selection when the records fetch fails after the requester changed", async () => {
     let resolveFetch: (value: unknown) => void = () => {};
     (globalThis.fetch as jest.Mock) = jest.fn(
       () =>
@@ -367,15 +403,12 @@ describe("MultiLookupField when the requester changes", () => {
 
     await act(async () => {
       resolveFetch({
-        ok: true,
-        json: () =>
-          Promise.resolve({
-            custom_object_records: [{ id: "rec-a", name: "Record A" }],
-          }),
+        ok: false,
+        json: () => Promise.resolve({}),
       });
     });
 
-    expect(onChange).not.toHaveBeenCalled();
+    expect(onChange).toHaveBeenLastCalledWith([]);
     expect(
       container.querySelectorAll('input[name="test_multi_lookup[]"]')
     ).toHaveLength(0);
@@ -399,5 +432,51 @@ describe("MultiLookupField when the requester changes", () => {
         expect.stringContaining("requester_id=2")
       )
     );
+  });
+});
+
+describe("MultiLookupField autocomplete request races", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("an older autocomplete response cannot overwrite newer results", async () => {
+    const resolvers: Array<(value: unknown) => void> = [];
+    (globalThis.fetch as jest.Mock) = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          resolvers.push(resolve);
+        })
+    );
+    render(<MultiLookupField {...defaultProps} />);
+
+    const combobox = screen.getByLabelText("Test Multi Lookup");
+    fireEvent.click(combobox);
+    fireEvent.change(combobox, { target: { value: "b" } });
+
+    await waitFor(() => expect(resolvers).toHaveLength(2));
+
+    // the newer request (the typed query) resolves first...
+    await act(async () => {
+      resolvers[1]!({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            custom_object_records: [{ name: "Record B", id: "rec-b" }],
+          }),
+      });
+    });
+    await act(async () => {
+      resolvers[0]!({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            custom_object_records: [{ name: "Record A", id: "rec-a" }],
+          }),
+      });
+    });
+
+    expect(screen.queryByText("Record A")).not.toBeInTheDocument();
+    expect(screen.getByText("Record B")).toBeInTheDocument();
   });
 });

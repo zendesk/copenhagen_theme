@@ -76,9 +76,8 @@ export function MultiLookupField({
   selectedValuesRef.current = selectedValues;
 
   const requesterRef = useRef(userId);
-  useEffect(() => {
-    requesterRef.current = userId;
-  }, [userId]);
+  requesterRef.current = userId;
+  const requestSeqRef = useRef(0);
 
   useEffect(() => {
     if (wrapperRef.current && required) {
@@ -115,6 +114,8 @@ export function MultiLookupField({
         const res = await fetch(
           `/api/v2/custom_objects/${customObjectKey}/records?${params.toString()}`
         );
+        if (requesterId !== requesterRef.current) return;
+
         if (res.ok) {
           const { custom_object_records } = await res.json();
           if (requesterId !== requesterRef.current) return;
@@ -131,6 +132,7 @@ export function MultiLookupField({
           setSelectedOptions(fallback);
         }
       } catch {
+        if (requesterId !== requesterRef.current) return;
         setSelectedOptions(fallback);
       }
     },
@@ -171,6 +173,11 @@ export function MultiLookupField({
 
       if (organizationId) searchParams.set("organization_id", organizationId);
 
+      const requestSeq = ++requestSeqRef.current;
+      const isStale = () =>
+        requesterId !== requesterRef.current ||
+        requestSeq !== requestSeqRef.current;
+
       setIsLoadingOptions(true);
       try {
         const response = await fetch(
@@ -178,7 +185,7 @@ export function MultiLookupField({
         );
 
         const data = await response.json();
-        if (requesterId !== requesterRef.current) return;
+        if (isStale()) return;
 
         if (response.ok) {
           const fetchedRecords = data.custom_object_records;
@@ -187,6 +194,7 @@ export function MultiLookupField({
 
           if (buildLookupFieldOptions) {
             newOptions = await buildLookupFieldOptions(fetchedRecords, field);
+            if (isStale()) return;
           } else {
             newOptions = fetchedRecords.map(
               ({ name, id }: { name: string; id: string }) => ({
@@ -201,9 +209,11 @@ export function MultiLookupField({
           setOptions([]);
         }
       } catch {
-        setOptions([]);
+        if (!isStale()) setOptions([]);
       } finally {
-        setIsLoadingOptions(false);
+        if (requestSeq === requestSeqRef.current) {
+          setIsLoadingOptions(false);
+        }
       }
     },
     [
@@ -276,8 +286,11 @@ export function MultiLookupField({
     () => {
       setOptions([]);
       setInputValue("");
-      if (selectedOptions.length > 0) {
-        setSelectedOptions([]);
+      setSelectedOptions([]);
+      if (
+        selectedOptions.length > 0 ||
+        (Array.isArray(value) && value.length > 0)
+      ) {
         onChange([]);
       }
       if (isFocused) fetchOptions("*");

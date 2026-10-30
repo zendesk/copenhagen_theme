@@ -507,7 +507,7 @@ describe("LookupField when the requester changes", () => {
     );
   });
 
-  test("ignores the initial record fetch when the requester changed while it was in flight", async () => {
+  test("clears a pending prefill and ignores the initial record fetch when the requester changed while it was in flight", async () => {
     let resolveFetch: (value: unknown) => void = () => {};
     (globalThis.fetch as jest.Mock) = jest.fn(
       () =>
@@ -521,6 +521,8 @@ describe("LookupField when the requester changes", () => {
     await act(async () => {
       rerender(renderField(onChange, 2));
     });
+
+    await waitFor(() => expect(onChange).toHaveBeenCalledWith(""));
 
     await act(async () => {
       resolveFetch({
@@ -536,7 +538,7 @@ describe("LookupField when the requester changes", () => {
       });
     });
 
-    expect(onChange).not.toHaveBeenCalled();
+    expect(onChange).toHaveBeenLastCalledWith("");
     expect(document.querySelector('input[name="test_lookup"]')).toHaveValue("");
   });
 
@@ -558,5 +560,102 @@ describe("LookupField when the requester changes", () => {
         expect.stringContaining("requester_id=2")
       )
     );
+  });
+
+  test("does not add the previous requester's selected asset to the refetched options", async () => {
+    (globalThis.fetch as jest.Mock) = jest.fn((url: string) => {
+      if (url.includes("/records/rec-1")) {
+        return Promise.resolve({
+          ok: true,
+          json: () =>
+            Promise.resolve({
+              custom_object_record: {
+                name: "Asset One",
+                id: "rec-1",
+                custom_object_fields: {},
+              },
+            }),
+        });
+      }
+      return Promise.resolve({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            custom_object_records: [{ name: "Asset Two", id: "rec-2" }],
+          }),
+      });
+    });
+
+    const onChange = jest.fn();
+    const { rerender } = render(renderField(onChange, 1));
+
+    await waitFor(() =>
+      expect(document.querySelector('input[name="test_lookup"]')).toHaveValue(
+        "rec-1"
+      )
+    );
+
+    fireEvent.click(screen.getByLabelText("Test Lookup"));
+    rerender(renderField(onChange, 2));
+
+    await waitFor(() =>
+      expect(screen.getByText("Asset Two")).toBeInTheDocument()
+    );
+    expect(screen.queryByText("Asset One")).not.toBeInTheDocument();
+  });
+});
+
+describe("LookupField autocomplete request races", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  const renderField = (onChange: jest.Mock) => (
+    <LookupField
+      field={defaultField}
+      userId={1}
+      organizationId={null}
+      onChange={onChange}
+      visibleFields={[]}
+    />
+  );
+
+  test("an older autocomplete response cannot overwrite newer results", async () => {
+    const resolvers: Array<(value: unknown) => void> = [];
+    (globalThis.fetch as jest.Mock) = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          resolvers.push(resolve);
+        })
+    );
+    render(renderField(jest.fn()));
+
+    const combobox = screen.getByLabelText("Test Lookup");
+    fireEvent.click(combobox);
+    fireEvent.change(combobox, { target: { value: "b" } });
+
+    await waitFor(() => expect(resolvers).toHaveLength(2));
+
+    await act(async () => {
+      resolvers[1]!({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            custom_object_records: [{ name: "Record B", id: "rec-b" }],
+          }),
+      });
+    });
+    await act(async () => {
+      resolvers[0]!({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            custom_object_records: [{ name: "Record A", id: "rec-a" }],
+          }),
+      });
+    });
+
+    expect(screen.queryByText("Record A")).not.toBeInTheDocument();
+    expect(screen.getByText("Record B")).toBeInTheDocument();
   });
 });

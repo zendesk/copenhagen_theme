@@ -95,6 +95,8 @@ export function LookupField({
   const [options, setOptions] = useState<TicketFieldOptionObject[]>([]);
   const [selectedOption, setSelectedOption] =
     useState<TicketFieldOptionObject | null>(null);
+  const selectedOptionRef = useRef(selectedOption);
+  selectedOptionRef.current = selectedOption;
   const [inputValue, setInputValue] = useState<string>(value as string);
   const [isLoadingOptions, setIsLoadingOptions] = useState<boolean>(false);
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -105,9 +107,8 @@ export function LookupField({
   );
 
   const requesterRef = useRef(userId);
-  useEffect(() => {
-    requesterRef.current = userId;
-  }, [userId]);
+  requesterRef.current = userId;
+  const requestSeqRef = useRef(0);
 
   const loadingOption = {
     name: t(
@@ -184,6 +185,11 @@ export function LookupField({
 
       if (organizationId) searchParams.set("organization_id", organizationId);
 
+      const requestSeq = ++requestSeqRef.current;
+      const isStale = () =>
+        requesterId !== requesterRef.current ||
+        requestSeq !== requestSeqRef.current;
+
       setIsLoadingOptions(true);
       try {
         const response = await fetch(
@@ -191,7 +197,7 @@ export function LookupField({
         );
 
         const data = await response.json();
-        if (requesterId !== requesterRef.current) return;
+        if (isStale()) return;
 
         if (response.ok) {
           const fetchedRecords = data.custom_object_records;
@@ -200,6 +206,7 @@ export function LookupField({
 
           if (buildLookupFieldOptions) {
             options = await buildLookupFieldOptions(fetchedRecords, field);
+            if (isStale()) return;
           } else {
             options = fetchedRecords.map(
               ({ name, id }: { name: string; id: string }) => ({
@@ -208,12 +215,13 @@ export function LookupField({
               })
             );
           }
-          if (selectedOption) {
+          const currentSelectedOption = selectedOptionRef.current;
+          if (currentSelectedOption && currentSelectedOption !== EMPTY_OPTION) {
             options = options.filter(
               (option: TicketFieldOptionObject) =>
-                option.value !== selectedOption.value
+                option.value !== currentSelectedOption.value
             );
-            options = [selectedOption, ...options];
+            options = [currentSelectedOption, ...options];
           }
 
           setOptions(options);
@@ -223,7 +231,9 @@ export function LookupField({
       } catch (error) {
         console.error(error);
       } finally {
-        setIsLoadingOptions(false);
+        if (requestSeq === requestSeqRef.current) {
+          setIsLoadingOptions(false);
+        }
       }
     },
     [
@@ -232,7 +242,6 @@ export function LookupField({
       field,
       fieldId,
       organizationId,
-      selectedOption,
       userId,
       visibleFields,
       buildLookupFieldOptions,
@@ -289,7 +298,10 @@ export function LookupField({
     () => {
       setOptions([]);
       setInputValue(EMPTY_OPTION.name);
-      if (selectedOption && selectedOption !== EMPTY_OPTION) {
+      if (
+        (selectedOption && selectedOption !== EMPTY_OPTION) ||
+        (typeof value === "string" && value.length > 0)
+      ) {
         setSelectedOption(EMPTY_OPTION);
         onChange(EMPTY_OPTION.value);
       }
