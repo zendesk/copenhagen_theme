@@ -1,5 +1,5 @@
 export interface Organization {
   id: number;
   name: string;
-  default: boolean;
+  default: boolean | null;
 }

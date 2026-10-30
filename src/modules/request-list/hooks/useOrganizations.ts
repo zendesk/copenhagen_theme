@@ -1,46 +1,35 @@
 import { useState, useEffect } from "react";
-import type { User, OrganizationMembership, Organization } from "../data-types";
-import type { CursorPaginatedResponse } from "../utils/pagination/CursorPaginatedResponse";
-import { fetchAllCursorPages } from "../utils/pagination/fetchAllCursorPages";
+import type { User, Organization } from "../data-types";
+import { fetchViewableOrganizations } from "../utils/fetchViewableOrganizations";
 
 export function useOrganizations(user?: User): {
   organizations: Organization[];
+  hasMore: boolean;
   error?: Error;
 } {
   const [organizations, setOrganizations] = useState<Organization[]>([]);
+  const [hasMore, setHasMore] = useState(false);
   const [error, setError] = useState<Error | undefined>();
 
-  async function fetchOrganizationsPage(): Promise<
-    CursorPaginatedResponse<"organization_memberships", OrganizationMembership>
-  > {
-    const response = await fetch(
-      `/api/v2/users/${user?.id}/organization_memberships?page[size]=100`
-    );
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-    return await response.json();
-  }
-
+  // Only the first page is fetched, unless it has no organization the user
+  // can view tickets for. Restricted organizations are filtered out on the
+  // client, so in that case the next pages are fetched until one has a viewable
+  // organization or there are no more pages. When more pages exist, the
+  // dropdown searches the endpoint by name instead of walking every page.
   async function fetchOrganizations() {
+    setError(undefined);
     try {
-      const memberships = await fetchAllCursorPages(
-        fetchOrganizationsPage,
-        "organization_memberships"
+      const { organizations, nextPage } = await fetchViewableOrganizations(
+        "/api/v2/organizations/accessible"
       );
 
-      const membershipsWithTicketPermissions = memberships.filter(
-        (organization) => organization.view_tickets
-      );
-
-      setOrganizations(
-        membershipsWithTicketPermissions.map((organization) => ({
-          id: organization.organization_id,
-          name: organization.organization_name,
-          default: organization.default,
-        }))
-      );
+      setOrganizations(organizations);
+      setHasMore(nextPage !== null);
     } catch (error) {
+      // Don't leave the previous fetch's results and pagination state
+      // in place when the current one fails.
+      setOrganizations([]);
+      setHasMore(false);
       setError(error as Error);
     }
   }
@@ -51,5 +40,5 @@ export function useOrganizations(user?: User): {
     }
   }, [user]);
 
-  return { organizations, error };
+  return { organizations, hasMore, error };
 }

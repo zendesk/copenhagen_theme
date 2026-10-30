@@ -1,11 +1,14 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import type { Organization } from "../../../data-types";
+import { useOrganizationSearch } from "../../../hooks/useOrganizationSearch";
 
 interface OrganizationsDropdownProps {
   organizations: Organization[];
+  // True when the loaded organizations are only the first page of results
+  hasMore?: boolean;
   currentOrganizationId: number;
   onOrganizationSelected: (organizationId: number) => void;
 }
@@ -16,13 +19,15 @@ const StyledField = styled(Field)`
 
 export default function OrganizationsDropdown({
   organizations,
+  hasMore = false,
   currentOrganizationId,
   onOrganizationSelected,
 }: OrganizationsDropdownProps): JSX.Element {
   const { t } = useTranslation();
 
-  const [filteredOrganizations, setFilteredOrganizations] =
-    useState(organizations);
+  const { searchResults, search } = useOrganizationSearch();
+
+  const [filterQuery, setFilterQuery] = useState("");
 
   const [inputValue, setInputValue] = useState(() => {
     const selectedOrganization = organizations.find(
@@ -30,6 +35,37 @@ export default function OrganizationsDropdown({
     );
     return selectedOrganization?.name ?? "";
   });
+
+  // An organization picked from search results may not be in the loaded
+  // first page, so its name is remembered when it is selected.
+  const pickedOrganizationRef = useRef<Organization | null>(null);
+
+  // Organizations load asynchronously, so the name of the selected
+  // organization is not available on mount. Re-sync when it arrives or
+  // when the selection changes. It does not run while the user is
+  // typing, since typing changes neither the list nor the selection.
+  useEffect(() => {
+    const selectedOrganization =
+      organizations.find(
+        (organization) => organization.id === currentOrganizationId
+      ) ??
+      (pickedOrganizationRef.current?.id === currentOrganizationId
+        ? pickedOrganizationRef.current
+        : undefined);
+    setInputValue(selectedOrganization?.name ?? "");
+  }, [organizations, currentOrganizationId]);
+
+  const normalizedQuery = filterQuery.trim().toLowerCase();
+  const filteredOrganizations =
+    normalizedQuery === ""
+      ? organizations
+      : organizations.filter((organization) =>
+          organization.name.trim().toLowerCase().includes(normalizedQuery)
+        );
+
+  // When only the first page is loaded, server results replace the local list
+  const displayedOrganizations =
+    hasMore && searchResults !== null ? searchResults : filteredOrganizations;
 
   const handleChange = useCallback(
     (changes: {
@@ -40,18 +76,10 @@ export default function OrganizationsDropdown({
 
       if (inputValue !== undefined) {
         setInputValue(inputValue);
+        setFilterQuery(inputValue);
 
-        if (inputValue === "") {
-          setFilteredOrganizations(organizations);
-        } else {
-          const matchedOrganizations = organizations.filter((organization) => {
-            return organization.name
-              .trim()
-              .toLowerCase()
-              .includes(inputValue.trim().toLowerCase());
-          });
-
-          setFilteredOrganizations(matchedOrganizations);
+        if (hasMore) {
+          search(inputValue);
         }
       }
 
@@ -62,11 +90,16 @@ export default function OrganizationsDropdown({
           : selectionValue;
 
         if (typeof value === "string") {
-          onOrganizationSelected(Number(value));
+          const organizationId = Number(value);
+          pickedOrganizationRef.current =
+            displayedOrganizations.find(
+              (organization) => organization.id === organizationId
+            ) ?? null;
+          onOrganizationSelected(organizationId);
         }
       }
     },
-    [organizations, onOrganizationSelected]
+    [hasMore, search, onOrganizationSelected, displayedOrganizations]
   );
 
   return (
@@ -81,7 +114,7 @@ export default function OrganizationsDropdown({
         data-test-id="organizations-menu"
         onChange={handleChange}
       >
-        {filteredOrganizations.length === 0 ? (
+        {displayedOrganizations.length === 0 ? (
           <Option
             isDisabled
             label={t(
@@ -91,7 +124,7 @@ export default function OrganizationsDropdown({
             value=""
           />
         ) : (
-          filteredOrganizations.map((organization) => (
+          displayedOrganizations.map((organization) => (
             <Option
               key={organization.id}
               label={organization.name}
