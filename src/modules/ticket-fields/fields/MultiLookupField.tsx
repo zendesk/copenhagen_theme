@@ -11,7 +11,9 @@ import { useTranslation } from "react-i18next";
 import {
   buildAdvancedDynamicFilterParams,
   getCustomObjectKey,
+  isRequesterDependentField,
 } from "./LookupField";
+import { useClearOnRequesterChange } from "../hooks/useClearOnRequesterChange";
 import type { CustomObjectRecord } from "../data-types/CustomObjectRecord";
 
 const DEFAULT_MAX_SELECTIONS = 20;
@@ -73,6 +75,10 @@ export function MultiLookupField({
   const selectedValues = selectedOptions.map((o) => o.value);
   selectedValuesRef.current = selectedValues;
 
+  const requesterRef = useRef(userId);
+  requesterRef.current = userId;
+  const requestSeqRef = useRef(0);
+
   useEffect(() => {
     if (wrapperRef.current && required) {
       const combobox = wrapperRef.current.querySelector("[role=combobox]");
@@ -100,6 +106,7 @@ export function MultiLookupField({
 
   const fetchSelectedOptions = useCallback(
     async (recordIds: string[]) => {
+      const requesterId = userId;
       const fallback = recordIds.map((id) => ({ value: id, name: id }));
       try {
         const params = new URLSearchParams();
@@ -107,8 +114,12 @@ export function MultiLookupField({
         const res = await fetch(
           `/api/v2/custom_objects/${customObjectKey}/records?${params.toString()}`
         );
+        if (requesterId !== requesterRef.current) return;
+
         if (res.ok) {
           const { custom_object_records } = await res.json();
+          if (requesterId !== requesterRef.current) return;
+
           const results: TicketFieldOptionObject[] = custom_object_records.map(
             (record: CustomObjectRecord) => ({
               name: record.name,
@@ -121,14 +132,16 @@ export function MultiLookupField({
           setSelectedOptions(fallback);
         }
       } catch {
+        if (requesterId !== requesterRef.current) return;
         setSelectedOptions(fallback);
       }
     },
-    [customObjectKey, onChange]
+    [customObjectKey, onChange, userId]
   );
 
   const fetchOptions = useCallback(
     async (query: string) => {
+      const requesterId = userId;
       const searchParams = new URLSearchParams();
       searchParams.set("name", query.toLocaleLowerCase());
       searchParams.set("source", "zen:ticket");
@@ -160,6 +173,11 @@ export function MultiLookupField({
 
       if (organizationId) searchParams.set("organization_id", organizationId);
 
+      const requestSeq = ++requestSeqRef.current;
+      const isStale = () =>
+        requesterId !== requesterRef.current ||
+        requestSeq !== requestSeqRef.current;
+
       setIsLoadingOptions(true);
       try {
         const response = await fetch(
@@ -167,6 +185,8 @@ export function MultiLookupField({
         );
 
         const data = await response.json();
+        if (isStale()) return;
+
         if (response.ok) {
           const fetchedRecords = data.custom_object_records;
 
@@ -174,6 +194,7 @@ export function MultiLookupField({
 
           if (buildLookupFieldOptions) {
             newOptions = await buildLookupFieldOptions(fetchedRecords, field);
+            if (isStale()) return;
           } else {
             newOptions = fetchedRecords.map(
               ({ name, id }: { name: string; id: string }) => ({
@@ -188,9 +209,11 @@ export function MultiLookupField({
           setOptions([]);
         }
       } catch {
-        setOptions([]);
+        if (!isStale()) setOptions([]);
       } finally {
-        setIsLoadingOptions(false);
+        if (requestSeq === requestSeqRef.current) {
+          setIsLoadingOptions(false);
+        }
       }
     },
     [
@@ -256,6 +279,23 @@ export function MultiLookupField({
       fetchSelectedOptions(value as string[]);
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useClearOnRequesterChange(
+    userId,
+    isRequesterDependentField(field.relationship_filter),
+    () => {
+      setOptions([]);
+      setInputValue("");
+      setSelectedOptions([]);
+      if (
+        selectedOptions.length > 0 ||
+        (Array.isArray(value) && value.length > 0)
+      ) {
+        onChange([]);
+      }
+      if (isFocused) fetchOptions("*");
+    }
+  );
 
   const onFocus = () => {
     setIsFocused(true);
