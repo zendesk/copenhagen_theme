@@ -1,10 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import debounce from "lodash.debounce";
-import type {
-  Organization,
-  AccessibleOrganizationsResponse,
-} from "../data-types";
-import { toOrganizations } from "../utils/toOrganizations";
+import type { Organization } from "../data-types";
+import { fetchViewableOrganizations } from "../utils/fetchViewableOrganizations";
 
 const SEARCH_DEBOUNCE_MS = 300;
 
@@ -32,19 +29,12 @@ export function useOrganizationSearch(): {
     setError(undefined);
 
     try {
-      const response = await fetch(
+      const { organizations } = await fetchViewableOrganizations(
         `/api/v2/organizations/accessible?name=${encodeURIComponent(query)}`,
         { signal: controller.signal }
       );
 
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-
-      const { organizations }: AccessibleOrganizationsResponse =
-        await response.json();
-
-      setSearchResults(toOrganizations(organizations));
+      setSearchResults(organizations);
     } catch (error) {
       if (error instanceof DOMException && error.name === "AbortError") {
         return;

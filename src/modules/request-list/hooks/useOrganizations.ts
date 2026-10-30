@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
-import type {
-  User,
-  Organization,
-  AccessibleOrganizationsResponse,
-} from "../data-types";
-import { toOrganizations } from "../utils/toOrganizations";
+import type { User, Organization } from "../data-types";
+import { fetchViewableOrganizations } from "../utils/fetchViewableOrganizations";
 
 export function useOrganizations(user?: User): {
   organizations: Organization[];
@@ -15,20 +11,20 @@ export function useOrganizations(user?: User): {
   const [hasMore, setHasMore] = useState(false);
   const [error, setError] = useState<Error | undefined>();
 
-  // Only the first page is fetched. When more pages exist, the dropdown
-  // searches the endpoint by name instead of walking every page.
+  // Only the first page is fetched, unless it has no organization the user
+  // can view tickets for. Restricted organizations are filtered out on the
+  // client, so in that case the next pages are fetched until one has a viewable
+  // organization or there are no more pages. When more pages exist, the
+  // dropdown searches the endpoint by name instead of walking every page.
   async function fetchOrganizations() {
     setError(undefined);
     try {
-      const response = await fetch("/api/v2/organizations/accessible");
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      const { organizations, next_page }: AccessibleOrganizationsResponse =
-        await response.json();
+      const { organizations, nextPage } = await fetchViewableOrganizations(
+        "/api/v2/organizations/accessible"
+      );
 
-      setOrganizations(toOrganizations(organizations));
-      setHasMore(next_page !== null);
+      setOrganizations(organizations);
+      setHasMore(nextPage !== null);
     } catch (error) {
       // Don't leave the previous fetch's results and pagination state
       // in place when the current one fails.

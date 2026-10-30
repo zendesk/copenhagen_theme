@@ -81,6 +81,48 @@ describe("useOrganizationSearch", () => {
     ]);
   });
 
+  it("fetches the next page when a search page has no viewable organizations", async () => {
+    const page = (
+      organizations: { id: number; name: string; view_tickets?: boolean }[],
+      next_page: string | null
+    ) => {
+      const response = okResponse(organizations);
+      return {
+        ok: true,
+        json: async () => ({ ...(await response.json()), next_page }),
+      };
+    };
+    const fetchMock = jest
+      .fn()
+      .mockResolvedValueOnce(
+        page(
+          [{ id: 1, name: "Acme R", view_tickets: false }],
+          "/api/v2/organizations/accessible?name=acme&page=2"
+        )
+      )
+      .mockResolvedValueOnce(page([{ id: 2, name: "Acme Shared" }], null));
+    global.fetch = fetchMock;
+
+    const { result } = renderHook(() => useOrganizationSearch());
+
+    act(() => {
+      result.current.search("acme");
+    });
+    await act(async () => {
+      jest.advanceTimersByTime(300);
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenNthCalledWith(
+      2,
+      "/api/v2/organizations/accessible?name=acme&page=2",
+      expect.objectContaining({ signal: expect.any(AbortSignal) })
+    );
+    expect(result.current.searchResults).toEqual([
+      { id: 2, name: "Acme Shared", default: false },
+    ]);
+  });
+
   it("searches from a single character", async () => {
     const fetchMock = jest
       .fn()

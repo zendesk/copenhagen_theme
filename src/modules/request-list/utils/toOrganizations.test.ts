@@ -33,14 +33,19 @@ describe("toOrganizations", () => {
     ).toEqual([{ id: 10, name: "Default", default: false }]);
   });
 
-  test("sorts by name ascending, keeping the default organization first", () => {
+  test("sorts by name ascending regardless of the default flag", () => {
     expect(
       toOrganizations([
         accessibleOrganization({ id: 1, name: "Zeta" }),
         accessibleOrganization({ id: 2, name: "beta" }),
         accessibleOrganization({ id: 3, name: "Mid", default: true }),
         accessibleOrganization({ id: 4, name: "Alpha" }),
-      ]).map((organization) => organization.name)
-    ).toEqual(["Mid", "Alpha", "beta", "Zeta"]);
+      ]).map(({ name, default: isDefault }) => [name, isDefault])
+    ).toEqual([
+      ["Alpha", false],
+      ["beta", false],
+      ["Mid", true],
+      ["Zeta", false],
+    ]);
   });
 });

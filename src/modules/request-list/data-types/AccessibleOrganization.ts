@@ -7,8 +7,9 @@ export interface AccessibleOrganization {
   view_tickets: boolean;
   // True when access comes through an ancestor organization rather than a direct membership.
   inherited: boolean;
-  // True for the user's default organization.
-  default: boolean;
+  // True for the user's default organization; null for any other membership
+  // and for inherited organizations.
+  default: boolean | null;
 }
 
 // The endpoint is offset paginated with a fixed page size.

@@ -65,7 +65,10 @@ describe("useOrganizations", () => {
     });
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(fetchMock).toHaveBeenCalledWith("/api/v2/organizations/accessible");
+    expect(fetchMock).toHaveBeenCalledWith(
+      "/api/v2/organizations/accessible",
+      undefined
+    );
   });
 
   test("includes organizations with view_tickets: true", async () => {
@@ -139,6 +142,83 @@ describe("useOrganizations", () => {
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
     expect(result.current.hasMore).toBe(true);
+  });
+
+  test("fetches the next page when the first page has no viewable organizations", async () => {
+    global.fetch = jest
+      .fn()
+      .mockResolvedValueOnce(
+        okResponse({
+          organizations: [
+            accessibleOrganization({ id: 1, name: "R1", view_tickets: false }),
+          ],
+          next_page: "/api/v2/organizations/accessible?page=2",
+        })
+      )
+      .mockResolvedValueOnce(
+        okResponse({
+          organizations: [accessibleOrganization({ id: 2, name: "Shared" })],
+          next_page: "/api/v2/organizations/accessible?page=3",
+        })
+      );
+
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useOrganizations(user)
+    );
+    await waitForNextUpdate();
+
+    expect(global.fetch).toHaveBeenCalledTimes(2);
+    expect(global.fetch).toHaveBeenNthCalledWith(
+      2,
+      "/api/v2/organizations/accessible?page=2",
+      undefined
+    );
+    expect(result.current.organizations).toEqual([
+      { id: 2, name: "Shared", default: false },
+    ]);
+    expect(result.current.hasMore).toBe(true);
+  });
+
+  test("stops at the last page when no page has viewable organizations", async () => {
+    global.fetch = jest
+      .fn()
+      .mockResolvedValueOnce(
+        okResponse({
+          organizations: [
+            accessibleOrganization({ id: 1, name: "R1", view_tickets: false }),
+          ],
+          next_page: "/api/v2/organizations/accessible?page=2",
+        })
+      )
+      .mockResolvedValueOnce(
+        okResponse({
+          organizations: [
+            accessibleOrganization({ id: 2, name: "R2", view_tickets: false }),
+          ],
+          next_page: null,
+        })
+      );
+
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useOrganizations(user)
+    );
+    await waitForNextUpdate();
+
+    expect(global.fetch).toHaveBeenCalledTimes(2);
+    expect(result.current.organizations).toEqual([]);
+    expect(result.current.hasMore).toBe(false);
+  });
+
+  test("does not fetch more pages when the first page has a viewable organization", async () => {
+    const { fetchMock } = await renderWithResponse({
+      organizations: [
+        accessibleOrganization({ id: 1, name: "R1", view_tickets: false }),
+        accessibleOrganization({ id: 2, name: "Shared" }),
+      ],
+      next_page: "/api/v2/organizations/accessible?page=2",
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   test("uses the default flag from the response", async () => {

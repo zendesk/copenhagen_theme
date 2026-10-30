@@ -1,8 +1,8 @@
 import type { AccessibleOrganization, Organization } from "../data-types";
 
 // Organizations with ticket sharing disabled only expose the user's own
-// tickets, so they are left out. The default organization stays first and the
-// rest are sorted by name in ascending order.
+// tickets, so they are left out. The result is sorted by name in ascending
+// order; the default organization is picked by its flag, not its position.
 export function toOrganizations(
   organizations: AccessibleOrganization[]
 ): Organization[] {
@@ -13,10 +13,5 @@ export function toOrganizations(
       name: organization.name,
       default: organization.default,
     }))
-    .sort((a, b) => {
-      if (a.default !== b.default) {
-        return a.default ? -1 : 1;
-      }
-      return a.name.localeCompare(b.name);
-    });
+    .sort((a, b) => a.name.localeCompare(b.name));
 }

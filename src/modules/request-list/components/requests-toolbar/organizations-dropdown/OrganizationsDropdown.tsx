@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
@@ -36,14 +36,22 @@ export default function OrganizationsDropdown({
     return selectedOrganization?.name ?? "";
   });
 
+  // An organization picked from search results may not be in the loaded
+  // first page, so its name is remembered when it is selected.
+  const pickedOrganizationRef = useRef<Organization | null>(null);
+
   // Organizations load asynchronously, so the name of the selected
   // organization is not available on mount. Re-sync when it arrives or
   // when the selection changes. It does not run while the user is
   // typing, since typing changes neither the list nor the selection.
   useEffect(() => {
-    const selectedOrganization = organizations.find(
-      (organization) => organization.id === currentOrganizationId
-    );
+    const selectedOrganization =
+      organizations.find(
+        (organization) => organization.id === currentOrganizationId
+      ) ??
+      (pickedOrganizationRef.current?.id === currentOrganizationId
+        ? pickedOrganizationRef.current
+        : undefined);
     setInputValue(selectedOrganization?.name ?? "");
   }, [organizations, currentOrganizationId]);
 
@@ -82,11 +90,16 @@ export default function OrganizationsDropdown({
           : selectionValue;
 
         if (typeof value === "string") {
-          onOrganizationSelected(Number(value));
+          const organizationId = Number(value);
+          pickedOrganizationRef.current =
+            displayedOrganizations.find(
+              (organization) => organization.id === organizationId
+            ) ?? null;
+          onOrganizationSelected(organizationId);
         }
       }
     },
-    [hasMore, search, onOrganizationSelected]
+    [hasMore, search, onOrganizationSelected, displayedOrganizations]
   );
 
   return (

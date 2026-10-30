@@ -1,4 +1,5 @@
-import { fireEvent, screen, waitFor } from "@testing-library/react";
+import { useState } from "react";
+import { act, fireEvent, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import { render } from "../../../../test/render";
@@ -147,6 +148,38 @@ describe("<OrganizationsDropdown />", () => {
         expect(screen.getByText("No matches found")).toBeInTheDocument();
       });
     });
+  });
+
+  test("keeps the name of an organization selected from search results that is not in the loaded page", async () => {
+    (global.fetch as jest.Mock).mockResolvedValue(
+      searchResponse([{ id: 99, name: "Page Two Organization" }])
+    );
+
+    function Wrapper() {
+      const [id, setId] = useState(1);
+      return (
+        <OrganizationsDropdown
+          organizations={organizations}
+          hasMore
+          currentOrganizationId={id}
+          onOrganizationSelected={setId}
+        />
+      );
+    }
+    render(<Wrapper />);
+
+    await typeInDropdown("page");
+    jest.advanceTimersByTime(300);
+    const user = userEvent.setup({ delay: null });
+    await user.click(await screen.findByText("Page Two Organization"));
+
+    await act(async () => {
+      jest.advanceTimersByTime(50);
+    });
+
+    expect(screen.getByLabelText("Organization")).toHaveValue(
+      "Page Two Organization"
+    );
   });
 
   test("calls onOrganizationSelected when an option is selected", () => {
