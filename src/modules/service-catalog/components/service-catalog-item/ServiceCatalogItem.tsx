@@ -475,7 +475,7 @@ export function ServiceCatalogItem({
           baseLocale={baseLocale}
           hasAtMentions={hasAtMentions}
           userRole={userRole}
-          userId={requesterUserId}
+          requesterId={requesterUserId}
           requestOnBehalfEnabled={requestOnBehalfEnabled}
           userName={userName}
           selectedUser={selectedUser}

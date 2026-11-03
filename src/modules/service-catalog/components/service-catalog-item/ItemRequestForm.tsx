@@ -136,7 +136,7 @@ interface ItemRequestFormProps {
   baseLocale: string;
   hasAtMentions: boolean;
   userRole: string;
-  userId: number;
+  requesterId: number;
   requestOnBehalfEnabled: boolean | undefined;
   userName: string;
   selectedUser: UserOption | null;
@@ -170,7 +170,7 @@ export function ItemRequestForm({
   baseLocale,
   hasAtMentions,
   userRole,
-  userId,
+  requesterId,
   requestOnBehalfEnabled,
   userName,
   selectedUser,
@@ -357,7 +357,7 @@ export function ItemRequestForm({
           baseLocale={baseLocale}
           hasAtMentions={hasAtMentions}
           userRole={userRole}
-          userId={userId}
+          userId={requesterId}
           brandId={brandId}
           defaultOrganizationId={defaultOrganizationId}
           handleChange={handleChange}

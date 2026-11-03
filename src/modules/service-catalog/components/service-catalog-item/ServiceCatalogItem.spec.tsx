@@ -44,12 +44,12 @@ jest.mock("./ItemRequestForm", () => ({
   ItemRequestForm: ({
     onSubmit,
     isPreviewMode,
-    userId,
+    requesterId,
     setSelectedUser,
   }: {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
     isPreviewMode?: boolean;
-    userId: number;
+    requesterId: number;
     setSelectedUser: (user: {
       id: string;
       name: string;
@@ -59,7 +59,7 @@ jest.mock("./ItemRequestForm", () => ({
     <form
       data-testid="item-request-form"
       data-preview-mode={isPreviewMode ? "true" : "false"}
-      data-user-id={userId}
+      data-user-id={requesterId}
       onSubmit={onSubmit}
     >
       <button
