@@ -13,10 +13,10 @@
   <div class="nav-wrapper-desktop">
     <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
       <ul class="user-nav-list">
-        <li>{{link 'community'}}</li>
+        <li>{{link 'community' aria_current='page'}}</li>
         <li>{{link 'applications'}}</li>
         <li>{{link 'service_catalog'}}</li>
-        <li>{{link 'new_request' class='submit-a-request'}}</li>
+        <li>{{link 'new_request' class='submit-a-request' aria_current='page'}}</li>
         {{#unless signed_in}}
           <li>
             {{#link "sign_in" class="sign-in" role="link"}}
@@ -93,9 +93,9 @@
           <li class="nav-divider"></li>
         {{/if}}
        
-        <li class="item">{{link 'community'}}</li>
+        <li class="item">{{link 'community' aria_current='page'}}</li>
         <li class="item">{{link 'applications'}}</li>
-        <li class="item">{{link 'new_request' class='submit-a-request'}}</li>
+        <li class="item">{{link 'new_request' class='submit-a-request' aria_current='page'}}</li>
         <li class="item">{{link 'service_catalog'}}</li>
         <li class="nav-divider"></li>
         {{#if signed_in}}
