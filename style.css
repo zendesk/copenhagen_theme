@@ -1042,12 +1042,11 @@ ul {
   max-width: 450px;
   overflow-wrap: anywhere;
 }
-.breadcrumbs li + li::before {
-  content: ">"/"";
-  margin: 0 4px;
-}
 .breadcrumbs li a:visited {
   color: $link_color;
+}
+.breadcrumbs .breadcrumbs-separator {
+  margin: 0 4px;
 }
 
 /***** Search field *****/
