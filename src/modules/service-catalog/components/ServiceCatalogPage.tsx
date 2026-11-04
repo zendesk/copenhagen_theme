@@ -3,14 +3,18 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { ServiceCatalogCategoriesSidebar } from "../components/service-catalog-categories-sidebar";
 import { ServiceCatalogList } from "./service-catalog-list/ServiceCatalogList";
 import type { Category } from "../data-types/Categories";
-import { findCategoryById } from "../utils/categoryTreeUtils";
+import {
+  findCategoryById,
+  isAllServicesCategory,
+  isUncategorizedCategory,
+} from "../utils/categoryTreeUtils";
 import {
   ALL_SERVICES_ID,
   UNCATEGORIZED_ID,
 } from "./service-catalog-categories-sidebar/constants";
 
 function filterUncategorized(categories: Category[]): Category[] {
-  return categories.filter((cat) => cat.id !== UNCATEGORIZED_ID);
+  return categories.filter((cat) => !isUncategorizedCategory(cat));
 }
 
 function getCategoryIdFromUrl(): string | null {
@@ -45,7 +49,10 @@ export const ServiceCatalogPage: React.FC<ServiceCatalogPageProps> = ({
     if (selectedCategoryId === ALL_SERVICES_ID) return ALL_SERVICES_ID;
     if (selectedCategoryId === UNCATEGORIZED_ID) return UNCATEGORIZED_ID;
     const category = findCategoryById(categoryTree, selectedCategoryId);
-    return category?.name ?? null;
+    if (!category) return null;
+    if (isAllServicesCategory(category)) return ALL_SERVICES_ID;
+    if (isUncategorizedCategory(category)) return UNCATEGORIZED_ID;
+    return category.name;
   }, [selectedCategoryId, categoryTree, hasCategories]);
 
   const handleCategorySelect = useCallback((categoryId: string) => {
