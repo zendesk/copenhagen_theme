@@ -166,7 +166,8 @@ interface FetchTicketFieldsResult {
 
 const fetchTicketFields = async (
   form_id: number,
-  baseLocale: string
+  baseLocale: string,
+  descriptionInputFieldEnabled: boolean
 ): Promise<FetchTicketFieldsResult> => {
   const [formResponse, fieldsResponse] = await Promise.all([
     fetch(`/api/v2/ticket_forms/${form_id}`),
@@ -204,7 +205,7 @@ const fetchTicketFields = async (
       if (
         ticketField &&
         ticketField.type !== "subject" &&
-        ticketField.type !== "description" &&
+        (ticketField.type !== "description" || descriptionInputFieldEnabled) &&
         ticketField.active &&
         ticketField.editable_in_portal
       ) {
@@ -288,7 +289,11 @@ export function useItemFormFields(
       try {
         const [ticketFieldsResult, assetTypeData, assetData] =
           await Promise.all([
-            fetchTicketFields(serviceCatalogItem.form_id, baseLocale),
+            fetchTicketFields(
+              serviceCatalogItem.form_id,
+              baseLocale,
+              serviceCatalogItem.description_input_field_enabled === true
+            ),
             fetchAssetTypes(),
             fetchAssets(),
           ]);
@@ -336,6 +341,7 @@ export function useItemFormFields(
   }, [
     baseLocale,
     serviceCatalogItem?.form_id,
+    serviceCatalogItem?.description_input_field_enabled,
     fetchAssets,
     fetchAssetTypes,
     prefill,

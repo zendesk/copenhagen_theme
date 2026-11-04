@@ -23,7 +23,8 @@ const getCurrentUser = async () => {
 const buildCommentHtml = (
   serviceCatalogItem: ServiceCatalogItem,
   helpCenterPath: string,
-  onBehalfNote?: OnBehalfNote | null
+  onBehalfNote?: OnBehalfNote | null,
+  descriptionHtml?: string | null
 ) => {
   const link = document.createElement("a");
   link.setAttribute(
@@ -35,19 +36,23 @@ const buildCommentHtml = (
   link.setAttribute("rel", "noopener noreferrer");
   link.textContent = serviceCatalogItem.name;
 
-  if (!onBehalfNote) {
-    return link.outerHTML;
+  let generatedHtml = link.outerHTML;
+
+  if (onBehalfNote) {
+    const submitter = document.createElement("p");
+    submitter.setAttribute("style", "margin:0;padding:0");
+    submitter.textContent = onBehalfNote.submitterLabel;
+
+    const requester = document.createElement("p");
+    requester.setAttribute("style", "margin:0;padding:0");
+    requester.textContent = onBehalfNote.requesterLabel;
+
+    generatedHtml += `${submitter.outerHTML}${requester.outerHTML}`;
   }
 
-  const submitter = document.createElement("p");
-  submitter.setAttribute("style", "margin:0;padding:0");
-  submitter.textContent = onBehalfNote.submitterLabel;
-
-  const requester = document.createElement("p");
-  requester.setAttribute("style", "margin:0;padding:0");
-  requester.textContent = onBehalfNote.requesterLabel;
-
-  return `${link.outerHTML}${submitter.outerHTML}${requester.outerHTML}`;
+  return descriptionHtml == null
+    ? generatedHtml
+    : `${descriptionHtml}${generatedHtml}`;
 };
 
 export async function submitServiceItemRequest(
@@ -65,12 +70,24 @@ export async function submitServiceItemRequest(
     const currentUser = await getCurrentUser();
     const uploadTokens = attachments.map((a) => a.id);
 
-    const customFields = requestFields.map((field) => {
-      return {
-        id: field.id,
-        value: field.value,
-      };
-    });
+    const descriptionField = requestFields.find(
+      (field) => field.type === "description"
+    );
+    const descriptionHtml =
+      typeof descriptionField?.value === "string"
+        ? descriptionField.value
+        : descriptionField
+        ? ""
+        : null;
+
+    const customFields = requestFields
+      .filter((field) => field.type !== "description")
+      .map((field) => {
+        return {
+          id: field.id,
+          value: field.value,
+        };
+      });
 
     const lookupFields: Array<{ id: number; value: string | number }> = [
       { id: associatedLookupField.id, value: serviceCatalogItem.id },
@@ -99,7 +116,8 @@ export async function submitServiceItemRequest(
             html_body: buildCommentHtml(
               serviceCatalogItem,
               helpCenterPath,
-              onBehalfNote
+              onBehalfNote,
+              descriptionHtml
             ),
             uploads: uploadTokens,
           },

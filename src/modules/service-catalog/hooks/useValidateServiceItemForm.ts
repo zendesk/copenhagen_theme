@@ -32,6 +32,18 @@ function hasFieldValue(field: TicketFieldObject): boolean {
     return value.length > 0;
   }
 
+  if (field.type === "description" && typeof value === "string") {
+    const parsedDocument = new DOMParser().parseFromString(value, "text/html");
+    const textContent = (parsedDocument.body.textContent ?? "")
+      .replace(/\u00a0/g, " ")
+      .trim();
+    const hasEmbeddedContent = parsedDocument.body.querySelector(
+      "img, video, audio, iframe"
+    );
+
+    return textContent.length > 0 || hasEmbeddedContent !== null;
+  }
+
   return value !== undefined && value !== null && value !== "";
 }
 

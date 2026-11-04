@@ -12,6 +12,7 @@ export interface ServiceCatalogItem {
   thumbnail_url: string;
   categories: ServiceCatalogItemCategory[];
   is_request_on_behalf: boolean;
+  description_input_field_enabled?: boolean;
   // null when the item is a draft (not yet published). Populated only for
   // authorized users (admins/managers) previewing a draft item.
   published_at: string | null;
