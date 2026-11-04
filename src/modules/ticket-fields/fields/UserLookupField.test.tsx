@@ -349,6 +349,76 @@ describe("UserLookupField", () => {
     expect(onChange).toHaveBeenLastCalledWith("2");
   });
 
+  it("keeps what the user is typing when the initial-value fetch resolves late", async () => {
+    let resolveInitialFetch: (value: unknown) => void;
+    global.fetch = jest.fn((url: string) => {
+      if (url === "/api/v2/users/1.json") {
+        return new Promise((resolve) => {
+          resolveInitialFetch = resolve;
+        });
+      }
+      return Promise.resolve(usersSearchResponse([]));
+    }) as unknown as jest.Mock;
+    const onChange = jest.fn();
+
+    const { container } = render(
+      <UserLookupField
+        field={{ ...defaultField, value: "1" }}
+        onChange={onChange}
+      />
+    );
+    const combobox = screen.getByLabelText("Assignee");
+    const hiddenInput = container.querySelector(
+      `input[type="hidden"][name="${defaultField.name}"]`
+    ) as HTMLInputElement;
+
+    await act(async () => {
+      fireEvent.change(combobox, { target: { value: "bo" } });
+    });
+    await act(async () => {
+      resolveInitialFetch(userShowResponse(userA));
+    });
+
+    expect(combobox).toHaveValue("bo");
+    expect(hiddenInput.value).toBe("1");
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it("keeps what the user is typing when the initial-value fetch fails late", async () => {
+    let resolveInitialFetch: (value: unknown) => void;
+    global.fetch = jest.fn((url: string) => {
+      if (url === "/api/v2/users/1.json") {
+        return new Promise((resolve) => {
+          resolveInitialFetch = resolve;
+        });
+      }
+      return Promise.resolve(usersSearchResponse([]));
+    }) as unknown as jest.Mock;
+    const onChange = jest.fn();
+
+    const { container } = render(
+      <UserLookupField
+        field={{ ...defaultField, value: "1" }}
+        onChange={onChange}
+      />
+    );
+    const combobox = screen.getByLabelText("Assignee");
+    const hiddenInput = container.querySelector(
+      `input[type="hidden"][name="${defaultField.name}"]`
+    ) as HTMLInputElement;
+
+    await act(async () => {
+      fireEvent.change(combobox, { target: { value: "bo" } });
+    });
+    await act(async () => {
+      resolveInitialFetch({ ok: false, json: () => Promise.resolve({}) });
+    });
+
+    expect(combobox).toHaveValue("bo");
+    expect(hiddenInput.value).toBe("");
+    expect(onChange).toHaveBeenLastCalledWith("");
+  });
+
   it("submits the selected user id via a hidden input in a native form", async () => {
     global.fetch = jest
       .fn()
