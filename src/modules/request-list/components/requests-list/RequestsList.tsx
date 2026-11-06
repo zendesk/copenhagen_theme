@@ -31,7 +31,7 @@ export function RequestsList({
 }: RequestsListProps): JSX.Element {
   const { t } = useTranslation();
 
-  const { params, push } = useParams();
+  const { params, push, replace } = useParams();
 
   const { query, page, sort, selectedTab, filters } = params;
 
@@ -86,13 +86,30 @@ export function RequestsList({
     });
   };
 
-  const handleOrganizationSelected = (selectedOrgId: number) => {
+  const handleOrganizationSelected = (
+    selectedOrgId: number,
+    organizationQuery?: string
+  ) => {
     if (selectedTab.name === ORG_REQUESTS_TAB_NAME) {
       push({
         page: 1,
         selectedTab: {
           name: ORG_REQUESTS_TAB_NAME,
           organizationId: selectedOrgId,
+          ...(organizationQuery ? { organizationQuery } : {}),
+        },
+      });
+    }
+  };
+
+  const handleOrganizationQueryChanged = (organizationQuery: string) => {
+    if (selectedTab.name === ORG_REQUESTS_TAB_NAME) {
+      replace({
+        selectedTab: {
+          ...selectedTab,
+          organizationQuery: organizationQuery.trim()
+            ? organizationQuery
+            : undefined,
         },
       });
     }
@@ -153,6 +170,7 @@ export function RequestsList({
             organizations={organizations}
             selectedTab={selectedTab}
             onOrganizationSelected={handleOrganizationSelected}
+            onOrganizationQueryChanged={handleOrganizationQueryChanged}
             user={user}
             customStatusesEnabled={customStatusesEnabled}
             customStatuses={customStatuses}

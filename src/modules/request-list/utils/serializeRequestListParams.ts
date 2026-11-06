@@ -9,6 +9,7 @@ const SERIALIZED_KEYS = {
   SORT_ORDER: "sort_order",
   SELECTED_TAB_NAME: "selected_tab_name",
   ORGANIZATION_ID: "organization_id",
+  ORGANIZATION_QUERY: "organization_query",
 } as const;
 
 export function serializeRequestListParams({
@@ -35,6 +36,12 @@ export function serializeRequestListParams({
       SERIALIZED_KEYS.ORGANIZATION_ID,
       selectedTab.organizationId.toString()
     );
+    if (selectedTab.organizationQuery) {
+      res.append(
+        SERIALIZED_KEYS.ORGANIZATION_QUERY,
+        selectedTab.organizationQuery
+      );
+    }
   }
 
   for (const [field, values] of Object.entries(filters)) {

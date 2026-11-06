@@ -26,12 +26,17 @@ interface RequestsToolbarProps {
   filters: FilterValuesMap;
   onFiltersChanged: (items: FilterValuesMap) => void;
   selectedTab: SelectedTab;
-  onOrganizationSelected: (organizationId: number) => void;
+  onOrganizationSelected: (
+    organizationId: number,
+    organizationQuery?: string
+  ) => void;
+  onOrganizationQueryChanged: (organizationQuery: string) => void;
   hasPagination: boolean;
   page: number;
   requestsCount: number;
   requestsPerPage: number;
   organizations: Organization[];
+  hasMoreOrganizations?: boolean;
   user?: User;
   ticketFields: TicketField[];
   customStatusesEnabled: boolean;
@@ -139,6 +144,7 @@ export default function RequestsToolbar({
   organizations,
   selectedTab,
   onOrganizationSelected,
+  onOrganizationQueryChanged,
   user,
   ticketFields,
   customStatuses,
@@ -201,7 +207,9 @@ export default function RequestsToolbar({
             <OrganizationsDropdown
               organizations={organizations}
               currentOrganizationId={selectedTab.organizationId}
+              currentOrganizationQuery={selectedTab.organizationQuery}
               onOrganizationSelected={onOrganizationSelected}
+              onOrganizationQueryChanged={onOrganizationQueryChanged}
             />
             {hasOrganizations && user && (
               <Mobile>
