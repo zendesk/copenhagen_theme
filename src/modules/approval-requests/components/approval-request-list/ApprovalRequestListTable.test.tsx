@@ -21,6 +21,15 @@ const mockApprovalRequests: SearchApprovalRequest[] = [
     created_at: "2024-02-19T15:00:00Z",
     status: "approved",
   },
+  {
+    id: 789,
+    subject: "Ticketless request",
+    requester_name: null,
+    created_by_name: "Carol Creator",
+    created_at: "2024-02-21T09:00:00Z",
+    status: "active",
+    origination_type: "API_ORIGINATION",
+  },
 ];
 const mockOnSortChange = jest.fn();
 
@@ -63,7 +72,8 @@ describe("ApprovalRequestListTable", () => {
     expect(screen.getByText("Jane Doe")).toBeInTheDocument();
     expect(screen.getByText("John Doe")).toBeInTheDocument();
     expect(screen.getByText(/Feb 20, 2024/)).toBeInTheDocument();
-    expect(screen.getByText("Decision pending")).toBeInTheDocument();
+    // Two active rows (the ticketed and ticket-less fixtures) → two pending tags
+    expect(screen.getAllByText("Decision pending")).toHaveLength(2);
 
     expect(screen.getByText("Software license")).toBeInTheDocument();
     expect(screen.getByText("Software license")).toHaveAttribute(
@@ -74,6 +84,12 @@ describe("ApprovalRequestListTable", () => {
     expect(screen.getByText("Bob Smith")).toBeInTheDocument();
     expect(screen.getByText(/Feb 19, 2024/)).toBeInTheDocument();
     expect(screen.getByText("Approved")).toBeInTheDocument();
+
+    // Ticket-less approval: requester_name is null, so the creator is shown
+    // in the Requester column; "Sent by" shows the API label for API_ORIGINATION.
+    expect(screen.getByText("Ticketless request")).toBeInTheDocument();
+    expect(screen.getByText("Carol Creator")).toBeInTheDocument();
+    expect(screen.getByText(/Feb 21, 2024/)).toBeInTheDocument();
   });
 
   it("displays 'Action flow' when origination_type is ACTION_FLOW_ORIGINATION", () => {
