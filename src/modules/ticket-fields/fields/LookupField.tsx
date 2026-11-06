@@ -2,6 +2,7 @@ import type { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 import { Field, Combobox, Option } from "@zendeskgarden/react-dropdowns";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useClearOnRequesterChange } from "../hooks/useClearOnRequesterChange";
+import { useStaleRequestGuard } from "../hooks/useStaleRequestGuard";
 import type {
   TicketFieldObject,
   TicketFieldOptionObject,
@@ -106,9 +107,7 @@ export function LookupField({
     relationship_target_type as string
   );
 
-  const requesterRef = useRef(userId);
-  requesterRef.current = userId;
-  const requestSeqRef = useRef(0);
+  const checkStaleRequest = useStaleRequestGuard(userId);
 
   const loadingOption = {
     name: t(
@@ -128,7 +127,7 @@ export function LookupField({
 
   const fetchSelectedOption = useCallback(
     async (selectionValue: string) => {
-      const requesterId = userId;
+      const { isRequesterStale } = checkStaleRequest();
       try {
         const res = await fetch(
           `/api/v2/custom_objects/${customObjectKey}/records/${selectionValue}`
@@ -136,7 +135,7 @@ export function LookupField({
         if (!res.ok) return;
 
         const { custom_object_record } = await res.json();
-        if (requesterId !== requesterRef.current) return;
+        if (isRequesterStale()) return;
 
         const newSelectedOption = {
           name: custom_object_record.name,
@@ -148,12 +147,12 @@ export function LookupField({
         console.error(error);
       }
     },
-    [customObjectKey, userId]
+    [customObjectKey, checkStaleRequest, userId]
   );
 
   const fetchOptions = useCallback(
     async (inputValue: string) => {
-      const requesterId = userId;
+      const { isStale, isCurrent } = checkStaleRequest();
       const searchParams = new URLSearchParams();
       searchParams.set("name", inputValue.toLocaleLowerCase());
       searchParams.set("source", "zen:ticket");
@@ -184,11 +183,6 @@ export function LookupField({
       }
 
       if (organizationId) searchParams.set("organization_id", organizationId);
-
-      const requestSeq = ++requestSeqRef.current;
-      const isStale = () =>
-        requesterId !== requesterRef.current ||
-        requestSeq !== requestSeqRef.current;
 
       setIsLoadingOptions(true);
       try {
@@ -231,13 +225,14 @@ export function LookupField({
       } catch (error) {
         console.error(error);
       } finally {
-        if (requestSeq === requestSeqRef.current) {
+        if (isCurrent()) {
           setIsLoadingOptions(false);
         }
       }
     },
     [
       brandId,
+      checkStaleRequest,
       customObjectKey,
       field,
       fieldId,

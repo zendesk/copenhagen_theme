@@ -14,6 +14,7 @@ import {
   isRequesterDependentField,
 } from "./LookupField";
 import { useClearOnRequesterChange } from "../hooks/useClearOnRequesterChange";
+import { useStaleRequestGuard } from "../hooks/useStaleRequestGuard";
 import type { CustomObjectRecord } from "../data-types/CustomObjectRecord";
 
 const DEFAULT_MAX_SELECTIONS = 20;
@@ -75,9 +76,7 @@ export function MultiLookupField({
   const selectedValues = selectedOptions.map((o) => o.value);
   selectedValuesRef.current = selectedValues;
 
-  const requesterRef = useRef(userId);
-  requesterRef.current = userId;
-  const requestSeqRef = useRef(0);
+  const checkStaleRequest = useStaleRequestGuard(userId);
 
   useEffect(() => {
     if (wrapperRef.current && required) {
@@ -106,7 +105,7 @@ export function MultiLookupField({
 
   const fetchSelectedOptions = useCallback(
     async (recordIds: string[]) => {
-      const requesterId = userId;
+      const { isRequesterStale } = checkStaleRequest();
       const fallback = recordIds.map((id) => ({ value: id, name: id }));
       try {
         const params = new URLSearchParams();
@@ -114,11 +113,11 @@ export function MultiLookupField({
         const res = await fetch(
           `/api/v2/custom_objects/${customObjectKey}/records?${params.toString()}`
         );
-        if (requesterId !== requesterRef.current) return;
+        if (isRequesterStale()) return;
 
         if (res.ok) {
           const { custom_object_records } = await res.json();
-          if (requesterId !== requesterRef.current) return;
+          if (isRequesterStale()) return;
 
           const results: TicketFieldOptionObject[] = custom_object_records.map(
             (record: CustomObjectRecord) => ({
@@ -132,16 +131,15 @@ export function MultiLookupField({
           setSelectedOptions(fallback);
         }
       } catch {
-        if (requesterId !== requesterRef.current) return;
-        setSelectedOptions(fallback);
+        if (!isRequesterStale()) setSelectedOptions(fallback);
       }
     },
-    [customObjectKey, onChange, userId]
+    [checkStaleRequest, customObjectKey, onChange, userId]
   );
 
   const fetchOptions = useCallback(
     async (query: string) => {
-      const requesterId = userId;
+      const { isStale, isCurrent } = checkStaleRequest();
       const searchParams = new URLSearchParams();
       searchParams.set("name", query.toLocaleLowerCase());
       searchParams.set("source", "zen:ticket");
@@ -172,11 +170,6 @@ export function MultiLookupField({
       }
 
       if (organizationId) searchParams.set("organization_id", organizationId);
-
-      const requestSeq = ++requestSeqRef.current;
-      const isStale = () =>
-        requesterId !== requesterRef.current ||
-        requestSeq !== requestSeqRef.current;
 
       setIsLoadingOptions(true);
       try {
@@ -211,13 +204,14 @@ export function MultiLookupField({
       } catch {
         if (!isStale()) setOptions([]);
       } finally {
-        if (requestSeq === requestSeqRef.current) {
+        if (isCurrent()) {
           setIsLoadingOptions(false);
         }
       }
     },
     [
       brandId,
+      checkStaleRequest,
       customObjectKey,
       field,
       fieldId,
