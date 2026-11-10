@@ -2,7 +2,7 @@ import { renderHook } from "@testing-library/react-hooks";
 import { useValidateServiceItemForm } from "./useValidateServiceItemForm";
 import type { TicketFieldObject } from "../../ticket-fields/data-types/TicketFieldObject";
 import type { Attachment } from "../../ticket-fields/data-types/AttachmentsField";
-import type { AttachmentsOption } from "../data-types/Attachments";
+import type { AttachmentOption } from "../data-types/ServiceCatalogItem";
 import { ASSET_TYPE_KEY, ASSET_KEY } from "../constants";
 
 // Mock react-i18next
@@ -52,23 +52,12 @@ describe("useValidateServiceItemForm", () => {
       ...overrides,
     });
 
-  const createAttachmentsOption = (isRequired: boolean): AttachmentsOption => ({
-    url: "https://example.com",
+  const createAttachmentsOption = (isRequired: boolean): AttachmentOption => ({
     id: "attachment-option-1",
     name: "Attachment Option",
-    custom_object_key: "standard::service_catalog_attachment_option",
-    custom_object_fields: {
-      "standard::brand_id": 1,
-      "standard::description": null,
-      "standard::is_required": isRequired,
-      "standard::position_in_portal": 1,
-    },
-    created_by_user_id: "user-1",
-    updated_by_user_id: "user-1",
-    created_at: "2024-01-01T00:00:00Z",
-    updated_at: "2024-01-01T00:00:00Z",
-    external_id: null,
-    photo: null,
+    description: "",
+    is_required: isRequired,
+    position_in_portal: 1,
   });
 
   const createAttachment = (id: string = "1"): Attachment => ({

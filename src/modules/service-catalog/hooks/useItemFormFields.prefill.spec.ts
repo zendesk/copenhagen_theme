@@ -6,19 +6,14 @@ describe("useItemFormFields — query-string prefill integration", () => {
   const baseLocale = "en-us";
 
   const serviceCatalogItem: ServiceCatalogItem = {
-    id: 1,
+    id: "item-1",
     name: "Test Item",
     description: "Test Description",
-    form_id: 1,
+    form_id: "form-1",
     thumbnail_url: "",
     categories: [],
     is_request_on_behalf: false,
     published_at: "2025-01-01T00:00:00Z",
-    custom_object_fields: {
-      "standard::asset_option": "",
-      "standard::asset_type_option": "",
-      "standard::attachment_option": "",
-    },
   };
 
   // Associated service-catalog-item lookup is mandatory: the hook throws
@@ -103,7 +98,7 @@ describe("useItemFormFields — query-string prefill integration", () => {
         ok: true,
         json: () =>
           Promise.resolve(
-            url.includes("/api/v2/ticket_forms/1")
+            url.includes("/api/v2/ticket_forms/form-1")
               ? formResponse
               : url.includes(`/api/v2/ticket_fields?locale=${baseLocale}`)
               ? ticketFieldResponse

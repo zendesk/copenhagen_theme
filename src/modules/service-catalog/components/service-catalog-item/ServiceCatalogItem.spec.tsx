@@ -35,11 +35,6 @@ jest.mock("../../../shared/notifications", () => ({
   addFlashNotification: jest.fn(),
 }));
 
-// Mock useAttachmentsOption
-jest.mock("../../hooks/useAttachmentsOption", () => ({
-  useAttachmentsOption: jest.fn(),
-}));
-
 jest.mock("./ItemRequestForm", () => ({
   ItemRequestForm: ({
     onSubmit,
@@ -92,7 +87,6 @@ jest.mock("./PreviewModeBanner", () => ({
 
 import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
 import { useItemFormFields } from "../../hooks/useItemFormFields";
-import { useAttachmentsOption } from "../../hooks/useAttachmentsOption";
 
 const mockUseServiceCatalogItem = useServiceCatalogItem as jest.MockedFunction<
   typeof useServiceCatalogItem
@@ -116,7 +110,7 @@ const renderWithTheme = (component: React.ReactElement) => {
 
 describe("ServiceCatalogItem", () => {
   const defaultProps = {
-    serviceCatalogItemId: 1,
+    serviceCatalogItemId: "item-1",
     baseLocale: "en-us",
     hasAtMentions: false,
     userRole: "end_user",
@@ -128,19 +122,14 @@ describe("ServiceCatalogItem", () => {
   };
 
   const mockServiceCatalogItem: ServiceCatalogItemType = {
-    id: 1,
+    id: "item-1",
     name: "Test Service",
     description: "Test Description",
-    form_id: 100,
+    form_id: "form-100",
     thumbnail_url: "",
     categories: [],
     is_request_on_behalf: false,
     published_at: "2025-01-01T00:00:00Z",
-    custom_object_fields: {
-      "standard::asset_option": "",
-      "standard::asset_type_option": "",
-      "standard::attachment_option": "",
-    },
   };
 
   const mockDraftServiceCatalogItem: ServiceCatalogItemType = {
@@ -175,18 +164,8 @@ describe("ServiceCatalogItem", () => {
     relationship_target_type: "standard::service_catalog_item",
   };
 
-  const mockUseAttachmentsOption = useAttachmentsOption as jest.MockedFunction<
-    typeof useAttachmentsOption
-  >;
-
   beforeEach(() => {
     jest.clearAllMocks();
-
-    mockUseAttachmentsOption.mockReturnValue({
-      attachmentsOption: undefined,
-      errorAttachmentsOption: null,
-      isLoadingAttachmentsOption: false,
-    });
 
     mockUseServiceCatalogItem.mockReturnValue({
       serviceCatalogItem: mockServiceCatalogItem,

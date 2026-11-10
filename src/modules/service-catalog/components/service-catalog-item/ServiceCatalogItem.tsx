@@ -23,7 +23,6 @@ import {
   PREVIEW_MODE_QUERY_PARAM_VALUE,
 } from "../../constants";
 import type { Attachment } from "../../../ticket-fields/data-types/AttachmentsField";
-import { useAttachmentsOption } from "../../hooks/useAttachmentsOption";
 import { useValidateServiceItemForm } from "../../hooks/useValidateServiceItemForm";
 import type { AttachmentsError } from "../../data-types/Attachments";
 
@@ -45,7 +44,7 @@ const isAssetField = (field: TicketFieldObject) =>
   field.relationship_target_type === ASSET_KEY;
 
 export interface ServiceCatalogItemProps {
-  serviceCatalogItemId: number;
+  serviceCatalogItemId: string;
   baseLocale: string;
   hasAtMentions: boolean;
   userRole: string;
@@ -119,19 +118,12 @@ export function ServiceCatalogItem({
     );
   }, []);
 
-  const attachmentsOptionId =
-    serviceCatalogItem?.custom_object_fields?.["standard::attachment_option"];
+  const attachmentOption = serviceCatalogItem?.attachment_option;
 
   const requestOnBehalfEnabled = serviceCatalogItem?.is_request_on_behalf;
   const requesterUserId = selectedUser ? Number(selectedUser.id) : userId;
 
-  const {
-    attachmentsOption,
-    errorAttachmentsOption,
-    isLoadingAttachmentsOption,
-  } = useAttachmentsOption(attachmentsOptionId);
-
-  const { validate } = useValidateServiceItemForm(attachmentsOption);
+  const { validate } = useValidateServiceItemForm(attachmentOption);
 
   const [attachmentsRequiredError, setAttachmentsRequiredError] =
     useState<AttachmentsError>(null);
@@ -156,10 +148,7 @@ export function ServiceCatalogItem({
   const hasResolvedCategory = !hasCategories || !!selectedCategoryId;
 
   const isFormInitializing =
-    !serviceCatalogItem ||
-    isRequestFieldsLoading ||
-    isLoadingAttachmentsOption ||
-    !hasResolvedCategory;
+    !serviceCatalogItem || isRequestFieldsLoading || !hasResolvedCategory;
 
   const hasPreviewQueryParam =
     typeof window !== "undefined" &&
@@ -236,10 +225,6 @@ export function ServiceCatalogItem({
 
   if (errorFetchingItem) {
     throw errorFetchingItem;
-  }
-
-  if (errorAttachmentsOption) {
-    throw errorAttachmentsOption;
   }
 
   function parseAttachments(formData: FormData): Attachment[] {
@@ -470,7 +455,6 @@ export function ServiceCatalogItem({
         <ItemRequestForm
           requestFields={requestFields}
           isRequestFieldsLoading={isRequestFieldsLoading}
-          isLoadingAttachmentsOption={isLoadingAttachmentsOption}
           serviceCatalogItem={serviceCatalogItem}
           baseLocale={baseLocale}
           hasAtMentions={hasAtMentions}
@@ -484,7 +468,7 @@ export function ServiceCatalogItem({
           defaultOrganizationId={defaultOrganizationId}
           handleChange={handleFieldChange}
           onSubmit={handleRequestSubmit}
-          attachmentsOption={attachmentsOption}
+          attachmentsOption={attachmentOption}
           attachmentsRequiredError={attachmentsRequiredError}
           setAttachmentsRequiredError={setAttachmentsRequiredError}
           assetTypeError={assetTypeError}

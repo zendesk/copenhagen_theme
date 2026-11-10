@@ -4,19 +4,14 @@ import { useItemFormFields } from "./useItemFormFields";
 
 describe("useItemFormFields", () => {
   const serviceCatalogItem: ServiceCatalogItem = {
-    id: 1,
+    id: "item-1",
     name: "Test Item",
     description: "Test Description",
-    form_id: 1,
+    form_id: "form-1",
     thumbnail_url: "",
     categories: [],
     is_request_on_behalf: false,
     published_at: "2025-01-01T00:00:00Z",
-    custom_object_fields: {
-      "standard::asset_option": "",
-      "standard::asset_type_option": "",
-      "standard::attachment_option": "",
-    },
   };
 
   const textField = {
@@ -100,7 +95,7 @@ describe("useItemFormFields", () => {
       return Promise.resolve({
         json: () =>
           Promise.resolve(
-            url.includes("/api/v2/ticket_forms/1")
+            url.includes("/api/v2/ticket_forms/form-1")
               ? formResponse
               : url.includes("/api/v2/ticket_fields?locale=en-us")
               ? ticketFieldResponse
@@ -158,7 +153,7 @@ describe("useItemFormFields", () => {
     };
 
     (globalThis.fetch as jest.Mock) = jest.fn((url) => {
-      return url.includes("/api/v2/ticket_forms/1")
+      return url.includes("/api/v2/ticket_forms/form-1")
         ? Promise.resolve({
             json: () => Promise.resolve(formResponse),
             status: 200,
@@ -242,7 +237,7 @@ describe("useItemFormFields", () => {
     };
 
     (globalThis.fetch as jest.Mock) = jest.fn((url) => {
-      return url.includes("/api/v2/ticket_forms/1")
+      return url.includes("/api/v2/ticket_forms/form-1")
         ? Promise.resolve({
             json: () => Promise.resolve(formResponse),
             status: 200,
@@ -286,7 +281,7 @@ describe("useItemFormFields", () => {
     };
 
     (globalThis.fetch as jest.Mock) = jest.fn((url) => {
-      return url.includes("/api/v2/ticket_forms/1")
+      return url.includes("/api/v2/ticket_forms/form-1")
         ? Promise.resolve({
             json: () => Promise.resolve(formResponse),
             status: 200,
@@ -342,7 +337,7 @@ describe("useItemFormFields", () => {
     };
 
     (globalThis.fetch as jest.Mock) = jest.fn((url) => {
-      return url.includes("/api/v2/ticket_forms/1")
+      return url.includes("/api/v2/ticket_forms/form-1")
         ? Promise.resolve({
             json: () => Promise.resolve(formResponse),
             status: 200,
@@ -473,7 +468,7 @@ describe("useItemFormFields", () => {
       return Promise.resolve({
         json: () =>
           Promise.resolve(
-            url.includes("/api/v2/ticket_forms/1")
+            url.includes("/api/v2/ticket_forms/form-1")
               ? formResponse
               : url.includes(`/api/v2/ticket_fields?locale=${baseLocale}`)
               ? ticketFieldResponse
@@ -516,7 +511,7 @@ describe("useItemFormFields", () => {
       return Promise.resolve({
         json: () =>
           Promise.resolve(
-            url.includes("/api/v2/ticket_forms/1")
+            url.includes("/api/v2/ticket_forms/form-1")
               ? formResponse
               : url.includes(`/api/v2/ticket_fields?locale=${baseLocale}`)
               ? ticketFieldResponse
@@ -575,7 +570,7 @@ describe("useItemFormFields", () => {
       return Promise.resolve({
         json: () =>
           Promise.resolve(
-            url.includes("/api/v2/ticket_forms/1")
+            url.includes("/api/v2/ticket_forms/form-1")
               ? formResponse
               : url.includes(`/api/v2/ticket_fields?locale=${baseLocale}`)
               ? ticketFieldResponse
@@ -602,10 +597,22 @@ describe("useItemFormFields", () => {
   it("sanitizes asset option descriptions before exposing request fields", async () => {
     const itemWithAssetOptions: ServiceCatalogItem = {
       ...serviceCatalogItem,
-      custom_object_fields: {
-        ...serviceCatalogItem.custom_object_fields,
-        "standard::asset_option": "asset-option-id",
-        "standard::asset_type_option": "asset-type-option-id",
+      asset_option: {
+        id: "asset-option-id",
+        name: "Asset",
+        description:
+          '<a href="javascript:alert(2)">Choose an asset</a><iframe src="https://example.com"></iframe>',
+        asset_filter_ids: ["asset-1"],
+        is_required: false,
+      },
+      asset_type_option: {
+        id: "asset-type-option-id",
+        name: "Asset type",
+        description:
+          '<strong>Choose a type</strong><img src=x onerror="alert(1)">',
+        asset_type_ids: ["type-1"],
+        is_required: false,
+        is_hidden: false,
       },
     };
     const assetTypeField = {
@@ -633,30 +640,8 @@ describe("useItemFormFields", () => {
 
     (globalThis.fetch as jest.Mock) = jest.fn((url: string) => {
       const responses: Record<string, unknown> = {
-        "/api/v2/ticket_forms/1": formResponse,
+        "/api/v2/ticket_forms/form-1": formResponse,
         "/api/v2/ticket_fields?locale=en-us": ticketFieldResponse,
-        "/api/v2/custom_objects/standard::service_catalog_asset_type_option/records/asset-type-option-id":
-          {
-            custom_object_record: {
-              name: "Asset type",
-              custom_object_fields: {
-                "standard::asset_type_ids": "type-1",
-                "standard::description":
-                  '<strong>Choose a type</strong><img src=x onerror="alert(1)">',
-              },
-            },
-          },
-        "/api/v2/custom_objects/standard::service_catalog_asset_option/records/asset-option-id":
-          {
-            custom_object_record: {
-              name: "Asset",
-              custom_object_fields: {
-                "standard::asset_filter_ids": "asset-1",
-                "standard::description":
-                  '<a href="javascript:alert(2)">Choose an asset</a><iframe src="https://example.com"></iframe>',
-              },
-            },
-          },
       };
 
       return Promise.resolve({

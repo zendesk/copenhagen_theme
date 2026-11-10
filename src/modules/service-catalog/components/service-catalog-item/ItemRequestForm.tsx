@@ -4,7 +4,10 @@ import { RequestFormField } from "../../../ticket-fields";
 import { Button, Anchor } from "@zendeskgarden/react-buttons";
 import { getColor } from "@zendeskgarden/react-theming";
 import { useTranslation } from "react-i18next";
-import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
+import type {
+  ServiceCatalogItem,
+  AttachmentOption,
+} from "../../data-types/ServiceCatalogItem";
 import { CollapsibleDescription } from "./CollapsibleDescription";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
 import type { CustomObjectRecord } from "../../../ticket-fields/data-types/CustomObjectRecord";
@@ -18,10 +21,7 @@ import {
   ASSET_TYPE_KEY,
   ASSET_KEY,
 } from "../../constants";
-import type {
-  AttachmentsError,
-  AttachmentsOption,
-} from "../../data-types/Attachments";
+import type { AttachmentsError } from "../../data-types/Attachments";
 import { Skeleton } from "@zendeskgarden/react-loaders";
 import { ChangeUserModal } from "../change-user-modal/index";
 
@@ -148,11 +148,10 @@ interface ItemRequestFormProps {
     value: string | string[] | boolean | null
   ) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  attachmentsOption: AttachmentsOption | undefined;
+  attachmentsOption: AttachmentOption | undefined;
   attachmentsRequiredError: AttachmentsError;
   setAttachmentsRequiredError: (error: AttachmentsError) => void;
   isRequestFieldsLoading: boolean;
-  isLoadingAttachmentsOption: boolean;
   assetTypeError: string | null;
   assetError: string | null;
   assetTypeHiddenValue: string;
@@ -183,7 +182,6 @@ export function ItemRequestForm({
   attachmentsRequiredError,
   setAttachmentsRequiredError,
   isRequestFieldsLoading,
-  isLoadingAttachmentsOption,
   assetTypeError,
   assetError,
   assetTypeHiddenValue,
@@ -289,12 +287,11 @@ export function ItemRequestForm({
   );
 
   const renderRequestFields = () => {
-    if (isRequestFieldsLoading || isLoadingAttachmentsOption) {
+    if (isRequestFieldsLoading) {
       return null;
     }
 
-    const attachmentsPosition =
-      attachmentsOption?.custom_object_fields?.["standard::position_in_portal"];
+    const attachmentsPosition = attachmentsOption?.position_in_portal;
 
     const attachmentsElement = attachmentsOption ? (
       <Attachments
@@ -302,14 +299,10 @@ export function ItemRequestForm({
         field={{
           name: AttachmentsInputName,
           label: t("service-catalog.item.attachments-label", "Upload a file"),
-          description:
-            attachmentsOption.custom_object_fields["standard::description"] ??
-            "",
+          description: attachmentsOption.description ?? "",
           error: attachmentsRequiredError,
           attachments: [],
-          isRequired:
-            attachmentsOption.custom_object_fields["standard::is_required"] ??
-            false,
+          isRequired: attachmentsOption.is_required ?? false,
         }}
         baseLocale={baseLocale}
         onUploadingChange={handleAttachmentsOnUpload}

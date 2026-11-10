@@ -1,64 +1,39 @@
-import { useCallback, useEffect, useState } from "react";
-import type { ServiceCatalogItem } from "../data-types/ServiceCatalogItem";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import type {
+  ServiceCatalogItem,
+  AssetOption,
+  AssetTypeOption,
+} from "../data-types/ServiceCatalogItem";
 import type { TicketField } from "../../ticket-fields/data-types/TicketField";
 import type { TicketFieldObject } from "../../ticket-fields/data-types/TicketFieldObject";
 import type { EndUserCondition } from "../../ticket-fields/data-types/EndUserCondition";
 import { getCustomObjectKey } from "../../ticket-fields/fields/LookupField";
 import { getVisibleFields } from "../../ticket-fields/getVisibleFields";
 import linkifyStr from "linkify-string";
-import { useAssetDataFetchers } from "./useAssetDataFetchers";
-import type {
-  AssetTypeOptionData,
-  AssetOptionData,
-  AssetConfig,
-} from "../data-types/Assets";
+import type { AssetConfig } from "../data-types/Assets";
+import { ASSET_TYPE_KEY, ASSET_KEY } from "../constants";
 import { sanitizeFieldDescription } from "../utils/sanitize";
 import { applyPrefillToFields } from "../utils/applyPrefillToFields";
 import { useQueryStringPrefill } from "./useQueryStringPrefill";
 
-const ASSET_TYPE_KEY = "zen:custom_object:standard::itam_asset_type";
-const ASSET_KEY = "zen:custom_object:standard::itam_asset";
-
 const processAssetConfig = (
-  assetTypeData?: AssetTypeOptionData,
-  assetData?: AssetOptionData
+  assetTypeOption?: AssetTypeOption,
+  assetOption?: AssetOption
 ): AssetConfig => {
-  let assetTypeIdsList: string[] = [];
-  if (assetTypeData?.assetTypeIds) {
-    const raw = assetTypeData.assetTypeIds;
-    if (Array.isArray(raw)) {
-      assetTypeIdsList = raw.map(String);
-    } else if (typeof raw === "string") {
-      assetTypeIdsList = raw.split(",");
-    }
-    assetTypeIdsList = assetTypeIdsList.map((s) => s.trim()).filter(Boolean);
-  }
-
-  let assetIdsList: string[] = [];
-  if (assetData?.assetIds) {
-    const raw = assetData.assetIds;
-    if (typeof raw === "string") {
-      assetIdsList = raw.split(",");
-    } else if (Array.isArray(raw)) {
-      assetIdsList = raw.map(String);
-    }
-    assetIdsList = assetIdsList.map((s) => s.trim()).filter(Boolean);
-  }
-
-  const isHidden = !!assetTypeData?.isHiddenAssetsType;
+  const isHidden = assetTypeOption?.is_hidden ?? false;
+  const assetTypeIds = assetTypeOption?.asset_type_ids ?? [];
 
   return {
-    assetTypeIds: assetTypeIdsList,
-    assetIds: assetIdsList,
+    assetTypeIds,
+    assetIds: assetOption?.asset_filter_ids ?? [],
     isAssetTypeHidden: isHidden,
-    assetTypeHiddenValue:
-      isHidden && assetTypeIdsList[0] ? assetTypeIdsList[0] : "",
-    assetTypeLabel: assetTypeData?.assetTypeName,
-    assetTypeDescription: assetTypeData?.assetTypeDescription,
-    assetTypeIsRequired: assetTypeData?.isRequired || false,
-    assetLabel: assetData?.assetName,
-    assetDescription: assetData?.assetDescription,
-    assetIsRequired: assetData?.isRequired || false,
+    assetTypeHiddenValue: isHidden && assetTypeIds[0] ? assetTypeIds[0] : "",
+    assetTypeLabel: assetTypeOption?.name,
+    assetTypeDescription: assetTypeOption?.description ?? undefined,
+    assetTypeIsRequired: assetTypeOption?.is_required || false,
+    assetLabel: assetOption?.name,
+    assetDescription: assetOption?.description ?? undefined,
+    assetIsRequired: assetOption?.is_required || false,
   };
 };
 
@@ -165,7 +140,7 @@ interface FetchTicketFieldsResult {
 }
 
 const fetchTicketFields = async (
-  form_id: number,
+  form_id: string,
   baseLocale: string
 ): Promise<FetchTicketFieldsResult> => {
   const [formResponse, fieldsResponse] = await Promise.all([
@@ -262,14 +237,15 @@ export function useItemFormFields(
     assetIsRequired: false,
   });
 
-  const assetOptionId =
-    serviceCatalogItem?.custom_object_fields?.["standard::asset_option"];
-  const assetTypeOptionId =
-    serviceCatalogItem?.custom_object_fields?.["standard::asset_type_option"];
-
-  const { fetchAssets, fetchAssetTypes } = useAssetDataFetchers(
-    assetOptionId ?? "",
-    assetTypeOptionId ?? ""
+  // Option details are embedded on the item response, so the asset config can
+  // be derived synchronously — no separate option-record fetches.
+  const assetConfigFromItem = useMemo(
+    () =>
+      processAssetConfig(
+        serviceCatalogItem?.asset_type_option,
+        serviceCatalogItem?.asset_option
+      ),
+    [serviceCatalogItem]
   );
 
   // Prefill (PDSC-954) is applied to the full field set before visibility is
@@ -286,12 +262,10 @@ export function useItemFormFields(
       setError(null);
 
       try {
-        const [ticketFieldsResult, assetTypeData, assetData] =
-          await Promise.all([
-            fetchTicketFields(serviceCatalogItem.form_id, baseLocale),
-            fetchAssetTypes(),
-            fetchAssets(),
-          ]);
+        const ticketFieldsResult = await fetchTicketFields(
+          serviceCatalogItem.form_id,
+          baseLocale
+        );
 
         if (!alive) return;
 
@@ -302,10 +276,7 @@ export function useItemFormFields(
           endUserConditions,
         } = ticketFieldsResult;
 
-        const processedAssetConfig = processAssetConfig(
-          assetTypeData,
-          assetData
-        );
+        const processedAssetConfig = assetConfigFromItem;
         setAssetConfig(processedAssetConfig);
         setAssociatedLookupField(associatedLookupField);
         setCategoryLookupField(categoryLookupField);
@@ -333,13 +304,7 @@ export function useItemFormFields(
     return () => {
       alive = false;
     };
-  }, [
-    baseLocale,
-    serviceCatalogItem?.form_id,
-    fetchAssets,
-    fetchAssetTypes,
-    prefill,
-  ]);
+  }, [baseLocale, serviceCatalogItem?.form_id, assetConfigFromItem, prefill]);
 
   const handleChange = useCallback(
     (field: TicketFieldObject, value: TicketFieldObject["value"]) => {

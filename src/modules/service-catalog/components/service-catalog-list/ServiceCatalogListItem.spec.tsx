@@ -13,19 +13,14 @@ jest.mock("@zendeskgarden/svg-icons/src/16/shapes-fill.svg", () => {
 
 describe("ServiceCatalogListItem", () => {
   const mockServiceItem: ServiceCatalogItem = {
-    id: 1989,
+    id: "item-1989",
     name: "Atl Nacional keyboard",
     description: "This is a keyboard &quot;from&quot; Atl Nacional",
-    form_id: 456,
+    form_id: "form-456",
     thumbnail_url: "",
     categories: [],
     is_request_on_behalf: false,
     published_at: "2025-01-01T00:00:00Z",
-    custom_object_fields: {
-      "standard::asset_option": "",
-      "standard::asset_type_option": "",
-      "standard::attachment_option": "",
-    },
   };
 
   const mockHelpCenterPath = "/hc/en-us";
