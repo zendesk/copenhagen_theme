@@ -24,7 +24,6 @@ import {
 } from "../../constants";
 import type { Attachment } from "../../../ticket-fields/data-types/AttachmentsField";
 import { useValidateServiceItemForm } from "../../hooks/useValidateServiceItemForm";
-import type { AttachmentsError } from "../../data-types/Attachments";
 
 const Container = styled.div`
   display: flex;
@@ -125,8 +124,9 @@ export function ServiceCatalogItem({
 
   const { validate } = useValidateServiceItemForm(attachmentOption);
 
-  const [attachmentsRequiredError, setAttachmentsRequiredError] =
-    useState<AttachmentsError>(null);
+  const [attachmentsRequiredError, setAttachmentsRequiredError] = useState<
+    string | null
+  >(null);
   const [assetTypeError, setAssetTypeError] = useState<string | null>(null);
   const [assetError, setAssetError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);

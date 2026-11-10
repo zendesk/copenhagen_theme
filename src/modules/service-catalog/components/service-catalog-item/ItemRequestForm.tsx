@@ -21,7 +21,6 @@ import {
   ASSET_TYPE_KEY,
   ASSET_KEY,
 } from "../../constants";
-import type { AttachmentsError } from "../../data-types/Attachments";
 import { Skeleton } from "@zendeskgarden/react-loaders";
 import { ChangeUserModal } from "../change-user-modal/index";
 
@@ -149,8 +148,8 @@ interface ItemRequestFormProps {
   ) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   attachmentsOption: AttachmentOption | undefined;
-  attachmentsRequiredError: AttachmentsError;
-  setAttachmentsRequiredError: (error: AttachmentsError) => void;
+  attachmentsRequiredError: string | null;
+  setAttachmentsRequiredError: (error: string | null) => void;
   isRequestFieldsLoading: boolean;
   assetTypeError: string | null;
   assetError: string | null;
