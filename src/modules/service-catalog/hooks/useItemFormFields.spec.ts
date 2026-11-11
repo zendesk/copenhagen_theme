@@ -1,4 +1,5 @@
 import { act, renderHook } from "@testing-library/react-hooks";
+import type { TicketFieldObject } from "../../ticket-fields/data-types/TicketFieldObject";
 import type { ServiceCatalogItem } from "../data-types/ServiceCatalogItem";
 import { useItemFormFields } from "./useItemFormFields";
 
@@ -402,6 +403,56 @@ describe("useItemFormFields", () => {
         error: null,
         value: "Test Value",
       },
+    ]);
+  });
+
+  it("should keep every update when handleChange is called several times in one batch", async () => {
+    const secondTextField = {
+      ...textField,
+      id: 4,
+      title_in_portal: "Test Title 4",
+    };
+
+    (globalThis.fetch as jest.Mock) = jest.fn((url) =>
+      Promise.resolve({
+        json: () =>
+          Promise.resolve(
+            url.includes("/api/v2/ticket_forms/1")
+              ? {
+                  ticket_form: {
+                    id: 1,
+                    ticket_field_ids: [1, 4, 2],
+                    active: true,
+                  },
+                }
+              : url.includes("/api/v2/ticket_fields?locale=en-us")
+              ? { ticket_fields: [textField, secondTextField, lookupField] }
+              : {}
+          ),
+        status: 200,
+        ok: true,
+      })
+    );
+
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useItemFormFields(serviceCatalogItem, baseLocale)
+    );
+
+    await waitForNextUpdate();
+
+    const [firstField, secondField] = result.current.requestFields as [
+      TicketFieldObject,
+      TicketFieldObject
+    ];
+
+    act(() => {
+      result.current.handleChange(firstField, "First");
+      result.current.handleChange(secondField, "Second");
+    });
+
+    expect(result.current.requestFields.map((field) => field.value)).toEqual([
+      "First",
+      "Second",
     ]);
   });
 
