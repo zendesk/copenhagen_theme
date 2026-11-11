@@ -155,7 +155,10 @@ function ApprovalRequestPage({
           <XXL isBold>{approvalRequest.subject}</XXL>
           <StyledDescription>{collapsedMessage}</StyledDescription>
           {approvalRequest.ticket_details && (
-            <ApprovalTicketDetails ticket={approvalRequest.ticket_details} />
+            <ApprovalTicketDetails
+              ticket={approvalRequest.ticket_details}
+              attachments={approvalRequest.attachments}
+            />
           )}
         </LeftColumn>
 
