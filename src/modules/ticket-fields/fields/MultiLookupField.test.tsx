@@ -350,6 +350,42 @@ describe("MultiLookupField when the requester changes", () => {
     expect(hiddenInputs()[0]).toHaveValue("rec-a");
   });
 
+  it("keeps the initial records when a non-requester-dependent field's fetch is in flight while the requester changes", async () => {
+    const nonRequesterFilter = {
+      all: [{ field: "someField", operator: "is", value: "foo" }],
+      any: [],
+    };
+    let resolveFetch: (value: unknown) => void = () => {};
+    (globalThis.fetch as jest.Mock) = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          resolveFetch = resolve;
+        })
+    );
+    const onChange = jest.fn();
+    const { rerender, container } = render(
+      renderField(onChange, 1, nonRequesterFilter)
+    );
+
+    await act(async () => {
+      rerender(renderField(onChange, 2, nonRequesterFilter));
+    });
+
+    await act(async () => {
+      resolveFetch({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            custom_object_records: [{ id: "rec-a", name: "Record A" }],
+          }),
+      });
+    });
+
+    expect(
+      container.querySelectorAll('input[name="test_multi_lookup[]"]')[0]
+    ).toHaveValue("rec-a");
+  });
+
   it("clears a pending prefill and ignores the initial records fetch when the requester changed while it was in flight", async () => {
     let resolveFetch: (value: unknown) => void = () => {};
     (globalThis.fetch as jest.Mock) = jest.fn(

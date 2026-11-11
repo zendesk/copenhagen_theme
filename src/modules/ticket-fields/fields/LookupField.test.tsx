@@ -487,6 +487,46 @@ describe("LookupField when the requester changes", () => {
     expect(hiddenInput()).toHaveValue("rec-1");
   });
 
+  test("keeps the initial record when a non-requester-dependent field's fetch is in flight while the requester changes", async () => {
+    const nonRequesterFilter: LookupRelationshipFieldFilter = {
+      all: [{ field: "someField", operator: "is", value: "foo" }],
+      any: [],
+    };
+    let resolveFetch: (value: unknown) => void = () => {};
+    (globalThis.fetch as jest.Mock) = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          resolveFetch = resolve;
+        })
+    );
+    const onChange = jest.fn();
+    const { rerender } = render(renderField(onChange, 1, nonRequesterFilter));
+
+    await act(async () => {
+      rerender(renderField(onChange, 2, nonRequesterFilter));
+    });
+
+    await act(async () => {
+      resolveFetch({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            custom_object_record: {
+              name: "Asset One",
+              id: "rec-1",
+              custom_object_fields: {},
+            },
+          }),
+      });
+    });
+
+    expect(onChange).not.toHaveBeenCalled();
+    expect(document.querySelector('input[name="test_lookup"]')).toHaveValue(
+      "rec-1"
+    );
+    expect(screen.getByText("Asset One")).toBeInTheDocument();
+  });
+
   test("uses the new requester id in subsequent autocomplete calls", async () => {
     const onChange = jest.fn();
     const { rerender } = render(renderField(onChange, 1));
