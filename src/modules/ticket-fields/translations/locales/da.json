@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "Slip filerne her",
   "cph-theme-ticket-fields.attachments.error-separator": "; ",
   "cph-theme-ticket-fields.attachments.file": "Tryk på tasten Delete for at fjerne filen {{fileName}}",
+  "cph-theme-ticket-fields.attachments.file-removed": "{{fileName}} er fjernet",
   "cph-theme-ticket-fields.attachments.remove-file": "Fjern fil",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Fjern fil: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "Stop upload",

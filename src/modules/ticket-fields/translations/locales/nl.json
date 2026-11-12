@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "Zet bestanden hier neer",
   "cph-theme-ticket-fields.attachments.error-separator": "; ",
   "cph-theme-ticket-fields.attachments.file": "Bestand: {{fileName}}, druk op Delete om te verwijderen",
+  "cph-theme-ticket-fields.attachments.file-removed": "{{fileName}} verwijderd",
   "cph-theme-ticket-fields.attachments.remove-file": "Bestand verwijderen",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Bestand {{fileName}} verwijderen",
   "cph-theme-ticket-fields.attachments.stop-upload": "Upload stoppen",

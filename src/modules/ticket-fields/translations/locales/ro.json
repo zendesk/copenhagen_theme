@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "Glisați fișierele aici",
   "cph-theme-ticket-fields.attachments.error-separator": "; ",
   "cph-theme-ticket-fields.attachments.file": "Fișier: {{fileName}}, apăsați pe Ștergere pentru a elimina",
+  "cph-theme-ticket-fields.attachments.file-removed": "{{fileName}} a fost eliminat",
   "cph-theme-ticket-fields.attachments.remove-file": "Eliminare fișier",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Eliminare fișier: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "Oprire încărcare",

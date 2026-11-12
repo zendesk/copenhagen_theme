@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "Пуснете файловете тук",
   "cph-theme-ticket-fields.attachments.error-separator": "; ",
   "cph-theme-ticket-fields.attachments.file": "Файл: {{fileName}}, натиснете „Delete“ за премахване",
+  "cph-theme-ticket-fields.attachments.file-removed": "Файлът {{fileName}} е премахнат",
   "cph-theme-ticket-fields.attachments.remove-file": "Премахване на файл",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Премахване на файл: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "Спиране на качването",
