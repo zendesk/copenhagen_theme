@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import type { TicketFieldObject } from "../../ticket-fields/data-types/TicketFieldObject";
 import type { Attachment } from "../../ticket-fields/data-types/AttachmentsField";
-import type { AttachmentsOption } from "../data-types/Attachments";
+import type { AttachmentOption } from "../data-types/ServiceCatalogItem";
 import { ASSET_TYPE_KEY, ASSET_KEY } from "../constants";
 
 export interface ValidationErrors {
@@ -36,7 +36,7 @@ function hasFieldValue(field: TicketFieldObject): boolean {
 }
 
 export function useValidateServiceItemForm(
-  attachmentsOption: AttachmentsOption | undefined
+  attachmentOption: AttachmentOption | undefined
 ) {
   const { t } = useTranslation();
 
@@ -52,16 +52,11 @@ export function useValidateServiceItemForm(
         fields: {},
       };
 
-      if (attachmentsOption) {
-        const isRequired =
-          attachmentsOption.custom_object_fields["standard::is_required"];
-
-        if (isRequired && attachments.length === 0) {
-          errors.attachments = t(
-            "service-catalog.attachments-required-error",
-            "Upload a file to continue."
-          );
-        }
+      if (attachmentOption?.is_required && attachments.length === 0) {
+        errors.attachments = t(
+          "service-catalog.attachments-required-error",
+          "Upload a file to continue."
+        );
       }
 
       for (const field of fields) {
@@ -94,7 +89,7 @@ export function useValidateServiceItemForm(
 
       return { hasError, errors };
     },
-    [attachmentsOption, t]
+    [attachmentOption, t]
   );
 
   return { validate };
