@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "फाइलों को यहां छोड़ें",
   "cph-theme-ticket-fields.attachments.error-separator": "; ",
   "cph-theme-ticket-fields.attachments.file": "फ़ाइल: {{fileName}}, हटाने के लिए डिलीट दबाएँ",
+  "cph-theme-ticket-fields.attachments.file-removed": "{{fileName}} को हटाया गया",
   "cph-theme-ticket-fields.attachments.remove-file": "फ़ाइल हटाएँ",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "फ़ाइल हटाएँ: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "अपलोड बंद करें",

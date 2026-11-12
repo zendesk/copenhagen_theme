@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "cph-theme-ticket-fields.attachments.drop-files-label",
   "cph-theme-ticket-fields.attachments.error-separator": "cph-theme-ticket-fields.attachments.error-separator",
   "cph-theme-ticket-fields.attachments.file": "cph-theme-ticket-fields.attachments.file",
+  "cph-theme-ticket-fields.attachments.file-removed": "cph-theme-ticket-fields.attachments.file-removed",
   "cph-theme-ticket-fields.attachments.remove-file": "cph-theme-ticket-fields.attachments.remove-file",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "cph-theme-ticket-fields.attachments.remove-file-aria-label",
   "cph-theme-ticket-fields.attachments.stop-upload": "cph-theme-ticket-fields.attachments.stop-upload",

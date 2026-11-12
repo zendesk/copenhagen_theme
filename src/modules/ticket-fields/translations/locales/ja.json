@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "ファイルをここにドロップ",
   "cph-theme-ticket-fields.attachments.error-separator": "また、 ",
   "cph-theme-ticket-fields.attachments.file": "ファイル：{{fileName}}、Deleteキーを押して削除",
+  "cph-theme-ticket-fields.attachments.file-removed": "{{fileName}}を削除しました",
   "cph-theme-ticket-fields.attachments.remove-file": "ファイルを削除",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "ファイルを削除：{{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "アップロードを停止",

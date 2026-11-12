@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "Deixeu anar els fitxers aquí",
   "cph-theme-ticket-fields.attachments.error-separator": ";",
   "cph-theme-ticket-fields.attachments.file": "Fitxer: {{fileName}}, premeu Supr per eliminar",
+  "cph-theme-ticket-fields.attachments.file-removed": "{{fileName}} eliminat",
   "cph-theme-ticket-fields.attachments.remove-file": "Elimina el fitxer",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Elimina el fitxer: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "Atura la càrrega",

@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "Solte os arquivos aqui",
   "cph-theme-ticket-fields.attachments.error-separator": "; ",
   "cph-theme-ticket-fields.attachments.file": "Pressione Delete para remover o arquivo {{fileName}}",
+  "cph-theme-ticket-fields.attachments.file-removed": "Removido: {{fileName}}",
   "cph-theme-ticket-fields.attachments.remove-file": "Remover arquivo",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Remover arquivo: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "Interromper carregamento",

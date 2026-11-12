@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "파일을 여기에 드롭하세요",
   "cph-theme-ticket-fields.attachments.error-separator": ". ",
   "cph-theme-ticket-fields.attachments.file": "파일: {{fileName}}, 제거하려면 delete 키를 누르세요.",
+  "cph-theme-ticket-fields.attachments.file-removed": "{{fileName}} 제거됨",
   "cph-theme-ticket-fields.attachments.remove-file": "파일 제거",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "파일 제거: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "업로드 중지",
