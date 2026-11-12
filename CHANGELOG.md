@@ -1,3 +1,10 @@
+## [4.55.1](https://github.com/zendesk/copenhagen_theme/compare/v4.55.0...v4.55.1) (2026-11-12)
+
+
+### Bug Fixes
+
+* **approval-requests:** tolerate ticket-less approvals in HC pages (LB-4739) ([afad13a](https://github.com/zendesk/copenhagen_theme/commit/afad13a8f1457cbe021e278fae3e0feee96467a7))
+
 # [4.55.0](https://github.com/zendesk/copenhagen_theme/compare/v4.54.0...v4.55.0) (2026-11-12)
 
 
