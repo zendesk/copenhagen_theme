@@ -386,6 +386,42 @@ describe("MultiLookupField when the requester changes", () => {
     ).toHaveLength(0);
   });
 
+  it("keeps the cleared selection when the requester switches A -> B -> A while the initial records fetch is in flight", async () => {
+    let resolveFetch: (value: unknown) => void = () => {};
+    (globalThis.fetch as jest.Mock) = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          resolveFetch = resolve;
+        })
+    );
+    const onChange = jest.fn();
+    const { rerender, container } = render(renderField(onChange, 1));
+
+    await act(async () => {
+      rerender(renderField(onChange, 2));
+    });
+    await act(async () => {
+      rerender(renderField(onChange, 1));
+    });
+
+    await waitFor(() => expect(onChange).toHaveBeenCalledWith([]));
+
+    await act(async () => {
+      resolveFetch({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            custom_object_records: [{ id: "rec-a", name: "Record A" }],
+          }),
+      });
+    });
+
+    expect(onChange).toHaveBeenLastCalledWith([]);
+    expect(
+      container.querySelectorAll('input[name="test_multi_lookup[]"]')
+    ).toHaveLength(0);
+  });
+
   it("does not apply the fallback selection when the records fetch fails after the requester changed", async () => {
     let resolveFetch: (value: unknown) => void = () => {};
     (globalThis.fetch as jest.Mock) = jest.fn(
