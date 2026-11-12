@@ -40,7 +40,7 @@ parts:
       key: "approval-requests.request.ticket-details.priority_normal"
       title: "Normal priority level for a ticket associated with an approval request"
       screenshot: "https://drive.google.com/file/d/1WYuPkB_Ju-CcfjX4E6R3cY8plXMhfzu5/view?usp=sharing"
-      value: "Normal" 
+      value: "Normal"
   - translation:
       key: "approval-requests.request.ticket-details.priority_high"
       title: "High priority level for a ticket associated with an approval request"
@@ -61,6 +61,93 @@ parts:
       title: "Value representing false for a checkbox custom field"
       screenshot: "https://drive.google.com/file/d/1AiuLQXnW6qELTJtIFQX0JaBCA7zViMXA/view?usp=drive_link"
       value: "No"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.header"
+      title: "Header for the attachments section displayed in the ticket details card on the individual approval request page"
+      screenshot: "https://drive.google.com/file/d/1MJLIaKbs7Wqqd7XxrYGuDMht-b0anFUO/view?usp=sharing"
+      value: "Attachments"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.preview-file"
+      title: "Label for the action that opens a preview of a ticket attachment file"
+      screenshot: "https://drive.google.com/file/d/1s8akP1uKKLrwrynFuc_1ZvFTagRLx3h1/view?usp=sharing"
+      value: "Preview file"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.preview-file-aria-label"
+      title: "[A11Y] Hidden accessibility label for the preview action of a ticket attachment file"
+      value: "Preview file: {{fileName}}"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.download-file"
+      title: "Label for the action that downloads a ticket attachment file"
+      screenshot: "https://drive.google.com/file/d/1_Aztq0qIcYrQ9nScqWuDIG5n7gMTgF4k/view?usp=sharing"
+      value: "Download file"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.download-file-aria-label"
+      title: "[A11Y] Hidden accessibility label for the download action of a ticket attachment file"
+      value: "Download file: {{fileName}}"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.blocked-file"
+      title: "Label shown instead of the preview and download actions for a ticket attachment file that was found to contain malware"
+      screenshot: "https://drive.google.com/file/d/12P92u32nqm-D4QE2Tndt4I_CeJD1JZEK/view?usp=sharing"
+      value: "Blocked"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.blocked-file-tooltip"
+      title: "Tooltip explaining why the preview and download actions are unavailable for a ticket attachment file that was found to contain malware"
+      screenshot: "https://drive.google.com/file/d/12P92u32nqm-D4QE2Tndt4I_CeJD1JZEK/view?usp=sharing"
+      value: "This file is unavailable because malware was detected"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.show-more.one"
+      title: "Text for the expander that reveals ticket attachment files beyond the first four - {{count}} is the number of hidden files"
+      screenshot: "https://drive.google.com/file/d/1cX2WEvCDG567KT2yJCCd2xQdmf2MeE1h/view?usp=sharing"
+      value: "+{{count}} more"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.show-more.two"
+      title: "Text for the expander that reveals ticket attachment files beyond the first four - {{count}} is the number of hidden files"
+      screenshot: "https://drive.google.com/file/d/1bV7LV27jclga7i1CGg2C-QcuF1r1llYT/view?usp=sharing"
+      value: "+{{count}} more"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.show-more.few"
+      title: "Text for the expander that reveals ticket attachment files beyond the first four - {{count}} is the number of hidden files"
+      screenshot: "https://drive.google.com/file/d/1bV7LV27jclga7i1CGg2C-QcuF1r1llYT/view?usp=sharing"
+      value: "+{{count}} more"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.show-more.many"
+      title: "Text for the expander that reveals ticket attachment files beyond the first four - {{count}} is the number of hidden files"
+      screenshot: "https://drive.google.com/file/d/1bV7LV27jclga7i1CGg2C-QcuF1r1llYT/view?usp=sharing"
+      value: "+{{count}} more"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.show-more.other"
+      title: "Text for the expander that reveals ticket attachment files beyond the first four - {{count}} is the number of hidden files"
+      screenshot: "https://drive.google.com/file/d/1bV7LV27jclga7i1CGg2C-QcuF1r1llYT/view?usp=sharing"
+      value: "+{{count}} more"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.show-less"
+      title: "Text for the expander that collapses ticket attachment files back to the first four"
+      screenshot: "https://drive.google.com/file/d/1t-hJcrVHzUT8L52r6XOmuavlmLh-APiz/view?usp=sharing"
+      value: "Show less"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.show-less-aria-label"
+      title: "[A11Y] Hidden accessibility label for the expander that collapses ticket attachment files back to the first four"
+      value: "Show fewer attachments"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.show-more-aria-label.one"
+      title: "[A11Y] Hidden accessibility label for the expander that reveals ticket attachment files beyond the first four - {{count}} is the number of hidden files"
+      value: "Show {{count}} more attachments"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.show-more-aria-label.two"
+      title: "[A11Y] Hidden accessibility label for the expander that reveals ticket attachment files beyond the first four - {{count}} is the number of hidden files"
+      value: "Show {{count}} more attachments"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.show-more-aria-label.few"
+      title: "[A11Y] Hidden accessibility label for the expander that reveals ticket attachment files beyond the first four - {{count}} is the number of hidden files"
+      value: "Show {{count}} more attachments"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.show-more-aria-label.many"
+      title: "[A11Y] Hidden accessibility label for the expander that reveals ticket attachment files beyond the first four - {{count}} is the number of hidden files"
+      value: "Show {{count}} more attachments"
+  - translation:
+      key: "approval-requests.request.ticket-details.attachments.show-more-aria-label.other"
+      title: "[A11Y] Hidden accessibility label for the expander that reveals ticket attachment files beyond the first four - {{count}} is the number of hidden files"
+      value: "Show {{count}} more attachments"
   - translation:
       key: "approval-requests.request.approval-request-details.header"
       title: "Header for the approval request section displayed on the individual approval request page"
