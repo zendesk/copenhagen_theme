@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled, { css } from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Button } from "@zendeskgarden/react-buttons";
+import { Spinner } from "@zendeskgarden/react-loaders";
 import { Tooltip } from "@zendeskgarden/react-tooltips";
 import { MD } from "@zendeskgarden/react-typography";
 import { Tag } from "@zendeskgarden/react-tags";
@@ -177,6 +178,7 @@ const IconButton = styled(Button)`
 `;
 
 const PREVIEW_BLOB_URL_KEEP_ALIVE_MS = 60000;
+const FETCH_TIMEOUT_MS = 30000;
 
 const ShowMoreButton = styled(Button).attrs({ isLink: true })`
   margin-top: ${(props) => props.theme.space.sm}; /* 12px */
@@ -193,6 +195,7 @@ interface AttachmentListProps {
 function AttachmentList({ attachments }: AttachmentListProps) {
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
+  const [busyAttachmentId, setBusyAttachmentId] = useState<string | null>(null);
 
   const isCollapsible = attachments.length > MAX_VISIBLE_ATTACHMENTS;
   const visibleAttachments =
@@ -214,14 +217,15 @@ function AttachmentList({ attachments }: AttachmentListProps) {
     "Blocked"
   );
 
-  // The `content_url` is the download endpoint, which serves the file with
-  // `Content-Disposition: attachment` - fetching it and handling it as a blob
-  // (typed with its content type) is more reliable from the page context than
-  // navigating to the URL directly.
+  // Fetch and handle as a typed blob; on timeout or error, fall back to a
+  // native open. Attachments are capped at 10MB by the API.
   const fetchAttachmentAsBlob = async (
     attachment: ApprovalRequestAttachment
   ): Promise<Blob> => {
-    const response = await fetch(attachment.content_url);
+    const response = await fetch(attachment.content_url, {
+      // AbortSignal.timeout isn't available in all runtimes; degrade to no timeout
+      signal: AbortSignal.timeout?.call(AbortSignal, FETCH_TIMEOUT_MS),
+    });
 
     if (!response.ok) {
       throw new Error("Error fetching attachment");
@@ -230,6 +234,19 @@ function AttachmentList({ attachments }: AttachmentListProps) {
     const data = await response.blob();
 
     return new Blob([data], { type: attachment.content_type });
+  };
+
+  const runWithBusyState = async (
+    attachment: ApprovalRequestAttachment,
+    action: () => Promise<void>
+  ) => {
+    setBusyAttachmentId(attachment.id);
+
+    try {
+      await action();
+    } finally {
+      setBusyAttachmentId(null);
+    }
   };
 
   const handlePreview = async (attachment: ApprovalRequestAttachment) => {
@@ -318,14 +335,23 @@ function AttachmentList({ attachments }: AttachmentListProps) {
                         isBasic
                         isPill
                         focusInset
-                        onClick={() => handlePreview(attachment)}
+                        disabled={busyAttachmentId === attachment.id}
+                        onClick={() =>
+                          runWithBusyState(attachment, () =>
+                            handlePreview(attachment)
+                          )
+                        }
                         aria-label={t(
                           "approval-requests.request.ticket-details.attachments.preview-file-aria-label",
                           "Preview file: {{fileName}}",
                           { fileName: attachment.filename }
                         )}
                       >
-                        <EyeIcon aria-hidden="true" />
+                        {busyAttachmentId === attachment.id ? (
+                          <Spinner size="small" />
+                        ) : (
+                          <EyeIcon aria-hidden="true" />
+                        )}
                       </IconButton>
                     </Tooltip>
                   )}
@@ -334,14 +360,23 @@ function AttachmentList({ attachments }: AttachmentListProps) {
                       isBasic
                       isPill
                       focusInset
-                      onClick={() => handleDownload(attachment)}
+                      disabled={busyAttachmentId === attachment.id}
+                      onClick={() =>
+                        runWithBusyState(attachment, () =>
+                          handleDownload(attachment)
+                        )
+                      }
                       aria-label={t(
                         "approval-requests.request.ticket-details.attachments.download-file-aria-label",
                         "Download file: {{fileName}}",
                         { fileName: attachment.filename }
                       )}
                     >
-                      <DownloadIcon aria-hidden="true" />
+                      {busyAttachmentId === attachment.id ? (
+                        <Spinner size="small" />
+                      ) : (
+                        <DownloadIcon aria-hidden="true" />
+                      )}
                     </IconButton>
                   </Tooltip>
                 </>

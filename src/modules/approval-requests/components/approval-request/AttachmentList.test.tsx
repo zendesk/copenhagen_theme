@@ -186,7 +186,8 @@ describe("AttachmentList", () => {
     );
 
     expect(global.fetch).toHaveBeenCalledWith(
-      "https://example.com/document.doc"
+      "https://example.com/document.doc",
+      expect.objectContaining({})
     );
     expect(createObjectURLMock).toHaveBeenCalledWith(
       expect.objectContaining({ type: "application/pdf" })
@@ -250,7 +251,8 @@ describe("AttachmentList", () => {
     );
 
     expect(global.fetch).toHaveBeenCalledWith(
-      "https://example.com/document.doc"
+      "https://example.com/document.doc",
+      expect.objectContaining({})
     );
     expect(anchorElement).toBeDefined();
     expect(anchorElement).toHaveAttribute("href", "blob:mock-url");
