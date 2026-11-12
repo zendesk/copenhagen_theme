@@ -1,3 +1,15 @@
+# [4.55.0](https://github.com/zendesk/copenhagen_theme/compare/v4.54.0...v4.55.0) (2026-11-12)
+
+
+### Bug Fixes
+
+* **approval-requests:** add fetch timeout and busy state to attachment actions ([c9f8b97](https://github.com/zendesk/copenhagen_theme/commit/c9f8b97f5d0fa11c1a1ce134bbb53738f24c9f52))
+
+
+### Features
+
+* **approval-requests:** show attachments on the approval request page ([bbca9f3](https://github.com/zendesk/copenhagen_theme/commit/bbca9f3a11e5ad95b4e367c91be2bf9c8d7fc0a2))
+
 # [4.54.0](https://github.com/zendesk/copenhagen_theme/compare/v4.53.7...v4.54.0) (2026-11-09)
 
 
