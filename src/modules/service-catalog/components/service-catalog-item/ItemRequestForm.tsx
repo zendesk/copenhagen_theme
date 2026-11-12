@@ -298,10 +298,10 @@ export function ItemRequestForm({
         field={{
           name: AttachmentsInputName,
           label: t("service-catalog.item.attachments-label", "Upload a file"),
-          description: attachmentsOption.description ?? "",
+          description: attachmentsOption.description,
           error: attachmentsRequiredError,
           attachments: [],
-          isRequired: attachmentsOption.is_required ?? false,
+          isRequired: attachmentsOption.is_required,
         }}
         baseLocale={baseLocale}
         onUploadingChange={handleAttachmentsOnUpload}
