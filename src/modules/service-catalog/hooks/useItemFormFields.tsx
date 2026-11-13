@@ -343,15 +343,17 @@ export function useItemFormFields(
 
   const handleChange = useCallback(
     (field: TicketFieldObject, value: TicketFieldObject["value"]) => {
-      const updatedFields = allRequestFields.map((ticketField) =>
-        ticketField.name === field.name
-          ? { ...ticketField, value, error: null }
-          : ticketField
+      // Functional update: several fields can change in the same render
+      // (e.g. requester-dependent lookups clearing together)
+      setAllRequestFields((currentFields) =>
+        currentFields.map((ticketField) =>
+          ticketField.name === field.name
+            ? { ...ticketField, value, error: null }
+            : ticketField
+        )
       );
-
-      setAllRequestFields(updatedFields);
     },
-    [allRequestFields]
+    []
   );
 
   const requestFields = getVisibleFields(allRequestFields, endUserConditions);
