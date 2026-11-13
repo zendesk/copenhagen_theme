@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useItemFormFields } from "../../hooks/useItemFormFields";
 import { ItemRequestForm } from "./ItemRequestForm";
@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
 import {
   AttachmentsInputName,
+  InlineAttachmentsInputName,
   ASSET_TYPE_KEY,
   ASSET_KEY,
   PREVIEW_MODE_HTML_CLASS,
@@ -133,6 +134,19 @@ export function ServiceCatalogItem({
 
   const { validate } = useValidateServiceItemForm(attachmentsOption);
 
+  // The Help Center WYSIWYG stops the submit event and calls form.submit()
+  // directly. Patch it once per form element, so CKEditor's own wrapper that
+  // it installs on init isn't overwritten on every render, and always
+  // route through the latest submitRequest.
+  const submitRequestRef = useRef<(form: HTMLFormElement) => Promise<void>>();
+  const requestFormRef = useCallback((form: HTMLFormElement | null) => {
+    if (form) {
+      form.submit = () => {
+        void submitRequestRef.current?.(form);
+      };
+    }
+  }, []);
+
   const [attachmentsRequiredError, setAttachmentsRequiredError] =
     useState<AttachmentsError>(null);
   const [assetTypeError, setAssetTypeError] = useState<string | null>(null);
@@ -249,6 +263,17 @@ export function ServiceCatalogItem({
       .map((a) => JSON.parse(a));
   }
 
+  // Images pasted into Description are uploaded by the WYSIWYG editor, which
+  // adds one hidden input per image (and removes it if the image is deleted).
+  function parseInlineUploadTokens(formData: FormData): string[] {
+    return formData
+      .getAll(InlineAttachmentsInputName)
+      .filter((a): a is string => typeof a === "string")
+      .map((a) => JSON.parse(a))
+      .filter((upload) => upload.inline)
+      .map((upload) => upload.id);
+  }
+
   function validateForm(
     fields: TicketFieldObject[],
     attachments: Attachment[]
@@ -347,9 +372,7 @@ export function ServiceCatalogItem({
     }
   }
 
-  const handleRequestSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const submitRequest = async (form: HTMLFormElement) => {
     // Submitting requests is not allowed while previewing a draft. Bail out
     // silently so the admin doesn't see a misleading error toast.
     if (isPreviewMode) {
@@ -361,10 +384,10 @@ export function ServiceCatalogItem({
       return;
     }
 
-    const form = e.currentTarget;
     const formData = new FormData(form);
     const isAssetTypeFieldHidden = formData.get("isAssetTypeHidden") === "true";
     const attachments = parseAttachments(formData);
+    const inlineUploadTokens = parseInlineUploadTokens(formData);
 
     const requestFieldsWithFormData = requestFields.map((field) => {
       if (isAssetTypeField(field) && isAssetTypeFieldHidden) {
@@ -416,7 +439,8 @@ export function ServiceCatalogItem({
         categoryLookupField,
         selectedCategoryId,
         requesterId,
-        onBehalfNote
+        onBehalfNote,
+        inlineUploadTokens
       );
 
       if (response?.ok) {
@@ -439,6 +463,13 @@ export function ServiceCatalogItem({
 
     setIsSubmitting(false);
   };
+
+  const handleRequestSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    void submitRequest(e.currentTarget);
+  };
+
+  submitRequestRef.current = submitRequest;
 
   const defaultOrganizationId =
     organizations.length > 0 && organizations[0]?.id
@@ -483,6 +514,7 @@ export function ServiceCatalogItem({
           brandId={brandId}
           defaultOrganizationId={defaultOrganizationId}
           handleChange={handleFieldChange}
+          formRef={requestFormRef}
           onSubmit={handleRequestSubmit}
           attachmentsOption={attachmentsOption}
           attachmentsRequiredError={attachmentsRequiredError}

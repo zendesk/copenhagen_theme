@@ -59,7 +59,15 @@ export function TextArea({
         defaultValue={value as string}
         validation={error ? "error" : undefined}
         required={required}
-        onChange={(e) => onChange(e.target.value)}
+        // The WYSIWYG editor writes textarea.value itself and then dispatches
+        // an input event, which React's onChange ignores (its value tracker
+        // already holds the new value), so listen to onInput instead.
+        onChange={hasWysiwyg ? undefined : (e) => onChange(e.target.value)}
+        onInput={
+          hasWysiwyg
+            ? (e) => onChange((e.target as HTMLTextAreaElement).value)
+            : undefined
+        }
         rows={6}
         isResizable
       />

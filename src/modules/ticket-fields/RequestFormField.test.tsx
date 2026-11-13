@@ -4,6 +4,12 @@ import { USER_RELATIONSHIP_TARGET } from "./fields/UserLookupField";
 import { render } from "../test/render";
 import type { TicketFieldObject } from "./data-types/TicketFieldObject";
 
+jest.mock("./fields/textarea/TextArea", () => ({
+  TextArea: ({ hasWysiwyg }: { hasWysiwyg: boolean }) => (
+    <div data-testid="textarea" data-wysiwyg={String(hasWysiwyg)} />
+  ),
+}));
+
 const lookupField: TicketFieldObject = {
   id: 100,
   name: "request[custom_fields][100]",
@@ -211,6 +217,54 @@ describe("RequestFormField lookup routing", () => {
       expect.stringContaining(
         "/api/v2/custom_objects/testco/records/autocomplete"
       )
+    );
+  });
+});
+
+describe("RequestFormField textarea fields", () => {
+  const makeTextareaField = (type: string): TicketFieldObject => ({
+    id: 1,
+    name: "custom_fields_1",
+    type,
+    description: "",
+    label: "Description",
+    required: true,
+    options: [],
+    value: null,
+    error: null,
+  });
+
+  test("renders Description with the rich text editor enabled", () => {
+    const field = makeTextareaField("description");
+    render(
+      <RequestFormField
+        {...baseProps}
+        field={field}
+        visibleFields={[field]}
+        defaultOrganizationId={null}
+      />
+    );
+
+    expect(screen.getByTestId("textarea")).toHaveAttribute(
+      "data-wysiwyg",
+      "true"
+    );
+  });
+
+  test("keeps custom textarea fields plain text", () => {
+    const field = makeTextareaField("textarea");
+    render(
+      <RequestFormField
+        {...baseProps}
+        field={field}
+        visibleFields={[field]}
+        defaultOrganizationId={null}
+      />
+    );
+
+    expect(screen.getByTestId("textarea")).toHaveAttribute(
+      "data-wysiwyg",
+      "false"
     );
   });
 });

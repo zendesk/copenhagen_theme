@@ -6,6 +6,7 @@ import { submitServiceItemRequest } from "./submitServiceItemRequest";
 import * as notifications from "../../../shared/notifications";
 import type { ServiceCatalogItem as ServiceCatalogItemType } from "../../data-types/ServiceCatalogItem";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
+import type { AttachmentsOption } from "../../data-types/Attachments";
 import { PREVIEW_MODE_HTML_CLASS } from "../../constants";
 
 // Mock react-i18next
@@ -43,11 +44,13 @@ jest.mock("../../hooks/useAttachmentsOption", () => ({
 jest.mock("./ItemRequestForm", () => ({
   ItemRequestForm: ({
     onSubmit,
+    formRef,
     isPreviewMode,
     requesterId,
     setSelectedUser,
   }: {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+    formRef?: React.Ref<HTMLFormElement>;
     isPreviewMode?: boolean;
     requesterId: number;
     setSelectedUser: (user: {
@@ -57,6 +60,7 @@ jest.mock("./ItemRequestForm", () => ({
     }) => void;
   }) => (
     <form
+      ref={formRef}
       data-testid="item-request-form"
       data-preview-mode={isPreviewMode ? "true" : "false"}
       data-user-id={requesterId}
@@ -77,6 +81,12 @@ jest.mock("./ItemRequestForm", () => ({
       </button>
       <button type="submit" disabled={isPreviewMode}>
         Submit
+      </button>
+      <button
+        type="button"
+        onClick={(event) => event.currentTarget.form?.submit()}
+      >
+        Programmatic submit
       </button>
     </form>
   ),
@@ -841,12 +851,119 @@ describe("ServiceCatalogItem", () => {
     });
   });
 
+  describe("inline Description images", () => {
+    const addInlineUpload = (form: HTMLElement, upload: object) => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = "request[attachments][]";
+      input.value = JSON.stringify(upload);
+      form.appendChild(input);
+    };
+
+    it("forwards the editor's inline image upload tokens", async () => {
+      mockSubmitServiceItemRequest.mockResolvedValue(undefined);
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+      const form = screen.getByTestId("item-request-form");
+      addInlineUpload(form, { id: "inline-token-1", inline: true });
+      addInlineUpload(form, { id: "regular-token-1", inline: false });
+      fireEvent.submit(form);
+
+      await waitFor(() => {
+        expect(mockSubmitServiceItemRequest).toHaveBeenCalled();
+      });
+      const callArgs = mockSubmitServiceItemRequest.mock.calls[0]!;
+      // attachments are the 4th positional arg, inline upload tokens the 10th.
+      expect(callArgs[3]).toEqual([]);
+      expect(callArgs[9]).toEqual(["inline-token-1"]);
+    });
+
+    it("does not let an inline image satisfy a required attachment", () => {
+      mockUseAttachmentsOption.mockReturnValue({
+        attachmentsOption: {
+          custom_object_fields: { "standard::is_required": true },
+        } as unknown as AttachmentsOption,
+        errorAttachmentsOption: null,
+        isLoadingAttachmentsOption: false,
+      });
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+      const form = screen.getByTestId("item-request-form");
+      addInlineUpload(form, { id: "inline-token-1", inline: true });
+      fireEvent.submit(form);
+
+      expect(mockSubmitServiceItemRequest).not.toHaveBeenCalled();
+    });
+  });
+
   describe("request on behalf", () => {
     // defaultProps.userId is 123; the mocked beneficiary has id "789".
     const successResponse = {
       ok: true,
       json: () => Promise.resolve({ request: { id: 555 } }),
     } as unknown as Response;
+
+    it("submits through the request API when the WYSIWYG calls form.submit()", async () => {
+      mockSubmitServiceItemRequest.mockResolvedValue(successResponse);
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+
+      fireEvent.click(
+        screen.getByRole("button", { name: "Programmatic submit" })
+      );
+
+      await waitFor(() => {
+        expect(mockSubmitServiceItemRequest).toHaveBeenCalled();
+      });
+    });
+
+    it("keeps the same form.submit patch across re-renders", () => {
+      const { rerender } = renderWithTheme(
+        <ServiceCatalogItem {...defaultProps} />
+      );
+      const form = screen.getByTestId("item-request-form") as HTMLFormElement;
+      const patchedSubmit = form.submit;
+
+      rerender(
+        <ThemeProvider theme={DEFAULT_THEME}>
+          <ServiceCatalogItem {...defaultProps} />
+        </ThemeProvider>
+      );
+
+      expect(form.submit).toBe(patchedSubmit);
+    });
+
+    it("submits the Description value kept in the request fields", async () => {
+      const descriptionField: TicketFieldObject = {
+        ...mockRequestFields[0]!,
+        type: "description",
+        value: "<p>Printer is broken</p>",
+      };
+      mockUseItemFormFields.mockReturnValue({
+        requestFields: [descriptionField],
+        associatedLookupField: mockAssociatedLookupField,
+        categoryLookupField: null,
+        error: null,
+        setRequestFields: jest.fn(),
+        handleChange: jest.fn(),
+        isRequestFieldsLoading: false,
+        assetTypeHiddenValue: "",
+        isAssetTypeHidden: false,
+        assetTypeIds: [],
+        assetIds: [],
+      });
+      mockSubmitServiceItemRequest.mockResolvedValue(undefined);
+
+      renderWithTheme(<ServiceCatalogItem {...defaultProps} />);
+      fireEvent.submit(screen.getByTestId("item-request-form"));
+
+      await waitFor(() => {
+        expect(mockSubmitServiceItemRequest).toHaveBeenCalled();
+      });
+      expect(mockSubmitServiceItemRequest.mock.calls[0]![1][0]!.value).toBe(
+        "<p>Printer is broken</p>"
+      );
+    });
 
     it("does not pass requesterId or note for a self request", async () => {
       mockSubmitServiceItemRequest.mockResolvedValue(successResponse);
