@@ -16,7 +16,6 @@ const SERIALIZED_KEYS = {
   SORT_ORDER: "sort_order",
   SELECTED_TAB_NAME: "selected_tab_name",
   ORGANIZATION_ID: "organization_id",
-  ORGANIZATION_QUERY: "organization_query",
 } as const;
 
 const SORT_ORDER_ASC = "asc" as const;
@@ -33,9 +32,6 @@ export function deserializeRequestListParams(
   const sortOrder = searchParams.get(SERIALIZED_KEYS.SORT_ORDER);
   const selectedTabName = searchParams.get(SERIALIZED_KEYS.SELECTED_TAB_NAME);
   const organizationId = searchParams.get(SERIALIZED_KEYS.ORGANIZATION_ID);
-  const organizationQuery = searchParams.get(
-    SERIALIZED_KEYS.ORGANIZATION_QUERY
-  );
 
   if (queryParam != null) {
     res.query = queryParam;
@@ -58,7 +54,6 @@ export function deserializeRequestListParams(
       res.selectedTab = {
         name: ORG_REQUESTS_TAB_NAME,
         organizationId: parseInt(organizationId, 10),
-        ...(organizationQuery !== null ? { organizationQuery } : {}),
       };
     } else if (
       selectedTabName === MY_REQUESTS_TAB_NAME ||

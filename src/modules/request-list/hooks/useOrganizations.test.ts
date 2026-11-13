@@ -87,6 +87,7 @@ describe("useOrganizations", () => {
     expect(result.current).toEqual({
       organizations: expected,
       hasMore: false,
+      isLoading: false,
       error: undefined,
     });
   });
@@ -235,6 +236,46 @@ describe("useOrganizations", () => {
     ]);
   });
 
+  test("is loading until the first page has been fetched", async () => {
+    global.fetch = jest.fn().mockResolvedValue(
+      okResponse({
+        organizations: [accessibleOrganization({ id: 1, name: "A" })],
+      })
+    );
+
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useOrganizations(user)
+    );
+
+    expect(result.current.isLoading).toBe(true);
+    expect(result.current.organizations).toEqual([]);
+
+    await waitForNextUpdate();
+
+    expect(result.current.isLoading).toBe(false);
+  });
+
+  test("stays loading while there is no user", () => {
+    global.fetch = jest.fn();
+
+    const { result } = renderHook(() => useOrganizations(undefined));
+
+    expect(result.current.isLoading).toBe(true);
+    expect(global.fetch).not.toHaveBeenCalled();
+  });
+
+  test("stops loading when the request fails", async () => {
+    global.fetch = jest.fn().mockRejectedValue(new Error("Network error"));
+
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useOrganizations(user)
+    );
+    await waitForNextUpdate();
+
+    expect(result.current.isLoading).toBe(false);
+    expect(result.current.error).toEqual(new Error("Network error"));
+  });
+
   test("sets an error when the endpoint responds with an error status", async () => {
     global.fetch = jest.fn().mockResolvedValue({
       ok: false,
@@ -289,6 +330,7 @@ describe("useOrganizations", () => {
     expect(result.current).toEqual({
       organizations: expected,
       hasMore: false,
+      isLoading: false,
       error: undefined,
     });
 

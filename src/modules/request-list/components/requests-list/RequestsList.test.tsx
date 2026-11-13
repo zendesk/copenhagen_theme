@@ -39,13 +39,11 @@ const defaultParams: RequestListParams = {
 };
 
 const push = jest.fn();
-const replace = jest.fn();
 
 const renderComponent = async (params?: Partial<RequestListParams>) => {
   (useParams as jest.Mock).mockReturnValue({
     params: { ...defaultParams, ...params },
     push,
-    replace,
   });
 
   render(
@@ -349,10 +347,7 @@ describe("Filter tabs", () => {
 
     expect(push).toHaveBeenCalledWith({
       page: 1,
-      selectedTab: {
-        name: ORG_REQUESTS_TAB_NAME,
-        organizationId: 2,
-      },
+      selectedTab: { name: ORG_REQUESTS_TAB_NAME, organizationId: 2 },
     });
   });
 
@@ -365,10 +360,7 @@ describe("Filter tabs", () => {
 
     expect(push).toHaveBeenCalledWith({
       page: 1,
-      selectedTab: {
-        name: ORG_REQUESTS_TAB_NAME,
-        organizationId: 1,
-      },
+      selectedTab: { name: ORG_REQUESTS_TAB_NAME, organizationId: 1 },
     });
   });
 });

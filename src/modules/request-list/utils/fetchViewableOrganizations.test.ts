@@ -51,6 +51,46 @@ describe("fetchViewableOrganizations", () => {
     expect(global.fetch).toHaveBeenNthCalledWith(2, "/p2", init);
   });
 
+  test("continues fetching pages until there is no next page", async () => {
+    const fetchMock = jest.fn();
+    for (let n = 1; n <= 4; n++) {
+      fetchMock.mockResolvedValueOnce(
+        page(
+          [{ id: n, name: `R${n}`, view_tickets: false }],
+          n === 4 ? null : `/p${n + 1}`
+        )
+      );
+    }
+    global.fetch = fetchMock;
+
+    expect(await fetchViewableOrganizations("/first")).toEqual({
+      organizations: [],
+      nextPage: null,
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(4);
+    expect(fetchMock).toHaveBeenNthCalledWith(4, "/p4", undefined);
+  });
+
+  test("stops fetching when a page contains a viewable organization", async () => {
+    const fetchMock = jest.fn();
+    for (let n = 1; n <= 3; n++) {
+      fetchMock.mockResolvedValueOnce(
+        page([{ id: n, name: `R${n}`, view_tickets: false }], `/p${n + 1}`)
+      );
+    }
+    fetchMock.mockResolvedValueOnce(
+      page([{ id: 99, name: "Shared", view_tickets: true }], "/more")
+    );
+    global.fetch = fetchMock;
+
+    expect(await fetchViewableOrganizations("/first")).toEqual({
+      organizations: [{ id: 99, name: "Shared", default: false }],
+      nextPage: "/more",
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(4);
+    expect(fetchMock).toHaveBeenNthCalledWith(4, "/p4", undefined);
+  });
+
   test("throws when a page responds with an error status", async () => {
     global.fetch = jest
       .fn()

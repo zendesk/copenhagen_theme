@@ -48,4 +48,30 @@ describe("toOrganizations", () => {
       ["Zeta", false],
     ]);
   });
+
+  test("keeps inherited organizations, whose default is null, in name order", () => {
+    expect(
+      toOrganizations([
+        accessibleOrganization({
+          id: 1,
+          name: "Zeta Inherited",
+          inherited: true,
+          default: null,
+        }),
+        accessibleOrganization({ id: 2, name: "Mid", default: true }),
+        accessibleOrganization({
+          id: 3,
+          name: "Alpha Inherited",
+          inherited: true,
+          default: null,
+        }),
+        accessibleOrganization({ id: 4, name: "Beta", default: null }),
+      ]).map(({ name, default: isDefault }) => [name, isDefault])
+    ).toEqual([
+      ["Alpha Inherited", null],
+      ["Beta", null],
+      ["Mid", true],
+      ["Zeta Inherited", null],
+    ]);
+  });
 });

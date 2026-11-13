@@ -23,7 +23,6 @@ export const DEFAULT_REQUEST_LIST_PARAMS: RequestListParams = {
 export interface UseParamsResult {
   params: RequestListParams;
   push: (newParams: Partial<RequestListParams>) => void;
-  replace: (newParams: Partial<RequestListParams>) => void;
 }
 
 function isFilterValue(value: unknown): value is FilterValue {
@@ -105,7 +104,7 @@ function resolveParamsFromUrl(): RequestListParams {
    persisting the filters to localStorage so they stick across reloads and tabs.
    - Params are resolved from the URL on mount and on back/forward navigation
    - The resolved params are written back to the URL once on mount (replaceState)
-   - Push and replace keep params in the URL and persist the current filters */
+   - Every push updates the URL (pushState) and persists the current filters */
 export function useParams(): UseParamsResult {
   const [params, setParams] = useState<RequestListParams>(resolveParamsFromUrl);
 
@@ -113,27 +112,14 @@ export function useParams(): UseParamsResult {
   const latestParams = useRef(params);
   latestParams.current = params;
 
-  const updateParams = useCallback(
-    (newParams: Partial<RequestListParams>, replaceUrl: boolean) => {
-      const mergedParams = { ...latestParams.current, ...newParams };
+  const push = useCallback((newParams: Partial<RequestListParams>) => {
+    const mergedParams = { ...latestParams.current, ...newParams };
 
-      latestParams.current = mergedParams;
-      setParams(mergedParams);
-      writeUrl(serializeRequestListParams(mergedParams), replaceUrl);
-      writeStoredFilters(mergedParams.filters);
-    },
-    []
-  );
-
-  const push = useCallback(
-    (newParams: Partial<RequestListParams>) => updateParams(newParams, false),
-    [updateParams]
-  );
-
-  const replace = useCallback(
-    (newParams: Partial<RequestListParams>) => updateParams(newParams, true),
-    [updateParams]
-  );
+    latestParams.current = mergedParams;
+    setParams(mergedParams);
+    writeUrl(serializeRequestListParams(mergedParams), false);
+    writeStoredFilters(mergedParams.filters);
+  }, []);
 
   useEffect(() => {
     writeUrl(serializeRequestListParams(latestParams.current), true);
@@ -150,5 +136,5 @@ export function useParams(): UseParamsResult {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  return { params, push, replace };
+  return { params, push };
 }

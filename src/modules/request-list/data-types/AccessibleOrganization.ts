@@ -1,4 +1,5 @@
 // Shape of an organization returned by GET /api/v2/organizations/accessible
+// and GET /api/v2/organizations/accessible/{id}
 export interface AccessibleOrganization {
   id: number;
   name: string;
@@ -18,4 +19,9 @@ export interface AccessibleOrganizationsResponse {
   count: number;
   next_page: string | null;
   previous_page: string | null;
+}
+
+// GET /api/v2/organizations/accessible/{id} returns a single organization.
+export interface AccessibleOrganizationResponse {
+  organization: AccessibleOrganization;
 }

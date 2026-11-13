@@ -1,19 +1,18 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Combobox, Field, Option } from "@zendeskgarden/react-dropdowns";
 import type { Organization } from "../../../data-types";
 import { useOrganizationSearch } from "../../../hooks/useOrganizationSearch";
+import { useAccessibleOrganization } from "../../../hooks/useAccessibleOrganization";
 
 interface OrganizationsDropdownProps {
+  // The first page of accessible organizations
   organizations: Organization[];
+  // True while that first page is still loading
+  isLoadingOrganizations?: boolean;
   currentOrganizationId: number;
-  currentOrganizationQuery?: string;
-  onOrganizationSelected: (
-    organizationId: number,
-    organizationQuery?: string
-  ) => void;
-  onOrganizationQueryChanged?: (organizationQuery: string) => void;
+  onOrganizationSelected: (organizationId: number) => void;
 }
 
 const StyledField = styled(Field)`
@@ -22,80 +21,48 @@ const StyledField = styled(Field)`
 
 export default function OrganizationsDropdown({
   organizations,
+  isLoadingOrganizations = false,
   currentOrganizationId,
-  currentOrganizationQuery,
   onOrganizationSelected,
-  onOrganizationQueryChanged,
 }: OrganizationsDropdownProps): JSX.Element {
   const { t } = useTranslation();
 
   const { searchResults, isSearching, search, clearSearch } =
     useOrganizationSearch();
 
-  const [filterQuery, setFilterQuery] = useState(
-    currentOrganizationQuery ?? ""
-  );
-  const inputWasEditedRef = useRef(false);
-  const selectedOrganizationIdRef = useRef(currentOrganizationId);
+  // The text typed in the input. Typing stays local to the dropdown: it
+  // searches organizations but never changes the selection or the URL.
+  const [filterQuery, setFilterQuery] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
-  const [inputValue, setInputValue] = useState(() => {
-    const selectedOrganization = organizations.find(
-      (organization) => organization.id === currentOrganizationId
-    );
-    return currentOrganizationQuery ?? selectedOrganization?.name ?? "";
-  });
+  // An organization picked from search results may not be in the first page,
+  // so it is kept to show its name without looking it up again.
+  const [pickedOrganization, setPickedOrganization] =
+    useState<Organization | null>(null);
 
-  // An organization picked from search results may not be in the loaded
-  // first page, so its name is remembered when it is selected.
-  const pickedOrganizationRef = useRef<Organization | null>(null);
-
-  // Keep the search input in sync with the URL while preserving the selected
-  // organization's label when no search is active.
-  useEffect(() => {
-    if (selectedOrganizationIdRef.current !== currentOrganizationId) {
-      selectedOrganizationIdRef.current = currentOrganizationId;
-      inputWasEditedRef.current = false;
-    }
-
-    if (currentOrganizationQuery) {
-      if (!inputWasEditedRef.current) {
-        setInputValue(currentOrganizationQuery);
-      }
-      return;
-    }
-
-    const selectedOrganization =
-      organizations.find(
-        (organization) => organization.id === currentOrganizationId
-      ) ??
-      (pickedOrganizationRef.current?.id === currentOrganizationId
-        ? pickedOrganizationRef.current
-        : undefined);
-    if (!inputWasEditedRef.current) {
-      setInputValue(selectedOrganization?.name ?? "");
-    }
-  }, [organizations, currentOrganizationId, currentOrganizationQuery]);
-
-  // Re-run the same server search when a URL with an active query is opened.
-  useEffect(() => {
-    const query = currentOrganizationQuery ?? "";
-    setFilterQuery(query);
-    if (query) {
-      setInputValue(query);
-      search(query);
-    } else {
-      clearSearch();
-    }
-  }, [currentOrganizationQuery, search, clearSearch]);
-
-  const normalizedQuery = filterQuery.trim().toLowerCase();
-  const selectedOrganization =
+  const knownSelectedOrganization =
     organizations.find(
       (organization) => organization.id === currentOrganizationId
     ) ??
-    (pickedOrganizationRef.current?.id === currentOrganizationId
-      ? pickedOrganizationRef.current
+    (pickedOrganization?.id === currentOrganizationId
+      ? pickedOrganization
       : undefined);
+
+  // Any other selection (e.g. an organization id from a link) is looked up by
+  // id, once the first page has loaded and does not contain it.
+  const { organization: fetchedOrganization } = useAccessibleOrganization(
+    knownSelectedOrganization || isLoadingOrganizations
+      ? undefined
+      : currentOrganizationId
+  );
+
+  const selectedOrganization =
+    knownSelectedOrganization ?? fetchedOrganization ?? undefined;
+
+  const inputValue = isEditing ? filterQuery : selectedOrganization?.name ?? "";
+
+  // The unfiltered list keeps the selected organization even when it is not
+  // in the first page.
   const availableOrganizations =
     selectedOrganization &&
     !organizations.some(
@@ -109,57 +76,65 @@ export default function OrganizationsDropdown({
   // Use the server's name matching for every account size so the results do
   // not change depending on whether the list fits on one page.
   const displayedOrganizations =
-    normalizedQuery === "" ? availableOrganizations : searchResults ?? [];
+    filterQuery.trim() === "" ? availableOrganizations : searchResults ?? [];
+
+  const stopEditing = useCallback(() => {
+    setIsEditing(false);
+    setFilterQuery("");
+    clearSearch();
+  }, [clearSearch]);
 
   const handleChange = useCallback(
     (changes: {
       selectionValue?: string | string[] | null;
       inputValue?: string;
+      isExpanded?: boolean;
+      type?: string;
     }) => {
-      const { inputValue, selectionValue } = changes;
-      const hasSelection =
-        selectionValue !== undefined && selectionValue !== null;
+      const { inputValue, selectionValue, isExpanded, type } = changes;
 
-      if (inputValue !== undefined) {
-        setInputValue(inputValue);
-      }
-
-      if (hasSelection) {
-        inputWasEditedRef.current = false;
-
+      if (selectionValue !== undefined && selectionValue !== null) {
         // Handle both string and string[] types for selectionValue
         const value = Array.isArray(selectionValue)
           ? selectionValue[0]
           : selectionValue;
 
+        stopEditing();
+
         if (typeof value === "string") {
           const organizationId = Number(value);
-          pickedOrganizationRef.current =
-            displayedOrganizations.find(
-              (organization) => organization.id === organizationId
-            ) ?? null;
-          const organizationQuery = filterQuery.trim();
-          setInputValue(
-            organizationQuery || pickedOrganizationRef.current?.name || ""
+          const organization = displayedOrganizations.find(
+            ({ id }) => id === organizationId
           );
-          onOrganizationSelected(
-            organizationId,
-            organizationQuery || undefined
-          );
+          if (organization) {
+            setPickedOrganization(organization);
+          }
+          if (organizationId !== currentOrganizationId) {
+            onOrganizationSelected(organizationId);
+          }
         }
-      } else if (inputValue !== undefined) {
-        inputWasEditedRef.current = true;
+        return;
+      }
+
+      if (inputValue !== undefined) {
+        setIsEditing(true);
         setFilterQuery(inputValue);
         search(inputValue);
-        onOrganizationQueryChanged?.(inputValue);
+      }
+
+      // Closing the list without picking an option (Escape, or focus leaving
+      // the field) shows the selected name again. Clicking the input also
+      // closes the list, but keeps the typed text.
+      if (isExpanded === false && type !== "input:click") {
+        stopEditing();
       }
     },
     [
       search,
+      stopEditing,
       onOrganizationSelected,
-      onOrganizationQueryChanged,
       displayedOrganizations,
-      filterQuery,
+      currentOrganizationId,
     ]
   );
 

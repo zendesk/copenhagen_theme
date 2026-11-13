@@ -18,7 +18,6 @@ export interface CcdRequestsTab {
 export interface OrgRequestsTab {
   name: typeof ORG_REQUESTS_TAB_NAME;
   organizationId: number;
-  organizationQuery?: string;
 }
 
 export type SelectedTab = MyRequestsTab | CcdRequestsTab | OrgRequestsTab;

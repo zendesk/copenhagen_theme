@@ -5,10 +5,14 @@ import { fetchViewableOrganizations } from "../utils/fetchViewableOrganizations"
 export function useOrganizations(user?: User): {
   organizations: Organization[];
   hasMore: boolean;
+  // True until the first page has been fetched (or failed), so callers can tell
+  // "not loaded yet" apart from "not in the loaded page".
+  isLoading: boolean;
   error?: Error;
 } {
   const [organizations, setOrganizations] = useState<Organization[]>([]);
   const [hasMore, setHasMore] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | undefined>();
 
   // Only the first page is fetched, unless it has no organization the user
@@ -18,6 +22,7 @@ export function useOrganizations(user?: User): {
   // dropdown searches the endpoint by name instead of walking every page.
   async function fetchOrganizations() {
     setError(undefined);
+    setIsLoading(true);
     try {
       const { organizations, nextPage } = await fetchViewableOrganizations(
         "/api/v2/organizations/accessible"
@@ -31,6 +36,8 @@ export function useOrganizations(user?: User): {
       setOrganizations([]);
       setHasMore(false);
       setError(error as Error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -40,5 +47,5 @@ export function useOrganizations(user?: User): {
     }
   }, [user]);
 
-  return { organizations, hasMore, error };
+  return { organizations, hasMore, isLoading, error };
 }

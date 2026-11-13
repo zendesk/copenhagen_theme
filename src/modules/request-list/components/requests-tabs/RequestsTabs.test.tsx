@@ -115,6 +115,30 @@ test("<RequestsTabs /> selects the default organization when switching to 'Organ
   });
 });
 
+test("<RequestsTabs /> selects the first organization when none in the loaded page is the default", () => {
+  const onTabSelected = jest.fn();
+
+  render(
+    <ThemeProvider>
+      <RequestsTabs
+        organizations={[
+          { id: 3, name: "Alpha Inherited", default: null },
+          { id: 4, name: "Beta", default: null },
+        ]}
+        selectedTab={{ name: MY_REQUESTS_TAB_NAME }}
+        onTabSelected={onTabSelected}
+      />
+    </ThemeProvider>
+  );
+
+  fireEvent.click(screen.getByRole("tab", { name: "Organizational requests" }));
+
+  expect(onTabSelected).toHaveBeenCalledWith({
+    name: ORG_REQUESTS_TAB_NAME,
+    organizationId: 3,
+  });
+});
+
 test("<RequestsTabs /> does not render the 'Organizational requests' tab if it's not available", () => {
   const onTabSelected = jest.fn();
 
