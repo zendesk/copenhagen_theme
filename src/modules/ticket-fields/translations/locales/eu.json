@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "Askatu fitxategiak hemen",
   "cph-theme-ticket-fields.attachments.error-separator": ";",
   "cph-theme-ticket-fields.attachments.file": "Fitxategia: {{fileName}}, sakatu ezabatu kentzeko",
+  "cph-theme-ticket-fields.attachments.file-removed": "{{fileName}} kendu da",
   "cph-theme-ticket-fields.attachments.remove-file": "Kendu fitxategia",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Kendu fitxategia: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "Gelditu igoera",

@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "Deishar anar los fichièrs aicí",
   "cph-theme-ticket-fields.attachments.error-separator": ";",
   "cph-theme-ticket-fields.attachments.file": "Fichièr : {{fileName}}, quichatz sus Eliminar per lo tirar",
+  "cph-theme-ticket-fields.attachments.file-removed": "Tirat {{fileName}}",
   "cph-theme-ticket-fields.attachments.remove-file": "Tirar lo fichièr",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Tirar lo fichièr : {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "Arrestar lo cargament",

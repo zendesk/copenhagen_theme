@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "أسقِط الملفات هنا",
   "cph-theme-ticket-fields.attachments.error-separator": "؛ ",
   "cph-theme-ticket-fields.attachments.file": "الملف: {{fileName}}، اضغط على حذف لإزالته",
+  "cph-theme-ticket-fields.attachments.file-removed": "تمت إزالة {{fileName}}",
   "cph-theme-ticket-fields.attachments.remove-file": "إزالة الملف",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "إزالة الملف: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "إيقاف التحميل",

@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "এখানে ফাইল ড্রপ করুন",
   "cph-theme-ticket-fields.attachments.error-separator": "; ",
   "cph-theme-ticket-fields.attachments.file": "ফাইল: {{fileName}}, সরিয়ে দিতে ‘মুছুন’ টিপুন",
+  "cph-theme-ticket-fields.attachments.file-removed": "Removed {{fileName}}",
   "cph-theme-ticket-fields.attachments.remove-file": "ফাইল সরিয়ে দিন",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "ফাইল সরিয়ে দিন: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "আপলোড বন্ধ করুন",

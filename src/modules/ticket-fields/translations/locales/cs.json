@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "Sem přetáhněte soubory",
   "cph-theme-ticket-fields.attachments.error-separator": "; ",
   "cph-theme-ticket-fields.attachments.file": "Soubor: {{fileName}}, stisknutím klávesy delete jej smažete",
+  "cph-theme-ticket-fields.attachments.file-removed": "Odebráno: {{fileName}}",
   "cph-theme-ticket-fields.attachments.remove-file": "Odstranit soubor",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Odstranit soubor: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "Zastavit upload",
