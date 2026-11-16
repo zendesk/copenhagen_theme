@@ -1,3 +1,10 @@
+## [4.57.1](https://github.com/zendesk/copenhagen_theme/compare/v4.57.0...v4.57.1) (2026-11-16)
+
+
+### Bug Fixes
+
+* **a11y:** make HC attachment remove controls keyboard accessible ([d2c1941](https://github.com/zendesk/copenhagen_theme/commit/d2c1941db8ed1a51dd7cdddbfa9b1a88bf33bb9e))
+
 # [4.57.0](https://github.com/zendesk/copenhagen_theme/compare/v4.56.0...v4.57.0) (2026-11-16)
 
 
