@@ -1,4 +1,8 @@
 /***** Base *****/
+:root {
+  --hc-primary-color: $brand_color;
+}
+
 * {
   box-sizing: border-box;
 }

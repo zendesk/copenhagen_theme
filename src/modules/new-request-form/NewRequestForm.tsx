@@ -235,6 +235,7 @@ export function NewRequestForm({
                   field={field}
                   hasWysiwyg={wysiwyg}
                   baseLocale={baseLocale}
+                  locale={locale}
                   hasAtMentions={hasAtMentions}
                   userRole={userRole}
                   brandId={brandId}
@@ -253,6 +254,7 @@ export function NewRequestForm({
                 key={field.name}
                 field={field}
                 baseLocale={baseLocale}
+                locale={locale}
                 hasAtMentions={hasAtMentions}
                 userRole={userRole}
                 userId={userId}
