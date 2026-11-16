@@ -1,3 +1,10 @@
+# [4.57.0](https://github.com/zendesk/copenhagen_theme/compare/v4.56.0...v4.57.0) (2026-11-16)
+
+
+### Features
+
+* add data-test-id to user avatar in desktop header ([5985922](https://github.com/zendesk/copenhagen_theme/commit/59859224090f79253e5f9c1416ba4cbc2170d24f)), closes [zendesk/help_center#35149](https://github.com/zendesk/help_center/issues/35149)
+
 # [4.56.0](https://github.com/zendesk/copenhagen_theme/compare/v4.55.1...v4.56.0) (2026-11-13)
 
 
