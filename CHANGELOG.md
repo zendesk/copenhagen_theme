@@ -1,3 +1,10 @@
+## [4.57.2](https://github.com/zendesk/copenhagen_theme/compare/v4.57.1...v4.57.2) (2026-11-18)
+
+
+### Bug Fixes
+
+* upgrade help center editor to 2.0.1 ([d9467fd](https://github.com/zendesk/copenhagen_theme/commit/d9467fdb93573d97fd6155b79176a6546ac5cb02))
+
 ## [4.57.1](https://github.com/zendesk/copenhagen_theme/compare/v4.57.0...v4.57.1) (2026-11-16)
 
 
