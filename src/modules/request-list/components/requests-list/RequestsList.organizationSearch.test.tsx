@@ -13,13 +13,7 @@ import { useOrganizations } from "../../hooks/useOrganizations";
 import { useTicketFields } from "../../hooks/useTicketFields";
 import { useShowManyUsers } from "../../hooks/useShowManyUsers";
 import localStorage from "../../utils/localStorage";
-import {
-  organizations,
-  requests,
-  requestUsers,
-  ticketFields,
-  user,
-} from "../../apiMocks";
+import { organizations, user } from "../../apiMocks";
 
 const REQUESTS_URL = "/api/v2/requests/search.json";
 const SEARCH_URL = "/api/v2/organizations/accessible?name=";
@@ -61,7 +55,7 @@ beforeEach(() => {
     organizations,
     isLoading: false,
   });
-  (useTicketFields as jest.Mock).mockReturnValue({ ticketFields });
+  (useTicketFields as jest.Mock).mockReturnValue({ ticketFields: [] });
   (useShowManyUsers as jest.Mock).mockReturnValue({
     users: [],
     isLoading: false,
@@ -73,9 +67,12 @@ beforeEach(() => {
         ok: true,
         json: () =>
           Promise.resolve({
-            requests,
-            users: requestUsers,
-            count: requests.length,
+            // These tests verify request parameters and navigation. Table
+            // rendering is covered in RequestsList.test.tsx; keeping this
+            // response empty avoids unrelated dropdown and table layout work.
+            requests: [],
+            users: [],
+            count: 0,
             next_page: null,
             previous_page: null,
           }),

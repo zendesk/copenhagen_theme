@@ -1,3 +1,4 @@
+import type { OrganizationPagination } from "../../hooks/useOrganizations";
 import styled from "styled-components";
 import { Span } from "@zendeskgarden/react-typography";
 import { useTranslation } from "react-i18next";
@@ -32,6 +33,7 @@ interface RequestsToolbarProps {
   requestsCount: number;
   requestsPerPage: number;
   organizations: Organization[];
+  organizationPagination?: OrganizationPagination;
   isLoadingOrganizations?: boolean;
   user?: User;
   ticketFields: TicketField[];
@@ -138,6 +140,7 @@ export default function RequestsToolbar({
   filters,
   onFiltersChanged,
   organizations,
+  organizationPagination,
   isLoadingOrganizations,
   selectedTab,
   onOrganizationSelected,
@@ -209,6 +212,7 @@ export default function RequestsToolbar({
             {hasOrganizations && user && (
               <Mobile>
                 <OrganizationsManagement
+                  organizationPagination={organizationPagination}
                   organizations={organizations}
                   user={user}
                 />
@@ -229,6 +233,7 @@ export default function RequestsToolbar({
           <Desktop>
             {isOrganizationTab && hasOrganizations && user && (
               <OrganizationsManagement
+                organizationPagination={organizationPagination}
                 organizations={organizations}
                 user={user}
               />
@@ -250,6 +255,9 @@ export default function RequestsToolbar({
           filterValuesMap={filters}
           onFiltersChanged={onFiltersChanged}
           organizations={isOrganizationTab ? [] : organizations}
+          organizationPagination={
+            isOrganizationTab ? undefined : organizationPagination
+          }
           customStatusesEnabled={customStatusesEnabled}
           customStatusOptions={customStatusOptions}
         />

@@ -4,7 +4,7 @@ import type {
   AccessibleOrganization,
   AccessibleOrganizationsResponse,
 } from "../data-types";
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook, act } from "@testing-library/react-hooks";
 import { useOrganizations } from "./useOrganizations";
 
 const user: User = {
@@ -84,7 +84,7 @@ describe("useOrganizations", () => {
       { id: 30, name: "Inherited", default: false },
     ];
 
-    expect(result.current).toEqual({
+    expect(result.current).toMatchObject({
       organizations: expected,
       hasMore: false,
       isLoading: false,
@@ -327,7 +327,7 @@ describe("useOrganizations", () => {
     const expected: Organization[] = [
       { id: 10, name: "Default", default: true },
     ];
-    expect(result.current).toEqual({
+    expect(result.current).toMatchObject({
       organizations: expected,
       hasMore: false,
       isLoading: false,
@@ -344,5 +344,75 @@ describe("useOrganizations", () => {
     expect(result.current.organizations).toEqual([]);
     expect(result.current.hasMore).toBe(false);
     expect(result.current.error).toEqual(new Error("Network error"));
+  });
+
+  test("loads additional pages on demand, deduplicates organizations, and stops at the end", async () => {
+    global.fetch = jest
+      .fn()
+      .mockResolvedValueOnce(
+        okResponse({
+          organizations: [accessibleOrganization({ id: 1, name: "Acme" })],
+          next_page: "/api/v2/organizations/accessible?page=2",
+        })
+      )
+      .mockResolvedValueOnce(
+        okResponse({
+          organizations: [
+            accessibleOrganization({ id: 1, name: "Acme" }),
+            accessibleOrganization({ id: 2, name: "Zebra" }),
+          ],
+        })
+      );
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useOrganizations(user)
+    );
+    await waitForNextUpdate();
+    expect(fetch).toHaveBeenCalledTimes(1);
+    await act(async () => {
+      await result.current.loadMore();
+    });
+    expect(fetch).toHaveBeenLastCalledWith(
+      "/api/v2/organizations/accessible?page=2",
+      expect.objectContaining({ signal: expect.any(AbortSignal) })
+    );
+    expect(result.current.organizations.map(({ id }) => id)).toEqual([1, 2]);
+    expect(result.current.hasMore).toBe(false);
+    await act(async () => {
+      await result.current.loadMore();
+    });
+    expect(fetch).toHaveBeenCalledTimes(2);
+  });
+
+  test("keeps loaded organizations and retries the same page after a pagination failure", async () => {
+    global.fetch = jest
+      .fn()
+      .mockResolvedValueOnce(
+        okResponse({
+          organizations: [accessibleOrganization({ id: 1, name: "Acme" })],
+          next_page: "/api/v2/organizations/accessible?page=2",
+        })
+      )
+      .mockRejectedValueOnce(new Error("network"))
+      .mockResolvedValueOnce(
+        okResponse({
+          organizations: [accessibleOrganization({ id: 2, name: "Zebra" })],
+        })
+      );
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useOrganizations(user)
+    );
+    await waitForNextUpdate();
+    await act(async () => {
+      await result.current.loadMore();
+    });
+    expect(result.current.organizations).toHaveLength(1);
+    expect(result.current.hasMore).toBe(true);
+    expect(result.current.error).toEqual(new Error("network"));
+    await act(async () => {
+      await result.current.loadMore();
+    });
+    expect(result.current.organizations).toHaveLength(2);
+    expect(result.current.error).toBeUndefined();
+    expect(result.current.isLoadingMore).toBe(false);
   });
 });

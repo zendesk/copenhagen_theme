@@ -1,51 +1,102 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { User, Organization } from "../data-types";
 import { fetchViewableOrganizations } from "../utils/fetchViewableOrganizations";
+import { mergeOrganizations } from "../utils/mergeOrganizations";
+
+export interface OrganizationPagination {
+  hasMore: boolean;
+  isLoading: boolean;
+  error?: Error;
+  loadMore: () => void;
+}
 
 export function useOrganizations(user?: User): {
   organizations: Organization[];
   hasMore: boolean;
+  loadMore: () => Promise<void>;
+  isLoadingMore: boolean;
   // True until the first page has been fetched (or failed), so callers can tell
   // "not loaded yet" apart from "not in the loaded page".
   isLoading: boolean;
   error?: Error;
 } {
   const [organizations, setOrganizations] = useState<Organization[]>([]);
-  const [hasMore, setHasMore] = useState(false);
+  const [nextPage, setNextPage] = useState<string | null>(null);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const pageController = useRef<AbortController | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | undefined>();
 
-  // Only the first page is fetched, unless it has no organization the user
-  // can view tickets for. Restricted organizations are filtered out on the
-  // client, so in that case the next pages are fetched until one has a viewable
-  // organization or there are no more pages. When more pages exist, the
-  // dropdown searches the endpoint by name instead of walking every page.
-  async function fetchOrganizations() {
+  async function loadMore() {
+    if (!nextPage || pageController.current) return;
+    const controller = new AbortController();
+    pageController.current = controller;
+    setIsLoadingMore(true);
     setError(undefined);
-    setIsLoading(true);
     try {
-      const { organizations, nextPage } = await fetchViewableOrganizations(
-        "/api/v2/organizations/accessible"
-      );
-
-      setOrganizations(organizations);
-      setHasMore(nextPage !== null);
+      const page = await fetchViewableOrganizations(nextPage, {
+        signal: controller.signal,
+      });
+      if (!controller.signal.aborted) {
+        setOrganizations((current) =>
+          mergeOrganizations(current, page.organizations)
+        );
+        setNextPage(page.nextPage);
+      }
     } catch (error) {
-      // Don't leave the previous fetch's results and pagination state
-      // in place when the current one fails.
-      setOrganizations([]);
-      setHasMore(false);
-      setError(error as Error);
+      if (!controller.signal.aborted) setError(error as Error);
     } finally {
-      setIsLoading(false);
+      if (pageController.current === controller) {
+        pageController.current = null;
+        setIsLoadingMore(false);
+      }
     }
   }
 
   useEffect(() => {
+    let active = true;
+    async function fetchOrganizations() {
+      setError(undefined);
+      setIsLoading(true);
+      try {
+        const { organizations, nextPage } = await fetchViewableOrganizations(
+          "/api/v2/organizations/accessible"
+        );
+
+        if (active) {
+          setOrganizations(organizations);
+          setNextPage(nextPage);
+        }
+      } catch (error) {
+        // Don't leave the previous fetch's results and pagination state
+        // in place when the current one fails.
+        if (active) {
+          setOrganizations([]);
+          setNextPage(null);
+          setError(error as Error);
+        }
+      } finally {
+        if (active) setIsLoading(false);
+      }
+    }
+    setNextPage(null);
+    setIsLoadingMore(false);
     if (user) {
       fetchOrganizations();
     }
+    return () => {
+      active = false;
+      pageController.current?.abort();
+      pageController.current = null;
+    };
   }, [user]);
 
-  return { organizations, hasMore, isLoading, error };
+  return {
+    organizations,
+    hasMore: nextPage !== null,
+    isLoading,
+    error,
+    loadMore,
+    isLoadingMore,
+  };
 }

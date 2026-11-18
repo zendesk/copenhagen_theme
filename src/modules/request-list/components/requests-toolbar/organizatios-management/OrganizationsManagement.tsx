@@ -1,3 +1,4 @@
+import type { OrganizationPagination } from "../../../hooks/useOrganizations";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@zendeskgarden/react-buttons";
@@ -6,11 +7,13 @@ import FollowOrganizationsModal from "./FollowOrganizationsModal";
 
 interface OrganizationsManagementProps {
   organizations: Organization[];
+  organizationPagination?: OrganizationPagination;
   user: User;
 }
 
 export default function OrganizationsManagement({
   organizations,
+  organizationPagination,
   user,
 }: OrganizationsManagementProps): JSX.Element {
   const { t } = useTranslation();
@@ -28,6 +31,7 @@ export default function OrganizationsManagement({
       </Button>
       {isOpen && (
         <FollowOrganizationsModal
+          organizationPagination={organizationPagination}
           organizations={organizations}
           user={user}
           onClose={() => setIsOpen(false)}
