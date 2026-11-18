@@ -15,6 +15,7 @@ import { TextArea } from "./fields/textarea/TextArea";
 interface RequestFormFieldProps {
   field: TicketFieldObject;
   baseLocale: string;
+  locale: string;
   hasAtMentions: boolean;
   userRole: string;
   userId: number | null;
@@ -35,6 +36,7 @@ interface RequestFormFieldProps {
 export const RequestFormField = ({
   field,
   baseLocale,
+  locale,
   hasAtMentions,
   userRole,
   userId,
@@ -74,6 +76,7 @@ export const RequestFormField = ({
           field={field}
           hasWysiwyg={false}
           baseLocale={baseLocale}
+          locale={locale}
           hasAtMentions={hasAtMentions}
           userRole={userRole}
           brandId={brandId}

@@ -4,6 +4,7 @@ import { notify } from "../../../shared";
 interface UseWysiwygOptions {
   hasWysiwyg: boolean;
   baseLocale: string;
+  locale: string;
   hasAtMentions: boolean;
   userRole: string;
   brandId: number;
@@ -12,6 +13,7 @@ interface UseWysiwygOptions {
 export function useWysiwyg({
   hasWysiwyg,
   baseLocale,
+  locale,
   hasAtMentions,
   userRole,
   brandId,
@@ -31,6 +33,7 @@ export function useWysiwyg({
           userRole,
           brandId,
           baseLocale,
+          locale,
         });
 
         const notifications = editor.plugins.get("Notification");
@@ -60,6 +63,6 @@ export function useWysiwyg({
         );
       }
     },
-    [hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId]
+    [hasWysiwyg, baseLocale, locale, hasAtMentions, userRole, brandId]
   );
 }
