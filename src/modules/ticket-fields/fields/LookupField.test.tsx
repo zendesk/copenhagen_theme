@@ -542,6 +542,44 @@ describe("LookupField when the requester changes", () => {
     expect(document.querySelector('input[name="test_lookup"]')).toHaveValue("");
   });
 
+  test("keeps the cleared selection when the requester switches A -> B -> A while the initial record fetch is in flight", async () => {
+    let resolveFetch: (value: unknown) => void = () => {};
+    (globalThis.fetch as jest.Mock) = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          resolveFetch = resolve;
+        })
+    );
+    const onChange = jest.fn();
+    const { rerender } = render(renderField(onChange, 1));
+
+    await act(async () => {
+      rerender(renderField(onChange, 2));
+    });
+    await act(async () => {
+      rerender(renderField(onChange, 1));
+    });
+
+    await waitFor(() => expect(onChange).toHaveBeenCalledWith(""));
+
+    await act(async () => {
+      resolveFetch({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            custom_object_record: {
+              name: "Asset One",
+              id: "rec-1",
+              custom_object_fields: {},
+            },
+          }),
+      });
+    });
+
+    expect(onChange).toHaveBeenLastCalledWith("");
+    expect(document.querySelector('input[name="test_lookup"]')).toHaveValue("");
+  });
+
   test("refetches options for the new requester when focused while it changes", async () => {
     const onChange = jest.fn();
     const { rerender } = render(renderField(onChange, 1));
