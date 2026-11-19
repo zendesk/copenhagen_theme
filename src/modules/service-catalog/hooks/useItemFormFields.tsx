@@ -228,18 +228,8 @@ export function useItemFormFields(
     useState<TicketFieldObject | null>(null);
   const [error, setError] = useState<unknown>(null);
   const [isRequestFieldsLoading, setIsRequestFieldsLoading] = useState(false);
-  const [assetConfig, setAssetConfig] = useState<AssetConfig>({
-    assetTypeIds: [],
-    assetIds: [],
-    isAssetTypeHidden: false,
-    assetTypeHiddenValue: "",
-    assetTypeIsRequired: false,
-    assetIsRequired: false,
-  });
 
-  // Option details are embedded on the item response, so the asset config can
-  // be derived synchronously — no separate option-record fetches.
-  const assetConfigFromItem = useMemo(
+  const assetConfig = useMemo(
     () =>
       processAssetConfig(
         serviceCatalogItem?.asset_type_option,
@@ -276,15 +266,13 @@ export function useItemFormFields(
           endUserConditions,
         } = ticketFieldsResult;
 
-        const processedAssetConfig = assetConfigFromItem;
-        setAssetConfig(processedAssetConfig);
         setAssociatedLookupField(associatedLookupField);
         setCategoryLookupField(categoryLookupField);
         setEndUserConditions(endUserConditions);
 
         const enrichedFields = enrichFieldsWithAssetConfig(
           requestFields,
-          processedAssetConfig
+          assetConfig
         );
         const prefilledFields = applyPrefillToFields(enrichedFields, prefill);
         setAllRequestFields(prefilledFields);
@@ -304,7 +292,7 @@ export function useItemFormFields(
     return () => {
       alive = false;
     };
-  }, [baseLocale, serviceCatalogItem?.form_id, assetConfigFromItem, prefill]);
+  }, [baseLocale, serviceCatalogItem?.form_id, assetConfig, prefill]);
 
   const handleChange = useCallback(
     (field: TicketFieldObject, value: TicketFieldObject["value"]) => {

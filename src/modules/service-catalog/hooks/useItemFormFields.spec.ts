@@ -676,4 +676,76 @@ describe("useItemFormFields", () => {
     expect(renderedAssetField?.description).not.toContain("<iframe");
     expect(renderedAssetField?.description).not.toContain("alert");
   });
+
+  it("exposes the derived asset config for a hidden asset type", () => {
+    const itemWithHiddenAssetType: ServiceCatalogItem = {
+      ...serviceCatalogItem,
+      asset_option: {
+        id: "asset-option-id",
+        name: "Asset",
+        description: "Choose an asset",
+        asset_filter_ids: ["asset-1", "asset-2"],
+        is_required: true,
+      },
+      asset_type_option: {
+        id: "asset-type-option-id",
+        name: "Asset type",
+        description: "Choose a type",
+        asset_type_ids: ["type-1", "type-2"],
+        is_required: true,
+        is_hidden: true,
+      },
+    };
+
+    const formResponse = {
+      ticket_form: {
+        id: 1,
+        ticket_field_ids: [1, 2],
+        active: true,
+      },
+    };
+
+    const ticketFieldResponse = {
+      ticket_fields: [textField, lookupField],
+    };
+
+    (globalThis.fetch as jest.Mock) = jest.fn((url) => {
+      return Promise.resolve({
+        json: () =>
+          Promise.resolve(
+            url.includes("/api/v2/ticket_forms/form-1")
+              ? formResponse
+              : url.includes("/api/v2/ticket_fields?locale=en-us")
+              ? ticketFieldResponse
+              : {}
+          ),
+        status: 200,
+        ok: true,
+      });
+    });
+
+    const { result } = renderHook(() =>
+      useItemFormFields(itemWithHiddenAssetType, baseLocale)
+    );
+
+    expect(result.current.isAssetTypeHidden).toBe(true);
+    expect(result.current.assetTypeHiddenValue).toBe("type-1");
+    expect(result.current.assetTypeIds).toEqual(["type-1", "type-2"]);
+    expect(result.current.assetIds).toEqual(["asset-1", "asset-2"]);
+  });
+
+  it("exposes the derived asset config with empty defaults when the item has no options", () => {
+    (globalThis.fetch as jest.Mock) = jest.fn(() =>
+      Promise.resolve({ status: 500, ok: false })
+    );
+
+    const { result } = renderHook(() =>
+      useItemFormFields(serviceCatalogItem, baseLocale)
+    );
+
+    expect(result.current.isAssetTypeHidden).toBe(false);
+    expect(result.current.assetTypeHiddenValue).toBe("");
+    expect(result.current.assetTypeIds).toEqual([]);
+    expect(result.current.assetIds).toEqual([]);
+  });
 });
