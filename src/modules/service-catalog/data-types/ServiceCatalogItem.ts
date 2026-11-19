@@ -44,3 +44,13 @@ export interface ServiceCatalogItem {
   asset_type_option?: AssetTypeOption;
   attachment_option?: AttachmentOption;
 }
+
+// The search endpoint passes Classic's response through unshaped: list items
+// carry ticket_form_id (not form_id) and raw option objects, so they don't
+// satisfy ServiceCatalogItem. Only the fields the list consumes are typed.
+export interface ServiceCatalogListItem {
+  id: string;
+  name: string;
+  description: string | null;
+  thumbnail_url: string | null;
+}
