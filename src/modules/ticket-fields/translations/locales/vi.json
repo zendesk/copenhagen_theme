@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "Thả tập tin vào đây",
   "cph-theme-ticket-fields.attachments.error-separator": "; ",
   "cph-theme-ticket-fields.attachments.file": "Tập tin: {{fileName}}, nhấn xóa để xóa",
+  "cph-theme-ticket-fields.attachments.file-removed": "{{fileName}} đã bị xóa",
   "cph-theme-ticket-fields.attachments.remove-file": "Xóa tập tin",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Xóa tập tin: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "Dừng tải lên",

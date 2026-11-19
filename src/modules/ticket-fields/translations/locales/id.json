@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "Letakkan file di sini",
   "cph-theme-ticket-fields.attachments.error-separator": "; ",
   "cph-theme-ticket-fields.attachments.file": "File: {{fileName}}, tekan hapus untuk menghapus",
+  "cph-theme-ticket-fields.attachments.file-removed": "{{fileName}} dihapus",
   "cph-theme-ticket-fields.attachments.remove-file": "Hapus file",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Hapus File: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "Berhenti mengunggah",

@@ -45,6 +45,7 @@ const isAssetField = (field: TicketFieldObject) =>
 export interface ServiceCatalogItemProps {
   serviceCatalogItemId: string;
   baseLocale: string;
+  locale: string;
   hasAtMentions: boolean;
   userRole: string;
   userId: number;
@@ -62,6 +63,7 @@ function getCategoryIdFromUrl(): string | null {
 export function ServiceCatalogItem({
   serviceCatalogItemId,
   baseLocale,
+  locale,
   hasAtMentions,
   userRole,
   organizations,
@@ -457,6 +459,7 @@ export function ServiceCatalogItem({
           isRequestFieldsLoading={isRequestFieldsLoading}
           serviceCatalogItem={serviceCatalogItem}
           baseLocale={baseLocale}
+          locale={locale}
           hasAtMentions={hasAtMentions}
           userRole={userRole}
           requesterId={requesterUserId}

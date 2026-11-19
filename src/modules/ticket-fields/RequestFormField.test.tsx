@@ -34,6 +34,7 @@ const userLookupField: TicketFieldObject = {
 const baseProps = {
   field: lookupField,
   baseLocale: "en-us",
+  locale: "en-us",
   hasAtMentions: false,
   userRole: "end_user",
   userId: 1,

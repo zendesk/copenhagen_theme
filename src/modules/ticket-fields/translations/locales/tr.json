@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "Dosyaları buraya bırakın",
   "cph-theme-ticket-fields.attachments.error-separator": "; ",
   "cph-theme-ticket-fields.attachments.file": "Dosya:{{fileName}}, kaldırmak için Sil tuşuna basın",
+  "cph-theme-ticket-fields.attachments.file-removed": "{{fileName}} kaldırıldı",
   "cph-theme-ticket-fields.attachments.remove-file": "Dosyayı kaldır",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "Dosyayı kaldır: {{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "Karşıya yüklemeyi durdur",

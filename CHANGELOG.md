@@ -1,3 +1,50 @@
+## [4.57.2](https://github.com/zendesk/copenhagen_theme/compare/v4.57.1...v4.57.2) (2026-11-18)
+
+
+### Bug Fixes
+
+* upgrade help center editor to 2.0.1 ([d9467fd](https://github.com/zendesk/copenhagen_theme/commit/d9467fdb93573d97fd6155b79176a6546ac5cb02))
+
+## [4.57.1](https://github.com/zendesk/copenhagen_theme/compare/v4.57.0...v4.57.1) (2026-11-16)
+
+
+### Bug Fixes
+
+* **a11y:** make HC attachment remove controls keyboard accessible ([d2c1941](https://github.com/zendesk/copenhagen_theme/commit/d2c1941db8ed1a51dd7cdddbfa9b1a88bf33bb9e))
+
+# [4.57.0](https://github.com/zendesk/copenhagen_theme/compare/v4.56.0...v4.57.0) (2026-11-16)
+
+
+### Features
+
+* add data-test-id to user avatar in desktop header ([5985922](https://github.com/zendesk/copenhagen_theme/commit/59859224090f79253e5f9c1416ba4cbc2170d24f)), closes [zendesk/help_center#35149](https://github.com/zendesk/help_center/issues/35149)
+
+# [4.56.0](https://github.com/zendesk/copenhagen_theme/compare/v4.55.1...v4.56.0) (2026-11-13)
+
+
+### Features
+
+* add data-test-id to user avatar in desktop header ([076acbc](https://github.com/zendesk/copenhagen_theme/commit/076acbc4988a2178b1e6f33d4319093286b0505d)), closes [zendesk/help_center#35149](https://github.com/zendesk/help_center/issues/35149)
+
+## [4.55.1](https://github.com/zendesk/copenhagen_theme/compare/v4.55.0...v4.55.1) (2026-11-12)
+
+
+### Bug Fixes
+
+* **approval-requests:** tolerate ticket-less approvals in HC pages (LB-4739) ([afad13a](https://github.com/zendesk/copenhagen_theme/commit/afad13a8f1457cbe021e278fae3e0feee96467a7))
+
+# [4.55.0](https://github.com/zendesk/copenhagen_theme/compare/v4.54.0...v4.55.0) (2026-11-12)
+
+
+### Bug Fixes
+
+* **approval-requests:** add fetch timeout and busy state to attachment actions ([c9f8b97](https://github.com/zendesk/copenhagen_theme/commit/c9f8b97f5d0fa11c1a1ce134bbb53738f24c9f52))
+
+
+### Features
+
+* **approval-requests:** show attachments on the approval request page ([bbca9f3](https://github.com/zendesk/copenhagen_theme/commit/bbca9f3a11e5ad95b4e367c91be2bf9c8d7fc0a2))
+
 # [4.54.0](https://github.com/zendesk/copenhagen_theme/compare/v4.53.7...v4.54.0) (2026-11-09)
 
 

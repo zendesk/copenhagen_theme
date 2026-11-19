@@ -3,6 +3,7 @@
   "cph-theme-ticket-fields.attachments.drop-files-label": "将文件放在此处",
   "cph-theme-ticket-fields.attachments.error-separator": "； ",
   "cph-theme-ticket-fields.attachments.file": "文件：{{fileName}}，按删除键移除",
+  "cph-theme-ticket-fields.attachments.file-removed": "{{fileName}} 已移除",
   "cph-theme-ticket-fields.attachments.remove-file": "移除文件",
   "cph-theme-ticket-fields.attachments.remove-file-aria-label": "移除文件：{{fileName}}",
   "cph-theme-ticket-fields.attachments.stop-upload": "停止上传",

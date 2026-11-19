@@ -133,6 +133,7 @@ interface ItemRequestFormProps {
   requestFields: TicketFieldObject[];
   serviceCatalogItem: ServiceCatalogItem;
   baseLocale: string;
+  locale: string;
   hasAtMentions: boolean;
   userRole: string;
   requesterId: number;
@@ -166,6 +167,7 @@ export function ItemRequestForm({
   requestFields,
   serviceCatalogItem,
   baseLocale,
+  locale,
   hasAtMentions,
   userRole,
   requesterId,
@@ -348,6 +350,7 @@ export function ItemRequestForm({
           key={field.id}
           field={customField}
           baseLocale={baseLocale}
+          locale={locale}
           hasAtMentions={hasAtMentions}
           userRole={userRole}
           userId={requesterId}

@@ -5,7 +5,11 @@ import { MD } from "@zendeskgarden/react-typography";
 import { getColor } from "@zendeskgarden/react-theming";
 import { Grid } from "@zendeskgarden/react-grid";
 import { Tag } from "@zendeskgarden/react-tags";
-import type { ApprovalRequestTicket } from "../../types";
+import type {
+  ApprovalRequestAttachment,
+  ApprovalRequestTicket,
+} from "../../types";
+import AttachmentList from "./AttachmentList";
 
 const TicketContainer = styled(Grid)`
   padding: ${(props) => props.theme.space.md}; /* 20px */
@@ -83,6 +87,8 @@ function CustomFieldValue({
 
 interface ApprovalTicketDetailsProps {
   ticket: ApprovalRequestTicket;
+  // Only present in the payload when the approvals_attachments arturo is enabled
+  attachments?: ApprovalRequestAttachment[];
 }
 
 const TicketPriorityKeys = {
@@ -92,7 +98,10 @@ const TicketPriorityKeys = {
   Urgent: "approval-requests.request.ticket-details.priority_urgent",
 };
 
-function ApprovalTicketDetails({ ticket }: ApprovalTicketDetailsProps) {
+function ApprovalTicketDetails({
+  ticket,
+  attachments,
+}: ApprovalTicketDetailsProps) {
   const { t } = useTranslation();
 
   const displayPriority = TicketPriorityKeys[
@@ -138,6 +147,9 @@ function ApprovalTicketDetails({ ticket }: ApprovalTicketDetailsProps) {
           </div>
         ))}
       </CustomFieldsGrid>
+      {attachments && attachments.length > 0 && (
+        <AttachmentList attachments={attachments} />
+      )}
     </TicketContainer>
   );
 }

@@ -8,6 +8,7 @@ interface TextAreaProps {
   field: TicketFieldObject;
   hasWysiwyg: boolean;
   baseLocale: string;
+  locale: string;
   hasAtMentions: boolean;
   userRole: string;
   brandId: number;
@@ -30,6 +31,7 @@ export function TextArea({
   field,
   hasWysiwyg,
   baseLocale,
+  locale,
   hasAtMentions,
   userRole,
   brandId,
@@ -39,6 +41,7 @@ export function TextArea({
   const ref = useWysiwyg({
     hasWysiwyg,
     baseLocale,
+    locale,
     hasAtMentions,
     userRole,
     brandId,

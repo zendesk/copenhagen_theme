@@ -9,6 +9,15 @@ jest.mock(
   "@zendeskgarden/svg-icons/src/12/circle-sm-fill.svg",
   () => "svg-mock"
 );
+jest.mock(
+  "@zendeskgarden/svg-icons/src/16/download-stroke.svg",
+  () => "svg-mock"
+);
+jest.mock("@zendeskgarden/svg-icons/src/16/eye-stroke.svg", () => "svg-mock");
+jest.mock(
+  "@zendeskgarden/svg-icons/src/16/file-generic-stroke.svg",
+  () => "svg-mock"
+);
 jest.mock("./hooks/useApprovalRequest");
 const mockUseApprovalRequest = useApprovalRequest as jest.Mock;
 const mockUserAvatarUrl = "https://example.com/avatar.jpg";
@@ -175,6 +184,48 @@ describe("ApprovalRequestPage", () => {
     render(<ApprovalRequestPage {...baseProps} userId={1} />);
 
     expect(screen.queryByText(/clarification/i)).not.toBeInTheDocument();
+  });
+
+  it("renders the attachments section when attachments is present (effectively approvals_attachments arturo enabled)", () => {
+    const approvalRequestWithAttachments = {
+      ...mockApprovalRequest,
+      attachments: [
+        {
+          id: "01M73KGZ2HQ94KS171HQJ6EXCH",
+          filename: "generic file",
+          content_url: "https://example.com/generic",
+          content_type: "application/pdf",
+          size: 24,
+          created_at: "2026-11-10T20:48:50Z",
+          created_by: "approver",
+          malware_scan_status: "malware_not_found",
+        },
+      ],
+    };
+
+    mockUseApprovalRequest.mockReturnValue({
+      approvalRequest: approvalRequestWithAttachments,
+      setApprovalRequest: jest.fn(),
+      isLoading: false,
+      errorFetchingApprovalRequest: null,
+    });
+
+    render(<ApprovalRequestPage {...baseProps} userId={1} />);
+
+    expect(screen.getByText("Attachments")).toBeInTheDocument();
+  });
+
+  it("renders without the attachments section when attachments is absent", () => {
+    mockUseApprovalRequest.mockReturnValue({
+      approvalRequest: mockApprovalRequest,
+      setApprovalRequest: jest.fn(),
+      isLoading: false,
+      errorFetchingApprovalRequest: null,
+    });
+
+    render(<ApprovalRequestPage {...baseProps} userId={1} />);
+
+    expect(screen.queryByText("Attachments")).not.toBeInTheDocument();
   });
 
   it("renders the message with newlines preserved", () => {

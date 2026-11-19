@@ -97,7 +97,9 @@ function ApprovalRequestListTable({
                 </ApprovalRequestAnchor>
               </Table.Cell>
               <Table.Cell isTruncated>
-                {approvalRequest.requester_name}
+                {/* Ticket-less approvals have no ticket requester — fall back to the approval_request creator */}
+                {approvalRequest.requester_name ??
+                  approvalRequest.created_by_name}
               </Table.Cell>
               <Table.Cell isTruncated>
                 {getSentByLabel(approvalRequest, t)}

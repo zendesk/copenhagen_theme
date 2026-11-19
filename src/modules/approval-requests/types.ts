@@ -38,10 +38,23 @@ export interface ApprovalRequest {
   decided_at: string | null;
   decisions: ApprovalDecision[];
   assignee_user: ApprovalRequestUser;
-  ticket_details: ApprovalRequestTicket;
+  ticket_details?: ApprovalRequestTicket;
   withdrawn_reason: string | null;
   origination_type?: string;
   clarification_flow_messages?: ApprovalClarificationFlowMessage[];
+  // The `attachments` field is only present in the payload when the approvals_attachments arturo is enabled
+  attachments?: ApprovalRequestAttachment[];
+}
+
+export interface ApprovalRequestAttachment {
+  id: string;
+  filename: string;
+  content_url: string;
+  content_type?: string;
+  size: number;
+  created_at: string;
+  created_by: string;
+  malware_scan_status: string;
 }
 
 export interface ApprovalRequestTicket {
@@ -56,7 +69,7 @@ export interface ApprovalRequestTicket {
 export interface SearchApprovalRequest {
   id: number;
   subject: string;
-  requester_name: string;
+  requester_name: string | null;
   created_by_name: string;
   created_at: string;
   status: ApprovalRequestStatus;

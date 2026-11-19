@@ -3,6 +3,16 @@ import { screen } from "@testing-library/react";
 import ApprovalTicketDetails from "./ApprovalTicketDetails";
 import type { ApprovalRequestTicket } from "../../types";
 
+jest.mock(
+  "@zendeskgarden/svg-icons/src/16/download-stroke.svg",
+  () => "svg-mock"
+);
+jest.mock("@zendeskgarden/svg-icons/src/16/eye-stroke.svg", () => "svg-mock");
+jest.mock(
+  "@zendeskgarden/svg-icons/src/16/file-generic-stroke.svg",
+  () => "svg-mock"
+);
+
 const mockTicket: ApprovalRequestTicket = {
   id: "123",
   priority: "normal",
@@ -92,5 +102,51 @@ describe("ApprovalTicketDetails", () => {
 
     expect(screen.getByText("Empty Field")).toBeInTheDocument();
     expect(screen.getAllByText("-")).toHaveLength(2);
+  });
+
+  it("renders the attachments section when the request has attachments", () => {
+    render(
+      <ApprovalTicketDetails
+        ticket={mockTicket}
+        attachments={[
+          {
+            id: "01M73KGZ2HQ94KS171HQJ6EXCH",
+            filename: "generic file",
+            content_url: "https://example.com/generic",
+            content_type: "application/pdf",
+            size: 24,
+            created_at: "2026-11-10T20:48:50Z",
+            created_by: "approver",
+            malware_scan_status: "malware_not_found",
+          },
+          {
+            id: "01M73KGZ2HQ94KS171HQJ6EXCI",
+            filename: "document.doc",
+            content_url: "https://example.com/document.doc",
+            content_type: "application/msword",
+            size: 1200,
+            created_at: "2026-11-10T20:48:50Z",
+            created_by: "approver",
+            malware_scan_status: "malware_not_found",
+          },
+        ]}
+      />
+    );
+
+    expect(screen.getByText("Attachments")).toBeInTheDocument();
+    expect(screen.getByText("generic file")).toBeInTheDocument();
+    expect(screen.getByText("document.doc")).toBeInTheDocument();
+  });
+
+  it("does not render the attachments section when attachments is absent (effectively approvals_attachments arturo disabled)", () => {
+    render(<ApprovalTicketDetails ticket={mockTicket} />);
+
+    expect(screen.queryByText("Attachments")).not.toBeInTheDocument();
+  });
+
+  it("does not render the attachments section when attachments is empty (feature on, no files)", () => {
+    render(<ApprovalTicketDetails ticket={mockTicket} attachments={[]} />);
+
+    expect(screen.queryByText("Attachments")).not.toBeInTheDocument();
   });
 });
