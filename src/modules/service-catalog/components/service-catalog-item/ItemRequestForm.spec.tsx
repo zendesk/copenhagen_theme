@@ -68,6 +68,7 @@ describe("ItemRequestForm", () => {
     requestFields,
     serviceCatalogItem,
     baseLocale: "en-us",
+    locale: "en-us",
     hasAtMentions: false,
     userRole: "end_user",
     requesterId: 123,
