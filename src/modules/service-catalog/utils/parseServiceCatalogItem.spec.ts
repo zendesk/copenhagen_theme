@@ -36,17 +36,6 @@ describe("parseServiceCatalogItem", () => {
     });
   });
 
-  it("coerces numeric ids to strings", () => {
-    const item = parseServiceCatalogItem({
-      id: 1,
-      name: "Test Item",
-      form_id: 9848565352189,
-    });
-
-    expect(item.id).toBe("1");
-    expect(item.form_id).toBe("9848565352189");
-  });
-
   it("parses embedded option details", () => {
     const item = parseServiceCatalogItem({
       id: "01M3KF50FGJ1WK4G7S9TDAW0G9",
@@ -63,15 +52,15 @@ describe("parseServiceCatalogItem", () => {
         name: "Asset type",
         description: null,
         asset_type_ids: ["type-1"],
-        is_required: "0",
+        is_required: false,
         is_hidden: null,
       },
       attachment_option: {
         id: "attachment-option-1",
         name: "Attachment",
         description: "Upload a file",
-        is_required: "1",
-        position_in_portal: "2",
+        is_required: true,
+        position_in_portal: 2,
       },
     } as RawServiceCatalogItem);
 

@@ -1,4 +1,4 @@
-import type { ServiceCatalogListItem } from "../../data-types/ServiceCatalogItem";
+import { ServiceCatalogListItem } from "../../data-types/ServiceCatalogItem";
 import styled from "styled-components";
 import { getColor } from "@zendeskgarden/react-theming";
 import { ItemThumbnail } from "../item-thumbnail/ItemThumbnail";

@@ -29,10 +29,10 @@ const processAssetConfig = (
     isAssetTypeHidden: isHidden,
     assetTypeHiddenValue: isHidden && assetTypeIds[0] ? assetTypeIds[0] : "",
     assetTypeLabel: assetTypeOption?.name,
-    assetTypeDescription: assetTypeOption?.description ?? undefined,
+    assetTypeDescription: assetTypeOption?.description,
     assetTypeIsRequired: assetTypeOption?.is_required || false,
     assetLabel: assetOption?.name,
-    assetDescription: assetOption?.description ?? undefined,
+    assetDescription: assetOption?.description,
     assetIsRequired: assetOption?.is_required || false,
   };
 };
