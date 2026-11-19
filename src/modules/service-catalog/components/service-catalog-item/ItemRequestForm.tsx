@@ -290,7 +290,8 @@ export function ItemRequestForm({
       return null;
     }
 
-    const attachmentsPosition = attachmentsOption?.position_in_portal;
+    const attachmentsPosition =
+      attachmentsOption?.position_in_portal ?? requestFields.length;
 
     const attachmentsElement = attachmentsOption ? (
       <Attachments
