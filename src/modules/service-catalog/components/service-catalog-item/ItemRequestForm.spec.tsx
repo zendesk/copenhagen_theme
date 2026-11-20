@@ -14,6 +14,16 @@ jest.mock("react-i18next", () => ({
   }),
 }));
 
+jest.mock("../../../ticket-fields/fields/textarea/TextArea", () => ({
+  TextArea: ({ field }: { field: { label: string } }) => (
+    <textarea
+      data-testid="description-textarea"
+      aria-label={field.label}
+      readOnly
+    />
+  ),
+}));
+
 jest.mock("../../../ticket-fields", () => ({
   RequestFormField: ({ field }: { field: TicketFieldObject }) => (
     <div data-testid={`request-field-${field.id}`} />
@@ -39,6 +49,7 @@ describe("ItemRequestForm", () => {
     thumbnail_url: null,
     categories: [],
     is_request_on_behalf: false,
+    description_field_enabled: true,
     published_at: "2025-01-01T00:00:00Z",
   };
 
@@ -67,6 +78,7 @@ describe("ItemRequestForm", () => {
   const defaultProps: Parameters<typeof ItemRequestForm>[0] = {
     requestFields,
     serviceCatalogItem,
+    formRef: { current: null },
     baseLocale: "en-us",
     locale: "en-us",
     hasAtMentions: false,
@@ -135,5 +147,27 @@ describe("ItemRequestForm", () => {
     renderWithTheme(defaultProps);
 
     expect(screen.queryByTestId("attachments-field")).not.toBeInTheDocument();
+  });
+
+  it("renders a description field with the wysiwyg textarea when present", () => {
+    renderWithTheme({
+      ...defaultProps,
+      requestFields: [
+        ...defaultProps.requestFields,
+        {
+          id: 3,
+          name: "request[description]",
+          type: "description",
+          description: "",
+          label: "Description",
+          required: true,
+          options: [],
+          value: null,
+          error: null,
+        },
+      ],
+    });
+
+    expect(screen.getByTestId("description-textarea")).toBeInTheDocument();
   });
 });

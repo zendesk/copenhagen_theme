@@ -141,7 +141,8 @@ interface FetchTicketFieldsResult {
 
 const fetchTicketFields = async (
   form_id: string,
-  baseLocale: string
+  baseLocale: string,
+  descriptionFieldEnabled: boolean
 ): Promise<FetchTicketFieldsResult> => {
   const [formResponse, fieldsResponse] = await Promise.all([
     fetch(`/api/v2/ticket_forms/${form_id}`),
@@ -179,7 +180,7 @@ const fetchTicketFields = async (
       if (
         ticketField &&
         ticketField.type !== "subject" &&
-        ticketField.type !== "description" &&
+        (ticketField.type !== "description" || descriptionFieldEnabled) &&
         ticketField.active &&
         ticketField.editable_in_portal
       ) {
@@ -254,7 +255,8 @@ export function useItemFormFields(
       try {
         const ticketFieldsResult = await fetchTicketFields(
           serviceCatalogItem.form_id,
-          baseLocale
+          baseLocale,
+          serviceCatalogItem.description_field_enabled === true
         );
 
         if (!alive) return;
@@ -292,7 +294,13 @@ export function useItemFormFields(
     return () => {
       alive = false;
     };
-  }, [baseLocale, serviceCatalogItem?.form_id, assetConfig, prefill]);
+  }, [
+    baseLocale,
+    serviceCatalogItem?.form_id,
+    serviceCatalogItem?.description_field_enabled,
+    assetConfig,
+    prefill,
+  ]);
 
   const handleChange = useCallback(
     (field: TicketFieldObject, value: TicketFieldObject["value"]) => {

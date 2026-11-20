@@ -15,6 +15,7 @@ const mockItem: ServiceCatalogItem = {
   thumbnail_url: "",
   categories: [],
   is_request_on_behalf: true,
+  description_field_enabled: true,
   published_at: "2025-01-01T00:00:00Z",
 };
 
@@ -116,6 +117,58 @@ describe("submitServiceItemRequest", () => {
     expect(request.custom_fields).toEqual([
       { id: 1, value: "value-1" },
       { id: associatedLookupField.id, value: mockItem.id },
+    ]);
+  });
+
+  it("submits Description as rich comment content instead of a custom field", async () => {
+    const fetchMock = mockFetch();
+    const descriptionField = {
+      ...makeField(2, "<p>My printer is <strong>broken</strong>.</p>"),
+      type: "description",
+    };
+
+    await submitServiceItemRequest(
+      mockItem,
+      [makeField(1, "value-1"), descriptionField],
+      associatedLookupField,
+      attachments,
+      helpCenterPath
+    );
+
+    const request = getSubmittedRequest(fetchMock);
+    const parsedDocument = new DOMParser().parseFromString(
+      request.comment.html_body,
+      "text/html"
+    );
+
+    expect(parsedDocument.querySelector("strong")?.textContent).toBe("broken");
+    expect(parsedDocument.querySelector("a")?.textContent).toBe(mockItem.name);
+    expect(request.custom_fields).toEqual([
+      { id: 1, value: "value-1" },
+      { id: associatedLookupField.id, value: mockItem.id },
+    ]);
+  });
+
+  it("sends inline Description image uploads together with attachments", async () => {
+    const fetchMock = mockFetch();
+
+    await submitServiceItemRequest(
+      mockItem,
+      [makeField(1, "value-1")],
+      associatedLookupField,
+      attachments,
+      helpCenterPath,
+      null,
+      null,
+      null,
+      null,
+      ["inline-token-1", "inline-token-2"]
+    );
+
+    expect(getSubmittedRequest(fetchMock).comment.uploads).toEqual([
+      "token-1",
+      "inline-token-1",
+      "inline-token-2",
     ]);
   });
 

@@ -14,6 +14,7 @@ export interface RawServiceCatalogItem {
   thumbnail_url?: string | null;
   categories?: ServiceCatalogItemCategory[];
   is_request_on_behalf?: boolean;
+  description_field_enabled?: boolean;
   published_at?: string | null;
   asset_option?: Record<string, unknown> | null;
   asset_type_option?: Record<string, unknown> | null;
@@ -88,6 +89,7 @@ export const parseServiceCatalogItem = (
   thumbnail_url: raw.thumbnail_url ?? null,
   categories: raw.categories ?? [],
   is_request_on_behalf: raw.is_request_on_behalf ?? false,
+  description_field_enabled: raw.description_field_enabled === true,
   published_at: raw.published_at ?? null,
   asset_option: parseAssetOption(raw.asset_option),
   asset_type_option: parseAssetTypeOption(raw.asset_type_option),
