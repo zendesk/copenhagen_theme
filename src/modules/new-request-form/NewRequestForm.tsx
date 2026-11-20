@@ -3,13 +3,14 @@ import type {
   AnswerBotGenerativeExperience,
   RequestForm,
 } from "./data-types";
-import { Fragment, useCallback, useState } from "react";
+import { Fragment, useCallback, useRef, useState } from "react";
 import { TicketFormField } from "./ticket-form-field/TicketFormField";
 import { ParentTicketField } from "./parent-ticket-field/ParentTicketField";
 import { Anchor, Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 import { Alert } from "@zendeskgarden/react-notifications";
 import { useFormSubmit } from "./useFormSubmit";
+import { useFocusFirstFieldInError } from "./useFocusFirstFieldInError";
 import { usePrefilledTicketFields } from "./usePrefilledTicketFields";
 import { Attachments } from "../ticket-fields/fields/attachments/Attachments";
 import { getVisibleFields } from "../ticket-fields/getVisibleFields";
@@ -115,7 +116,20 @@ export function NewRequestForm({
   );
   const [dueDateField, setDueDateField] = useState(prefilledDueDateField);
   const visibleFields = getVisibleFields(ticketFields, end_user_conditions);
-  const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const errorAlertRef = useRef<HTMLDivElement | null>(null);
+  const { formRefCallback: submitFormRefCallback, handleSubmit } =
+    useFormSubmit(ticketFields);
+
+  const formRefCallback = useCallback(
+    (ref: HTMLFormElement) => {
+      formRef.current = ref;
+      submitFormRefCallback(ref);
+    },
+    [submitFormRefCallback]
+  );
+
+  useFocusFirstFieldInError({ formRef, errorAlertRef });
   const { t } = useTranslation();
   const defaultOrganizationId =
     organizations.length > 0 && organizations[0]?.id
@@ -193,7 +207,11 @@ export function NewRequestForm({
         noValidate
         onSubmit={handleSubmit}
       >
-        {errors && <Alert type="error">{errors}</Alert>}
+        {errors && (
+          <Alert type="error" ref={errorAlertRef} tabIndex={-1}>
+            {errors}
+          </Alert>
+        )}
         {parent_id_field && <ParentTicketField field={parent_id_field} />}
         {ticket_form_field.options.length > 0 && (
           <TicketFormField
