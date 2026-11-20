@@ -18,6 +18,8 @@ interface MultiselectProps {
   options: MultiSelectOption[];
   onSelect: (state: FormState<FormFieldKey>) => void;
   errors: FormErrors<FormFieldKey>;
+  onSearch?: (query: string) => void;
+  isLoading?: boolean;
 }
 
 export function Multiselect({
@@ -25,14 +27,17 @@ export function Multiselect({
   options,
   onSelect,
   errors,
+  onSearch,
+  isLoading = false,
 }: MultiselectProps): JSX.Element {
   const { t } = useTranslation();
   const modalContainer = useModalContainer();
 
   const validateForm = (selectedValues: string[]): FormState<FormFieldKey> => {
-    const selectedOptions = options.filter((option) =>
-      selectedValues.includes(option.value)
-    );
+    const selectedOptions = selectedValues.flatMap((value) => {
+      const option = availableOptions.find((option) => option.value === value);
+      return option ? [option] : [];
+    });
 
     if (selectedOptions.length > 0) {
       return {
@@ -55,6 +60,19 @@ export function Multiselect({
   const [selectedValues, setSelectedValues] = useState<string[]>(() => {
     return [];
   });
+  const [selectedOptions, setSelectedOptions] = useState<MultiSelectOption[]>(
+    []
+  );
+  const availableOptions = onSearch
+    ? Array.from(
+        new Map(
+          [...selectedOptions, ...options].map((option) => [
+            option.value,
+            option,
+          ])
+        ).values()
+      )
+    : options;
 
   useEffect(() => {
     onSelect(validateForm([]));
@@ -63,9 +81,9 @@ export function Multiselect({
   const [inputValue, setInputValue] = useState("");
 
   const filteredOptions =
-    inputValue === ""
-      ? options
-      : options.filter(
+    onSearch || inputValue === ""
+      ? availableOptions
+      : availableOptions.filter(
           (option) =>
             selectedValues.includes(option.value) ||
             option.label
@@ -82,6 +100,7 @@ export function Multiselect({
 
     if (inputValue !== undefined) {
       setInputValue(inputValue);
+      onSearch?.(inputValue);
     }
 
     if (selectionValue !== undefined && selectionValue !== null) {
@@ -90,6 +109,9 @@ export function Multiselect({
         : [selectionValue];
 
       setSelectedValues(selected);
+      setSelectedOptions(
+        availableOptions.filter((option) => selected.includes(option.value))
+      );
       onSelect(validateForm(selected));
     }
   };
@@ -102,11 +124,12 @@ export function Multiselect({
         isMultiselectable
         selectionValue={selectedValues}
         inputValue={inputValue}
+        aria-busy={isLoading}
         onChange={handleChange}
         validation={errors.selectedOptions ? "error" : undefined}
         listboxAppendToNode={modalContainer}
       >
-        {filteredOptions.length === 0 ? (
+        {filteredOptions.length === 0 && !isLoading ? (
           <Option
             isDisabled
             label={t(

@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import type { Organization, TicketField } from "../../../data-types";
 import { useFilterTranslations } from "../i18n";
 import type { FilterValue } from "../../../data-types/FilterValue";
+import { OrganizationMultiselect } from "./OrganizationMultiselect";
 
 interface FilterValueFieldProps {
   selectedFilterProperty: FilterProperty;
@@ -76,16 +77,10 @@ export function FilterValueField({
   }
 
   if (selectedFilterProperty.identifier === "organization") {
-    const options: MultiSelectOption[] = organizations.map((organization) => ({
-      label: organization.name,
-      value: `:${organization.id}`,
-    }));
-
     return (
-      <Multiselect
-        label={t("guide-requests-app.organization", "Organization")}
+      <OrganizationMultiselect
+        organizations={organizations}
         onSelect={onSelect}
-        options={options}
         errors={errors}
       />
     );

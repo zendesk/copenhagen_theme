@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
 import { organizations, ticketFields } from "../../../apiMocks";
 import type { FilterValuesMap } from "../../../data-types/FilterValue";
@@ -194,5 +194,58 @@ describe("FilterTags", () => {
     fireEvent.click(screen.getByRole("button", { name: "Clear filters" }));
 
     expect(onFiltersChangedMock).toBeCalledWith({});
+  });
+
+  describe("off-page organization tags", () => {
+    let originalFetch: typeof fetch;
+    beforeEach(() => {
+      originalFetch = global.fetch;
+    });
+    afterEach(() => {
+      global.fetch = originalFetch;
+    });
+
+    test("resolves an off-page name and removes only that organization from a multi-organization filter", async () => {
+      global.fetch = jest.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({
+          organization: {
+            id: 99,
+            name: "Zebra",
+            view_tickets: true,
+            inherited: true,
+            default: null,
+          },
+        }),
+      });
+      const { container } = renderComponent({ organization: [":1", ":99"] });
+      expect(container).toHaveTextContent("Organization My Organization");
+      expect(container).toHaveTextContent("Organization #99");
+      await act(async () => {
+        await Promise.resolve();
+      });
+      expect(fetch).toHaveBeenCalledWith(
+        "/api/v2/organizations/accessible/99",
+        expect.objectContaining({ signal: expect.any(AbortSignal) })
+      );
+      expect(container).toHaveTextContent("Organization Zebra");
+      const tag = screen.getByText("Zebra").closest('[tabindex="0"]')!;
+      fireEvent.keyDown(tag, { code: "Delete" });
+      expect(onFiltersChangedMock).toHaveBeenLastCalledWith({
+        organization: [":1"],
+      });
+    });
+
+    test("keeps an off-page filter removable when the lookup fails", async () => {
+      global.fetch = jest.fn().mockResolvedValue({ ok: false, status: 403 });
+      const { container } = renderComponent({ organization: [":99"] });
+      await act(async () => {
+        await Promise.resolve();
+      });
+      expect(container).toHaveTextContent("Organization #99");
+      const tag = screen.getByText("#99").closest('[tabindex="0"]')!;
+      fireEvent.keyDown(tag, { code: "Backspace" });
+      expect(onFiltersChangedMock).toHaveBeenLastCalledWith({});
+    });
   });
 });

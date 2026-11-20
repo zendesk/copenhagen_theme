@@ -32,6 +32,7 @@ export interface FilterProperty {
 interface FilterPropertyDropdownProps {
   ticketFields: TicketField[];
   organizations: Organization[];
+  hasMoreOrganizations?: boolean;
   selectedProperty: FilterProperty | undefined;
   hasCustomStatuses: boolean;
   onSelect: (property: FilterProperty) => void;
@@ -41,6 +42,7 @@ interface FilterPropertyDropdownProps {
 export function FilterPropertyDropdown({
   ticketFields,
   organizations,
+  hasMoreOrganizations = false,
   selectedProperty,
   hasCustomStatuses,
   onSelect,
@@ -69,7 +71,7 @@ export function FilterPropertyDropdown({
             identifier: "status",
             label: t("guide-requests-app.status", "Status"),
           },
-      ...(organizations.length > 1
+      ...(organizations.length > 1 || hasMoreOrganizations
         ? [
             {
               identifier: "organization",
@@ -84,7 +86,7 @@ export function FilterPropertyDropdown({
           label: title_in_portal,
         })),
     ],
-    [t, hasCustomStatuses, organizations, ticketFields]
+    [t, hasCustomStatuses, organizations, hasMoreOrganizations, ticketFields]
   );
 
   const [options, setOptions] = useState<FilterProperty[]>([]);

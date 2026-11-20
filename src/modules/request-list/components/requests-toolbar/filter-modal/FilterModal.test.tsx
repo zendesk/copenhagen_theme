@@ -7,7 +7,7 @@ jest.mock("../../../hooks/useParams");
 import type { FilterValuesMap } from "../../../data-types/FilterValue";
 import { FilterModal } from "./FilterModal";
 import "@testing-library/jest-dom";
-import { fireEvent, screen, getAllByText } from "@testing-library/react";
+import { act, fireEvent, screen, getAllByText } from "@testing-library/react";
 import { useUser } from "../../../hooks/useUser";
 import { useTicketFields } from "../../../hooks/useTicketFields";
 import { useOrganizations } from "../../../hooks/useOrganizations";
@@ -1016,5 +1016,104 @@ describe("<FilterModal />", () => {
     expect(onFiltersChanged).toHaveBeenCalledWith({
       custom_field_431: [":*"],
     });
+  });
+
+  describe("organization server search", () => {
+    const firstOrganization = { id: 1, name: "Acme", default: true };
+    let originalFetch: typeof fetch;
+    const page = (
+      id: number,
+      name: string,
+      next_page: string | null = null
+    ) => ({
+      ok: true,
+      json: async () => ({
+        organizations: [
+          { id, name, view_tickets: true, inherited: false, default: false },
+        ],
+        next_page,
+      }),
+    });
+
+    beforeEach(() => {
+      originalFetch = global.fetch;
+    });
+    afterEach(() => {
+      global.fetch = originalFetch;
+    });
+
+    test("offers the organization filter with one loaded organization and no Show more control", () => {
+      const loadMore = jest.fn();
+      const modalProps = {
+        onClose: jest.fn(),
+        ticketFields: [],
+        organizations: [firstOrganization],
+        organizationPagination: { hasMore: true, isLoading: false, loadMore },
+        customStatusesEnabled: false,
+        customStatusOptions: [],
+        filterValuesMap: {},
+        onFiltersChanged,
+      };
+      render(<FilterModal {...modalProps} />);
+      fireEvent.click(screen.getByLabelText("Select filter"));
+      fireEvent.click(screen.getByRole("option", { name: "Organization" }));
+      fireEvent.click(screen.getByLabelText("Organization"));
+      fireEvent.click(screen.getByRole("option", { name: "Acme" }));
+      expect(screen.queryByText("Show more")).not.toBeInTheDocument();
+      expect(loadMore).not.toHaveBeenCalled();
+      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      expect(onFiltersChanged).toHaveBeenLastCalledWith({
+        organization: [":1"],
+      });
+    });
+
+    test("searches beyond the initial page and preserves selections across queries without Show more", async () => {
+      global.fetch = jest
+        .fn()
+        .mockResolvedValueOnce(
+          page(2, "Zebra", "/api/v2/organizations/accessible?name=Zebra&page=2")
+        )
+        .mockResolvedValueOnce(page(4, "Beta"));
+      render(
+        <FilterModal
+          onClose={jest.fn()}
+          ticketFields={[]}
+          organizations={[
+            firstOrganization,
+            { id: 5, name: "Other", default: false },
+          ]}
+          customStatusesEnabled={false}
+          customStatusOptions={[]}
+          filterValuesMap={{}}
+          onFiltersChanged={onFiltersChanged}
+        />
+      );
+      fireEvent.click(screen.getByLabelText("Select filter"));
+      fireEvent.click(screen.getByRole("option", { name: "Organization" }));
+      const input = screen.getByLabelText("Organization");
+      fireEvent.click(input);
+      fireEvent.click(screen.getByRole("option", { name: "Acme" }));
+      fireEvent.change(input, { target: { value: "Zebra" } });
+      await act(async () => {
+        jest.advanceTimersByTime(300);
+      });
+      expect(fetch).toHaveBeenCalledWith(
+        "/api/v2/organizations/accessible?name=Zebra",
+        expect.objectContaining({ signal: expect.any(AbortSignal) })
+      );
+      expect(screen.queryByText("Show more")).not.toBeInTheDocument();
+      fireEvent.click(screen.getByRole("option", { name: "Zebra" }));
+      fireEvent.change(input, { target: { value: "Beta" } });
+      await act(async () => {
+        jest.advanceTimersByTime(300);
+      });
+      fireEvent.click(screen.getByRole("option", { name: "Beta" }));
+      fireEvent.change(input, { target: { value: "" } });
+      fireEvent.click(screen.getByRole("button", { name: "Apply filter" }));
+      expect(onFiltersChanged).toHaveBeenLastCalledWith({
+        organization: [":1", ":2", ":4"],
+      });
+      expect(fetch).toHaveBeenCalledTimes(2);
+    }, 10000);
   });
 });

@@ -1,7 +1,8 @@
+import type { OrganizationPagination } from "../../../hooks/useOrganizations";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Anchor, Button } from "@zendeskgarden/react-buttons";
+import { Button } from "@zendeskgarden/react-buttons";
 import { Checkbox, Field } from "@zendeskgarden/react-forms";
 import { Modal } from "@zendeskgarden/react-modals";
 import { Paragraph } from "@zendeskgarden/react-typography";
@@ -11,9 +12,11 @@ import styled from "styled-components";
 import type { Organization, User } from "../../../data-types";
 import { notify } from "../../../../shared/notifications/notify";
 import { useModalContainer } from "../../../../shared/garden-theme/modal-container/useModalContainer";
+import { OrganizationLoadMore } from "../OrganizationLoadMore";
 
 interface OrganizationsManagementProps {
   organizations: Organization[];
+  organizationPagination?: OrganizationPagination;
   user: User;
   onClose: () => void;
 }
@@ -54,12 +57,17 @@ export default function FollowOrganizationsModal(
 ): JSX.Element {
   const { t } = useTranslation();
 
-  const { organizations, user, onClose } = props;
+  const { organizations, organizationPagination, user, onClose } = props;
   const [amountShowing, setAmountShowing] = useState<number>(
     DEFAULT_SHOWING_AMOUNT
   );
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
+  const [knownSubscriptions, setKnownSubscriptions] = useState<Record<
+    string,
+    OrganizationSubscription
+  > | null>(null);
+  const [subscriptionLoadFailed, setSubscriptionLoadFailed] = useState(false);
 
   const modalContainer = useModalContainer();
 
@@ -69,13 +77,14 @@ export default function FollowOrganizationsModal(
   };
 
   const onShowMore = (): void => {
+    if (amountShowing >= subscriptions.length)
+      organizationPagination?.loadMore();
     setAmountShowing(amountShowing + SHOWING_AMOUNT_INCREMENT);
   };
 
   const fetchSubscriptions = async (
-    organizations: Organization[],
     userId: number
-  ): Promise<void> => {
+  ): Promise<Record<string, OrganizationSubscription>> => {
     let totalSubscriptions: readonly OrganizationSubscription[] = [];
     let subscriptionUrl = `/api/v2/users/${userId}/organization_subscriptions.json?page[size]=100`;
     let hasMore = true;
@@ -109,16 +118,7 @@ export default function FollowOrganizationsModal(
     totalSubscriptions.forEach((sub) => {
       lookUpMap[`${sub.organization_id}`] = sub;
     });
-    setSubscriptions(
-      organizations.map((o) => ({
-        organizationId: o.id,
-        name: o.name,
-        subscriptionId: lookUpMap[`${o.id}`]?.id,
-        subscribed: lookUpMap[`${o.id}`] !== undefined,
-        isError: false,
-        isChecked: lookUpMap[`${o.id}`] !== undefined,
-      }))
-    );
+    return lookUpMap;
   };
 
   const updateSubscriptions = async (): Promise<void> => {
@@ -208,8 +208,41 @@ export default function FollowOrganizationsModal(
   };
 
   useEffect(() => {
-    fetchSubscriptions(organizations, user.id);
-  }, []);
+    let active = true;
+    fetchSubscriptions(user.id)
+      .then((subscriptions) => {
+        if (active) setKnownSubscriptions(subscriptions);
+      })
+      .catch(() => {
+        if (active) setSubscriptionLoadFailed(true);
+      });
+    return () => {
+      active = false;
+    };
+  }, [user.id]);
+
+  useEffect(() => {
+    if (!knownSubscriptions) return;
+    setSubscriptions((current) => {
+      const previous = new Map(
+        current.map((subscription) => [
+          subscription.organizationId,
+          subscription,
+        ])
+      );
+      return organizations.map(
+        (organization) =>
+          previous.get(organization.id) ?? {
+            organizationId: organization.id,
+            name: organization.name,
+            subscriptionId: knownSubscriptions[organization.id]?.id,
+            subscribed: knownSubscriptions[organization.id] !== undefined,
+            isError: false,
+            isChecked: knownSubscriptions[organization.id] !== undefined,
+          }
+      );
+    });
+  }, [organizations, knownSubscriptions]);
 
   const onCloseAlert = (e: React.MouseEvent | React.KeyboardEvent): void => {
     e.preventDefault();
@@ -237,6 +270,17 @@ export default function FollowOrganizationsModal(
             "Receive email updates about tickets within these organizations:"
           )}
         </StyledParagraph>
+        {!knownSubscriptions && !subscriptionLoadFailed && (
+          <Dots size={20} delayMS={0} />
+        )}
+        {subscriptionLoadFailed && (
+          <StyledAlert type="error">
+            {t(
+              "guide-requests-app.giveItAMomentAndTryAgain",
+              "Give it a moment and try again"
+            )}
+          </StyledAlert>
+        )}
         {subscriptions.some((o) => o.isError) && (
           <StyledAlert type="error">
             <Alert.Title>
@@ -257,6 +301,7 @@ export default function FollowOrganizationsModal(
             <Checkbox
               data-test-id={`checkbox_${o.organizationId}`}
               checked={o.isChecked}
+              disabled={isUpdating}
               onChange={() => subscriptionStateChange(o.organizationId)}
             >
               <Field.Label>{o.name}</Field.Label>
@@ -271,12 +316,19 @@ export default function FollowOrganizationsModal(
             )}
           </StyledField>
         ))}
-        {organizations.length > DEFAULT_SHOWING_AMOUNT &&
-          amountShowing < organizations.length && (
-            <Anchor onClick={onShowMore}>
-              {t("guide-requests-app.showMore", "Show more")}
-            </Anchor>
-          )}
+        <OrganizationLoadMore
+          pagination={{
+            hasMore:
+              amountShowing < subscriptions.length ||
+              !!organizationPagination?.hasMore,
+            isLoading:
+              isUpdating ||
+              !knownSubscriptions ||
+              !!organizationPagination?.isLoading,
+            error: organizationPagination?.error,
+            loadMore: onShowMore,
+          }}
+        />
       </Modal.Body>
       <Modal.Footer>
         <Modal.FooterItem>
@@ -288,6 +340,11 @@ export default function FollowOrganizationsModal(
           <Button
             isPrimary
             onClick={onSave}
+            disabled={
+              isUpdating ||
+              !knownSubscriptions ||
+              organizationPagination?.isLoading
+            }
             data-test-id={`saveOrganizationButton`}
           >
             {isUpdating ? (
