@@ -1,4 +1,4 @@
-import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
+import { ServiceCatalogListItem } from "../../data-types/ServiceCatalogItem";
 import styled from "styled-components";
 import { getColor } from "@zendeskgarden/react-theming";
 import { ItemThumbnail } from "../item-thumbnail/ItemThumbnail";
@@ -62,7 +62,7 @@ const ServiceCatalogListItem = ({
   helpCenterPath,
   selectedCategoryId,
 }: {
-  serviceItem: ServiceCatalogItem;
+  serviceItem: ServiceCatalogListItem;
   helpCenterPath: string;
   selectedCategoryId?: string | null;
 }) => {

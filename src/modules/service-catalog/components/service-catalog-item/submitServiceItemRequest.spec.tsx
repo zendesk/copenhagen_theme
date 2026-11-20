@@ -8,19 +8,14 @@ const SUBMIT_URL = "/hc/api/v2/service_catalog/requests";
 const ME_URL = "/api/v2/users/me.json";
 
 const mockItem: ServiceCatalogItem = {
-  id: 1,
+  id: "item-1",
   name: "Test Service",
   description: "Test Description",
-  form_id: 100,
+  form_id: "form-100",
   thumbnail_url: "",
   categories: [],
   is_request_on_behalf: true,
   published_at: "2025-01-01T00:00:00Z",
-  custom_object_fields: {
-    "standard::asset_option": "",
-    "standard::asset_type_option": "",
-    "standard::attachment_option": "",
-  },
 };
 
 const makeField = (id: number, value: string): TicketFieldObject => ({

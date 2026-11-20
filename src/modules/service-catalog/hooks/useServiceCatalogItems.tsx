@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import type { Meta } from "../data-types/Meta";
-import type { ServiceCatalogItem } from "../data-types/ServiceCatalogItem";
+import type { ServiceCatalogListItem } from "../data-types/ServiceCatalogItem";
 
 const PAGE_SIZE = 16;
 
@@ -10,7 +10,7 @@ export interface SortParams {
 }
 
 export function useServiceCatalogItems(): {
-  serviceCatalogItems: ServiceCatalogItem[];
+  serviceCatalogItems: ServiceCatalogListItem[];
   meta: Meta | null;
   count: number;
   isLoading: boolean;
@@ -27,7 +27,7 @@ export function useServiceCatalogItems(): {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>(null);
   const [serviceCatalogItems, setServiceCatalogItems] = useState<
-    ServiceCatalogItem[]
+    ServiceCatalogListItem[]
   >([]);
 
   const fetchData = useCallback(

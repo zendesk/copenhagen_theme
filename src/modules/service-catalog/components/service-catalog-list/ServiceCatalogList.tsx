@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import ServiceCatalogListItem from "./ServiceCatalogListItem";
-import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import { Grid } from "@zendeskgarden/react-grid";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
@@ -250,7 +249,7 @@ export function ServiceCatalogList({
         <>
           <StyledGrid>
             <Grid.Row wrap="wrap">
-              {serviceCatalogItems.map((record: ServiceCatalogItem) => (
+              {serviceCatalogItems.map((record) => (
                 <StyledCol key={record.id} xs={12} sm={6} md={4} lg={3}>
                   <ServiceCatalogListItem
                     serviceItem={record}

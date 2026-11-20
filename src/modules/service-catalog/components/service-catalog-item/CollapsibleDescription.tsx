@@ -59,8 +59,8 @@ const HeaderContainer = styled.div`
 
 interface CollapsibleDescriptionProps {
   title: string;
-  description: string;
-  thumbnailUrl: string;
+  description: string | null;
+  thumbnailUrl: string | null;
 }
 
 export const CollapsibleDescription = ({
