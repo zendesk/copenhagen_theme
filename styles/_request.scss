@@ -43,6 +43,7 @@
       display: block;
     }
     .comment-ccs { display: block; }
+    .comment-label { margin-top: 10px; }
 
     .comment-show-container {
       border-radius: 2px;
@@ -57,32 +58,8 @@
       }
     }
 
-    .form-field.comment-ccs {
-      & > ul {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        border-bottom: 0;
-
-        &[data-hc-focus="true"] {
-          border: 1px solid $brand_color;
-        }
-      }
-
-      & > input[type="text"] {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        border-bottom: 0;
-      }
-    }
-
-    .comment-ccs + textarea {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      margin-top: 0;
-
-      &:focus {
-        border-top: 1px solid $brand_color;
-      }
+    .form-field.comment-ccs > ul[data-hc-focus="true"] {
+      border: 1px solid $brand_color;
     }
 
     input#mark_as_solved { display: none; }
