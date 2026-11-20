@@ -39,6 +39,7 @@ describe("ItemRequestForm", () => {
     thumbnail_url: null,
     categories: [],
     is_request_on_behalf: false,
+    description_field_enabled: true,
     published_at: "2025-01-01T00:00:00Z",
   };
 
@@ -67,6 +68,7 @@ describe("ItemRequestForm", () => {
   const defaultProps: Parameters<typeof ItemRequestForm>[0] = {
     requestFields,
     serviceCatalogItem,
+    formRef: { current: null },
     baseLocale: "en-us",
     locale: "en-us",
     hasAtMentions: false,

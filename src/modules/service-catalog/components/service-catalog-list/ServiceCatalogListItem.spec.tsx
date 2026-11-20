@@ -20,6 +20,7 @@ describe("ServiceCatalogListItem", () => {
     thumbnail_url: "",
     categories: [],
     is_request_on_behalf: false,
+    description_field_enabled: false,
     published_at: "2025-01-01T00:00:00Z",
   };
 
