@@ -1,3 +1,11 @@
+## [4.57.3](https://github.com/zendesk/copenhagen_theme/compare/v4.57.2...v4.57.3) (2026-11-20)
+
+
+### Bug Fixes
+
+* add locale to ItemRequestForm spec props ([dd611a5](https://github.com/zendesk/copenhagen_theme/commit/dd611a506e5524ace0f0ab348246d6d8559e607f))
+* render attachments field when position_in_portal is null ([766d7cf](https://github.com/zendesk/copenhagen_theme/commit/766d7cf61901aafb38e6ff8ab3c224ac0da835cc))
+
 ## [4.57.2](https://github.com/zendesk/copenhagen_theme/compare/v4.57.1...v4.57.2) (2026-11-18)
 
 
