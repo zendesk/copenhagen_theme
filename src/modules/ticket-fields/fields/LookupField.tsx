@@ -107,7 +107,11 @@ export function LookupField({
     relationship_target_type as string
   );
 
-  const checkStaleRequest = useStaleRequestGuard(userId);
+  // Only requester-dependent fields discard in-flight responses on a
+  // requester change; other fields keep their results
+  const checkStaleRequest = useStaleRequestGuard(
+    isRequesterDependentField(field.relationship_filter) ? userId : null
+  );
 
   const loadingOption = {
     name: t(
