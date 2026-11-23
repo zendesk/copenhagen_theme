@@ -48,6 +48,7 @@ describe("useServiceCatalogItem", () => {
       thumbnail_url: null,
       categories: [{ id: "cat-1", name: "Category", path: [] }],
       is_request_on_behalf: true,
+      description_field_enabled: false,
       published_at: "2026-10-23T10:31:44.204Z",
       asset_option: undefined,
       asset_type_option: undefined,

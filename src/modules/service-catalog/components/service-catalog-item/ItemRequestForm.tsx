@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Fragment, useCallback, useState } from "react";
 import { RequestFormField } from "../../../ticket-fields";
+import { TextArea } from "../../../ticket-fields/fields/textarea/TextArea";
 import { Button, Anchor } from "@zendeskgarden/react-buttons";
 import { getColor } from "@zendeskgarden/react-theming";
 import { useTranslation } from "react-i18next";
@@ -147,6 +148,7 @@ interface ItemRequestFormProps {
     field: TicketFieldObject,
     value: string | string[] | boolean | null
   ) => void;
+  formRef: React.Ref<HTMLFormElement>;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   attachmentsOption: AttachmentOption | undefined;
   attachmentsRequiredError: string | null;
@@ -178,6 +180,7 @@ export function ItemRequestForm({
   brandId,
   defaultOrganizationId,
   handleChange,
+  formRef,
   onSubmit,
   attachmentsOption,
   attachmentsRequiredError,
@@ -345,6 +348,23 @@ export function ItemRequestForm({
           : field.error,
       };
 
+      if (field.type === "description") {
+        elements.push(
+          <TextArea
+            key={field.name}
+            field={customField}
+            hasWysiwyg
+            baseLocale={baseLocale}
+            locale={locale}
+            hasAtMentions={hasAtMentions}
+            userRole={userRole}
+            brandId={brandId}
+            onChange={(value) => handleChange(field, value)}
+          />
+        );
+        return;
+      }
+
       elements.push(
         <RequestFormField
           key={field.id}
@@ -376,7 +396,7 @@ export function ItemRequestForm({
 
   return (
     <>
-      <Form onSubmit={onSubmit} noValidate>
+      <Form ref={formRef} onSubmit={onSubmit} noValidate>
         <LeftColumn>
           <CollapsibleDescription
             title={serviceCatalogItem.name}
