@@ -75,7 +75,7 @@ test("fetches requests based on the location params via api/v2/requests/search",
   await waitForNextUpdate();
 
   expect(fetch).toHaveBeenCalledWith(
-    `/api/v2/requests/search.json?include=users&cc_id=true&page=1&per_page=${PER_PAGE}&query=printer+on+fire+order_by%3Aupdated_at+sort%3Aasc`,
+    `/api/v2/requests/search.json?include=users&cc_id=true&page=1&per_page=${PER_PAGE}&query=printer+on+fire+support_type%3Aagent+support_type%3Aai_agent+order_by%3Aupdated_at+sort%3Aasc`,
     {
       signal,
     }
@@ -103,7 +103,7 @@ test("limits request results to 1000 records", async () => {
   await waitForNextUpdate();
 
   expect(fetch).toHaveBeenCalledWith(
-    `/api/v2/requests/search.json?include=users&page=66&per_page=${PER_PAGE}&query=*+requester%3Ame`,
+    `/api/v2/requests/search.json?include=users&page=66&per_page=${PER_PAGE}&query=*+support_type%3Aagent+support_type%3Aai_agent+requester%3Ame`,
     {
       signal,
     }
