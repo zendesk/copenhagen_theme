@@ -74,6 +74,7 @@ export function useRequests(
     const searchParams = new URLSearchParams();
     const searchQuery = query.length ? query : "*";
     const queryFilters = filterValuesMapToQueryFilters(filters);
+    queryFilters.push("support_type:agent", "support_type:ai_agent");
 
     searchParams.set("include", "users");
 
