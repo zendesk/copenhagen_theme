@@ -1,10 +1,11 @@
 jest.mock("../../../../shared/notifications/notify");
 
-import { act, fireEvent, screen } from "@testing-library/react";
+import { act, fireEvent, screen, waitFor } from "@testing-library/react";
 import FollowOrganizationsModal from "./FollowOrganizationsModal";
 import { render } from "../../../../test/render";
 import type { User } from "../../../data-types";
 import { notify } from "../../../../shared";
+import { useOrganizations } from "../../../hooks/useOrganizations";
 
 const user: User = {
   id: 10,
@@ -298,5 +299,105 @@ describe("Follow organizations modal", () => {
       expect(fetch).toHaveBeenCalledTimes(2);
       expect(notify).not.toHaveBeenCalled();
     });
+  });
+
+  test("loads off-page organizations, preserves checkbox changes, and saves only changed subscriptions", async () => {
+    const originalFetch = global.fetch;
+    const page = (ids: number[], next_page: string | null) => ({
+      ok: true,
+      json: async () => ({
+        organizations: ids.map((id) => ({
+          id,
+          name: `org_${id}`,
+          default: id === 1,
+          view_tickets: true,
+          inherited: false,
+        })),
+        next_page,
+      }),
+    });
+    let pageAttempts = 0;
+    global.fetch = jest.fn((url, options) => {
+      if (url === "/api/v2/organizations/accessible")
+        return Promise.resolve(
+          page([1, 3], "/api/v2/organizations/accessible?page=2")
+        ) as Promise<Response>;
+      if (url === "/api/v2/organizations/accessible?page=2") {
+        if (++pageAttempts === 1) return Promise.reject(new Error("network"));
+        return Promise.resolve(page([7, 9], null)) as Promise<Response>;
+      }
+      return originalFetch(url, options);
+    });
+    const onClose = props.onClose;
+    function PaginatedModal() {
+      const {
+        organizations,
+        hasMore,
+        isLoading,
+        isLoadingMore,
+        loadMore,
+        error,
+      } = useOrganizations(user);
+      return isLoading ? null : (
+        <FollowOrganizationsModal
+          organizations={organizations}
+          organizationPagination={{
+            hasMore,
+            isLoading: isLoadingMore,
+            loadMore,
+            error,
+          }}
+          user={user}
+          onClose={onClose}
+        />
+      );
+    }
+    try {
+      render(<PaginatedModal />);
+      const org3 = await screen.findByRole("checkbox", { name: "org_3" });
+      expect(
+        screen.queryByRole("checkbox", { name: "org_7" })
+      ).not.toBeInTheDocument();
+      expect(fetch).not.toHaveBeenCalledWith(
+        "/api/v2/organizations/accessible?page=2",
+        expect.anything()
+      );
+      fireEvent.click(org3);
+      fireEvent.click(screen.getByRole("link", { name: "Show more" }));
+      expect(await screen.findByRole("alert")).toHaveTextContent(
+        "Give it a moment and try again"
+      );
+      expect(screen.getByRole("checkbox", { name: "org_3" })).toBeChecked();
+      fireEvent.click(screen.getByRole("link", { name: "Show more" }));
+      const org7 = await screen.findByRole("checkbox", { name: "org_7" });
+      expect(org7).toBeChecked();
+      expect(screen.getByRole("checkbox", { name: "org_3" })).toBeChecked();
+      fireEvent.click(org7);
+      fireEvent.click(screen.getByRole("checkbox", { name: "org_9" }));
+      expect(
+        screen.queryByRole("link", { name: "Show more" })
+      ).not.toBeInTheDocument();
+      fireEvent.click(screen.getByRole("button", { name: "Save" }));
+      await waitFor(() => expect(props.onClose).toHaveBeenCalled());
+      const writes = (fetch as jest.Mock).mock.calls.filter(
+        ([, options]) => options?.method
+      );
+      expect(writes).toHaveLength(3);
+      expect(
+        writes
+          .filter(([, options]) => options.method === "POST")
+          .map(
+            ([, options]) =>
+              JSON.parse(options.body).organization_subscription.organization_id
+          )
+      ).toEqual([3, 9]);
+      expect(
+        writes
+          .filter(([, options]) => options.method === "DELETE")
+          .map(([url]) => url)
+      ).toEqual(["/api/v2/organization_subscriptions/3.json"]);
+    } finally {
+      global.fetch = originalFetch;
+    }
   });
 });

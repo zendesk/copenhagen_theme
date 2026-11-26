@@ -8,6 +8,7 @@ import type {
 } from "../../../data-types/FilterValue";
 import type { Organization, TicketField } from "../../../data-types";
 import type { MultiSelectOption } from "../filter-modal/Multiselect";
+import { OrganizationTag } from "./OrganizationTag";
 
 interface FieldTagsProps {
   identifier: string;
@@ -91,27 +92,19 @@ export function FieldTags({
   };
 
   if (identifier === "organization") {
-    const organization = organizations.find(
-      (o) => String(o.id) === values[0]?.substring(1)
-    );
-
-    return organization ? (
-      <FilterTagWrapper
-        field={identifier}
-        values={values}
-        onFilterRemoved={() => {
-          onFilterRemoved(values);
-        }}
-      >
-        <span>
-          <Span isBold>
-            {t("guide-requests-app.organization", "Organization")}
-          </Span>{" "}
-          {organization.name}
-        </span>
-      </FilterTagWrapper>
-    ) : (
-      <></>
+    return (
+      <>
+        {values.map((value) => (
+          <OrganizationTag
+            key={value}
+            value={value}
+            organization={organizations.find(
+              (organization) => String(organization.id) === value.substring(1)
+            )}
+            onRemove={() => onFilterRemoved([value])}
+          />
+        ))}
+      </>
     );
   }
 

@@ -1,3 +1,4 @@
+import type { OrganizationPagination } from "../../../hooks/useOrganizations";
 import type { FormEventHandler } from "react";
 import { useState } from "react";
 import {
@@ -28,6 +29,7 @@ interface FilterModalProps {
   onClose: () => void;
   ticketFields: TicketField[];
   organizations: Organization[];
+  organizationPagination?: OrganizationPagination;
   customStatusesEnabled: boolean;
   customStatusOptions: MultiSelectOption[];
   filterValuesMap: FilterValuesMap;
@@ -56,6 +58,7 @@ export function FilterModal({
   onClose,
   ticketFields,
   organizations,
+  organizationPagination,
   filterValuesMap,
   onFiltersChanged,
   customStatusesEnabled,
@@ -117,6 +120,7 @@ export function FilterModal({
         </Header>
         <Body>
           <FilterPropertyDropdown
+            hasMoreOrganizations={organizationPagination?.hasMore}
             ticketFields={ticketFields}
             organizations={organizations}
             hasCustomStatuses={customStatusesEnabled}
