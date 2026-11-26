@@ -220,7 +220,8 @@ describe("FilterTags", () => {
       });
       const { container } = renderComponent({ organization: [":1", ":99"] });
       expect(container).toHaveTextContent("Organization My Organization");
-      expect(container).toHaveTextContent("Organization #99");
+      expect(container).not.toHaveTextContent("#99");
+      expect(container.querySelector('[aria-busy="true"]')).not.toBeNull();
       await act(async () => {
         await Promise.resolve();
       });
@@ -229,11 +230,24 @@ describe("FilterTags", () => {
         expect.objectContaining({ signal: expect.any(AbortSignal) })
       );
       expect(container).toHaveTextContent("Organization Zebra");
+      expect(container.querySelector('[aria-busy="true"]')).toBeNull();
       const tag = screen.getByText("Zebra").closest('[tabindex="0"]')!;
       fireEvent.keyDown(tag, { code: "Delete" });
       expect(onFiltersChangedMock).toHaveBeenLastCalledWith({
         organization: [":1"],
       });
+    });
+
+    test("keeps an off-page filter removable while its name is loading without showing the id", () => {
+      global.fetch = jest.fn().mockReturnValue(new Promise(() => {}));
+
+      const { container } = renderComponent({ organization: [":99"] });
+
+      expect(container).not.toHaveTextContent("#99");
+      expect(container.querySelector('[aria-busy="true"]')).not.toBeNull();
+      const tag = screen.getByText("Organization").closest('[tabindex="0"]')!;
+      fireEvent.keyDown(tag, { code: "Delete" });
+      expect(onFiltersChangedMock).toHaveBeenLastCalledWith({});
     });
 
     test("keeps an off-page filter removable when the lookup fails", async () => {

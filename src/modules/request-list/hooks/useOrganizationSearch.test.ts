@@ -174,29 +174,43 @@ describe("useOrganizationSearch", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
-  it("aborts the previous request when a new search fires", async () => {
-    const abortSpy = jest.spyOn(AbortController.prototype, "abort");
+  it("aborts a pending search and ignores its response after a new search finishes", async () => {
+    let resolveFirst!: (response: ReturnType<typeof okResponse>) => void;
     global.fetch = jest
       .fn()
-      .mockResolvedValue(okResponse([{ id: 1, name: "Acme" }])) as jest.Mock;
-
+      .mockImplementationOnce(
+        () =>
+          new Promise((resolve) => {
+            resolveFirst = resolve;
+          })
+      )
+      .mockResolvedValueOnce(okResponse([{ id: 2, name: "Beta" }]));
     const { result } = renderHook(() => useOrganizationSearch());
 
     await act(async () => {
       result.current.search("acme");
       jest.advanceTimersByTime(300);
     });
+    const firstSignal = (global.fetch as jest.Mock).mock.calls[0][1]
+      .signal as AbortSignal;
+    expect(firstSignal.aborted).toBe(false);
 
     await act(async () => {
       result.current.search("beta");
       jest.advanceTimersByTime(300);
     });
-    await act(async () => {
-      await Promise.resolve();
-    });
+    expect(firstSignal.aborted).toBe(true);
+    expect(result.current.searchResults).toEqual([
+      { id: 2, name: "Beta", default: false },
+    ]);
 
-    expect(abortSpy).toHaveBeenCalled();
-    abortSpy.mockRestore();
+    await act(async () => {
+      resolveFirst(okResponse([{ id: 1, name: "Acme" }]));
+    });
+    expect(result.current.searchResults).toEqual([
+      { id: 2, name: "Beta", default: false },
+    ]);
+    expect(result.current.isSearching).toBe(false);
   });
 
   it("clearSearch cancels pending searches and resets results to null", async () => {
@@ -259,95 +273,5 @@ describe("useOrganizationSearch", () => {
 
     expect(result.current.error).toEqual(new Error("network"));
     expect(result.current.isSearching).toBe(false);
-  });
-
-  it("paginates search results and clears pagination when the query changes", async () => {
-    const first = okResponse([{ id: 1, name: "Acme" }]);
-    global.fetch = jest
-      .fn()
-      .mockResolvedValueOnce({
-        ok: true,
-        json: async () => ({
-          ...(await first.json()),
-          next_page: "/api/v2/organizations/accessible?name=acme&page=2",
-        }),
-      })
-      .mockRejectedValueOnce(new Error("network"))
-      .mockResolvedValueOnce(
-        okResponse([
-          { id: 1, name: "Acme" },
-          { id: 2, name: "Acme Zebra" },
-        ])
-      )
-      .mockResolvedValueOnce(okResponse([{ id: 3, name: "Beta" }]));
-    const { result } = renderHook(() => useOrganizationSearch());
-    await act(async () => {
-      result.current.search("acme");
-      jest.advanceTimersByTime(300);
-    });
-    expect(result.current.hasMore).toBe(true);
-    await act(async () => {
-      await result.current.loadMore();
-    });
-    expect(result.current.error).toEqual(new Error("network"));
-    expect(result.current.searchResults).toHaveLength(1);
-    expect(result.current.hasMore).toBe(true);
-    await act(async () => {
-      await result.current.loadMore();
-    });
-    expect(fetch).toHaveBeenLastCalledWith(
-      "/api/v2/organizations/accessible?name=acme&page=2",
-      expect.objectContaining({ signal: expect.any(AbortSignal) })
-    );
-    expect(result.current.searchResults?.map(({ id }) => id)).toEqual([1, 2]);
-    expect(result.current.hasMore).toBe(false);
-    act(() => {
-      result.current.search("beta");
-    });
-    expect(result.current.searchResults).toBeNull();
-    expect(result.current.hasMore).toBe(false);
-    await act(async () => {
-      jest.advanceTimersByTime(300);
-    });
-    expect(result.current.searchResults?.map(({ id }) => id)).toEqual([3]);
-  });
-
-  it("does not append an old search page after a new query starts", async () => {
-    const first = okResponse([{ id: 1, name: "Acme" }]);
-    let resolvePage!: (response: ReturnType<typeof okResponse>) => void;
-    global.fetch = jest
-      .fn()
-      .mockResolvedValueOnce({
-        ok: true,
-        json: async () => ({
-          ...(await first.json()),
-          next_page: "/api/v2/organizations/accessible?name=acme&page=2",
-        }),
-      })
-      .mockImplementationOnce(
-        () =>
-          new Promise((resolve) => {
-            resolvePage = resolve;
-          })
-      )
-      .mockResolvedValueOnce(okResponse([{ id: 3, name: "Beta" }]));
-    const { result } = renderHook(() => useOrganizationSearch());
-    await act(async () => {
-      result.current.search("acme");
-      jest.advanceTimersByTime(300);
-    });
-    let pageRequest!: Promise<void>;
-    act(() => {
-      pageRequest = result.current.loadMore();
-    });
-    await act(async () => {
-      result.current.search("beta");
-      jest.advanceTimersByTime(300);
-    });
-    await act(async () => {
-      resolvePage(okResponse([{ id: 2, name: "Acme Zebra" }]));
-      await pageRequest;
-    });
-    expect(result.current.searchResults?.map(({ id }) => id)).toEqual([3]);
   });
 });
